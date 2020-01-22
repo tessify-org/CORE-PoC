@@ -13,7 +13,9 @@ class RegisterController extends Controller
     {
         return view("pages.auth.register", [
             "oldInput" => collect([
-                "name" => old("name"),
+                "annotation" => old("annotation"),
+                "first_name" => old("first_name"),
+                "last_name" => old("last_name"),
                 "email" => old("email"),
             ])
         ]);
@@ -22,9 +24,11 @@ class RegisterController extends Controller
     public function postRegister(RegisterRequest $request)
     {
         $user = User::create([
-            "name" => $request->name,
+            "annotation" => $request->annotation,
+            "first_name" => $request->first_name,
+            "last_name" => $request->last_name,
             "email" => $request->email,
-            "password" => $request->password
+            "password" => $request->password,
         ]);
 
         Auth::login($user);

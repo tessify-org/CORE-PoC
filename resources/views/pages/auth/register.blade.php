@@ -1,7 +1,25 @@
 @extends("layouts.app")
 
-@section("content")
+@section("breadcrumbs")
+    {!! Breadcrumbs::render("auth.register") !!}
+@stop
 
-    Hiya!
+@section("content")
+    <div class="content-section">
+
+        <h1 class="page-title centered">Register</h1>
     
+        @include("partials.feedback")
+
+        <form action="{{ route('auth.register.post') }}" method="post">
+            {{ csrf_field() }}
+
+            <register-form
+                :errors="{{ $errors->toJson() }}"
+                :old-input="{{ $oldInput->toJson() }}">
+            </register-form>
+
+        </form>
+
+    </div>
 @stop

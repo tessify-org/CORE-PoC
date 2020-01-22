@@ -18,7 +18,7 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
 mix.disableNotifications().browserSync({
-    proxy: 'nnv.test',
+    proxy: 'nnw.test',
     port: 1336
 });
 

@@ -90,6 +90,290 @@ i {
   color: #404040;
 }
 
+.page-title {
+  font-size: 4em;
+  line-height: 1em;
+  font-weight: 600;
+  margin: 0 0 50px 0;
+  text-transform: uppercase;
+}
+
+.page-title.centered {
+  text-align: center;
+}
+
+.page-subtitle {
+  font-size: 2em;
+  font-weight: 300;
+  margin: -50px 0 50px 0;
+}
+
+.page-subtitle.centered {
+  text-align: center;
+}
+
+.page-subtitle.standalone {
+  margin: 0 0 30px 0;
+}
+
+.page-subtitle__subtext {
+  font-weight: 300;
+  margin: -35px 0 30px 0;
+}
+
+.alert-wrapper {
+  margin-bottom: -20px;
+  padding: 50px 50px 0 50px;
+}
+
+.alert {
+  color: #fff;
+  border-radius: 3px;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  background-color: #ccc;
+  margin-bottom: 30px;
+}
+
+.alert-success {
+  background-color: #00ab16;
+}
+
+.alert-info {
+  background-color: #01d3e8;
+}
+
+.alert-danger {
+  background-color: #d50d06;
+}
+
+.alert-warning {
+  background-color: #d55706;
+}
+
+.form-fields {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 0 -15px 15px -15px;
+}
+
+.form-fields.mb-0 {
+  margin: 0 -15px;
+}
+
+.form-fields.checkbox .v-input--checkbox {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.form-fields .form-field {
+  -webkit-box-flex: 1;
+          flex: 1;
+  margin: 0;
+  display: -webkit-box;
+  display: flex;
+  padding: 0 15px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  box-sizing: border-box;
+}
+
+.form-fields .form-field.double {
+  -webkit-box-flex: 2;
+          flex: 2;
+}
+
+.form-field {
+  margin: 0 0 15px 0;
+}
+
+.form-field:last-child {
+  margin: 0;
+}
+
+.form-field.checkbox .v-input--checkbox {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.form-field.mb-0 {
+  margin: 0;
+}
+
+.form-controls {
+  display: -webkit-box;
+  display: flex;
+  margin: 35px 0 0 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+.form-controls.no-margin {
+  margin: 0;
+}
+
+.form-controls.less-margin {
+  margin: 15px 0 0 0;
+}
+
+.form-controls .form-controls__left,
+.form-controls .form-controls__right {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.form-controls .form-controls__left .v-btn {
+  margin: 0 15px 0 0;
+}
+
+.form-controls .form-controls__right {
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+.form-controls .form-controls__right .v-btn {
+  margin: 0 0 0 15px;
+}
+
+.image-field {
+  margin: 0 0 25px 0;
+}
+
+.image-field.no-margin {
+  margin: 0;
+}
+
+.image-field.has-errors .image-field__label {
+  color: #ff5252;
+}
+
+.image-field .image-field__label {
+  display: block;
+  font-size: 12px;
+  margin: 0 0 5px 0;
+  color: #737373;
+}
+
+.image-field .image-field__image-wrapper {
+  margin: 0 0 5px 0;
+}
+
+.image-field .image-field__image-wrapper .image-field__image {
+  height: 100px;
+  border-radius: 3px;
+}
+
+.image-field .image-field__input {
+  display: block;
+}
+
+.image-field .image-field__errors {
+  font-size: 0.9em;
+  color: #ff5252;
+  margin: 10px 0 0 0;
+}
+
+.image-field .image-field__errors .image-field__error {
+  margin: 0 0 3px 0;
+}
+
+.image-field .image-field__errors .image-field__error:last-child {
+  margin: 0;
+}
+
+.subform {
+  color: #000000;
+  overflow: hidden;
+  border-radius: 3px;
+  margin: 0 0 30px 0;
+  background-color: #ffffff;
+}
+
+.subform:last-child {
+  margin: 0;
+}
+
+.subform .subform-header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  box-sizing: border-box;
+  padding: 15px 25px 11px 25px;
+  border-bottom: 2px solid #f2f2f2;
+}
+
+.subform .subform-header .subform-header__title {
+  -webkit-box-flex: 1;
+          flex: 1;
+  margin: 0;
+  display: -webkit-box;
+  display: flex;
+  font-size: 14px;
+  font-weight: 500;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  text-transform: uppercase;
+}
+
+.subform .subform-header .subform-header__action {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.subform .subform-content {
+  padding: 20px 25px;
+  box-sizing: border-box;
+}
+
+.subform .subform-content.no-padding {
+  padding: 0;
+}
+
+.subform .subform-content.border-top {
+  border-top: 2px solid #f2f2f2;
+}
+
+.subform .subform-subheader {
+  box-sizing: border-box;
+  padding: 15px 25px 0 25px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.subform .subform-subheader .subform-subheader__title {
+  margin: 0;
+  font-weight: 400;
+}
+
+.subform .subform-subheader .subform-subheader__intro {
+  font-size: 0.9em;
+  margin: 10px 0 0 0;
+  color: rgba(0, 0, 0, 0.9);
+}
+
 #app {
   width: 100%;
   height: 100%;
@@ -119,22 +403,75 @@ i {
           align-items: center;
 }
 
-#app #topnav__wrapper #topnav #topnav-logo__wrapper {
-  -webkit-box-flex: 1;
-          flex: 1 0 100px;
-}
-
 #app #topnav__wrapper #topnav #topnav-logo__wrapper #topnav-logo {
   height: 40px;
-  padding: 10px;
   display: -webkit-box;
   display: flex;
+  display: block;
+  color: #ffffff;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 3px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
   -webkit-box-align: center;
           align-items: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-decoration: none;
   box-sizing: border-box;
+  background-color: black;
+}
+
+#app #topnav__wrapper #topnav #topnav-logo__wrapper #topnav-logo:hover {
+  background-color: #404040;
+}
+
+#app #topnav__wrapper #topnav #topnav-search__wrapper {
+  display: -webkit-box;
+  display: flex;
+  margin: 0 0 0 50px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#app #topnav__wrapper #topnav #topnav-search__wrapper #topnav-search {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#app #topnav__wrapper #topnav #topnav-search__wrapper #topnav-search #topnav-search__input {
+  height: 30px;
+  width: 150px;
+  font-size: 0.9em;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  border-bottom: 1px solid #cccccc;
+}
+
+#app #topnav__wrapper #topnav #topnav-search__wrapper #topnav-search #topnav-search__submit {
+  width: 30px;
+  display: -webkit-box;
+  display: flex;
+  color: #ffffff;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+  background-color: #000000;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
 }
 
 #app #topnav__wrapper #topnav #topnav-links__wrapper {
@@ -158,12 +495,129 @@ i {
 }
 
 #app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper {
-  margin: 0 0 0 15px;
+  margin: 0 0 0 25px;
 }
 
 #app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper .topnav-link {
   display: block;
   text-decoration: none;
+  color: black;
+}
+
+#app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper:first-child {
+  margin: 0;
+}
+
+#app #content__wrapper {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+#app #content__wrapper .content-section {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 100px 0;
+  box-sizing: border-box;
+}
+
+#app #footer__wrapper {
+  background-color: white;
+}
+
+#app #footer__wrapper #footer {
+  display: -webkit-box;
+  display: flex;
+  padding: 25px 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  box-sizing: border-box;
+  -webkit-box-pack: center;
+          justify-content: center;
+  color: gray;
+}
+
+#breadcrumbs-wrapper {
+  background-color: #f2f2f2;
+}
+
+#breadcrumbs-wrapper #breadcrumbs {
+  display: -webkit-box;
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 10px 0;
+  font-size: 0.9em;
+  list-style: none;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item {
+  padding: 0 5px;
+  color: #000000;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  box-sizing: border-box;
+}
+
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item:last-child {
+  padding: 0 0 0 5px;
+}
+
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item:first-child {
+  padding: 0 5px 0 0;
+}
+
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item.active {
+  color: #000000;
+  font-style: italic;
+}
+
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item.chevron {
+  font-size: 0.8em;
+}
+
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item .home {
+  margin-right: 5px;
+  color: black;
+}
+
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item .v-icon {
+  color: #000;
+}
+
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item .svg-inline--fa,
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item .far,
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item .fas {
+  margin-top: 0px;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  color: #404040;
+}
+
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a,
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:active,
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:visited,
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:link {
+  color: #333333;
+  text-decoration: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:hover,
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:active:hover,
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:visited:hover,
+#breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:link:hover {
   color: black;
 }
 

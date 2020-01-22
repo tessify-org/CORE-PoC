@@ -2164,6 +2164,57 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/RememberMe.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/RememberMe.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["name"],
+  data: function data() {
+    return {
+      tag: "[remember-me-input]",
+      rememberMe: true
+    };
+  },
+  computed: {
+    inputName: function inputName() {
+      return this.name !== undefined && this.name !== null ? this.name : "remember_me";
+    }
+  },
+  watch: {
+    rememberMe: function rememberMe() {
+      this.$emit("input", this.rememberMe);
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/LoginForm.vue?vue&type=style&index=0&lang=scss&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/LoginForm.vue?vue&type=style&index=0&lang=scss& ***!
@@ -2176,7 +2227,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#login-form #login-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#login-form #login-form__controls #login-form__controls-left, #login-form #login-form__controls #login-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#login-form #login-form__controls #login-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#login-form #login-form__controls #login-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
+exports.push([module.i, "#login-form {\n  width: 600px;\n  padding: 25px;\n  margin: 0 auto;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #ffffff;\n}\n#login-form #login-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#login-form #login-form__controls #login-form__controls-left, #login-form #login-form__controls #login-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#login-form #login-form__controls #login-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#login-form #login-form__controls #login-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
 
 // exports
 
@@ -2195,7 +2246,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#register-form #register-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#register-form #register-form__controls #register-form__controls-left, #register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#register-form #register-form__controls #register-form__controls-left #login-link {\n  text-decoration: none;\n  color: black;\n}\n#register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#register-form #register-form__controls #register-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
+exports.push([module.i, "#register-form {\n  width: 600px;\n  padding: 25px;\n  margin: 0 auto;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: white;\n}\n#register-form #register-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#register-form #register-form__controls #register-form__controls-left, #register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#register-form #register-form__controls #register-form__controls-left #login-link {\n  text-decoration: none;\n  color: black;\n}\n#register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#register-form #register-form__controls #register-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
 
 // exports
 
@@ -20470,225 +20521,33 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "login-form" } }, [
-    _c(
-      "div",
-      { staticClass: "field" },
-      [
-        _c("v-text-field", {
-          attrs: {
-            label: "E-mail",
-            name: "email",
-            error: _vm.hasErrors("email"),
-            "error-messages": _vm.getErrors("email")
-          },
-          model: {
-            value: _vm.form.email,
-            callback: function($$v) {
-              _vm.$set(_vm.form, "email", $$v)
-            },
-            expression: "form.email"
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "field" },
-      [
-        _c("v-text-field", {
-          attrs: {
-            type: "password",
-            label: "Password",
-            name: "password",
-            error: _vm.hasErrors("password"),
-            "error-messages": _vm.getErrors("password")
-          },
-          model: {
-            value: _vm.form.password,
-            callback: function($$v) {
-              _vm.$set(_vm.form, "password", $$v)
-            },
-            expression: "form.password"
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { attrs: { id: "login-form__controls" } }, [
-      _c(
-        "div",
-        { attrs: { id: "login-form__controls-left" } },
-        [
-          _c("remember-me", {
-            attrs: { name: "remember_me" },
-            model: {
-              value: _vm.form.rememberMe,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "rememberMe", $$v)
-              },
-              expression: "form.rememberMe"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { attrs: { id: "login-form__controls-right" } },
-        [
-          _c("v-btn", { attrs: { type: "submit", color: "primary" } }, [
-            _vm._v("Login")
-          ])
-        ],
-        1
-      )
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/RegisterForm.vue?vue&type=template&id=5d1a151a&":
-/*!********************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/RegisterForm.vue?vue&type=template&id=5d1a151a& ***!
-  \********************************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "register-form" } }, [
-    _c("div", { staticClass: "form-fields" }, [
+  return _c(
+    "div",
+    { staticClass: "elevation-1", attrs: { id: "login-form" } },
+    [
       _c(
         "div",
         { staticClass: "form-field" },
         [
-          _c("v-select", {
+          _c("v-text-field", {
             attrs: {
-              label: "Annotation",
-              items: _vm.annotationOptions,
-              error: _vm.hasErrors("annotation"),
-              "error-messages": _vm.getErrors("annotation")
+              label: "E-mail",
+              name: "email",
+              error: _vm.hasErrors("email"),
+              "error-messages": _vm.getErrors("email")
             },
             model: {
-              value: _vm.form.annotation,
+              value: _vm.form.email,
               callback: function($$v) {
-                _vm.$set(_vm.form, "annotation", $$v)
+                _vm.$set(_vm.form, "email", $$v)
               },
-              expression: "form.annotation"
-            }
-          }),
-          _vm._v(" "),
-          _c("input", {
-            directives: [
-              {
-                name: "model",
-                rawName: "v-model",
-                value: _vm.form.annotation,
-                expression: "form.annotation"
-              }
-            ],
-            attrs: { type: "hidden", name: "annotation" },
-            domProps: { value: _vm.form.annotation },
-            on: {
-              input: function($event) {
-                if ($event.target.composing) {
-                  return
-                }
-                _vm.$set(_vm.form, "annotation", $event.target.value)
-              }
+              expression: "form.email"
             }
           })
         ],
         1
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "form-field double" },
-        [
-          _c("v-text-field", {
-            attrs: {
-              label: "First name",
-              name: "first_name",
-              error: _vm.hasErrors("first_name"),
-              "error-messages": _vm.getErrors("first_name")
-            },
-            model: {
-              value: _vm.form.first_name,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "first_name", $$v)
-              },
-              expression: "form.first_name"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "form-field double" },
-        [
-          _c("v-text-field", {
-            attrs: {
-              label: "Last name",
-              name: "last_name",
-              error: _vm.hasErrors("last_name"),
-              "error-messages": _vm.getErrors("last_name")
-            },
-            model: {
-              value: _vm.form.last_name,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "last_name", $$v)
-              },
-              expression: "form.last_name"
-            }
-          })
-        ],
-        1
-      )
-    ]),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "form-field" },
-      [
-        _c("v-text-field", {
-          attrs: {
-            label: "E-mail",
-            name: "email",
-            error: _vm.hasErrors("email"),
-            "error-messages": _vm.getErrors("email")
-          },
-          model: {
-            value: _vm.form.email,
-            callback: function($$v) {
-              _vm.$set(_vm.form, "email", $$v)
-            },
-            expression: "form.email"
-          }
-        })
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c("div", { staticClass: "form-fields" }, [
       _c(
         "div",
         { staticClass: "form-field" },
@@ -20713,46 +20572,291 @@ var render = function() {
         1
       ),
       _vm._v(" "),
+      _c("div", { staticClass: "form-controls" }, [
+        _c(
+          "div",
+          { staticClass: "form-controls__left" },
+          [
+            _c("remember-me", {
+              attrs: { name: "remember_me" },
+              model: {
+                value: _vm.form.rememberMe,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "rememberMe", $$v)
+                },
+                expression: "form.rememberMe"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-controls__right" },
+          [
+            _c("v-btn", { attrs: { type: "submit", color: "primary" } }, [
+              _vm._v("Login")
+            ])
+          ],
+          1
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/RegisterForm.vue?vue&type=template&id=5d1a151a&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/RegisterForm.vue?vue&type=template&id=5d1a151a& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "elevation-1", attrs: { id: "register-form" } },
+    [
+      _c("div", { staticClass: "form-fields" }, [
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-select", {
+              attrs: {
+                label: "Annotation",
+                items: _vm.annotationOptions,
+                error: _vm.hasErrors("annotation"),
+                "error-messages": _vm.getErrors("annotation")
+              },
+              model: {
+                value: _vm.form.annotation,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "annotation", $$v)
+                },
+                expression: "form.annotation"
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.annotation,
+                  expression: "form.annotation"
+                }
+              ],
+              attrs: { type: "hidden", name: "annotation" },
+              domProps: { value: _vm.form.annotation },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "annotation", $event.target.value)
+                }
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field double" },
+          [
+            _c("v-text-field", {
+              attrs: {
+                label: "First name",
+                name: "first_name",
+                error: _vm.hasErrors("first_name"),
+                "error-messages": _vm.getErrors("first_name")
+              },
+              model: {
+                value: _vm.form.first_name,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "first_name", $$v)
+                },
+                expression: "form.first_name"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field double" },
+          [
+            _c("v-text-field", {
+              attrs: {
+                label: "Last name",
+                name: "last_name",
+                error: _vm.hasErrors("last_name"),
+                "error-messages": _vm.getErrors("last_name")
+              },
+              model: {
+                value: _vm.form.last_name,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "last_name", $$v)
+                },
+                expression: "form.last_name"
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
       _c(
         "div",
         { staticClass: "form-field" },
         [
           _c("v-text-field", {
             attrs: {
-              type: "password",
-              label: "Confirm password",
-              name: "password_confirmation",
-              error: _vm.hasErrors("password_confirmation"),
-              "error-messages": _vm.getErrors("password_confirmation")
+              label: "E-mail",
+              name: "email",
+              error: _vm.hasErrors("email"),
+              "error-messages": _vm.getErrors("email")
             },
             model: {
-              value: _vm.form.confirmPassword,
+              value: _vm.form.email,
               callback: function($$v) {
-                _vm.$set(_vm.form, "confirmPassword", $$v)
+                _vm.$set(_vm.form, "email", $$v)
               },
-              expression: "form.confirmPassword"
+              expression: "form.email"
             }
           })
         ],
         1
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { attrs: { id: "register-form__controls" } }, [
-      _c("div", { attrs: { id: "register-form__controls-left" } }),
+      ),
       _vm._v(" "),
-      _c(
-        "div",
-        { attrs: { id: "register-form__controls-right" } },
-        [
-          _c("v-btn", { attrs: { type: "submit", color: "primary" } }, [
-            _vm._v("\n                Create your account!\n            ")
-          ])
-        ],
-        1
-      )
-    ])
-  ])
+      _c("div", { staticClass: "form-fields" }, [
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-text-field", {
+              attrs: {
+                type: "password",
+                label: "Password",
+                name: "password",
+                error: _vm.hasErrors("password"),
+                "error-messages": _vm.getErrors("password")
+              },
+              model: {
+                value: _vm.form.password,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "password", $$v)
+                },
+                expression: "form.password"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-text-field", {
+              attrs: {
+                type: "password",
+                label: "Confirm password",
+                name: "password_confirmation",
+                error: _vm.hasErrors("password_confirmation"),
+                "error-messages": _vm.getErrors("password_confirmation")
+              },
+              model: {
+                value: _vm.form.confirmPassword,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "confirmPassword", $$v)
+                },
+                expression: "form.confirmPassword"
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "register-form__controls" } }, [
+        _c("div", { attrs: { id: "register-form__controls-left" } }),
+        _vm._v(" "),
+        _c(
+          "div",
+          { attrs: { id: "register-form__controls-right" } },
+          [
+            _c("v-btn", { attrs: { type: "submit", color: "primary" } }, [
+              _vm._v("\n                Create your account!\n            ")
+            ])
+          ],
+          1
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/RememberMe.vue?vue&type=template&id=290a2671&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/RememberMe.vue?vue&type=template&id=290a2671& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "remember-me-input" } },
+    [
+      _c("v-checkbox", {
+        attrs: { label: "Remember me" },
+        model: {
+          value: _vm.rememberMe,
+          callback: function($$v) {
+            _vm.rememberMe = $$v
+          },
+          expression: "rememberMe"
+        }
+      }),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: _vm.inputName },
+        domProps: { value: _vm.rememberMe }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -74005,7 +74109,8 @@ module.exports = function(module) {
 
 var map = {
 	"./components/auth/LoginForm.vue": "./resources/js/components/auth/LoginForm.vue",
-	"./components/auth/RegisterForm.vue": "./resources/js/components/auth/RegisterForm.vue"
+	"./components/auth/RegisterForm.vue": "./resources/js/components/auth/RegisterForm.vue",
+	"./components/auth/RememberMe.vue": "./resources/js/components/auth/RememberMe.vue"
 };
 
 
@@ -74251,6 +74356,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/auth/RememberMe.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/auth/RememberMe.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RememberMe_vue_vue_type_template_id_290a2671___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RememberMe.vue?vue&type=template&id=290a2671& */ "./resources/js/components/auth/RememberMe.vue?vue&type=template&id=290a2671&");
+/* harmony import */ var _RememberMe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RememberMe.vue?vue&type=script&lang=js& */ "./resources/js/components/auth/RememberMe.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _RememberMe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RememberMe_vue_vue_type_template_id_290a2671___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RememberMe_vue_vue_type_template_id_290a2671___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/auth/RememberMe.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/RememberMe.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/auth/RememberMe.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RememberMe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./RememberMe.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/RememberMe.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RememberMe_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/RememberMe.vue?vue&type=template&id=290a2671&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/auth/RememberMe.vue?vue&type=template&id=290a2671& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RememberMe_vue_vue_type_template_id_290a2671___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./RememberMe.vue?vue&type=template&id=290a2671& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/RememberMe.vue?vue&type=template&id=290a2671&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RememberMe_vue_vue_type_template_id_290a2671___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RememberMe_vue_vue_type_template_id_290a2671___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -74269,8 +74443,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Code\Websites\NNW\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Code\Websites\NNW\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

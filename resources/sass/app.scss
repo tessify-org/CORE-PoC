@@ -22,14 +22,55 @@
             flex-direction: row;
             align-items: center;
             #topnav-logo__wrapper {
-                flex: 1 0 100px;
                 #topnav-logo {
                     height: 40px;
-                    padding: 10px;
                     display: flex;
+                    display: block;
+                    color: #ffffff;
+                    font-weight: 600;
+                    padding: 10px 15px;
+                    border-radius: 3px;
                     flex-direction: row;
                     align-items: center;
+                    transition: all .3s;
+                    text-decoration: none;
                     box-sizing: border-box;
+                    background-color: hsl(0, 0%, 0%);
+                    &:hover {
+                        background-color: hsl(0, 0%, 25%);
+                    }
+                }
+            }
+            #topnav-search__wrapper {
+                display: flex;
+                margin: 0 0 0 50px;
+                flex-direction: row;
+                align-items: center;
+                #topnav-search {
+                    display: flex;
+                    flex-direction: row;
+                    #topnav-search__input {
+                        height: 30px;
+                        width: 150px;
+                        font-size: .9em;
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                        border-top-left-radius: 3px;
+                        border-bottom-left-radius: 3px;
+                        border-top: 1px solid hsl(0, 0%, 80%);
+                        border-left: 1px solid hsl(0, 0%, 80%);
+                        border-bottom: 1px solid hsl(0, 0%, 80%);
+                    }
+                    #topnav-search__submit {
+                        width: 30px;
+                        display: flex;
+                        color: #ffffff;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: #000000;
+                        border-top-right-radius: 3px;
+                        border-bottom-right-radius: 3px;
+                    }
                 }
             }
             #topnav-links__wrapper {
@@ -43,15 +84,127 @@
                     align-items: center;
                     justify-content: flex-end;
                     .topnav-link__wrapper {
-                        margin: 0 0 0 15px;
+                        margin: 0 0 0 25px;
                         .topnav-link {
                             display: block;
                             text-decoration: none;
                             color: hsl(0, 0%, 0%);
+                        }
+                        &:first-child {
+                            margin: 0;
                         }
                     }
                 }
             }
         }
     }
+    #content__wrapper {
+        flex: 1;
+        .content-section {
+            width: 1200px;
+            margin: 0 auto;
+            padding: 100px 0;
+            box-sizing: border-box;
+        }
+    }
+    #footer__wrapper {
+        background-color: hsl(0, 0%, 100%);
+        #footer {
+            display: flex;
+            padding: 25px 0;
+            flex-direction: row;
+            align-items: center;
+            box-sizing: border-box;
+            justify-content: center;
+            color: hsl(0, 0%, 50%);
+        }
+    }
 }
+
+#breadcrumbs-wrapper {
+    background-color: hsl(0, 0%, 95%);
+    #breadcrumbs {
+        display: flex;
+        width: 1200px;
+        margin: 0 auto;
+        padding: 10px 0;
+        font-size: .9em;
+        list-style: none;
+        flex-direction: row;
+        .breadcrumb-item {
+            padding: 0 5px;
+            color: #000000;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            box-sizing: border-box;
+            &:last-child {
+                padding: 0 0 0 5px;
+            }
+            &:first-child {
+                padding: 0 5px 0 0;
+            }
+            &.active {
+                color: #000000;
+                font-style: italic;
+            }
+            &.chevron {
+                font-size: .8em;
+            }
+            .home {
+                margin-right: 5px;
+                color: hsl(0, 0%, 0%);
+            }
+            .v-icon {
+                color: #000;
+            }
+            .svg-inline--fa, .far, .fas {
+                margin-top: 0px;
+                transition: all .4s;
+                color: hsl(0, 0%, 25%);
+            }
+            a, a:active, a:visited, a:link {
+                color: hsl(0, 0%, 20%);
+                text-decoration: none;
+                transition: all .3s;
+                &:hover {
+                    color: hsl(0, 0%, 0%);
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -19,6 +19,7 @@
 
         <v-app id="app" class="dark">
 
+            <!-- Topnav -->
             <div id="topnav__wrapper">
                 <div id="topnav">
                     <div id="topnav-logo__wrapper">
@@ -26,20 +27,44 @@
                             N<sup>2</sup>W
                         </a>
                     </div>
+                    <div id="topnav-search__wrapper">
+                        <form action="{{ route('search.post') }}" method="post">
+                            {{ csrf_field() }}
+                            <div id="topnav-search">
+                                <input type="text" id="topnav-search__input" name="query" placeholder="Zoeken..">
+                                <button type="submit" id="topnav-search__submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                     <div id="topnav-links__wrapper">
                         <ul id="topnav-links">
                             @if (!Auth::check())
+                                <!-- Login -->
                                 <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="#">
+                                    <a class="topnav-link" href="{{ route('auth.login') }}">
                                         Login
                                     </a>
                                 </li>
+                                <!-- Register -->
                                 <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="#">
+                                    <a class="topnav-link" href="{{ route('auth.register') }}">
                                         Register
                                     </a>
                                 </li>
                             @else
+                                <!-- Logout -->
+                                <li class="topnav-link__wrapper">
+                                    <a class="topnav-link" href="{{ route('auth.logout') }}">
+                                        Logout
+                                    </a>
+                                </li>
+                                <li class="topnav-link__wrapper">
+                                    <a class="topnav-link" href="#">
+
+                                    </a>
+                                </li>
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="#">
 
@@ -48,6 +73,21 @@
                             @endif
                         </ul>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Breadcrumbs -->
+            @yield("breadcrumbs")
+
+            <!-- Content -->
+            <div id="content__wrapper">
+                @yield("content")
+            </div>
+
+            <!-- Footer -->
+            <footer id="footer__wrapper">
+                <div id="footer">
+                    &copy; Copyrighted by Hermes Incorporated 2020 - &infin;
                 </div>
             </div>
 

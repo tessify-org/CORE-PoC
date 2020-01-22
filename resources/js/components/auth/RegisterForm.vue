@@ -1,5 +1,5 @@
 <template>
-    <div id="register-form">
+    <div id="register-form" class="elevation-1">
 
         <!-- First & last name -->
         <div class="form-fields">
@@ -126,24 +126,18 @@
                 this.annotationOptions.push({ text: "Mrs.", value: "Mrs." });
             },
             hasErrors(field) {
-
                 if (this.errors !== undefined && this.errors !== null && this.errors.length > 0) {
                     if (this.errors[field] !==  undefined &&  this.errors[field] !== "") {
                         return true;
                     }
                 }
-
                 return false;
-
             },
             getErrors(field) {
-
                 if (this.errors !== undefined && this.errors !== null && this.errors[field] !== undefined && this.errors[field] !== null) {
                     return this.errors[field];
                 }
-
                 return [];
-
             },
         },
         mounted() {
@@ -154,6 +148,12 @@
 
 <style lang="scss">
     #register-form {
+        width: 600px;
+        padding: 25px;
+        margin: 0 auto;
+        border-radius: 3px;
+        box-sizing: border-box;
+        background-color: hsl(0, 0%, 100%);
         #register-form__controls {
             display: flex;
             margin: 15px 0 0 0;

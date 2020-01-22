@@ -1,8 +1,8 @@
 <template>
-    <div id="login-form">
+    <div id="login-form" class="elevation-1">
         
         <!-- Email --> 
-        <div class="field">
+        <div class="form-field">
             <v-text-field 
                 label="E-mail" 
                 name="email" 
@@ -13,7 +13,7 @@
         </div>
         
         <!-- Password -->
-        <div class="field">
+        <div class="form-field">
             <v-text-field 
                 type="password" 
                 label="Password" 
@@ -25,13 +25,13 @@
         </div>
         
         <!-- Controls -->
-        <div id="login-form__controls">
+        <div class="form-controls">
             <!-- Remember me -->
-            <div id="login-form__controls-left">
+            <div class="form-controls__left">
                 <remember-me v-model="form.rememberMe" name="remember_me"></remember-me>
             </div>
             <!-- Submit form -->
-            <div id="login-form__controls-right">
+            <div class="form-controls__right">
                 <v-btn type="submit" color="primary">Login</v-btn>
             </div>
         </div>
@@ -52,7 +52,7 @@
                 email: "",
                 password: "",
                 rememberMe: true,
-            }
+            },
         }),
         methods: {
             initialize() {
@@ -88,12 +88,18 @@
         },
         mounted() {
             this.initialize();
-        }
+        },
     }
 </script>
 
 <style lang="scss">
     #login-form {
+        width: 600px;
+        padding: 25px;
+        margin: 0 auto;
+        border-radius: 3px;
+        box-sizing: border-box;
+        background-color: #ffffff;
         #login-form__controls {
             display: flex;
             margin: 15px 0 0 0;

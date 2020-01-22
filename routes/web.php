@@ -12,7 +12,7 @@
 */
 
 // Home
-Route::get('/', 'HomeController@getHome')->name('home');
+Route::get("/", "HomeController@getHome")->name("home");
 
 // Auth endpoint, when user is logged out
 Route::group(["middleware" => "guest"], function() {
@@ -35,3 +35,16 @@ Route::group(["middleware" => "user"], function() {
 
 });
 
+// Search
+Route::get("search", "SearchController@getSearch")->name("search");
+Route::post("search", "SearchController@postSearch")->name("search.post");
+
+// Memberlist
+Route::get("memberlist", "MemberlistController@getMemberList")->name("memberlist");
+
+// Profiel
+Route::get("profiel/{slug}", "ProfileController@getProfile")->name("profile");
+
+// Jobs
+Route::get("jobs", "JobController@getOverview")->name("jobs");
+Route::get("jobs/{slug}", "JobController@getView")->name("jobs.view");
