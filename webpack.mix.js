@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const webpack = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -11,5 +12,21 @@ const mix = require('laravel-mix');
  |
  */
 
+mix.setPublicPath('public');
+
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
+
+mix.disableNotifications().browserSync({
+    proxy: 'nnv.test',
+    port: 1336
+});
+
+mix.webpackConfig({
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery'
+        })
+    ]
+});
