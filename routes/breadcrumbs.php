@@ -38,7 +38,7 @@ Breadcrumbs::for("profile", function($t, $user) {
 // Jobs
 Breadcrumbs::for("jobs", function($t) {
     $t->parent("home");
-    $t->push("Jobs", route("jobs"));
+    $t->push("Job Board", route("jobs"));
 });
 Breadcrumbs::for("jobs.view", function($t, $job) {
     $t->parent("jobs");

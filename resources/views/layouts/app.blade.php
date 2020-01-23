@@ -50,14 +50,14 @@
                                 <!-- Register -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('auth.register') }}">
-                                        Register
+                                        Registeren
                                     </a>
                                 </li>
                             @else
                                 <!-- Jobs -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('jobs') }}">
-                                        Werkpakketten
+                                        Job Board
                                     </a>
                                 </li>
                                 <!-- Leden -->
@@ -75,7 +75,7 @@
                                 <!-- Logout -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('auth.logout') }}">
-                                        Logout
+                                        Uitloggen
                                     </a>
                                 </li>
                             @endif

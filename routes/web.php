@@ -28,23 +28,23 @@ Route::group(["middleware" => "guest"], function() {
 });
 
 // Auth endpoints, when user is logged in
-Route::group(["middleware" => "user"], function() {
+Route::group(["middleware" => "auth"], function() {
 
     // Logout
-    Route::get("logout", "Auth\LogoutController@getLogout")->name("auth.logout");
+    Route::get("uitloggen", "Auth\LogoutController@getLogout")->name("auth.logout");
 
 });
 
 // Search
-Route::get("search", "SearchController@getSearch")->name("search");
-Route::post("search", "SearchController@postSearch")->name("search.post");
+Route::get("zoeken", "SearchController@getSearch")->name("search");
+Route::post("zoeken", "SearchController@postSearch")->name("search.post");
 
 // Memberlist
-Route::get("memberlist", "Profiles\MemberlistController@getMemberList")->name("memberlist");
+Route::get("ledenlijst", "Profiles\MemberlistController@getMemberList")->name("memberlist");
 
 // Profiel
 Route::get("profiel/{slug?}", "Profiles\ProfileController@getProfile")->name("profile");
 
 // Jobs
-Route::get("jobs", "JobController@getOverview")->name("jobs");
-Route::get("jobs/{slug}", "JobController@getView")->name("jobs.view");
+Route::get("job-board", "Jobs\JobBoardController@getJobBoard")->name("jobs");
+Route::get("job-board/{slug}", "Jobs\JobBoardController@getJob")->name("jobs.view");

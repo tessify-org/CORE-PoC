@@ -7,7 +7,7 @@
 @section("content")
     <div class="content-section">
 
-        <h1 class="page-title centered">Search</h1>
+        <h1 class="page-title centered">Zoeken</h1>
     
         @include("partials.feedback")
 
