@@ -40,10 +40,10 @@ Route::get("search", "SearchController@getSearch")->name("search");
 Route::post("search", "SearchController@postSearch")->name("search.post");
 
 // Memberlist
-Route::get("memberlist", "MemberlistController@getMemberList")->name("memberlist");
+Route::get("memberlist", "Profiles\MemberlistController@getMemberList")->name("memberlist");
 
 // Profiel
-Route::get("profiel/{slug}", "ProfileController@getProfile")->name("profile");
+Route::get("profiel/{slug?}", "Profiles\ProfileController@getProfile")->name("profile");
 
 // Jobs
 Route::get("jobs", "JobController@getOverview")->name("jobs");

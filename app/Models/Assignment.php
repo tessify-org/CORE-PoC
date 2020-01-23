@@ -9,6 +9,7 @@ class Assignment extends Model
     protected $table = "assignments";
     protected $guarded = ["id", "created_at", "updated_at"];
     protected $fillable = [
+        "user_id",
         "ministry_id",
         "organization_id",
         "department_id",
@@ -21,6 +22,11 @@ class Assignment extends Model
     //
     // Relationships
     // 
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     public function ministry()
     {

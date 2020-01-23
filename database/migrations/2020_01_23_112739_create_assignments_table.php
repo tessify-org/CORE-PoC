@@ -15,6 +15,7 @@ class CreateAssignmentsTable extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('user_id');
             $table->unsignedInteger('ministry_id')->nullable();
             $table->unsignedInteger('organization_id')->nullable();
             $table->unsignedInteger('department_id')->nullable();

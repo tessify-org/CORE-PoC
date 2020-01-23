@@ -36,11 +36,53 @@ class User extends Authenticatable
     }
 
     //
+    // Relationships
+    //
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
+
+    //
     // Accessors
     //
 
     public function getFormattedNameAttribute()
     {
         return $this->annotation." ".$this->first_name." ".$this->last_name;
+    }
+
+    public function getCombinedNameAttribute()
+    {
+        return $this->first_name." ".$this->last_name;
+    }
+
+    public function getCurrentAssignmentAttribute()
+    {
+        foreach ($this->assignments as $assignment)
+        {
+            if (is_null($assignment->stopped_at))
+            {
+                return $assignment;
+            }
+        }
+        
+        return false;
+    }
+
+    public function getPreviousAssignmentsAttribute()
+    {
+        $out = [];
+
+        foreach ($this->assignments as $assignment)
+        {
+            if (!is_null($assignment->stopped_at))
+            {
+                $out[] = $assignment;
+            }
+        }
+
+        return collect($out);
     }
 }

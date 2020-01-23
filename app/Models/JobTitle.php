@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobTitle extends Model
 {
-    protected $table = "functions";
+    protected $table = "job_titles";
     protected $guarded = ["id", "created_at", "updated_at"];
     protected $fillable = [
         "name",

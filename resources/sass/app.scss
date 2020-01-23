@@ -175,7 +175,101 @@
     }
 }
 
+#profile {
 
+    #profile-header {
+        display: flex;
+        margin: 0 0 50px 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        #profile-header__avatar-wrapper {
+            margin: 0 25px 0 0;
+            #profile-avatar {
+                width: 200px;
+                height: 200px;
+                border-radius: 100px;
+                background-color: #f5f5f5;
+            }
+        }
+        #profile-header__text-wrapper {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            .page-subtitle {
+                margin: 0;
+            }
+            .page-subtitle__subtext {
+                margin: 0;
+            }
+        }
+    }
+
+    #profile__avatar-wrapper {
+        display: flex;
+        margin: 0 0 25px 0;
+        align-items: center;
+        justify-content: center;
+    }
+    #profile__header {
+        .page-subtitle {
+            margin: 0 0 50px 0;
+        }
+    }
+    #profile__info {
+        #profile__info-left {
+    
+        }
+        #profile__info-right {
+    
+        }
+    }
+}
+
+#memberlist {
+    border-radius: 3px;
+    background-color: #fff;
+    .member {
+        display: flex;
+        color: #000000;
+        transition: all .3s;
+        flex-direction: row;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        &:last-child {
+            border-bottom: 0;
+        }
+        &:hover {
+            cursor: pointer;
+            background-color: hsl(0, 0%, 95%);
+        }
+        .member-name, .member-ministry, .member-organization, .member-job-title, .member-reputation {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 15px 25px;
+            box-sizing: border-box;
+        }
+        .member-name {
+            flex: 1;
+        }
+        .member-ministry {
+            flex: 1;
+        }
+        .member-organization {
+            flex: 1;
+        }
+        .member-job-title {
+            flex: 1;
+        }
+        .member-reputation {
+            
+        }
+    }
+}
+#no-members {
+    text-align: center;
+}
 
 
 

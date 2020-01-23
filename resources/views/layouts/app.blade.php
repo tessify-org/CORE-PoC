@@ -54,20 +54,28 @@
                                     </a>
                                 </li>
                             @else
+                                <!-- Jobs -->
+                                <li class="topnav-link__wrapper">
+                                    <a class="topnav-link" href="{{ route('jobs') }}">
+                                        Werkpakketten
+                                    </a>
+                                </li>
+                                <!-- Leden -->
+                                <li class="topnav-link__wrapper">
+                                    <a class="topnav-link" href="{{ route('memberlist') }}">
+                                        Ledenlijst
+                                    </a>
+                                </li>
+                                <!-- Mijn profiel -->
+                                <li class="topnav-link__wrapper">
+                                    <a class="topnav-link" href="{{ route('profile') }}">
+                                        Mijn profiel
+                                    </a>
+                                </li>
                                 <!-- Logout -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('auth.logout') }}">
                                         Logout
-                                    </a>
-                                </li>
-                                <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="#">
-
-                                    </a>
-                                </li>
-                                <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="#">
-
                                     </a>
                                 </li>
                             @endif
@@ -87,7 +95,7 @@
             <!-- Footer -->
             <footer id="footer__wrapper">
                 <div id="footer">
-                    &copy; Copyrighted by Hermes Incorporated 2020 - &infin;
+                    &copy; Copyrighted by yours truly. This is the way. 2020 - &infin;
                 </div>
             </div>
 

@@ -25,7 +25,7 @@ Breadcrumbs::for("search", function($t) {
 
 // Memberlist
 Breadcrumbs::for("memberlist", function($t) {
-    $t->parent("memberlist");
+    $t->parent("home");
     $t->push("Memberlist", route("memberlist"));
 }); 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Profiles;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 
 class MemberlistController extends Controller
