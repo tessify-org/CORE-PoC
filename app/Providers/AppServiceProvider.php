@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Auth;
+
 use App\Services\ModelServices\UserService;
 use App\Services\ModelServices\MinistryService;
 use App\Services\ModelServices\OrganizationService;
@@ -9,6 +11,7 @@ use App\Services\ModelServices\DepartmentService;
 use App\Services\ModelServices\JobTitleService;
 use App\Services\ModelServices\AssignmentService;
 
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,7 +38,11 @@ class AppServiceProvider extends ServiceProvider
 
     private function composeViews()
     {
-        // todo when relevant
+        View::composer("layouts.app", function($view) {
+            if (Auth::check()) {
+                $view->with("user", Auth::user());
+            }
+        });
     }
 
     private function registerServices() 
