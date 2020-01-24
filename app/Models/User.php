@@ -17,10 +17,18 @@ class User extends Authenticatable
         'last_name', 
         'slug',
         'email', 
+        'email_verified_at',
         'password',
+        'avatar_url',
+        'phone',
     ];
-    protected $hidden = ['password', 'remember_token'];
-    protected $casts = ['email_verified_at' => 'datetime'];
+    protected $hidden = [
+        'password', 
+        'remember_token',
+    ];
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 
     //
     // Slug configuration

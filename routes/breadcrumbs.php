@@ -34,6 +34,10 @@ Breadcrumbs::for("profile", function($t, $user) {
     $t->parent("memberlist");
     $t->push("Profiel van ".$user->formattedName, route("profile", $user->slug));
 });
+Breadcrumbs::for("profile.update", function($t, $user) {
+    $t->parent("profile", $user);
+    $t->push("Update profiel", route("profile.update"));
+});
 
 // Jobs
 Breadcrumbs::for("jobs", function($t) {

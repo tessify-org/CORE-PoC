@@ -80,6 +80,9 @@
                                 </li>
                             @endif
                         </ul>
+                        <div id="topnav-avatar">
+                            <img id="avatar" src="{{ is_null($user->avatar_url) ? Avatar::create($user->combinedName)->toBase64() : $user->avatar_url }}" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -97,7 +100,7 @@
                 <div id="footer">
                     &copy; Copyrighted by yours truly. This is the way. 2020 - &infin;
                 </div>
-            </div>
+            </footer>
 
         </v-app>
 

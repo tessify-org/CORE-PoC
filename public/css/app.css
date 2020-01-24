@@ -735,9 +735,16 @@ i {
 #app #topnav__wrapper #topnav #topnav-links__wrapper {
   -webkit-box-flex: 1;
           flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
 }
 
 #app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links {
+  -webkit-box-flex: 1;
+          flex: 1;
   margin: 0;
   padding: 0;
   display: -webkit-box;
@@ -764,6 +771,25 @@ i {
 
 #app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper:first-child {
   margin: 0;
+}
+
+#app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-avatar {
+  display: -webkit-box;
+  display: flex;
+  margin: 0 0 0 15px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+#app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-avatar #avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
 }
 
 #app #content__wrapper {
@@ -897,9 +923,9 @@ i {
 }
 
 #profile #profile-header #profile-header__avatar-wrapper #profile-avatar {
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
+  width: 120px;
+  height: 120px;
+  border-radius: 60px;
   background-color: #f5f5f5;
 }
 
@@ -914,33 +940,73 @@ i {
 }
 
 #profile #profile-header #profile-header__text-wrapper .page-subtitle {
-  margin: 0;
+  line-height: 1em;
+  margin: 0 0 3px 0;
 }
 
 #profile #profile-header #profile-header__text-wrapper .page-subtitle__subtext {
   margin: 0;
 }
 
-#profile #profile__avatar-wrapper {
-  display: -webkit-box;
-  display: flex;
-  margin: 0 0 25px 0;
-  -webkit-box-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-          justify-content: center;
-}
-
 #profile #profile__header .page-subtitle {
   margin: 0 0 50px 0;
 }
 
+#profile #profile__info {
+  width: 600px;
+  margin: 0 auto;
+}
+
+#profile #profile__actions {
+  width: 600px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  margin: 25px auto 0 auto;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
 #memberlist {
+  overflow: hidden;
   border-radius: 3px;
   background-color: #fff;
 }
 
-#memberlist .member {
+#memberlist #memberlist__header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  background-color: #fafafa;
+}
+
+#memberlist #memberlist__header .memberlist__header-column {
+  -webkit-box-flex: 2;
+          flex: 2;
+  display: -webkit-box;
+  display: flex;
+  font-weight: 500;
+  padding: 15px 25px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  box-sizing: border-box;
+}
+
+#memberlist #memberlist__header .memberlist__header-column:last-child {
+  -webkit-box-flex: 1;
+          flex: 1;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+#memberlist #memberlist__content .member {
   display: -webkit-box;
   display: flex;
   color: #000000;
@@ -953,20 +1019,20 @@ i {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#memberlist .member:last-child {
+#memberlist #memberlist__content .member:last-child {
   border-bottom: 0;
 }
 
-#memberlist .member:hover {
+#memberlist #memberlist__content .member:hover {
   cursor: pointer;
   background-color: #f2f2f2;
 }
 
-#memberlist .member .member-name,
-#memberlist .member .member-ministry,
-#memberlist .member .member-organization,
-#memberlist .member .member-job-title,
-#memberlist .member .member-reputation {
+#memberlist #memberlist__content .member .member-name,
+#memberlist #memberlist__content .member .member-ministry,
+#memberlist #memberlist__content .member .member-organization,
+#memberlist #memberlist__content .member .member-job-title,
+#memberlist #memberlist__content .member .member-reputation {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: horizontal;
@@ -978,24 +1044,34 @@ i {
   box-sizing: border-box;
 }
 
-#memberlist .member .member-name {
-  -webkit-box-flex: 1;
-          flex: 1;
+#memberlist #memberlist__content .member .member-name {
+  -webkit-box-flex: 2;
+          flex: 2;
 }
 
-#memberlist .member .member-ministry {
-  -webkit-box-flex: 1;
-          flex: 1;
+#memberlist #memberlist__content .member .member-ministry {
+  -webkit-box-flex: 2;
+          flex: 2;
+  text-align: center;
 }
 
-#memberlist .member .member-organization {
-  -webkit-box-flex: 1;
-          flex: 1;
+#memberlist #memberlist__content .member .member-organization {
+  -webkit-box-flex: 2;
+          flex: 2;
+  text-align: center;
 }
 
-#memberlist .member .member-job-title {
+#memberlist #memberlist__content .member .member-job-title {
+  -webkit-box-flex: 2;
+          flex: 2;
+  text-align: center;
+}
+
+#memberlist #memberlist__content .member .member-reputation {
   -webkit-box-flex: 1;
           flex: 1;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
 }
 
 #no-members {

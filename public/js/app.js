@@ -2215,6 +2215,776 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/AssignmentsField.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["value", "label", "name", "errors", "ministries", "organizations", "departments", "jobTitles"],
+  data: function data() {
+    return {
+      tag: "[assignments-field]",
+      mutableAssignments: [{
+        ministry_id: 1,
+        organization_id: 1,
+        department_id: 1,
+        job_title_id: 1,
+        current: true
+      }],
+      ministryOptions: [],
+      jobTitleOptions: [],
+      dialogs: {
+        add: {
+          show: false,
+          loading: false,
+          errors: [],
+          organizationOptions: [],
+          departmentOptions: [],
+          form: {
+            ministry_id: 0,
+            organization_id: 0,
+            department_id: 0,
+            department_name: "",
+            job_title_id: 0,
+            job_title_name: "",
+            current: false
+          }
+        },
+        edit: {
+          show: false,
+          index: null,
+          loading: false,
+          errors: [],
+          organizationOptions: [],
+          departmentOptions: [],
+          form: {
+            ministry_id: 0,
+            organization_id: 0,
+            department_id: 0,
+            department_name: "",
+            job_title_id: 0,
+            job_title_name: "",
+            current: false
+          }
+        },
+        "delete": {
+          show: false,
+          index: null,
+          loading: false,
+          errors: []
+        }
+      }
+    };
+  },
+  computed: {
+    labelText: function labelText() {
+      return this.label !== undefined && this.label !== null && this.label !== "" ? this.label : "Aanstellingen";
+    },
+    addAssignmentDisabled: function addAssignmentDisabled() {
+      return this.dialogs.add.ministry_id === 0 || this.dialogs.add.organization_id === 0 || this.dialogs.add.department_id === 0 || this.dialogs.add.job_title_id === 0;
+    },
+    editAssignmentDisabled: function editAssignmentDisabled() {
+      return this.dialogs.edit.ministry_id === 0 || this.dialogs.edit.organization_id === 0 || this.dialogs.edit.department_id === 0 || this.dialogs.edit.job_title_id === 0;
+    },
+    encodedMutableAssignments: function encodedMutableAssignments() {
+      return JSON.stringify(this.mutableAssignments);
+    }
+  },
+  watch: {
+    "dialogs.add.form.ministry_id": function dialogsAddFormMinistry_id() {
+      if (this.dialogs.add.form.ministry_id > 0) {
+        this.dialogs.add.organizationOptions = this.generateOrganizationOptions(this.dialogs.add.form.ministry_id);
+      }
+    },
+    "dialogs.add.form.organization_id": function dialogsAddFormOrganization_id() {
+      if (this.dialogs.add.form.organization_id > 0) {
+        this.dialogs.add.departmentOptions = this.generateDepartmentOptions(this.dialogs.add.form.organization_id);
+      }
+    },
+    "dialogs.edit.form.ministry_id": function dialogsEditFormMinistry_id() {
+      if (this.dialogs.edit.form.ministry_id > 0) {
+        this.dialogs.edit.organizationOptions = this.generateOrganizationOptions(this.dialogs.edit.form.ministry_id);
+      }
+    },
+    "dialogs.edit.form.organization_id": function dialogsEditFormOrganization_id() {
+      if (this.dialogs.edit.form.organization_id > 0) {
+        this.dialogs.edit.departmentOptions = this.generateDepartmentOptions(this.dialogs.edit.form.organization_id);
+      }
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " value: ", this.value);
+      console.log(this.tag + " label: ", this.label);
+      console.log(this.tag + " name: ", this.name);
+      console.log(this.tag + " errors: ", this.errors);
+      console.log(this.tag + " ministries: ", this.ministries);
+      console.log(this.tag + " organizations: ", this.organizations);
+      console.log(this.tag + " departments: ", this.departments);
+      console.log(this.tag + " job titles: ", this.jobTitles);
+      this.initializeData();
+      this.generateMinistryOptions();
+      this.generateJobTitleOptions();
+    },
+    initializeData: function initializeData() {
+      if (this.value !== undefined && this.value !== null && this.value.length > 0) {
+        for (var i = 0; i < this.value.length; i++) {
+          this.mutableAssignments.push(this.value[i]);
+        }
+      }
+    },
+    generateMinistryOptions: function generateMinistryOptions() {
+      if (this.ministries !== undefined && this.ministries !== null && this.ministries.length > 0) {
+        for (var i = 0; i < this.ministries.length; i++) {
+          this.ministryOptions.push({
+            text: this.ministries[i].name,
+            value: this.ministries[i].id
+          });
+        }
+      } else {
+        this.ministryOptions.push({
+          text: "Geen ministeries gevonden",
+          value: 0
+        });
+      }
+    },
+    generateOrganizationOptions: function generateOrganizationOptions(ministry_id) {
+      var out = [];
+
+      if (this.organizations !== undefined && this.organizations !== null && this.organizations.length > 0) {
+        for (var i = 0; i < this.organizations.length; i++) {
+          if (this.organizations[i].ministry_id === ministry_id) {
+            out.push({
+              text: this.organizations[i].name,
+              value: this.organizations[i].id
+            });
+          }
+        }
+      } else {
+        out.push({
+          text: "Geen organisaties gevonden",
+          value: 0
+        });
+      }
+
+      return out;
+    },
+    generateDepartmentOptions: function generateDepartmentOptions(organization_id) {
+      var out = [];
+
+      if (this.departments !== undefined && this.departments !== null && this.departments.length > 0) {
+        for (var i = 0; i < this.departments.length; i++) {
+          if (this.departments[i].organization_id === organization_id) {
+            out.push({
+              text: this.departments[i].name,
+              value: this.departments[i].id
+            });
+          }
+        }
+      } else {
+        out.push({
+          text: "Geen departementen gevonden",
+          value: 0
+        });
+      }
+
+      out.push({
+        text: "Anders, namelijk..",
+        value: -1
+      });
+      return out;
+    },
+    generateJobTitleOptions: function generateJobTitleOptions() {
+      if (this.jobTitles !== undefined && this.jobTitles !== null && this.jobTitles.length > 0) {
+        for (var i = 0; i < this.jobTitles.length; i++) {
+          this.jobTitleOptions.push({
+            text: this.jobTitles[i].name,
+            value: this.jobTitles[i].id
+          });
+        }
+      } else {
+        this.jobTitleOptions.push({
+          text: "Geen functies gevonden",
+          value: 0
+        });
+      }
+
+      this.jobTitleOptions.push({
+        text: "Anders, namelijk..",
+        value: -1
+      });
+    },
+    onClickAddAssignment: function onClickAddAssignment() {
+      this.dialogs.add.show = true;
+    },
+    onClickConfirmAddAssignment: function onClickConfirmAddAssignment() {
+      if (this.dialogs.add.form.current && this.mutableAssignments.length > 0) {
+        for (var i = 0; i < this.mutableAssignments.length; i++) {
+          if (this.mutableAssignments[i].current) {
+            this.mutableAssignments[i].current = false;
+            break;
+          }
+        }
+      }
+
+      this.mutableAssignments.push({
+        ministry_id: this.dialogs.add.form.ministry_id,
+        organization_id: this.dialogs.add.form.organization_id,
+        department_id: this.dialogs.add.form.department_id,
+        job_title_id: this.dialogs.add.form.job_title_id,
+        current: this.dialogs.add.form.current
+      });
+      this.dialogs.add.show = false;
+    },
+    onClickEditAssignment: function onClickEditAssignment(index) {
+      this.dialogs.edit.index = index;
+      this.dialogs.edit.form.ministry_id = this.mutableAssignments[index].ministry_id;
+      this.dialogs.edit.form.organization_id = this.mutableAssignments[index].organization_id;
+      this.dialogs.edit.form.department_id = this.mutableAssignments[index].department_id;
+      this.dialogs.edit.form.job_title_id = this.mutableAssignments[index].job_title_id;
+      this.dialogs.edit.form.current = this.mutableAssignments[index].current;
+      this.dialogs.edit.show = true;
+    },
+    onClickConfirmEditAssignment: function onClickConfirmEditAssignment() {
+      this.mutableAssignments[this.dialogs.edit.index].ministry_id = this.dialogs.edit.form.ministry_id;
+      this.mutableAssignments[this.dialogs.edit.index].organization_id = this.dialogs.edit.form.organization_id;
+      this.mutableAssignments[this.dialogs.edit.index].department_id = this.dialogs.edit.form.department_id;
+      this.mutableAssignments[this.dialogs.edit.index].job_title_id = this.dialogs.edit.form.job_title_id;
+      this.mutableAssignments[this.dialogs.edit.index].current = this.dialogs.edit.form.current;
+
+      if (this.dialogs.edit.form.current && this.mutableAssignments.length > 1) {
+        for (var i = 0; i < this.mutableAssignments.length; i++) {
+          if (i !== index && this.mutableAssignments[i].current) {
+            this.mutableAssignments[i].current = false;
+          }
+        }
+      }
+
+      this.dialogs.edit.show = false;
+    },
+    onClickDeleteAssignment: function onClickDeleteAssignment(index) {
+      this.dialogs["delete"].index = index;
+      this.dialogs["delete"].show = true;
+    },
+    onClickConfirmDeleteAssignment: function onClickConfirmDeleteAssignment() {
+      this.mutableAssignments.splice(this.dialogs["delete"].index, 1);
+      this.dialogs["delete"].show = false;
+    },
+    getMinistryName: function getMinistryName(id) {
+      if (this.ministries !== undefined && this.ministries !== null && this.ministries.length > 0) {
+        for (var i = 0; i < this.ministries.length; i++) {
+          if (this.ministries[i].id === id) {
+            return this.ministries[i].name;
+          }
+        }
+      }
+
+      return "-";
+    },
+    getOrganizationName: function getOrganizationName(id) {
+      if (this.organizations !== undefined && this.organizations !== null && this.organizations.length > 0) {
+        for (var i = 0; i < this.organizations.length; i++) {
+          if (this.organizations[i].id === id) {
+            return this.organizations[i].name;
+          }
+        }
+      }
+
+      return "-";
+    },
+    getDepartmentName: function getDepartmentName(id) {
+      if (this.departments !== undefined && this.departments !== null && this.departments.length > 0) {
+        for (var i = 0; i < this.departments.length; i++) {
+          if (this.departments[i].id === id) {
+            return this.departments[i].name;
+          }
+        }
+      }
+
+      return "-";
+    },
+    getJobTitleName: function getJobTitleName(id) {
+      if (this.jobTitles !== undefined && this.jobTitles !== null && this.jobTitles.length > 0) {
+        for (var i = 0; i < this.jobTitles.length; i++) {
+          if (this.jobTitles[i].id === id) {
+            return this.jobTitles[i].name;
+          }
+        }
+      }
+
+      return "-";
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["user", "ministries", "organizations", "departments", "jobTitles", "errors", "oldInput", "backHref"],
+  data: function data() {
+    return {
+      tag: "[update-profile-form]",
+      annotationOptions: [],
+      ministryOptions: [],
+      organizationOptions: [],
+      departmentOptions: [],
+      jobTitleOptions: [],
+      form: {
+        annotation: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        phone: "",
+        assignments: [],
+        avatar: null
+      }
+    };
+  },
+  computed: {
+    currentAssignmentId: function currentAssignmentId() {
+      return 0;
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " user: ", this.user);
+      console.log(this.tag + " ministries: ", this.ministries);
+      console.log(this.tag + " organizations: ", this.organizations);
+      console.log(this.tag + " departments: ", this.departments);
+      console.log(this.tag + " errors: ", this.errors);
+      console.log(this.tag + " old input: ", this.oldInput);
+      console.log(this.tag + " back href: ", this.backHref);
+      console.log(this.tag + " ");
+      console.log(this.tag + " ");
+      this.generateAnnotationOptions();
+      this.initializeData();
+    },
+    initializeData: function initializeData() {
+      if (this.user !== undefined && this.user !== null) {
+        this.form.annotation = this.user.annotation;
+        this.form.first_name = this.user.first_name;
+        this.form.last_name = this.user.last_name;
+        this.form.email = this.user.email;
+        this.form.phone = this.user.phone;
+
+        if (this.user.assignments !== undefined && this.user.assignments !== null && this.user.assignments.length > 0) {}
+      }
+
+      if (this.oldInput !== undefined && this.oldInput !== null) {
+        if (this.oldInput.annotation !== null) this.form.annotation = this.oldInput.annotation;
+        if (this.oldInput.first_name !== null) this.form.first_name = this.oldInput.first_name;
+        if (this.oldInput.last_name !== null) this.form.last_name = this.oldInput.last_name;
+        if (this.oldInput.email !== null) this.form.email = this.oldInput.email;
+        if (this.oldInput.phone !== null) this.form.phone = this.oldInput.phone;
+        if (this.oldInput.assignments !== null) this.form.assignments = JSON.parse(this.oldInput.assignments);
+      }
+    },
+    generateAnnotationOptions: function generateAnnotationOptions() {
+      this.annotationOptions.push({
+        text: "Dhr.",
+        value: "Dhr."
+      });
+      this.annotationOptions.push({
+        text: "Mevr.",
+        value: "Mevr."
+      });
+    },
+    hasErrors: function hasErrors(field) {
+      if (this.errors !== undefined && this.errors !== null && this.errors.length > 0) {
+        if (this.errors[field] !== undefined && this.errors[field] !== "") {
+          return true;
+        }
+      }
+
+      return false;
+    },
+    getErrors: function getErrors(field) {
+      if (this.errors !== undefined && this.errors !== null && this.errors[field] !== undefined && this.errors[field] !== null) {
+        return this.errors[field];
+      }
+
+      return [];
+    },
+    onAvatarUpload: function onAvatarUpload() {
+      console.log("on avatar upload", dialog);
+      this.form.avatar = this.$refs.edit_file.files[0];
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/LoginForm.vue?vue&type=style&index=0&lang=scss&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/LoginForm.vue?vue&type=style&index=0&lang=scss& ***!
@@ -2247,6 +3017,44 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "#register-form {\n  width: 600px;\n  padding: 25px;\n  margin: 0 auto;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: white;\n}\n#register-form #register-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#register-form #register-form__controls #register-form__controls-left, #register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#register-form #register-form__controls #register-form__controls-left #login-link {\n  text-decoration: none;\n  color: black;\n}\n#register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#register-form #register-form__controls #register-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".assignments-field__wrapper .assignments-field .assignments-field__label {\n  margin: 0 0 5px 0;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__assignments .assignment {\n  padding: 15px;\n  margin: 0 0 15px 0;\n  border-radius: 3px;\n  position: relative;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__assignments .assignment .assignment-fields .assignment-field {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__assignments .assignment .assignment-fields .assignment-field .field-key {\n  font-weight: 500;\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__assignments .assignment .assignment-fields .assignment-field .field-val {\n  -webkit-box-flex: 3;\n          flex: 3;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__assignments .assignment .assignment-current {\n  right: 15px;\n  bottom: 15px;\n  font-weight: 500;\n  position: absolute;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__assignments .assignment .assignment-actions {\n  top: 15px;\n  right: 15px;\n  display: -webkit-box;\n  display: flex;\n  position: absolute;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__assignments .assignment .assignment-actions .action {\n  width: 24px;\n  height: 24px;\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.7em;\n  color: #ffffff;\n  border-radius: 3px;\n  margin: 0 0 0 10px;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: #000;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__assignments .assignment .assignment-actions .action:first-child {\n  margin: 0;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__assignments .assignment .assignment-actions .action:hover {\n  cursor: pointer;\n  background-color: #404040;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__no-assignments {\n  font-size: 0.9em;\n  padding: 10px 15px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n.assignments-field__wrapper .assignments-field .assignments-field__actions {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#update-profile-form {\n  padding: 25px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #fff;\n}", ""]);
 
 // exports
 
@@ -19909,6 +20717,66 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssignmentsField.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./UpdateProfileForm.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/lib/addStyles.js":
 /*!****************************************************!*\
   !*** ./node_modules/style-loader/lib/addStyles.js ***!
@@ -20856,6 +21724,966 @@ var render = function() {
       })
     ],
     1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=template&id=b1a37e84&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/AssignmentsField.vue?vue&type=template&id=b1a37e84& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "assignments-field__wrapper" },
+    [
+      _c("div", { staticClass: "assignments-field" }, [
+        _c("div", { staticClass: "assignments-field__label" }, [
+          _vm._v(_vm._s(_vm.labelText))
+        ]),
+        _vm._v(" "),
+        _vm.mutableAssignments.length > 0
+          ? _c(
+              "div",
+              { staticClass: "assignments-field__assignments" },
+              _vm._l(_vm.mutableAssignments, function(assignment, ai) {
+                return _c("div", { key: ai, staticClass: "assignment" }, [
+                  _c("div", { staticClass: "assignment-fields" }, [
+                    _c("div", { staticClass: "assignment-field" }, [
+                      _c("div", { staticClass: "field-key" }, [
+                        _vm._v("Ministerie")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "field-val" }, [
+                        _vm._v(
+                          _vm._s(_vm.getMinistryName(assignment.ministry_id))
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "assignment-field" }, [
+                      _c("div", { staticClass: "field-key" }, [
+                        _vm._v("Organisatie")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "field-val" }, [
+                        _vm._v(
+                          _vm._s(
+                            _vm.getOrganizationName(assignment.organization_id)
+                          )
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "assignment-field" }, [
+                      _c("div", { staticClass: "field-key" }, [
+                        _vm._v("Departement")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "field-val" }, [
+                        _vm._v(
+                          _vm._s(
+                            _vm.getDepartmentName(assignment.department_id)
+                          )
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "assignment-field" }, [
+                      _c("div", { staticClass: "field-key" }, [
+                        _vm._v("Functietitel")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "field-val" }, [
+                        _vm._v(
+                          _vm._s(_vm.getJobTitleName(assignment.job_title_id))
+                        )
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  assignment.current
+                    ? _c("div", { staticClass: "assignment-current" }, [
+                        _vm._v(
+                          "\n                    Huidige aanstelling\n                "
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "assignment-actions" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "action edit",
+                        on: {
+                          click: function($event) {
+                            return _vm.onClickEditAssignment(ai)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-pencil-alt" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "action delete",
+                        on: {
+                          click: function($event) {
+                            return _vm.onClickDeleteAssignment(ai)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-trash-alt" })]
+                    )
+                  ])
+                ])
+              }),
+              0
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.mutableAssignments.length === 0
+          ? _c("div", { staticClass: "assignments-field__no-assignments" }, [
+              _vm._v(
+                "\n            Je hebt nog geen aanstellingen toegevoegd.\n        "
+              )
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "assignments-field__actions" },
+          [
+            _c(
+              "v-btn",
+              {
+                attrs: { small: "", color: "primary" },
+                on: { click: _vm.onClickAddAssignment }
+              },
+              [
+                _c("i", { staticClass: "fas fa-plus" }),
+                _vm._v("\n                Aanwijzing toevoegen\n            ")
+              ]
+            )
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.add.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.add, "show", $$v)
+            },
+            expression: "dialogs.add.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.add.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Aanstelling toevoegen")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.add.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.add.errors, function(error, ei) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-select", {
+                    attrs: { label: "Ministerie", items: _vm.ministryOptions },
+                    model: {
+                      value: _vm.dialogs.add.form.ministry_id,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "ministry_id", $$v)
+                      },
+                      expression: "dialogs.add.form.ministry_id"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm.dialogs.add.form.ministry_id > 0
+                ? _c(
+                    "div",
+                    { staticClass: "form-field" },
+                    [
+                      _c("v-select", {
+                        attrs: {
+                          label: "Organisatie",
+                          items: _vm.dialogs.add.organizationOptions
+                        },
+                        model: {
+                          value: _vm.dialogs.add.form.organization_id,
+                          callback: function($$v) {
+                            _vm.$set(
+                              _vm.dialogs.add.form,
+                              "organization_id",
+                              $$v
+                            )
+                          },
+                          expression: "dialogs.add.form.organization_id"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.dialogs.add.form.organization_id > 0
+                ? _c(
+                    "div",
+                    { staticClass: "form-field" },
+                    [
+                      _c("v-select", {
+                        attrs: {
+                          label: "Departement",
+                          items: _vm.dialogs.add.departmentOptions
+                        },
+                        model: {
+                          value: _vm.dialogs.add.form.department_id,
+                          callback: function($$v) {
+                            _vm.$set(_vm.dialogs.add.form, "department_id", $$v)
+                          },
+                          expression: "dialogs.add.form.department_id"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.dialogs.add.form.department_id > 0
+                ? _c(
+                    "div",
+                    { staticClass: "form-field" },
+                    [
+                      _c("v-select", {
+                        attrs: {
+                          label: "Functietitel",
+                          items: _vm.jobTitleOptions
+                        },
+                        model: {
+                          value: _vm.dialogs.add.form.job_title_id,
+                          callback: function($$v) {
+                            _vm.$set(_vm.dialogs.add.form, "job_title_id", $$v)
+                          },
+                          expression: "dialogs.add.form.job_title_id"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-checkbox", {
+                    attrs: { label: "Huidige aanstelling" },
+                    model: {
+                      value: _vm.dialogs.add.form.current,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "current", $$v)
+                      },
+                      expression: "dialogs.add.form.current"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.add.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        depressed: "",
+                        color: "success",
+                        dark: "",
+                        loading: _vm.dialogs.add.loading,
+                        disabled: _vm.addAssignmentDisabled
+                      },
+                      on: { click: _vm.onClickConfirmAddAssignment }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-save" }),
+                      _vm._v(
+                        "\n                        Opslaan\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.edit.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.edit, "show", $$v)
+            },
+            expression: "dialogs.edit.show"
+          }
+        },
+        [
+          _vm.dialogs.edit.index !== null
+            ? _c("div", { staticClass: "dialog" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dialog__close-button",
+                    on: {
+                      click: function($event) {
+                        _vm.dialogs.edit.show = false
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-times" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-content" }, [
+                  _c("h3", { staticClass: "dialog-title" }, [
+                    _vm._v("Aanstelling aanpassen")
+                  ]),
+                  _vm._v(" "),
+                  _vm.dialogs.edit.errors.length > 0
+                    ? _c(
+                        "div",
+                        { staticClass: "dialog-errors" },
+                        _vm._l(_vm.dialogs.edit.errors, function(error, ei) {
+                          return _c(
+                            "div",
+                            { key: ei, staticClass: "dialog-error" },
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(error) +
+                                  "\n                    "
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-field" },
+                    [
+                      _c("v-select", {
+                        attrs: {
+                          label: "Ministerie",
+                          items: _vm.ministryOptions
+                        },
+                        model: {
+                          value: _vm.dialogs.edit.form.ministry_id,
+                          callback: function($$v) {
+                            _vm.$set(_vm.dialogs.edit.form, "ministry_id", $$v)
+                          },
+                          expression: "dialogs.edit.form.ministry_id"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm.dialogs.edit.form.ministry_id > 0
+                    ? _c(
+                        "div",
+                        { staticClass: "form-field" },
+                        [
+                          _c("v-select", {
+                            attrs: {
+                              label: "Organisatie",
+                              items: _vm.dialogs.edit.organizationOptions
+                            },
+                            model: {
+                              value: _vm.dialogs.edit.form.organization_id,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.dialogs.edit.form,
+                                  "organization_id",
+                                  $$v
+                                )
+                              },
+                              expression: "dialogs.edit.form.organization_id"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.dialogs.edit.form.organization_id > 0
+                    ? _c(
+                        "div",
+                        { staticClass: "form-field" },
+                        [
+                          _c("v-select", {
+                            attrs: {
+                              label: "Departement",
+                              items: _vm.dialogs.edit.departmentOptions
+                            },
+                            model: {
+                              value: _vm.dialogs.edit.form.department_id,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.dialogs.edit.form,
+                                  "department_id",
+                                  $$v
+                                )
+                              },
+                              expression: "dialogs.edit.form.department_id"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.dialogs.edit.form.department_id > 0
+                    ? _c(
+                        "div",
+                        { staticClass: "form-field" },
+                        [
+                          _c("v-select", {
+                            attrs: {
+                              label: "Functietitel",
+                              items: _vm.jobTitleOptions
+                            },
+                            model: {
+                              value: _vm.dialogs.edit.form.job_title_id,
+                              callback: function($$v) {
+                                _vm.$set(
+                                  _vm.dialogs.edit.form,
+                                  "job_title_id",
+                                  $$v
+                                )
+                              },
+                              expression: "dialogs.edit.form.job_title_id"
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-field" },
+                    [
+                      _c("v-checkbox", {
+                        attrs: { label: "Huidige aanstelling" },
+                        model: {
+                          value: _vm.dialogs.edit.form.current,
+                          callback: function($$v) {
+                            _vm.$set(_vm.dialogs.edit.form, "current", $$v)
+                          },
+                          expression: "dialogs.edit.form.current"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-controls" }, [
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__left" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { text: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.dialogs.edit.show = false
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-arrow-left" }),
+                          _vm._v(
+                            "\n                        Annuleren\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            depressed: "",
+                            color: "success",
+                            dark: "",
+                            loading: _vm.dialogs.edit.loading,
+                            disabled: _vm.editAssignmentDisabled
+                          },
+                          on: { click: _vm.onClickConfirmEditAssignment }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-save" }),
+                          _vm._v(
+                            "\n                        Opslaan\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.delete.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.delete, "show", $$v)
+            },
+            expression: "dialogs.delete.show"
+          }
+        },
+        [
+          _vm.dialogs.delete.index !== null
+            ? _c("div", { staticClass: "dialog" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dialog__close-button",
+                    on: {
+                      click: function($event) {
+                        _vm.dialogs.delete.show = false
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-times" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-content" }, [
+                  _c("h3", { staticClass: "dialog-title" }, [
+                    _vm._v("Aanstelling verwijderen")
+                  ]),
+                  _vm._v(" "),
+                  _vm.dialogs.delete.errors.length > 0
+                    ? _c(
+                        "div",
+                        { staticClass: "dialog-errors" },
+                        _vm._l(_vm.dialogs.delete.errors, function(error, ei) {
+                          return _c(
+                            "div",
+                            { key: ei, staticClass: "dialog-error" },
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(error) +
+                                  "\n                    "
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dialog-text" }, [
+                    _vm._v(
+                      "\n                    Weet je zeker dat je deze aanstelling wilt verwijderen?\n                "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-controls" }, [
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__left" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { text: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.dialogs.delete.show = false
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-arrow-left" }),
+                          _vm._v(
+                            "\n                        Nee, annuleren\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            depressed: "",
+                            color: "red",
+                            dark: "",
+                            loading: _vm.dialogs.delete.loading
+                          },
+                          on: { click: _vm.onClickConfirmDeleteAssignment }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-trash-alt" }),
+                          _vm._v(
+                            "\n                        Ja, verwijder\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: _vm.name },
+        domProps: { value: _vm.encodedMutableAssignments }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=template&id=df40bcec&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=template&id=df40bcec& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "elevation-1", attrs: { id: "update-profile-form" } },
+    [
+      _c("div", { staticClass: "form-fields" }, [
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-select", {
+              attrs: {
+                label: "Annotation",
+                items: _vm.annotationOptions,
+                error: _vm.hasErrors("annotation"),
+                "error-messages": _vm.getErrors("annotation")
+              },
+              model: {
+                value: _vm.form.annotation,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "annotation", $$v)
+                },
+                expression: "form.annotation"
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "annotation" },
+              domProps: { value: _vm.form.annotation }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field double" },
+          [
+            _c("v-text-field", {
+              attrs: {
+                label: "First name",
+                name: "first_name",
+                error: _vm.hasErrors("first_name"),
+                "error-messages": _vm.getErrors("first_name")
+              },
+              model: {
+                value: _vm.form.first_name,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "first_name", $$v)
+                },
+                expression: "form.first_name"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field double" },
+          [
+            _c("v-text-field", {
+              attrs: {
+                label: "Last name",
+                name: "last_name",
+                error: _vm.hasErrors("last_name"),
+                "error-messages": _vm.getErrors("last_name")
+              },
+              model: {
+                value: _vm.form.last_name,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "last_name", $$v)
+                },
+                expression: "form.last_name"
+              }
+            })
+          ],
+          1
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-field" },
+        [
+          _c("v-text-field", {
+            attrs: {
+              label: "Email address",
+              name: "email",
+              error: _vm.hasErrors("email"),
+              "error-messages": _vm.getErrors("email")
+            },
+            model: {
+              value: _vm.form.email,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "email", $$v)
+              },
+              expression: "form.email"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-field" },
+        [
+          _c("v-text-field", {
+            attrs: {
+              label: "Phone number",
+              name: "phone",
+              error: _vm.hasErrors("phone"),
+              "error-messages": _vm.getErrors("phone")
+            },
+            model: {
+              value: _vm.form.phone,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "phone", $$v)
+              },
+              expression: "form.phone"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "image-field" }, [
+        _c("div", { staticClass: "image-field__label" }, [_vm._v("Avatar")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "image-field__input" }, [
+          _c("input", {
+            ref: "add_file",
+            attrs: { type: "file" },
+            on: {
+              change: function($event) {
+                return _vm.onAvatarUpload("add")
+              }
+            }
+          })
+        ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-field" },
+        [
+          _c("assignments-field", {
+            attrs: {
+              name: "assignments",
+              label: "Aanstellingen",
+              ministries: _vm.ministries,
+              organizations: _vm.organizations,
+              departments: _vm.departments,
+              "job-titles": _vm.jobTitles
+            },
+            model: {
+              value: _vm.form.assignments,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "assignments", $$v)
+              },
+              expression: "form.assignments"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "form-controls" }, [
+        _c(
+          "div",
+          { staticClass: "form-controls__left" },
+          [
+            _c("v-btn", { attrs: { href: _vm.backHref, outlined: "" } }, [
+              _c("i", { staticClass: "fas fa-arrow-left" }),
+              _vm._v("\n                Terug\n            ")
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-controls__right" },
+          [
+            _c(
+              "v-btn",
+              { attrs: { color: "success", type: "submit", depressed: "" } },
+              [
+                _c("i", { staticClass: "far fa-save" }),
+                _vm._v("\n                Opslaan\n            ")
+              ]
+            )
+          ],
+          1
+        )
+      ])
+    ]
   )
 }
 var staticRenderFns = []
@@ -74110,7 +75938,9 @@ module.exports = function(module) {
 var map = {
 	"./components/auth/LoginForm.vue": "./resources/js/components/auth/LoginForm.vue",
 	"./components/auth/RegisterForm.vue": "./resources/js/components/auth/RegisterForm.vue",
-	"./components/auth/RememberMe.vue": "./resources/js/components/auth/RememberMe.vue"
+	"./components/auth/RememberMe.vue": "./resources/js/components/auth/RememberMe.vue",
+	"./components/profiles/AssignmentsField.vue": "./resources/js/components/profiles/AssignmentsField.vue",
+	"./components/profiles/UpdateProfileForm.vue": "./resources/js/components/profiles/UpdateProfileForm.vue"
 };
 
 
@@ -74425,6 +76255,180 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/profiles/AssignmentsField.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/profiles/AssignmentsField.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _AssignmentsField_vue_vue_type_template_id_b1a37e84___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AssignmentsField.vue?vue&type=template&id=b1a37e84& */ "./resources/js/components/profiles/AssignmentsField.vue?vue&type=template&id=b1a37e84&");
+/* harmony import */ var _AssignmentsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AssignmentsField.vue?vue&type=script&lang=js& */ "./resources/js/components/profiles/AssignmentsField.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _AssignmentsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./AssignmentsField.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _AssignmentsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _AssignmentsField_vue_vue_type_template_id_b1a37e84___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _AssignmentsField_vue_vue_type_template_id_b1a37e84___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/profiles/AssignmentsField.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/AssignmentsField.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/profiles/AssignmentsField.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssignmentsField.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss& ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssignmentsField.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/AssignmentsField.vue?vue&type=template&id=b1a37e84&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/profiles/AssignmentsField.vue?vue&type=template&id=b1a37e84& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_template_id_b1a37e84___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./AssignmentsField.vue?vue&type=template&id=b1a37e84& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=template&id=b1a37e84&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_template_id_b1a37e84___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AssignmentsField_vue_vue_type_template_id_b1a37e84___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/UpdateProfileForm.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/profiles/UpdateProfileForm.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _UpdateProfileForm_vue_vue_type_template_id_df40bcec___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UpdateProfileForm.vue?vue&type=template&id=df40bcec& */ "./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=template&id=df40bcec&");
+/* harmony import */ var _UpdateProfileForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UpdateProfileForm.vue?vue&type=script&lang=js& */ "./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _UpdateProfileForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UpdateProfileForm.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _UpdateProfileForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UpdateProfileForm_vue_vue_type_template_id_df40bcec___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _UpdateProfileForm_vue_vue_type_template_id_df40bcec___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/profiles/UpdateProfileForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./UpdateProfileForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./UpdateProfileForm.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=template&id=df40bcec&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=template&id=df40bcec& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_template_id_df40bcec___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./UpdateProfileForm.vue?vue&type=template&id=df40bcec& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=template&id=df40bcec&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_template_id_df40bcec___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_template_id_df40bcec___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
@@ -74443,8 +76447,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Code\Websites\NNW\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Code\Websites\NNW\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

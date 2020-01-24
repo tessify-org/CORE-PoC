@@ -226,6 +226,13 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        'Users' => \App\Facades\UsersFacade::class,
+        'Ministries' => \App\Facades\MinistriesFacade::class,
+        'Organizations' => \App\Facades\OrganizationsFacade::class,
+        'Departments' => \App\Facades\DepartmentsFacade::class,
+        'JobTitles' => \App\Facades\JobTitlesFacade::class,
+        'Assignments' => \App\Facades\AssignmentsFacade::class,
+
     ],
 
 ];
