@@ -27,10 +27,12 @@ class UpdateJobRequest extends FormRequest
         return [
             "job_status_id" => "required|exists:job_statuses,id",
             "title" => "required",
-            "header_image" => "nullable|image",
+            "slogan" => "nullable",
+            "problem" => "required",
             "description" => "required",
             "starts_at" => "nullable",
             "ends_at" => "nullable",
+            "header_image" => "nullable|image",
         ];
     }
 }

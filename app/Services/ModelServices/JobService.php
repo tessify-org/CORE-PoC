@@ -109,6 +109,8 @@ class JobService
             "author_id" => Auth::user()->id,
             "job_status_id" => $request->job_status_id,
             "title" => $request->title,
+            "slogan" => $request->slogan,
+            "problem" => $request->problem,
             "description" => $request->description,
             "starts_at" => $starts_at->format("Y-m-d"),
             "ends_at" => $ends_at->format("Y-m-d"),
@@ -130,6 +132,8 @@ class JobService
         $ends_at = Dates::parse($request->ends_at, "/");
 
         $job->title = $request->title;
+        $job->slogan = $request->slogan;
+        $job->problem = $request->problem;
         $job->description = $request->description;
         $job->starts_at = $starts_at->format("Y-m-d");
         $job->ends_at = $ends_at->format("Y-m-d");

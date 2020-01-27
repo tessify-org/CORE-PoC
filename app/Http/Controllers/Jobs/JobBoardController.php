@@ -39,6 +39,8 @@ class JobBoardController extends Controller
             "oldInput" => collect([
                 "job_status_id" => old("job_status_id"),
                 "title" => old("title"),
+                "slogan" => old("slogan"),
+                "problem" => old("problem"),
                 "description" => old("description"),
                 "starts_at" => old("starts_at"),
                 "ends_at" => old("ends_at"),
@@ -69,6 +71,8 @@ class JobBoardController extends Controller
             "oldInput" => collect([
                 "job_status_id" => old("job_status_id"),
                 "title" => old("title"),
+                "slogan" => old("slogan"),
+                "problem" => old("problem"),
                 "description" => old("description"),
                 "starts_at" => old("starts_at"),
                 "ends_at" => old("ends_at"),

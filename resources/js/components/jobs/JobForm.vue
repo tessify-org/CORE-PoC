@@ -17,6 +17,30 @@
                         </v-text-field>
                     </div>
 
+                    <!-- Slogan -->
+                    <div class="form-field">
+                        <v-text-field
+                            name="slogan"
+                            label="Slogan"
+                            placeholder="Een pakkende slagzin die de missie samenvat!"
+                            v-model="form.slogan"
+                            :error="hasErrors('slogan')"
+                            :error-messages="getErrors('slogan')">
+                        </v-text-field>
+                    </div>
+
+                    <!-- Problem -->
+                    <div class="form-field">
+                        <v-textarea
+                            name="problem"
+                            label="Probleemstelling"
+                            placeholder="Omschrijf zo gevat mogelijk welk probleem er met dit project wordt opgelost."
+                            v-model="form.problem"
+                            :errors="hasErrors('problem')"
+                            :error-messages="getErrors('problem')">
+                        </v-textarea>
+                    </div>
+
                     <!-- Description -->
                     <div class="form-field">
                         <v-textarea
@@ -137,6 +161,8 @@
             form: {
                 job_status_id: 0,
                 title: "",
+                slogan: "",
+                problem: "",
                 description: "",
                 starts_at: "",
                 ends_at: "",
@@ -165,6 +191,8 @@
                 if (this.job !== undefined && this.job !== null) {
                     this.form.job_status_id = this.job.job_status_id;
                     this.form.title = this.job.title;
+                    this.form.slogan = this.job.slogan;
+                    this.form.problem = this.job.problem;
                     this.form.description = this.job.description;
                     this.form.starts_at = this.job.starts_at;
                     this.form.ends_at = this.job.ends_at;
@@ -172,6 +200,8 @@
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.job_status_id !== null) this.form.job_status_id = this.oldInput.job_status_id;
                     if (this.oldInput.title !== null) this.form.title = this.oldInput.title;
+                    if (this.oldInput.slogan !== null) this.form.slogan = this.oldInput.slogan;
+                    if (this.oldInput.problem !== null) this.form.problem = this.oldInput.problem;
                     if (this.oldInput.description !== null) this.form.description = this.oldInput.description;
                     if (this.oldInput.starts_at !== null) this.form.starts_at = this.oldInput.starts_at;
                     if (this.oldInput.ends_at !== null) this.form.ends_at = this.oldInput.ends_at;

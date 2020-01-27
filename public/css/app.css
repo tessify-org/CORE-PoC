@@ -2197,6 +2197,7 @@ i {
 #job #job-header #job-header__content #job-header__actions {
   right: 0;
   top: 25px;
+  z-index: 3;
   position: absolute;
 }
 
@@ -2211,6 +2212,7 @@ i {
 #job #job-header #job-header__content #job-header__back-button {
   left: 0;
   top: 25px;
+  z-index: 3;
   position: absolute;
 }
 
@@ -2223,6 +2225,7 @@ i {
   bottom: 0;
   width: 100%;
   height: 100%;
+  z-index: 2;
   display: -webkit-box;
   display: flex;
   padding: 25px 0;
