@@ -52,6 +52,11 @@ class User extends Authenticatable
         return $this->hasMany(Assignment::class);
     }
 
+    public function createdJobs()
+    {
+        return $this->hasMany(Job::class, "id", "author_id");
+    }
+
     //
     // Accessors
     //

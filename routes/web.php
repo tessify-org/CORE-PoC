@@ -51,4 +51,10 @@ Route::get("profiel/{slug?}", "Profiles\ProfileController@getProfile")->name("pr
 
 // Jobs
 Route::get("job-board", "Jobs\JobBoardController@getJobBoard")->name("jobs");
+Route::get("job-board/job-toevoegen", "Jobs\JobBoardController@getCreateJob")->name("jobs.create");
+Route::post("job-board/job-toevoegen", "Jobs\JobBoardController@postCreateJob")->name("jobs.create.post");
 Route::get("job-board/{slug}", "Jobs\JobBoardController@getJob")->name("jobs.view");
+Route::get("job-board/{slug}/aanpassen", "Jobs\JobBoardController@getEditJob")->name("jobs.edit");
+Route::post("job-board/{slug}/aanpassen", "Jobs\JobBoardController@postEditJob")->name("jobs.edit.post");
+Route::get("job-board/{slug}/verwijderen", "Jobs\JobBoardController@getDeleteJob")->name("jobs.delete");
+Route::post("job-board/{slug}/verwijderen", "Jobs\JobBoardController@postDeleteJob")->name("jobs.delete.post");

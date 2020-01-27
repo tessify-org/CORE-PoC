@@ -48,3 +48,16 @@ Breadcrumbs::for("jobs.view", function($t, $job) {
     $t->parent("jobs");
     $t->push("Bekijk job", route("jobs.view", $job->slug));
 });
+Breadcrumbs::for("jobs.create", function($t) {
+    $t->parent("jobs");
+    $t->push("Job toevoegen", route("jobs.create"));
+});
+Breadcrumbs::for("jobs.edit", function($t, $job) {
+    $t->parent("jobs.view", $job);
+    $t->push("Job aanpassen", route("jobs.edit", $job->slug));
+});
+Breadcrumbs::for("jobs.delete", function($t, $job) {
+    $t->parent("jobs.view", $job);
+    $t->push("Job verwijderen", route("jobs.delete", $job->slug));
+});
+

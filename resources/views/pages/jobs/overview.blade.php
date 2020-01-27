@@ -11,5 +11,32 @@
     
         @include("partials.feedback")
 
+        <div class="page-controls mb">
+            <div class="page-controls__right">
+                <v-btn color="success" href="{{ route('jobs.create') }}">
+                    Job toevoegen
+                </v-btn>
+            </div>
+        </div>
+
+        @if ($jobs->count() > 0)
+            <div id="jobs" class="elevation-1">
+                <div id="jobs-header">
+                    <div class="jobs-header__column">Title</div>
+                    <div class="jobs-header__column">Status</div>
+                </div>
+                @foreach ($jobs as $job)
+                    <a class="job" href="{{ route('jobs.view', $job->slug) }}">
+                        <span class="job-title">{{ $job->title }}</span>
+                        <span class="job-status">{{ $job->status->label }}</span>
+                    </a>
+                @endforeach
+            </div>
+        @else
+            <div id="no-jobs" class="elevation-1">
+                Wees de eerste die een job toevoegd aan het platform!
+            </div>
+        @endif
+
     </div>
 @stop

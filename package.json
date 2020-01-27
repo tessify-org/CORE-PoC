@@ -22,6 +22,7 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
+        "air-datepicker": "^2.2.3",
         "vue": "^2.6.11",
         "vue-axios": "^2.1.5",
         "vuetify": "^2.2.5"
