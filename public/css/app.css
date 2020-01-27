@@ -1663,7 +1663,7 @@ i {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
-  background-color: #e6e6e6;
+  background-color: #f2f2f2;
 }
 
 #app #topnav__wrapper {
@@ -2222,15 +2222,23 @@ i {
   left: 0;
   bottom: 0;
   width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
   padding: 25px 0;
   position: absolute;
+  -webkit-box-align: center;
+          align-items: center;
   box-sizing: border-box;
-  background-color: rgba(0, 0, 0, 0.15);
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
 }
 
 #job #job-header #job-header__text-wrapper #job-header__text {
-  width: 1200px;
-  margin: 0 auto;
+  padding-top: 100px;
 }
 
 #job #job-header #job-header__text-wrapper #job-header__text #job-header__title {
@@ -2238,6 +2246,15 @@ i {
   font-size: 2.5em;
   line-height: 1em;
   margin: 0 0 15px 0;
+  text-align: center;
+}
+
+#job #job-header #job-header__text-wrapper #job-header__text #job-header__slogan {
+  font-size: 1.5em;
+  font-weight: 300;
+  line-height: 1em;
+  margin: -10px 0 30px 0;
+  text-align: center;
 }
 
 #job #job-header #job-header__text-wrapper #job-header__text #job-header__stats {
@@ -2246,6 +2263,10 @@ i {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
 }
 
 #job #job-header #job-header__text-wrapper #job-header__text #job-header__stats .stat {
@@ -2283,9 +2304,26 @@ i {
 }
 
 #job #job-content #job-content__left {
-  -webkit-box-flex: 2;
-          flex: 2;
+  -webkit-box-flex: 3;
+          flex: 3;
   margin: 0 30px 0 0;
+}
+
+#job #job-content #job-content__left .job-paragraph {
+  margin: 0 0 50px 0;
+}
+
+#job #job-content #job-content__left .job-paragraph .job-paragraph__title {
+  font-size: 2.5em;
+  font-weight: 300;
+  line-height: 1em;
+  margin: 0 0 25px 0;
+}
+
+#job #job-content #job-content__left .job-paragraph .job-paragraph__text {
+  font-size: 1.3em;
+  font-weight: 400;
+  line-height: 1.5em;
 }
 
 #job #job-content #job-content__left #job-description {
@@ -2294,8 +2332,8 @@ i {
 }
 
 #job #job-content #job-content__right {
-  -webkit-box-flex: 1;
-          flex: 1;
+  -webkit-box-flex: 2;
+          flex: 2;
 }
 
 #delete-dialog {

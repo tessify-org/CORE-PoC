@@ -14,6 +14,7 @@
         <div class="page-controls mb">
             <div class="page-controls__right">
                 <v-btn color="success" href="{{ route('jobs.create') }}">
+                    <i class="fas fa-plus"></i>
                     Job toevoegen
                 </v-btn>
             </div>

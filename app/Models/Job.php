@@ -15,6 +15,8 @@ class Job extends Model
         "job_status_id",
         "author_id",
         "title",
+        "slogan",
+        "problem",
         "description",
         "header_image_url",
         "starts_at",

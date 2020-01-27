@@ -10,7 +10,7 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: hsl(0, 0%, 90%);
+    background-color: hsl(0, 0%, 95%);
     #topnav__wrapper {
         height: 80px;
         background-color: hsl(0, 0%, 100%);
@@ -405,22 +405,35 @@
             left: 0;
             bottom: 0;
             width: 100%;
+            height: 100%;
+            display: flex;
             padding: 25px 0;
             position: absolute;
+            align-items: center;
             box-sizing: border-box;
-            background-color: rgba(0, 0, 0, 0.15);
+            flex-direction: column;
+            justify-content: center;
             #job-header__text {
-                width: 1200px;
-                margin: 0 auto;
+                padding-top: 100px;
                 #job-header__title {
                     font-weight: 300;
                     font-size: 2.5em;
                     line-height: 1em;
                     margin: 0 0 15px 0;
+                    text-align: center;
+                }
+                #job-header__slogan {
+                    font-size: 1.5em;
+                    font-weight: 300;
+                    line-height: 1em;
+                    margin: -10px 0 30px 0;
+                    text-align: center;
                 }
                 #job-header__stats {
                     display: flex;
                     flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
                     .stat {
                         margin: 0 15px 0 0;
                         &:last-child {
@@ -450,15 +463,32 @@
         display: flex;
         flex-direction: row;
         #job-content__left {
-            flex: 2;
+            flex: 3;
             margin: 0 30px 0 0;
+            .job-paragraph {
+                margin: 0 0 50px 0;
+                .job-paragraph__title {
+                    font-size: 2.5em;
+                    font-weight: 300;
+                    line-height: 1em;
+                    margin: 0 0 25px 0;
+                }
+                .job-paragraph__text {
+                    font-size: 1.3em;
+                    font-weight: 400;
+                    line-height: 1.5em;
+                }
+            }
+
+
+
             #job-description {
                 font-weight: 400;
                 font-size: 1.5em;
             }
         }
         #job-content__right {
-            flex: 1;
+            flex: 2;
         }
     }
 }

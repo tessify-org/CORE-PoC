@@ -13,18 +13,18 @@
             <div id="job-header__content" class="content-section">
                 <!-- Back button -->
                 <div id="job-header__back-button">
-                    <v-btn href="{{ route('jobs') }}" depressed>
+                    <v-btn href="{{ route('jobs') }}">
                         <i class="fas fa-arrow-left"></i>
                         Terug naar overzicht
                     </v-btn>
                 </div>
                 <!-- Edit & delete buttons -->
                 <div id="job-header__actions">
-                    <v-btn color="warning" href="{{ route('jobs.edit', $job->slug) }}" depressed>
+                    <v-btn color="warning" href="{{ route('jobs.edit', $job->slug) }}">
                         <i class="fas fa-edit"></i>
                         Aanpassen
                     </v-btn>
-                    <v-btn color="red" dark href="{{ route('jobs.delete', $job->slug) }}" depressed>
+                    <v-btn color="red" dark href="{{ route('jobs.delete', $job->slug) }}">
                         <i class="fas fa-trash-alt"></i>
                         Verwijderen
                     </v-btn>
@@ -33,14 +33,18 @@
             <!-- Title & description -->
             <div id="job-header__text-wrapper">
                 <div id="job-header__text">
+                    <!-- Title -->
                     <h1 id="job-header__title">{{ $job->title }}</h1>
+                    <!-- Slogan -->
+                    <h2 id="job-header__slogan">{{ $job->slogan }}</h2>
+                    <!-- Stats -->
                     <div id="job-header__stats">
+                        <!-- Status -->
                         <div class="stat">
-                            <div id="job-status" class="{{ $job->status->name }}">
+                            <div id="job-status" class="{{ $job->status->name }} elevation-1">
                                 {{ $job->status->label }}
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -54,7 +58,21 @@
             <div id="job-content">
                 <div id="job-content__left">
 
-                    <div id="job-description">{{ $job->description }}</div>
+                    <div class="job-paragraph">
+                        <h3 class="job-paragraph__title">Probleem dat wordt opgelost</h3>
+                        <div class="job-paragraph__text">
+                            {{ $job->problem }}
+                        </div> 
+                    </div>
+
+                    <div class="job-paragraph">
+                        <h3 class="job-paragraph__title">Projectomschrijving</h3>
+                        <div class="job-paragraph__text">
+                            {{ $job->description }}
+                        </div>
+                    </div>
+
+
 
                 </div>
                 <div id="job-content__right">
