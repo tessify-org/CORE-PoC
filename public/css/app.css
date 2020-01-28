@@ -2424,6 +2424,11 @@ i {
   margin: 0 0 0 15px;
 }
 
+.resource-list__wrapper .no-resources {
+  padding: 10px 15px;
+  box-sizing: border-box;
+}
+
 #delete-dialog {
   width: 600px;
   margin: 0 auto;
