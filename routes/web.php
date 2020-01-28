@@ -58,3 +58,16 @@ Route::get("job-board/{slug}/aanpassen", "Jobs\JobBoardController@getEditJob")->
 Route::post("job-board/{slug}/aanpassen", "Jobs\JobBoardController@postEditJob")->name("jobs.edit.post");
 Route::get("job-board/{slug}/verwijderen", "Jobs\JobBoardController@getDeleteJob")->name("jobs.delete");
 Route::post("job-board/{slug}/verwijderen", "Jobs\JobBoardController@postDeleteJob")->name("jobs.delete.post");
+
+
+Route::group(["prefix" => "api"], function() {
+
+    Route::group(["prefix" => "job-resources"], function() {
+
+        Route::post("create", "Api\JobResourceController@postCreateResource")->name("api.jobs.resources.create.post");
+        Route::post("update", "Api\JobResourceController@postUpdateResource")->name("api.jobs.resources.update.post");
+        Route::post("delete", "Api\JobResourceController@postDeleteResource")->name("api.jobs.resources.delete.post");
+
+    });
+    
+});

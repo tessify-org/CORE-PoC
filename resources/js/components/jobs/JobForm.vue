@@ -2,7 +2,7 @@
     <div id="job-form">
         <div id="job-form__left">
             
-            <div class="content-card elevation-1">
+            <div class="content-card elevation-1 mb">
                 <div class="content-card__content">
                     
                     <!-- Title -->
@@ -72,6 +72,24 @@
                 </div>
             </div>
 
+            <div class="content-card elevation-1">
+                <div class="content-card__content">
+
+                    <!-- Resources -->
+                    <div class="form-field">
+                        <resources-field
+                            name="resources"
+                            label="Resources"
+                            v-model="form.resources"
+                            :create-api-endpoint="createResourceApiEndpoint"
+                            :update-api-endpoint="updateResourceApiEndpoint"
+                            :delete-api-endpoint="deleteResourceApiEndpoint">
+                        </resources-field>
+                    </div>
+
+                </div>
+            </div>
+
             <!-- Back button -->
             <div class="page-controls mt">
                 <div class="page-controls__left">
@@ -90,12 +108,38 @@
             <div class="content-card elevation-1 mb">
                 <div class="content-card__content">
 
+                    <!-- Category -->
+                    <div class="form-field">
+                        <v-select
+                            label="Project categorie"
+                            :items="categoryOptions"
+                            v-model="form.job_category_id"
+                            :errors="hasErrors('job_category_id')"
+                            :error-messages="getErrors('job_category_id')">
+                        </v-select>
+                        <input type="hidden" name="job_category_id" :value="form.job_category_id">
+                    </div>
+
+                    <!-- Work method -->
+                    <div class="form-field">
+                        <v-select
+                            label="Werkmethode"
+                            :items="workMethodOptions"
+                            v-model="form.work_method_id"
+                            :errors="hasErrors('work_method_id')"
+                            :error-messages="getErrors('work_method_id')">
+                        </v-select>
+                        <input type="hidden" name="work_method_id" :value="form.work_method_id">
+                    </div>  
+
                     <!-- Status -->
                     <div class="form-field">
                         <v-select
-                            label="Status"
+                            label="Project status"
                             :items="statusOptions"
-                            v-model="form.job_status_id">
+                            v-model="form.job_status_id"
+                            :errors="hasErrors('job_status_id')"
+                            :error-messages="getErrors('job_status_id')">
                         </v-select>
                         <input type="hidden" name="job_status_id" :value="form.job_status_id">
                     </div>
@@ -132,6 +176,7 @@
                 </div>
             </div>
 
+            <!-- Submit button -->
             <div class="page-controls mt">
                 <div class="page-controls__right">
                     <v-btn type="submit" color="success">
@@ -151,21 +196,31 @@
         props: [
             "job",
             "jobStatuses",
+            "jobCategories",
+            "workMethods",
             "errors",
             "oldInput",
             "backHref",
+            "createResourceApiEndpoint",
+            "updateResourceApiEndpoint",
+            "deleteResourceApiEndpoint",
         ],
         data: () => ({
             tag: "[job-form]",
+            workMethodOptions: [],
+            categoryOptions: [],
             statusOptions: [],
             form: {
                 job_status_id: 0,
+                job_category_id: 0,
+                work_method_id: 0,
                 title: "",
                 slogan: "",
                 problem: "",
                 description: "",
                 starts_at: "",
                 ends_at: "",
+                resources: [],
             }
         }),
         computed: {
@@ -181,8 +236,16 @@
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" job: ", this.job);
                 console.log(this.tag+" job statuses: ", this.jobStatuses);
+                console.log(this.tag+" job categories: ", this.jobCategories);
+                console.log(this.tag+" work methods: ", this.workMethods);
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
+                console.log(this.tag+" create resource api endpoint: ", this.createResourceApiEndpoint);
+                console.log(this.tag+" update resource api endpoint: ", this.updateResourceApiEndpoint);
+                console.log(this.tag+" delete resource api endpoint: ", this.deleteResourceApiEndpoint);
+                // console.log(this.tag+" ");
+                this.generateWorkMethodOptions();
+                this.generateCategoryOptions();
                 this.generateStatusOptions();
                 this.initializeData();
             },
@@ -190,15 +253,22 @@
                 this.form.job_status_id = this.statusOptions[0].value;
                 if (this.job !== undefined && this.job !== null) {
                     this.form.job_status_id = this.job.job_status_id;
+                    this.form.job_category_id = this.job.job_category_id;
+                    this.form.work_method_id = this.job.work_method_id;
                     this.form.title = this.job.title;
                     this.form.slogan = this.job.slogan;
                     this.form.problem = this.job.problem;
                     this.form.description = this.job.description;
                     this.form.starts_at = this.job.starts_at;
                     this.form.ends_at = this.job.ends_at;
+                    if (this.job.resources !== undefined && this.job.resources !== null && this.job.resources.length > 0) {
+                        this.form.resources = this.job.resources;
+                    }
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.job_status_id !== null) this.form.job_status_id = this.oldInput.job_status_id;
+                    if (this.oldInput.job_category_id !== null) this.form.job_category_id = this.oldInput.job_category_id;
+                    if (this.oldInput.work_method_id !== null) this.form.work_method_id = this.oldInput.work_method_id;
                     if (this.oldInput.title !== null) this.form.title = this.oldInput.title;
                     if (this.oldInput.slogan !== null) this.form.slogan = this.oldInput.slogan;
                     if (this.oldInput.problem !== null) this.form.problem = this.oldInput.problem;
@@ -217,6 +287,32 @@
                     }
                 } else {
                     this.statusOptions.push({ text: "Geen statusen gevonden", value: 0 });
+                }
+            },
+            generateCategoryOptions() {
+                if (this.jobCategories !== undefined && this.jobCategories !== null && this.jobCategories.length > 0) {
+                    this.categoryOptions.push({ text: "Selecteer categorie", value: 0 });
+                    for (let i = 0; i < this.jobCategories.length; i++) {
+                        this.categoryOptions.push({
+                            text: this.jobCategories[i].label,
+                            value: this.jobCategories[i].id,
+                        });
+                    }
+                } else {
+                    this.categoryOptions.push({ text: "Geen categorieen gevonden", value: 0 });
+                }
+            },
+            generateWorkMethodOptions() {
+                if (this.workMethods !== undefined && this.workMethods !== null && this.workMethods.length > 0) {
+                    this.workMethodOptions.push({ text: "Selecteer gewenste werkmethode", value: 0 });
+                    for (let i = 0; i < this.workMethods.length; i++) {
+                        this.workMethodOptions.push({
+                            text: this.workMethods[i].label,
+                            value: this.workMethods[i].id,
+                        });
+                    }
+                } else {
+                    this.workMethodOptions.push({ text: "Geen werkmethodes gevonden", value: 0 });
                 }
             },
             hasErrors(field) {

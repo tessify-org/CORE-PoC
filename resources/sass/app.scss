@@ -137,7 +137,7 @@
 }
 
 #breadcrumbs-wrapper {
-    background-color: hsl(0, 0%, 95%);
+    background-color: hsl(0, 0%, 10%);
     #breadcrumbs {
         display: flex;
         width: 1200px;
@@ -147,9 +147,9 @@
         list-style: none;
         flex-direction: row;
         .breadcrumb-item {
-            padding: 0 5px;
-            color: #000000;
+            color: #fff;
             display: flex;
+            padding: 0 5px;
             flex-direction: row;
             align-items: center;
             box-sizing: border-box;
@@ -160,26 +160,26 @@
                 padding: 0 5px 0 0;
             }
             &.active {
-                color: #000000;
+                color: #fff;
                 font-style: italic;
             }
             &.chevron {
                 font-size: .8em;
             }
             .home {
+                color: #fff;
                 margin-right: 5px;
-                color: hsl(0, 0%, 0%);
             }
             .v-icon {
-                color: #000;
+                color: #fff;
             }
             .svg-inline--fa, .far, .fas {
                 margin-top: 0px;
                 transition: all .4s;
-                color: hsl(0, 0%, 25%);
+                color: hsl(0, 0%, 95%);
             }
             a, a:active, a:visited, a:link {
-                color: hsl(0, 0%, 20%);
+                color: hsl(0, 0%, 95%);
                 text-decoration: none;
                 transition: all .3s;
                 &:hover {
@@ -365,7 +365,7 @@
 #job {
     #job-header {
         width: 100%;
-        height: 500px;
+        height: 400px;
         position: relative;
         background-size: cover;
         background-repeat: no-repeat;
@@ -406,9 +406,9 @@
         #job-header__text-wrapper {
             left: 0;
             bottom: 0;
+            z-index: 2;
             width: 100%;
             height: 100%;
-            z-index: 2;
             display: flex;
             padding: 25px 0;
             position: absolute;
@@ -417,16 +417,16 @@
             flex-direction: column;
             justify-content: center;
             #job-header__text {
-                padding-top: 100px;
+                padding-top: 50px;
                 #job-header__title {
                     font-weight: 300;
-                    font-size: 2.5em;
+                    font-size: 3.5em;
                     line-height: 1em;
-                    margin: 0 0 15px 0;
+                    margin: 0 0 20px 0;
                     text-align: center;
                 }
                 #job-header__slogan {
-                    font-size: 1.5em;
+                    font-size: 1.75em;
                     font-weight: 300;
                     line-height: 1em;
                     margin: -10px 0 30px 0;
@@ -492,6 +492,43 @@
         }
         #job-content__right {
             flex: 2;
+        }
+    }
+}
+
+.sidebar-title {
+    font-size: 1.5em;
+    font-weight: 400;
+    margin: 0 0 15px 0;
+}
+.resource-list__wrapper {
+    border-radius: 3px;
+    background-color: #ffffff;
+    .resource-list {
+        .resource {
+            display: flex;
+            padding: 10px 15px;
+            flex-direction: row;
+            align-items: center;
+            transition: all .3s;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            &:last-child {
+                border-bottom: 0;
+            }
+            &:hover {
+                cursor: pointer;
+                background-color: hsl(0, 0%, 95%);
+            }
+            .resource-icon {
+                margin: 0 15px 0 0;
+            }
+            .resource-title {
+                flex: 1;
+            }
+            .resource-size {
+                margin: 0 0 0 15px;
+            }
         }
     }
 }

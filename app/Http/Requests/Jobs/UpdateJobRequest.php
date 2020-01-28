@@ -26,6 +26,8 @@ class UpdateJobRequest extends FormRequest
     {
         return [
             "job_status_id" => "required|exists:job_statuses,id",
+            "job_category_id" => "required|exists:job_categories,id",
+            "work_method_id" => "required|exists:work_methods,id",
             "title" => "required",
             "slogan" => "nullable",
             "problem" => "required",
@@ -33,6 +35,7 @@ class UpdateJobRequest extends FormRequest
             "starts_at" => "nullable",
             "ends_at" => "nullable",
             "header_image" => "nullable|image",
+            "resources" => "nullable",
         ];
     }
 }

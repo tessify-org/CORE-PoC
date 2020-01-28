@@ -17,6 +17,8 @@ class CreateJobsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('author_id');
             $table->unsignedInteger('job_status_id');
+            $table->unsignedInteger('job_category_id');
+            $table->unsignedInteger('work_method_id');
             $table->string('slug');
             $table->string('title');
             $table->string('slogan')->nullable();

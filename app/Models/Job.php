@@ -12,8 +12,10 @@ class Job extends Model
     protected $table = "jobs";
     protected $guarded = ["id", "created_at", "updated_at"];
     protected $fillable = [
+        "job_category_id",
         "job_status_id",
         "author_id",
+        "work_method_id",
         "title",
         "slogan",
         "problem",
@@ -44,6 +46,11 @@ class Job extends Model
     // Relationships
     //
 
+    public function category()
+    {
+        return $this->belongsTo(JobCategory::class, "job_category_id", "id");
+    }
+
     public function author()
     {
         return $this->belongsTo(User::class, "author_id", "id");
@@ -52,5 +59,15 @@ class Job extends Model
     public function status()
     {
         return $this->belongsTo(JobStatus::class, "job_status_id", "id");
+    }
+
+    public function workMethod()
+    {
+        return $this->belongsTo(WorkMethod::class);
+    }
+
+    public function resources()
+    {
+        return $this->hasMany(JobResource::class);
     }
 }

@@ -232,8 +232,11 @@ return [
         'Departments' => \App\Facades\DepartmentsFacade::class,
         'JobTitles' => \App\Facades\JobTitlesFacade::class,
         'Assignments' => \App\Facades\AssignmentsFacade::class,
-        'JobStatuses' => \App\Facades\JobStatusesFacade::class,
         'Jobs' => \App\Facades\JobsFacade::class,
+        'JobStatuses' => \App\Facades\JobStatusesFacade::class,
+        'JobCategories' => \App\Facades\JobCategoriesFacade::class,
+        'JobResources' => \App\Facades\JobResourcesFacade::class,
+        'WorkMethods' => \App\Facades\WorkMethodsFacade::class,
 
         'Dates' => \App\Facades\DatesFacade::class,
         'Uploader' => \App\Facades\UploaderFacade::class,

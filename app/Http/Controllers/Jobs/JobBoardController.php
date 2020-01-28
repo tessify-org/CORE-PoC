@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Jobs;
 
 use Jobs;
 use JobStatuses;
+use JobResources;
+use JobCategories;
+use WorkMethods;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Jobs\CreateJobRequest;
 use App\Http\Requests\Jobs\UpdateJobRequest;
@@ -36,8 +39,12 @@ class JobBoardController extends Controller
     {
         return view("pages.jobs.create", [
             "statuses" => JobStatuses::getAll(),
+            "categories" => JobCategories::getAll(),
+            "workMethods" => WorkMethods::getAll(),
             "oldInput" => collect([
                 "job_status_id" => old("job_status_id"),
+                "job_category_id" => old("job_category_id"),
+                "work_method_id" => old("work_method_id"),
                 "title" => old("title"),
                 "slogan" => old("slogan"),
                 "problem" => old("problem"),
@@ -68,8 +75,12 @@ class JobBoardController extends Controller
         return view("pages.jobs.edit", [
             "job" => $job,
             "statuses" => JobStatuses::getAll(),
+            "categories" => JobCategories::getAll(),
+            "workMethods" => WorkMethods::getAll(),
             "oldInput" => collect([
                 "job_status_id" => old("job_status_id"),
+                "job_category_id" => old("job_category_id"),
+                "work_method_id" => old("work_method_id"),
                 "title" => old("title"),
                 "slogan" => old("slogan"),
                 "problem" => old("problem"),

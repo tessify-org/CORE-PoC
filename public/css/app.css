@@ -963,7 +963,7 @@ p:last-child {
 }
 
 .v-btn.icon-only {
-  min-width: auto;
+  min-width: auto !important;
 }
 
 .v-btn.icon-only .v-icon,
@@ -1219,6 +1219,43 @@ i {
 }
 
 .image-field .image-field__errors .image-field__error:last-child {
+  margin: 0;
+}
+
+.file-field {
+  margin: 0 0 25px 0;
+}
+
+.file-field.no-margin {
+  margin: 0;
+}
+
+.file-field.has-errors .file-field__label {
+  color: #ff5252;
+}
+
+.file-field .file-field__label {
+  display: block;
+  font-size: 12px;
+  margin: 0 0 5px 0;
+  color: #737373;
+}
+
+.file-field .file-field__input {
+  display: block;
+}
+
+.file-field .file-field__errors {
+  font-size: 0.9em;
+  color: #ff5252;
+  margin: 10px 0 0 0;
+}
+
+.file-field .file-field__errors .file-field__error {
+  margin: 0 0 3px 0;
+}
+
+.file-field .file-field__errors .file-field__error:last-child {
   margin: 0;
 }
 
@@ -1847,7 +1884,7 @@ i {
 }
 
 #breadcrumbs-wrapper {
-  background-color: #f2f2f2;
+  background-color: #1a1a1a;
 }
 
 #breadcrumbs-wrapper #breadcrumbs {
@@ -1864,10 +1901,10 @@ i {
 }
 
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item {
-  padding: 0 5px;
-  color: #000000;
+  color: #fff;
   display: -webkit-box;
   display: flex;
+  padding: 0 5px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
@@ -1885,7 +1922,7 @@ i {
 }
 
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item.active {
-  color: #000000;
+  color: #fff;
   font-style: italic;
 }
 
@@ -1894,12 +1931,12 @@ i {
 }
 
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item .home {
+  color: #fff;
   margin-right: 5px;
-  color: black;
 }
 
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item .v-icon {
-  color: #000;
+  color: #fff;
 }
 
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item .svg-inline--fa,
@@ -1908,14 +1945,14 @@ i {
   margin-top: 0px;
   -webkit-transition: all 0.4s;
   transition: all 0.4s;
-  color: #404040;
+  color: #f2f2f2;
 }
 
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a,
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:active,
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:visited,
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:link {
-  color: #333333;
+  color: #f2f2f2;
   text-decoration: none;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
@@ -2173,7 +2210,7 @@ i {
 
 #job #job-header {
   width: 100%;
-  height: 500px;
+  height: 400px;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2223,9 +2260,9 @@ i {
 #job #job-header #job-header__text-wrapper {
   left: 0;
   bottom: 0;
+  z-index: 2;
   width: 100%;
   height: 100%;
-  z-index: 2;
   display: -webkit-box;
   display: flex;
   padding: 25px 0;
@@ -2241,19 +2278,19 @@ i {
 }
 
 #job #job-header #job-header__text-wrapper #job-header__text {
-  padding-top: 100px;
+  padding-top: 50px;
 }
 
 #job #job-header #job-header__text-wrapper #job-header__text #job-header__title {
   font-weight: 300;
-  font-size: 2.5em;
+  font-size: 3.5em;
   line-height: 1em;
-  margin: 0 0 15px 0;
+  margin: 0 0 20px 0;
   text-align: center;
 }
 
 #job #job-header #job-header__text-wrapper #job-header__text #job-header__slogan {
-  font-size: 1.5em;
+  font-size: 1.75em;
   font-weight: 300;
   line-height: 1em;
   margin: -10px 0 30px 0;
@@ -2337,6 +2374,54 @@ i {
 #job #job-content #job-content__right {
   -webkit-box-flex: 2;
           flex: 2;
+}
+
+.sidebar-title {
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 0 0 15px 0;
+}
+
+.resource-list__wrapper {
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.resource-list__wrapper .resource-list .resource {
+  display: -webkit-box;
+  display: flex;
+  padding: 10px 15px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.resource-list__wrapper .resource-list .resource:last-child {
+  border-bottom: 0;
+}
+
+.resource-list__wrapper .resource-list .resource:hover {
+  cursor: pointer;
+  background-color: #f2f2f2;
+}
+
+.resource-list__wrapper .resource-list .resource .resource-icon {
+  margin: 0 15px 0 0;
+}
+
+.resource-list__wrapper .resource-list .resource .resource-title {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+.resource-list__wrapper .resource-list .resource .resource-size {
+  margin: 0 0 0 15px;
 }
 
 #delete-dialog {

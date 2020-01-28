@@ -13,8 +13,11 @@ use App\Services\ModelServices\OrganizationService;
 use App\Services\ModelServices\DepartmentService;
 use App\Services\ModelServices\JobTitleService;
 use App\Services\ModelServices\AssignmentService;
-use App\Services\ModelServices\JobStatusService;
 use App\Services\ModelServices\JobService;
+use App\Services\ModelServices\JobStatusService;
+use App\Services\ModelServices\JobCategoryService;
+use App\Services\ModelServices\JobResourceService;
+use App\Services\ModelServices\WorkMethodService;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -75,13 +78,25 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton("assignments", function() {
             return new AssignmentService;
         });
+        
+        $this->app->singleton("jobs", function() {
+            return new JobService;
+        });
 
         $this->app->singleton("job-statuses", function() {
             return new JobStatusService;
         });
 
-        $this->app->singleton("jobs", function() {
-            return new JobService;
+        $this->app->singleton("job-categories", function() {
+            return new JobCategoryService;
+        });
+
+        $this->app->singleton("job-resources", function() {
+            return new JobResourceService;
+        });
+
+        $this->app->singleton("work-methods", function() {
+            return new WorkMethodService;
         });
 
         //

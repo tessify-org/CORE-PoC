@@ -17,9 +17,14 @@
             <job-form
                 :job="{{ $job->toJson() }}"
                 :job-statuses="{{ $statuses->toJson() }}"
+                :job-categories="{{ $categories->toJson() }}"
+                :work-methods="{{ $workMethods->toJson() }}"
                 :errors="{{ $errors->toJson() }}"
                 :old-input="{{ $oldInput->toJson() }}"
-                back-href="{{ route('jobs') }}">
+                back-href="{{ route('jobs') }}"
+                create-resource-api-endpoint="{{ route('api.jobs.resources.create.post') }}"
+                update-resource-api-endpoint="{{ route('api.jobs.resources.update.post') }}"
+                delete-resource-api-endpoint="{{ route('api.jobs.resources.delete.post') }}">
             </job-form>
 
         </form>

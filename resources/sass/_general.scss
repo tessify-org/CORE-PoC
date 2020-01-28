@@ -39,7 +39,7 @@ p:last-child {
         margin-right: 8px;
     }
     &.icon-only {
-        min-width: auto;
+        min-width: auto !important;
         .v-icon, .svg-inline--fa, .custom-button-, .fa, .fas, .far {
             margin: 0;
         }
@@ -244,6 +244,38 @@ i {
         color: #ff5252;
         margin: 10px 0 0 0;
         .image-field__error {
+            margin: 0 0 3px 0;
+            &:last-child {
+                margin: 0;
+            }
+        }
+    }
+}
+
+.file-field {
+    margin: 0 0 25px 0;
+    &.no-margin {
+        margin: 0;
+    }
+    &.has-errors {
+        .file-field__label {
+            color: #ff5252;
+        }
+    }
+    .file-field__label {
+        display: block;
+        font-size: 12px;
+        margin: 0 0 5px 0;
+        color: hsl(0, 0%, 45%);
+    }
+    .file-field__input {
+        display: block;
+    }
+    .file-field__errors {
+        font-size: .9em;
+        color: #ff5252;
+        margin: 10px 0 0 0;
+        .file-field__error {
             margin: 0 0 3px 0;
             &:last-child {
                 margin: 0;

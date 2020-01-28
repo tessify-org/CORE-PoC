@@ -20,13 +20,11 @@
                 </div>
                 <!-- Edit & delete buttons -->
                 <div id="job-header__actions">
-                    <v-btn color="warning" href="{{ route('jobs.edit', $job->slug) }}">
+                    <v-btn class="icon-only" color="warning" href="{{ route('jobs.edit', $job->slug) }}">
                         <i class="fas fa-edit"></i>
-                        Aanpassen
                     </v-btn>
-                    <v-btn color="red" dark href="{{ route('jobs.delete', $job->slug) }}">
+                    <v-btn class="icon-only" color="red" dark href="{{ route('jobs.delete', $job->slug) }}">
                         <i class="fas fa-trash-alt"></i>
-                        Verwijderen
                     </v-btn>
                 </div>
             </div>
@@ -57,7 +55,8 @@
 
             <div id="job-content">
                 <div id="job-content__left">
-
+                    
+                    <!-- Probleemstelling -->
                     <div class="job-paragraph">
                         <h3 class="job-paragraph__title">Probleem dat wordt opgelost</h3>
                         <div class="job-paragraph__text">
@@ -65,6 +64,7 @@
                         </div> 
                     </div>
 
+                    <!-- Projectomschrijving -->
                     <div class="job-paragraph">
                         <h3 class="job-paragraph__title">Projectomschrijving</h3>
                         <div class="job-paragraph__text">
@@ -77,11 +77,25 @@
                 </div>
                 <div id="job-content__right">
 
+                    <!-- Details -->
+                    <h3 class="sidebar-title">Details</h3>
                     <div class="details elevation-1">
+                        <!-- ID -->
                         <div class="detail">
                             <div class="key">ID</div>
                             <div class="val">{{ $job->id }}</div>
                         </div>
+                        <!-- Category -->
+                        <div class="detail">
+                            <div class="key">Categorie</div>
+                            <div class="val">{{ $job->category->label }}</div>
+                        </div>
+                        <!-- Work method -->
+                        <div class="detail">
+                            <div class="key">Werkmethode</div>
+                            <div class="val">{{ $job->workMethod->label }}</div>
+                        </div>
+                        <!-- Starts at -->
                         <div class="detail">
                             <div class="key">Start op</div>
                             <div class="val">
@@ -92,6 +106,7 @@
                                 @endif
                             </div>
                         </div>
+                        <!-- Ends at -->
                         <div class="detail">
                             <div class="key">Stopt op</div>
                             <div class="val">
@@ -102,10 +117,12 @@
                                 @endif
                             </div>
                         </div>
+                        <!-- Created at -->
                         <div class="detail">
                             <div class="key">Toegevoegd op</div>
                             <div class="val">{{ $job->created_at->format("d-m-Y") }}</div>
                         </div>
+                        <!-- Created by -->
                         <div class="detail">
                             <div class="key">Toegevoegd door</div>
                             <div class="val">
@@ -114,10 +131,33 @@
                                 </a>
                             </div>
                         </div>
+                        <!-- Updated at -->
                         <div class="detail">
                             <div class="key">Laatste gewijzigd op</div>
                             <div class="val">{{ $job->updated_at->format("d-m-Y") }}</div>
                         </div>
+                    </div>
+
+                    <!-- Resources -->
+                    <h3 class="sidebar-title">Resources</h3>
+                    <div class="resource-list__wrapper elevation-1">
+                        @if ($job->resources->count())
+                            <div class="resource-list">
+                                @foreach ($job->resources as $resource)
+                                    <div class="resource">
+                                        <div class="resource-icon">
+                                            <i class="far fa-file"></i>
+                                        </div>
+                                        <div class="resource-title">{{ $resource->title }}</div>
+                                        <div class="resource-size">{{ $resource->file_size }} kb</div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="no-resources">
+                                Er zijn nog geen resources toegevoegd.
+                            </div>
+                        @endif
                     </div>
 
                 </div>
