@@ -5124,6 +5124,449 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["name", "label", "value", "skills"],
+  data: function data() {
+    return {
+      tag: "[team-roles-field]",
+      mutableTeamRoles: [],
+      skillOptions: [],
+      loaded: false,
+      dialogs: {
+        view: {
+          show: false,
+          index: null
+        },
+        add: {
+          show: false,
+          errors: [],
+          form: {
+            name: "",
+            description: "",
+            skills: []
+          }
+        },
+        edit: {
+          show: false,
+          index: null,
+          errors: [],
+          form: {
+            name: "",
+            description: "",
+            skills: []
+          }
+        },
+        "delete": {
+          show: false,
+          index: null,
+          errors: []
+        }
+      }
+    };
+  },
+  computed: {
+    labelText: function labelText() {
+      return this.label !== undefined && this.label !== null && this.label !== "" ? this.label : "Team rollen";
+    },
+    confirmAddDisabled: function confirmAddDisabled() {
+      return this.dialogs.add.form.name === "";
+    },
+    confirmEditDisabled: function confirmEditDisabled() {
+      return this.dialogs.edit.form.name === "";
+    },
+    encodedTeamRoles: function encodedTeamRoles() {
+      return JSON.stringify(this.mutableTeamRoles);
+    }
+  },
+  watch: {
+    value: function value() {
+      console.log(this.tag + " value changed: ", this.value);
+      console.log(this.tag + " loaded: ", this.loaded);
+
+      if (!this.loaded) {
+        this.mutableTeamRoles = this.value;
+        this.loaded = true;
+      }
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " name: ", this.name);
+      console.log(this.tag + " label: ", this.label);
+      console.log(this.tag + " value: ", this.value);
+      console.log(this.tag + " skills: ", this.skills);
+      this.generateSkillOptions();
+      this.initializeData();
+    },
+    initializeData: function initializeData() {
+      console.log(this.tag + " initializing data");
+      console.log(this.tag + " value: ", this.value);
+
+      if (this.value !== undefined && this.value !== null && this.value !== "" && this.value.length > 0) {
+        this.mutableTeamRoles = this.value;
+        this.loaded = true;
+      }
+    },
+    generateSkillOptions: function generateSkillOptions() {
+      if (this.skills !== undefined && this.skills !== null && this.skills.length > 0) {
+        for (var i = 0; i < this.skills.length; i++) {
+          this.skillOptions.push(this.skills[i].name);
+        }
+      }
+    },
+    onClickAdd: function onClickAdd() {
+      // Show the dialogs
+      this.dialogs.add.show = true;
+    },
+    onClickConfirmAdd: function onClickConfirmAdd() {
+      // Add team member to the list
+      this.mutableTeamRoles.push({
+        name: this.dialogs.add.form.name,
+        description: this.dialogs.add.form.description,
+        skills: this.dialogs.add.form.skills
+      }); // Reset form
+
+      this.dialogs.add.form.name = "";
+      this.dialogs.add.form.description = "";
+      this.dialogs.add.form.skills = []; // Hide dialog
+
+      this.dialogs.add.show = false;
+    },
+    onClickView: function onClickView(index) {
+      this.dialogs.view.index = index;
+      this.dialogs.view.show = true;
+    },
+    onClickEdit: function onClickEdit(index) {
+      // Save the index
+      this.dialogs.edit.index = index; // Populate the dialog's form
+
+      this.dialogs.edit.form.name = this.mutableTeamRoles[index].title;
+      this.dialogs.edit.form.description = this.mutableTeamRoles[index].description;
+      this.dialogs.edit.form.skills = this.mutableTeamRoles[index].skills; // Show the edit dialog
+
+      this.dialogs.edit.show = true;
+    },
+    onClickConfirmEdit: function onClickConfirmEdit() {
+      // Update the team member
+      this.mutableTeamRoles[this.dialogs.edit.index].title = this.dialogs.edit.form.title;
+      this.mutableTeamRoles[this.dialogs.edit.index].skills = this.dialogs.edit.form.skills; // Hide the dialog
+
+      this.dialogs.edit.show = false;
+    },
+    onClickDelete: function onClickDelete(index) {
+      // Save the index
+      this.dialogs["delete"].index = index; // Open up the dialog
+
+      this.dialogs["delete"].show = true;
+    },
+    onClickConfirmDelete: function onClickConfirmDelete() {
+      // Remove the team member from the list
+      this.mutableTeamRoles.splice(this.dialogs["delete"].index, 1); // Hide the dialog
+
+      this.dialogs["delete"].show = false;
+    },
+    getRoleName: function getRoleName(index) {
+      var role = this.mutableTeamRoles[index];
+
+      if (role) {
+        return role.name;
+      }
+
+      return "";
+    },
+    getRoleDescription: function getRoleDescription(index) {
+      return this.mutableTeamRoles[index].description;
+    },
+    getRoleSkills: function getRoleSkills(index) {
+      return this.mutableTeamRoles[index].skills;
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobForm.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jobs/JobForm.vue?vue&type=script&lang=js& ***!
@@ -5326,8 +5769,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["job", "jobStatuses", "jobCategories", "workMethods", "errors", "oldInput", "backHref", "createResourceApiEndpoint", "updateResourceApiEndpoint", "deleteResourceApiEndpoint"],
+  props: ["job", "jobStatuses", "jobCategories", "workMethods", "skills", "errors", "oldInput", "backHref", "createResourceApiEndpoint", "updateResourceApiEndpoint", "deleteResourceApiEndpoint"],
   data: function data() {
     return {
       tag: "[job-form]",
@@ -5344,7 +5803,8 @@ __webpack_require__.r(__webpack_exports__);
         description: "",
         starts_at: "",
         ends_at: "",
-        resources: []
+        resources: [],
+        team_roles: []
       }
     };
   },
@@ -5363,12 +5823,12 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.tag + " job statuses: ", this.jobStatuses);
       console.log(this.tag + " job categories: ", this.jobCategories);
       console.log(this.tag + " work methods: ", this.workMethods);
+      console.log(this.tag + " skills: ", this.skills);
       console.log(this.tag + " errors: ", this.errors);
       console.log(this.tag + " old input: ", this.oldInput);
       console.log(this.tag + " create resource api endpoint: ", this.createResourceApiEndpoint);
       console.log(this.tag + " update resource api endpoint: ", this.updateResourceApiEndpoint);
-      console.log(this.tag + " delete resource api endpoint: ", this.deleteResourceApiEndpoint); // console.log(this.tag+" ");
-
+      console.log(this.tag + " delete resource api endpoint: ", this.deleteResourceApiEndpoint);
       this.generateWorkMethodOptions();
       this.generateCategoryOptions();
       this.generateStatusOptions();
@@ -5391,6 +5851,26 @@ __webpack_require__.r(__webpack_exports__);
         if (this.job.resources !== undefined && this.job.resources !== null && this.job.resources.length > 0) {
           this.form.resources = this.job.resources;
         }
+
+        if (this.job.team_roles !== undefined && this.job.team_roles !== null && this.job.team_roles.length > 0) {
+          var teamRoles = [];
+
+          for (var i = 0; i < this.job.team_roles.length; i++) {
+            var skills = [];
+
+            for (var j = 0; j < this.job.team_roles[i].skills.length; j++) {
+              skills.push(this.job.team_roles[i].skills[j].name);
+            }
+
+            teamRoles.push({
+              name: this.job.team_roles[i].name,
+              description: this.job.team_roles[i].description,
+              skills: skills
+            });
+          }
+
+          this.form.team_roles = teamRoles;
+        }
       }
 
       if (this.oldInput !== undefined && this.oldInput !== null) {
@@ -5403,6 +5883,8 @@ __webpack_require__.r(__webpack_exports__);
         if (this.oldInput.description !== null) this.form.description = this.oldInput.description;
         if (this.oldInput.starts_at !== null) this.form.starts_at = this.oldInput.starts_at;
         if (this.oldInput.ends_at !== null) this.form.ends_at = this.oldInput.ends_at;
+        if (this.oldInput.resources !== null) this.form.resources = JSON.parse(this.oldInput.resources);
+        if (this.oldInput.team_roles !== null) this.form.team_roles = JSON.parse(this.oldInput.team_roles);
       }
     },
     generateStatusOptions: function generateStatusOptions() {
@@ -6324,6 +6806,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, ".resources-field .resources-field__label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n}\n.resources-field .resources-field__files {\n  background-color: #f2f2f2;\n}\n.resources-field .resources-field__files .file {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.resources-field .resources-field__files .file:last-child {\n  border-bottom: 0;\n}\n.resources-field .resources-field__files .file .file-icon {\n  margin: 0 15px 0 0;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.resources-field .resources-field__files .file .file-title {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.resources-field .resources-field__files .file .file-size {\n  display: -webkit-box;\n  display: flex;\n  margin: 0 15px 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.resources-field .resources-field__files .file .file-actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.resources-field .resources-field__files .file .file-actions .file-action {\n  width: 24px;\n  height: 24px;\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  margin: 0 10px 0 0;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: black;\n}\n.resources-field .resources-field__files .file .file-actions .file-action.edit {\n  background-color: #f04400;\n}\n.resources-field .resources-field__files .file .file-actions .file-action.edit:hover {\n  background-color: #c73800;\n}\n.resources-field .resources-field__files .file .file-actions .file-action.delete {\n  background-color: #d40000;\n}\n.resources-field .resources-field__files .file .file-actions .file-action.delete:hover {\n  background-color: #950000;\n}\n.resources-field .resources-field__files .file .file-actions .file-action:hover {\n  cursor: pointer;\n  background-color: #262626;\n}\n.resources-field .resources-field__files .file .file-actions .file-action:last-child {\n  margin: 0;\n}\n.resources-field .resources-field__no-files {\n  padding: 15px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n.resources-field .resources-field__actions {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".team-roles-field .team-roles-field__label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n}\n.team-roles-field .team-roles-field__roles {\n  background-color: #f2f2f2;\n}\n.team-roles-field .team-roles-field__roles .role {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n.team-roles-field .team-roles-field__roles .role:last-child {\n  border-bottom: 0;\n}\n.team-roles-field .team-roles-field__roles .role .role-name {\n  -webkit-box-flex: 2;\n          flex: 2;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.team-roles-field .team-roles-field__roles .role .role-skills {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.team-roles-field .team-roles-field__roles .role .role-actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.team-roles-field .team-roles-field__roles .role .role-actions .role-action {\n  width: 24px;\n  height: 24px;\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  margin: 0 10px 0 0;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: black;\n}\n.team-roles-field .team-roles-field__roles .role .role-actions .role-action.edit {\n  background-color: #f04400;\n}\n.team-roles-field .team-roles-field__roles .role .role-actions .role-action.edit:hover {\n  background-color: #c73800;\n}\n.team-roles-field .team-roles-field__roles .role .role-actions .role-action.delete {\n  background-color: #d40000;\n}\n.team-roles-field .team-roles-field__roles .role .role-actions .role-action.delete:hover {\n  background-color: #950000;\n}\n.team-roles-field .team-roles-field__roles .role .role-actions .role-action:hover {\n  cursor: pointer;\n  background-color: #262626;\n}\n.team-roles-field .team-roles-field__roles .role .role-actions .role-action:last-child {\n  margin: 0;\n}\n.team-roles-field .team-roles-field__no-roles {\n  padding: 15px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n.team-roles-field .team-roles-field__actions {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n.team-roles-field .team-roles-field__actions .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
 
 // exports
 
@@ -34713,6 +35214,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TeamRolesField.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobForm.vue?vue&type=style&index=0&lang=scss&":
 /*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jobs/JobForm.vue?vue&type=style&index=0&lang=scss& ***!
@@ -36455,6 +36986,695 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=template&id=1aea0372&":
+/*!*****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=template&id=1aea0372& ***!
+  \*****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "team-roles-field" },
+    [
+      _c("div", { staticClass: "team-roles-field__label" }, [
+        _vm._v(_vm._s(_vm.labelText))
+      ]),
+      _vm._v(" "),
+      _vm.mutableTeamRoles.length > 0
+        ? _c(
+            "div",
+            { staticClass: "team-roles-field__roles" },
+            _vm._l(_vm.mutableTeamRoles, function(role, ri) {
+              return _c("div", { key: ri, staticClass: "role" }, [
+                _c("div", { staticClass: "role-name" }, [
+                  _vm._v(_vm._s(role.name))
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "role-skills" }, [
+                  _vm._v(
+                    "\n                " +
+                      _vm._s(
+                        role.skills.length === 1
+                          ? "1 vereiste skill"
+                          : role.skills.length + " vereiste skills"
+                      ) +
+                      "\n            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "role-actions" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "role-action view",
+                      on: {
+                        click: function($event) {
+                          return _vm.onClickView(ri)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fas fa-eye" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "role-action edit",
+                      on: {
+                        click: function($event) {
+                          return _vm.onClickEdit(ri)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fas fa-pen-square" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass: "role-action delete",
+                      on: {
+                        click: function($event) {
+                          return _vm.onClickDelete(ri)
+                        }
+                      }
+                    },
+                    [_c("i", { staticClass: "fas fa-trash-alt" })]
+                  )
+                ])
+              ])
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.mutableTeamRoles.length === 0
+        ? _c("div", { staticClass: "team-roles-field__no-roles" }, [
+            _vm._v("\n        Er zijn nog geen team rollen gedefineert.\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "team-roles-field__actions" },
+        [
+          _c(
+            "v-btn",
+            {
+              attrs: { color: "primary", small: "" },
+              on: { click: _vm.onClickAdd }
+            },
+            [
+              _c("i", { staticClass: "fas fa-plus" }),
+              _vm._v("\n            Team rol toevoegen\n        ")
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.view.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.view, "show", $$v)
+            },
+            expression: "dialogs.view.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.view.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [_vm._v("Team rol")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "details" }, [
+                _c("div", { staticClass: "detail" }, [
+                  _c("div", { staticClass: "key" }, [_vm._v("Naam:")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "val" }, [
+                    _vm._v(_vm._s(_vm.getRoleName(_vm.dialogs.view.index)))
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "detail" }, [
+                  _c("div", { staticClass: "key" }, [_vm._v("Beschrijving:")]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "val" }, [
+                    _vm._v(
+                      _vm._s(_vm.getRoleDescription(_vm.dialogs.view.index))
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "detail" }, [
+                  _c("div", { staticClass: "key" }, [
+                    _vm._v("Vereiste skills")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "val" }, [
+                    _c(
+                      "div",
+                      { staticClass: "skills-list" },
+                      _vm._l(
+                        _vm.getRoleSkills(_vm.dialogs.view.index),
+                        function(skill, si) {
+                          return _c("div", { key: si, staticClass: "skill" }, [
+                            _vm._v(
+                              "\n                                    " +
+                                _vm._s(skill) +
+                                "\n                                "
+                            )
+                          ])
+                        }
+                      ),
+                      0
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.add.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "dialog-controls__right" })
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.add.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.add, "show", $$v)
+            },
+            expression: "dialogs.add.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.add.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Team rol toevoegen")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.add.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.add.errors, function(error, ei) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-text-field", {
+                    attrs: { label: "Titel" },
+                    model: {
+                      value: _vm.dialogs.add.form.name,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "name", $$v)
+                      },
+                      expression: "dialogs.add.form.name"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-textarea", {
+                    attrs: { label: "Rolomschrijving" },
+                    model: {
+                      value: _vm.dialogs.add.form.description,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "description", $$v)
+                      },
+                      expression: "dialogs.add.form.description"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-combobox", {
+                    attrs: {
+                      label: "Vereiste skills",
+                      items: _vm.skillOptions,
+                      multiple: ""
+                    },
+                    model: {
+                      value: _vm.dialogs.add.form.skills,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "skills", $$v)
+                      },
+                      expression: "dialogs.add.form.skills"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.add.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        color: "success",
+                        disabled: _vm.confirmAddDisabled
+                      },
+                      on: { click: _vm.onClickConfirmAdd }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-save" }),
+                      _vm._v(
+                        "\n                        Opslaan\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.edit.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.edit, "show", $$v)
+            },
+            expression: "dialogs.edit.show"
+          }
+        },
+        [
+          _vm.dialogs.edit.index !== null
+            ? _c("div", { staticClass: "dialog" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dialog__close-button",
+                    on: {
+                      click: function($event) {
+                        _vm.dialogs.edit.show = false
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-times" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-content" }, [
+                  _c("h3", { staticClass: "dialog-title" }, [
+                    _vm._v("Team rol aanpassen")
+                  ]),
+                  _vm._v(" "),
+                  _vm.dialogs.edit.errors.length > 0
+                    ? _c(
+                        "div",
+                        { staticClass: "dialog-errors" },
+                        _vm._l(_vm.dialogs.edit.errors, function(error, ei) {
+                          return _c(
+                            "div",
+                            { key: ei, staticClass: "dialog-error" },
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(error) +
+                                  "\n                    "
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-field" },
+                    [
+                      _c("v-text-field", {
+                        attrs: { label: "Titel" },
+                        model: {
+                          value: _vm.dialogs.edit.form.name,
+                          callback: function($$v) {
+                            _vm.$set(_vm.dialogs.edit.form, "name", $$v)
+                          },
+                          expression: "dialogs.edit.form.name"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-field" },
+                    [
+                      _c("v-textarea", {
+                        attrs: { label: "Rolomschrijving" },
+                        model: {
+                          value: _vm.dialogs.edit.form.description,
+                          callback: function($$v) {
+                            _vm.$set(_vm.dialogs.edit.form, "description", $$v)
+                          },
+                          expression: "dialogs.edit.form.description"
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "form-field" },
+                    [
+                      _c("v-combobox", {
+                        attrs: {
+                          label: "Vereiste skills",
+                          items: _vm.skillOptions,
+                          multiple: ""
+                        },
+                        model: {
+                          value: _vm.dialogs.edit.form.skills,
+                          callback: function($$v) {
+                            _vm.$set(_vm.dialogs.edit.form, "skills", $$v)
+                          },
+                          expression: "dialogs.edit.form.skills"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-controls" }, [
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__left" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { text: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.dialogs.edit.show = false
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-arrow-left" }),
+                          _vm._v(
+                            "\n                        Annuleren\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            color: "success",
+                            disabled: _vm.confirmEditDisabled
+                          },
+                          on: { click: _vm.onClickConfirmEdit }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-save" }),
+                          _vm._v(
+                            "\n                        Opslaan\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.delete.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.delete, "show", $$v)
+            },
+            expression: "dialogs.delete.show"
+          }
+        },
+        [
+          _vm.dialogs.delete.index !== null
+            ? _c("div", { staticClass: "dialog" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dialog__close-button",
+                    on: {
+                      click: function($event) {
+                        _vm.dialogs.delete.show = false
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-times" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-content" }, [
+                  _c("h3", { staticClass: "dialog-title" }, [
+                    _vm._v("Team rol verwijderen")
+                  ]),
+                  _vm._v(" "),
+                  _vm.dialogs.delete.errors.length > 0
+                    ? _c(
+                        "div",
+                        { staticClass: "dialog-errors" },
+                        _vm._l(_vm.dialogs.delete.errors, function(error, ei) {
+                          return _c(
+                            "div",
+                            { key: ei, staticClass: "dialog-error" },
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(error) +
+                                  "\n                    "
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dialog-text" }, [
+                    _vm._v(
+                      "\n                    Weet je zeker dat je deze team rol (" +
+                        _vm._s(_vm.getRoleTitle(_vm.dialogs.delete.index)) +
+                        ") wilt verwijderen?\n                "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-controls" }, [
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__left" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { text: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.dialogs.delete.show = false
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-arrow-left" }),
+                          _vm._v(
+                            "\n                        Nee, annuleren\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { dark: "", color: "red" },
+                          on: { click: _vm.onClickConfirmDelete }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-trash-alt" }),
+                          _vm._v(
+                            "\n                        Ja, verwijder\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: _vm.name },
+        domProps: { value: _vm.encodedTeamRoles }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobForm.vue?vue&type=template&id=51a585da&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jobs/JobForm.vue?vue&type=template&id=51a585da& ***!
@@ -36619,7 +37839,7 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "content-card elevation-1" }, [
+      _c("div", { staticClass: "content-card elevation-1 mb" }, [
         _c("div", { staticClass: "content-card__content" }, [
           _c(
             "div",
@@ -36639,6 +37859,32 @@ var render = function() {
                     _vm.$set(_vm.form, "resources", $$v)
                   },
                   expression: "form.resources"
+                }
+              })
+            ],
+            1
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content-card elevation-1" }, [
+        _c("div", { staticClass: "content-card__content" }, [
+          _c(
+            "div",
+            { staticClass: "form-field" },
+            [
+              _c("team-roles-field", {
+                attrs: {
+                  name: "team_roles",
+                  label: "Team rollen",
+                  skills: _vm.skills
+                },
+                model: {
+                  value: _vm.form.team_roles,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "team_roles", $$v)
+                  },
+                  expression: "form.team_roles"
                 }
               })
             ],
@@ -36762,7 +38008,7 @@ var render = function() {
               _c("datepicker", {
                 attrs: {
                   name: "starts_at",
-                  label: "Starts at",
+                  label: "Start op",
                   error: _vm.hasErrors("starts_at"),
                   "error-messages": _vm.getErrors("starts_at")
                 },
@@ -36785,7 +38031,7 @@ var render = function() {
               _c("datepicker", {
                 attrs: {
                   name: "ends_at",
-                  label: "Ends at",
+                  label: "Eindigt op",
                   error: _vm.hasErrors("ends_at"),
                   "error-messages": _vm.getErrors("ends_at")
                 },
@@ -91044,6 +92290,7 @@ var map = {
 	"./components/form-fields/Datepicker.vue": "./resources/js/components/form-fields/Datepicker.vue",
 	"./components/form-fields/Datetimepicker.vue": "./resources/js/components/form-fields/Datetimepicker.vue",
 	"./components/form-fields/ResourcesField.vue": "./resources/js/components/form-fields/ResourcesField.vue",
+	"./components/form-fields/TeamRolesField.vue": "./resources/js/components/form-fields/TeamRolesField.vue",
 	"./components/jobs/JobForm.vue": "./resources/js/components/jobs/JobForm.vue",
 	"./components/profiles/AssignmentsField.vue": "./resources/js/components/profiles/AssignmentsField.vue",
 	"./components/profiles/UpdateProfileForm.vue": "./resources/js/components/profiles/UpdateProfileForm.vue"
@@ -91602,6 +92849,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResourcesField_vue_vue_type_template_id_ed48fd66___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResourcesField_vue_vue_type_template_id_ed48fd66___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/form-fields/TeamRolesField.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/form-fields/TeamRolesField.vue ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TeamRolesField_vue_vue_type_template_id_1aea0372___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TeamRolesField.vue?vue&type=template&id=1aea0372& */ "./resources/js/components/form-fields/TeamRolesField.vue?vue&type=template&id=1aea0372&");
+/* harmony import */ var _TeamRolesField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TeamRolesField.vue?vue&type=script&lang=js& */ "./resources/js/components/form-fields/TeamRolesField.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _TeamRolesField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TeamRolesField.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/form-fields/TeamRolesField.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _TeamRolesField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TeamRolesField_vue_vue_type_template_id_1aea0372___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TeamRolesField_vue_vue_type_template_id_1aea0372___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/form-fields/TeamRolesField.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/form-fields/TeamRolesField.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/form-fields/TeamRolesField.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TeamRolesField.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/form-fields/TeamRolesField.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/components/form-fields/TeamRolesField.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TeamRolesField.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/form-fields/TeamRolesField.vue?vue&type=template&id=1aea0372&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/form-fields/TeamRolesField.vue?vue&type=template&id=1aea0372& ***!
+  \***********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_template_id_1aea0372___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TeamRolesField.vue?vue&type=template&id=1aea0372& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/form-fields/TeamRolesField.vue?vue&type=template&id=1aea0372&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_template_id_1aea0372___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamRolesField_vue_vue_type_template_id_1aea0372___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -7,6 +7,7 @@ use JobStatuses;
 use JobResources;
 use JobCategories;
 use WorkMethods;
+use Skills;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Jobs\CreateJobRequest;
 use App\Http\Requests\Jobs\UpdateJobRequest;
@@ -41,6 +42,7 @@ class JobBoardController extends Controller
             "statuses" => JobStatuses::getAll(),
             "categories" => JobCategories::getAll(),
             "workMethods" => WorkMethods::getAll(),
+            "skills" => Skills::getAll(),
             "oldInput" => collect([
                 "job_status_id" => old("job_status_id"),
                 "job_category_id" => old("job_category_id"),
@@ -51,6 +53,8 @@ class JobBoardController extends Controller
                 "description" => old("description"),
                 "starts_at" => old("starts_at"),
                 "ends_at" => old("ends_at"),
+                "resources" => old("resources"),
+                "team_roles" => old("team_roles"),
             ])
         ]);
     }
@@ -77,6 +81,7 @@ class JobBoardController extends Controller
             "statuses" => JobStatuses::getAll(),
             "categories" => JobCategories::getAll(),
             "workMethods" => WorkMethods::getAll(),
+            "skills" => Skills::getAll(),
             "oldInput" => collect([
                 "job_status_id" => old("job_status_id"),
                 "job_category_id" => old("job_category_id"),
@@ -87,6 +92,8 @@ class JobBoardController extends Controller
                 "description" => old("description"),
                 "starts_at" => old("starts_at"),
                 "ends_at" => old("ends_at"),
+                "resources" => old("resources"),
+                "team_roles" => old("team_roles"),
             ])
         ]);
     }

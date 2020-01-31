@@ -19,6 +19,7 @@
                 :job-statuses="{{ $statuses->toJson() }}"
                 :job-categories="{{ $categories->toJson() }}"
                 :work-methods="{{ $workMethods->toJson() }}"
+                :skills="{{ $skills->toJson() }}"
                 :errors="{{ $errors->toJson() }}"
                 :old-input="{{ $oldInput->toJson() }}"
                 back-href="{{ route('jobs') }}"

@@ -72,7 +72,7 @@
                 </div>
             </div>
 
-            <div class="content-card elevation-1">
+            <div class="content-card elevation-1 mb">
                 <div class="content-card__content">
 
                     <!-- Resources -->
@@ -85,6 +85,22 @@
                             :update-api-endpoint="updateResourceApiEndpoint"
                             :delete-api-endpoint="deleteResourceApiEndpoint">
                         </resources-field>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="content-card elevation-1">
+                <div class="content-card__content">
+
+                    <!-- Team roles -->
+                    <div class="form-field">
+                        <team-roles-field
+                            name="team_roles"
+                            label="Team rollen"
+                            v-model="form.team_roles"
+                            :skills="skills">
+                        </team-roles-field>
                     </div>
 
                 </div>
@@ -155,7 +171,7 @@
                     <div class="form-field mb-10">
                         <datepicker
                             name="starts_at"
-                            label="Starts at"
+                            label="Start op"
                             v-model="form.starts_at"
                             :error="hasErrors('starts_at')"
                             :error-messages="getErrors('starts_at')">
@@ -166,7 +182,7 @@
                     <div class="form-field">
                         <datepicker
                             name="ends_at"
-                            label="Ends at"
+                            label="Eindigt op"
                             v-model="form.ends_at"
                             :error="hasErrors('ends_at')"
                             :error-messages="getErrors('ends_at')">
@@ -198,6 +214,7 @@
             "jobStatuses",
             "jobCategories",
             "workMethods",
+            "skills",
             "errors",
             "oldInput",
             "backHref",
@@ -221,6 +238,7 @@
                 starts_at: "",
                 ends_at: "",
                 resources: [],
+                team_roles: [],
             }
         }),
         computed: {
@@ -238,12 +256,12 @@
                 console.log(this.tag+" job statuses: ", this.jobStatuses);
                 console.log(this.tag+" job categories: ", this.jobCategories);
                 console.log(this.tag+" work methods: ", this.workMethods);
+                console.log(this.tag+" skills: ", this.skills);
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
                 console.log(this.tag+" create resource api endpoint: ", this.createResourceApiEndpoint);
                 console.log(this.tag+" update resource api endpoint: ", this.updateResourceApiEndpoint);
                 console.log(this.tag+" delete resource api endpoint: ", this.deleteResourceApiEndpoint);
-                // console.log(this.tag+" ");
                 this.generateWorkMethodOptions();
                 this.generateCategoryOptions();
                 this.generateStatusOptions();
@@ -264,6 +282,21 @@
                     if (this.job.resources !== undefined && this.job.resources !== null && this.job.resources.length > 0) {
                         this.form.resources = this.job.resources;
                     }
+                    if (this.job.team_roles !== undefined && this.job.team_roles !== null && this.job.team_roles.length > 0) {
+                        let teamRoles = [];
+                        for (let i = 0; i < this.job.team_roles.length; i++) {
+                            let skills = [];
+                            for (let j = 0; j < this.job.team_roles[i].skills.length; j++) {
+                                skills.push(this.job.team_roles[i].skills[j].name);
+                            }
+                            teamRoles.push({
+                                name: this.job.team_roles[i].name,
+                                description: this.job.team_roles[i].description,
+                                skills: skills,
+                            });
+                        }
+                        this.form.team_roles = teamRoles;
+                    }
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.job_status_id !== null) this.form.job_status_id = this.oldInput.job_status_id;
@@ -275,6 +308,8 @@
                     if (this.oldInput.description !== null) this.form.description = this.oldInput.description;
                     if (this.oldInput.starts_at !== null) this.form.starts_at = this.oldInput.starts_at;
                     if (this.oldInput.ends_at !== null) this.form.ends_at = this.oldInput.ends_at;
+                    if (this.oldInput.resources !== null) this.form.resources = JSON.parse(this.oldInput.resources);
+                    if (this.oldInput.team_roles !== null) this.form.team_roles = JSON.parse(this.oldInput.team_roles);
                 }
             },
             generateStatusOptions() {

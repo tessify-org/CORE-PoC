@@ -36,6 +36,7 @@ class UpdateJobRequest extends FormRequest
             "ends_at" => "nullable",
             "header_image" => "nullable|image",
             "resources" => "nullable",
+            "team_roles" => "nullable",
         ];
     }
 }

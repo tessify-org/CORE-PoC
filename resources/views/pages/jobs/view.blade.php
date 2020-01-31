@@ -71,9 +71,7 @@
                             {{ $job->description }}
                         </div>
                     </div>
-
-
-
+                    
                 </div>
                 <div id="job-content__right">
 

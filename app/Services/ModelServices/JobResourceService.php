@@ -53,7 +53,7 @@ class JobResourceService
             }
         }
 
-        return collect($out);
+        return $out;
     }
     
     public function find($id)

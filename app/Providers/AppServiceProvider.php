@@ -18,6 +18,11 @@ use App\Services\ModelServices\JobStatusService;
 use App\Services\ModelServices\JobCategoryService;
 use App\Services\ModelServices\JobResourceService;
 use App\Services\ModelServices\WorkMethodService;
+use App\Services\ModelServices\TaskService;
+use App\Services\ModelServices\TaskStatusService;
+use App\Services\ModelServices\TeamMemberService;
+use App\Services\ModelServices\TeamRoleService;
+use App\Services\ModelServices\SkillService;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -97,6 +102,26 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton("work-methods", function() {
             return new WorkMethodService;
+        });
+
+        $this->app->singleton("tasks", function() {
+            return new TaskService;
+        });
+        
+        $this->app->singleton("task-statuses", function() {
+            return new TaskStatusService;
+        });
+        
+        $this->app->singleton("team-members", function() {
+            return new TeamMemberService;
+        });
+
+        $this->app->singleton("team-roles", function() {
+            return new TeamRoleService;
+        });
+
+        $this->app->singleton("skills", function() {
+            return new SkillService;
         });
 
         //

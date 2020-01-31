@@ -70,4 +70,14 @@ class Job extends Model
     {
         return $this->hasMany(JobResource::class);
     }
+
+    public function teamRoles()
+    {
+        return $this->hasMany(TeamRole::class);
+    }
+
+    public function teamMembers()
+    {
+        return $this->hasMany(TeamMember::class);
+    }
 }

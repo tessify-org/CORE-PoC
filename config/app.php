@@ -237,6 +237,11 @@ return [
         'JobCategories' => \App\Facades\JobCategoriesFacade::class,
         'JobResources' => \App\Facades\JobResourcesFacade::class,
         'WorkMethods' => \App\Facades\WorkMethodsFacade::class,
+        'Tasks' => \App\Facades\TasksFacade::class,
+        'TaskStatuses' => \App\Facades\TaskStatusesFacade::class,
+        'TeamMembers' => \App\Facades\TeamMembersFacade::class,
+        'TeamRoles' => \App\Facades\TeamRolesFacade::class,
+        'Skills' => \App\Facades\SkillsFacade::class,
 
         'Dates' => \App\Facades\DatesFacade::class,
         'Uploader' => \App\Facades\UploaderFacade::class,

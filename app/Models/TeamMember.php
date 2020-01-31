@@ -4,26 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Skill extends Model
+class TeamMember extends Model
 {
-    protected $table = "skills";
+    protected $table = "team_members";
     protected $guarded = ["id", "created_at", "updated_at"];
     protected $fillable = [
-        "name",
+        "job_id",
+        "user_id",
+        "title",
     ];
 
     //
     // Relationships
-    // 
+    //
 
-    public function assignments()
+    public function job()
     {
-        return $this->belongsToMany(Assignment::class);
+        return $this->belongsTo(Job::class);
     }
 
-    public function users()
+    public function user()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function teamRoles()

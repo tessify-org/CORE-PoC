@@ -4,9 +4,12 @@ namespace App\Services\ModelServices;
 
 use Auth;
 use Dates;
+use Skills;
 use Uploader;
+use TeamRoles;
 use JobResources;
 use App\Models\Job;
+use App\Models\TeamRole;
 use App\Http\Requests\Jobs\CreateJobRequest;
 use App\Http\Requests\Jobs\UpdateJobRequest;
 
@@ -102,6 +105,9 @@ class JobService
         // Load the job's resources
         $job->resources = JobResources::getAllPreloadedForJob($job);
 
+        // Load the job's team roles
+        $job->team_roles = TeamRoles::getAllPreloadedForJob($job);
+
         // Return the upgraded job
         return $job;
     }
@@ -132,6 +138,7 @@ class JobService
         $job = Job::create($data);
 
         $this->processJobResources($job, $request->resources);
+        $this->processTeamRoles($job, $request->team_roles);
 
         return $job;
     }
@@ -159,12 +166,16 @@ class JobService
         $job->save();
 
         $this->processJobResources($job, $request->resources);
+        $this->processTeamRoles($job, $request->team_roles);
 
         return $job;
     }
 
     private function processJobResources(Job $job, $encodedResources)
     {
+        // TODO: make this function smarter
+        $job->resources()->delete();
+
         if (!is_null($encodedResources) and $encodedResources !== "" and $encodedResources !== "[]")
         {
             $resources = json_decode($encodedResources);
@@ -178,6 +189,43 @@ class JobService
                         $resource->job_id = $job->id;
                         $resource->save();
                     }
+                }
+            }
+        }
+
+        return $job;
+    }
+
+    private function processTeamRoles(Job $job, $encodedTeamRoles)
+    {
+        // TODO: make this function smarter; only delete those members that have actually been removed
+        // so that existing team members don't lose their data. For MVP; delete that shiiiit.
+        $job->teamRoles()->delete();
+
+        if (!is_null($encodedTeamRoles) and $encodedTeamRoles !== "" and $encodedTeamRoles !== "[]")
+        {
+            $teamRoles = json_decode($encodedTeamRoles);
+            if (is_array($teamRoles) and count($teamRoles))
+            {
+                foreach ($teamRoles as $teamRole)
+                {
+                    $skill_ids = [];
+                    if (count($teamRole->skills))
+                    {
+                        foreach ($teamRole->skills as $skillName)
+                        {
+                            $skill = Skills::findOrCreateByName($skillName);
+                            if ($skill) $skill_ids[] = $skill->id;
+                        }
+                    }
+
+                    $tm = TeamRole::create([
+                        "job_id" => $job->id,
+                        "name" => $teamRole->name,
+                        "description" => $teamRole->description
+                    ]);
+                    
+                    if (count($skill_ids)) $tm->skills()->attach($skill_ids);
                 }
             }
         }
