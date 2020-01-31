@@ -39,7 +39,7 @@
         </div>
 
         <!-- View dialog -->
-        <v-dialog v-model="dialogs.view.show" width="500">
+        <v-dialog v-model="dialogs.view.show" width="650" v-if="dialogs.view.index !== null">
             <div class="dialog">
                 <!-- Close button -->
                 <div class="dialog__close-button" @click="dialogs.view.show = false">
@@ -50,13 +50,13 @@
                     <!-- Title -->
                     <h3 class="dialog-title">Team rol</h3>
                     <!-- Details -->
-                    <div class="details">
+                    <div class="details bordered compact">
                         <div class="detail">
-                            <div class="key">Naam:</div>
+                            <div class="key">Naam</div>
                             <div class="val">{{ getRoleName(dialogs.view.index) }}</div>
                         </div>
                         <div class="detail">
-                            <div class="key">Beschrijving:</div>
+                            <div class="key">Beschrijving</div>
                             <div class="val">{{ getRoleDescription(dialogs.view.index) }}</div>
                         </div>
                         <div class="detail">
@@ -75,14 +75,21 @@
                 <div class="dialog-controls">
                     <!-- Cancel -->
                     <div class="dialog-controls__left">
-                        <v-btn text @click="dialogs.add.show = false">
+                        <v-btn text @click="dialogs.view.show = false">
                             <i class="fas fa-arrow-left"></i>
                             Annuleren
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
                     <div class="dialog-controls__right">
-
+                        <v-btn text dark color="warning" @click="onClickEdit(dialogs.view.index)">
+                            <i class="fas fa-pen-square"></i>
+                            Wijzigen
+                        </v-btn>
+                        <v-btn text dark color="red" @click="onClickDelete(dialogs.view.index)">
+                            <i class="fas fa-trash-alt"></i>
+                            Verwijderen
+                        </v-btn>
                     </div>
                 </div>
             </div>
@@ -383,6 +390,8 @@
                 this.dialogs.view.show = true;
             },
             onClickEdit(index) {
+                // Close the view dialog if its open
+                if (this.dialogs.view.show) this.dialogs.view.show = false;
                 // Save the index
                 this.dialogs.edit.index = index;
                 // Populate the dialog's form
@@ -400,6 +409,8 @@
                 this.dialogs.edit.show = false;
             },
             onClickDelete(index) {
+                // Close the view dialog if its open
+                if (this.dialogs.view.show) this.dialogs.view.show = false;
                 // Save the index
                 this.dialogs.delete.index = index;
                 // Open up the dialog
@@ -477,6 +488,12 @@
                         align-items: center;
                         justify-content: center;
                         background-color: hsl(0, 0%, 0%);
+                        &.view {
+                            background-color: #006ac7;
+                            &:hover {
+                                background-color: #005197;
+                            }
+                        }
                         &.edit {
                             background-color: #f04400;
                             &:hover {

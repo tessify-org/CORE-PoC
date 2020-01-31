@@ -417,7 +417,9 @@
             flex-direction: column;
             justify-content: center;
             #job-header__text {
-                padding-top: 50px;
+                width: 1200px;
+                margin: 0 auto;
+                padding: 50px 100px 0 100px;
                 #job-header__title {
                     font-weight: 300;
                     font-size: 3.5em;
@@ -462,79 +464,131 @@
             }
         }
     }
-    #job-content {
-        display: flex;
-        flex-direction: row;
-        #job-content__left {
-            flex: 3;
-            margin: 0 30px 0 0;
-            .job-paragraph {
-                margin: 0 0 50px 0;
-                .job-paragraph__title {
-                    font-size: 2.5em;
-                    font-weight: 300;
-                    line-height: 1em;
-                    margin: 0 0 25px 0;
-                }
-                .job-paragraph__text {
-                    font-size: 1.3em;
-                    font-weight: 400;
-                    line-height: 1.5em;
-                }
-            }
-
-
-
-            #job-description {
-                font-weight: 400;
-                font-size: 1.5em;
-            }
+    #job-tabs {
+        border-radius: 3px;
+        .tab-content {
+            padding: 30px;
+            box-sizing: border-box;
         }
-        #job-content__right {
-            flex: 2;
+        #job-info {
+            display: flex;
+            flex-direction: row;
+            #job-info__left {
+                flex: 1;
+                margin: 0 30px 0 0;
+            }
+            #job-info__right {
+                flex: 0 0 400px;
+            }
         }
     }
+    .job-paragraph {
+        margin: 0 0 45px 0;
+        .job-paragraph__title {
+            font-size: 1.4em;
+            font-weight: 500;
+            line-height: 1em;
+            margin: 0 0 15px 0;
+            padding: 0 0 8px 0;
+            box-sizing: border-box;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        }
+        .job-paragraph__text {
+            font-size: 1.1em;
+            font-weight: 400;
+            line-height: 1.5em;
+        }
+    }
+    #job-description {
+        font-weight: 400;
+        font-size: 1.5em;
+    }
+    #job-team-roles {
+        border-radius: 3px;
+        margin: 0 0 30px 0;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        .team-role {
+            display: flex;
+            padding: 10px 15px;
+            flex-direction: row;
+            align-items: center;
+            box-sizing: border-box;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            &:last-child {
+                border-bottom: 0;
+            }
+            .team-role__avatar-wrapper {
+                flex: 0 0 60px;
+                margin: 0 15px 0 0;
+                .team-role__avatar {
+                    width: 60px;
+                    height: 60px;
+                    border-radius: 30px;
+                    background-color: #f5f5f5;
+                }
+            }
+            .team-role__name {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            .team-role__actions {
+
+            }
+        }
+    }
+    #job-no-team-roles {
+        padding: 10px 15px;
+        border-radius: 3px;
+        margin: 0 0 30px 0;
+        box-sizing: border-box;
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .resource-list__wrapper {
+        border-radius: 3px;
+        background-color: #ffffff;
+        .resource-list {
+            .resource {
+                display: flex;
+                padding: 10px 15px;
+                flex-direction: row;
+                align-items: center;
+                transition: all .3s;
+                box-sizing: border-box;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                &:last-child {
+                    border-bottom: 0;
+                }
+                &:hover {
+                    cursor: pointer;
+                    background-color: hsl(0, 0%, 95%);
+                }
+                .resource-icon {
+                    margin: 0 15px 0 0;
+                }
+                .resource-title {
+                    flex: 1;
+                }
+                .resource-size {
+                    margin: 0 0 0 15px;
+                }
+            }
+        }
+        .no-resources {
+            padding: 10px 15px;
+            box-sizing: border-box;
+        }
+    }
+    
 }
 
 .sidebar-title {
     font-size: 1.5em;
     font-weight: 400;
     margin: 0 0 15px 0;
-}
-.resource-list__wrapper {
-    border-radius: 3px;
-    background-color: #ffffff;
-    .resource-list {
-        .resource {
-            display: flex;
-            padding: 10px 15px;
-            flex-direction: row;
-            align-items: center;
-            transition: all .3s;
-            box-sizing: border-box;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            &:last-child {
-                border-bottom: 0;
-            }
-            &:hover {
-                cursor: pointer;
-                background-color: hsl(0, 0%, 95%);
-            }
-            .resource-icon {
-                margin: 0 15px 0 0;
-            }
-            .resource-title {
-                flex: 1;
-            }
-            .resource-size {
-                margin: 0 0 0 15px;
-            }
-        }
-    }
-    .no-resources {
-        padding: 10px 15px;
-        box-sizing: border-box;
-    }
 }
 
 #delete-dialog {

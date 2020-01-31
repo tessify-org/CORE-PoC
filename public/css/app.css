@@ -2278,7 +2278,9 @@ i {
 }
 
 #job #job-header #job-header__text-wrapper #job-header__text {
-  padding-top: 50px;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 50px 100px 0 100px;
 }
 
 #job #job-header #job-header__text-wrapper #job-header__text #job-header__title {
@@ -2335,7 +2337,16 @@ i {
   color: red;
 }
 
-#job #job-content {
+#job #job-tabs {
+  border-radius: 3px;
+}
+
+#job #job-tabs .tab-content {
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+#job #job-tabs #job-info {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: horizontal;
@@ -2343,51 +2354,106 @@ i {
           flex-direction: row;
 }
 
-#job #job-content #job-content__left {
-  -webkit-box-flex: 3;
-          flex: 3;
+#job #job-tabs #job-info #job-info__left {
+  -webkit-box-flex: 1;
+          flex: 1;
   margin: 0 30px 0 0;
 }
 
-#job #job-content #job-content__left .job-paragraph {
-  margin: 0 0 50px 0;
+#job #job-tabs #job-info #job-info__right {
+  -webkit-box-flex: 0;
+          flex: 0 0 400px;
 }
 
-#job #job-content #job-content__left .job-paragraph .job-paragraph__title {
-  font-size: 2.5em;
-  font-weight: 300;
+#job .job-paragraph {
+  margin: 0 0 45px 0;
+}
+
+#job .job-paragraph .job-paragraph__title {
+  font-size: 1.4em;
+  font-weight: 500;
   line-height: 1em;
-  margin: 0 0 25px 0;
+  margin: 0 0 15px 0;
+  padding: 0 0 8px 0;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 
-#job #job-content #job-content__left .job-paragraph .job-paragraph__text {
-  font-size: 1.3em;
+#job .job-paragraph .job-paragraph__text {
+  font-size: 1.1em;
   font-weight: 400;
   line-height: 1.5em;
 }
 
-#job #job-content #job-content__left #job-description {
+#job #job-description {
   font-weight: 400;
   font-size: 1.5em;
 }
 
-#job #job-content #job-content__right {
-  -webkit-box-flex: 2;
-          flex: 2;
+#job #job-team-roles {
+  border-radius: 3px;
+  margin: 0 0 30px 0;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.sidebar-title {
-  font-size: 1.5em;
-  font-weight: 400;
-  margin: 0 0 15px 0;
+#job #job-team-roles .team-role {
+  display: -webkit-box;
+  display: flex;
+  padding: 10px 15px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.resource-list__wrapper {
+#job #job-team-roles .team-role:last-child {
+  border-bottom: 0;
+}
+
+#job #job-team-roles .team-role .team-role__avatar-wrapper {
+  -webkit-box-flex: 0;
+          flex: 0 0 60px;
+  margin: 0 15px 0 0;
+}
+
+#job #job-team-roles .team-role .team-role__avatar-wrapper .team-role__avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  background-color: #f5f5f5;
+}
+
+#job #job-team-roles .team-role .team-role__name {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+#job #job-no-team-roles {
+  padding: 10px 15px;
+  border-radius: 3px;
+  margin: 0 0 30px 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#job .resource-list__wrapper {
   border-radius: 3px;
   background-color: #ffffff;
 }
 
-.resource-list__wrapper .resource-list .resource {
+#job .resource-list__wrapper .resource-list .resource {
   display: -webkit-box;
   display: flex;
   padding: 10px 15px;
@@ -2402,31 +2468,37 @@ i {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.resource-list__wrapper .resource-list .resource:last-child {
+#job .resource-list__wrapper .resource-list .resource:last-child {
   border-bottom: 0;
 }
 
-.resource-list__wrapper .resource-list .resource:hover {
+#job .resource-list__wrapper .resource-list .resource:hover {
   cursor: pointer;
   background-color: #f2f2f2;
 }
 
-.resource-list__wrapper .resource-list .resource .resource-icon {
+#job .resource-list__wrapper .resource-list .resource .resource-icon {
   margin: 0 15px 0 0;
 }
 
-.resource-list__wrapper .resource-list .resource .resource-title {
+#job .resource-list__wrapper .resource-list .resource .resource-title {
   -webkit-box-flex: 1;
           flex: 1;
 }
 
-.resource-list__wrapper .resource-list .resource .resource-size {
+#job .resource-list__wrapper .resource-list .resource .resource-size {
   margin: 0 0 0 15px;
 }
 
-.resource-list__wrapper .no-resources {
+#job .resource-list__wrapper .no-resources {
   padding: 10px 15px;
   box-sizing: border-box;
+}
+
+.sidebar-title {
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 0 0 15px 0;
 }
 
 #delete-dialog {

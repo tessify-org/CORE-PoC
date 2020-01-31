@@ -47,7 +47,7 @@ class UploadService
      * @param       String          The file name without the extension (in case we just want append ext)
      * @return      String
      */
-    private function generateFileName($extension, $file_name = null)
+    public function generateFileName($extension, $file_name = null)
     {
         // If no file name was specified; generate one
         if (is_null($file_name))

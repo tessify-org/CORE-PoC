@@ -242,6 +242,7 @@ return [
         'TeamMembers' => \App\Facades\TeamMembersFacade::class,
         'TeamRoles' => \App\Facades\TeamRolesFacade::class,
         'Skills' => \App\Facades\SkillsFacade::class,
+        'Comments' => \App\Facades\CommentsFacade::class,
 
         'Dates' => \App\Facades\DatesFacade::class,
         'Uploader' => \App\Facades\UploaderFacade::class,

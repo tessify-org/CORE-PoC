@@ -10,6 +10,7 @@ use App\Http\Requests\Profiles\UpdateProfileRequest;
 class UserService
 {
     private $users;
+    private $preloadedUsers;
 
     public function getAll()
     {
@@ -19,6 +20,23 @@ class UserService
         }
 
         return $this->users;
+    }
+
+    public function getAllPreloaded()
+    {
+        if (is_null($this->preloadedUsers))
+        {
+            $out = [];
+
+            foreach ($this->getAll() as $user)
+            {
+                $out[] = $this->preload($user);
+            }
+
+            $this->preloadedUsers = collect($out);
+        }
+
+        return $this->preloadedUsers;
     }
 
     public function find($id)
@@ -32,6 +50,29 @@ class UserService
         }
 
         return false;
+    }
+
+    public function findPreloaded($id)
+    {
+        foreach ($this->getAllPreloaded() as $user)
+        {
+            if ($user->id == $id)
+            {
+                return $user;
+            }
+        }
+
+        return false;
+    }
+
+    private function preload(User $user)
+    {
+        $user->profile_href = route("profile", $user->slug);
+        
+        $user->formatted_name = $user->formattedName;
+        $user->combined_name = $user->combined_name;
+
+        return $user;
     }
 
     public function updateAssignments(User $user, UpdateProfileRequest $request)

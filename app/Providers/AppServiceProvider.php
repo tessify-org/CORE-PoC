@@ -23,6 +23,7 @@ use App\Services\ModelServices\TaskStatusService;
 use App\Services\ModelServices\TeamMemberService;
 use App\Services\ModelServices\TeamRoleService;
 use App\Services\ModelServices\SkillService;
+use App\Services\ModelServices\CommentService;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -122,6 +123,10 @@ class AppServiceProvider extends ServiceProvider
 
         $this->app->singleton("skills", function() {
             return new SkillService;
+        });
+
+        $this->app->singleton("comments", function() {
+            return new CommentService;
         });
 
         //

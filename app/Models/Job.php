@@ -80,4 +80,14 @@ class Job extends Model
     {
         return $this->hasMany(TeamMember::class);
     }
+    
+    public function teamMemberApplications()
+    {
+        return $this->hasMany(TeamMemberApplication::class);
+    }
+
+    public function comments()
+    {
+        return $this->morphMany(Comment::class, "commentable");
+    }
 }

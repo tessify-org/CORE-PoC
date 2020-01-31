@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\Jobs;
 
+use Auth;
 use Jobs;
+use Skills;
+use Comments;
+use WorkMethods;
 use JobStatuses;
 use JobResources;
 use JobCategories;
-use WorkMethods;
-use Skills;
+
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Jobs\CreateJobRequest;
 use App\Http\Requests\Jobs\UpdateJobRequest;
@@ -33,6 +36,8 @@ class JobBoardController extends Controller
 
         return view("pages.jobs.view", [
             "job" => $job,
+            "user" => Auth::user(),
+            "comments" => Comments::getAllPreloadedForJob($job),
         ]);
     }
 

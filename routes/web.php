@@ -51,15 +51,23 @@ Route::get("profiel/{slug?}", "Profiles\ProfileController@getProfile")->name("pr
 
 // Jobs
 Route::get("job-board", "Jobs\JobBoardController@getJobBoard")->name("jobs");
+
+// Create jobs
 Route::get("job-board/job-toevoegen", "Jobs\JobBoardController@getCreateJob")->name("jobs.create");
 Route::post("job-board/job-toevoegen", "Jobs\JobBoardController@postCreateJob")->name("jobs.create.post");
+
+// View job
 Route::get("job-board/{slug}", "Jobs\JobBoardController@getJob")->name("jobs.view");
+
+// Update job
 Route::get("job-board/{slug}/aanpassen", "Jobs\JobBoardController@getEditJob")->name("jobs.edit");
 Route::post("job-board/{slug}/aanpassen", "Jobs\JobBoardController@postEditJob")->name("jobs.edit.post");
+
+// Delete job
 Route::get("job-board/{slug}/verwijderen", "Jobs\JobBoardController@getDeleteJob")->name("jobs.delete");
 Route::post("job-board/{slug}/verwijderen", "Jobs\JobBoardController@postDeleteJob")->name("jobs.delete.post");
 
-
+// Api endpoints
 Route::group(["prefix" => "api"], function() {
 
     Route::group(["prefix" => "job-resources"], function() {
@@ -67,6 +75,14 @@ Route::group(["prefix" => "api"], function() {
         Route::post("create", "Api\JobResourceController@postCreateResource")->name("api.jobs.resources.create.post");
         Route::post("update", "Api\JobResourceController@postUpdateResource")->name("api.jobs.resources.update.post");
         Route::post("delete", "Api\JobResourceController@postDeleteResource")->name("api.jobs.resources.delete.post");
+
+    });
+
+    Route::group(["prefix" => "comments"], function() {
+
+        Route::post("create", "Api\CommentController@postCreateComment")->name("api.comments.create.post");
+        Route::post("update", "Api\CommentController@postUpdateComment")->name("api.comments.update.post");
+        Route::post("delete", "Api\CommentController@postDeleteComment")->name("api.comments.delete.post");
 
     });
     

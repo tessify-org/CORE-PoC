@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Avatar;
+use Uploader;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -62,6 +64,21 @@ class User extends Authenticatable
         return $this->hasMany(TeamMember::class);
     }
     
+    public function teamMemberApplications()
+    {
+        return $this->hasMany(TeamMemberApplication::class);
+    }
+
+    public function placedComments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    
+    public function receivedComments()
+    {
+        return $this->morphMany(Comment::class, "commentable");
+    }
+
     //
     // Accessors
     //
@@ -102,5 +119,18 @@ class User extends Authenticatable
         }
 
         return collect($out);
+    }
+
+    public function getAvatarUrlAttribute($value)
+    {
+        if (is_null($value))
+        {
+            $filename = Uploader::generateFileName("jpg");
+            $filepath = "storage/images/avatars/".$filename;
+            $avatar = Avatar::create($this->combinedName)->save($filepath, 100);
+            return asset($filepath);
+        }
+
+        return asset($value);
     }
 }
