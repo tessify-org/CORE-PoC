@@ -2,6 +2,7 @@
 
 namespace App\Services\ModelServices;
 
+use App\Models\Job;
 use App\Models\JobCategory;
 use App\Http\Requests\Jobs\Categories\CreateJobCategoryRequest;
 use App\Http\Requests\Jobs\Categories\UpdateJobCategoryRequest;
@@ -31,6 +32,11 @@ class JobCategoryService
         }
 
         return false;
+    }
+
+    public function findForJob(Job $job)
+    {
+        return $this->find($job->job_category_id);
     }
 
     public function createFromRequest(CreateJobCategoryRequest $request)

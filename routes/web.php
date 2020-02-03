@@ -70,20 +70,25 @@ Route::post("job-board/{slug}/verwijderen", "Jobs\JobBoardController@postDeleteJ
 // Api endpoints
 Route::group(["prefix" => "api"], function() {
 
+    // Job resources
     Route::group(["prefix" => "job-resources"], function() {
-
         Route::post("create", "Api\JobResourceController@postCreateResource")->name("api.jobs.resources.create.post");
         Route::post("update", "Api\JobResourceController@postUpdateResource")->name("api.jobs.resources.update.post");
         Route::post("delete", "Api\JobResourceController@postDeleteResource")->name("api.jobs.resources.delete.post");
-
     });
 
+    // Comments
     Route::group(["prefix" => "comments"], function() {
-
         Route::post("create", "Api\CommentController@postCreateComment")->name("api.comments.create.post");
         Route::post("update", "Api\CommentController@postUpdateComment")->name("api.comments.update.post");
         Route::post("delete", "Api\CommentController@postDeleteComment")->name("api.comments.delete.post");
+    });
 
+    // Team member applications
+    Route::group(["prefix" => "team-member-applications"], function() {
+        Route::post("create", "Api\TeamMemberApplicationController@postCreateApplication")->name("api.team-member-applications.create.post");
+        Route::post("update", "Api\TeamMemberApplicationController@postUpdateApplication")->name("api.team-member-applications.update.post");
+        Route::post("delete", "Api\TeamMemberApplicationController@postDeleteApplication")->name("api.team-member-applications.delete.post");
     });
     
 });

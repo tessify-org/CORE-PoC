@@ -24,6 +24,7 @@ use App\Services\ModelServices\TeamMemberService;
 use App\Services\ModelServices\TeamRoleService;
 use App\Services\ModelServices\SkillService;
 use App\Services\ModelServices\CommentService;
+use App\Services\ModelServices\TeamMemberApplicationService;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -115,6 +116,10 @@ class AppServiceProvider extends ServiceProvider
         
         $this->app->singleton("team-members", function() {
             return new TeamMemberService;
+        });
+
+        $this->app->singleton("team-member-applications", function() {
+            return new TeamMemberApplicationService;
         });
 
         $this->app->singleton("team-roles", function() {

@@ -2,6 +2,7 @@
 
 namespace App\Services\ModelServices;
 
+use App\Models\Job;
 use App\Models\WorkMethod;
 use App\Http\Requests\Jobs\WorkMethods\CreateWorkMethodRequest;
 use App\Http\Requests\Jobs\WorkMethods\UpdateWorkMethodRequest;
@@ -31,6 +32,11 @@ class WorkMethodService
         }
 
         return false;
+    }
+
+    public function findForJob(Job $job)
+    {
+        return $this->find($job->work_method_id);
     }
 
     public function createFromRequest(CreateWorkMethodRequest $request)

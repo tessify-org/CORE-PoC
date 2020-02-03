@@ -64,8 +64,10 @@
                 <v-textarea
                     :loading="form.loading"
                     v-model="form.comment"
-                    maxlength="255" counter
-                    auto-grow rows="3">
+                    maxlength="255" 
+                    auto-grow 
+                    rows="3"
+                    counter>
                 </v-textarea>
             </div>
 
@@ -537,11 +539,10 @@
         .comments__form {
             margin: 30px 0 0 0;
             .comments__form-label {
-                margin: 0 0 10px 0;
                 font-size: 1.4em;
                 font-weight: 500;
                 line-height: 1em;
-                margin: 0 0 15px 0;
+                margin: 0 0 10px 0;
                 padding: 0 0 8px 0;
                 box-sizing: border-box;
                 border-bottom: 2px solid rgba(0, 0, 0, 0.1);

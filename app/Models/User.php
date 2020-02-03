@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Avatar;
 use Uploader;
+use Assignments;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -91,34 +92,6 @@ class User extends Authenticatable
     public function getCombinedNameAttribute()
     {
         return $this->first_name." ".$this->last_name;
-    }
-
-    public function getCurrentAssignmentAttribute()
-    {
-        foreach ($this->assignments as $assignment)
-        {
-            if (is_null($assignment->stopped_at))
-            {
-                return $assignment;
-            }
-        }
-        
-        return false;
-    }
-
-    public function getPreviousAssignmentsAttribute()
-    {
-        $out = [];
-
-        foreach ($this->assignments as $assignment)
-        {
-            if (!is_null($assignment->stopped_at))
-            {
-                $out[] = $assignment;
-            }
-        }
-
-        return collect($out);
     }
 
     public function getAvatarUrlAttribute($value)

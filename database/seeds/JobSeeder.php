@@ -1,11 +1,16 @@
 <?php
 
-use App\Models\User;
 use App\Models\Job;
+use App\Models\User;
+use App\Models\Skill;
+use App\Models\TeamRole;
 use App\Models\JobStatus;
+use App\Models\WorkMethod;
+use App\Models\TeamMember;
 use App\Models\JobCategory;
 use App\Models\JobResource;
-use App\Models\WorkMethod;
+use App\Models\TeamMemberApplication;
+
 use Illuminate\Database\Seeder;
 
 class JobSeeder extends Seeder
@@ -21,6 +26,10 @@ class JobSeeder extends Seeder
         DB::table("job_statuses")->delete();
         DB::table("job_categories")->delete();
         DB::table("work_methods")->delete();
+        DB::table("team_roles")->delete();
+        DB::table("team_members")->delete();
+        DB::table("team_member_applications")->delete();
+        DB::table("team_member_team_role")->delete();
 
         //
         // Work methods
@@ -51,16 +60,31 @@ class JobSeeder extends Seeder
         // Job statuses
         //
 
-        $open = JobStatus::create(["name" => "open", "label" => "Open"]);
-        $closed = JobStatus::create(["name" => "closed", "label" => "Closed"]);
+        $open = JobStatus::create([
+            "name" => "open", 
+            "label" => "Open"
+        ]);
+        $closed = JobStatus::create([
+            "name" => "closed", 
+            "label" => "Closed"
+        ]);
 
         //
         // Job categories
         //
 
-        $software = JobCategory::create(["name" => "software", "label" => "Software"]);
-        $hardware = JobCategory::create(["name" => "hardware", "label" => "Hardware"]);
-        $process = JobCategory::create(["name" => "process-improvement", "label" => "Procesverbetering"]);
+        $software = JobCategory::create([
+            "name" => "software", 
+            "label" => "Software"
+        ]);
+        $hardware = JobCategory::create([
+            "name" => "hardware", 
+            "label" => "Hardware"
+        ]);
+        $process = JobCategory::create([
+            "name" => "process-improvement", 
+            "label" => "Procesverbetering"
+        ]);
 
         //
         // Grab random user
@@ -72,11 +96,60 @@ class JobSeeder extends Seeder
         // Generate jobs
         //
 
-        factory(Job::class, 10)->create([
-            "author_id" => $user->id,
-            "work_method_id" => $scrum->id,
-            "job_status_id" => $open->id,
-            "job_category_id" => $software->id,
-        ]);
+        $skills = Skill::all();
+        for ($i = 0; $i < 5; $i++)
+        {
+            // Create the job
+            $job = factory(Job::class)->create([
+                "author_id" => $user->id,
+                "work_method_id" => $scrum->id,
+                "job_status_id" => $open->id,
+                "job_category_id" => $software->id,
+            ]);
+                
+            // Role 1
+            $role_one = TeamRole::create([
+                "job_id" => $job->id,
+                "name" => "Developer",
+                "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras massa tellus, consectetur eu pellentesque id, mollis id ante. Sed accumsan auctor tortor, sit amet blandit ex dapibus ac. Nullam feugiat malesuada felis at malesuada.",
+            ]);
+            $role_one->skills()->attach([$skills->get(0)->id, $skills->get(1)->id, $skills->get(2)->id]);
+            
+            // Role 1 team member
+            $role_one_member = TeamMember::create([
+                "job_id" => $job->id,
+                "user_id" => $user->id,
+                "title" => $role_one->name,
+            ]);
+            $role_one_member->teamRoles()->attach($role_one->id);
+
+            // Role 2
+            $role_two = TeamRole::create([
+                "job_id" => $job->id,
+                "name" => "Designer",
+                "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras massa tellus, consectetur eu pellentesque id, mollis id ante. Sed accumsan auctor tortor, sit amet blandit ex dapibus ac. Nullam feugiat malesuada felis at malesuada.",
+            ]);
+            $skills = $skills->shuffle();
+            $role_two->skills()->attach([$skills->get(0)->id, $skills->get(1)->id, $skills->get(2)->id]);
+
+            // Role 2 applications
+            $role_two_application = TeamMemberApplication::create([
+                "job_id" => $job->id,
+                "user_id" => $user->id,
+                "team_role_id" => $role_two->id,
+                "motivation" => "I'm the 1337est hax0r",
+                "processed" => false,
+                "accepted" => false,
+            ]);
+            
+            // Role 3
+            $role_three = TeamRole::create([
+                "job_id" => $job->id,
+                "name" => "Scrum Master",
+                "description" => "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras massa tellus, consectetur eu pellentesque id, mollis id ante. Sed accumsan auctor tortor, sit amet blandit ex dapibus ac. Nullam feugiat malesuada felis at malesuada.",
+            ]);
+            $skills = $skills->shuffle();
+            $role_three->skills()->attach([$skills->get(0)->id, $skills->get(1)->id, $skills->get(2)->id]);
+        }
     }
 }

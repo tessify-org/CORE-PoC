@@ -4386,6 +4386,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["user", "comments", "targetId", "targetType", "createCommentApiEndpoint", "updateCommentApiEndpoint", "deleteCommentApiEndpoint", "perPage"],
   data: function data() {
@@ -6383,6 +6385,398 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobView.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jobs/JobView.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["job", "user", "comments", "createCommentApiEndpoint", "updateCommentApiEndpoint", "deleteCommentApiEndpoint", "createTeamMemberApplicationApiEndpoint", "updateTeamMemberApplicationApiEndpoint", "deleteTeamMemberApplicationApiEndpoint"],
+  data: function data() {
+    return {
+      tag: "[job-view]",
+      currentTab: 1,
+      mutableApplications: [],
+      dialogs: {
+        apply: {
+          show: false,
+          index: null,
+          errors: [],
+          loading: false,
+          form: {
+            motivation: ""
+          }
+        }
+      }
+    };
+  },
+  computed: {
+    submitApplicationDisabled: function submitApplicationDisabled() {
+      return false;
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " job: ", this.job);
+      console.log(this.tag + " user: ", this.user);
+      console.log(this.tag + " comments: ", this.comments);
+      console.log(this.tag + " create comment api endpoint: ", this.createCommentApiEndpoint);
+      console.log(this.tag + " update comment api endpoint: ", this.updateCommentApiEndpoint);
+      console.log(this.tag + " delete comment api endpoint: ", this.deleteCommentApiEndpoint);
+      console.log(this.tag + " create team member application api endpoint: ", this.createTeamMemberApplicationApiEndpoint);
+      console.log(this.tag + " update team member application api endpoint: ", this.updateTeamMemberApplicationApiEndpoint);
+      console.log(this.tag + " delete team member application api endpoint: ", this.deleteTeamMemberApplicationApiEndpoint); // console.log(this.tag+" ");
+
+      this.initializeData();
+    },
+    initializeData: function initializeData() {
+      if (this.job !== undefined && this.job !== null && this.job.team_member_applications !== undefined && this.job.team_member_applications !== null && this.job.team_member_applications.length > 0) {
+        for (var i = 0; i < this.job.team_member_applications.length; i++) {}
+      }
+    },
+    onClickViewTeam: function onClickViewTeam() {
+      this.currentTab = 1;
+    },
+    onClickApplyForRole: function onClickApplyForRole(index) {
+      console.log(this.tag + " clicked apply for role button", index);
+      this.dialogs.apply.index = index;
+      this.dialogs.apply.show = true;
+    },
+    onClickConfirmApply: function onClickConfirmApply() {
+      this.dialogs.apply.loading = true;
+      this.dialogs.apply.errors = [];
+      var payload = new FormData();
+      payload.append("job_id", this.job.id);
+      payload.append("team_role_id", this.job.team_roles[this.dialogs.apply.index].id);
+      payload.append("motivation", this.dialogs.apply.form.motivation);
+      this.axios.post(this.createTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        if (response.data.status === "success") {
+          this.dialogs.apply.loading = false;
+          this.dialogs.apply.show = false;
+          this.dialogs.apply.form.description = "";
+        } else {
+          this.dialogs.apply.loading = false;
+          this.dialogs.apply.errors = [response.data.error];
+        }
+      }.bind(this))["catch"](function (error) {
+        this.dialogs.apply.loading = false;
+        this.dialogs.apply.errors = [error];
+      }.bind(this));
+    },
+    getApplicationJobTitle: function getApplicationJobTitle() {
+      if (this.dialogs.apply.index !== null && this.job.team_roles[this.dialogs.apply.index] !== undefined) {
+        return this.job.team_roles[this.dialogs.apply.index].name;
+      }
+
+      return "..";
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/AssignmentsField.vue?vue&type=script&lang=js& ***!
@@ -7153,6 +7547,89 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/users/UserPill.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/users/UserPill.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    user: {
+      type: Object,
+      "default": null
+    },
+    withShadow: {
+      type: Boolean,
+      "default": false
+    },
+    dark: {
+      type: Boolean,
+      "default": false
+    }
+  },
+  data: function data() {
+    return {
+      tag: "[user-pill]"
+    };
+  },
+  computed: {
+    hasJobTitle: function hasJobTitle() {
+      return this.user !== null && this.user.current_assignment !== undefined && this.user.current_assignment !== null && this.user.current_assignment.job_title !== undefined;
+    },
+    hasMinistry: function hasMinistry() {
+      return this.user !== null && this.user.current_assignment !== undefined && this.user.current_assignment !== null && this.user.current_assignment.ministry !== undefined;
+    },
+    jobTitle: function jobTitle() {
+      if (this.hasJobTitle) {
+        return this.user.current_assignment.job_title.name;
+      }
+
+      return "";
+    },
+    ministry: function ministry() {
+      if (this.hasMinistry) {
+        return this.user.current_assignment.ministry.abbreviation;
+      }
+
+      return "";
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " user: ", this.user); // console.log(this.tag+" "); 
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Comments.vue?vue&type=style&index=0&lang=scss&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Comments.vue?vue&type=style&index=0&lang=scss& ***!
@@ -7165,7 +7642,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, ".comments .comments__title {\n  font-size: 1.4em;\n  font-weight: 500;\n  line-height: 1em;\n  margin: 0 0 15px 0;\n  padding: 0 0 8px 0;\n  box-sizing: border-box;\n  border-bottom: 2px solid rgba(0, 0, 0, 0.1);\n}\n.comments .comments__list .comment-wrapper {\n  margin: 0 0 15px 0;\n}\n.comments .comments__list .comment-wrapper:last-child {\n  margin: 0;\n}\n.comments .comments__list .comment-wrapper .comment {\n  padding: 20px;\n  font-size: 0.9em;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n.comments .comments__list .comment-wrapper .comment-footer {\n  display: -webkit-box;\n  display: flex;\n  margin: 10px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left .comment-author {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left .comment-author .comment-author__avatar {\n  width: 24px;\n  height: 24px;\n  margin: 0 10px 0 0;\n  border-radius: 12px;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center center;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left .comment-author .comment-author__text {\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.9em;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  margin: 0 15px 0 0;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action {\n  width: 24px;\n  height: 24px;\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  margin: 0 10px 0 0;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: black;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.edit {\n  background-color: #f04400;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.edit:hover {\n  background-color: #c73800;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.delete {\n  background-color: #d40000;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.delete:hover {\n  background-color: #950000;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action:hover {\n  cursor: pointer;\n  background-color: #262626;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action:last-child {\n  margin: 0;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-created-at {\n  font-size: 0.9em;\n}\n.comments .comments__empty {\n  padding: 15px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n.comments .comments__pagination {\n  display: -webkit-box;\n  display: flex;\n  margin: 30px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.comments .comments__form {\n  margin: 30px 0 0 0;\n}\n.comments .comments__form .comments__form-label {\n  margin: 0 0 10px 0;\n  font-size: 1.4em;\n  font-weight: 500;\n  line-height: 1em;\n  margin: 0 0 15px 0;\n  padding: 0 0 8px 0;\n  box-sizing: border-box;\n  border-bottom: 2px solid rgba(0, 0, 0, 0.1);\n}\n.comments .comments__form .comments__form-errors {\n  display: -webkit-box;\n  display: flex;\n  margin: 0 0 10px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.comments .comments__form .comments__form-errors .form-error {\n  color: #c41717;\n  margin: 0 0 5px 0;\n}\n.comments .comments__form .comments__form-errors .form-error:last-child {\n  margin: 0;\n}\n.comments .comments__form .form-field {\n  margin: 0;\n}\n.comments .comments__form .comments__form-actions {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
+exports.push([module.i, ".comments .comments__title {\n  font-size: 1.4em;\n  font-weight: 500;\n  line-height: 1em;\n  margin: 0 0 15px 0;\n  padding: 0 0 8px 0;\n  box-sizing: border-box;\n  border-bottom: 2px solid rgba(0, 0, 0, 0.1);\n}\n.comments .comments__list .comment-wrapper {\n  margin: 0 0 15px 0;\n}\n.comments .comments__list .comment-wrapper:last-child {\n  margin: 0;\n}\n.comments .comments__list .comment-wrapper .comment {\n  padding: 20px;\n  font-size: 0.9em;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n.comments .comments__list .comment-wrapper .comment-footer {\n  display: -webkit-box;\n  display: flex;\n  margin: 10px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left .comment-author {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left .comment-author .comment-author__avatar {\n  width: 24px;\n  height: 24px;\n  margin: 0 10px 0 0;\n  border-radius: 12px;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center center;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left .comment-author .comment-author__text {\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.9em;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  margin: 0 15px 0 0;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action {\n  width: 24px;\n  height: 24px;\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  margin: 0 10px 0 0;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: black;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.edit {\n  background-color: #f04400;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.edit:hover {\n  background-color: #c73800;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.delete {\n  background-color: #d40000;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.delete:hover {\n  background-color: #950000;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action:hover {\n  cursor: pointer;\n  background-color: #262626;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action:last-child {\n  margin: 0;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-created-at {\n  font-size: 0.9em;\n}\n.comments .comments__empty {\n  padding: 15px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n.comments .comments__pagination {\n  display: -webkit-box;\n  display: flex;\n  margin: 30px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.comments .comments__form {\n  margin: 30px 0 0 0;\n}\n.comments .comments__form .comments__form-label {\n  font-size: 1.4em;\n  font-weight: 500;\n  line-height: 1em;\n  margin: 0 0 10px 0;\n  padding: 0 0 8px 0;\n  box-sizing: border-box;\n  border-bottom: 2px solid rgba(0, 0, 0, 0.1);\n}\n.comments .comments__form .comments__form-errors {\n  display: -webkit-box;\n  display: flex;\n  margin: 0 0 10px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.comments .comments__form .comments__form-errors .form-error {\n  color: #c41717;\n  margin: 0 0 5px 0;\n}\n.comments .comments__form .comments__form-errors .form-error:last-child {\n  margin: 0;\n}\n.comments .comments__form .form-field {\n  margin: 0;\n}\n.comments .comments__form .comments__form-actions {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
 
 // exports
 
@@ -7286,6 +7763,25 @@ exports.push([module.i, "#job-form {\n  display: -webkit-box;\n  display: flex;\
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobView.vue?vue&type=style&index=0&lang=scss&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jobs/JobView.vue?vue&type=style&index=0&lang=scss& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#job-view #team #team-roles {\n  margin: 0 0 30px 0;\n}\n#job-view #team #team-roles .team-role {\n  display: -webkit-box;\n  display: flex;\n  padding: 30px;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#job-view #team #team-roles .team-role:last-child {\n  margin: 0;\n}\n#job-view #team #team-roles .team-role .team-role__avatar-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 120px;\n  margin: 0 30px 0 0;\n}\n#job-view #team #team-roles .team-role .team-role__avatar-wrapper .team-role__avatar {\n  width: 120px;\n  height: 120px;\n  border-radius: 60px;\n  background-color: white;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-name {\n  font-size: 2em;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills__label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n  color: black;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills .role-skill {\n  font-size: 0.8em;\n  margin: 0 5px 0 0;\n  border-radius: 2px;\n  box-sizing: border-box;\n  padding: 3px 3px 3px 5px;\n  background-color: white;\n}\n#job-view #team #team-roles .team-role .team-role__member {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 300px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#job-view #team #team-roles .team-role .team-role__member .team-role__member-label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n}\n#job-view #team #team-roles .team-role .team-role__actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss&":
 /*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss& ***!
@@ -7318,6 +7814,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "#update-profile-form {\n  padding: 25px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #fff;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, ".user-pill {\n  display: -webkit-box;\n  display: flex;\n  padding: 20px;\n  border-radius: 3px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  background-color: white;\n}\n.user-pill.dark {\n  background-color: #f2f2f2;\n}\n.user-pill .user-pill__avatar-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 50px;\n}\n.user-pill .user-pill__avatar-wrapper .user-pill__avatar {\n  width: 50px;\n  height: 50px;\n  border-radius: 25px;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center center;\n}\n.user-pill .user-pill__text-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  padding: 0 0 0 20px;\n  box-sizing: border-box;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.user-pill .user-pill__text-wrapper .user-name {\n  margin: 0 0 5px 0;\n}\n.user-pill .user-pill__text-wrapper .user-tags {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.user-pill .user-pill__text-wrapper .user-tags .tag {\n  font-size: 0.7em;\n  color: #000;\n  padding: 2px 5px 3px 5px;\n  border-radius: 3px;\n  margin: 0 5px 5px 0;\n  line-height: 1em;\n  box-sizing: border-box;\n  background-color: #d9d9d9;\n}", ""]);
 
 // exports
 
@@ -35740,6 +36255,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobView.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jobs/JobView.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./JobView.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobView.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss&":
 /*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/AssignmentsField.vue?vue&type=style&index=0&lang=scss& ***!
@@ -35779,6 +36324,36 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./UpdateProfileForm.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--7-2!./node_modules/sass-loader/dist/cjs.js??ref--7-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./UserPill.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -36555,9 +37130,9 @@ var render = function() {
               attrs: {
                 loading: _vm.form.loading,
                 maxlength: "255",
-                counter: "",
                 "auto-grow": "",
-                rows: "3"
+                rows: "3",
+                counter: ""
               },
               model: {
                 value: _vm.form.comment,
@@ -39055,6 +39630,699 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobView.vue?vue&type=template&id=02389274&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jobs/JobView.vue?vue&type=template&id=02389274& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "job-view" } },
+    [
+      _c("h1", { attrs: { id: "job-title" } }, [_vm._v(_vm._s(_vm.job.title))]),
+      _vm._v(" "),
+      _c("h2", { attrs: { id: "job-slogan" } }, [
+        _vm._v(_vm._s(_vm.job.slogan))
+      ]),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "job-stats" } }, [
+        _c(
+          "div",
+          {
+            staticClass: "elevation-1",
+            class: _vm.job.status.name,
+            attrs: { id: "job-status" }
+          },
+          [
+            _c("div", { attrs: { id: "job-status__label" } }, [
+              _vm._v("Status")
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "job-status__value" } }, [
+              _vm._v(_vm._s(_vm.job.status.label))
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c(
+        "v-tabs",
+        {
+          staticClass: "elevation-1",
+          attrs: { id: "job-tabs" },
+          model: {
+            value: _vm.currentTab,
+            callback: function($$v) {
+              _vm.currentTab = $$v
+            },
+            expression: "currentTab"
+          }
+        },
+        [
+          _c("v-tab", [_vm._v("Algemene informatie")]),
+          _vm._v(" "),
+          _c("v-tab", [_vm._v("Het Team")]),
+          _vm._v(" "),
+          _c("v-tab", [_vm._v("Taken")]),
+          _vm._v(" "),
+          _c("v-tab", [_vm._v("Geschiedenis")]),
+          _vm._v(" "),
+          _c("v-tab-item", [
+            _c("div", { staticClass: "tab-content" }, [
+              _c("div", { attrs: { id: "job-info" } }, [
+                _c(
+                  "div",
+                  { attrs: { id: "job-info__left" } },
+                  [
+                    _c("div", { staticClass: "job-paragraph" }, [
+                      _c("h3", { staticClass: "job-paragraph__title" }, [
+                        _vm._v("Probleem dat wordt opgelost")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "job-paragraph__text" }, [
+                        _vm._v(_vm._s(_vm.job.problem))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "job-paragraph" }, [
+                      _c("h3", { staticClass: "job-paragraph__title" }, [
+                        _vm._v("Projectomschrijving")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "job-paragraph__text" }, [
+                        _vm._v(_vm._s(_vm.job.description))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("comments", {
+                      attrs: {
+                        user: _vm.user,
+                        comments: _vm.comments,
+                        "per-page": "3",
+                        "target-type": "job",
+                        "target-id": _vm.job.id,
+                        "create-comment-api-endpoint":
+                          _vm.createCommentApiEndpoint,
+                        "update-comment-api-endpoint":
+                          _vm.updateCommentApiEndpoint,
+                        "delete-comment-api-endpoint":
+                          _vm.deleteCommentApiEndpoint
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { attrs: { id: "job-info__right" } }, [
+                  _c("div", { staticClass: "job-paragraph" }, [
+                    _c("h3", { staticClass: "job-paragraph__title" }, [
+                      _vm._v("Details")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { attrs: { id: "job-details" } }, [
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [_vm._v("ID")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm._v(_vm._s(_vm.job.id))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [
+                          _vm._v("Categorie")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm._v(_vm._s(_vm.job.category.label))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [
+                          _vm._v("Werkmethode")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm._v(_vm._s(_vm.job.work_method.label))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [_vm._v("Start op")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm.job.formatted_starts_at === null
+                            ? _c("span", { staticClass: "italic" }, [
+                                _vm._v("Nader te bepalen")
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.job.formatted_starts_at !== null
+                            ? _c("span", [
+                                _vm._v(_vm._s(_vm.job.formatted_starts_at))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [_vm._v("Stopt op")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm.job.formatted_ends_at === null
+                            ? _c("span", { staticClass: "italic" }, [
+                                _vm._v("Nader te bepalen")
+                              ])
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.job.formatted_ends_at !== null
+                            ? _c("span", [
+                                _vm._v(_vm._s(_vm.job.formatted_ends_at))
+                              ])
+                            : _vm._e()
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [
+                          _vm._v("Toegevoegd door")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _c(
+                            "a",
+                            { attrs: { href: _vm.job.author.profile_href } },
+                            [_vm._v(_vm._s(_vm.job.author.formatted_name))]
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [
+                          _vm._v("Toegevoegd op")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm._v(_vm._s(_vm.job.formatted_created_at))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [
+                          _vm._v("Laatste gewijzigd op")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm._v(_vm._s(_vm.job.formatted_updated_at))
+                        ])
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "job-paragraph" }, [
+                    _c("h3", { staticClass: "job-paragraph__title" }, [
+                      _vm._v("Project gestart door")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { attrs: { id: "job-author" } },
+                      [
+                        _c("user-pill", {
+                          attrs: { user: _vm.job.author, dark: "" }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "job-paragraph" }, [
+                    _c("h3", { staticClass: "job-paragraph__title" }, [
+                      _vm._v("Teamleden & rollen")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { attrs: { id: "job-team-roles" } }, [
+                      _vm.job.team_roles.length > 0
+                        ? _c(
+                            "div",
+                            { attrs: { id: "job-team-roles__list" } },
+                            _vm._l(_vm.job.team_roles, function(role, ri) {
+                              return _c(
+                                "div",
+                                { key: ri, staticClass: "team-role" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass: "team-role__avatar-wrapper"
+                                    },
+                                    [
+                                      _c("div", {
+                                        staticClass: "team-role__avatar"
+                                      })
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "team-role__text-wrapper" },
+                                    [
+                                      _c("div", { staticClass: "role-name" }, [
+                                        _vm._v(_vm._s(role.name))
+                                      ]),
+                                      _vm._v(" "),
+                                      role.team_member
+                                        ? _c(
+                                            "div",
+                                            { staticClass: "member-name" },
+                                            [
+                                              _vm._v(
+                                                "\n                                                " +
+                                                  _vm._s(
+                                                    role.team_member
+                                                      .formattedName
+                                                  ) +
+                                                  "\n                                            "
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(" "),
+                                      !role.team_member
+                                        ? _c(
+                                            "div",
+                                            { staticClass: "not-fulfilled" },
+                                            [
+                                              _vm._v(
+                                                "\n                                                Nog niemand aangesteld\n                                            "
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e()
+                                    ]
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.job.team_roles.length === 0
+                        ? _c(
+                            "div",
+                            { attrs: { id: "job-team-roles__empty" } },
+                            [
+                              _vm._v(
+                                "\n                                    Er zijn nog geen rollen gedefinieert\n                                "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { attrs: { id: "job-team-roles__actions" } },
+                        [
+                          _c(
+                            "v-btn",
+                            {
+                              attrs: {
+                                small: "",
+                                depressed: "",
+                                color: "primary"
+                              },
+                              on: { click: _vm.onClickViewTeam }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                        Bekijk details\n                                    "
+                              )
+                            ]
+                          )
+                        ],
+                        1
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "job-paragraph" }, [
+                    _c("h3", { staticClass: "job-paragraph__title" }, [
+                      _vm._v("Resources")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { attrs: { id: "job-resources" } }, [
+                      _vm.job.resources.length > 0
+                        ? _c(
+                            "div",
+                            { attrs: { id: "job-resources__list" } },
+                            _vm._l(_vm.job.resources, function(resource, ri) {
+                              return _c(
+                                "div",
+                                { key: ri, staticClass: "resource" },
+                                [
+                                  _c("div", { staticClass: "resource-icon" }, [
+                                    _c("i", { staticClass: "far fa-file" })
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "resource-title" }, [
+                                    _vm._v(_vm._s(resource.title))
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("div", { staticClass: "resource-size" }, [
+                                    _vm._v(_vm._s(resource.file_size) + " kb")
+                                  ])
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.job.resources.length === 0
+                        ? _c("div", { attrs: { id: "job-resources__empty" } }, [
+                            _vm._v(
+                              "\n                                    Er zijn nog geen resources toegevoegd.\n                                "
+                            )
+                          ])
+                        : _vm._e()
+                    ])
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("v-tab-item", [
+            _c("div", { staticClass: "tab-content" }, [
+              _c("h3", { staticClass: "content-subtitle" }, [
+                _vm._v("Team rollen")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "content-desc" }, [
+                _vm._v(
+                  "\n                    Alle rollen die vervult dienen te worden om dit project tot een succes te maken.\n                "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { attrs: { id: "team" } }, [
+                _vm.job.team_roles.length > 0
+                  ? _c(
+                      "div",
+                      { attrs: { id: "team-roles" } },
+                      _vm._l(_vm.job.team_roles, function(role, ri) {
+                        return _c(
+                          "div",
+                          { key: ri, staticClass: "team-role" },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "team-role__avatar-wrapper" },
+                              [_c("div", { staticClass: "team-role__avatar" })]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "team-role__text-wrapper" },
+                              [
+                                _c("div", { staticClass: "role-name" }, [
+                                  _vm._v(_vm._s(role.name))
+                                ]),
+                                _vm._v(" "),
+                                role.skills.length > 0
+                                  ? _c(
+                                      "div",
+                                      { staticClass: "role-skills__wrapper" },
+                                      [
+                                        _c(
+                                          "div",
+                                          { staticClass: "role-skills__label" },
+                                          [_vm._v("Vereiste skills")]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "role-skills" },
+                                          _vm._l(role.skills, function(
+                                            skill,
+                                            si
+                                          ) {
+                                            return _c(
+                                              "div",
+                                              {
+                                                key: si,
+                                                staticClass: "role-skill"
+                                              },
+                                              [
+                                                _vm._v(
+                                                  "\n                                            " +
+                                                    _vm._s(skill.name) +
+                                                    "\n                                        "
+                                                )
+                                              ]
+                                            )
+                                          }),
+                                          0
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
+                            ),
+                            _vm._v(" "),
+                            role.team_member
+                              ? _c(
+                                  "div",
+                                  { staticClass: "team-role__member" },
+                                  [
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "team-role__member-label"
+                                      },
+                                      [_vm._v("Vervuld door:")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("user-pill", {
+                                      attrs: { user: role.team_member.user }
+                                    })
+                                  ],
+                                  1
+                                )
+                              : _vm._e(),
+                            _vm._v(" "),
+                            !role.team_member
+                              ? _c(
+                                  "div",
+                                  { staticClass: "team-role__actions" },
+                                  [
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: {
+                                          color: "primary",
+                                          large: "",
+                                          depressed: ""
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            return _vm.onClickApplyForRole(ri)
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                    Meld je aan!\n                                "
+                                        )
+                                      ]
+                                    )
+                                  ],
+                                  1
+                                )
+                              : _vm._e()
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.job.team_roles.length === 0
+                  ? _c("div", { attrs: { id: "no-team-roles" } }, [
+                      _vm._v(
+                        "\n                        Er zijn nog geen rollen gedefineert.\n                    "
+                      )
+                    ])
+                  : _vm._e()
+              ]),
+              _vm._v(" "),
+              _c("h3", { staticClass: "content-subtitle" }, [
+                _vm._v("Aanmeldingen")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("v-tab-item", [_c("div", { staticClass: "tab-content" })]),
+          _vm._v(" "),
+          _c("v-tab-item", [_c("div", { staticClass: "tab-content" })])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.apply.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.apply, "show", $$v)
+            },
+            expression: "dialogs.apply.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.apply.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Aanmelden als " + _vm._s(_vm.getApplicationJobTitle()))
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.apply.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.apply.errors, function(error, ei) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-textarea", {
+                    attrs: {
+                      label: "Motivatie",
+                      placeholder: "Waarom zou je deze rol willen vervullen?",
+                      loading: _vm.dialogs.apply.loading
+                    },
+                    model: {
+                      value: _vm.dialogs.apply.form.motivation,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.apply.form, "motivation", $$v)
+                      },
+                      expression: "dialogs.apply.form.motivation"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.apply.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        depressed: "",
+                        color: "success",
+                        dark: "",
+                        loading: _vm.dialogs.apply.loading,
+                        disabled: _vm.submitApplicationDisabled
+                      },
+                      on: { click: _vm.onClickConfirmApply }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-save" }),
+                      _vm._v(
+                        "\n                        Opslaan\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/AssignmentsField.vue?vue&type=template&id=b1a37e84&":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/AssignmentsField.vue?vue&type=template&id=b1a37e84& ***!
@@ -40004,6 +41272,68 @@ var render = function() {
           ],
           1
         )
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/users/UserPill.vue?vue&type=template&id=63b37514&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/users/UserPill.vue?vue&type=template&id=63b37514& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "user-pill",
+      class: { "elevation-1": _vm.withShadow, dark: _vm.dark }
+    },
+    [
+      _c("div", { staticClass: "user-pill__avatar-wrapper" }, [
+        _c("div", {
+          staticClass: "user-pill__avatar",
+          style: { backgroundImage: "url(" + _vm.user.avatar_url + ")" }
+        })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "user-pill__text-wrapper" }, [
+        _c("div", { staticClass: "user-name" }, [
+          _vm._v(_vm._s(_vm.user.formatted_name))
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "user-tags" }, [
+          _vm.hasMinistry
+            ? _c("div", { staticClass: "tag" }, [
+                _vm._v(
+                  "\n                " + _vm._s(_vm.ministry) + "\n            "
+                )
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.hasJobTitle
+            ? _c("div", { staticClass: "tag text" }, [
+                _vm._v(
+                  "\n                " + _vm._s(_vm.jobTitle) + "\n            "
+                )
+              ])
+            : _vm._e()
+        ])
       ])
     ]
   )
@@ -93267,8 +94597,10 @@ var map = {
 	"./components/form-fields/ResourcesField.vue": "./resources/js/components/form-fields/ResourcesField.vue",
 	"./components/form-fields/TeamRolesField.vue": "./resources/js/components/form-fields/TeamRolesField.vue",
 	"./components/jobs/JobForm.vue": "./resources/js/components/jobs/JobForm.vue",
+	"./components/jobs/JobView.vue": "./resources/js/components/jobs/JobView.vue",
 	"./components/profiles/AssignmentsField.vue": "./resources/js/components/profiles/AssignmentsField.vue",
-	"./components/profiles/UpdateProfileForm.vue": "./resources/js/components/profiles/UpdateProfileForm.vue"
+	"./components/profiles/UpdateProfileForm.vue": "./resources/js/components/profiles/UpdateProfileForm.vue",
+	"./components/users/UserPill.vue": "./resources/js/components/users/UserPill.vue"
 };
 
 
@@ -94090,6 +95422,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/jobs/JobView.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/jobs/JobView.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _JobView_vue_vue_type_template_id_02389274___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./JobView.vue?vue&type=template&id=02389274& */ "./resources/js/components/jobs/JobView.vue?vue&type=template&id=02389274&");
+/* harmony import */ var _JobView_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./JobView.vue?vue&type=script&lang=js& */ "./resources/js/components/jobs/JobView.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _JobView_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./JobView.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/jobs/JobView.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _JobView_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _JobView_vue_vue_type_template_id_02389274___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _JobView_vue_vue_type_template_id_02389274___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jobs/JobView.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jobs/JobView.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/jobs/JobView.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./JobView.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobView.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jobs/JobView.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/jobs/JobView.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./JobView.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobView.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jobs/JobView.vue?vue&type=template&id=02389274&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/jobs/JobView.vue?vue&type=template&id=02389274& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_template_id_02389274___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./JobView.vue?vue&type=template&id=02389274& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jobs/JobView.vue?vue&type=template&id=02389274&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_template_id_02389274___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_JobView_vue_vue_type_template_id_02389274___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/profiles/AssignmentsField.vue":
 /*!***************************************************************!*\
   !*** ./resources/js/components/profiles/AssignmentsField.vue ***!
@@ -94259,6 +95678,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_template_id_df40bcec___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UpdateProfileForm_vue_vue_type_template_id_df40bcec___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/users/UserPill.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/users/UserPill.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _UserPill_vue_vue_type_template_id_63b37514___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./UserPill.vue?vue&type=template&id=63b37514& */ "./resources/js/components/users/UserPill.vue?vue&type=template&id=63b37514&");
+/* harmony import */ var _UserPill_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserPill.vue?vue&type=script&lang=js& */ "./resources/js/components/users/UserPill.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _UserPill_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./UserPill.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _UserPill_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _UserPill_vue_vue_type_template_id_63b37514___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _UserPill_vue_vue_type_template_id_63b37514___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/users/UserPill.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/users/UserPill.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/users/UserPill.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./UserPill.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/users/UserPill.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--7-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--7-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./UserPill.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_7_2_node_modules_sass_loader_dist_cjs_js_ref_7_3_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/users/UserPill.vue?vue&type=template&id=63b37514&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/users/UserPill.vue?vue&type=template&id=63b37514& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_template_id_63b37514___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./UserPill.vue?vue&type=template&id=63b37514& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/users/UserPill.vue?vue&type=template&id=63b37514&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_template_id_63b37514___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_UserPill_vue_vue_type_template_id_63b37514___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

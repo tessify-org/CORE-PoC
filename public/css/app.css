@@ -2217,6 +2217,10 @@ i {
   background-position: center center;
 }
 
+#job #job-header.controls-only {
+  height: 90px;
+}
+
 #job #job-header #job-header__overlay {
   top: 0;
   left: 0;
@@ -2385,19 +2389,103 @@ i {
   line-height: 1.5em;
 }
 
+#job #job-title {
+  margin: 0;
+  font-size: 3em;
+  font-weight: 400;
+  line-height: 1.2em;
+}
+
+#job #job-slogan {
+  font-size: 2em;
+  font-weight: 300;
+  margin: 15px 0 30px 0;
+}
+
+#job #job-stats {
+  margin: 0 0 30px 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#job #job-stats #job-status {
+  display: -webkit-box;
+  display: flex;
+  border-radius: 3px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  background-color: white;
+}
+
+#job #job-stats #job-status.open #job-status__value {
+  color: green;
+}
+
+#job #job-stats #job-status.closed #job-status__value {
+  color: red;
+}
+
+#job #job-stats #job-status #job-status__label {
+  padding: 10px 0 10px 15px;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+#job #job-stats #job-status #job-status__value {
+  padding: 10px 15px;
+  box-sizing: border-box;
+}
+
 #job #job-description {
   font-weight: 400;
   font-size: 1.5em;
 }
 
+#job #job-details {
+  margin: -10px 0 0 0;
+}
+
+#job #job-details .detail {
+  display: -webkit-box;
+  display: flex;
+  padding: 5px 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#job #job-details .detail:last-child {
+  border-bottom: 0;
+}
+
+#job #job-details .detail .key {
+  -webkit-box-flex: 0;
+          flex: 0 0 200px;
+}
+
+#job #job-details .detail .val {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
 #job #job-team-roles {
   border-radius: 3px;
   margin: 0 0 30px 0;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
 }
 
-#job #job-team-roles .team-role {
+#job #job-team-roles #job-team-roles__list {
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+#job #job-team-roles #job-team-roles__list .team-role {
   display: -webkit-box;
   display: flex;
   padding: 10px 15px;
@@ -2407,27 +2495,28 @@ i {
   -webkit-box-align: center;
           align-items: center;
   box-sizing: border-box;
+  background-color: whitesmoke;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#job #job-team-roles .team-role:last-child {
+#job #job-team-roles #job-team-roles__list .team-role:last-child {
   border-bottom: 0;
 }
 
-#job #job-team-roles .team-role .team-role__avatar-wrapper {
+#job #job-team-roles #job-team-roles__list .team-role .team-role__avatar-wrapper {
   -webkit-box-flex: 0;
           flex: 0 0 60px;
   margin: 0 15px 0 0;
 }
 
-#job #job-team-roles .team-role .team-role__avatar-wrapper .team-role__avatar {
+#job #job-team-roles #job-team-roles__list .team-role .team-role__avatar-wrapper .team-role__avatar {
   width: 60px;
   height: 60px;
   border-radius: 30px;
-  background-color: #f5f5f5;
+  background-color: #fff;
 }
 
-#job #job-team-roles .team-role .team-role__name {
+#job #job-team-roles #job-team-roles__list .team-role .team-role__text-wrapper {
   -webkit-box-flex: 1;
           flex: 1;
   display: -webkit-box;
@@ -2439,7 +2528,21 @@ i {
           justify-content: center;
 }
 
-#job #job-no-team-roles {
+#job #job-team-roles #job-team-roles__list .team-role .team-role__text-wrapper .role-name {
+  font-weight: 500;
+}
+
+#job #job-team-roles #job-team-roles__list .team-role .team-role__text-wrapper .member-name {
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+#job #job-team-roles #job-team-roles__list .team-role .team-role__text-wrapper .not-fulfilled {
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+#job #job-team-roles #job-team-roles__empty {
   padding: 10px 15px;
   border-radius: 3px;
   margin: 0 0 30px 0;
@@ -2448,12 +2551,20 @@ i {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#job .resource-list__wrapper {
-  border-radius: 3px;
-  background-color: #ffffff;
+#job #job-team-roles #job-team-roles__actions {
+  display: -webkit-box;
+  display: flex;
+  margin: 15px 0 0 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
 }
 
-#job .resource-list__wrapper .resource-list .resource {
+#job #job-resources #job-resources__list .resource {
   display: -webkit-box;
   display: flex;
   padding: 10px 15px;
@@ -2468,29 +2579,29 @@ i {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#job .resource-list__wrapper .resource-list .resource:last-child {
+#job #job-resources #job-resources__list .resource:last-child {
   border-bottom: 0;
 }
 
-#job .resource-list__wrapper .resource-list .resource:hover {
+#job #job-resources #job-resources__list .resource:hover {
   cursor: pointer;
   background-color: #f2f2f2;
 }
 
-#job .resource-list__wrapper .resource-list .resource .resource-icon {
+#job #job-resources #job-resources__list .resource .resource-icon {
   margin: 0 15px 0 0;
 }
 
-#job .resource-list__wrapper .resource-list .resource .resource-title {
+#job #job-resources #job-resources__list .resource .resource-title {
   -webkit-box-flex: 1;
           flex: 1;
 }
 
-#job .resource-list__wrapper .resource-list .resource .resource-size {
+#job #job-resources #job-resources__list .resource .resource-size {
   margin: 0 0 0 15px;
 }
 
-#job .resource-list__wrapper .no-resources {
+#job #job-resources .no-resources {
   padding: 10px 15px;
   box-sizing: border-box;
 }
@@ -2541,5 +2652,23 @@ i {
 #delete-dialog #delete-dialog__actions #delete-dialog__actions-right {
   -webkit-box-pack: end;
           justify-content: flex-end;
+}
+
+.content-subtitle {
+  font-size: 1.4em;
+  font-weight: 500;
+  line-height: 1em;
+  margin: 0 0 15px 0;
+  padding: 0 0 8px 0;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.content-desc {
+  font-size: 0.9em;
+  padding: 10px 15px;
+  margin: 0 0 30px 0;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
 }
 

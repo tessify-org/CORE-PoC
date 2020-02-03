@@ -2,7 +2,11 @@
 
 namespace App\Services\ModelServices;
 
+use Auth;
+use Assignments;
 use Carbon\Carbon;
+
+use App\Models\Job;
 use App\Models\User;
 use App\Models\Assignment;
 use App\Http\Requests\Profiles\UpdateProfileRequest;
@@ -11,6 +15,11 @@ class UserService
 {
     private $users;
     private $preloadedUsers;
+
+    public function current()
+    {
+        return $this->findPreloaded(Auth::user()->id);
+    }
 
     public function getAll()
     {
@@ -67,11 +76,20 @@ class UserService
 
     private function preload(User $user)
     {
+        // Add link to the user's profile page
         $user->profile_href = route("profile", $user->slug);
         
+        // Manually load the dynamic attributes
         $user->formatted_name = $user->formattedName;
         $user->combined_name = $user->combined_name;
 
+        // Load current & previous assignments
+        $user->current_assignment = Assignments::getCurrentForUser($user);
+        $user->previous_assignments = Assignments::getPreviousForUser($user);
+
+        // TODO: load relationships.. not necessary yet
+
+        // Return the upgraded user
         return $user;
     }
 
@@ -100,5 +118,18 @@ class UserService
                 $i++;
             }
         }
+    }
+
+    public function findAuthorForJob(Job $job)
+    {
+        foreach ($this->getAllPreloaded() as $user)
+        {
+            if ($user->id == $job->author_id)
+            {
+                return $user;
+            }
+        }
+
+        return false;
     }
 }

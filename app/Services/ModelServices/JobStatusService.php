@@ -2,6 +2,7 @@
 
 namespace App\Services\ModelServices;
 
+use App\Models\Job;
 use App\Models\JobStatus;
 
 class JobStatusService
@@ -23,6 +24,19 @@ class JobStatusService
         foreach ($this->getAll() as $status)
         {
             if ($status->id == $id)
+            {
+                return $status;
+            }
+        }
+
+        return false;
+    }
+
+    public function findForJob(Job $job)
+    {
+        foreach ($this->getAll() as $status)
+        {
+            if ($status->id == $job->job_status_id)
             {
                 return $status;
             }

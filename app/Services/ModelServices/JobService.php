@@ -4,10 +4,15 @@ namespace App\Services\ModelServices;
 
 use Auth;
 use Dates;
+use Users;
 use Skills;
 use Uploader;
 use TeamRoles;
+use WorkMethods;
+use JobStatuses;
 use JobResources;
+use JobCategories;
+use TeamMemberApplications;
 use App\Models\Job;
 use App\Models\TeamRole;
 use App\Http\Requests\Jobs\CreateJobRequest;
@@ -107,6 +112,27 @@ class JobService
 
         // Load the job's team roles
         $job->team_roles = TeamRoles::getAllPreloadedForJob($job);
+
+        // Load the job's status
+        $job->status = JobStatuses::findForJob($job);
+
+        // Load the job's author
+        $job->author = Users::findAuthorForJob($job);
+
+        // Load the job's category
+        $job->category = JobCategories::findForJob($job);
+
+        // Load the job's work method
+        $job->work_method = WorkMethods::findForJob($job);
+
+        // Load the job's team member applications
+        $job->team_member_applications = TeamMemberApplications::getAllForJob($job);
+
+        // Format the dates
+        $job->formatted_starts_at = is_null($job->starts_at) ? null : $job->starts_at->format("d-m-Y");
+        $job->formatted_ends_at = is_null($job->ends_at) ? null : $job->ends_at->format("d-m-Y");
+        $job->formatted_created_at = $job->created_at->format("d-m-Y H:m:s");
+        $job->formatted_updated_at = $job->updated_at->format("d-m-Y H:m:s");
 
         // Return the upgraded job
         return $job;

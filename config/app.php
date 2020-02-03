@@ -240,6 +240,7 @@ return [
         'Tasks' => \App\Facades\TasksFacade::class,
         'TaskStatuses' => \App\Facades\TaskStatusesFacade::class,
         'TeamMembers' => \App\Facades\TeamMembersFacade::class,
+        'TeamMemberApplications' => \App\Facades\TeamMemberApplicationsFacade::class,
         'TeamRoles' => \App\Facades\TeamRolesFacade::class,
         'Skills' => \App\Facades\SkillsFacade::class,
         'Comments' => \App\Facades\CommentsFacade::class,
