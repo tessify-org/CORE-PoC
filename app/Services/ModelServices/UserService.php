@@ -18,7 +18,13 @@ class UserService
 
     public function current()
     {
-        return $this->findPreloaded(Auth::user()->id);
+        $user = Auth::user();
+        if ($user)
+        {
+            return $this->findPreloaded($user->id);
+        }
+
+        return false;
     }
 
     public function getAll()
@@ -131,5 +137,13 @@ class UserService
         }
 
         return false;
+    }
+
+    public function saveAvatar($id, $url)
+    {
+        $user = User::find($id);
+        $user->avatar_url = $url;
+        $user->save();
+        return $user;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Users;
 use Avatar;
 use Uploader;
 use Assignments;
@@ -101,6 +102,9 @@ class User extends Authenticatable
             $filename = Uploader::generateFileName("jpg");
             $filepath = "storage/images/avatars/".$filename;
             $avatar = Avatar::create($this->combinedName)->save($filepath, 100);
+
+            Users::saveAvatar($this->id, $filepath);
+
             return asset($filepath);
         }
 

@@ -24,6 +24,10 @@ class CreateTeamMemberApplicationRequest extends FormRequest
      */
     public function rules()
     {
-        return [];
+        return [
+            "job_id" => "required|integer|exists:jobs,id",
+            "team_role_id" => "required|integer|exists:team_roles,id",
+            "motivation" => "required",
+        ];
     }
 }

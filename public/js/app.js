@@ -6688,12 +6688,251 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["job", "user", "comments", "createCommentApiEndpoint", "updateCommentApiEndpoint", "deleteCommentApiEndpoint", "createTeamMemberApplicationApiEndpoint", "updateTeamMemberApplicationApiEndpoint", "deleteTeamMemberApplicationApiEndpoint"],
+  props: ["job", "user", "comments", "createCommentApiEndpoint", "updateCommentApiEndpoint", "deleteCommentApiEndpoint", "createTeamMemberApplicationApiEndpoint", "updateTeamMemberApplicationApiEndpoint", "deleteTeamMemberApplicationApiEndpoint", "acceptTeamMemberApplicationApiEndpoint", "denyTeamMemberApplicationApiEndpoint"],
   data: function data() {
     return {
       tag: "[job-view]",
       currentTab: 1,
+      mutableRoles: [],
       mutableApplications: [],
       dialogs: {
         apply: {
@@ -6704,13 +6943,55 @@ __webpack_require__.r(__webpack_exports__);
           form: {
             motivation: ""
           }
+        },
+        application: {
+          show: false,
+          index: null,
+          errors: [],
+          loading: false,
+          operation: null
+        },
+        edit_application: {
+          closed_view: false,
+          show: false,
+          index: null,
+          loading: false,
+          errors: [],
+          form: {
+            motivation: ""
+          }
+        },
+        delete_application: {
+          closed_view: false,
+          show: false,
+          index: null,
+          loading: false,
+          errors: []
         }
       }
     };
   },
   computed: {
     submitApplicationDisabled: function submitApplicationDisabled() {
-      return false;
+      return this.dialogs.apply.form.motivation === "";
+    },
+    acceptApplicationDisabled: function acceptApplicationDisabled() {
+      return this.dialogs.application.operation === "deny" && this.dialogs.application.loading;
+    },
+    acceptApplicationLoading: function acceptApplicationLoading() {
+      return this.dialogs.application.operation === 'accept' && this.dialogs.application.loading;
+    },
+    denyApplicationDisabled: function denyApplicationDisabled() {
+      return this.dialogs.application.operation === "accept" && this.dialogs.application.loading;
+    },
+    denyApplicationLoading: function denyApplicationLoading() {
+      return this.dialogs.application.operation === 'deny' && this.dialogs.application.loading;
+    },
+    showApplicationDialogControls: function showApplicationDialogControls() {
+      return this.mutableApplications[this.dialogs.application.index] !== undefined && !this.mutableApplications[this.dialogs.application.index].processed;
+    },
+    editApplicationDisabled: function editApplicationDisabled() {
+      return this.dialogs.edit_application.form.motivation === "";
     }
   },
   methods: {
@@ -6724,13 +7005,24 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.tag + " delete comment api endpoint: ", this.deleteCommentApiEndpoint);
       console.log(this.tag + " create team member application api endpoint: ", this.createTeamMemberApplicationApiEndpoint);
       console.log(this.tag + " update team member application api endpoint: ", this.updateTeamMemberApplicationApiEndpoint);
-      console.log(this.tag + " delete team member application api endpoint: ", this.deleteTeamMemberApplicationApiEndpoint); // console.log(this.tag+" ");
-
+      console.log(this.tag + " delete team member application api endpoint: ", this.deleteTeamMemberApplicationApiEndpoint);
+      console.log(this.tag + " accept team member application api endpoint: ", this.acceptTeamMemberApplicationApiEndpoint);
+      console.log(this.tag + " deny team member application api endpoint: ", this.denyTeamMemberApplicationApiEndpoint);
       this.initializeData();
     },
     initializeData: function initializeData() {
-      if (this.job !== undefined && this.job !== null && this.job.team_member_applications !== undefined && this.job.team_member_applications !== null && this.job.team_member_applications.length > 0) {
-        for (var i = 0; i < this.job.team_member_applications.length; i++) {}
+      if (this.job !== undefined && this.job !== null) {
+        if (this.job.team_member_applications !== undefined && this.job.team_member_applications !== null && this.job.team_member_applications.length > 0) {
+          for (var i = 0; i < this.job.team_member_applications.length; i++) {
+            this.mutableApplications.push(this.job.team_member_applications[i]);
+          }
+        }
+
+        if (this.job.team_roles !== undefined && this.job.team_roles !== null && this.job.team_roles.length > 0) {
+          for (var _i = 0; _i < this.job.team_roles.length; _i++) {
+            this.mutableRoles.push(this.job.team_roles[_i]);
+          }
+        }
       }
     },
     onClickViewTeam: function onClickViewTeam() {
@@ -6742,22 +7034,30 @@ __webpack_require__.r(__webpack_exports__);
       this.dialogs.apply.show = true;
     },
     onClickConfirmApply: function onClickConfirmApply() {
+      console.log(this.tag + " clicked confirm apply button");
       this.dialogs.apply.loading = true;
       this.dialogs.apply.errors = [];
       var payload = new FormData();
       payload.append("job_id", this.job.id);
       payload.append("team_role_id", this.job.team_roles[this.dialogs.apply.index].id);
       payload.append("motivation", this.dialogs.apply.form.motivation);
+      console.log(this.tag + " sending API request");
       this.axios.post(this.createTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        console.log(this.tag + " request succeeded");
+
         if (response.data.status === "success") {
+          console.log(this.tag + " operation succeeded");
+          this.mutableApplications.push(response.data.application);
           this.dialogs.apply.loading = false;
           this.dialogs.apply.show = false;
           this.dialogs.apply.form.description = "";
         } else {
+          console.warn(this.tag + " operation failed", response.data.error);
           this.dialogs.apply.loading = false;
           this.dialogs.apply.errors = [response.data.error];
         }
       }.bind(this))["catch"](function (error) {
+        console.log(this.tag + " request failed", error);
         this.dialogs.apply.loading = false;
         this.dialogs.apply.errors = [error];
       }.bind(this));
@@ -6768,6 +7068,151 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return "..";
+    },
+    onClickMemberApplication: function onClickMemberApplication(index) {
+      console.log(this.tag + " clicked member application", index);
+      console.log("-- aids", this.mutableApplications[index]);
+      this.dialogs.application.index = index;
+      this.dialogs.application.show = true;
+    },
+    onClickDenyApplication: function onClickDenyApplication() {
+      console.log(this.tag + " clicked deny application button");
+      this.dialogs.application.operation = "deny";
+      this.dialogs.application.loading = true;
+      var payload = new FormData();
+      payload.append("team_member_application_id", this.mutableApplications[this.dialogs.application.index].id);
+      console.log(this.tag + " sending API request");
+      this.axios.post(this.denyTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        console.log(this.tag + " request succeeded", response.data);
+
+        if (response.data.status === "success") {
+          console.log(this.tag + " operation succeeded");
+          this.mutableApplications[this.dialogs.application.index].accepted = false;
+          this.mutableApplications[this.dialogs.application.index].processed = true;
+          this.dialogs.application.loading = false;
+          this.dialogs.application.show = false;
+        } else {
+          console.warn(this.tag + " operation failed", response.data.error);
+          this.dialogs.application.errors = [response.data.error];
+          this.dialogs.application.loading = false;
+        }
+      }.bind(this))["catch"](function (error) {
+        console.warn(this.tag + " request failed", error);
+        this.dialogs.application.loading = false;
+        this.dialogs.application.errors = [error];
+      }.bind(this));
+    },
+    onClickAcceptApplication: function onClickAcceptApplication() {
+      console.log(this.tag + " clicked accept application button");
+      this.dialogs.application.operation = "accept";
+      this.dialogs.application.loading = true;
+      var payload = new FormData();
+      payload.append("team_member_application_id", this.mutableApplications[this.dialogs.application.index].id);
+      console.log(this.tag + " sending API request");
+      this.axios.post(this.acceptTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        console.log(this.tag + " request succeeded", response.data);
+
+        if (response.data.status === "success") {
+          console.log(this.tag + " operation succeeded");
+          this.mutableApplications[this.dialogs.application.index].accepted = true;
+          this.mutableApplications[this.dialogs.application.index].processed = true;
+          this.dialogs.application.loading = false;
+          this.dialogs.application.show = false;
+        } else {
+          console.warn(this.tag + " operation failed", response.data.error);
+          this.dialogs.application.errors = [response.data.error];
+          this.dialogs.application.loading = false;
+        }
+      }.bind(this))["catch"](function (error) {
+        console.warn(this.tag + " request failed", error);
+        this.dialogs.application.loading = false;
+        this.dialogs.application.errors = [error];
+      }.bind(this));
+    },
+    getApplicationStatusClass: function getApplicationStatusClass(application) {
+      if (application.processed) {
+        if (application.accepted) {
+          return "accepted";
+        } else {
+          return "denied";
+        }
+      }
+
+      return "open";
+    },
+    getApplicationStatusLabel: function getApplicationStatusLabel(application) {
+      if (application.processed) {
+        if (application.accepted) {
+          return "Geaccepteerd";
+        } else {
+          return "Afgewezen";
+        }
+      }
+
+      return "Open";
+    },
+    onClickEditApplication: function onClickEditApplication(index) {
+      console.log(this.tag + " clicked edit button");
+
+      if (this.dialogs.application.show) {
+        this.dialogs.application.show = false;
+        this.dialogs.edit_application.closed_view = true;
+      }
+
+      this.dialogs.edit_application.index = index;
+      this.dialogs.edit_application.form.motivation = this.mutableApplications[index].motivation;
+      this.dialogs.edit_application.show = true;
+    },
+    onClickConfirmEditApplication: function onClickConfirmEditApplication() {
+      console.log(this.tag + " clicked confirm edit button");
+      this.dialogs.edit_application.loading = true;
+      this.dialogs.edit_application.errors = [];
+      var payload = new FormData();
+      payload.append("team_member_application_id", this.mutableApplications[this.dialogs.edit_application.index].id);
+      payload.append("motivation", this.dialogs.edit_application.form.motivation);
+      this.axios.post(this.updateTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        if (response.data.status === "success") {
+          this.mutableApplications[this.dialogs.edit_application.index].motivation = this.dialogs.edit_application.form.motivation;
+          this.dialogs.edit_application.show = false;
+          this.dialogs.edit_application.loading = false;
+
+          if (this.dialogs.edit_application.closed_view) {
+            this.dialogs.application.show = true;
+          }
+        } else {
+          this.dialogs.edit_application.loading = false;
+          this.dialogs.edit_application.errors[response.data.error];
+        }
+      }.bind(this))["catch"](function (error) {
+        this.dialogs.edit_application.loading = false;
+        this.dialogs.edit_application.errors = [error];
+      }.bind(this));
+    },
+    onClickDeleteApplication: function onClickDeleteApplication(index) {
+      console.log(this.tag + " clicked delete button", index);
+      if (this.dialogs.application.show) this.dialogs.application.show = false;
+      this.dialogs.delete_application.index = index;
+      this.dialogs.delete_application.show = true;
+    },
+    onClickConfirmDeleteApplication: function onClickConfirmDeleteApplication() {
+      console.log(this.tag + " clicked confirm delete button");
+      this.dialogs.delete_application.loading = true;
+      this.dialogs.delete_application.errors = [];
+      var payload = new FormData();
+      payload.append("team_member_application_id", this.mutableApplications[this.dialogs.delete_application.index].id);
+      this.axios.post(this.deleteTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        if (response.data.status === "success") {
+          this.mutableApplications.splice(this.dialogs.delete_application.index, 1);
+          this.dialogs.delete_application.loading = false;
+          this.dialogs.delete_application.show = false;
+        } else {
+          this.dialogs.delete_application.loading = false;
+          this.dialogs.delete_application.errors = [response.data.error];
+        }
+      }.bind(this))["catch"](function (error) {
+        this.dialogs.delete_application.errors = [error];
+        this.dialogs.delete_application.loading = true;
+      }.bind(this));
     }
   },
   mounted: function mounted() {
@@ -7775,7 +8220,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#job-view #team #team-roles {\n  margin: 0 0 30px 0;\n}\n#job-view #team #team-roles .team-role {\n  display: -webkit-box;\n  display: flex;\n  padding: 30px;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#job-view #team #team-roles .team-role:last-child {\n  margin: 0;\n}\n#job-view #team #team-roles .team-role .team-role__avatar-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 120px;\n  margin: 0 30px 0 0;\n}\n#job-view #team #team-roles .team-role .team-role__avatar-wrapper .team-role__avatar {\n  width: 120px;\n  height: 120px;\n  border-radius: 60px;\n  background-color: white;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-name {\n  font-size: 2em;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills__label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n  color: black;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills .role-skill {\n  font-size: 0.8em;\n  margin: 0 5px 0 0;\n  border-radius: 2px;\n  box-sizing: border-box;\n  padding: 3px 3px 3px 5px;\n  background-color: white;\n}\n#job-view #team #team-roles .team-role .team-role__member {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 300px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#job-view #team #team-roles .team-role .team-role__member .team-role__member-label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n}\n#job-view #team #team-roles .team-role .team-role__actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}", ""]);
+exports.push([module.i, "#job-view #team #team-roles {\n  margin: 0 0 30px 0;\n}\n#job-view #team #team-roles .team-role {\n  display: -webkit-box;\n  display: flex;\n  padding: 30px;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#job-view #team #team-roles .team-role:last-child {\n  margin: 0;\n}\n#job-view #team #team-roles .team-role .team-role__avatar-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 120px;\n  margin: 0 30px 0 0;\n}\n#job-view #team #team-roles .team-role .team-role__avatar-wrapper .team-role__avatar {\n  width: 120px;\n  display: -webkit-box;\n  display: flex;\n  height: 120px;\n  font-size: 0.8em;\n  text-align: center;\n  border-radius: 60px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  color: gray;\n  background-color: white;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-name {\n  font-size: 2em;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills__label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n  color: black;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills .role-skill {\n  font-size: 0.8em;\n  margin: 0 5px 0 0;\n  border-radius: 2px;\n  box-sizing: border-box;\n  padding: 3px 3px 3px 5px;\n  background-color: white;\n}\n#job-view #team #team-roles .team-role .team-role__member {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 300px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#job-view #team #team-roles .team-role .team-role__member .team-role__member-label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n}\n#job-view #team #team-roles .team-role .team-role__actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#job-view #member-applications #member-applications__list {\n  border-radius: 3px;\n  background-color: #f2f2f2;\n}\n#job-view #member-applications #member-applications__list .member-application {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#job-view #member-applications #member-applications__list .member-application:last-child {\n  border-bottom: 0;\n}\n#job-view #member-applications #member-applications__list .member-application:hover {\n  cursor: pointer;\n  background-color: #e6e6e6;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 15px 0 0;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper .status {\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  text-align: center;\n  box-sizing: border-box;\n  padding: 3px 10px 5px 10px;\n  background-color: #262626;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper .status.denied {\n  background-color: maroon;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper .status.accepted {\n  background-color: #007a18;\n}\n#job-view #member-applications #member-applications__list .member-application .role-name {\n  -webkit-box-flex: 3;\n          flex: 3;\n}\n#job-view #member-applications #member-applications__list .member-application .user-name {\n  -webkit-box-flex: 2;\n          flex: 2;\n  margin: 0 0 0 15px;\n}\n#job-view #member-applications #member-applications__list .member-application .created-at {\n  margin: 0 0 0 15px;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#job-view #member-applications #member-applications__list .member-application .role-name, #job-view #member-applications #member-applications__list .member-application .user-name, #job-view #member-applications #member-applications__list .member-application .created-at {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#application-dialog-text #role-name {\n  text-align: center;\n}\n#application-dialog-text #role-name #role-name__label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 5px 0;\n}\n#application-dialog-text #role-name #role-name__text {\n  font-size: 1.5em;\n  font-weight: 500;\n}\n#application-dialog-text #user-wrapper {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#application-dialog-text #motivation {\n  text-align: center;\n}\n#application-dialog-text #motivation #motivation-label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n}\n#application-dialog-text #motivation #motivation-text {\n  padding: 10px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}", ""]);
 
 // exports
 
@@ -40032,16 +40477,16 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "content-desc" }, [
                 _vm._v(
-                  "\n                    Alle rollen die vervult dienen te worden om dit project tot een succes te maken.\n                "
+                  "Alle rollen die vervult dienen te worden om dit project tot een succes te maken."
                 )
               ]),
               _vm._v(" "),
               _c("div", { attrs: { id: "team" } }, [
-                _vm.job.team_roles.length > 0
+                _vm.mutableRoles.length > 0
                   ? _c(
                       "div",
                       { attrs: { id: "team-roles" } },
-                      _vm._l(_vm.job.team_roles, function(role, ri) {
+                      _vm._l(_vm.mutableRoles, function(role, ri) {
                         return _c(
                           "div",
                           { key: ri, staticClass: "team-role" },
@@ -40049,7 +40494,35 @@ var render = function() {
                             _c(
                               "div",
                               { staticClass: "team-role__avatar-wrapper" },
-                              [_c("div", { staticClass: "team-role__avatar" })]
+                              [
+                                role.team_member
+                                  ? _c("div", {
+                                      staticClass: "team-role__avatar",
+                                      style: {
+                                        backgroundImage:
+                                          "url(" +
+                                          role.team_member.user.avatar_url +
+                                          ")"
+                                      }
+                                    })
+                                  : _vm._e(),
+                                _vm._v(" "),
+                                !role.team_member
+                                  ? _c(
+                                      "div",
+                                      { staticClass: "team-role__avatar" },
+                                      [
+                                        _vm._v(
+                                          "\n                                    Open!"
+                                        ),
+                                        _c("br"),
+                                        _vm._v(
+                                          "\n                                    Meld je aan\n                                "
+                                        )
+                                      ]
+                                    )
+                                  : _vm._e()
+                              ]
                             ),
                             _vm._v(" "),
                             _c(
@@ -40169,6 +40642,89 @@ var render = function() {
               _vm._v(" "),
               _c("h3", { staticClass: "content-subtitle" }, [
                 _vm._v("Aanmeldingen")
+              ]),
+              _vm._v(" "),
+              _c("div", { attrs: { id: "member-applications" } }, [
+                _vm.mutableApplications.length > 0
+                  ? _c(
+                      "div",
+                      { attrs: { id: "member-applications__list" } },
+                      _vm._l(_vm.mutableApplications, function(
+                        application,
+                        ai
+                      ) {
+                        return _c(
+                          "div",
+                          {
+                            key: ai,
+                            staticClass: "member-application",
+                            on: {
+                              click: function($event) {
+                                return _vm.onClickMemberApplication(ai)
+                              }
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "status-wrapper" }, [
+                              _c(
+                                "div",
+                                {
+                                  staticClass: "status",
+                                  class: _vm.getApplicationStatusClass(
+                                    application
+                                  )
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(
+                                        _vm.getApplicationStatusLabel(
+                                          application
+                                        )
+                                      ) +
+                                      "\n                                "
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "user-name" }, [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(application.user.formatted_name) +
+                                  "\n                            "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "role-name" }, [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(application.team_role.name) +
+                                  "\n                            "
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "created-at" }, [
+                              _vm._v(
+                                "\n                                " +
+                                  _vm._s(application.formatted_created_at) +
+                                  "\n                            "
+                              )
+                            ])
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.mutableApplications.length === 0
+                  ? _c("div", { attrs: { id: "member-applications__empty" } }, [
+                      _vm._v(
+                        "\n                        Er zijn nog geen aanmeldingen binnengekomen.\n                    "
+                      )
+                    ])
+                  : _vm._e()
               ])
             ])
           ]),
@@ -40292,8 +40848,8 @@ var render = function() {
                       attrs: {
                         depressed: "",
                         color: "success",
-                        dark: "",
                         loading: _vm.dialogs.apply.loading,
+                        dark: !_vm.submitApplicationDisabled,
                         disabled: _vm.submitApplicationDisabled
                       },
                       on: { click: _vm.onClickConfirmApply }
@@ -40309,6 +40865,544 @@ var render = function() {
                 1
               )
             ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.edit_application.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.edit_application, "show", $$v)
+            },
+            expression: "dialogs.edit_application.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.edit_application.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Aanmelding wijzigingen")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.edit_application.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.edit_application.errors, function(
+                      error,
+                      ei
+                    ) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-textarea", {
+                    attrs: {
+                      label: "Motivatie",
+                      placeholder: "Waarom zou je deze rol willen vervullen?",
+                      loading: _vm.dialogs.edit_application.loading
+                    },
+                    model: {
+                      value: _vm.dialogs.edit_application.form.motivation,
+                      callback: function($$v) {
+                        _vm.$set(
+                          _vm.dialogs.edit_application.form,
+                          "motivation",
+                          $$v
+                        )
+                      },
+                      expression: "dialogs.edit_application.form.motivation"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.edit_application.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        depressed: "",
+                        color: "success",
+                        loading: _vm.dialogs.edit_application.loading,
+                        dark: !_vm.submitEditDisabled,
+                        disabled: _vm.submitEditDisabled
+                      },
+                      on: { click: _vm.onClickConfirmEditApplication }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-save" }),
+                      _vm._v(
+                        "\n                        Opslaan\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.delete_application.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.delete_application, "show", $$v)
+            },
+            expression: "dialogs.delete_application.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.delete_application.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Aanmelding wijzigingen")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.delete_application.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.delete_application.errors, function(
+                      error,
+                      ei
+                    ) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "dialog-text" }, [
+                _vm._v(
+                  "\n                    Weet je zeker dat je deze aanmelding wilt verwijderen?\n                "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.delete_application.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Nee, annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        dark: "",
+                        depressed: "",
+                        color: "red",
+                        loading: _vm.dialogs.delete_application.loading
+                      },
+                      on: { click: _vm.onClickConfirmDeleteApplication }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-trash" }),
+                      _vm._v(
+                        "\n                        Ja, verwijderen\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "700" },
+          model: {
+            value: _vm.dialogs.application.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.application, "show", $$v)
+            },
+            expression: "dialogs.application.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.application.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Bekijk aanmelding")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.application.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.application.errors, function(error, ei) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.mutableApplications[_vm.dialogs.application.index] !==
+              undefined
+                ? _c("div", { attrs: { id: "application-dialog-text" } }, [
+                    _c("div", { attrs: { id: "role-name" } }, [
+                      _c("div", { attrs: { id: "role-name__label" } }, [
+                        _vm._v("Aangemeld voor de rol")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { attrs: { id: "role-name__text" } }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(
+                              _vm.mutableApplications[
+                                _vm.dialogs.application.index
+                              ].team_role.name
+                            ) +
+                            "\n                        "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { attrs: { id: "user-wrapper" } },
+                      [
+                        _c("user-pill", {
+                          attrs: {
+                            dark: "",
+                            user:
+                              _vm.mutableApplications[
+                                _vm.dialogs.application.index
+                              ].user
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { attrs: { id: "motivation" } }, [
+                      _c("div", { attrs: { id: "motivation-label" } }, [
+                        _vm._v("Motivatie")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { attrs: { id: "motivation-text" } }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(
+                              _vm.mutableApplications[
+                                _vm.dialogs.application.index
+                              ].motivation
+                            ) +
+                            "\n                        "
+                        )
+                      ])
+                    ])
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _vm.showApplicationDialogControls
+              ? _c("div", { staticClass: "dialog-controls" }, [
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__left" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            depressed: "",
+                            color: "red",
+                            dark: !_vm.denyApplicationDisabled,
+                            loading: _vm.denyApplicationLoading,
+                            disabled: _vm.denyApplicationDisabled
+                          },
+                          on: { click: _vm.onClickDenyApplication }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-thumbs-down" }),
+                          _vm._v(
+                            "\n                        Afwijzen\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            depressed: "",
+                            color: "success",
+                            loading: _vm.acceptApplicationLoading,
+                            disabled: _vm.acceptApplicationDisabled
+                          },
+                          on: { click: _vm.onClickAcceptApplication }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-thumbs-up" }),
+                          _vm._v(
+                            "\n                        Accepteren\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { depressed: "", color: "warning" },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickEditApplication(
+                                _vm.dialogs.application.index
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Edit\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { dark: "", depressed: "", color: "red" },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickDeleteApplication(
+                                _vm.dialogs.application.index
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Delete\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.showApplicationDialogControls &&
+            _vm.mutableApplications[_vm.dialogs.application.index] !== undefined
+              ? _c("div", { staticClass: "dialog-controls" }, [
+                  _c("div", { staticClass: "dialog-controls__left" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(
+                          _vm.getApplicationStatusLabel(
+                            _vm.mutableApplications[
+                              _vm.dialogs.application.index
+                            ]
+                          )
+                        ) +
+                        "\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { small: "", depressed: "", color: "warning" },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickEditApplication(
+                                _vm.dialogs.application.index
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Edit\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            small: "",
+                            dark: "",
+                            depressed: "",
+                            color: "red"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickDeleteApplication(
+                                _vm.dialogs.application.index
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Delete\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e()
           ])
         ]
       )

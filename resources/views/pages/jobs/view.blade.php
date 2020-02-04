@@ -46,7 +46,9 @@
                 delete-comment-api-endpoint="{{ route('api.comments.delete.post') }}"
                 create-team-member-application-api-endpoint="{{ route('api.team-member-applications.create.post') }}"
                 update-team-member-application-api-endpoint="{{ route('api.team-member-applications.update.post') }}"
-                delete-team-member-application-api-endpoint="{{ route('api.team-member-applications.delete.post') }}">
+                delete-team-member-application-api-endpoint="{{ route('api.team-member-applications.delete.post') }}"
+                accept-team-member-application-api-endpoint="{{ route('api.team-member-applications.accept.post') }}"
+                deny-team-member-application-api-endpoint="{{ route('api.team-member-applications.deny.post') }}">
             </job-view>
 
         </div>

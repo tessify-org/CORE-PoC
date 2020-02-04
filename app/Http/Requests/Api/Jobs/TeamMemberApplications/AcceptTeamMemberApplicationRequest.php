@@ -5,7 +5,7 @@ namespace App\Http\Requests\Api\Jobs\TeamMemberApplications;
 use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateTeamMemberApplicationRequest extends FormRequest
+class AcceptTeamMemberApplicationRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,6 @@ class UpdateTeamMemberApplicationRequest extends FormRequest
     {
         return [
             "team_member_application_id" => "required|integer|exists:team_member_applications,id",
-            "motivation" => "required",
         ];
     }
 }
