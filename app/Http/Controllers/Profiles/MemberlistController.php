@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers\Profiles;
 
-use App\Models\User;
+use Users;
+use Memberlist;
 use App\Http\Controllers\Controller;
 
 class MemberlistController extends Controller
 {
     public function getMemberlist()
     {
+        $users = Users::getAllPreloaded();
         return view("pages.profiles.memberlist", [
-            "users" => User::all(),
+            "users" => $users,
         ]);
     }
 }

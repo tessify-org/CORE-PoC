@@ -27,21 +27,27 @@
                                 <div class="member-name">
                                     {{ $user->formattedName }}
                                 </div>
-                                @if ($user->currentAssignment)
-                                    <div class="member-ministry">
-                                        {{ $user->currentAssignment->ministry->abbreviation }}
-                                    </div>
-                                @endif
-                                @if ($user->currentAssignment)
-                                    <div class="member-organization">
-                                        {{ $user->currentAssignment->organization->name }}
-                                    </div>
-                                @endif
-                                @if ($user->currentAssignment)
-                                    <div class="member-job-title">
-                                        {{ $user->currentAssignment->jobTitle->name }}
-                                    </div>
-                                @endif
+                                <div class="member-ministry">
+                                    @if ($user->current_assignment)
+                                        {{ $user->current_assignment->ministry->abbreviation }}
+                                    @else
+                                        <span class="italic">Aanstelling ontbreekt</span>
+                                    @endif
+                                </div>
+                                <div class="member-organization">
+                                    @if ($user->current_assignment)
+                                        {{ $user->current_assignment->organization->name }}
+                                    @else
+                                        <span class="italic">Aanstelling ontbreekt</span>
+                                    @endif
+                                </div>
+                                <div class="member-job-title">
+                                    @if ($user->current_assignment)
+                                        {{ $user->current_assignment->jobTitle->name }}
+                                    @else
+                                        <span class="italic">Aanstelling ontbreekt</span>
+                                    @endif
+                                </div>
                                 <div class="member-reputation">
                                     Excellent
                                 </div>
