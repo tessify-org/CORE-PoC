@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Profiles;
 use Auth;
 
 use Users;
-use Ministries;
-use Organizations;
-use Departments;
 use JobTitles;
+use Ministries;
+use Departments;
+use Organizations;
 
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profiles\UpdateProfileRequest;
 
