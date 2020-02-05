@@ -7,6 +7,7 @@ use Skills;
 use TeamMembers;
 use App\Models\Job;
 use App\Models\TeamRole;
+use App\Http\Requests\Api\Jobs\TeamRoles\UnassignTeamRoleRequest;
 
 class TeamRoleService
 {
@@ -116,5 +117,11 @@ class TeamRoleService
         $role->skills = Skills::getAllForTeamRole($role);
         
         return $role;
+    }
+
+    public function unassignFromRequest(UnassignFromRequest $request)
+    {
+        $role = $this->find($request->team_role_id);
+        $role->teamMembers()->detach();
     }
 }

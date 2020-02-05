@@ -6926,6 +6926,76 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["job", "user", "comments", "createCommentApiEndpoint", "updateCommentApiEndpoint", "deleteCommentApiEndpoint", "createTeamMemberApplicationApiEndpoint", "updateTeamMemberApplicationApiEndpoint", "deleteTeamMemberApplicationApiEndpoint", "acceptTeamMemberApplicationApiEndpoint", "denyTeamMemberApplicationApiEndpoint"],
   data: function data() {
@@ -6963,6 +7033,12 @@ __webpack_require__.r(__webpack_exports__);
         },
         delete_application: {
           closed_view: false,
+          show: false,
+          index: null,
+          loading: false,
+          errors: []
+        },
+        unassign: {
           show: false,
           index: null,
           loading: false,
@@ -7213,6 +7289,19 @@ __webpack_require__.r(__webpack_exports__);
         this.dialogs.delete_application.errors = [error];
         this.dialogs.delete_application.loading = true;
       }.bind(this));
+    },
+    onClickUnassignMember: function onClickUnassignMember(index) {
+      console.log(this.tag + " clicked unassign member button", index);
+      this.dialogs.unassign.index = index;
+      this.dialogs.unassign.show = true;
+    },
+    onClickConfirmUnassignMember: function onClickConfirmUnassignMember() {
+      console.log(this.tag + " clicked confirm unassign member button");
+      this.dialogs.unassign.loading = true;
+      this.dialogs.unassign.errors = [];
+      var payload = new FormData();
+      payload.append("team_role_id", this.mutableRoles[this.dialogs.unassign.index].id);
+      this.axios.post();
     }
   },
   mounted: function mounted() {
@@ -8220,7 +8309,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#job-view #team #team-roles {\n  margin: 0 0 30px 0;\n}\n#job-view #team #team-roles .team-role {\n  display: -webkit-box;\n  display: flex;\n  padding: 30px;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#job-view #team #team-roles .team-role:last-child {\n  margin: 0;\n}\n#job-view #team #team-roles .team-role .team-role__avatar-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 120px;\n  margin: 0 30px 0 0;\n}\n#job-view #team #team-roles .team-role .team-role__avatar-wrapper .team-role__avatar {\n  width: 120px;\n  display: -webkit-box;\n  display: flex;\n  height: 120px;\n  font-size: 0.8em;\n  text-align: center;\n  border-radius: 60px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  color: gray;\n  background-color: white;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-name {\n  font-size: 2em;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills__label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n  color: black;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#job-view #team #team-roles .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills .role-skill {\n  font-size: 0.8em;\n  margin: 0 5px 0 0;\n  border-radius: 2px;\n  box-sizing: border-box;\n  padding: 3px 3px 3px 5px;\n  background-color: white;\n}\n#job-view #team #team-roles .team-role .team-role__member {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 300px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#job-view #team #team-roles .team-role .team-role__member .team-role__member-label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n}\n#job-view #team #team-roles .team-role .team-role__actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#job-view #member-applications #member-applications__list {\n  border-radius: 3px;\n  background-color: #f2f2f2;\n}\n#job-view #member-applications #member-applications__list .member-application {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#job-view #member-applications #member-applications__list .member-application:last-child {\n  border-bottom: 0;\n}\n#job-view #member-applications #member-applications__list .member-application:hover {\n  cursor: pointer;\n  background-color: #e6e6e6;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 15px 0 0;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper .status {\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  text-align: center;\n  box-sizing: border-box;\n  padding: 3px 10px 5px 10px;\n  background-color: #262626;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper .status.denied {\n  background-color: maroon;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper .status.accepted {\n  background-color: #007a18;\n}\n#job-view #member-applications #member-applications__list .member-application .role-name {\n  -webkit-box-flex: 3;\n          flex: 3;\n}\n#job-view #member-applications #member-applications__list .member-application .user-name {\n  -webkit-box-flex: 2;\n          flex: 2;\n  margin: 0 0 0 15px;\n}\n#job-view #member-applications #member-applications__list .member-application .created-at {\n  margin: 0 0 0 15px;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#job-view #member-applications #member-applications__list .member-application .role-name, #job-view #member-applications #member-applications__list .member-application .user-name, #job-view #member-applications #member-applications__list .member-application .created-at {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#application-dialog-text #role-name {\n  text-align: center;\n}\n#application-dialog-text #role-name #role-name__label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 5px 0;\n}\n#application-dialog-text #role-name #role-name__text {\n  font-size: 1.5em;\n  font-weight: 500;\n}\n#application-dialog-text #user-wrapper {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#application-dialog-text #motivation {\n  text-align: center;\n}\n#application-dialog-text #motivation #motivation-label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n}\n#application-dialog-text #motivation #motivation-text {\n  padding: 10px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}", ""]);
+exports.push([module.i, "#job-view #team #team-roles {\n  margin: 0 0 30px 0;\n}\n#job-view #team #team-roles .team-role__wrapper {\n  overflow: hidden;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  background-color: #f2f2f2;\n}\n#job-view #team #team-roles .team-role__wrapper:last-child {\n  margin: 0;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role {\n  display: -webkit-box;\n  display: flex;\n  padding: 30px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__avatar-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 120px;\n  margin: 0 30px 0 0;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__avatar-wrapper .team-role__avatar {\n  width: 120px;\n  display: -webkit-box;\n  display: flex;\n  height: 120px;\n  font-size: 0.8em;\n  text-align: center;\n  border-radius: 60px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  color: gray;\n  background-color: white;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 300px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-name {\n  font-size: 2em;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills__label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n  color: black;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills .role-skill {\n  font-size: 0.8em;\n  margin: 0 5px 0 0;\n  border-radius: 2px;\n  box-sizing: border-box;\n  padding: 3px 3px 3px 5px;\n  background-color: white;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__description {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 250px;\n  font-size: 0.8em;\n  margin: 0 50px 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__member {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__member .team-role__member-label {\n  font-size: 0.8em;\n  margin: -16px 0 5px 0;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role .team-role__actions {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role__footer {\n  padding: 15px 30px;\n  box-sizing: border-box;\n  background-color: #e6e6e6;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role__footer .team-role__footer-left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#job-view #team #team-roles .team-role__wrapper .team-role__footer .team-role__footer-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#job-view #member-applications #member-applications__list {\n  border-radius: 3px;\n  background-color: #f2f2f2;\n}\n#job-view #member-applications #member-applications__list .member-application {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#job-view #member-applications #member-applications__list .member-application:last-child {\n  border-bottom: 0;\n}\n#job-view #member-applications #member-applications__list .member-application:hover {\n  cursor: pointer;\n  background-color: #e6e6e6;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 15px 0 0;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper .status {\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  text-align: center;\n  box-sizing: border-box;\n  padding: 3px 10px 5px 10px;\n  background-color: #262626;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper .status.denied {\n  background-color: maroon;\n}\n#job-view #member-applications #member-applications__list .member-application .status-wrapper .status.accepted {\n  background-color: #007a18;\n}\n#job-view #member-applications #member-applications__list .member-application .role-name {\n  -webkit-box-flex: 3;\n          flex: 3;\n}\n#job-view #member-applications #member-applications__list .member-application .user-name {\n  -webkit-box-flex: 2;\n          flex: 2;\n  margin: 0 0 0 15px;\n}\n#job-view #member-applications #member-applications__list .member-application .created-at {\n  margin: 0 0 0 15px;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#job-view #member-applications #member-applications__list .member-application .role-name, #job-view #member-applications #member-applications__list .member-application .user-name, #job-view #member-applications #member-applications__list .member-application .created-at {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#application-dialog-text #role-name {\n  text-align: center;\n}\n#application-dialog-text #role-name #role-name__label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 5px 0;\n}\n#application-dialog-text #role-name #role-name__text {\n  font-size: 1.5em;\n  font-weight: 500;\n}\n#application-dialog-text #user-wrapper {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#application-dialog-text #motivation {\n  text-align: center;\n}\n#application-dialog-text #motivation #motivation-label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n}\n#application-dialog-text #motivation #motivation-text {\n  padding: 10px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}", ""]);
 
 // exports
 
@@ -40489,139 +40578,180 @@ var render = function() {
                       _vm._l(_vm.mutableRoles, function(role, ri) {
                         return _c(
                           "div",
-                          { key: ri, staticClass: "team-role" },
+                          { key: ri, staticClass: "team-role__wrapper" },
                           [
-                            _c(
-                              "div",
-                              { staticClass: "team-role__avatar-wrapper" },
-                              [
-                                role.team_member
-                                  ? _c("div", {
-                                      staticClass: "team-role__avatar",
-                                      style: {
-                                        backgroundImage:
-                                          "url(" +
-                                          role.team_member.user.avatar_url +
-                                          ")"
-                                      }
-                                    })
-                                  : _vm._e(),
-                                _vm._v(" "),
-                                !role.team_member
-                                  ? _c(
-                                      "div",
-                                      { staticClass: "team-role__avatar" },
-                                      [
-                                        _vm._v(
-                                          "\n                                    Open!"
-                                        ),
-                                        _c("br"),
-                                        _vm._v(
-                                          "\n                                    Meld je aan\n                                "
-                                        )
-                                      ]
-                                    )
-                                  : _vm._e()
-                              ]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "team-role__text-wrapper" },
-                              [
-                                _c("div", { staticClass: "role-name" }, [
-                                  _vm._v(_vm._s(role.name))
-                                ]),
-                                _vm._v(" "),
-                                role.skills.length > 0
-                                  ? _c(
-                                      "div",
-                                      { staticClass: "role-skills__wrapper" },
-                                      [
-                                        _c(
-                                          "div",
-                                          { staticClass: "role-skills__label" },
-                                          [_vm._v("Vereiste skills")]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "div",
-                                          { staticClass: "role-skills" },
-                                          _vm._l(role.skills, function(
-                                            skill,
-                                            si
-                                          ) {
-                                            return _c(
-                                              "div",
-                                              {
-                                                key: si,
-                                                staticClass: "role-skill"
-                                              },
-                                              [
-                                                _vm._v(
-                                                  "\n                                            " +
-                                                    _vm._s(skill.name) +
-                                                    "\n                                        "
-                                                )
-                                              ]
-                                            )
-                                          }),
-                                          0
-                                        )
-                                      ]
-                                    )
-                                  : _vm._e()
-                              ]
-                            ),
+                            _c("div", { staticClass: "team-role" }, [
+                              _c(
+                                "div",
+                                { staticClass: "team-role__avatar-wrapper" },
+                                [
+                                  role.team_member
+                                    ? _c("div", {
+                                        staticClass: "team-role__avatar",
+                                        style: {
+                                          backgroundImage:
+                                            "url(" +
+                                            role.team_member.user.avatar_url +
+                                            ")"
+                                        }
+                                      })
+                                    : _vm._e(),
+                                  _vm._v(" "),
+                                  !role.team_member
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "team-role__avatar" },
+                                        [
+                                          _vm._v(
+                                            "\n                                        Open!"
+                                          ),
+                                          _c("br"),
+                                          _vm._v(
+                                            "\n                                        Meld je aan\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "div",
+                                { staticClass: "team-role__text-wrapper" },
+                                [
+                                  _c("div", { staticClass: "role-name" }, [
+                                    _vm._v(_vm._s(role.name))
+                                  ]),
+                                  _vm._v(" "),
+                                  role.skills.length > 0
+                                    ? _c(
+                                        "div",
+                                        { staticClass: "role-skills__wrapper" },
+                                        [
+                                          _c(
+                                            "div",
+                                            { staticClass: "role-skills" },
+                                            _vm._l(role.skills, function(
+                                              skill,
+                                              si
+                                            ) {
+                                              return _c(
+                                                "div",
+                                                {
+                                                  key: si,
+                                                  staticClass: "role-skill"
+                                                },
+                                                [
+                                                  _vm._v(
+                                                    "\n                                                " +
+                                                      _vm._s(skill.name) +
+                                                      "\n                                            "
+                                                  )
+                                                ]
+                                              )
+                                            }),
+                                            0
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ]
+                              ),
+                              _vm._v(" "),
+                              role.team_member
+                                ? _c(
+                                    "div",
+                                    { staticClass: "team-role__member" },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: "team-role__member-label"
+                                        },
+                                        [_vm._v("Vervuld door:")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("user-pill", {
+                                        attrs: { user: role.team_member.user }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                : _vm._e(),
+                              _vm._v(" "),
+                              !role.team_member
+                                ? _c(
+                                    "div",
+                                    { staticClass: "team-role__actions" },
+                                    [
+                                      _c(
+                                        "v-btn",
+                                        {
+                                          attrs: {
+                                            color: "primary",
+                                            large: "",
+                                            depressed: ""
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.onClickApplyForRole(ri)
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                                        Meld je aan!\n                                    "
+                                          )
+                                        ]
+                                      )
+                                    ],
+                                    1
+                                  )
+                                : _vm._e()
+                            ]),
                             _vm._v(" "),
                             role.team_member
                               ? _c(
                                   "div",
-                                  { staticClass: "team-role__member" },
+                                  { staticClass: "team-role__footer" },
                                   [
+                                    _c("div", {
+                                      staticClass: "team-role__footer-left"
+                                    }),
+                                    _vm._v(" "),
                                     _c(
                                       "div",
                                       {
-                                        staticClass: "team-role__member-label"
-                                      },
-                                      [_vm._v("Vervuld door:")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("user-pill", {
-                                      attrs: { user: role.team_member.user }
-                                    })
-                                  ],
-                                  1
-                                )
-                              : _vm._e(),
-                            _vm._v(" "),
-                            !role.team_member
-                              ? _c(
-                                  "div",
-                                  { staticClass: "team-role__actions" },
-                                  [
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: {
-                                          color: "primary",
-                                          large: "",
-                                          depressed: ""
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.onClickApplyForRole(ri)
-                                          }
-                                        }
+                                        staticClass: "team-role__footer-right"
                                       },
                                       [
-                                        _vm._v(
-                                          "\n                                    Meld je aan!\n                                "
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              small: "",
+                                              color: "red",
+                                              dark: "",
+                                              depressed: ""
+                                            },
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.onClickUnassignMember(
+                                                  ri
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                        Team lid afzetten\n                                    "
+                                            )
+                                          ]
                                         )
-                                      ]
+                                      ],
+                                      1
                                     )
-                                  ],
-                                  1
+                                  ]
                                 )
                               : _vm._e()
                           ]
@@ -40989,8 +41119,8 @@ var render = function() {
                         depressed: "",
                         color: "success",
                         loading: _vm.dialogs.edit_application.loading,
-                        dark: !_vm.submitEditDisabled,
-                        disabled: _vm.submitEditDisabled
+                        dark: !_vm.editApplicationDisabled,
+                        disabled: _vm.editApplicationDisabled
                       },
                       on: { click: _vm.onClickConfirmEditApplication }
                     },
@@ -41404,6 +41534,130 @@ var render = function() {
                 ])
               : _vm._e()
           ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.unassign.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.unassign, "show", $$v)
+            },
+            expression: "dialogs.unassign.show"
+          }
+        },
+        [
+          _vm.dialogs.unassign.index !== null
+            ? _c("div", { staticClass: "dialog" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dialog__close-button",
+                    on: {
+                      click: function($event) {
+                        _vm.dialogs.unassign.show = false
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-times" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-content" }, [
+                  _c("h3", { staticClass: "dialog-title" }, [
+                    _vm._v("Team lid afzetten")
+                  ]),
+                  _vm._v(" "),
+                  _vm.dialogs.unassign.errors.length > 0
+                    ? _c(
+                        "div",
+                        { staticClass: "dialog-errors" },
+                        _vm._l(_vm.dialogs.unassign.errors, function(
+                          error,
+                          ei
+                        ) {
+                          return _c(
+                            "div",
+                            { key: ei, staticClass: "dialog-error" },
+                            [
+                              _vm._v(
+                                "\n                        " +
+                                  _vm._s(error) +
+                                  "\n                    "
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dialog-text" }, [
+                    _vm._v(
+                      "\n                    Weet je zeker dat je " +
+                        _vm._s(
+                          _vm.mutableRoles[_vm.dialogs.unassign.index]
+                            .team_member.user.formatted_name
+                        ) +
+                        " wilt afzetten uit/haar rol als " +
+                        _vm._s(
+                          _vm.mutableRoles[_vm.dialogs.unassign.index].name
+                        ) +
+                        "?\n                "
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-controls" }, [
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__left" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { depressed: "" },
+                          on: {
+                            click: function($event) {
+                              _vm.dialogs.unassign.show = false
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-arrow-left" }),
+                          _vm._v(
+                            "\n                        Nee, annuleren\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { dark: "", depressed: "", color: "red" },
+                          on: { click: _vm.onClickConfirmUnassignMember }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Delete\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            : _vm._e()
         ]
       )
     ],
@@ -96882,8 +97136,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Code\Websites\NNW\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! D:\Code\Websites\NNW\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

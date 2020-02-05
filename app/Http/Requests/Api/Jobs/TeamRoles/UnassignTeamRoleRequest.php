@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Requests\Auth;
+namespace App\Http\Requests\Api\Jobs\TeamRoles;
 
 use Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterRequest extends FormRequest
+class UnassignTeamRoleRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +14,7 @@ class RegisterRequest extends FormRequest
      */
     public function authorize()
     {
-        return !Auth::check();
+        return Auth::check();
     }
 
     /**
@@ -25,12 +25,7 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            "annotation" => "required",
-            "first_name" => "required",
-            "last_name" => "required",
-            "email" => "required|email|unique:users,email",
-            "password" => "required|confirmed",
-            "password_confirmation" => "required",
+            "team_role_id" => "required|integer|exists:team_roles,id",
         ];
     }
 }

@@ -185,37 +185,56 @@
                     
                     <!-- Team -->
                     <div id="team">
+                        <!-- Team role list -->
                         <div id="team-roles" v-if="mutableRoles.length > 0">
-                            <div class="team-role" v-for="(role, ri) in mutableRoles" :key="ri">
-                                <div class="team-role__avatar-wrapper">
-                                    <div class="team-role__avatar" v-if="role.team_member" :style="{ backgroundImage: 'url('+role.team_member.user.avatar_url+')' }"></div>
-                                    <div class="team-role__avatar" v-if="!role.team_member">
-                                        Open!<br>
-                                        Meld je aan
+                            <!-- Team role -->
+                            <div class="team-role__wrapper" v-for="(role, ri) in mutableRoles" :key="ri">
+                                <div class="team-role">
+                                    <!-- Avatar -->
+                                    <div class="team-role__avatar-wrapper">
+                                        <div class="team-role__avatar" v-if="role.team_member" :style="{ backgroundImage: 'url('+role.team_member.user.avatar_url+')' }"></div>
+                                        <div class="team-role__avatar" v-if="!role.team_member">
+                                            Open!<br>
+                                            Meld je aan
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="team-role__text-wrapper">
-                                    <div class="role-name">{{ role.name }}</div>
-                                    <div class="role-skills__wrapper" v-if="role.skills.length > 0"> 
-                                        <div class="role-skills__label">Vereiste skills</div>
-                                        <div class="role-skills">
-                                            <div class="role-skill" v-for="(skill, si) in role.skills" :key="si">
-                                                {{ skill.name }}
+                                    <!-- Text -->
+                                    <div class="team-role__text-wrapper">
+                                        <div class="role-name">{{ role.name }}</div>
+                                        <div class="role-skills__wrapper" v-if="role.skills.length > 0"> 
+                                            <!-- <div class="role-skills__label">Vereiste skills</div> -->
+                                            <div class="role-skills">
+                                                <div class="role-skill" v-for="(skill, si) in role.skills" :key="si">
+                                                    {{ skill.name }}
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <!-- Assigned member -->
+                                    <div class="team-role__member" v-if="role.team_member">
+                                        <div class="team-role__member-label">Vervuld door:</div>
+                                        <user-pill :user="role.team_member.user"></user-pill>
+                                    </div>
+                                    <!-- Actions -->
+                                    <div class="team-role__actions" v-if="!role.team_member">
+                                        <v-btn color="primary" large depressed @click="onClickApplyForRole(ri)">
+                                            Meld je aan!
+                                        </v-btn>
+                                    </div>
                                 </div>
-                                <div class="team-role__member" v-if="role.team_member">
-                                    <div class="team-role__member-label">Vervuld door:</div>
-                                    <user-pill :user="role.team_member.user"></user-pill>
-                                </div>
-                                <div class="team-role__actions" v-if="!role.team_member">
-                                    <v-btn color="primary" large depressed @click="onClickApplyForRole(ri)">
-                                        Meld je aan!
-                                    </v-btn>
+                                <div class="team-role__footer" v-if="role.team_member">
+                                    <div class="team-role__footer-left">
+
+                                    </div>
+                                    <div class="team-role__footer-right">
+                                        <v-btn small color="red" dark depressed @click="onClickUnassignMember(ri)">
+                                            Team lid afzetten
+                                        </v-btn>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- No team roles -->
                         <div id="no-team-roles" v-if="job.team_roles.length === 0">
                             Er zijn nog geen rollen gedefineert.
                         </div>
@@ -252,6 +271,8 @@
             <!-- Tasks tab -->
             <v-tab-item>
                 <div class="tab-content">
+
+                    <!-- -->
                 
                 </div>
             </v-tab-item>
@@ -259,6 +280,8 @@
             <v-tab-item>
                 <div class="tab-content">
                 
+                    <!-- -->
+
                 </div>
             </v-tab-item>
         </v-tabs>
@@ -359,8 +382,8 @@
                             color="success"
                             @click="onClickConfirmEditApplication" 
                             :loading="dialogs.edit_application.loading" 
-                            :dark="!submitEditDisabled"
-                            :disabled="submitEditDisabled">
+                            :dark="!editApplicationDisabled"
+                            :disabled="editApplicationDisabled">
                             <i class="far fa-save"></i>
                             Opslaan
                         </v-btn>
@@ -527,6 +550,53 @@
             </div>
         </v-dialog>
 
+        <!-- Unassign member dialog -->
+        <v-dialog v-model="dialogs.unassign.show" width="500">
+            <div class="dialog" v-if="dialogs.unassign.index !== null">
+                <!-- Close button -->
+                <div class="dialog__close-button" @click="dialogs.unassign.show = false">
+                    <i class="fas fa-times"></i>
+                </div>
+                <!-- Content -->
+                <div class="dialog-content">
+                    <!-- Title -->
+                    <h3 class="dialog-title">Team lid afzetten</h3>
+                    <!-- Errors -->
+                    <div class="dialog-errors" v-if="dialogs.unassign.errors.length > 0">
+                        <div class="dialog-error" v-for="(error, ei) in dialogs.unassign.errors" :key="ei">
+                            {{ error }}
+                        </div>
+                    </div>
+                    <div class="dialog-text">
+                        Weet je zeker dat je {{ mutableRoles[dialogs.unassign.index].team_member.user.formatted_name }} wilt afzetten uit/haar rol als {{ mutableRoles[dialogs.unassign.index].name }}?
+                    </div>
+                </div>
+                <!-- Controls -->
+                <div class="dialog-controls">
+                    <!-- Cancel -->
+                    <div class="dialog-controls__left">
+                        <!-- Deny button -->
+                        <v-btn 
+                            depressed
+                            @click="dialogs.unassign.show = false">
+                            <i class="fas fa-arrow-left"></i>
+                            Nee, annuleren
+                        </v-btn>
+                    </div>
+                    <!-- Confirm delete -->
+                    <div class="dialog-controls__right">
+                        <v-btn
+                            dark
+                            depressed
+                            color="red"
+                            @click="onClickConfirmUnassignMember">
+                            Delete
+                        </v-btn>
+                    </div>
+                </div>
+            </div>
+        </v-dialog>
+
     </div>
 </template>
 
@@ -583,7 +653,13 @@
                     index: null,
                     loading: false,
                     errors: [],
-                }
+                },
+                unassign: {
+                    show: false,
+                    index: null,
+                    loading: false,
+                    errors: [],
+                },
             }
         }),
         computed: {
@@ -853,6 +929,24 @@
                         this.dialogs.delete_application.loading = true;
                     }.bind(this));
             },
+            onClickUnassignMember(index) {
+                console.log(this.tag+" clicked unassign member button", index);
+                this.dialogs.unassign.index = index;
+                this.dialogs.unassign.show = true;
+            },
+            onClickConfirmUnassignMember() {
+                console.log(this.tag+" clicked confirm unassign member button");
+
+                this.dialogs.unassign.loading = true;
+                this.dialogs.unassign.errors = [];
+
+                let payload = new FormData();
+                payload.append("team_role_id", this.mutableRoles[this.dialogs.unassign.index].id);
+
+                this.axios.post()
+
+
+            }
         },
         mounted() {
             this.initialize();
@@ -865,81 +959,115 @@
         #team {
             #team-roles {
                 margin: 0 0 30px 0;
-                .team-role {
-                    display: flex;
-                    padding: 30px;
+                .team-role__wrapper {
+                    overflow: hidden;
                     border-radius: 3px;
                     margin: 0 0 30px 0;
-                    flex-direction: row;
-                    box-sizing: border-box;
                     background-color: hsl(0, 0%, 95%);
                     &:last-child {
                         margin: 0;
                     }
-                    .team-role__avatar-wrapper {
-                        flex: 0 0 120px;
-                        margin: 0 30px 0 0;
-                        .team-role__avatar {
-                            width: 120px;
-                            display: flex;
-                            height: 120px;
-                            font-size: .8em;
-                            text-align: center;
-                            border-radius: 60px;
-                            flex-direction: row;
-                            align-items: center;
-                            justify-content: center;
-                            color: hsl(0, 0%, 50%);
-                            background-color: hsl(0, 0%, 100%);
-                        }
-                    }
-                    .team-role__text-wrapper {
-                        flex: 1;
+                    .team-role {
                         display: flex;
-                        flex-direction: column;
-                        justify-content: center;
-                        .role-name {
-                            font-size: 2em;
-                            font-weight: 500;
-                            margin: 0 0 5px 0;
-                        }
-                        .role-skills__wrapper {
-                            .role-skills__label {
-                                font-size: .8em;
-                                margin: 0 0 5px 0;
-                                color: hsl(0, 0%, 0%);
-                            }
-                            .role-skills {
+                        padding: 30px;
+                        flex-direction: row;
+                        box-sizing: border-box;
+                        .team-role__avatar-wrapper {
+                            flex: 0 0 120px;
+                            margin: 0 30px 0 0;
+                            .team-role__avatar {
+                                width: 120px;
                                 display: flex;
+                                height: 120px;
+                                font-size: .8em;
+                                text-align: center;
+                                border-radius: 60px;
                                 flex-direction: row;
-                                .role-skill {
+                                align-items: center;
+                                justify-content: center;
+                                color: hsl(0, 0%, 50%);
+                                background-color: hsl(0, 0%, 100%);
+                            }
+                        }
+                        .team-role__text-wrapper {
+                            display: flex;
+                            flex: 0 0 300px;
+                            flex-direction: column;
+                            justify-content: center;
+                            .role-name {
+                                font-size: 2em;
+                                font-weight: 500;
+                                margin: 0 0 5px 0;
+                            }
+                            .role-skills__wrapper {
+                                .role-skills__label {
                                     font-size: .8em;
-                                    margin: 0 5px 0 0;
-                                    border-radius: 2px;
-                                    box-sizing: border-box;
-                                    padding: 3px 3px 3px 5px;
-                                    background-color: hsl(0, 0%, 100%);
+                                    margin: 0 0 5px 0;
+                                    color: hsl(0, 0%, 0%);
+                                }
+                                .role-skills {
+                                    display: flex;
+                                    flex-direction: row;
+                                    .role-skill {
+                                        font-size: .8em;
+                                        margin: 0 5px 0 0;
+                                        border-radius: 2px;
+                                        box-sizing: border-box;
+                                        padding: 3px 3px 3px 5px;
+                                        background-color: hsl(0, 0%, 100%);
+                                    }
+                                }
+                                .role-member {
+                                    
                                 }
                             }
-                            .role-member {
-                                
+                        }
+                        .team-role__description {
+                            display: flex;
+                            flex: 0 0 250px;
+                            font-size: .8em;
+                            margin: 0 50px 0 0;
+                            flex-direction: row;
+                            align-items: center;
+                        }
+                        .team-role__member {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            .team-role__member-label {
+                                font-size: .8em;
+                                margin: -16px 0 5px 0;
                             }
                         }
-                    }
-                    .team-role__member {
-                        display: flex;
-                        flex: 0 0 300px;
-                        flex-direction: column;
-                        justify-content: center;
-                        .team-role__member-label {
-                            font-size: .8em;
-                            margin: 0 0 5px 0;
+                        .team-role__actions {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: flex-end;
                         }
                     }
-                    .team-role__actions {
+                    .team-role__footer {
+                        padding: 15px 30px;
+                        box-sizing: border-box;
+                        background-color: hsl(0, 0%, 90%);
                         display: flex;
                         flex-direction: row;
                         align-items: center;
+                        .team-role__footer-left {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                        }
+                        .team-role__footer-right {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: flex-end
+                        }
                     }
                 }
             }

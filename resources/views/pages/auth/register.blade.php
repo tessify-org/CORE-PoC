@@ -5,21 +5,23 @@
 @stop
 
 @section("content")
-    <div class="content-section">
+    <div class="content-section__wrapper">
+        <div class="content-section">
 
-        <h1 class="page-title centered">Register</h1>
-    
-        @include("partials.feedback")
+            <h1 class="page-title centered">Register</h1>
+        
+            @include("partials.feedback")
 
-        <form action="{{ route('auth.register.post') }}" method="post">
-            {{ csrf_field() }}
+            <form action="{{ route('auth.register.post') }}" method="post">
+                {{ csrf_field() }}
 
-            <register-form
-                :errors="{{ $errors->toJson() }}"
-                :old-input="{{ $oldInput->toJson() }}">
-            </register-form>
+                <register-form
+                    :errors="{{ $errors->toJson() }}"
+                    :old-input="{{ $oldInput->toJson() }}">
+                </register-form>
 
-        </form>
+            </form>
 
+        </div>
     </div>
 @stop

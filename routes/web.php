@@ -92,5 +92,10 @@ Route::group(["prefix" => "api"], function() {
         Route::post("accept", "Api\TeamMemberApplicationController@postAcceptApplication")->name("api.team-member-applications.accept.post");
         Route::post("deny", "Api\TeamMemberApplicationController@postDenyApplication")->name("api.team-member-applications.deny.post");
     });
+
+    // Team roles
+    Route::group(["prefix" => "team-roles"], function() {
+        Route::post("unassign", "Api\TeamRoleController@postUnassign")->name("api.team-roles.unassign");
+    });
     
 });
