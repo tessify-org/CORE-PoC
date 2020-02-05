@@ -5,20 +5,22 @@
 @stop
 
 @section("content")
-    <div class="content-section">
+    <div class="content-section__wrapper">
+        <div class="content-section">
 
-        <h1 class="page-title centered">Zoeken</h1>
-    
-        @include("partials.feedback")
+            <h1 class="page-title centered">Zoeken</h1>
+        
+            @include("partials.feedback")
 
-        <form action="{{ route('search.post') }}" method="post">
-            {{ csrf_field() }}
-            
-            Search bar here
+            <form action="{{ route('search.post') }}" method="post">
+                {{ csrf_field() }}
+                
+                Search bar here
 
-        </form>
+            </form>
 
-        Results here
+            Results here
 
+        </div>
     </div>
 @stop

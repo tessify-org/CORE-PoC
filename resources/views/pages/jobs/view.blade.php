@@ -31,26 +31,29 @@
         </div>
 
         <!-- Content -->
-        <div class="content-section">
-            
-            <!-- Feedback -->
-            @include("partials.feedback")
+        <div class="content-section__wrapper">
+            <div class="content-section">
+                
+                <!-- Feedback -->
+                @include("partials.feedback")
 
-            <!-- Interactive view job -->
-            <job-view
-                :job="{{ $job->toJson() }}"
-                :user="{{ $user->toJson() }}"
-                :comments="{{ $comments->toJson() }}"
-                create-comment-api-endpoint="{{ route('api.comments.create.post') }}"
-                update-comment-api-endpoint="{{ route('api.comments.update.post') }}"
-                delete-comment-api-endpoint="{{ route('api.comments.delete.post') }}"
-                create-team-member-application-api-endpoint="{{ route('api.team-member-applications.create.post') }}"
-                update-team-member-application-api-endpoint="{{ route('api.team-member-applications.update.post') }}"
-                delete-team-member-application-api-endpoint="{{ route('api.team-member-applications.delete.post') }}"
-                accept-team-member-application-api-endpoint="{{ route('api.team-member-applications.accept.post') }}"
-                deny-team-member-application-api-endpoint="{{ route('api.team-member-applications.deny.post') }}">
-            </job-view>
+                <!-- Interactive view job -->
+                <job-view
+                    :job="{{ $job->toJson() }}"
+                    :user="{{ $user->toJson() }}"
+                    :comments="{{ $comments->toJson() }}"
+                    create-comment-api-endpoint="{{ route('api.comments.create.post') }}"
+                    update-comment-api-endpoint="{{ route('api.comments.update.post') }}"
+                    delete-comment-api-endpoint="{{ route('api.comments.delete.post') }}"
+                    create-team-member-application-api-endpoint="{{ route('api.team-member-applications.create.post') }}"
+                    update-team-member-application-api-endpoint="{{ route('api.team-member-applications.update.post') }}"
+                    delete-team-member-application-api-endpoint="{{ route('api.team-member-applications.delete.post') }}"
+                    accept-team-member-application-api-endpoint="{{ route('api.team-member-applications.accept.post') }}"
+                    deny-team-member-application-api-endpoint="{{ route('api.team-member-applications.deny.post') }}">
+                </job-view>
 
+            </div>
         </div>
+        
     </div>
 @stop
