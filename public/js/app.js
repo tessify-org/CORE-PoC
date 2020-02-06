@@ -7001,7 +7001,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       tag: "[job-view]",
-      currentTab: 1,
+      currentTab: 0,
       mutableRoles: [],
       mutableApplications: [],
       dialogs: {

@@ -11,7 +11,7 @@
         <div id="homepage-header__content">
             @include("partials.feedback")
             <h1 class="page-title">Het Nieuwe Nieuwe Werken</h1>
-            <h2 class="page-subtitle">Dit is echt een pakkende slogan!</h2>
+            <h2 class="page-subtitle">Hoe werk jij?</h2>
         </div>
         <div id="homepage-header__overlay"></div>
     </header>

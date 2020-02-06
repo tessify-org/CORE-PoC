@@ -617,7 +617,7 @@
         ],
         data: () => ({
             tag: "[job-view]",
-            currentTab: 1,
+            currentTab: 0,
             mutableRoles: [],
             mutableApplications: [],
             dialogs: {
