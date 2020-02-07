@@ -128,6 +128,10 @@
                         border-radius: 12px;
                     }
                 }
+                #mobile-nav-button {
+                    margin: 0 0 0 15px;
+                    display: none;
+                }
             }
         }
     }
@@ -221,6 +225,23 @@
         }
     }
 }
+@media (max-width: 600px) {
+    #app {
+        #topnav__wrapper {
+            #topnav {
+                #topnav-links__wrapper {
+                    justify-content: flex-end;
+                    #topnav-links, #topnav-avatar {
+                        display: none;
+                    }
+                    #mobile-nav-button {
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+}
 
 #homepage-header {
     width: 100%;
@@ -272,12 +293,34 @@
 // Responsive homepage header
 @media (max-width: 875px) {
     #homepage-header {
+        .alert {
+            position: absolute;
+            top: 87px;
+        }
         #homepage-header__content {
             padding: 0 50px;
             box-sizing: border-box;
             .page-title {
                 text-align: center;
                 margin-top: -100px;
+            }
+        }
+    }
+}
+@media (max-width: 565px) {
+    #homepage-header {
+        #homepage-header__content {
+            .page-title {
+                font-size: 3em;
+            }
+        }
+    }
+}
+@media (max-width: 350px) {
+    #homepage-header {
+        #homepage-header__content {
+            .paage-title {
+                font-size: 2.2em;
             }
         }
     }

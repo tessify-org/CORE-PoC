@@ -15,3 +15,8 @@
 
 // Air datepicker
 @import "node_modules/air-datepicker/dist/css/datepicker";
+
+// Load hamburgers
+@import "node_modules/hamburgers/_sass/hamburgers/hamburgers.scss";
+$hamburger-layer-width: 10px !default;
+$hamburger-layer-height: 2px !default;

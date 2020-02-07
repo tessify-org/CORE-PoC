@@ -5,16 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>NNW @yield('page_title')</title>
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
-        
         {{-- Laravel Mix - CSS File --}}
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
         {{-- Font Awesome --}}
         <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
-        
     </head>
     <body>
 
@@ -89,9 +85,37 @@
                                 <img id="avatar" src="{{ is_null($user->avatar_url) ? Avatar::create($user->combinedName)->toBase64() : $user->avatar_url }}" />
                             </div>
                         @endif
+                        <div id="mobile-nav-button">
+                            <hamburger-button></hamburger-button>
+                        </div>
                     </nav>
                 </div>
             </div>
+
+            <!-- Mobile navigation -->
+            <mobile-navigation>
+                @if (Auth::check())
+                    <a class="sidemenu-link" href="{{ route('jobs') }}">
+                        <span class="sidemenu-link__text">Job Board</div>
+                    </a>
+                    <a class="sidemenu-link" href="{{ route('memberlist') }}">
+                        <span class="sidemenu-link__text">Ledenlijst</div>
+                    </a>
+                    <a class="sidemenu-link" href="{{ route('profile') }}">
+                        <span class="sidemenu-link__text">Mijn profiel</div>
+                    </a>
+                    <a class="sidemenu-link" href="{{ route('auth.logout') }}">
+                        <span class="sidemenu-link__text">Uitloggen</div>
+                    </a>
+                @else
+                    <a class="sidemenu-link" href="{{ route('auth.login') }}">
+                        <span class="sidemenu-link__text">Login</div>
+                    </a>
+                    <a class="sidemenu-link" href="{{ route('auth.register') }}">
+                        <span class="sidemenu-link__text">Registeren</div>
+                    </a>
+                @endif
+            </mobile-navigation>
             
             <!-- Breadcrumbs -->
             @if (!Request::is('/'))
