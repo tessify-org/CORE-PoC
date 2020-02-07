@@ -8,7 +8,7 @@
     <div class="content-section__wrapper">
         <div class="content-section">
 
-            <h1 class="page-title centered">Ledenlijst</h1>
+            <h1 id="memberlist-title" class="page-title centered">Ledenlijst</h1>
         
             @include("partials.feedback")
 

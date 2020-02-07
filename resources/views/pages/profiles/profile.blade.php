@@ -8,11 +8,11 @@
     <div class="content-section__wrapper">
         <div class="content-section">
 
-            <!-- Page title -->
-            <h1 class="page-title centered">Profiel</h1>
-
             <!-- Profile -->
             <div id="profile">
+
+                <!-- Page title -->
+                <h1 class="page-title centered">Profiel</h1>
 
                 <!-- Profile header -->
                 <div id="profile-header">

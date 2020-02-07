@@ -31,7 +31,7 @@
         </div>
 
         <!-- Content -->
-        <div class="content-section__wrapper">
+        <div id="job-content" class="content-section__wrapper">
             <div class="content-section">
                 
                 <!-- Feedback -->

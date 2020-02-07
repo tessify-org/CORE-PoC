@@ -6210,6 +6210,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["job", "jobStatuses", "jobCategories", "workMethods", "skills", "errors", "oldInput", "backHref", "createResourceApiEndpoint", "updateResourceApiEndpoint", "deleteResourceApiEndpoint"],
   data: function data() {
@@ -8220,7 +8226,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#register-form {\n  width: 600px;\n  padding: 25px;\n  margin: 0 auto;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: white;\n}\n#register-form #register-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#register-form #register-form__controls #register-form__controls-left, #register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#register-form #register-form__controls #register-form__controls-left #login-link {\n  text-decoration: none;\n  color: black;\n}\n#register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#register-form #register-form__controls #register-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
+exports.push([module.i, "#register-form {\n  width: 600px;\n  padding: 25px;\n  margin: 0 auto;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: white;\n}\n#register-form #register-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#register-form #register-form__controls #register-form__controls-left, #register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#register-form #register-form__controls #register-form__controls-left #login-link {\n  text-decoration: none;\n  color: black;\n}\n#register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#register-form #register-form__controls #register-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}\n@media (max-width: 600px) {\n#register-form {\n    width: 100%;\n}\n}\n@media (max-width: 470px) {\n#register-form .form-fields {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}", ""]);
 
 // exports
 
@@ -8296,7 +8302,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#job-form {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#job-form #job-form__left {\n  -webkit-box-flex: 2;\n          flex: 2;\n}\n#job-form #job-form__right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 0 0 30px;\n}", ""]);
+exports.push([module.i, "#job-form {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#job-form #job-form__left {\n  -webkit-box-flex: 2;\n          flex: 2;\n}\n#job-form #job-form__right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 0 0 30px;\n}\n#job-form #job-form__right .page-controls .page-controls__left {\n  display: none;\n}\n@media (max-width: 760px) {\n#job-form {\n    flex-wrap: wrap;\n}\n#job-form #job-form__left, #job-form #job-form__right {\n    -webkit-box-flex: 0;\n            flex: 0 0 100%;\n}\n#job-form #job-form__left .page-controls {\n    display: none;\n}\n#job-form #job-form__right {\n    margin: 30px 0 0 0;\n}\n#job-form #job-form__right .page-controls .page-controls__left {\n    display: block;\n}\n}", ""]);
 
 // exports
 
@@ -40148,6 +40154,20 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "page-controls mt" }, [
+        _c(
+          "div",
+          { staticClass: "page-controls__left" },
+          [
+            _c("v-btn", { attrs: { href: _vm.backHref, outlined: "" } }, [
+              _c("i", { staticClass: "fas fa-arrow-left" }),
+              _vm._v(
+                "\n                    Terug naar overzicht\n                "
+              )
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
         _c(
           "div",
           { staticClass: "page-controls__right" },

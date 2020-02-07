@@ -8,7 +8,7 @@
     <div class="content-section__wrapper">
         <div class="content-section">
 
-            <h1 class="page-title centered">Job verwijderen</h1>
+            <h1 id="delete-dialog__title" class="page-title centered">Job verwijderen</h1>
         
             @include("partials.feedback")
 
@@ -24,13 +24,13 @@
                         <div id="delete-dialog__actions-left">
                             <v-btn href="{{ route('jobs.view', $job->slug) }}" outlined>
                                 <i class="fas fa-arrow-left"></i>
-                                Nee, terug
+                                Nee<span class="extra-text">, terug</span>
                             </v-btn>
                         </div>
                         <div id="delete-dialog__actions-right">
                             <v-btn type="submit" color="red" dark>
                                 <i class="fas fa-trash-alt"></i>
-                                Ja, verwijderen
+                                Ja<span class="extra-text">, verwijderen</span>
                             </v-btn>
                         </div>
                     </div>

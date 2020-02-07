@@ -194,6 +194,12 @@
 
             <!-- Submit button -->
             <div class="page-controls mt">
+                <div class="page-controls__left">
+                    <v-btn :href="backHref" outlined>
+                        <i class="fas fa-arrow-left"></i>
+                        Terug naar overzicht
+                    </v-btn>
+                </div>
                 <div class="page-controls__right">
                     <v-btn type="submit" color="success">
                         <i class="fas fa-save"></i>
@@ -381,6 +387,32 @@
         #job-form__right {
             flex: 1;
             margin: 0 0 0 30px;
+            .page-controls {
+                .page-controls__left {
+                    display: none;
+                }
+            }
+        }
+    }
+    @media (max-width: 760px) {
+        #job-form {
+            flex-wrap: wrap;
+            #job-form__left, #job-form__right {
+                flex: 0 0 100%;
+            }
+            #job-form__left {
+                .page-controls {
+                    display: none;
+                }
+            }
+            #job-form__right {
+                margin: 30px 0 0 0;
+                .page-controls {
+                    .page-controls__left {
+                        display: block;
+                    }
+                }
+            }
         }
     }
 </style>

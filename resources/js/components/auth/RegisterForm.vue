@@ -178,4 +178,17 @@
             }
         }
     }
+    // Responsive
+    @media (max-width: 600px) {
+        #register-form {
+            width: 100%;
+        }
+    }
+    @media (max-width: 470px) {
+        #register-form {
+            .form-fields {
+                flex-direction: column;
+            }
+        }
+    }
 </style>

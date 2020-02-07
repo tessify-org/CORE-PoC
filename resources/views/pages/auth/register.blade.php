@@ -19,7 +19,7 @@
                     :errors="{{ $errors->toJson() }}"
                     :old-input="{{ $oldInput->toJson() }}">
                 </register-form>
-
+            
             </form>
 
         </div>
