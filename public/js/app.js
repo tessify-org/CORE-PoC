@@ -4651,6 +4651,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["oldInput", "errors", "prefillEmail"],
   data: function data() {
@@ -8195,7 +8201,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#login-form {\n  width: 600px;\n  padding: 25px;\n  margin: 0 auto;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #ffffff;\n}\n#login-form #login-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#login-form #login-form__controls #login-form__controls-left, #login-form #login-form__controls #login-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#login-form #login-form__controls #login-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#login-form #login-form__controls #login-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
+exports.push([module.i, "#login-form #login-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#login-form #login-form__controls #login-form__controls-left, #login-form #login-form__controls #login-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#login-form #login-form__controls #login-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#login-form #login-form__controls #login-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
 
 // exports
 
@@ -37978,91 +37984,100 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "elevation-1", attrs: { id: "login-form" } },
-    [
+  return _c("div", { attrs: { id: "login-form" } }, [
+    _c(
+      "div",
+      { staticClass: "form-field" },
+      [
+        _c("v-text-field", {
+          attrs: {
+            label: "E-mail",
+            name: "email",
+            error: _vm.hasErrors("email"),
+            "error-messages": _vm.getErrors("email")
+          },
+          model: {
+            value: _vm.form.email,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "email", $$v)
+            },
+            expression: "form.email"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "form-field" },
+      [
+        _c("v-text-field", {
+          attrs: {
+            type: "password",
+            label: "Password",
+            name: "password",
+            error: _vm.hasErrors("password"),
+            "error-messages": _vm.getErrors("password")
+          },
+          model: {
+            value: _vm.form.password,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "password", $$v)
+            },
+            expression: "form.password"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "form-field" },
+      [
+        _c("remember-me", {
+          attrs: { name: "remember_me" },
+          model: {
+            value: _vm.form.rememberMe,
+            callback: function($$v) {
+              _vm.$set(_vm.form, "rememberMe", $$v)
+            },
+            expression: "form.rememberMe"
+          }
+        })
+      ],
+      1
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-controls" }, [
       _c(
         "div",
-        { staticClass: "form-field" },
+        { staticClass: "form-controls__left" },
         [
-          _c("v-text-field", {
-            attrs: {
-              label: "E-mail",
-              name: "email",
-              error: _vm.hasErrors("email"),
-              "error-messages": _vm.getErrors("email")
-            },
-            model: {
-              value: _vm.form.email,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "email", $$v)
-              },
-              expression: "form.email"
-            }
-          })
+          _c("v-btn", { attrs: { type: "submit", color: "primary" } }, [
+            _vm._v("Inloggen")
+          ])
         ],
         1
       ),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "form-field" },
-        [
-          _c("v-text-field", {
-            attrs: {
-              type: "password",
-              label: "Password",
-              name: "password",
-              error: _vm.hasErrors("password"),
-              "error-messages": _vm.getErrors("password")
-            },
-            model: {
-              value: _vm.form.password,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "password", $$v)
-              },
-              expression: "form.password"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "form-controls" }, [
-        _c(
-          "div",
-          { staticClass: "form-controls__left" },
-          [
-            _c("remember-me", {
-              attrs: { name: "remember_me" },
-              model: {
-                value: _vm.form.rememberMe,
-                callback: function($$v) {
-                  _vm.$set(_vm.form, "rememberMe", $$v)
-                },
-                expression: "form.rememberMe"
-              }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "form-controls__right" },
-          [
-            _c("v-btn", { attrs: { type: "submit", color: "primary" } }, [
-              _vm._v("Login")
-            ])
-          ],
-          1
-        )
-      ])
-    ]
-  )
+      _vm._m(0)
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-controls__right" }, [
+      _c("a", { attrs: { href: "#" } }, [
+        _vm._v("\n                Wachtwoord vergeten?\n            ")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -97136,8 +97151,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\Code\Websites\NNW\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\Code\Websites\NNW\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,5 +1,5 @@
 <template>
-    <div id="login-form" class="elevation-1">
+    <div id="login-form">
         
         <!-- Email --> 
         <div class="form-field">
@@ -24,15 +24,21 @@
             </v-text-field>
         </div>
         
+        <div class="form-field">
+            <remember-me v-model="form.rememberMe" name="remember_me"></remember-me>
+        </div>
+        
         <!-- Controls -->
         <div class="form-controls">
             <!-- Remember me -->
             <div class="form-controls__left">
-                <remember-me v-model="form.rememberMe" name="remember_me"></remember-me>
+                <v-btn type="submit" color="primary">Inloggen</v-btn>
             </div>
             <!-- Submit form -->
             <div class="form-controls__right">
-                <v-btn type="submit" color="primary">Login</v-btn>
+                <a href="#">
+                    Wachtwoord vergeten?
+                </a>
             </div>
         </div>
 
@@ -94,12 +100,12 @@
 
 <style lang="scss">
     #login-form {
-        width: 600px;
-        padding: 25px;
-        margin: 0 auto;
-        border-radius: 3px;
-        box-sizing: border-box;
-        background-color: #ffffff;
+        // width: 600px;
+        // padding: 25px;
+        // margin: 0 auto;
+        // border-radius: 3px;
+        // box-sizing: border-box;
+        // background-color: #ffffff;
         #login-form__controls {
             display: flex;
             margin: 15px 0 0 0;

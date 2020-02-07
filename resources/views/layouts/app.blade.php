@@ -17,16 +17,18 @@
     </head>
     <body>
 
-        <v-app id="app" class="dark">
+        <v-app id="app" class="@if(Request::is('/')) home @endif">
 
             <!-- Topnav -->
             <div id="topnav__wrapper">
                 <div id="topnav">
+                    <!-- Logo -->
                     <div id="topnav-logo__wrapper">
                         <a id="topnav-logo" href="{{ route('home') }}">
                             N<sup>2</sup>W
                         </a>
                     </div>
+                    <!-- Search -->
                     <div id="topnav-search__wrapper">
                         <form action="{{ route('search.post') }}" method="post">
                             {{ csrf_field() }}
@@ -38,7 +40,8 @@
                             </div>
                         </form>
                     </div>
-                    <div id="topnav-links__wrapper">
+                    <!-- Navigation -->
+                    <nav id="topnav-links__wrapper">
                         <ul id="topnav-links">
                             @if (!Auth::check())
                                 <!-- Login -->
@@ -60,13 +63,13 @@
                                         Job Board
                                     </a>
                                 </li>
-                                <!-- Leden -->
+                                <!-- Members -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('memberlist') }}">
                                         Ledenlijst
                                     </a>
                                 </li>
-                                <!-- Mijn profiel -->
+                                <!-- My profile -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('profile') }}">
                                         Mijn profiel
@@ -85,12 +88,14 @@
                                 <img id="avatar" src="{{ is_null($user->avatar_url) ? Avatar::create($user->combinedName)->toBase64() : $user->avatar_url }}" />
                             </div>
                         @endif
-                    </div>
+                    </nav>
                 </div>
             </div>
             
             <!-- Breadcrumbs -->
-            @yield("breadcrumbs")
+            @if (!Request::is('/'))
+                @yield("breadcrumbs")
+            @endif
 
             <!-- Content -->
             <div id="content__wrapper">
@@ -100,7 +105,62 @@
             <!-- Footer -->
             <footer id="footer__wrapper">
                 <div id="footer">
-                    &copy; Copyrighted by yours truly. This is the way. 2020 - &infin;
+                    <div id="footer-upper">
+                        <div class="footer-upper__column-wrapper">
+                            <div class="footer-upper__column">
+                                <h4 class="column-title">HNNW</h4>
+                                <div class="column-links">
+                                    <a class="column-link" href="#">Pers</a>
+                                    <a class="column-link" href="#">Partners</a>
+                                    <a class="column-link" href="#">Over HNNW</a>
+                                    <a class="column-link" href="#">Meer doen</a>
+                                    <a class="column-link" href="#">Veelgestelde vragen</a>
+                                    <a class="column-link" href="#">Contact</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-upper__column-wrapper">
+                            <div class="footer-upper__column">
+                                <h4 class="column-title">Voor klusaanbieders</h4>
+                                <div class="column-links">
+                                    <a class="column-link" href="#">Financiele bijdragen</a>
+                                    <a class="column-link" href="#">Downloads</a>
+                                    <a class="column-link" href="#">Meer doen als klusaanbieder</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-upper__column-wrapper">
+                            <div class="footer-upper__column">
+                                <h4 class="column-title">Voor klusaannemers</h4>
+                                <div class="column-links">
+                                    <a class="column-link" href="#">Meedoen als groep</a>
+                                    <a class="column-link" href="#">Downloads</a>
+                                    <a class="column-link" href="#">Meer doen als vrijwilleger</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer-upper__column-wrapper">
+                            <div class="footer-upper__column">
+                                <h4 class="column-title">Nieuwsbrief</h4>
+                                <div class="column-text">
+                                    Meld je aan voor de maandelijkse digitale nieuwsbrief.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="footer-bottom">
+                        <div id="footer-bottom__left">
+                            &copy; Copyrighted by yours truly. This is the way. 2020 - &infin;
+                        </div>
+                        <div id="footer-bottom__right">
+                            <a href="#" class="footer-bottom-link">
+                                Cookies en privacy
+                            </a>
+                            <a href="#" class="footer-bottom-link">
+                                Disclaimer
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </footer>
 
