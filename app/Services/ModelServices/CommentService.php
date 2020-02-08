@@ -7,45 +7,37 @@ use Jobs;
 use Users;
 use Tasks;
 use Exception;
+
 use App\Models\Job;
 use App\Models\User;
 use App\Models\Task;
 use App\Models\Comment;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 use App\Http\Requests\Api\Comments\CreateCommentRequest;
 use App\Http\Requests\Api\Comments\UpdateCommentRequest;
 
-class CommentService 
+class CommentService implements ModelServiceContract
 {
-    private $comments;
-    private $preloadedComments;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->comments))
-        {
-            $this->comments = Comment::all();
-        }
-
-        return $this->comments;
+        $this->model = "App\Models\Comment";
     }
 
-    public function getAllPreloaded()
+    public function preload($instance)
     {
-        if (is_null($this->preloadedComments))
-        {
-            $out = [];
-
-            foreach ($this->getAll() as $comment)
-            {
-                $out[] = $this->preload($comment);
-            }
-
-            $this->preloadedComments = collect($out);
-        }
-
-        return $this->preloadedComments;
+        $instance->user = Users::findPreloaded($instance->user_id);
+        $instance->formatted_created_at = $instance->created_at->format("d-m-Y H:m:s");
+        
+        return $instance;
     }
-
+    
     public function getAllPreloadedForJob(Job $job)
     {
         $out = [];
@@ -89,41 +81,6 @@ class CommentService
         }
 
         return collect($out);
-    }
-
-    public function find($id)
-    {
-        foreach ($this->getAll() as $comment)
-        {
-            if ($comment->id == $id)
-            {
-                return $comment;
-            }
-        }
-
-        return false;
-    }
-
-    public function findPreloaded($id)
-    {
-        foreach ($this->getAllPreloaded() as $comment)
-        {
-            if ($comment->id == $id)
-            {
-                return $comment;
-            }
-        }
-
-        return false;
-    }
-
-    private function preload(Comment $comment)
-    {
-        $comment->user = Users::findPreloaded($comment->user_id);
-
-        $comment->formatted_created_at = $comment->created_at->format("d-m-Y H:m:s");
-
-        return $comment;
     }
 
     public function createFromApiRequest(CreateCommentRequest $request)

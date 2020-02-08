@@ -3,70 +3,28 @@
 namespace App\Services\ModelServices;
 
 use Users;
+
 use App\Models\TeamMember;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 
-class TeamMemberService
+class TeamMemberService implements ModelServiceContract
 {
-    private $members;
-    private $preloadedMembers;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->members))
-        {
-            $this->members = TeamMember::all();
-        }
-        
-        return $this->members;
+        $this->model = "App\Models\TeamMember";
     }
 
-    public function getAllPreloaded()
+    public function preload($instance)
     {
-        if (is_null($this->preloadedMembers))
-        {
-            $out = [];
+        $instance->user = Users::findPreloaded($instance->user_id);
 
-            foreach ($this->getAll() as $member)
-            {
-                $out[] = $this->preload($member);
-            }
-
-            $this->preloadedMembers = collect($out);
-        }
-
-        return $this->preloadedMembers;
-    }
-
-    public function find($id)
-    {
-        foreach ($this->getAll() as $member)
-        {
-            if ($member->id == $id)
-            {
-                return $member;
-            }
-        }
-
-        return false;
-    }
-
-    public function findPreloaded($id)
-    {
-        foreach ($this->getAllPreloaded() as $member)
-        {
-            if ($member->id == $id)
-            {
-                return $member;
-            }
-        }
-
-        return false;
-    }
-
-    private function preload(TeamMember $member)
-    {
-        $member->user = Users::findPreloaded($member->user_id);
-
-        return $member;
+        return $instance;
     }
 }

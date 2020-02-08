@@ -4,32 +4,25 @@ namespace App\Services\ModelServices;
 
 use App\Models\Job;
 use App\Models\JobStatus;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 
-class JobStatusService
+class JobStatusService implements ModelServiceContract
 {
-    private $statuses;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->statuses))
-        {
-            $this->statuses = JobStatus::all();
-        }
-
-        return $this->statuses;
+        $this->model = "App\Models\JobStatus";
     }
-
-    public function find($id)
+    
+    public function preload($instance)
     {
-        foreach ($this->getAll() as $status)
-        {
-            if ($status->id == $id)
-            {
-                return $status;
-            }
-        }
-
-        return false;
+        return $instance;
     }
 
     public function findForJob(Job $job)

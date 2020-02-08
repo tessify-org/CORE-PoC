@@ -3,31 +3,24 @@
 namespace App\Services\ModelServices;
 
 use App\Models\JobTitle;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 
-class JobTitleService
+class JobTitleService implements ModelServiceContract
 {
-    private $titles;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->titles))
-        {
-            $this->titles = JobTitle::all();
-        }
-
-        return $this->titles;
+        $this->model = "App\Models\JobTitle";
     }
-
-    public function find($id)
+    
+    public function preload($instance)
     {
-        foreach ($this->getAll() as $title)
-        {
-            if ($title->id == $id)
-            {
-                return $title;
-            }
-        }
-
-        return false;
+        return $instance;
     }
 }

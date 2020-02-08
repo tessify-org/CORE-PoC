@@ -3,31 +3,24 @@
 namespace App\Services\ModelServices;
 
 use App\Models\TaskStatus;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 
-class TaskStatusService
+class TaskStatusService implements ModelServiceContract
 {
-    private $statuses;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->statuses))
-        {
-            $this->statuses = TaskStatus::all();
-        }
-
-        return $this->statuses;
+        $this->model = "App\Models\TaskStatus";
     }
-
-    public function find($id)
+    
+    public function preload($instance)
     {
-        foreach ($this->getAll() as $status)
-        {
-            if ($status->id == $id)
-            {
-                return $status;
-            }
-        }
-
-        return false;
+        return $instance;
     }
 }

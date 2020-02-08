@@ -9,66 +9,32 @@ use Organizations;
 
 use App\Models\User;
 use App\Models\Assignment;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 
-class AssignmentService
+class AssignmentService implements ModelServiceContract
 {
-    private $assignments;
-    private $preloadedAssignments;
+    use ModelServiceGetters;
+
+    private $model;
+    private $records;
+    private $preloadedRecords;
     
-    public function getAll()
+    public function __construct()
     {
-        if (is_null($this->assignments))
-        {
-            $this->assignments = Assignment::all();
-        }
-
-        return $this->assignments;
+        $this->model = "App\Models\Assignment";
     }
-
-    public function getAllPreloaded()
+    
+    public function preload($instance)
     {
-        if (is_null($this->preloadedAssignments))
-        {
-            $out = [];
+        $instance->ministry = Ministries::find($instance->ministry_id);
+        $instance->organization = Organizations::find($instance->organization_id);
+        $instance->department = Departments::find($instance->department_id);
+        $instance->job_title = JobTitles::find($instance->job_title_id);
 
-            foreach ($this->getAll() as $assignment)
-            {
-                $out[] = $this->preload($assignment);
-            }
-
-            $this->preloadedAssignments = collect($out);
-        }
-
-        return $this->preloadedAssignments;
+        return $instance;
     }
-
-
-    public function find($id)
-    {
-        foreach ($this->getAll() as $assignment)
-        {
-            if ($assignment->id == $id)
-            {
-                return $assignment;
-            }
-        }
-
-        return false;
-    }
-
-    public function findPreloaded($id)
-    {
-        foreach ($this->getAllPreloaded() as $assignment)
-        {
-            if ($assignment->id == $id)
-            {
-                return $assignment;
-            }
-        }
-
-        return false;
-    }
-
+    
     public function getAllForUser(User $user)
     {
         $out = [];
@@ -82,16 +48,6 @@ class AssignmentService
         }
 
         return $out;
-    }
-
-    private function preload(Assignment $assignment)
-    {
-        $assignment->ministry = Ministries::find($assignment->ministry_id);
-        $assignment->organization = Organizations::find($assignment->organization_id);
-        $assignment->department = Departments::find($assignment->department_id);
-        $assignment->job_title = JobTitles::find($assignment->job_title_id);
-
-        return $assignment;
     }
 
     public function getCurrentForUser(User $user)

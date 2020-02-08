@@ -13,54 +13,61 @@ use JobStatuses;
 use JobResources;
 use JobCategories;
 use TeamMemberApplications;
+
 use App\Models\Job;
 use App\Models\TeamRole;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 use App\Http\Requests\Jobs\CreateJobRequest;
 use App\Http\Requests\Jobs\UpdateJobRequest;
 
-class JobService
+class JobService implements ModelServiceContract
 {
-    private $jobs;
-    private $preloadedJobs;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->jobs))
-        {
-            $this->jobs = Job::all();
-        }
-
-        return $this->jobs;
+        $this->model = "App\Models\Job";
     }
-
-    public function getAllPreloaded()
+    
+    public function preload($instance)
     {
-        if (is_null($this->preloadedJobs))
-        {
-            $out = [];
+        // Convert header image url from relative to absolute (so it can be used in vue components)
+        $instance->header_image_url = asset($instance->header_image_url);
 
-            foreach ($this->getAll() as $job)
-            {
-                $out[] = $this->preload($job);
-            }
+        // Load the job's resources
+        $instance->resources = JobResources::getAllPreloadedForJob($instance);
 
-            return collect($out);
-        }
+        // Load the job's team roles
+        $instance->team_roles = TeamRoles::getAllPreloadedForJob($instance);
 
-        return $this->preloadedJobs;
-    }
+        // Load the job's status
+        $instance->status = JobStatuses::findForJob($instance);
 
-    public function find($id)
-    {
-        foreach ($this->getAll() as $job)
-        {
-            if ($job->id == $id)
-            {
-                return $job;
-            }
-        }
+        // Load the job's author
+        $instance->author = Users::findAuthorForJob($instance);
 
-        return false;
+        // Load the job's category
+        $instance->category = JobCategories::findForJob($instance);
+
+        // Load the job's work method
+        $instance->work_method = WorkMethods::findForJob($instance);
+
+        // Load the job's team member applications
+        $instance->team_member_applications = TeamMemberApplications::getAllForJob($instance);
+
+        // Format the dates
+        $instance->formatted_starts_at = is_null($instance->starts_at) ? null : $instance->starts_at->format("d-m-Y");
+        $instance->formatted_ends_at = is_null($instance->ends_at) ? null : $instance->ends_at->format("d-m-Y");
+        $instance->formatted_created_at = $instance->created_at->format("d-m-Y H:m:s");
+        $instance->formatted_updated_at = $instance->updated_at->format("d-m-Y H:m:s");
+
+        // Return the upgraded job
+        return $instance;
     }
 
     public function findBySlug($slug)
@@ -68,19 +75,6 @@ class JobService
         foreach ($this->getAll() as $job)
         {
             if ($job->slug == $slug)
-            {
-                return $job;
-            }
-        }
-
-        return false;
-    }
-    
-    public function findPreloaded($id)
-    {
-        foreach ($this->getAllPreloaded() as $job)
-        {
-            if ($job->id == $id)
             {
                 return $job;
             }
@@ -100,42 +94,6 @@ class JobService
         }
 
         return false;
-    }
-
-    private function preload(Job $job)
-    {
-        // Convert header image url from relative to absolute (so it can be used in vue components)
-        $job->header_image_url = asset($job->header_image_url);
-
-        // Load the job's resources
-        $job->resources = JobResources::getAllPreloadedForJob($job);
-
-        // Load the job's team roles
-        $job->team_roles = TeamRoles::getAllPreloadedForJob($job);
-
-        // Load the job's status
-        $job->status = JobStatuses::findForJob($job);
-
-        // Load the job's author
-        $job->author = Users::findAuthorForJob($job);
-
-        // Load the job's category
-        $job->category = JobCategories::findForJob($job);
-
-        // Load the job's work method
-        $job->work_method = WorkMethods::findForJob($job);
-
-        // Load the job's team member applications
-        $job->team_member_applications = TeamMemberApplications::getAllForJob($job);
-
-        // Format the dates
-        $job->formatted_starts_at = is_null($job->starts_at) ? null : $job->starts_at->format("d-m-Y");
-        $job->formatted_ends_at = is_null($job->ends_at) ? null : $job->ends_at->format("d-m-Y");
-        $job->formatted_created_at = $job->created_at->format("d-m-Y H:m:s");
-        $job->formatted_updated_at = $job->updated_at->format("d-m-Y H:m:s");
-
-        // Return the upgraded job
-        return $job;
     }
 
     public function createFromRequest(CreateJobRequest $request)

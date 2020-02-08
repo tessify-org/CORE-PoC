@@ -3,14 +3,32 @@
 namespace App\Services\ModelServices;
 
 use DB;
+
 use App\Models\Skill;
 use App\Models\TeamRole;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 
-class SkillService
+class SkillService implements ModelServiceContract
 {
-    private $skills;
+    use ModelServiceGetters;
+
+    private $model;
+    private $records;
+    private $preloadedRecords;
+
     private $skillUser;
     private $skillTeamRole;
+
+    public function __construct()
+    {
+        $this->model = "App\Models\Skill";
+    }
+    
+    public function preload($instance)
+    {
+        return $instance;
+    }
 
     public function getSkillUserPivots()
     {
@@ -32,16 +50,6 @@ class SkillService
         return $this->skillTeamRole;
     }
 
-    public function getAll()
-    {
-        if (is_null($this->skills))
-        {
-            $this->skills = Skill::all();
-        }
-
-        return $this->skills;
-    }
-
     public function getAllForTeamRole(TeamRole $role)
     {
         $out = [];
@@ -59,19 +67,6 @@ class SkillService
         }
 
         return $out;
-    }
-
-    public function find($id)
-    {
-        foreach ($this->getAll() as $skill)
-        {
-            if ($skill->id == $id)
-            {
-                return $skill;
-            }
-        }
-
-        return false;
     }
 
     public function findByName($name)

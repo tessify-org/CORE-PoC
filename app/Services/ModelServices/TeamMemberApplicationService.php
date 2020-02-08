@@ -5,77 +5,36 @@ namespace App\Services\ModelServices;
 use Auth;
 use Users;
 use TeamRoles;
+
 use App\Models\Job;
 use App\Models\TeamMemberApplication;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 use App\Http\Requests\Api\Jobs\TeamMemberApplications\CreateTeamMemberApplicationRequest;
 use App\Http\Requests\Api\Jobs\TeamMemberApplications\UpdateTeamMemberApplicationRequest;
 use App\Http\Requests\Api\Jobs\TeamMemberApplications\AcceptTeamMemberApplicationRequest;
 use App\Http\Requests\Api\Jobs\TeamMemberApplications\DenyTeamMemberApplicationRequest;
 
-class TeamMemberApplicationService
+class TeamMemberApplicationService implements ModelServiceContract
 {
-    private $applications;
-    private $preloadedApplications;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->applications))
-        {
-            $this->applications = TeamMemberApplication::all();
-        }
-
-        return $this->applications;
+        $this->model = "App\Models\Task";
     }
 
-    public function getAllPreloaded()
+    public function preload($instance)
     {
-        if (is_null($this->preloadedApplications))
-        {
-            $out = [];
+        $instance->user = Users::findPreloaded($instance->user_id);
+        $instance->team_role = TeamRoles::find($instance->team_role_id);
+        $instance->formatted_created_at = $instance->created_at->format("d-m-Y H:m:s");
 
-            foreach ($this->getAll() as $application)
-            {
-                $out[] = $this->preload($application);
-            }
-
-            $this->preloadedApplications = collect($out);
-        }
-
-        return $this->preloadedApplications;
-    }
-
-    public function find($id)
-    {
-        foreach ($this->getAll() as $application)
-        {
-            if ($application->id == $id)
-            {
-                return $application;
-            }
-        }
-
-        return false;
-    }
-
-    public function findPreloaded($id)
-    {
-        foreach ($this->getAllPreloaded() as $application)
-        {
-            if ($application->id == $id)
-            {
-                return $application;
-            }
-        }
-
-        return false;
-    }
-
-    private function preload(TeamMemberApplication $application)
-    {
-        $application->user = Users::findPreloaded($application->user_id);
-        $application->team_role = TeamRoles::find($application->team_role_id);
-        $application->formatted_created_at = $application->created_at->format("d-m-Y H:m:s");
-        return $application;
+        return $instance;
     }
 
     public function getAllForJob(Job $job)

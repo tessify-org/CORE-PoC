@@ -3,31 +3,24 @@
 namespace App\Services\ModelServices;
 
 use App\Models\Organization;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 
-class OrganizationService
+class OrganizationService implements ModelServiceContract
 {
-    private $organizations;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->organizations))
-        {
-            $this->organizations = Organization::all();
-        }
-
-        return $this->organizations;
+        $this->model = "App\Models\Organization";
     }
-
-    public function find($id)
+    
+    public function preload($instance)
     {
-        foreach ($this->getAll() as $organization)
-        {
-            if ($organization->id == $id)
-            {
-                return $organization;
-            }
-        }
-
-        return false;
+        return $instance;
     }
 }

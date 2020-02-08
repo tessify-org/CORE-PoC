@@ -4,36 +4,29 @@ namespace App\Services\ModelServices;
 
 use App\Models\Job;
 use App\Models\JobCategory;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 use App\Http\Requests\Jobs\Categories\CreateJobCategoryRequest;
 use App\Http\Requests\Jobs\Categories\UpdateJobCategoryRequest;
 
-class JobCategoryService
+class JobCategoryService implements ModelServiceContract
 {
-    private $categories;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->categories))
-        {
-            $this->categories = JobCategory::all();
-        }
-
-        return $this->categories;
+        $this->model = "App\Models\JobCategory";
     }
 
-    public function find($id)
+    public function preload($instance)
     {
-        foreach ($this->getAll() as $category)
-        {
-            if ($category->id == $id)
-            {
-                return $category;
-            }
-        }
-
-        return false;
+        return $instance;
     }
-
+    
     public function findForJob(Job $job)
     {
         return $this->find($job->job_category_id);

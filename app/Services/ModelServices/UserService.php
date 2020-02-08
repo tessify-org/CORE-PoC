@@ -9,12 +9,23 @@ use Carbon\Carbon;
 use App\Models\Job;
 use App\Models\User;
 use App\Models\Assignment;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 use App\Http\Requests\Profiles\UpdateProfileRequest;
 
-class UserService
+
+class UserService implements ModelServiceContract
 {
-    private $users;
-    private $preloadedUsers;
+    use ModelServiceGetters;
+
+    private $model;
+    private $records;
+    private $preloadedRecords;
+
+    public function __construct()
+    {
+        $this->model = "App\Models\User";
+    }
 
     public function current()
     {
@@ -27,76 +38,23 @@ class UserService
         return false;
     }
 
-    public function getAll()
-    {
-        if (is_null($this->users))
-        {
-            $this->users = User::all();
-        }
-
-        return $this->users;
-    }
-
-    public function getAllPreloaded()
-    {
-        if (is_null($this->preloadedUsers))
-        {
-            $out = [];
-
-            foreach ($this->getAll() as $user)
-            {
-                $out[] = $this->preload($user);
-            }
-
-            $this->preloadedUsers = collect($out);
-        }
-
-        return $this->preloadedUsers;
-    }
-
-    public function find($id)
-    {
-        foreach ($this->getAll() as $user)
-        {
-            if ($user->id == $id)
-            {
-                return $user;
-            }
-        }
-
-        return false;
-    }
-
-    public function findPreloaded($id)
-    {
-        foreach ($this->getAllPreloaded() as $user)
-        {
-            if ($user->id == $id)
-            {
-                return $user;
-            }
-        }
-
-        return false;
-    }
-
-    private function preload(User $user)
+    public function preload($instance)
     {
         // Add link to the user's profile page
-        $user->profile_href = route("profile", $user->slug);
+        $instance->profile_href = route("profile", $instance->slug);
         
         // Manually load the dynamic attributes
-        $user->formatted_name = $user->formattedName;
-        $user->combined_name = $user->combined_name;
+        $instance->formatted_name = $instance->formattedName;
+        $instance->combined_name = $instance->combined_name;
 
         // Load current & previous assignments
-        $user->current_assignment = Assignments::getCurrentForUser($user);
-        $user->previous_assignments = Assignments::getPreviousForUser($user);
+        $instance->current_assignment = Assignments::getCurrentForUser($instance);
+        $instance->previous_assignments = Assignments::getPreviousForUser($instance);
 
         // TODO: load relationships.. not necessary yet
 
         // Return the upgraded user
-        return $user;
+        return $instance;
     }
 
     public function updateAssignments(User $user, UpdateProfileRequest $request)

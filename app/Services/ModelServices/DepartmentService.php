@@ -3,31 +3,24 @@
 namespace App\Services\ModelServices;
 
 use App\Models\Department;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 
-class DepartmentService
+class DepartmentService implements ModelServiceContract
 {
-    private $departments;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->departments))
-        {
-            $this->departments = Department::all();
-        }
-
-        return $this->departments;
+        $this->model = "App\Models\Department";
     }
-
-    public function find($id)
+    
+    public function preload($instance)
     {
-        foreach ($this->getAll() as $department)
-        {
-            if ($department->id == $id)
-            {
-                return $department;
-            }
-        }
-
-        return false;
+        return $instance;
     }
 }

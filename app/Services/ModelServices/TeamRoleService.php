@@ -5,41 +5,36 @@ namespace App\Services\ModelServices;
 use DB;
 use Skills;
 use TeamMembers;
+
 use App\Models\Job;
 use App\Models\TeamRole;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 use App\Http\Requests\Api\Jobs\TeamRoles\UnassignTeamRoleRequest;
 
-class TeamRoleService
+class TeamRoleService implements ModelServiceContract
 {
-    private $roles;
-    private $preloadedRoles;
+    use ModelServiceGetters;
+
+    private $model;
+    private $records;
+    private $preloadedRecords;
     private $teamMemberPivots;
-
-    public function getAll()
+    
+    public function __construct()
     {
-        if (is_null($this->roles))
-        {
-            $this->roles = TeamRole::all();
-        }
-
-        return $this->roles;
+        $this->model = "App\Models\TeamRole";
     }
 
-    public function getAllPreloaded()
+    public function preload($instance)
     {
-        if (is_null($this->preloadedRoles))
-        {
-            $out = [];
+        // Load role's assigned team member
+        $instance->team_member = $this->getTeamMemberForTeamRole($instance);
 
-            foreach ($this->getAll() as $role)
-            {
-                $out[] = $this->preload($role);
-            }
-
-            $this->preloadedRoles = collect($out);
-        }
-
-        return $this->preloadedRoles;
+        // Load role's required skills
+        $instance->skills = Skills::getAllForTeamRole($instance);
+        
+        return $instance;
     }
 
     public function getAllPreloadedForJob(Job $job)
@@ -55,32 +50,6 @@ class TeamRoleService
         }
 
         return $out;
-    }
-    
-    public function find($id)
-    {
-        foreach ($this->getAll() as $status)
-        {
-            if ($status->id == $id)
-            {
-                return $status;
-            }
-        }
-
-        return false;
-    }
-
-    public function findPreloaded($id)
-    {
-        foreach ($this->getAllPreloaded() as $role)
-        {
-            if ($role->id == $id)
-            {
-                return $role;
-            }
-        }
-
-        return false;
     }
 
     public function getTeamMemberPivots()
@@ -106,17 +75,6 @@ class TeamRoleService
         }
 
         return $teamMember;
-    }
-
-    private function preload(TeamRole $role)
-    {
-        // Load role's assigned team member
-        $role->team_member = $this->getTeamMemberForTeamRole($role);
-
-        // Load role's required skills
-        $role->skills = Skills::getAllForTeamRole($role);
-        
-        return $role;
     }
 
     public function unassignFromRequest(UnassignFromRequest $request)

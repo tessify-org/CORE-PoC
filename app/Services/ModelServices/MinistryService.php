@@ -3,31 +3,24 @@
 namespace App\Services\ModelServices;
 
 use App\Models\Ministry;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 
-class MinistryService
+class MinistryService implements ModelServiceContract
 {
-    private $ministries;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->ministries))
-        {
-            $this->ministries = Ministry::all();
-        }
-
-        return $this->ministries;
+        $this->model = "App\Models\Ministry";
     }
-
-    public function find($id)
+    
+    public function preload($instance)
     {
-        foreach ($this->getAll() as $ministry)
-        {
-            if ($ministry->id == $id)
-            {
-                return $ministry;
-            }
-        }
-
-        return false;
+        return $instance;
     }
 }

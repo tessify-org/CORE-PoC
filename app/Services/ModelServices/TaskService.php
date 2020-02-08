@@ -3,31 +3,24 @@
 namespace App\Services\ModelServices;
 
 use App\Models\Task;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 
-class TaskService
+class TaskService implements ModelServiceContract
 {
-    private $tasks;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->tasks))
-        {
-            $this->tasks = Task::all();
-        }
-
-        return $this->tasks;
+        $this->model = "App\Models\Task";
     }
-
-    public function find($id)
+    
+    public function preload($instance)
     {
-        foreach ($this->getAll() as $task)
-        {
-            if ($task->id == $id)
-            {
-                return $task;
-            }
-        }
-
-        return false;
+        return $instance;
     }
 }

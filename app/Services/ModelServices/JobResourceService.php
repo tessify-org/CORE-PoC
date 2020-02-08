@@ -4,41 +4,33 @@ namespace App\Services\ModelServices;
 
 use Auth;
 use Uploader;
+
 use App\Models\Job;
 use App\Models\JobResource;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 use App\Http\Requests\Api\Jobs\Resources\CreateJobResourceRequest;
 use App\Http\Requests\Api\Jobs\Resources\UpdateJobResourceRequest;
 
-class JobResourceService
+class JobResourceService implements ModelServiceContract
 {
-    private $resources;
-    private $preloadedResources;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+    
+    public function __construct()
     {
-        if (is_null($this->resources))
-        {
-            $this->resources = JobResource::all();
-        }
-
-        return $this->resources;
+        $this->model = "App\Models\JobResource";
     }
-
-    public function getAllPreloaded()
+    
+    public function preload($instance)
     {
-        if (is_null($this->preloadedResources))
-        {
-            $out = [];
-
-            foreach ($this->getAll() as $resource)
-            {
-                $out[] = $this->preload($resource);
-            }
-
-            $this->preloadedResources = collect($out);
-        }
-
-        return $this->preloadedResources;
+        // Convert file url from relative to absolute
+        $instance->file_url = asset($instance->file_url);
+        
+        return $instance;
     }
 
     public function getAllPreloadedForJob(Job $job)
@@ -54,40 +46,6 @@ class JobResourceService
         }
 
         return $out;
-    }
-    
-    public function find($id)
-    {
-        foreach ($this->getAll() as $resource)
-        {
-            if ($resource->id == $id)
-            {
-                return $resource;
-            }
-        }
-
-        return false;
-    }
-
-    public function findPreloaded($id)
-    {
-        foreach ($this->getAllPreloaded() as $resource)
-        {
-            if ($resource->id == $id)
-            {
-                return $resource;
-            }
-        }
-
-        return false;
-    }
-
-    public function preload(JobResource $resource)
-    {
-        // Convert file url from relative to absolute
-        $resource->file_url = asset($resource->file_url);
-        
-        return $resource;
     }
 
     public function createFromRequest(CreateJobResourceRequest $request)

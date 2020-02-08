@@ -4,34 +4,27 @@ namespace App\Services\ModelServices;
 
 use App\Models\Job;
 use App\Models\WorkMethod;
+use App\Traits\ModelServiceGetters;
+use App\Contracts\ModelServiceContract;
 use App\Http\Requests\Jobs\WorkMethods\CreateWorkMethodRequest;
 use App\Http\Requests\Jobs\WorkMethods\UpdateWorkMethodRequest;
 
-class WorkMethodService
+class WorkMethodService implements ModelServiceContract
 {
-    private $methods;
+    use ModelServiceGetters;
 
-    public function getAll()
+    private $model;
+    private $records;
+    private $preloadedRecords;
+
+    public function __construct()
     {
-        if (is_null($this->methods))
-        {
-            $this->methods = WorkMethod::all();
-        }
-
-        return $this->methods;
+        $this->model = "App\Models\WorkMethod";
     }
-
-    public function find($id)
+    
+    public function preload($instance)
     {
-        foreach ($this->getAll() as $method)
-        {
-            if ($method->id == $id)
-            {
-                return $method;
-            }
-        }
-
-        return false;
+        return $instance;
     }
 
     public function findForJob(Job $job)
