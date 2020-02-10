@@ -63,19 +63,6 @@
             </div>
         </div>
 
-        <!-- Assignments -->
-        <div class="form-field">
-            <assignments-field
-                name="assignments"
-                label="Aanstellingen"
-                :ministries="ministries"
-                :organizations="organizations"
-                :departments="departments"
-                :job-titles="jobTitles"
-                v-model="form.assignments">
-            </assignments-field>
-        </div>
-
         <!-- Controls -->
         <div class="form-controls">
             <div class="form-controls__left">
@@ -99,10 +86,6 @@
     export default {
         props: [
             "user",
-            "ministries",
-            "organizations",
-            "departments",
-            "jobTitles",
             "errors",
             "oldInput",
             "backHref",
@@ -110,17 +93,12 @@
         data: () => ({
             tag: "[update-profile-form]",
             annotationOptions: [],
-            ministryOptions: [],
-            organizationOptions: [],
-            departmentOptions: [],
-            jobTitleOptions: [],
             form: {
                 annotation: "",
                 first_name: "",
                 last_name: "",
                 email: "",
                 phone: "",
-                assignments: [],
                 avatar: null,
             }
         }),
@@ -133,14 +111,9 @@
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" user: ", this.user);
-                console.log(this.tag+" ministries: ", this.ministries);
-                console.log(this.tag+" organizations: ", this.organizations);
-                console.log(this.tag+" departments: ", this.departments);
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
                 console.log(this.tag+" back href: ", this.backHref);
-                console.log(this.tag+" ");
-                console.log(this.tag+" ");
                 this.generateAnnotationOptions();
                 this.initializeData();
             },
@@ -151,9 +124,6 @@
                     this.form.last_name = this.user.last_name;
                     this.form.email = this.user.email;
                     this.form.phone = this.user.phone;
-                    if (this.user.assignments !== undefined && this.user.assignments !== null && this.user.assignments.length > 0) {
-                        
-                    }
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.annotation !== null) this.form.annotation = this.oldInput.annotation;
@@ -161,7 +131,6 @@
                     if (this.oldInput.last_name !== null) this.form.last_name = this.oldInput.last_name;
                     if (this.oldInput.email !== null) this.form.email = this.oldInput.email;
                     if (this.oldInput.phone !== null) this.form.phone = this.oldInput.phone;
-                    if (this.oldInput.assignments !== null) this.form.assignments = JSON.parse(this.oldInput.assignments);
                 }
             },
             generateAnnotationOptions() {
@@ -183,7 +152,6 @@
                 return [];
             },
             onAvatarUpload() {
-                console.log("on avatar upload", dialog);
                 this.form.avatar = this.$refs.edit_file.files[0];
             },
         },

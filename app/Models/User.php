@@ -6,10 +6,12 @@ use Users;
 use Avatar;
 use Uploader;
 use Assignments;
+
+use Cviebrock\EloquentSluggable\Sluggable;
+
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Cviebrock\EloquentSluggable\Sluggable;
 
 class User extends Authenticatable
 {
@@ -50,12 +52,7 @@ class User extends Authenticatable
     //
     // Relationships
     //
-
-    public function assignments()
-    {
-        return $this->hasMany(Assignment::class);
-    }
-
+    
     public function createdJobs()
     {
         return $this->hasMany(Job::class, "id", "author_id");

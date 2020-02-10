@@ -21,22 +21,6 @@
                     </div>
                     <div id="profile-header__text-wrapper">
                         <h2 class="page-subtitle">{{ $user->combinedName }}</h2>
-                        @if ($user->currentAssignment)
-                            <h3 class="page-subtitle__subtext">
-                                @if ($user->currentAssignment)
-                                    {{ $user->currentAssignment->ministry->abbreviation }} - 
-                                @endif
-                                @if ($user->currentAssignment->organization)
-                                    {{ $user->currentAssignment->organization->name }} - 
-                                @endif
-                                @if ($user->currentAssignment->department)
-                                    {{ $user->currentAssignment->department->name }} -
-                                @endif
-                                @if ($user->currentAssignment->jobTitle)
-                                    {{ $user->currentAssignment->jobTitle->name }}
-                                @endif
-                            </h3>
-                        @endif
                     </div>
                 </div>
 
@@ -80,16 +64,6 @@
                                 @endif
                             </div>
                         </div>
-                        @if ($user->currentAssignment)
-                            <div class="detail">
-                                <div class="key">Current assignment</div>
-                                <div class="val">
-                                    {{ $user->currentAssignment->ministry->name }}<br>
-                                    {{ $user->currentAssignment->organization->name }}<br>
-                                    {{ $user->currentAssignment->jobTitle->name }}
-                                </div>
-                            </div>
-                        @endif
                         <div class="detail">
                             <div class="key">Created at</div>
                             <div class="val">{{ $user->created_at->format("d-m-Y") }}</div>
@@ -99,12 +73,6 @@
                             <div class="val">{{ $user->updated_at->format("d-m-Y") }}</div>
                         </div>
                     </div>
-                    
-                    <!--
-
-                    <div id="profile__info-left"></div>
-                    <div id="profile__info-right"></div>
-                    -->
                     
                 </div>
 

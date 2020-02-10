@@ -16,9 +16,6 @@
                 <div id="memberlist" class="elevation-1">
                     <div id="memberlist__header">
                         <div class="memberlist__header-column">Naam</div>
-                        <div class="memberlist__header-column">Ministerie</div>
-                        <div class="memberlist__header-column">Organisatie</div>
-                        <div class="memberlist__header-column">Functie</div>
                         <div class="memberlist__header-column">Reputatie</div>
                     </div>
                     <div id="memberlist__content">
@@ -26,27 +23,6 @@
                             <a class="member" href="{{ route('profile', $user->slug) }}">
                                 <div class="member-name">
                                     {{ $user->formattedName }}
-                                </div>
-                                <div class="member-ministry">
-                                    @if ($user->current_assignment)
-                                        {{ $user->current_assignment->ministry->abbreviation }}
-                                    @else
-                                        <span class="italic">Aanstelling ontbreekt</span>
-                                    @endif
-                                </div>
-                                <div class="member-organization">
-                                    @if ($user->current_assignment)
-                                        {{ $user->current_assignment->organization->name }}
-                                    @else
-                                        <span class="italic">Aanstelling ontbreekt</span>
-                                    @endif
-                                </div>
-                                <div class="member-job-title">
-                                    @if ($user->current_assignment)
-                                        {{ $user->current_assignment->jobTitle->name }}
-                                    @else
-                                        <span class="italic">Aanstelling ontbreekt</span>
-                                    @endif
                                 </div>
                                 <div class="member-reputation">
                                     Excellent

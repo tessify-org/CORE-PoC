@@ -19,10 +19,6 @@
 
                 <update-profile-form
                     :user="{{ $user->toJson() }}"
-                    :ministries="{{ $ministries->toJson() }}"
-                    :organizations="{{ $organizations->toJson() }}"
-                    :departments="{{ $departments->toJson() }}"
-                    :job-titles="{{ $jobTitles->toJson() }}"
                     :errors="{{ $errors->toJson() }}"
                     :old-input="{{ $oldInput->toJson() }}">
                 </update-profile-form>
