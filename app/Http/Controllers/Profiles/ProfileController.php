@@ -3,12 +3,7 @@
 namespace App\Http\Controllers\Profiles;
 
 use Auth;
-
 use Users;
-use JobTitles;
-use Ministries;
-use Departments;
-use Organizations;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -18,15 +13,7 @@ class ProfileController extends Controller
 {
     public function getProfile($slug = null)
     {
-        if (is_null($slug))
-        {
-            $user = Auth::user();
-        }
-        else
-        {
-            $user = User::where("slug", $slug)->first();
-        }
-
+        $user = is_null($slug) ? Auth::user() : User::where("slug", $slug)->first();
         if (!$user)
         {
             flash("We konden de opgegeven gebruiker niet vinden!")->error();
@@ -42,10 +29,6 @@ class ProfileController extends Controller
     {
         return view("pages.profiles.update-profile", [
             "user" => Auth::user(),
-            "ministries" => Ministries::getAll(),
-            "organizations" => Organizations::getAll(),
-            "departments" => Departments::getAll(),
-            "jobTitles" => JobTitles::getAll(),
             "oldInput" => collect([
                 "annotation" => old("annotation"),
                 "first_name" => old("first_name"),
@@ -53,7 +36,6 @@ class ProfileController extends Controller
                 "email" => old("email"),
                 "phone" => old("phone"),
                 "current_assignment_id" => old("current_assignment_id"),
-                "assignments" => old("assignments")
             ]),
         ]);
     }
@@ -67,8 +49,6 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->save();
-
-        Users::updateAssignments($user, $request);
 
         flash("Wijzigingen zijn opgeslagen!")->success();
         return redirect()->route("profile");

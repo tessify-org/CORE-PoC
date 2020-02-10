@@ -5,7 +5,6 @@ namespace App\Models;
 use Users;
 use Avatar;
 use Uploader;
-use Assignments;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 
@@ -48,7 +47,7 @@ class User extends Authenticatable
             ]
         ];
     }
-
+    
     //
     // Relationships
     //
