@@ -95,7 +95,16 @@ php artisan storage:link
 npm install
 ```
 
-10. Compile frontend assets
+10. Open up the ```webpack.mix.js``` file and edit the following lines to match your environment and preferences:
+
+```
+mix.disableNotifications().browserSync({
+    proxy: 'core.test',
+    port: 3000
+});
+```
+
+11. Compile frontend assets
 ```
 npm run watch
 ```

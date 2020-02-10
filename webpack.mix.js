@@ -18,8 +18,8 @@ mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');
 
 mix.disableNotifications().browserSync({
-    proxy: 'nnw.test',
-    port: 1336
+    proxy: 'core.test',
+    port: 2000
 });
 
 mix.webpackConfig({
