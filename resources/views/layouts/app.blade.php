@@ -44,45 +44,45 @@
                                 <!-- Login -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('auth.login') }}">
-                                        Login
+                                        @lang("layouts.login_link")
                                     </a>
                                 </li>
                                 <!-- Register -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('auth.register') }}">
-                                        Registeren
+                                        @lang("layouts.register_link")
                                     </a>
                                 </li>
                             @else
                                 <!-- Jobs -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('jobs') }}">
-                                        Job Board
+                                        @lang("layouts.jobs_link")
                                     </a>
                                 </li>
                                 <!-- Members -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('memberlist') }}">
-                                        Ledenlijst
+                                        @lang("layouts.members_link")
                                     </a>
                                 </li>
                                 <!-- My profile -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('profile') }}">
-                                        Mijn profiel
+                                        @lang("layouts.profile_link")
                                     </a>
                                 </li>
                                 @can("access-admin-panel")
                                     <li class="topnav-link__wrapper">
                                         <a class="topnav-link" href="{{ route('admin.dashboard') }}">
-                                            Admin Panel
+                                            @lang("layouts.admin_link")
                                         </a>
                                     </li>
                                 @endcan
                                 <!-- Logout -->
                                 <li class="topnav-link__wrapper">
                                     <a class="topnav-link" href="{{ route('auth.logout') }}">
-                                        Uitloggen
+                                        @lang("layouts.logout_link")
                                     </a>
                                 </li>
                             @endif
@@ -103,23 +103,42 @@
             <mobile-navigation>
                 @if (Auth::check())
                     <a class="sidemenu-link" href="{{ route('jobs') }}">
-                        <span class="sidemenu-link__text">Job Board</div>
+                        <span class="sidemenu-link__text">
+                            @lang("layouts.jobs_link")
+                        </span>
                     </a>
                     <a class="sidemenu-link" href="{{ route('memberlist') }}">
-                        <span class="sidemenu-link__text">Ledenlijst</div>
+                        <span class="sidemenu-link__text">
+                            @lang("layouts.members_link")
+                        </span>
                     </a>
                     <a class="sidemenu-link" href="{{ route('profile') }}">
-                        <span class="sidemenu-link__text">Mijn profiel</div>
+                        <span class="sidemenu-link__text">
+                            @lang("layouts.profile_link")
+                        </span>
                     </a>
+                    @can("access-admin-panel")
+                        <a class="sidemenu-link" href="{{ route('admin.dashboard') }}">
+                            <span class="sidemenu-link__text">
+                                @lang("layouts.admin_link")
+                            </span>
+                        </a>
+                    @endcan
                     <a class="sidemenu-link" href="{{ route('auth.logout') }}">
-                        <span class="sidemenu-link__text">Uitloggen</div>
+                        <span class="sidemenu-link__text">
+                            @lang("layouts.logout_link")
+                        </span>
                     </a>
                 @else
                     <a class="sidemenu-link" href="{{ route('auth.login') }}">
-                        <span class="sidemenu-link__text">Login</div>
+                        <span class="sidemenu-link__text">
+                            @lang("layouts.login_link")
+                        </span>
                     </a>
                     <a class="sidemenu-link" href="{{ route('auth.register') }}">
-                        <span class="sidemenu-link__text">Registeren</div>
+                        <span class="sidemenu-link__text">
+                            @lang("layouts.register_link")
+                        </span>
                     </a>
                 @endif
             </mobile-navigation>
@@ -140,56 +159,88 @@
                     <div id="footer-upper">
                         <div class="footer-upper__column-wrapper">
                             <div class="footer-upper__column">
-                                <h4 class="column-title">HNNW</h4>
+                                <h4 class="column-title">
+                                    @lang("layouts.footer_first_column_title")
+                                </h4>
                                 <div class="column-links">
-                                    <a class="column-link" href="#">Pers</a>
-                                    <a class="column-link" href="#">Partners</a>
-                                    <a class="column-link" href="#">Over HNNW</a>
-                                    <a class="column-link" href="#">Meer doen</a>
-                                    <a class="column-link" href="#">Veelgestelde vragen</a>
-                                    <a class="column-link" href="#">Contact</a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_press_link")
+                                    </a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_partners_link")
+                                    </a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_about_link")
+                                    </a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_do_more_link")
+                                    </a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_faq_link")
+                                    </a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_contact_link")
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="footer-upper__column-wrapper">
                             <div class="footer-upper__column">
-                                <h4 class="column-title">Voor klusaanbieders</h4>
+                                <h4 class="column-title">
+                                    @lang("layouts.footer_second_column_title")
+                                </h4>
                                 <div class="column-links">
-                                    <a class="column-link" href="#">Financiele bijdragen</a>
-                                    <a class="column-link" href="#">Downloads</a>
-                                    <a class="column-link" href="#">Meer doen als klusaanbieder</a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_financial_link")
+                                    </a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_employer_downloads_link")
+                                    </a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_employer_do_more_link")
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="footer-upper__column-wrapper">
                             <div class="footer-upper__column">
-                                <h4 class="column-title">Voor klusaannemers</h4>
+                                <h4 class="column-title">
+                                    @lang("layouts.footer_third_column_title")
+                                </h4>
                                 <div class="column-links">
-                                    <a class="column-link" href="#">Meedoen als groep</a>
-                                    <a class="column-link" href="#">Downloads</a>
-                                    <a class="column-link" href="#">Meer doen als vrijwilleger</a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_group_link")
+                                    </a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_employee_downloads_link")
+                                    </a>
+                                    <a class="column-link" href="#">
+                                        @lang("layouts.footer_employee_do_more_link")
+                                    </a>
                                 </div>
                             </div>
                         </div>
                         <div class="footer-upper__column-wrapper">
                             <div class="footer-upper__column">
-                                <h4 class="column-title">Nieuwsbrief</h4>
+                                <h4 class="column-title">
+                                    @lang("layouts.footer_newsletter_title")
+                                </h4>
                                 <div class="column-text">
-                                    Meld je aan voor de maandelijkse digitale nieuwsbrief.
+                                    @lang("layouts.footer_newsletter_text")
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div id="footer-bottom">
                         <div id="footer-bottom__left">
-                            &copy; Copyrighted by yours truly. This is the way. 2020 - &infin;
+                            @lang("layouts.footer_copyright")
                         </div>
                         <div id="footer-bottom__right">
                             <a href="#" class="footer-bottom-link">
-                                Cookies en privacy
+                                @lang("layouts.footer_cookies_link")
                             </a>
                             <a href="#" class="footer-bottom-link">
-                                Disclaimer
+                                @lang("layouts.footer_disclaimer_link")
                             </a>
                         </div>
                     </div>

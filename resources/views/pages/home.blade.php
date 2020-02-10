@@ -10,8 +10,12 @@
     <header id="homepage-header">
         <div id="homepage-header__content">
             @include("partials.feedback")
-            <h1 class="page-title">Het Nieuwe Nieuwe Werken</h1>
-            <h2 class="page-subtitle">Hoe werk jij?</h2>
+            <h1 class="page-title">
+                @lang("homepage.header_title")
+            </h1>
+            <h2 class="page-subtitle">
+                @lang("homepage.header_subtitle")
+            </h2>
         </div>
         <div id="homepage-header__overlay"></div>
         <div id="homepage-header__bg">
@@ -27,21 +31,27 @@
             <div class="content-section">
 
                 <div id="homepage-cta">
-                    <div id="homepage-cta__title">Er zijn al 8114 klussen aangemeld</div>
-                    <div id="homepage-cta__subtext">Zoek op interesse, organisatie, of stad.</div>
+                    <div id="homepage-cta__title">
+                        @lang("homepage.cta_title", ["num_jobs" => 8145])
+                    </div>
+                    <div id="homepage-cta__subtext">
+                        @lang("homepage.cta_subtext")
+                    </div>
                     <div id="homepage-cta__search-wrapper">
                         <div id="search-input__wrapper">
                             <input type="text" id="search-input">
                         </div>
                         <div id="search-submit__wrapper">
                             <button type="submit" id="search-submit">
-                                Zoek
+                                @lang("homepage.cta_search")
                                 <i class="fas fa-arrow-right"></i>
                             </button>
                         </div>
                     </div>
                     <div id="homepage-cta__link-wrapper">
-                        <a href="#">Meld je klus aan</a>
+                        <a href="#">
+                            @lang("homepage.cta_signup")
+                        </a>
                     </div>
                 </div>
 
@@ -50,7 +60,7 @@
                         <div class="quick-link">
                             <div class="quick-link__bg"></div>
                             <div class="quick-link__text">
-                                Zo haal je meer uit je werk
+                                @lang("homepage.quick_link_one")
                             </div>
                             <div class="quick-link__arrow">
                                 <i class="fas fa-arrow-right"></i>
@@ -61,7 +71,7 @@
                         <div class="quick-link">
                             <div class="quick-link__bg"></div>
                             <div class="quick-link__text">
-                                Tips, uitleg en inspiratie
+                                @lang("homepage.quick_link_two")
                             </div>
                             <div class="quick-link__arrow">
                                 <i class="fas fa-arrow-right"></i>
@@ -72,7 +82,7 @@
                         <div class="quick-link">
                             <div class="quick-link__bg"></div>
                             <div class="quick-link__text">
-                                Méér doen als vrijwilleger
+                                @lang("homepage.quick_link_three")
                             </div>
                             <div class="quick-link__arrow">
                                 <i class="fas fa-arrow-right"></i>
@@ -84,10 +94,14 @@
                 <div id="homepage-second-cta">
                     <div id="second-cta">
                         <div id="second-cta__left">
-                            <div id="second-cta__title">Er zijn al 8114 klussen aangemeld</div>
-                            <div id="second-cta__subtext">Staat jouw klus er al tussen?</div>
+                            <div id="second-cta__title">
+                                @lang("homepage.second_cta_title", ["num_jobs" => 8145])
+                            </div>
+                            <div id="second-cta__subtext">
+                                @lang("homepage.second_cta_subtitle")
+                            </div>
                             <a id="second-cta__button" href="#">
-                                Meld je klus aan
+                                @lang("homepage.second_cta_signup")
                                 <i class="fas fa-arrow-right"></i>
                             </a>
                         </div>
@@ -98,48 +112,38 @@
                 </div>
                 
                 <div id="homepage-faq">
-                    <h3 id="homepage-faq__title">Veelgestelde vragen</h3>
+                    <h3 id="homepage-faq__title">
+                        @lang("homepage.faq_title")
+                    </h3>
                     <div id="homepage-faq__list">
                         <a href="#" class="faq">
                             <span class="faq-icon">
                                 <i class="fas fa-arrow-right"></i>
                             </span>
-                            <span class="faq-text">Hoe kan ik meedoen?</span>
+                            <span class="faq-text">
+                                @lang("homepage.faq_one")
+                            </span>
                         </a>
                         <a href="#" class="faq">
                             <span class="faq-icon">
                                 <i class="fas fa-arrow-right"></i>
                             </span>
-                            <span class="faq-text">Kan ik met een groep meedoen?</span>
+                            <span class="faq-text">
+                                @lang("homepage.faq_two")
+                            </span>
                         </a>
                         <a href="#" class="faq">
                             <span class="faq-icon">
                                 <i class="fas fa-arrow-right"></i>
                             </span>
-                            <span class="faq-text">Mag ik ook prive klussen plaatsen?</span>
-                        </a>
-                        <a href="#" class="faq">
-                            <span class="faq-icon">
-                                <i class="fas fa-arrow-right"></i>
+                            <span class="faq-text">
+                                @lang("homepage.faq_three")
                             </span>
-                            <span class="faq-text">How much wood could a woodchucker chuck if a woodchucker could chuck wood?</span>
-                        </a>
-                        <a href="#" class="faq">
-                            <span class="faq-icon">
-                                <i class="fas fa-arrow-right"></i>
-                            </span>
-                            <span class="faq-text">Hoeveel krullen krabt de kat van de trap?</span>
-                        </a>
-                        <a href="#" class="faq">
-                            <span class="faq-icon">
-                                <i class="fas fa-arrow-right"></i>
-                            </span>
-                            <span class="faq-text">Hoeveel t's zitten er in hottentottententoonstelling?</span>
                         </a>
                     </div>
                     <div id="homepage-faq__cta-wrapper">
                         <a href="#" id="homepage-faq__cta">
-                            Bekijk alle veelgestelde vragen
+                            @lang("homepage.faq_view_all")
                             <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
