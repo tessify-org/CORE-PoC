@@ -1,5 +1,9 @@
 <?php
 
+//
+// Frontend Breadcrumbs
+//
+
 // Home
 Breadcrumbs::for("home", function($t) {
     $t->push("Home", route("home"));
@@ -61,3 +65,11 @@ Breadcrumbs::for("jobs.delete", function($t, $job) {
     $t->push("Job verwijderen", route("jobs.delete", $job->slug));
 });
 
+//
+// Admin Panel Breadcrumbs
+//
+
+// Dashboard
+Breadcrumbs::for("admin.dashboard", function($t) {
+    $t->push("Dashboard", route("admin.dashboard"));
+});

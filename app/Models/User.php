@@ -26,13 +26,17 @@ class User extends Authenticatable
         'password',
         'avatar_url',
         'phone',
+        'is_admin',
     ];
     protected $hidden = [
         'password', 
         'remember_token',
     ];
+    protected $dates = [
+        'email_verified_at',
+    ];
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
     ];
 
     //
@@ -47,7 +51,7 @@ class User extends Authenticatable
             ]
         ];
     }
-    
+
     //
     // Relationships
     //

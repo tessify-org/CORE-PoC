@@ -8,7 +8,7 @@
         <title>NNW @yield('page_title')</title>
         <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
         {{-- Laravel Mix - CSS File --}}
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/admin.css') }}">
         {{-- Font Awesome --}}
         <script defer src="https://use.fontawesome.com/releases/v5.8.2/js/all.js" integrity="sha384-DJ25uNYET2XCl5ZF++U8eNxPWqcKohUUBUpKGlNLMchM7q4Wjg2CUpjHLaL8yYPH" crossorigin="anonymous"></script>
     </head>
@@ -25,67 +25,21 @@
                             N<sup>2</sup>W
                         </a>
                     </div>
-                    <!-- Search -->
-                    <div id="topnav-search__wrapper">
-                        <form action="{{ route('search.post') }}" method="post">
-                            {{ csrf_field() }}
-                            <div id="topnav-search">
-                                <input type="text" id="topnav-search__input" name="query" placeholder="Zoeken..">
-                                <button type="submit" id="topnav-search__submit">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </form>
-                    </div>
                     <!-- Navigation -->
                     <nav id="topnav-links__wrapper">
                         <ul id="topnav-links">
-                            @if (!Auth::check())
-                                <!-- Login -->
-                                <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="{{ route('auth.login') }}">
-                                        Login
-                                    </a>
-                                </li>
-                                <!-- Register -->
-                                <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="{{ route('auth.register') }}">
-                                        Registeren
-                                    </a>
-                                </li>
-                            @else
-                                <!-- Jobs -->
-                                <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="{{ route('jobs') }}">
-                                        Job Board
-                                    </a>
-                                </li>
-                                <!-- Members -->
-                                <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="{{ route('memberlist') }}">
-                                        Ledenlijst
-                                    </a>
-                                </li>
-                                <!-- My profile -->
-                                <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="{{ route('profile') }}">
-                                        Mijn profiel
-                                    </a>
-                                </li>
-                                @can("access-admin-panel")
-                                    <li class="topnav-link__wrapper">
-                                        <a class="topnav-link" href="{{ route('admin.dashboard') }}">
-                                            Admin Panel
-                                        </a>
-                                    </li>
-                                @endcan
-                                <!-- Logout -->
-                                <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="{{ route('auth.logout') }}">
-                                        Uitloggen
-                                    </a>
-                                </li>
-                            @endif
+                            <!-- Back to frontend -->
+                            <li class="topnav-link__wrapper">
+                                <a class="topnav-link" href="{{ route('home') }}">
+                                    Terug naar de voorkant
+                                </a>
+                            </li>
+                            <!-- Logout -->
+                            <li class="topnav-link__wrapper">
+                                <a class="topnav-link" href="{{ route('auth.logout') }}">
+                                    Uitloggen
+                                </a>
+                            </li>
                         </ul>
                         @if (Auth::check())
                             <div id="topnav-avatar">

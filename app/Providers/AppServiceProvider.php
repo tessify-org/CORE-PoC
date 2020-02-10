@@ -50,9 +50,11 @@ class AppServiceProvider extends ServiceProvider
     private function composeViews()
     {
         View::composer("layouts.app", function($view) {
-            if (Auth::check()) {
-                $view->with("user", Auth::user());
-            }
+            $view->with("user", Auth::user());
+        });
+        
+        View::composer("layouts.admin", function($view) {
+            $view->with("user", Auth::user());
         });
     }
 

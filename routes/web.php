@@ -68,6 +68,7 @@ Route::get("job-board/{slug}/verwijderen", "Jobs\JobBoardController@getDeleteJob
 Route::post("job-board/{slug}/verwijderen", "Jobs\JobBoardController@postDeleteJob")->name("jobs.delete.post");
 
 // Api endpoints
+// TODO: Move these to the api.php file and add proper token-based authentication instead of session hijacking like this
 Route::group(["prefix" => "api"], function() {
 
     // Job resources
@@ -98,4 +99,11 @@ Route::group(["prefix" => "api"], function() {
         Route::post("unassign", "Api\TeamRoleController@postUnassign")->name("api.team-roles.unassign");
     });
     
+});
+
+// Admin panel
+Route::group(["prefix" => "admin", "middleware" => ["can:access-admin-panel"]], function() {
+
+    Route::get("/", "Admin\DashboardController@getDashboard")->name("admin.dashboard");
+
 });

@@ -25,6 +25,7 @@ class UserSeeder extends Seeder
             "last_name" => "Verheijen",
             "email" => "nick.verheijen@minbzk.nl",
             "password" => bcrypt("engeland"),
+            "is_admin" => true,
         ]);
     }
 }
