@@ -4,7 +4,7 @@ This is the core of the tessify codebase. A detailed description will follow soo
 
 ## Installation instructions
 
-For a detailed instructions see our [Wiki](https://github.com/tessify-org/CORE/wiki).
+For detailed instructions see our [Wiki](https://github.com/tessify-org/CORE/wiki).
 
 - [Setting up your local development environment](https://github.com/tessify-org/CORE/wiki/Development-Setup)
 - [Setting up the production server](https://github.com/tessify-org/CORE/wiki/Server-Setup)
