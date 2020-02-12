@@ -56,14 +56,12 @@
             <!-- Mobile navigation -->
             <mobile-navigation>
                 @if (Auth::check())
-                    <a class="sidemenu-link" href="{{ route('jobs') }}">
-                        <span class="sidemenu-link__text">Job Board</div>
+                    <a class="sidemenu-link" href="{{ route('admin.dashboard') }}">
+                        <span class="sidemenu-link__text">Dashboard</div>
                     </a>
-                    <a class="sidemenu-link" href="{{ route('memberlist') }}">
-                        <span class="sidemenu-link__text">Ledenlijst</div>
+                    <a class="sidemenu-link" href="{{ route('home') }}">
+                        <span class="sidemenu-link__text">Naar de frontend</div>
                     </a>
-                    <a class="sidemenu-link" href="{{ route('profile') }}">
-                        <span class="sidemenu-link__text">Mijn profiel</div>
                     </a>
                     <a class="sidemenu-link" href="{{ route('auth.logout') }}">
                         <span class="sidemenu-link__text">Uitloggen</div>

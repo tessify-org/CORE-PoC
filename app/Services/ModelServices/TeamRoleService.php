@@ -6,7 +6,7 @@ use DB;
 use Skills;
 use TeamMembers;
 
-use App\Models\Job;
+use App\Models\Project;
 use App\Models\TeamRole;
 use App\Traits\ModelServiceGetters;
 use App\Contracts\ModelServiceContract;
@@ -37,13 +37,13 @@ class TeamRoleService implements ModelServiceContract
         return $instance;
     }
 
-    public function getAllPreloadedForJob(Job $job)
+    public function getAllPreloadedForProject(Project $project)
     {
         $out = [];
 
         foreach ($this->getAllPreloaded() as $role)
         {
-            if ($role->job_id == $job->id)
+            if ($role->project_id == $project->id)
             {
                 $out[] = $role;
             }

@@ -6,8 +6,8 @@ use Auth;
 use Uuid;
 use Carbon\Carbon;
 
-use App\Models\Job;
 use App\Models\User;
+use App\Models\Project;
 use App\Traits\ModelServiceGetters;
 use App\Contracts\ModelServiceContract;
 use App\Jobs\Auth\SendAccountRecoveryEmail;
@@ -53,11 +53,11 @@ class UserService implements ModelServiceContract
         return $instance;
     }
 
-    public function findAuthorForJob(Job $job)
+    public function findAuthorForProject(Project $project)
     {
         foreach ($this->getAllPreloaded() as $user)
         {
-            if ($user->id == $job->author_id)
+            if ($user->id == $project->author_id)
             {
                 return $user;
             }

@@ -15,7 +15,7 @@ class CreateTeamMemberApplicationsTable extends Migration
     {
         Schema::create('team_member_applications', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('job_id');
+            $table->unsignedInteger('project_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('team_role_id');
             $table->text('motivation');

@@ -6,7 +6,7 @@ use Auth;
 use Users;
 use TeamRoles;
 
-use App\Models\Job;
+use App\Models\Project;
 use App\Models\TeamMemberApplication;
 use App\Traits\ModelServiceGetters;
 use App\Contracts\ModelServiceContract;
@@ -37,13 +37,13 @@ class TeamMemberApplicationService implements ModelServiceContract
         return $instance;
     }
 
-    public function getAllForJob(Job $job)
+    public function getAllForProject(Project $project)
     {
         $out = [];
 
         foreach ($this->getAllPreloaded() as $application)
         {
-            if ($application->job_id == $job->id)
+            if ($application->project_id == $project->id)
             {
                 $out[] = $application;
             }
@@ -75,7 +75,7 @@ class TeamMemberApplicationService implements ModelServiceContract
     public function createFromRequest(CreateTeamMemberApplicationRequest $request)
     {
         $application = TeamMemberApplication::create([
-            "job_id" => $request->job_id,
+            "project_id" => $request->project_id,
             "user_id" => Auth::user()->id,
             "team_role_id" => $request->team_role_id,
             "motivation" => $request->motivation,

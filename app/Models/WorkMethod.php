@@ -19,8 +19,8 @@ class WorkMethod extends Model
     // Relationships
     //
 
-    public function jobs()
+    public function projects()
     {
-        return $this->hasMany(Job::class);
+        return $this->hasMany(Project::class);
     }
 }

@@ -56,8 +56,8 @@
                             @else
                                 <!-- Jobs -->
                                 <li class="topnav-link__wrapper">
-                                    <a class="topnav-link" href="{{ route('jobs') }}">
-                                        @lang("layouts.jobs_link")
+                                    <a class="topnav-link" href="{{ route('projects') }}">
+                                        @lang("layouts.projects_link")
                                     </a>
                                 </li>
                                 <!-- Members -->
@@ -101,10 +101,15 @@
 
             <!-- Mobile navigation -->
             <mobile-navigation>
+                <a class="sidemenu-link" href="{{ route('home') }}">
+                    <span class="sidemenu-link__text">
+                        Home
+                    </span>
+                </a>
                 @if (Auth::check())
-                    <a class="sidemenu-link" href="{{ route('jobs') }}">
+                    <a class="sidemenu-link" href="{{ route('projects') }}">
                         <span class="sidemenu-link__text">
-                            @lang("layouts.jobs_link")
+                            @lang("layouts.projects_link")
                         </span>
                     </a>
                     <a class="sidemenu-link" href="{{ route('memberlist') }}">

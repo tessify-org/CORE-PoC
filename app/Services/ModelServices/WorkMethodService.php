@@ -2,7 +2,7 @@
 
 namespace App\Services\ModelServices;
 
-use App\Models\Job;
+use App\Models\Project;
 use App\Models\WorkMethod;
 use App\Traits\ModelServiceGetters;
 use App\Contracts\ModelServiceContract;
@@ -27,9 +27,9 @@ class WorkMethodService implements ModelServiceContract
         return $instance;
     }
 
-    public function findForJob(Job $job)
+    public function findForProject(Project $project)
     {
-        return $this->find($job->work_method_id);
+        return $this->find($project->work_method_id);
     }
 
     public function createFromRequest(CreateWorkMethodRequest $request)

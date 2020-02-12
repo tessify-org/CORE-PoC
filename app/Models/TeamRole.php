@@ -9,7 +9,7 @@ class TeamRole extends Model
     protected $table = "team_roles";
     protected $guarded = ["id", "created_at", "updated_at"];
     protected $fillable = [
-        "job_id",
+        "project_id",
         "name",
         "description",
     ];
@@ -18,9 +18,9 @@ class TeamRole extends Model
     // Relationships
     //
 
-    public function job()
+    public function project()
     {
-        return $this->belongsTo(Job::class);
+        return $this->belongsTo(Project::class);
     }
 
     public function teamMembers()

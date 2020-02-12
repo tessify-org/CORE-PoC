@@ -789,17 +789,17 @@
     }
 }
 
-#jobs {
+#projects {
     overflow: hidden;
     border-radius: 3px;
     background-color: #fff;
-    #jobs-header {
+    #projects-header {
         display: flex;
         padding: 10px 15px;
         flex-direction: row;
         box-sizing: border-box;
         background-color: hsl(0, 0%, 95%);
-        .jobs-header__column {
+        .projects-header__column {
             flex: 1;
             font-weight: 500;
             display: flex;
@@ -813,7 +813,7 @@
             }
         }
     }
-    .job {
+    .project {
         display: flex;
         color: #000000;
         padding: 10px 15px;
@@ -830,10 +830,10 @@
             background-color: hsl(0, 0%, 98%);
             cursor: pointer;
         }
-        .job-title {
+        .project-title {
             flex: 2;
         }
-        .job-status {
+        .project-status {
             flex: 0 0 100px;
             display: flex;
             flex-direction: row;
@@ -842,16 +842,18 @@
         }
     }
 }
-#no-jobs {
+#no-projects {
     padding: 25px;
     border-radius: 3px;
+    text-align: center;
     box-sizing: border-box;
+    background-color: #fff;
 }
 
-// Job overview is responsive by default
+// Projects overview is responsive by default
 
-#job {
-    #job-header {
+#project {
+    #project-header {
         width: 100%;
         height: 400px;
         position: relative;
@@ -861,7 +863,7 @@
         &.controls-only {
             height: 90px;
         }
-        #job-header__overlay {
+        #project-header__overlay {
             top: 0;
             left: 0;
             width: 100%;
@@ -869,12 +871,12 @@
             position: absolute;
             background-color: rgba(255, 255, 255, 0.75);
         }
-        #job-header__content {
+        #project-header__content {
             height: 100%;
             width: 1200px;
             margin: 0 auto;
             position: relative;
-            #job-header__actions {
+            #project-header__actions {
                 right: 0;
                 top: 25px;
                 z-index: 3;
@@ -886,7 +888,7 @@
                     }
                 }
             }
-            #job-header__back-button {
+            #project-header__back-button {
                 left: 0;
                 top: 25px;
                 z-index: 3;
@@ -896,7 +898,7 @@
                 }
             }
         }
-        #job-header__text-wrapper {
+        #project-header__text-wrapper {
             left: 0;
             bottom: 0;
             z-index: 2;
@@ -909,25 +911,25 @@
             box-sizing: border-box;
             flex-direction: column;
             justify-content: center;
-            #job-header__text {
+            #project-header__text {
                 width: 1200px;
                 margin: 0 auto;
                 padding: 50px 100px 0 100px;
-                #job-header__title {
+                #project-header__title {
                     font-weight: 300;
                     font-size: 3.5em;
                     line-height: 1em;
                     margin: 0 0 20px 0;
                     text-align: center;
                 }
-                #job-header__slogan {
+                #project-header__slogan {
                     font-size: 1.75em;
                     font-weight: 300;
                     line-height: 1em;
                     margin: -10px 0 30px 0;
                     text-align: center;
                 }
-                #job-header__stats {
+                #project-header__stats {
                     display: flex;
                     flex-direction: row;
                     align-items: center;
@@ -938,7 +940,7 @@
                             margin: 0;
                         }
                     }
-                    #job-status {
+                    #project-status {
                         font-size: .8em;
                         font-weight: 500;
                         border-radius: 3px;
@@ -957,28 +959,28 @@
             }
         }
     }
-    #job-content {
-        #job-tabs {
+    #project-content {
+        #project-tabs {
             border-radius: 3px;
             .tab-content {
                 padding: 30px;
                 box-sizing: border-box;
             }
-            #job-info {
+            #project-info {
                 display: flex;
                 flex-direction: row;
-                #job-info__left {
+                #project-info__left {
                     flex: 1;
                     margin: 0 30px 0 0;
                 }
-                #job-info__right {
+                #project-info__right {
                     flex: 0 0 400px;
                 }
             }
         }
-        .job-paragraph {
+        .project-paragraph {
             margin: 0 0 45px 0;
-            .job-paragraph__title {
+            .project-paragraph__title {
                 font-size: 1.4em;
                 font-weight: 500;
                 line-height: 1em;
@@ -987,58 +989,58 @@
                 box-sizing: border-box;
                 border-bottom: 2px solid rgba(0, 0, 0, 0.1);
             }
-            .job-paragraph__text {
+            .project-paragraph__text {
                 font-size: 1.1em;
                 font-weight: 400;
                 line-height: 1.5em;
             }
         }
-        #job-title {
+        #project-title {
             margin: 0;
             font-size: 3em;
             font-weight: 400;
             line-height: 1.2em;
         }
-        #job-slogan {
+        #project-slogan {
             font-size: 2em;
             font-weight: 300;
             margin: 15px 0 30px 0;
         }
-        #job-stats {
+        #project-stats {
             margin: 0 0 30px 0;
             display: flex;
             flex-direction: row;
-            #job-status {
+            #project-status {
                 display: flex;
                 border-radius: 3px;
                 flex-direction: row;
                 background-color: hsl(0, 0%, 100%);
                 &.open {
-                    #job-status__value {
+                    #project-status__value {
                         color: green;
                     }
                 }
                 &.closed {
-                    #job-status__value {
+                    #project-status__value {
                         color: red;
                     }
                 }
-                #job-status__label {
+                #project-status__label {
                     padding: 10px 0 10px 15px;
                     font-weight: bold;
                     box-sizing: border-box;
                 }
-                #job-status__value {
+                #project-status__value {
                     padding: 10px 15px;
                     box-sizing: border-box;
                 }
             }
         }
-        #job-description {
+        #project-description {
             font-weight: 400;
             font-size: 1.5em;
         }
-        #job-details {
+        #project-details {
             margin: -10px 0 0 0;
             .detail {
                 display: flex;
@@ -1057,11 +1059,11 @@
                 }
             }
         }
-        #job-team-roles {
+        #project-team-roles {
             border-radius: 3px;
             margin: 0 0 30px 0;
             background-color: #ffffff;
-            #job-team-roles__list {
+            #project-team-roles__list {
                 overflow: hidden;
                 border-radius: 3px;
                 .team-role {
@@ -1104,7 +1106,7 @@
                     }
                 }
             }
-            #job-team-roles__empty {
+            #project-team-roles__empty {
                 padding: 10px 15px;
                 border-radius: 3px;
                 margin: 0 0 30px 0;
@@ -1112,7 +1114,7 @@
                 background-color: #fff;
                 border: 1px solid rgba(0, 0, 0, 0.1);
             }
-            #job-team-roles__actions {
+            #project-team-roles__actions {
                 display: flex;
                 margin: 15px 0 0 0;
                 flex-direction: row;
@@ -1120,8 +1122,8 @@
                 justify-content: flex-end;
             }
         }
-        #job-resources {
-            #job-resources__list {
+        #project-resources {
+            #project-resources__list {
                 .resource {
                     display: flex;
                     padding: 10px 15px;
@@ -1156,23 +1158,23 @@
     }
 }
 
-// Responsive job
+// Responsive project
 @media (max-width: 1250px) {
-    #job {
-        #job-header {
-            #job-header__content {
+    #project {
+        #project-header {
+            #project-header__content {
                 width: 100%;
                 padding: 0 25px;
                 box-sizing: border-box;
-                #job-header__back-button {
+                #project-header__back-button {
                     left: 25px;
                 }
-                #job-header__actions {
+                #project-header__actions {
                     right: 25px;
                 }
             }
         }
-        #job-content {
+        #project-content {
             .content-section {
                 padding: 50px 25px;
             }
@@ -1180,12 +1182,12 @@
     }
 }
 @media (max-width: 940px) {
-    #job {
-        #job-content {
-            #job-tabs {
-                #job-info {
+    #project {
+        #project-content {
+            #project-tabs {
+                #project-info {
                     flex-wrap: wrap;
-                    #job-info__left, #job-info__right {
+                    #project-info__left, #project-info__right {
                         flex: 0 0 100%;
                     }
                 }

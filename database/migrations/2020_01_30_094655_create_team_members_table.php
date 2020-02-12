@@ -15,7 +15,7 @@ class CreateTeamMembersTable extends Migration
     {
         Schema::create('team_members', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('job_id');
+            $table->unsignedInteger('project_id');
             $table->unsignedInteger('user_id')->nullable();
             $table->string('title');
             $table->timestamps();

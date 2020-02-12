@@ -58,32 +58,37 @@ Route::post("profiel/updaten", "Profiles\ProfileController@postUpdateProfile")->
 Route::get("profiel/{slug?}", "Profiles\ProfileController@getProfile")->name("profile");
 
 // Jobs
-Route::get("job-board", "Jobs\JobBoardController@getJobBoard")->name("jobs");
+Route::group(["prefix" => "projecten"], function() {
 
-// Create jobs
-Route::get("job-board/job-toevoegen", "Jobs\JobBoardController@getCreateJob")->name("jobs.create");
-Route::post("job-board/job-toevoegen", "Jobs\JobBoardController@postCreateJob")->name("jobs.create.post");
+    Route::get("/", "Projects\ProjectController@getOverview")->name("projects");
 
-// View job
-Route::get("job-board/{slug}", "Jobs\JobBoardController@getJob")->name("jobs.view");
+    // Create jobs
+    Route::get("project-toevoegen", "Projects\ProjectController@getCreate")->name("projects.create");
+    Route::post("project-toevoegen", "Projects\ProjectController@postCreate")->name("projects.create.post");
+    
+    // View job
+    Route::get("{slug}", "Projects\ProjectController@getView")->name("projects.view");
+    
+    // Update job
+    Route::get("{slug}/aanpassen", "Projects\ProjectController@getEdit")->name("projects.edit");
+    Route::post("{slug}/aanpassen", "Projects\ProjectController@postEdit")->name("projects.edit.post");
+    
+    // Delete job
+    Route::get("{slug}/verwijderen", "Projects\ProjectController@getDelete")->name("projects.delete");
+    Route::post("{slug}/verwijderen", "Projects\ProjectController@postDelete")->name("projects.delete.post");
+    
+});
 
-// Update job
-Route::get("job-board/{slug}/aanpassen", "Jobs\JobBoardController@getEditJob")->name("jobs.edit");
-Route::post("job-board/{slug}/aanpassen", "Jobs\JobBoardController@postEditJob")->name("jobs.edit.post");
-
-// Delete job
-Route::get("job-board/{slug}/verwijderen", "Jobs\JobBoardController@getDeleteJob")->name("jobs.delete");
-Route::post("job-board/{slug}/verwijderen", "Jobs\JobBoardController@postDeleteJob")->name("jobs.delete.post");
 
 // Api endpoints
 // TODO: Move these to the api.php file and add proper token-based authentication instead of session hijacking like this
 Route::group(["prefix" => "api"], function() {
 
-    // Job resources
-    Route::group(["prefix" => "job-resources"], function() {
-        Route::post("create", "Api\JobResourceController@postCreateResource")->name("api.jobs.resources.create.post");
-        Route::post("update", "Api\JobResourceController@postUpdateResource")->name("api.jobs.resources.update.post");
-        Route::post("delete", "Api\JobResourceController@postDeleteResource")->name("api.jobs.resources.delete.post");
+    // Project resources
+    Route::group(["prefix" => "project-resources"], function() {
+        Route::post("create", "Api\ProjectResourceController@postCreateResource")->name("api.projects.resources.create.post");
+        Route::post("update", "Api\ProjectResourceController@postUpdateResource")->name("api.projects.resources.update.post");
+        Route::post("delete", "Api\ProjectResourceController@postDeleteResource")->name("api.projects.resources.delete.post");
     });
 
     // Comments

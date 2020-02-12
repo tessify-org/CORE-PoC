@@ -4,11 +4,11 @@ namespace App\Http\Controllers\Api;
 
 use TeamMemberApplications;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Jobs\TeamMemberApplications\DenyTeamMemberApplicationRequest;
-use App\Http\Requests\Api\Jobs\TeamMemberApplications\AcceptTeamMemberApplicationRequest;
-use App\Http\Requests\Api\Jobs\TeamMemberApplications\CreateTeamMemberApplicationRequest;
-use App\Http\Requests\Api\Jobs\TeamMemberApplications\UpdateTeamMemberApplicationRequest;
-use App\Http\Requests\Api\Jobs\TeamMemberApplications\DeleteTeamMemberApplicationRequest;
+use App\Http\Requests\Api\Projects\TeamMemberApplications\DenyTeamMemberApplicationRequest;
+use App\Http\Requests\Api\Projects\TeamMemberApplications\AcceptTeamMemberApplicationRequest;
+use App\Http\Requests\Api\Projects\TeamMemberApplications\CreateTeamMemberApplicationRequest;
+use App\Http\Requests\Api\Projects\TeamMemberApplications\UpdateTeamMemberApplicationRequest;
+use App\Http\Requests\Api\Projects\TeamMemberApplications\DeleteTeamMemberApplicationRequest;
 
 class TeamMemberApplicationController extends Controller
 {

@@ -55,26 +55,26 @@ Breadcrumbs::for("profile.update", function($t, $user) {
     $t->push("Update profiel", route("profile.update"));
 });
 
-// Jobs
-Breadcrumbs::for("jobs", function($t) {
+// Projecten
+Breadcrumbs::for("projects", function($t) {
     $t->parent("home");
-    $t->push("Job Board", route("jobs"));
+    $t->push("Projecten", route("projects"));
 });
-Breadcrumbs::for("jobs.view", function($t, $job) {
-    $t->parent("jobs");
-    $t->push("Bekijk job", route("jobs.view", $job->slug));
+Breadcrumbs::for("projects.view", function($t, $project) {
+    $t->parent("projects");
+    $t->push("Bekijk project", route("projects.view", $project->slug));
 });
-Breadcrumbs::for("jobs.create", function($t) {
-    $t->parent("jobs");
-    $t->push("Job toevoegen", route("jobs.create"));
+Breadcrumbs::for("projects.create", function($t) {
+    $t->parent("projects");
+    $t->push("Project toevoegen", route("projects.create"));
 });
-Breadcrumbs::for("jobs.edit", function($t, $job) {
-    $t->parent("jobs.view", $job);
-    $t->push("Job aanpassen", route("jobs.edit", $job->slug));
+Breadcrumbs::for("projects.edit", function($t, $project) {
+    $t->parent("projects.view", $project);
+    $t->push("Project aanpassen", route("projects.edit", $project->slug));
 });
-Breadcrumbs::for("jobs.delete", function($t, $job) {
-    $t->parent("jobs.view", $job);
-    $t->push("Job verwijderen", route("jobs.delete", $job->slug));
+Breadcrumbs::for("projects.delete", function($t, $project) {
+    $t->parent("projects.view", $project);
+    $t->push("Project verwijderen", route("projects.delete", $project->slug));
 });
 
 //

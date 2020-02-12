@@ -57,9 +57,9 @@ class User extends Authenticatable
     // Relationships
     //
     
-    public function createdJobs()
+    public function createdProjects()
     {
-        return $this->hasMany(Job::class, "id", "author_id");
+        return $this->hasMany(Project::class, "id", "author_id");
     }
 
     public function teamMembers()

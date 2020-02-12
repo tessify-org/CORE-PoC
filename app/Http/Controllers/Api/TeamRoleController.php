@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use TeamRoles;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Api\Jobs\TeamRoles\UnassignTeamRoleRequest;
+use App\Http\Requests\Api\Projects\TeamRoles\UnassignTeamRoleRequest;
 
 class TeamRoleController extends Controller
 {

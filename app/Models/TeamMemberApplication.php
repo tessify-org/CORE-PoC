@@ -9,7 +9,7 @@ class TeamMemberApplication extends Model
     protected $table = "team_member_applications";
     protected $guarded = ["id", "created_at", "updated_at"];
     protected $fillable = [
-        "job_id",
+        "project_id",
         "user_id",
         "team_role_id",
         "motivation",
@@ -25,9 +25,9 @@ class TeamMemberApplication extends Model
     // Relationships
     //
 
-    public function job()
+    public function project()
     {
-        return $this->belongsTo(Job::class);
+        return $this->belongsTo(Project::class);
     }
 
     public function user()

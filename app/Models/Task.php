@@ -9,7 +9,7 @@ class Task extends Model
     protected $table = "tasks";
     protected $guarded = ["id", "created_at", "updated_at"];
     protected $fillable = [
-        "job_id",
+        "project_id",
         "task_status_id",
         "title",
         "description",
@@ -19,9 +19,9 @@ class Task extends Model
     // Relationships
     //
 
-    public function job()
+    public function project()
     {
-        return $this->belongsTo(Job::class);
+        return $this->belongsTo(Project::class);
     }
     
     public function status()

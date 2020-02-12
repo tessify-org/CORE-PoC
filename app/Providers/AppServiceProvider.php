@@ -8,18 +8,17 @@ use App\Services\Utilities\DateService;
 use App\Services\Utilities\UploadService;
 
 use App\Services\ModelServices\UserService;
-use App\Services\ModelServices\AssignmentService;
-use App\Services\ModelServices\JobService;
-use App\Services\ModelServices\JobStatusService;
-use App\Services\ModelServices\JobCategoryService;
-use App\Services\ModelServices\JobResourceService;
-use App\Services\ModelServices\WorkMethodService;
 use App\Services\ModelServices\TaskService;
+use App\Services\ModelServices\SkillService;
+use App\Services\ModelServices\ProjectService;
+use App\Services\ModelServices\CommentService;
+use App\Services\ModelServices\TeamRoleService;
 use App\Services\ModelServices\TaskStatusService;
 use App\Services\ModelServices\TeamMemberService;
-use App\Services\ModelServices\TeamRoleService;
-use App\Services\ModelServices\SkillService;
-use App\Services\ModelServices\CommentService;
+use App\Services\ModelServices\WorkMethodService;
+use App\Services\ModelServices\ProjectStatusService;
+use App\Services\ModelServices\ProjectCategoryService;
+use App\Services\ModelServices\ProjectResourceService;
 use App\Services\ModelServices\TeamMemberApplicationService;
 
 use Illuminate\Support\Facades\View;
@@ -63,25 +62,21 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton("users", function() {
             return new UserService;
         });
-
-        $this->app->singleton("assignments", function() {
-            return new AssignmentService;
-        });
         
-        $this->app->singleton("jobs", function() {
-            return new JobService;
+        $this->app->singleton("projects", function() {
+            return new ProjectService;
         });
 
-        $this->app->singleton("job-statuses", function() {
-            return new JobStatusService;
+        $this->app->singleton("project-statuses", function() {
+            return new ProjectStatusService;
         });
 
-        $this->app->singleton("job-categories", function() {
-            return new JobCategoryService;
+        $this->app->singleton("project-categories", function() {
+            return new ProjectCategoryService;
         });
 
-        $this->app->singleton("job-resources", function() {
-            return new JobResourceService;
+        $this->app->singleton("project-resources", function() {
+            return new ProjectResourceService;
         });
 
         $this->app->singleton("work-methods", function() {

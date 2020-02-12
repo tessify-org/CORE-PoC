@@ -3,14 +3,14 @@
 namespace App\Services\ModelServices;
 
 use Auth;
-use Jobs;
 use Users;
 use Tasks;
+use Projects;
 use Exception;
 
-use App\Models\Job;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Project;
 use App\Models\Comment;
 use App\Traits\ModelServiceGetters;
 use App\Contracts\ModelServiceContract;
@@ -38,13 +38,13 @@ class CommentService implements ModelServiceContract
         return $instance;
     }
     
-    public function getAllPreloadedForJob(Job $job)
+    public function getAllPreloadedForProject(Project $job)
     {
         $out = [];
 
         foreach ($this->getAllPreloaded() as $comment)
         {
-            if ($comment->commentable_type == "App\\Models\\Job" and $comment->commentable_id == $job->id)
+            if ($comment->commentable_type == "App\\Models\\Project" and $comment->commentable_id == $project->id)
             {
                 $out[] = $comment;
             }
@@ -89,10 +89,10 @@ class CommentService implements ModelServiceContract
         $target_type = null;
         switch ($request->target_type)
         {
-            case "job":
-                $target_type = "App\\Models\\Job";
-                $job = Jobs::find($request->target_id);
-                if (!$job) throw new Exception("Invalid job id received.");
+            case "project":
+                $target_type = "App\\Models\\Project";
+                $project = Projects::find($request->target_id);
+                if (!$project) throw new Exception("Invalid job id received.");
             break;
             case "user":
                 $target_type = "App\\Models\\User";

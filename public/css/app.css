@@ -4393,13 +4393,13 @@ i {
   }
 }
 
-#jobs {
+#projects {
   overflow: hidden;
   border-radius: 3px;
   background-color: #fff;
 }
 
-#jobs #jobs-header {
+#projects #projects-header {
   display: -webkit-box;
   display: flex;
   padding: 10px 15px;
@@ -4410,7 +4410,7 @@ i {
   background-color: #f2f2f2;
 }
 
-#jobs #jobs-header .jobs-header__column {
+#projects #projects-header .projects-header__column {
   -webkit-box-flex: 1;
           flex: 1;
   font-weight: 500;
@@ -4423,17 +4423,17 @@ i {
           align-items: center;
 }
 
-#jobs #jobs-header .jobs-header__column:first-child {
+#projects #projects-header .projects-header__column:first-child {
   -webkit-box-flex: 0;
           flex: 0 0 100px;
 }
 
-#jobs #jobs-header .jobs-header__column:last-child {
+#projects #projects-header .projects-header__column:last-child {
   -webkit-box-pack: end;
           justify-content: flex-end;
 }
 
-#jobs .job {
+#projects .project {
   display: -webkit-box;
   display: flex;
   color: #000000;
@@ -4450,21 +4450,21 @@ i {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#jobs .job:last-child {
+#projects .project:last-child {
   border-bottom: 0;
 }
 
-#jobs .job:hover {
+#projects .project:hover {
   background-color: #fafafa;
   cursor: pointer;
 }
 
-#jobs .job .job-title {
+#projects .project .project-title {
   -webkit-box-flex: 2;
           flex: 2;
 }
 
-#jobs .job .job-status {
+#projects .project .project-status {
   -webkit-box-flex: 0;
           flex: 0 0 100px;
   display: -webkit-box;
@@ -4478,13 +4478,15 @@ i {
           justify-content: flex-end;
 }
 
-#no-jobs {
+#no-projects {
   padding: 25px;
   border-radius: 3px;
+  text-align: center;
   box-sizing: border-box;
+  background-color: #fff;
 }
 
-#job #job-header {
+#project #project-header {
   width: 100%;
   height: 400px;
   position: relative;
@@ -4493,11 +4495,11 @@ i {
   background-position: center center;
 }
 
-#job #job-header.controls-only {
+#project #project-header.controls-only {
   height: 90px;
 }
 
-#job #job-header #job-header__overlay {
+#project #project-header #project-header__overlay {
   top: 0;
   left: 0;
   width: 100%;
@@ -4506,40 +4508,40 @@ i {
   background-color: rgba(255, 255, 255, 0.75);
 }
 
-#job #job-header #job-header__content {
+#project #project-header #project-header__content {
   height: 100%;
   width: 1200px;
   margin: 0 auto;
   position: relative;
 }
 
-#job #job-header #job-header__content #job-header__actions {
+#project #project-header #project-header__content #project-header__actions {
   right: 0;
   top: 25px;
   z-index: 3;
   position: absolute;
 }
 
-#job #job-header #job-header__content #job-header__actions .v-btn {
+#project #project-header #project-header__content #project-header__actions .v-btn {
   margin: 0 0 0 15px;
 }
 
-#job #job-header #job-header__content #job-header__actions .v-btn:first-child {
+#project #project-header #project-header__content #project-header__actions .v-btn:first-child {
   margin: 0;
 }
 
-#job #job-header #job-header__content #job-header__back-button {
+#project #project-header #project-header__content #project-header__back-button {
   left: 0;
   top: 25px;
   z-index: 3;
   position: absolute;
 }
 
-#job #job-header #job-header__content #job-header__back-button .v-btn {
+#project #project-header #project-header__content #project-header__back-button .v-btn {
   margin: 0;
 }
 
-#job #job-header #job-header__text-wrapper {
+#project #project-header #project-header__text-wrapper {
   left: 0;
   bottom: 0;
   z-index: 2;
@@ -4559,13 +4561,13 @@ i {
           justify-content: center;
 }
 
-#job #job-header #job-header__text-wrapper #job-header__text {
+#project #project-header #project-header__text-wrapper #project-header__text {
   width: 1200px;
   margin: 0 auto;
   padding: 50px 100px 0 100px;
 }
 
-#job #job-header #job-header__text-wrapper #job-header__text #job-header__title {
+#project #project-header #project-header__text-wrapper #project-header__text #project-header__title {
   font-weight: 300;
   font-size: 3.5em;
   line-height: 1em;
@@ -4573,7 +4575,7 @@ i {
   text-align: center;
 }
 
-#job #job-header #job-header__text-wrapper #job-header__text #job-header__slogan {
+#project #project-header #project-header__text-wrapper #project-header__text #project-header__slogan {
   font-size: 1.75em;
   font-weight: 300;
   line-height: 1em;
@@ -4581,7 +4583,7 @@ i {
   text-align: center;
 }
 
-#job #job-header #job-header__text-wrapper #job-header__text #job-header__stats {
+#project #project-header #project-header__text-wrapper #project-header__text #project-header__stats {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: horizontal;
@@ -4593,15 +4595,15 @@ i {
           justify-content: center;
 }
 
-#job #job-header #job-header__text-wrapper #job-header__text #job-header__stats .stat {
+#project #project-header #project-header__text-wrapper #project-header__text #project-header__stats .stat {
   margin: 0 15px 0 0;
 }
 
-#job #job-header #job-header__text-wrapper #job-header__text #job-header__stats .stat:last-child {
+#project #project-header #project-header__text-wrapper #project-header__text #project-header__stats .stat:last-child {
   margin: 0;
 }
 
-#job #job-header #job-header__text-wrapper #job-header__text #job-header__stats #job-status {
+#project #project-header #project-header__text-wrapper #project-header__text #project-header__stats #project-status {
   font-size: 0.8em;
   font-weight: 500;
   border-radius: 3px;
@@ -4611,24 +4613,24 @@ i {
   background-color: #ffffff;
 }
 
-#job #job-header #job-header__text-wrapper #job-header__text #job-header__stats #job-status.open {
+#project #project-header #project-header__text-wrapper #project-header__text #project-header__stats #project-status.open {
   color: green;
 }
 
-#job #job-header #job-header__text-wrapper #job-header__text #job-header__stats #job-status.closed {
+#project #project-header #project-header__text-wrapper #project-header__text #project-header__stats #project-status.closed {
   color: red;
 }
 
-#job #job-content #job-tabs {
+#project #project-content #project-tabs {
   border-radius: 3px;
 }
 
-#job #job-content #job-tabs .tab-content {
+#project #project-content #project-tabs .tab-content {
   padding: 30px;
   box-sizing: border-box;
 }
 
-#job #job-content #job-tabs #job-info {
+#project #project-content #project-tabs #project-info {
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: horizontal;
@@ -4636,22 +4638,22 @@ i {
           flex-direction: row;
 }
 
-#job #job-content #job-tabs #job-info #job-info__left {
+#project #project-content #project-tabs #project-info #project-info__left {
   -webkit-box-flex: 1;
           flex: 1;
   margin: 0 30px 0 0;
 }
 
-#job #job-content #job-tabs #job-info #job-info__right {
+#project #project-content #project-tabs #project-info #project-info__right {
   -webkit-box-flex: 0;
           flex: 0 0 400px;
 }
 
-#job #job-content .job-paragraph {
+#project #project-content .project-paragraph {
   margin: 0 0 45px 0;
 }
 
-#job #job-content .job-paragraph .job-paragraph__title {
+#project #project-content .project-paragraph .project-paragraph__title {
   font-size: 1.4em;
   font-weight: 500;
   line-height: 1em;
@@ -4661,26 +4663,26 @@ i {
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
 
-#job #job-content .job-paragraph .job-paragraph__text {
+#project #project-content .project-paragraph .project-paragraph__text {
   font-size: 1.1em;
   font-weight: 400;
   line-height: 1.5em;
 }
 
-#job #job-content #job-title {
+#project #project-content #project-title {
   margin: 0;
   font-size: 3em;
   font-weight: 400;
   line-height: 1.2em;
 }
 
-#job #job-content #job-slogan {
+#project #project-content #project-slogan {
   font-size: 2em;
   font-weight: 300;
   margin: 15px 0 30px 0;
 }
 
-#job #job-content #job-stats {
+#project #project-content #project-stats {
   margin: 0 0 30px 0;
   display: -webkit-box;
   display: flex;
@@ -4689,7 +4691,7 @@ i {
           flex-direction: row;
 }
 
-#job #job-content #job-stats #job-status {
+#project #project-content #project-stats #project-status {
   display: -webkit-box;
   display: flex;
   border-radius: 3px;
@@ -4699,35 +4701,35 @@ i {
   background-color: white;
 }
 
-#job #job-content #job-stats #job-status.open #job-status__value {
+#project #project-content #project-stats #project-status.open #project-status__value {
   color: green;
 }
 
-#job #job-content #job-stats #job-status.closed #job-status__value {
+#project #project-content #project-stats #project-status.closed #project-status__value {
   color: red;
 }
 
-#job #job-content #job-stats #job-status #job-status__label {
+#project #project-content #project-stats #project-status #project-status__label {
   padding: 10px 0 10px 15px;
   font-weight: bold;
   box-sizing: border-box;
 }
 
-#job #job-content #job-stats #job-status #job-status__value {
+#project #project-content #project-stats #project-status #project-status__value {
   padding: 10px 15px;
   box-sizing: border-box;
 }
 
-#job #job-content #job-description {
+#project #project-content #project-description {
   font-weight: 400;
   font-size: 1.5em;
 }
 
-#job #job-content #job-details {
+#project #project-content #project-details {
   margin: -10px 0 0 0;
 }
 
-#job #job-content #job-details .detail {
+#project #project-content #project-details .detail {
   display: -webkit-box;
   display: flex;
   padding: 5px 0;
@@ -4738,32 +4740,32 @@ i {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#job #job-content #job-details .detail:last-child {
+#project #project-content #project-details .detail:last-child {
   border-bottom: 0;
 }
 
-#job #job-content #job-details .detail .key {
+#project #project-content #project-details .detail .key {
   -webkit-box-flex: 0;
           flex: 0 0 200px;
 }
 
-#job #job-content #job-details .detail .val {
+#project #project-content #project-details .detail .val {
   -webkit-box-flex: 1;
           flex: 1;
 }
 
-#job #job-content #job-team-roles {
+#project #project-content #project-team-roles {
   border-radius: 3px;
   margin: 0 0 30px 0;
   background-color: #ffffff;
 }
 
-#job #job-content #job-team-roles #job-team-roles__list {
+#project #project-content #project-team-roles #project-team-roles__list {
   overflow: hidden;
   border-radius: 3px;
 }
 
-#job #job-content #job-team-roles #job-team-roles__list .team-role {
+#project #project-content #project-team-roles #project-team-roles__list .team-role {
   display: -webkit-box;
   display: flex;
   padding: 10px 15px;
@@ -4777,24 +4779,24 @@ i {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#job #job-content #job-team-roles #job-team-roles__list .team-role:last-child {
+#project #project-content #project-team-roles #project-team-roles__list .team-role:last-child {
   border-bottom: 0;
 }
 
-#job #job-content #job-team-roles #job-team-roles__list .team-role .team-role__avatar-wrapper {
+#project #project-content #project-team-roles #project-team-roles__list .team-role .team-role__avatar-wrapper {
   -webkit-box-flex: 0;
           flex: 0 0 60px;
   margin: 0 15px 0 0;
 }
 
-#job #job-content #job-team-roles #job-team-roles__list .team-role .team-role__avatar-wrapper .team-role__avatar {
+#project #project-content #project-team-roles #project-team-roles__list .team-role .team-role__avatar-wrapper .team-role__avatar {
   width: 60px;
   height: 60px;
   border-radius: 30px;
   background-color: #fff;
 }
 
-#job #job-content #job-team-roles #job-team-roles__list .team-role .team-role__text-wrapper {
+#project #project-content #project-team-roles #project-team-roles__list .team-role .team-role__text-wrapper {
   -webkit-box-flex: 1;
           flex: 1;
   display: -webkit-box;
@@ -4806,21 +4808,21 @@ i {
           justify-content: center;
 }
 
-#job #job-content #job-team-roles #job-team-roles__list .team-role .team-role__text-wrapper .role-name {
+#project #project-content #project-team-roles #project-team-roles__list .team-role .team-role__text-wrapper .role-name {
   font-weight: 500;
 }
 
-#job #job-content #job-team-roles #job-team-roles__list .team-role .team-role__text-wrapper .member-name {
+#project #project-content #project-team-roles #project-team-roles__list .team-role .team-role__text-wrapper .member-name {
   font-size: 0.8em;
   color: rgba(0, 0, 0, 0.75);
 }
 
-#job #job-content #job-team-roles #job-team-roles__list .team-role .team-role__text-wrapper .not-fulfilled {
+#project #project-content #project-team-roles #project-team-roles__list .team-role .team-role__text-wrapper .not-fulfilled {
   font-size: 0.8em;
   color: rgba(0, 0, 0, 0.75);
 }
 
-#job #job-content #job-team-roles #job-team-roles__empty {
+#project #project-content #project-team-roles #project-team-roles__empty {
   padding: 10px 15px;
   border-radius: 3px;
   margin: 0 0 30px 0;
@@ -4829,7 +4831,7 @@ i {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#job #job-content #job-team-roles #job-team-roles__actions {
+#project #project-content #project-team-roles #project-team-roles__actions {
   display: -webkit-box;
   display: flex;
   margin: 15px 0 0 0;
@@ -4842,7 +4844,7 @@ i {
           justify-content: flex-end;
 }
 
-#job #job-content #job-resources #job-resources__list .resource {
+#project #project-content #project-resources #project-resources__list .resource {
   display: -webkit-box;
   display: flex;
   padding: 10px 15px;
@@ -4857,60 +4859,60 @@ i {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#job #job-content #job-resources #job-resources__list .resource:last-child {
+#project #project-content #project-resources #project-resources__list .resource:last-child {
   border-bottom: 0;
 }
 
-#job #job-content #job-resources #job-resources__list .resource:hover {
+#project #project-content #project-resources #project-resources__list .resource:hover {
   cursor: pointer;
   background-color: #f2f2f2;
 }
 
-#job #job-content #job-resources #job-resources__list .resource .resource-icon {
+#project #project-content #project-resources #project-resources__list .resource .resource-icon {
   margin: 0 15px 0 0;
 }
 
-#job #job-content #job-resources #job-resources__list .resource .resource-title {
+#project #project-content #project-resources #project-resources__list .resource .resource-title {
   -webkit-box-flex: 1;
           flex: 1;
 }
 
-#job #job-content #job-resources #job-resources__list .resource .resource-size {
+#project #project-content #project-resources #project-resources__list .resource .resource-size {
   margin: 0 0 0 15px;
 }
 
-#job #job-content #job-resources .no-resources {
+#project #project-content #project-resources .no-resources {
   padding: 10px 15px;
   box-sizing: border-box;
 }
 
 @media (max-width: 1250px) {
-  #job #job-header #job-header__content {
+  #project #project-header #project-header__content {
     width: 100%;
     padding: 0 25px;
     box-sizing: border-box;
   }
 
-  #job #job-header #job-header__content #job-header__back-button {
+  #project #project-header #project-header__content #project-header__back-button {
     left: 25px;
   }
 
-  #job #job-header #job-header__content #job-header__actions {
+  #project #project-header #project-header__content #project-header__actions {
     right: 25px;
   }
 
-  #job #job-content .content-section {
+  #project #project-content .content-section {
     padding: 50px 25px;
   }
 }
 
 @media (max-width: 940px) {
-  #job #job-content #job-tabs #job-info {
+  #project #project-content #project-tabs #project-info {
     flex-wrap: wrap;
   }
 
-  #job #job-content #job-tabs #job-info #job-info__left,
-  #job #job-content #job-tabs #job-info #job-info__right {
+  #project #project-content #project-tabs #project-info #project-info__left,
+  #project #project-content #project-tabs #project-info #project-info__right {
     -webkit-box-flex: 0;
             flex: 0 0 100%;
   }

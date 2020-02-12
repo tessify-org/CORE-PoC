@@ -15,7 +15,7 @@ return [
     // Navigation links
     "login_link" => "Inloggen",
     "register_link" => "Registreren",
-    "jobs_link" => "Job Board",
+    "projects_link" => "Projecten",
     "members_link" => "Leden",
     "profile_link" => "Mijn Profiel",
     "admin_link" => "Administratie",

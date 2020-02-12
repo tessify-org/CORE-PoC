@@ -15,7 +15,7 @@ class CreateTeamRolesTable extends Migration
     {
         Schema::create('team_roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedInteger('job_id');
+            $table->unsignedInteger('project_id');
             $table->string('name');
             $table->text('description')->nullable();
             $table->timestamps();
