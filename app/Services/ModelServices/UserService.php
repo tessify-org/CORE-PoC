@@ -3,12 +3,14 @@
 namespace App\Services\ModelServices;
 
 use Auth;
+use Uuid;
 use Carbon\Carbon;
 
 use App\Models\Job;
 use App\Models\User;
 use App\Traits\ModelServiceGetters;
 use App\Contracts\ModelServiceContract;
+use App\Jobs\Auth\SendAccountRecoveryEmail;
 use App\Http\Requests\Profiles\UpdateProfileRequest;
 
 
@@ -64,11 +66,34 @@ class UserService implements ModelServiceContract
         return false;
     }
 
+    public function findUserByEmail($email)
+    {
+        foreach ($this->getAll() as $user)
+        {
+            if ($user->email == $email)
+            {
+                return $user;
+            }
+        }
+
+        return false;
+    }
+
     public function saveAvatar($id, $url)
     {
         $user = User::find($id);
         $user->avatar_url = $url;
         $user->save();
         return $user;
+    }
+
+    public function sendRecoverAccountEmail($email)
+    {
+        $user = $this->findUserByEmail($email);
+
+        $user->recovery_code = Uuid::generate();
+        $user->save();
+
+        SendAccountRecoveryEmail::dispatch($user)->onQueue("emails");
     }
 }

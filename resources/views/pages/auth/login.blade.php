@@ -13,18 +13,27 @@
             <div id="login" class="elevation-1">
                 <div id="login-left">
 
-                    <h1 id="login-title">Aanmelden</h1>
+                    <h1 id="login-title">@lang('auth.login_title')</h1>
 
                     <form action="{{ route('auth.login.post') }}" method="post">
                         {{ csrf_field() }}
                         
                         <login-form
                             :errors="{{ $errors->toJson() }}"
-                            :old-input="{{ $oldInput->toJson() }}">
+                            :old-input="{{ $oldInput->toJson() }}"
+                            email-text="@lang('auth.login_email')"
+                            password-text="@lang('auth.login_password')"
+                            remember-me-text="@lang('auth.login_remember_me')"
+                            submit-text="@lang('auth.login_submit')"
+                            forgot-password-text="@lang('auth.login_forgot_password')"
+                            forgot-password-href="{{ route('auth.forgot-password') }}"
+                            register-text="@lang('auth.login_register_text')">
                         </login-form>
 
                         <div id="no-account">
-                            Nog geen account? <a href="{{ route('auth.register') }}">Registreer nu!</a>
+                            <a href="{{ route('auth.register') }}">
+                                @lang('auth.login_register_text')
+                            </a>
                         </div>
 
                     </form>

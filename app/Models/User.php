@@ -27,6 +27,7 @@ class User extends Authenticatable
         'avatar_url',
         'phone',
         'is_admin',
+        'recovery_code',
     ];
     protected $hidden = [
         'password', 

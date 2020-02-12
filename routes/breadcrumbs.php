@@ -21,6 +21,18 @@ Breadcrumbs::for("auth.login", function($t) {
     $t->push("Login", route("auth.login"));
 });
 
+// Forgot password
+Breadcrumbs::for("auth.forgot-password", function($t) {
+    $t->parent("auth.login");
+    $t->push("Wachtwoord vergeten", route("auth.forgot-password"));
+});
+
+// Reset password
+Breadcrumbs::for("auth.reset-password", function($t) {
+    $t->parent("auth.forgot-password");
+    $t->push("Wachtwoord herstellen", route("auth.reset-password"));
+});
+
 // Search
 Breadcrumbs::for("search", function($t) {
     $t->parent("home");

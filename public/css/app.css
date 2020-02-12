@@ -5051,3 +5051,14 @@ i {
   margin: 0;
 }
 
+#forgot-password-email-sent {
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+#forgot-password-email-sent #forgot-password-email-sent__text {
+  padding: 25px;
+  text-align: center;
+  box-sizing: border-box;
+}
+

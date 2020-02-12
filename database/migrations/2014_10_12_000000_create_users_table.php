@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar_url')->nullable();
             $table->string('phone')->nullable();
             $table->boolean('is_admin')->default(false);
+            $table->string('recovery_code')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

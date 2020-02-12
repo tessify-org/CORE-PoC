@@ -14,7 +14,7 @@ return [
 
     // Navigation links
     "login_link" => "Inloggen",
-    "register_link" => "Registeren",
+    "register_link" => "Registreren",
     "jobs_link" => "Job Board",
     "members_link" => "Leden",
     "profile_link" => "Mijn Profiel",

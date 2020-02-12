@@ -4601,6 +4601,90 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["errors", "backHref", "backText", "submitText", "emailText"],
+  data: function data() {
+    return {
+      tag: "[forgot-password-form]",
+      form: {
+        email: ""
+      }
+    };
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " errors: ", this.errors);
+      console.log(this.tag + " back href: ", this.backHref);
+      console.log(this.tag + " back text: ", this.backText);
+      console.log(this.tag + " submit text: ", this.submitText);
+      console.log(this.tag + " email text: ", this.emailText);
+    },
+    hasErrors: function hasErrors(field) {
+      if (this.errors !== undefined && this.errors !== null && this.errors.length > 0) {
+        if (this.errors[field] !== undefined && this.errors[field] !== "") {
+          return true;
+        }
+      }
+
+      return false;
+    },
+    getErrors: function getErrors(field) {
+      if (this.errors !== undefined && this.errors !== null && this.errors[field] !== undefined && this.errors[field] !== null) {
+        return this.errors[field];
+      }
+
+      return [];
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/LoginForm.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/LoginForm.vue?vue&type=script&lang=js& ***!
@@ -4657,8 +4741,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["oldInput", "errors", "prefillEmail"],
+  props: ["oldInput", "errors", "prefillEmail", "emailText", "passwordText", "rememberMeText", "submitText", "forgotPasswordText", "forgotPasswordHref"],
   data: function data() {
     return {
       tag: "[login-form]",
@@ -4806,8 +4897,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["errors", "oldInput"],
+  props: ["errors", "oldInput", "annotationText", "firstNameText", "lastNameText", "emailText", "passwordText", "confirmPasswordText", "submitText", "loginText", "loginHref"],
   data: function data() {
     return {
       tag: "[register-form]",
@@ -4827,6 +4925,14 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.tag + " initialize");
       console.log(this.tag + " errors: ", this.errors);
       console.log(this.tag + " old input: ", this.oldInput);
+      console.log(this.tag + " annotation text: ", this.annotationText);
+      console.log(this.tag + " first name text: ", this.firstNameText);
+      console.log(this.tag + " last name text: ", this.lastNameText);
+      console.log(this.tag + " email text: ", this.emailText);
+      console.log(this.tag + " password text: ", this.passwordText);
+      console.log(this.tag + " confirm password text: ", this.confirmPasswordText);
+      console.log(this.tag + " login text: ", this.loginText);
+      console.log(this.tag + " login href: ", this.loginHref);
       this.initializeData();
       this.generateAnnotationOptions();
     },
@@ -7716,6 +7822,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, ".comments .comments__title {\n  font-size: 1.4em;\n  font-weight: 500;\n  line-height: 1em;\n  margin: 0 0 15px 0;\n  padding: 0 0 8px 0;\n  box-sizing: border-box;\n  border-bottom: 2px solid rgba(0, 0, 0, 0.1);\n}\n.comments .comments__list .comment-wrapper {\n  margin: 0 0 15px 0;\n}\n.comments .comments__list .comment-wrapper:last-child {\n  margin: 0;\n}\n.comments .comments__list .comment-wrapper .comment {\n  padding: 20px;\n  font-size: 0.9em;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n.comments .comments__list .comment-wrapper .comment-footer {\n  display: -webkit-box;\n  display: flex;\n  margin: 10px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left .comment-author {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left .comment-author .comment-author__avatar {\n  width: 24px;\n  height: 24px;\n  margin: 0 10px 0 0;\n  border-radius: 12px;\n  background-size: cover;\n  background-repeat: no-repeat;\n  background-position: center center;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__left .comment-author .comment-author__text {\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.9em;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  margin: 0 15px 0 0;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action {\n  width: 24px;\n  height: 24px;\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  margin: 0 10px 0 0;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: black;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.edit {\n  background-color: #f04400;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.edit:hover {\n  background-color: #c73800;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.delete {\n  background-color: #d40000;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action.delete:hover {\n  background-color: #950000;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action:hover {\n  cursor: pointer;\n  background-color: #262626;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-actions .comment-action:last-child {\n  margin: 0;\n}\n.comments .comments__list .comment-wrapper .comment-footer .comment-footer__right .comment-created-at {\n  font-size: 0.9em;\n}\n.comments .comments__empty {\n  padding: 15px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n.comments .comments__pagination {\n  display: -webkit-box;\n  display: flex;\n  margin: 30px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n.comments .comments__form {\n  margin: 30px 0 0 0;\n}\n.comments .comments__form .comments__form-label {\n  font-size: 1.4em;\n  font-weight: 500;\n  line-height: 1em;\n  margin: 0 0 10px 0;\n  padding: 0 0 8px 0;\n  box-sizing: border-box;\n  border-bottom: 2px solid rgba(0, 0, 0, 0.1);\n}\n.comments .comments__form .comments__form-errors {\n  display: -webkit-box;\n  display: flex;\n  margin: 0 0 10px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n.comments .comments__form .comments__form-errors .form-error {\n  color: #c41717;\n  margin: 0 0 5px 0;\n}\n.comments .comments__form .comments__form-errors .form-error:last-child {\n  margin: 0;\n}\n.comments .comments__form .form-field {\n  margin: 0;\n}\n.comments .comments__form .comments__form-actions {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#forgot-password-form__wrapper #forgot-password-form {\n  width: 650px;\n  padding: 25px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  margin: 0 auto 30px auto;\n  background-color: #ffffff;\n}\n#forgot-password-form__wrapper .form-controls {\n  width: 650px;\n  margin: 0 auto;\n}", ""]);
 
 // exports
 
@@ -36167,6 +36292,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/LoginForm.vue?vue&type=style&index=0&lang=scss&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/LoginForm.vue?vue&type=style&index=0&lang=scss& ***!
@@ -37551,6 +37706,98 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=template&id=f04c08a4&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=template&id=f04c08a4& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "forgot-password-form__wrapper" } }, [
+    _c(
+      "div",
+      { staticClass: "elevation-1", attrs: { id: "forgot-password-form" } },
+      [
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-text-field", {
+              attrs: {
+                name: "email",
+                label: _vm.emailText,
+                errors: _vm.hasErrors("email"),
+                "error-messages": _vm.getErrors("email")
+              },
+              model: {
+                value: _vm.form.email,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "email", $$v)
+                },
+                expression: "form.email"
+              }
+            })
+          ],
+          1
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-controls" }, [
+      _c(
+        "div",
+        { staticClass: "form-controls__left" },
+        [
+          _c("v-btn", { attrs: { href: _vm.backHref } }, [
+            _c("i", { staticClass: "fas fa-arrow-left" }),
+            _vm._v(
+              "\n                " + _vm._s(_vm.backText) + "\n            "
+            )
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-controls__right" },
+        [
+          _c(
+            "v-btn",
+            {
+              staticClass: "icon-right",
+              attrs: { type: "submit", color: "primary" }
+            },
+            [
+              _vm._v(
+                "\n                " +
+                  _vm._s(_vm.submitText) +
+                  "\n                "
+              ),
+              _c("i", { staticClass: "fas fa-paper-plane" })
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/LoginForm.vue?vue&type=template&id=5547a011&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/auth/LoginForm.vue?vue&type=template&id=5547a011& ***!
@@ -37573,8 +37820,8 @@ var render = function() {
       [
         _c("v-text-field", {
           attrs: {
-            label: "E-mail",
             name: "email",
+            label: _vm.emailText,
             error: _vm.hasErrors("email"),
             "error-messages": _vm.getErrors("email")
           },
@@ -37597,8 +37844,8 @@ var render = function() {
         _c("v-text-field", {
           attrs: {
             type: "password",
-            label: "Password",
             name: "password",
+            label: _vm.passwordText,
             error: _vm.hasErrors("password"),
             "error-messages": _vm.getErrors("password")
           },
@@ -37619,7 +37866,10 @@ var render = function() {
       { staticClass: "form-field" },
       [
         _c("remember-me", {
-          attrs: { name: "remember_me" },
+          attrs: {
+            name: "remember_me",
+            "remember-me-text": _vm.rememberMeText
+          },
           model: {
             value: _vm.form.rememberMe,
             callback: function($$v) {
@@ -37638,28 +37888,27 @@ var render = function() {
         { staticClass: "form-controls__left" },
         [
           _c("v-btn", { attrs: { type: "submit", color: "primary" } }, [
-            _vm._v("Inloggen")
+            _vm._v(
+              "\n                " + _vm._s(_vm.submitText) + "\n            "
+            )
           ])
         ],
         1
       ),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "form-controls__right" }, [
+        _c("a", { attrs: { href: _vm.forgotPasswordHref } }, [
+          _vm._v(
+            "\n                " +
+              _vm._s(_vm.forgotPasswordText) +
+              "\n            "
+          )
+        ])
+      ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-controls__right" }, [
-      _c("a", { attrs: { href: "#" } }, [
-        _vm._v("\n                Wachtwoord vergeten?\n            ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -37692,7 +37941,7 @@ var render = function() {
           [
             _c("v-select", {
               attrs: {
-                label: "Annotation",
+                label: _vm.annotationText,
                 items: _vm.annotationOptions,
                 error: _vm.hasErrors("annotation"),
                 "error-messages": _vm.getErrors("annotation")
@@ -37736,8 +37985,8 @@ var render = function() {
           [
             _c("v-text-field", {
               attrs: {
-                label: "First name",
                 name: "first_name",
+                label: _vm.firstNameText,
                 error: _vm.hasErrors("first_name"),
                 "error-messages": _vm.getErrors("first_name")
               },
@@ -37759,8 +38008,8 @@ var render = function() {
           [
             _c("v-text-field", {
               attrs: {
-                label: "Last name",
                 name: "last_name",
+                label: _vm.lastNameText,
                 error: _vm.hasErrors("last_name"),
                 "error-messages": _vm.getErrors("last_name")
               },
@@ -37783,8 +38032,8 @@ var render = function() {
         [
           _c("v-text-field", {
             attrs: {
-              label: "E-mail",
               name: "email",
+              label: _vm.emailText,
               error: _vm.hasErrors("email"),
               "error-messages": _vm.getErrors("email")
             },
@@ -37808,8 +38057,8 @@ var render = function() {
             _c("v-text-field", {
               attrs: {
                 type: "password",
-                label: "Password",
                 name: "password",
+                label: _vm.passwordText,
                 error: _vm.hasErrors("password"),
                 "error-messages": _vm.getErrors("password")
               },
@@ -37832,8 +38081,8 @@ var render = function() {
             _c("v-text-field", {
               attrs: {
                 type: "password",
-                label: "Confirm password",
                 name: "password_confirmation",
+                label: _vm.confirmPasswordText,
                 error: _vm.hasErrors("password_confirmation"),
                 "error-messages": _vm.getErrors("password_confirmation")
               },
@@ -37851,15 +38100,29 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { attrs: { id: "register-form__controls" } }, [
-        _c("div", { attrs: { id: "register-form__controls-left" } }),
+        _c("div", { attrs: { id: "register-form__controls-left" } }, [
+          _c("a", { attrs: { href: _vm.loginHref } }, [
+            _vm._v(
+              "\n                " + _vm._s(_vm.loginText) + "\n            "
+            )
+          ])
+        ]),
         _vm._v(" "),
         _c(
           "div",
           { attrs: { id: "register-form__controls-right" } },
           [
-            _c("v-btn", { attrs: { type: "submit", color: "primary" } }, [
-              _vm._v("\n                Create your account!\n            ")
-            ])
+            _c(
+              "v-btn",
+              { attrs: { type: "submit", color: "primary", depressed: "" } },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.submitText) +
+                    "\n            "
+                )
+              ]
+            )
           ],
           1
         )
@@ -94891,6 +95154,7 @@ module.exports = function(module) {
 
 var map = {
 	"./components/Comments.vue": "./resources/js/components/Comments.vue",
+	"./components/auth/ForgotPasswordForm.vue": "./resources/js/components/auth/ForgotPasswordForm.vue",
 	"./components/auth/LoginForm.vue": "./resources/js/components/auth/LoginForm.vue",
 	"./components/auth/RegisterForm.vue": "./resources/js/components/auth/RegisterForm.vue",
 	"./components/auth/RememberMe.vue": "./resources/js/components/auth/RememberMe.vue",
@@ -95060,6 +95324,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Comments_vue_vue_type_template_id_4aa6d95f___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Comments_vue_vue_type_template_id_4aa6d95f___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/ForgotPasswordForm.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/auth/ForgotPasswordForm.vue ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ForgotPasswordForm_vue_vue_type_template_id_f04c08a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ForgotPasswordForm.vue?vue&type=template&id=f04c08a4& */ "./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=template&id=f04c08a4&");
+/* harmony import */ var _ForgotPasswordForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ForgotPasswordForm.vue?vue&type=script&lang=js& */ "./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ForgotPasswordForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ForgotPasswordForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ForgotPasswordForm_vue_vue_type_template_id_f04c08a4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ForgotPasswordForm_vue_vue_type_template_id_f04c08a4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/auth/ForgotPasswordForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ForgotPasswordForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=template&id=f04c08a4&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=template&id=f04c08a4& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_template_id_f04c08a4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ForgotPasswordForm.vue?vue&type=template&id=f04c08a4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/auth/ForgotPasswordForm.vue?vue&type=template&id=f04c08a4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_template_id_f04c08a4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ForgotPasswordForm_vue_vue_type_template_id_f04c08a4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -96206,9 +96557,9 @@ var EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Code\Websites\NNW\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! D:\Code\Websites\NNW\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! D:\Code\Websites\NNW\resources\sass\admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/sass/admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

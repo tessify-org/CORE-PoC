@@ -5,7 +5,7 @@
         <div class="form-fields">
             <div class="form-field">
                 <v-select
-                    label="Annotation"
+                    :label="annotationText"
                     v-model="form.annotation"
                     :items="annotationOptions"
                     :error="hasErrors('annotation')"
@@ -15,8 +15,8 @@
             </div>
             <div class="form-field double">
                 <v-text-field 
-                    label="First name" 
                     name="first_name" 
+                    :label="firstNameText" 
                     v-model="form.first_name" 
                     :error="hasErrors('first_name')" 
                     :error-messages="getErrors('first_name')">
@@ -24,8 +24,8 @@
             </div>
             <div class="form-field double">
                 <v-text-field 
-                    label="Last name" 
                     name="last_name" 
+                    :label="lastNameText" 
                     v-model="form.last_name" 
                     :error="hasErrors('last_name')" 
                     :error-messages="getErrors('last_name')">
@@ -36,8 +36,8 @@
         <!-- Email -->
         <div class="form-field">
             <v-text-field 
-                label="E-mail" 
                 name="email" 
+                :label="emailText" 
                 v-model="form.email"
                 :error="hasErrors('email')"
                 :error-messages="getErrors('email')">
@@ -49,8 +49,8 @@
             <div class="form-field">
                 <v-text-field 
                     type="password" 
-                    label="Password" 
                     name="password"
+                    :label="passwordText" 
                     v-model="form.password"
                     :error="hasErrors('password')"
                     :error-messages="getErrors('password')">
@@ -59,8 +59,8 @@
             <div class="form-field">
                 <v-text-field 
                     type="password" 
-                    label="Confirm password" 
                     name="password_confirmation" 
+                    :label="confirmPasswordText" 
                     v-model="form.confirmPassword"
                     :error="hasErrors('password_confirmation')"
                     :error-messages="getErrors('password_confirmation')">
@@ -70,12 +70,19 @@
         
         <!-- Controls -->
         <div id="register-form__controls">
-            <div id="register-form__controls-left"></div>
+            <div id="register-form__controls-left">
+
+                <!-- Link to login -->
+                <a :href="loginHref">
+                    {{ loginText }}
+                </a>
+
+            </div>
             <div id="register-form__controls-right">
 
                 <!-- Submit button -->
-                <v-btn type="submit" color="primary">
-                    Create your account!
+                <v-btn type="submit" color="primary" depressed>
+                    {{ submitText }}
                 </v-btn>
 
             </div>
@@ -89,6 +96,15 @@
         props: [
             "errors",
             "oldInput",
+            "annotationText",
+            "firstNameText",
+            "lastNameText",
+            "emailText",
+            "passwordText",
+            "confirmPasswordText",
+            "submitText",
+            "loginText",
+            "loginHref",
         ],
         data: () => ({
             tag: "[register-form]",
@@ -108,6 +124,15 @@
                 console.log(this.tag+" initialize");
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
+
+                console.log(this.tag+" annotation text: ", this.annotationText);
+                console.log(this.tag+" first name text: ", this.firstNameText);
+                console.log(this.tag+" last name text: ", this.lastNameText);
+                console.log(this.tag+" email text: ", this.emailText);
+                console.log(this.tag+" password text: ", this.passwordText);
+                console.log(this.tag+" confirm password text: ", this.confirmPasswordText);
+                console.log(this.tag+" login text: ", this.loginText);
+                console.log(this.tag+" login href: ", this.loginHref);
 
                 this.initializeData();
                 this.generateAnnotationOptions();

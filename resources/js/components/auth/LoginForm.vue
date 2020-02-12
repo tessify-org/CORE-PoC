@@ -4,9 +4,9 @@
         <!-- Email --> 
         <div class="form-field">
             <v-text-field 
-                label="E-mail" 
                 name="email" 
                 v-model="form.email" 
+                :label="emailText" 
                 :error="hasErrors('email')" 
                 :error-messages="getErrors('email')">
             </v-text-field>
@@ -16,28 +16,35 @@
         <div class="form-field">
             <v-text-field 
                 type="password" 
-                label="Password" 
                 name="password" 
+                :label="passwordText"
                 v-model="form.password" 
                 :error="hasErrors('password')" 
                 :error-messages="getErrors('password')">
             </v-text-field>
         </div>
         
+        <!-- Remember me -->
         <div class="form-field">
-            <remember-me v-model="form.rememberMe" name="remember_me"></remember-me>
+            <remember-me 
+                name="remember_me" 
+                v-model="form.rememberMe" 
+                :remember-me-text="rememberMeText">
+            </remember-me>
         </div>
         
         <!-- Controls -->
         <div class="form-controls">
-            <!-- Remember me -->
             <div class="form-controls__left">
-                <v-btn type="submit" color="primary">Inloggen</v-btn>
+                <v-btn 
+                    type="submit" 
+                    color="primary">
+                    {{ submitText}}
+                </v-btn>
             </div>
-            <!-- Submit form -->
             <div class="form-controls__right">
-                <a href="#">
-                    Wachtwoord vergeten?
+                <a :href="forgotPasswordHref">
+                    {{ forgotPasswordText }}
                 </a>
             </div>
         </div>
@@ -51,6 +58,12 @@
             "oldInput",
             "errors",
             "prefillEmail",
+            "emailText",
+            "passwordText",
+            "rememberMeText",
+            "submitText",
+            "forgotPasswordText",
+            "forgotPasswordHref",
         ],
         data: () => ({
             tag: "[login-form]",
