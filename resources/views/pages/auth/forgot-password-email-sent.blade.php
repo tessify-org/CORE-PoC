@@ -14,7 +14,7 @@
 
             <div id="forgot-password-email-sent" class="elevation-1">
                 <div id="forgot-password-email-sent__text">
-                    @lang("auth.forgot_password_email_sent_text")
+                    @lang("auth.forgot_password_email_sent_text", ["email" => $email])
                 </div>
             </div>
 

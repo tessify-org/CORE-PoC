@@ -28,9 +28,9 @@ Breadcrumbs::for("auth.forgot-password", function($t) {
 });
 
 // Reset password
-Breadcrumbs::for("auth.reset-password", function($t) {
+Breadcrumbs::for("auth.reset-password", function($t, $data) {
     $t->parent("auth.forgot-password");
-    $t->push("Wachtwoord herstellen", route("auth.reset-password"));
+    $t->push("Wachtwoord herstellen", route("auth.reset-password", ["code" => $data["code"], "email" => $data["email"]]));
 });
 
 // Search

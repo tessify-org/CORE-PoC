@@ -11,8 +11,8 @@ use App\Models\Project;
 use App\Traits\ModelServiceGetters;
 use App\Contracts\ModelServiceContract;
 use App\Jobs\Auth\SendAccountRecoveryEmail;
+use App\Http\Requests\Auth\ResetPasswordRequest;
 use App\Http\Requests\Profiles\UpdateProfileRequest;
-
 
 class UserService implements ModelServiceContract
 {
@@ -90,10 +90,32 @@ class UserService implements ModelServiceContract
     public function sendRecoverAccountEmail($email)
     {
         $user = $this->findUserByEmail($email);
-
+        
         $user->recovery_code = Uuid::generate();
         $user->save();
 
         SendAccountRecoveryEmail::dispatch($user)->onQueue("emails");
+    }
+
+    public function emailExists($email)
+    {
+        return User::where("email", $email)->first() ? true : false;
+    }
+
+    public function recoveryCodeIsValid($email, $code)
+    {
+        $user = $this->findUserByEmail($email);
+        if ($user and $user->recovery_code == $code)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public function resetPassword(User $user, ResetPasswordRequest $request)
+    {
+        $user->password = bcrypt($request->password);
+        $user->save();
+        return $user;
     }
 }

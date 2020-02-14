@@ -17,7 +17,7 @@ return [
     'throttle' => 'Te veel login pogingen, probeer het nogmaals in :seconds seconden.',
 
     //
-    // Login
+    // Login page
     // 
 
     'login_title' => 'Aanmelden',
@@ -26,14 +26,14 @@ return [
     'login_remember_me' => 'Onthoud mijn gegevens',
     'login_submit' => 'Inloggen',
     'login_forgot_password' => 'Wachtwoord vergeten?',
-    'login_register' => 'Nog geen account? Registreer nu een account',
+    'login_register_text' => 'Nog geen account? Registreer nu een account',
     'login_about_title' => 'Wat is NNW?',
     'login_about_text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum enim, tempor nec lobortis non, vulputate sit amet libero. Nunc eget interdum sem. Fusce eu luctus turpis, sed scelerisque turpis. Aliquam tortor nulla, hendrerit eu maximus eget, egestas nec lectus. Pellentesque convallis imperdiet faucibus.',
     'login_more_title' => 'Meer weten?',
     'login_more_text' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum enim, tempor nec lobortis non, vulputate sit amet libero. Nunc eget interdum sem. Fusce eu luctus turpis, sed scelerisque turpis. Aliquam tortor nulla, hendrerit eu maximus eget, egestas nec lectus. Pellentesque convallis imperdiet faucibus.',
 
     //
-    // Register
+    // Register page
     //
 
     'register_title' => 'Registreren',
@@ -47,7 +47,7 @@ return [
     'register_go_to_login' => 'Heb je al een account? Ga naar inloggen',
 
     //
-    // Forgot password
+    // Forgot password page
     //
 
     'forgot_password_title' => 'Wachtwoord vergeten',
@@ -60,10 +60,27 @@ return [
     'forgot_password_email_sent_text' => 'Er is zojuist een e-mail verstuurd naar :email met instructies over hoe je je wachtwoord opnieuw kunt instellen.',
 
     //
-    // Reset password
+    // Reset password page
     //
 
     'reset_password_title' => 'Wachtwoord resetten',
+    'reset_password_form_email' => 'E-mailadres',
+    'reset_password_form_code' => 'Herstelcode',
+    'reset_password_form_password' => 'Nieuwe wachtwoord',
+    'reset_password_form_password_confirmation' => 'Bevestig nieuwe wachtwoord',
+    'reset_password_form_back' => 'Annuleren',
+    'reset_password_form_submit' => 'Reset mijn wachtwoord',
+    'reset_password_error_invalid_email' => 'We konden je wachtwoord niet herstellen want het opgegeven e-mailadres was ongeldig',
+    'reset_password_error_invalid_code' => 'We konden je wachtwoord niet herstellen want de opgegeven herstelcode was ongeldig',
+    'reset_password_success' => 'Je wachtwoord is opnieuw ingesteld en je kunt nu inloggen!',
 
+    //
+    // Recover account email
+    //
+
+    'recover_account_email_subject' => 'Herstel jouw Tessify account!',
+    'recover_account_email_title' => 'Tessify account herstellen',
+    'recover_account_email_text' => 'Hey :name! We hebben een verzoek ontvangen om je account te herstellen.\n\nKlik op de knop hieronder om je wachtwoord te resetten.',
+    'recover_account_email_button' => 'Reset mijn wachtwoord',
 
 ];

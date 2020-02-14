@@ -2,7 +2,10 @@
 
 namespace App\Jobs\Auth;
 
+use Mail;
 use App\Models\User;
+use App\Mail\Auth\RecoverAccountMail;
+
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -12,6 +15,8 @@ use Illuminate\Queue\SerializesModels;
 class SendAccountRecoveryEmail implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+
+    public $user;
 
     /**
      * Create a new job instance.
@@ -30,6 +35,6 @@ class SendAccountRecoveryEmail implements ShouldQueue
      */
     public function handle()
     {
-        //
+        Mail::to($this->user)->send(new RecoverAccountMail($this->user));
     }
 }
