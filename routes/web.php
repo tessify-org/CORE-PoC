@@ -40,45 +40,44 @@ Route::group(["middleware" => "auth"], function() {
 
     // Logout
     Route::get("uitloggen", "Auth\LogoutController@getLogout")->name("auth.logout");
+    
+    // Search
+    Route::get("zoeken", "SearchController@getSearch")->name("search");
+    Route::post("zoeken", "SearchController@postSearch")->name("search.post");
+
+    // Memberlist
+    Route::get("ledenlijst", "Profiles\MemberlistController@getMemberList")->name("memberlist");
+
+    // Update profiel
+    Route::get("profiel/updaten", "Profiles\ProfileController@getUpdateProfile")->name("profile.update");
+    Route::post("profiel/updaten", "Profiles\ProfileController@postUpdateProfile")->name("profile.update.post");
+
+    // Profiel
+    Route::get("profiel/{slug?}", "Profiles\ProfileController@getProfile")->name("profile");
+
+    // Jobs
+    Route::group(["prefix" => "projecten"], function() {
+
+        Route::get("/", "Projects\ProjectController@getOverview")->name("projects");
+
+        // Create jobs
+        Route::get("project-toevoegen", "Projects\ProjectController@getCreate")->name("projects.create");
+        Route::post("project-toevoegen", "Projects\ProjectController@postCreate")->name("projects.create.post");
+        
+        // View job
+        Route::get("{slug}", "Projects\ProjectController@getView")->name("projects.view");
+        
+        // Update job
+        Route::get("{slug}/aanpassen", "Projects\ProjectController@getEdit")->name("projects.edit");
+        Route::post("{slug}/aanpassen", "Projects\ProjectController@postEdit")->name("projects.edit.post");
+        
+        // Delete job
+        Route::get("{slug}/verwijderen", "Projects\ProjectController@getDelete")->name("projects.delete");
+        Route::post("{slug}/verwijderen", "Projects\ProjectController@postDelete")->name("projects.delete.post");
+        
+    });
 
 });
-
-// Search
-Route::get("zoeken", "SearchController@getSearch")->name("search");
-Route::post("zoeken", "SearchController@postSearch")->name("search.post");
-
-// Memberlist
-Route::get("ledenlijst", "Profiles\MemberlistController@getMemberList")->name("memberlist");
-
-// Update profiel
-Route::get("profiel/updaten", "Profiles\ProfileController@getUpdateProfile")->name("profile.update");
-Route::post("profiel/updaten", "Profiles\ProfileController@postUpdateProfile")->name("profile.update.post");
-
-// Profiel
-Route::get("profiel/{slug?}", "Profiles\ProfileController@getProfile")->name("profile");
-
-// Jobs
-Route::group(["prefix" => "projecten"], function() {
-
-    Route::get("/", "Projects\ProjectController@getOverview")->name("projects");
-
-    // Create jobs
-    Route::get("project-toevoegen", "Projects\ProjectController@getCreate")->name("projects.create");
-    Route::post("project-toevoegen", "Projects\ProjectController@postCreate")->name("projects.create.post");
-    
-    // View job
-    Route::get("{slug}", "Projects\ProjectController@getView")->name("projects.view");
-    
-    // Update job
-    Route::get("{slug}/aanpassen", "Projects\ProjectController@getEdit")->name("projects.edit");
-    Route::post("{slug}/aanpassen", "Projects\ProjectController@postEdit")->name("projects.edit.post");
-    
-    // Delete job
-    Route::get("{slug}/verwijderen", "Projects\ProjectController@getDelete")->name("projects.delete");
-    Route::post("{slug}/verwijderen", "Projects\ProjectController@postDelete")->name("projects.delete.post");
-    
-});
-
 
 // Api endpoints
 // TODO: Move these to the api.php file and add proper token-based authentication instead of session hijacking like this
