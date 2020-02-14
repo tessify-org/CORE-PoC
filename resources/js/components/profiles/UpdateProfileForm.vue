@@ -1,66 +1,71 @@
 <template>
-    <div id="update-profile-form" class="elevation-1">
+    <div id="update-profile-form__wrapper">
 
-        <!-- Annotation, first- & last name -->
-        <div class="form-fields">
+        <!-- Form -->
+        <div id="update-profile-form" class="elevation-1">
+
+            <!-- Annotation, first- & last name -->
+            <div class="form-fields">
+                <div class="form-field">
+                    <v-select
+                        label="Annotation"
+                        v-model="form.annotation"
+                        :items="annotationOptions"
+                        :error="hasErrors('annotation')"
+                        :error-messages="getErrors('annotation')">
+                    </v-select>
+                    <input type="hidden" name="annotation" :value="form.annotation">
+                </div>
+                <div class="form-field double">
+                    <v-text-field 
+                        label="First name" 
+                        v-model="form.first_name" 
+                        name="first_name"
+                        :error="hasErrors('first_name')"
+                        :error-messages="getErrors('first_name')">
+                    </v-text-field>
+                </div>
+                <div class="form-field double">
+                    <v-text-field 
+                        label="Last name" 
+                        v-model="form.last_name" 
+                        name="last_name"
+                        :error="hasErrors('last_name')"
+                        :error-messages="getErrors('last_name')">
+                    </v-text-field>
+                </div>
+            </div>
+
+            <!-- Email address -->
             <div class="form-field">
-                <v-select
-                    label="Annotation"
-                    v-model="form.annotation"
-                    :items="annotationOptions"
-                    :error="hasErrors('annotation')"
-                    :error-messages="getErrors('annotation')">
-                </v-select>
-                <input type="hidden" name="annotation" :value="form.annotation">
-            </div>
-            <div class="form-field double">
                 <v-text-field 
-                    label="First name" 
-                    v-model="form.first_name" 
-                    name="first_name"
-                    :error="hasErrors('first_name')"
-                    :error-messages="getErrors('first_name')">
+                    label="Email address" 
+                    v-model="form.email" 
+                    name="email"
+                    :error="hasErrors('email')"
+                    :error-messages="getErrors('email')">
                 </v-text-field>
             </div>
-            <div class="form-field double">
+
+            <!-- Phone number -->
+            <div class="form-field">
                 <v-text-field 
-                    label="Last name" 
-                    v-model="form.last_name" 
-                    name="last_name"
-                    :error="hasErrors('last_name')"
-                    :error-messages="getErrors('last_name')">
+                    label="Phone number" 
+                    v-model="form.phone" 
+                    name="phone"
+                    :error="hasErrors('phone')"
+                    :error-messages="getErrors('phone')">
                 </v-text-field>
             </div>
-        </div>
 
-        <!-- Email address -->
-        <div class="form-field">
-            <v-text-field 
-                label="Email address" 
-                v-model="form.email" 
-                name="email"
-                :error="hasErrors('email')"
-                :error-messages="getErrors('email')">
-            </v-text-field>
-        </div>
-
-        <!-- Phone number -->
-        <div class="form-field">
-            <v-text-field 
-                label="Phone number" 
-                v-model="form.phone" 
-                name="phone"
-                :error="hasErrors('phone')"
-                :error-messages="getErrors('phone')">
-            </v-text-field>
-        </div>
-
-        <!-- Avatar -->
-        <div class="image-field">
-            <div class="image-field__label">Avatar</div>
-            <div class="image-field__input">
-                <input type="file" ref="add_file" v-on:change="onAvatarUpload('add')">
+            <!-- Avatar -->
+            <div class="image-field">
+                <div class="image-field__label">Avatar</div>
+                <div class="image-field__input">
+                    <input type="file" ref="add_file" v-on:change="onAvatarUpload('add')">
+                </div>
             </div>
+
         </div>
 
         <!-- Controls -->
@@ -78,7 +83,7 @@
                 </v-btn>
             </div>
         </div>
-
+        
     </div>
 </template>
 
@@ -162,10 +167,21 @@
 </script>
 
 <style lang="scss">
-    #update-profile-form {
-        padding: 25px;
-        border-radius: 3px;
-        box-sizing: border-box;
-        background-color: #fff;
+    #update-profile-form__wrapper {
+        #update-profile-form {
+            padding: 25px;
+            border-radius: 3px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+    }
+    @media (max-width: 490px) {
+        #update-profile-form__wrapper {
+            #update-profile-form {
+                .form-fields {
+                    flex-direction: column;
+                }
+            }
+        }
     }
 </style>

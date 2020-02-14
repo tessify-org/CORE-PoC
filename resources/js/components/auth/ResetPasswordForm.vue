@@ -1,6 +1,6 @@
 <template>
-    <div id="reset-password-form" class="elevation-1">
-        <div id="reset-password-form__fields">
+    <div id="reset-password-form__wrapper">
+        <div id="reset-password-form" class="elevation-1">
             <!-- Email -->
             <div class="form-field">
                 <v-text-field
@@ -47,14 +47,14 @@
                 </v-text-field>
             </div>
         </div>
-        <div id="reset-password-form__actions">
-            <div id="reset-password-form__actions-left">
+        <div class="form-controls">
+            <div class="form-controls__left">
                 <v-btn outlined :href="backHref">
                     <i class="fas fa-arrow-left"></i>
                     {{ backButtonText }}
                 </v-btn>
             </div>
-            <div id="reset-password-form__actions-right">
+            <div class="form-controls__right">
                 <v-btn depressed color="success" type="submit" :disabled="submitButtonDisabled">
                     <i class="fas fa-save"></i>
                     {{ submitButtonText }}
@@ -134,33 +134,34 @@
 </script>
 
 <style lang="scss">
-    #reset-password-form {
+    #reset-password-form__wrapper {
         width: 600px;
         margin: 0 auto;
-        border-radius: 3px;
-        background-color: #fff;
-        #reset-password-form__fields {
+        #reset-password-form {
             padding: 25px;
+            margin: 0 0 30px 0;
+            border-radius: 3px;
             box-sizing: border-box;
+            background-color: #fff;
         }
-        #reset-password-form__actions {
-            display: flex;
-            flex-direction: row;
-            background-color: hsl(0, 0%, 95%);
-            padding: 25px;
-            box-sizing: border-box;
-            #reset-password-form__actions-left {
-                flex: 1;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-            }
-            #reset-password-form__actions-right {
-                flex: 1;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: flex-end;
+    }
+    @media (max-width: 600px) {
+        #reset-password-form__wrapper {
+            width: 100%;
+        }
+    }
+    @media (max-width: 460px) {
+        #reset-password-form__wrapper {
+            .form-controls {
+                flex-direction: column-reverse;
+                .form-controls__left, .form-controls__right {
+                    .v-btn {
+                        width: 100%;
+                    }
+                }
+                .form-controls__right {
+                    margin: 0 0 15px 0;
+                }
             }
         }
     }

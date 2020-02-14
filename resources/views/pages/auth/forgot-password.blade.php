@@ -8,23 +8,27 @@
     <div class="content-section__wrapper">
         <div class="content-section">
 
-            <h1 class="page-title centered">@lang('auth.forgot_password_title')</h1>
-        
-            @include("partials.feedback")
+            <div id="forgot-password">
 
-            <form action="{{ route('auth.forgot-password.post') }}" method="post">
-                {{ csrf_field() }}
+                <h1 class="page-title centered">@lang('auth.forgot_password_title')</h1>
+            
+                @include("partials.feedback")
 
-                <forgot-password-form
-                    email-text="@lang('auth.forgot_password_email')"
-                    submit-text="@lang('auth.forgot_password_submit')"
-                    back-text="@lang('auth.forgot_password_back')"
-                    back-href="{{ route('auth.login') }}"
-                    :errors="{{ $errors->toJson() }}">
-                </forgot-password-form>
+                <form action="{{ route('auth.forgot-password.post') }}" method="post">
+                    {{ csrf_field() }}
 
-            </form>
+                    <forgot-password-form
+                        email-text="@lang('auth.forgot_password_email')"
+                        submit-text="@lang('auth.forgot_password_submit')"
+                        back-text="@lang('auth.forgot_password_back')"
+                        back-href="{{ route('auth.login') }}"
+                        :errors="{{ $errors->toJson() }}">
+                    </forgot-password-form>
 
+                </form>
+
+            </div>
+            
         </div>
     </div>
 @stop

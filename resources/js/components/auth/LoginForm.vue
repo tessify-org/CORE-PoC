@@ -113,31 +113,6 @@
 
 <style lang="scss">
     #login-form {
-        // width: 600px;
-        // padding: 25px;
-        // margin: 0 auto;
-        // border-radius: 3px;
-        // box-sizing: border-box;
-        // background-color: #ffffff;
-        #login-form__controls {
-            display: flex;
-            margin: 15px 0 0 0;
-            flex-direction: row;
-            #login-form__controls-left, #login-form__controls-right {
-                flex: 1;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-            }
-            #login-form__controls-left {
-                
-            }
-            #login-form__controls-right {
-                justify-content: flex-end;
-                .v-btn {
-                    margin: 0 0 0 15px;
-                }
-            }
-        }
+        
     }
 </style>

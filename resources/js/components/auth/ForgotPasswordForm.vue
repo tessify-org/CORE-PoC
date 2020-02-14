@@ -90,4 +90,32 @@
             margin: 0 auto;
         }
     }
+    @media (max-width: 650px) {
+        #forgot-password-form__wrapper {
+            #forgot-password-form {
+                width: 100%;
+            }
+            .form-controls {
+                width: 100%;
+            }
+        }
+    }
+    @media (max-width: 455px) {
+        #forgot-password-form__wrapper {
+            .form-controls {
+                flex-direction: column-reverse;
+                .form-controls__left {
+                    .v-btn {
+                        width: 100%;
+                    }
+                }
+                .form-controls__right {
+                    margin: 0 0 15px 0;
+                    .v-btn {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
 </style>

@@ -6446,6 +6446,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["user", "errors", "oldInput", "backHref"],
   data: function data() {
@@ -7976,7 +7981,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#forgot-password-form__wrapper #forgot-password-form {\n  width: 650px;\n  padding: 25px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  margin: 0 auto 30px auto;\n  background-color: #ffffff;\n}\n#forgot-password-form__wrapper .form-controls {\n  width: 650px;\n  margin: 0 auto;\n}", ""]);
+exports.push([module.i, "#forgot-password-form__wrapper #forgot-password-form {\n  width: 650px;\n  padding: 25px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  margin: 0 auto 30px auto;\n  background-color: #ffffff;\n}\n#forgot-password-form__wrapper .form-controls {\n  width: 650px;\n  margin: 0 auto;\n}\n@media (max-width: 650px) {\n#forgot-password-form__wrapper #forgot-password-form {\n    width: 100%;\n}\n#forgot-password-form__wrapper .form-controls {\n    width: 100%;\n}\n}\n@media (max-width: 455px) {\n#forgot-password-form__wrapper .form-controls {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: reverse;\n            flex-direction: column-reverse;\n}\n#forgot-password-form__wrapper .form-controls .form-controls__left .v-btn {\n    width: 100%;\n}\n#forgot-password-form__wrapper .form-controls .form-controls__right {\n    margin: 0 0 15px 0;\n}\n#forgot-password-form__wrapper .form-controls .form-controls__right .v-btn {\n    width: 100%;\n}\n}", ""]);
 
 // exports
 
@@ -7995,7 +8000,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#login-form #login-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#login-form #login-form__controls #login-form__controls-left, #login-form #login-form__controls #login-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#login-form #login-form__controls #login-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#login-form #login-form__controls #login-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -8014,7 +8019,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#register-form {\n  width: 600px;\n  padding: 25px;\n  margin: 0 auto;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: white;\n}\n#register-form #register-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#register-form #register-form__controls #register-form__controls-left, #register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#register-form #register-form__controls #register-form__controls-left #login-link {\n  text-decoration: none;\n  color: black;\n}\n#register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#register-form #register-form__controls #register-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}\n@media (max-width: 600px) {\n#register-form {\n    width: 100%;\n}\n}\n@media (max-width: 470px) {\n#register-form .form-fields {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}", ""]);
+exports.push([module.i, "#register-form {\n  width: 600px;\n  padding: 25px;\n  margin: 0 auto;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: white;\n}\n#register-form #register-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#register-form #register-form__controls #register-form__controls-left, #register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#register-form #register-form__controls #register-form__controls-left #login-link {\n  text-decoration: none;\n  color: black;\n}\n#register-form #register-form__controls #register-form__controls-right {\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#register-form #register-form__controls #register-form__controls-right .v-btn {\n  margin: 0 0 0 15px;\n}\n@media (max-width: 650px) {\n#register-form {\n    width: 100%;\n}\n}\n@media (max-width: 470px) {\n#register-form .form-fields {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}\n@media (max-width: 620px) {\n#register-form #register-form__controls {\n    flex-wrap: wrap;\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: reverse;\n            flex-direction: column-reverse;\n}\n#register-form #register-form__controls #register-form__controls-left, #register-form #register-form__controls #register-form__controls-right {\n    -webkit-box-flex: 0;\n            flex: 0 0 100%;\n}\n#register-form #register-form__controls #register-form__controls-left {\n    margin: 15px 0 0 0;\n}\n#register-form #register-form__controls #register-form__controls-right {\n    -webkit-box-pack: start;\n            justify-content: flex-start;\n}\n#register-form #register-form__controls #register-form__controls-right .v-btn {\n    margin: 0;\n}\n}", ""]);
 
 // exports
 
@@ -8033,7 +8038,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#reset-password-form {\n  width: 600px;\n  margin: 0 auto;\n  border-radius: 3px;\n  background-color: #fff;\n}\n#reset-password-form #reset-password-form__fields {\n  padding: 25px;\n  box-sizing: border-box;\n}\n#reset-password-form #reset-password-form__actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  background-color: #f2f2f2;\n  padding: 25px;\n  box-sizing: border-box;\n}\n#reset-password-form #reset-password-form__actions #reset-password-form__actions-left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#reset-password-form #reset-password-form__actions #reset-password-form__actions-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
+exports.push([module.i, "#reset-password-form__wrapper {\n  width: 600px;\n  margin: 0 auto;\n}\n#reset-password-form__wrapper #reset-password-form {\n  padding: 25px;\n  margin: 0 0 30px 0;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #fff;\n}\n@media (max-width: 600px) {\n#reset-password-form__wrapper {\n    width: 100%;\n}\n}\n@media (max-width: 460px) {\n#reset-password-form__wrapper .form-controls {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: reverse;\n            flex-direction: column-reverse;\n}\n#reset-password-form__wrapper .form-controls .form-controls__left .v-btn, #reset-password-form__wrapper .form-controls .form-controls__right .v-btn {\n    width: 100%;\n}\n#reset-password-form__wrapper .form-controls .form-controls__right {\n    margin: 0 0 15px 0;\n}\n}", ""]);
 
 // exports
 
@@ -8147,7 +8152,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#update-profile-form {\n  padding: 25px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #fff;\n}", ""]);
+exports.push([module.i, "#update-profile-form__wrapper #update-profile-form {\n  padding: 25px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #fff;\n}\n@media (max-width: 490px) {\n#update-profile-form__wrapper #update-profile-form .form-fields {\n    -webkit-box-orient: vertical;\n    -webkit-box-direction: normal;\n            flex-direction: column;\n}\n}", ""]);
 
 // exports
 
@@ -38382,11 +38387,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "elevation-1", attrs: { id: "reset-password-form" } },
-    [
-      _c("div", { attrs: { id: "reset-password-form__fields" } }, [
+  return _c("div", { attrs: { id: "reset-password-form__wrapper" } }, [
+    _c(
+      "div",
+      { staticClass: "elevation-1", attrs: { id: "reset-password-form" } },
+      [
         _c(
           "div",
           { staticClass: "form-field" },
@@ -38483,54 +38488,54 @@ var render = function() {
           ],
           1
         )
-      ]),
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-controls" }, [
+      _c(
+        "div",
+        { staticClass: "form-controls__left" },
+        [
+          _c("v-btn", { attrs: { outlined: "", href: _vm.backHref } }, [
+            _c("i", { staticClass: "fas fa-arrow-left" }),
+            _vm._v(
+              "\n                " +
+                _vm._s(_vm.backButtonText) +
+                "\n            "
+            )
+          ])
+        ],
+        1
+      ),
       _vm._v(" "),
-      _c("div", { attrs: { id: "reset-password-form__actions" } }, [
-        _c(
-          "div",
-          { attrs: { id: "reset-password-form__actions-left" } },
-          [
-            _c("v-btn", { attrs: { outlined: "", href: _vm.backHref } }, [
-              _c("i", { staticClass: "fas fa-arrow-left" }),
+      _c(
+        "div",
+        { staticClass: "form-controls__right" },
+        [
+          _c(
+            "v-btn",
+            {
+              attrs: {
+                depressed: "",
+                color: "success",
+                type: "submit",
+                disabled: _vm.submitButtonDisabled
+              }
+            },
+            [
+              _c("i", { staticClass: "fas fa-save" }),
               _vm._v(
                 "\n                " +
-                  _vm._s(_vm.backButtonText) +
+                  _vm._s(_vm.submitButtonText) +
                   "\n            "
               )
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { attrs: { id: "reset-password-form__actions-right" } },
-          [
-            _c(
-              "v-btn",
-              {
-                attrs: {
-                  depressed: "",
-                  color: "success",
-                  type: "submit",
-                  disabled: _vm.submitButtonDisabled
-                }
-              },
-              [
-                _c("i", { staticClass: "fas fa-save" }),
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.submitButtonText) +
-                    "\n            "
-                )
-              ]
-            )
-          ],
-          1
-        )
-      ])
-    ]
-  )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -40097,179 +40102,181 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "elevation-1", attrs: { id: "update-profile-form" } },
-    [
-      _c("div", { staticClass: "form-fields" }, [
+  return _c("div", { attrs: { id: "update-profile-form__wrapper" } }, [
+    _c(
+      "div",
+      { staticClass: "elevation-1", attrs: { id: "update-profile-form" } },
+      [
+        _c("div", { staticClass: "form-fields" }, [
+          _c(
+            "div",
+            { staticClass: "form-field" },
+            [
+              _c("v-select", {
+                attrs: {
+                  label: "Annotation",
+                  items: _vm.annotationOptions,
+                  error: _vm.hasErrors("annotation"),
+                  "error-messages": _vm.getErrors("annotation")
+                },
+                model: {
+                  value: _vm.form.annotation,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "annotation", $$v)
+                  },
+                  expression: "form.annotation"
+                }
+              }),
+              _vm._v(" "),
+              _c("input", {
+                attrs: { type: "hidden", name: "annotation" },
+                domProps: { value: _vm.form.annotation }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-field double" },
+            [
+              _c("v-text-field", {
+                attrs: {
+                  label: "First name",
+                  name: "first_name",
+                  error: _vm.hasErrors("first_name"),
+                  "error-messages": _vm.getErrors("first_name")
+                },
+                model: {
+                  value: _vm.form.first_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "first_name", $$v)
+                  },
+                  expression: "form.first_name"
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "form-field double" },
+            [
+              _c("v-text-field", {
+                attrs: {
+                  label: "Last name",
+                  name: "last_name",
+                  error: _vm.hasErrors("last_name"),
+                  "error-messages": _vm.getErrors("last_name")
+                },
+                model: {
+                  value: _vm.form.last_name,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "last_name", $$v)
+                  },
+                  expression: "form.last_name"
+                }
+              })
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
         _c(
           "div",
           { staticClass: "form-field" },
           [
-            _c("v-select", {
+            _c("v-text-field", {
               attrs: {
-                label: "Annotation",
-                items: _vm.annotationOptions,
-                error: _vm.hasErrors("annotation"),
-                "error-messages": _vm.getErrors("annotation")
+                label: "Email address",
+                name: "email",
+                error: _vm.hasErrors("email"),
+                "error-messages": _vm.getErrors("email")
               },
               model: {
-                value: _vm.form.annotation,
+                value: _vm.form.email,
                 callback: function($$v) {
-                  _vm.$set(_vm.form, "annotation", $$v)
+                  _vm.$set(_vm.form, "email", $$v)
                 },
-                expression: "form.annotation"
+                expression: "form.email"
               }
-            }),
-            _vm._v(" "),
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-text-field", {
+              attrs: {
+                label: "Phone number",
+                name: "phone",
+                error: _vm.hasErrors("phone"),
+                "error-messages": _vm.getErrors("phone")
+              },
+              model: {
+                value: _vm.form.phone,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "phone", $$v)
+                },
+                expression: "form.phone"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "image-field" }, [
+          _c("div", { staticClass: "image-field__label" }, [_vm._v("Avatar")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "image-field__input" }, [
             _c("input", {
-              attrs: { type: "hidden", name: "annotation" },
-              domProps: { value: _vm.form.annotation }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "form-field double" },
-          [
-            _c("v-text-field", {
-              attrs: {
-                label: "First name",
-                name: "first_name",
-                error: _vm.hasErrors("first_name"),
-                "error-messages": _vm.getErrors("first_name")
-              },
-              model: {
-                value: _vm.form.first_name,
-                callback: function($$v) {
-                  _vm.$set(_vm.form, "first_name", $$v)
-                },
-                expression: "form.first_name"
+              ref: "add_file",
+              attrs: { type: "file" },
+              on: {
+                change: function($event) {
+                  return _vm.onAvatarUpload("add")
+                }
               }
             })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "form-field double" },
-          [
-            _c("v-text-field", {
-              attrs: {
-                label: "Last name",
-                name: "last_name",
-                error: _vm.hasErrors("last_name"),
-                "error-messages": _vm.getErrors("last_name")
-              },
-              model: {
-                value: _vm.form.last_name,
-                callback: function($$v) {
-                  _vm.$set(_vm.form, "last_name", $$v)
-                },
-                expression: "form.last_name"
-              }
-            })
-          ],
-          1
-        )
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "form-field" },
-        [
-          _c("v-text-field", {
-            attrs: {
-              label: "Email address",
-              name: "email",
-              error: _vm.hasErrors("email"),
-              "error-messages": _vm.getErrors("email")
-            },
-            model: {
-              value: _vm.form.email,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "email", $$v)
-              },
-              expression: "form.email"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "form-field" },
-        [
-          _c("v-text-field", {
-            attrs: {
-              label: "Phone number",
-              name: "phone",
-              error: _vm.hasErrors("phone"),
-              "error-messages": _vm.getErrors("phone")
-            },
-            model: {
-              value: _vm.form.phone,
-              callback: function($$v) {
-                _vm.$set(_vm.form, "phone", $$v)
-              },
-              expression: "form.phone"
-            }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "image-field" }, [
-        _c("div", { staticClass: "image-field__label" }, [_vm._v("Avatar")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "image-field__input" }, [
-          _c("input", {
-            ref: "add_file",
-            attrs: { type: "file" },
-            on: {
-              change: function($event) {
-                return _vm.onAvatarUpload("add")
-              }
-            }
-          })
+          ])
         ])
-      ]),
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-controls" }, [
+      _c(
+        "div",
+        { staticClass: "form-controls__left" },
+        [
+          _c("v-btn", { attrs: { href: _vm.backHref, outlined: "" } }, [
+            _c("i", { staticClass: "fas fa-arrow-left" }),
+            _vm._v("\n                Terug\n            ")
+          ])
+        ],
+        1
+      ),
       _vm._v(" "),
-      _c("div", { staticClass: "form-controls" }, [
-        _c(
-          "div",
-          { staticClass: "form-controls__left" },
-          [
-            _c("v-btn", { attrs: { href: _vm.backHref, outlined: "" } }, [
-              _c("i", { staticClass: "fas fa-arrow-left" }),
-              _vm._v("\n                Terug\n            ")
-            ])
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "form-controls__right" },
-          [
-            _c(
-              "v-btn",
-              { attrs: { color: "success", type: "submit", depressed: "" } },
-              [
-                _c("i", { staticClass: "far fa-save" }),
-                _vm._v("\n                Opslaan\n            ")
-              ]
-            )
-          ],
-          1
-        )
-      ])
-    ]
-  )
+      _c(
+        "div",
+        { staticClass: "form-controls__right" },
+        [
+          _c(
+            "v-btn",
+            { attrs: { color: "success", type: "submit", depressed: "" } },
+            [
+              _c("i", { staticClass: "far fa-save" }),
+              _vm._v("\n                Opslaan\n            ")
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

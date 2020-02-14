@@ -204,7 +204,7 @@
         }
     }
     // Responsive
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
         #register-form {
             width: 100%;
         }
@@ -213,6 +213,26 @@
         #register-form {
             .form-fields {
                 flex-direction: column;
+            }
+        }
+    }
+    @media (max-width: 620px) {
+        #register-form {
+            #register-form__controls {
+                flex-wrap: wrap;
+                flex-direction: column-reverse;
+                #register-form__controls-left, #register-form__controls-right {
+                    flex: 0 0 100%;
+                }
+                #register-form__controls-left {
+                    margin: 15px 0 0 0;
+                }
+                #register-form__controls-right {
+                    justify-content: flex-start;
+                    .v-btn {
+                        margin: 0;
+                    }
+                }
             }
         }
     }

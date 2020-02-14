@@ -78,7 +78,7 @@
 @media (max-width: 350px) {
     #homepage-header {
         #homepage-header__content {
-            .paage-title {
+            .page-title {
                 font-size: 2.2em;
             }
         }
@@ -598,6 +598,21 @@
     #profile {
         #profile__info {
             width: 100%;
+            .details {
+                .detail {
+                    flex-direction: column;
+                    .key {
+                        flex: auto;
+                        font-size: .8em;
+                        margin: 0 0 0 0;
+                        color: hsl(0, 0%, 45%);
+                    }
+                    .val {
+                        flex: auto;
+                        width: 100%;
+                    }
+                }
+            }
         }
         #profile__actions {
             width: 100%;
@@ -624,34 +639,13 @@
         }
     }
 }
-@media (max-width: 495px) {
+@media (max-width: 330px) {
     #profile {
         #profile__info {
             .details {
                 .detail {
-                    .key {
-                        flex: 0 0 130px;
-                    }
-                }
-            }
-        }
-    }
-}
-@media (max-width: 380px) {
-    #profile {
-        #profile__info {
-            .details {
-                .detail {
-                    flex-direction: column;
-                    .key {
-                        flex: auto;
-                        font-size: .8em;
-                        margin: 0 0 0 0;
-                        color: hsl(0, 0%, 45%);
-                    }
                     .val {
-                        flex: auto;
-                        width: 100%;
+                        font-size: .8em;
                     }
                 }
             }
@@ -848,6 +842,16 @@
     text-align: center;
     box-sizing: border-box;
     background-color: #fff;
+}
+
+@media (max-width: 540px) {
+    #projects {
+        .project {
+            .project-status {
+                display: none;
+            }
+        }
+    }
 }
 
 // Projects overview is responsive by default
@@ -1254,23 +1258,7 @@
     }
 }
 
-.content-subtitle {
-    font-size: 1.4em;
-    font-weight: 500;
-    line-height: 1em;
-    margin: 0 0 15px 0;
-    padding: 0 0 8px 0;
-    box-sizing: border-box;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-}
-
-.content-desc {
-    font-size: .9em;
-    padding: 10px 15px;
-    margin: 0 0 30px 0;
-    box-sizing: border-box;
-    background-color: hsl(0, 0%, 95%);
-}
+// Login
 
 #login {
     width: 800px;
@@ -1296,7 +1284,7 @@
         flex: 1;
         padding: 25px;
         box-sizing: border-box;
-        border-left: 1px solid rgba(0, 0, 0, .1);
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
         .login-subtitle {
             font-weight: 500;
             margin: 0 0 5px 0;
@@ -1306,6 +1294,54 @@
             &:last-child {
                 margin: 0;
             }
+        }
+    }
+}
+
+@media (max-width: 850px) {
+    #login {
+        width: 100%;
+        flex-wrap: wrap;
+        #login-left, #login-right {
+            flex: 0 0 100%;
+        }
+        #login-right {
+            border-left: 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+@media (max-width: 395px) {
+    #login {
+        #login-left {
+            .form-controls {
+                flex-wrap: wrap;
+                .form-controls__left, .form-controls__right {
+                    flex: 0 0 100%;
+                }
+                .form-controls__right {
+                    margin: 20px 0 -10px 0;
+                    justify-content: flex-start;
+                }
+            }
+        }
+    }
+}
+
+// Register
+
+@media (max-width: 440px) {
+    .page-title {
+        font-size: 3em;
+    }
+}
+
+// Forgot password
+
+@media (max-width: 775px) {
+    #forgot-password {
+        .page-title {
+            font-size: 2.5em;
         }
     }
 }
@@ -1320,7 +1356,23 @@
     }
 }
 
+.content-subtitle {
+    font-size: 1.4em;
+    font-weight: 500;
+    line-height: 1em;
+    margin: 0 0 15px 0;
+    padding: 0 0 8px 0;
+    box-sizing: border-box;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
 
+.content-desc {
+    font-size: .9em;
+    padding: 10px 15px;
+    margin: 0 0 30px 0;
+    box-sizing: border-box;
+    background-color: hsl(0, 0%, 95%);
+}
 
 
 

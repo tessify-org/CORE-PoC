@@ -12,15 +12,6 @@
         
             @include("partials.feedback")
 
-            <div class="page-controls mb">
-                <div class="page-controls__right">
-                    <v-btn color="success" href="{{ route('projects.create') }}">
-                        <i class="fas fa-plus"></i>
-                        Project toevoegen
-                    </v-btn>
-                </div>
-            </div>
-
             @if ($projects->count() > 0)
                 <div id="projects" class="elevation-1">
                     <div id="projects-header">
@@ -39,6 +30,15 @@
                     Wees de eerste die een job toevoegd aan het platform!
                 </div>
             @endif
+
+            <div class="page-controls mt">
+                <div class="page-controls__right">
+                    <v-btn color="success" href="{{ route('projects.create') }}">
+                        <i class="fas fa-plus"></i>
+                        Project toevoegen
+                    </v-btn>
+                </div>
+            </div>
 
         </div>
     </div>
