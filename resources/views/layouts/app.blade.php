@@ -14,7 +14,7 @@
     </head>
     <body>
 
-        <v-app id="app" class="@if(Request::is('/')) home @endif">
+        <v-app id="app" class="@if(Request::is('/')) home @endif" v-cloak>
 
             <!-- Topnav -->
             <div id="topnav__wrapper">

@@ -215,6 +215,10 @@ p:last-child {
     }
 }
 
+[v-cloak] {
+    display: none;
+}
+
 // Responsive topnav
 @media (max-width: 1250px) {
     #app {
@@ -227,7 +231,7 @@ p:last-child {
         }
     }
 }
-@media (max-width: 850px) {
+@media (max-width: 745px) {
     #app {
         #topnav__wrapper {
             #topnav {
@@ -307,7 +311,7 @@ p:last-child {
                 text-decoration: none;
                 transition: all .3s;
                 &:hover {
-                    color: hsl(0, 0%, 100%);
+                    color: hsl(0, 0%, 0%);
                 }
             }
         }

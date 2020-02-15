@@ -2596,6 +2596,10 @@ p:last-child {
   text-decoration: none;
 }
 
+[v-cloak] {
+  display: none;
+}
+
 @media (max-width: 1250px) {
   #app #topnav__wrapper #topnav {
     width: 100%;
@@ -2604,7 +2608,7 @@ p:last-child {
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 745px) {
   #app #topnav__wrapper #topnav #topnav-search__wrapper {
     display: none;
   }
@@ -2706,7 +2710,7 @@ p:last-child {
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:active:hover,
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:visited:hover,
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:link:hover {
-  color: white;
+  color: black;
 }
 
 @media (max-width: 1250px) {
