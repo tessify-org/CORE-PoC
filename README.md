@@ -1,6 +1,13 @@
-# Tessify Core
+# Tessify Core Proof of Concept
 
-This is the core of the tessify codebase. A detailed description will follow soon.
+This application is the development & poc version of the Tessify core codebase.
+
+## Dependencies
+
+- [laracasts/flash](https://github.com/laracasts/flash)
+- [cviebrock/eloquent-sluggable](https://github.com/cviebrock/eloquent-sluggable)
+- [davejamesmiller/laravel-breadcrumbs](https://github.com/davejamesmiller/laravel-breadcrumbs)
+- [webpatser/laravel-uuid](https://github.com/webpatser/laravel-uuid)
 
 ## Installation instructions
 
