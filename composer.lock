@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "497c2bf66023f1548fb0f16aa93672fc",
+    "content-hash": "05760a02392e2745dc8418459f66929d",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -3477,6 +3477,55 @@
             "time": "2020-01-25T12:44:29+00:00"
         },
         {
+            "name": "tessify/core",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "packages/Tessify/Core",
+                "reference": "22984c1cec093654e2fdb550a9042612d933dc75"
+            },
+            "require": {
+                "illuminate/support": "~6.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Tessify\\Core\\Providers\\CoreServiceProvider"
+                    ],
+                    "aliases": {
+                        "Core": "Tessify\\Core\\Facades\\CoreFacade"
+                    }
+                },
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Tessify\\Core\\": "src"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": {
+                    "Tessify\\Core\\Tests\\": "tests/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nick Verheijen",
+                    "email": "verheijen.webdevelopment@gmail.com"
+                }
+            ],
+            "description": "The CORE of the Tessify project.",
+            "transport-options": {
+                "symlink": true
+            }
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "2.2.2",
             "source": {
@@ -5581,7 +5630,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "tessify/core": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
