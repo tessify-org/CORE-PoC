@@ -1,0 +1,3 @@
+[submodule "packages/Tessify/Core"]
+	path = packages/Tessify/Core
+	url = git@github.com:tessify-org/CORE.git
