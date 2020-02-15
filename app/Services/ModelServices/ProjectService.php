@@ -39,25 +39,25 @@ class ProjectService implements ModelServiceContract
         // Convert header image url from relative to absolute (so it can be used in vue components)
         $instance->header_image_url = asset($instance->header_image_url);
 
-        // Load the job's resources
+        // Load the project's resources
         $instance->resources = ProjectResources::getAllPreloadedForProject($instance);
 
-        // Load the job's team roles
+        // Load the project's team roles
         $instance->team_roles = TeamRoles::getAllPreloadedForProject($instance);
 
-        // Load the job's status
+        // Load the project's status
         $instance->status = ProjectStatuses::findForProject($instance);
 
-        // Load the job's author
+        // Load the project's author
         $instance->author = Users::findAuthorForProject($instance);
 
-        // Load the job's category
+        // Load the project's category
         $instance->category = ProjectCategories::findForProject($instance);
 
-        // Load the job's work method
+        // Load the project's work method
         $instance->work_method = WorkMethods::findForProject($instance);
 
-        // Load the job's team member applications
+        // Load the project's team member applications
         $instance->team_member_applications = TeamMemberApplications::getAllForProject($instance);
 
         // Format the dates
@@ -66,7 +66,7 @@ class ProjectService implements ModelServiceContract
         $instance->formatted_created_at = $instance->created_at->format("d-m-Y H:m:s");
         $instance->formatted_updated_at = $instance->updated_at->format("d-m-Y H:m:s");
 
-        // Return the upgraded job
+        // Return the upgraded project
         return $instance;
     }
 
@@ -108,7 +108,6 @@ class ProjectService implements ModelServiceContract
             "work_method_id" => $request->work_method_id,
             "title" => $request->title,
             "slogan" => $request->slogan,
-            "problem" => $request->problem,
             "description" => $request->description,
             "starts_at" => $starts_at->format("Y-m-d"),
             "ends_at" => $ends_at->format("Y-m-d"),
@@ -116,7 +115,7 @@ class ProjectService implements ModelServiceContract
 
         if ($request->hasFile("header_image"))
         {
-            $data["header_image_url"] = Uploader::upload($request->file("header_image"), "images/jobs/header");
+            $data["header_image_url"] = Uploader::upload($request->file("header_image"), "images/projects/header");
         }
 
         $project = Project::create($data);
@@ -132,19 +131,18 @@ class ProjectService implements ModelServiceContract
         $starts_at = Dates::parse($request->starts_at, "/");
         $ends_at = Dates::parse($request->ends_at, "/");
 
-        $project->job_status_id = $request->project_status_id;
-        $project->job_category_id = $request->project_category_id;
+        $project->project_status_id = $request->project_status_id;
+        $project->project_category_id = $request->project_category_id;
         $project->work_method_id = $request->work_method_id;
         $project->title = $request->title;
         $project->slogan = $request->slogan;
-        $project->problem = $request->problem;
         $project->description = $request->description;
         $project->starts_at = $starts_at->format("Y-m-d");
         $project->ends_at = $ends_at->format("Y-m-d");
 
         if ($request->hasFile("header_image"))
         {
-            $project->header_image_url = Uploader::upload($request->file("header_image"), "images/jobs/header");
+            $project->header_image_url = Uploader::upload($request->file("header_image"), "images/projects/header");
         }
 
         $project->save();

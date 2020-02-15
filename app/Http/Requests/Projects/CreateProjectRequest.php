@@ -30,7 +30,6 @@ class CreateProjectRequest extends FormRequest
             "work_method_id" => "required|exists:work_methods,id",
             "title" => "required",
             "slogan" => "nullable",
-            "problem" => "required",
             "description" => "required",
             "starts_at" => "nullable",
             "ends_at" => "nullable",

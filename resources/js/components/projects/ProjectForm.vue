@@ -1,6 +1,6 @@
 <template>
-    <div id="job-form">
-        <div id="job-form__left">
+    <div id="project-form">
+        <div id="project-form__left">
             
             <div class="content-card elevation-1 mb">
                 <div class="content-card__content">
@@ -29,18 +29,6 @@
                         </v-text-field>
                     </div>
 
-                    <!-- Problem -->
-                    <div class="form-field">
-                        <v-textarea
-                            name="problem"
-                            label="Probleemstelling"
-                            placeholder="Omschrijf zo gevat mogelijk welk probleem er met dit project wordt opgelost."
-                            v-model="form.problem"
-                            :errors="hasErrors('problem')"
-                            :error-messages="getErrors('problem')">
-                        </v-textarea>
-                    </div>
-
                     <!-- Description -->
                     <div class="form-field">
                         <v-textarea
@@ -56,8 +44,8 @@
                     <!-- Header image -->
                     <div class="image-field" :class="{ 'has-errors': hasErrors('header_image') }">
                         <div class="image-field__label">Header achtergrond plaatje</div>
-                        <div class="image-field__image-wrapper" v-if="hasJob && jobHasImage">
-                            <img class="image-field__image" :src="job.header_image_url">
+                        <div class="image-field__image-wrapper" v-if="hasProject && projectHasImage">
+                            <img class="image-field__image" :src="project.header_image_url">
                         </div>
                         <div class="image-field__input">
                             <input type="file" name="header_image">
@@ -67,6 +55,22 @@
                                 {{ error }}
                             </div>
                         </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="content-card elevation-1">
+                <div class="content-card__content">
+
+                    <!-- Team roles -->
+                    <div class="form-field">
+                        <team-roles-field
+                            name="team_roles"
+                            label="Team rollen"
+                            v-model="form.team_roles"
+                            :skills="skills">
+                        </team-roles-field>
                     </div>
 
                 </div>
@@ -90,22 +94,6 @@
                 </div>
             </div>
 
-            <div class="content-card elevation-1">
-                <div class="content-card__content">
-
-                    <!-- Team roles -->
-                    <div class="form-field">
-                        <team-roles-field
-                            name="team_roles"
-                            label="Team rollen"
-                            v-model="form.team_roles"
-                            :skills="skills">
-                        </team-roles-field>
-                    </div>
-
-                </div>
-            </div>
-
             <!-- Back button -->
             <div class="page-controls mt">
                 <div class="page-controls__left">
@@ -118,7 +106,7 @@
 
         </div>
         <!-- Right column -->
-        <div id="job-form__right">
+        <div id="project-form__right">
 
             <!-- Relationships card -->
             <div class="content-card elevation-1 mb">
@@ -129,11 +117,11 @@
                         <v-select
                             label="Project categorie"
                             :items="categoryOptions"
-                            v-model="form.job_category_id"
-                            :errors="hasErrors('job_category_id')"
-                            :error-messages="getErrors('job_category_id')">
+                            v-model="form.project_category_id"
+                            :errors="hasErrors('project_category_id')"
+                            :error-messages="getErrors('project_category_id')">
                         </v-select>
-                        <input type="hidden" name="job_category_id" :value="form.job_category_id">
+                        <input type="hidden" name="project_category_id" :value="form.project_category_id">
                     </div>
 
                     <!-- Work method -->
@@ -149,15 +137,15 @@
                     </div>  
 
                     <!-- Status -->
-                    <div class="form-field">
+                    <div class="form-field mb-0">
                         <v-select
                             label="Project status"
                             :items="statusOptions"
-                            v-model="form.job_status_id"
-                            :errors="hasErrors('job_status_id')"
-                            :error-messages="getErrors('job_status_id')">
+                            v-model="form.project_status_id"
+                            :errors="hasErrors('project_status_id')"
+                            :error-messages="getErrors('project_status_id')">
                         </v-select>
-                        <input type="hidden" name="job_status_id" :value="form.job_status_id">
+                        <input type="hidden" name="project_status_id" :value="form.project_status_id">
                     </div>
 
                 </div>
@@ -216,9 +204,9 @@
 <script>
     export default {
         props: [
-            "job",
-            "jobStatuses",
-            "jobCategories",
+            "project",
+            "projectStatuses",
+            "projectCategories",
             "workMethods",
             "skills",
             "errors",
@@ -229,17 +217,16 @@
             "deleteResourceApiEndpoint",
         ],
         data: () => ({
-            tag: "[job-form]",
+            tag: "[project-form]",
             workMethodOptions: [],
             categoryOptions: [],
             statusOptions: [],
             form: {
-                job_status_id: 0,
-                job_category_id: 0,
+                project_status_id: 0,
+                project_category_id: 0,
                 work_method_id: 0,
                 title: "",
                 slogan: "",
-                problem: "",
                 description: "",
                 starts_at: "",
                 ends_at: "",
@@ -248,19 +235,19 @@
             }
         }),
         computed: {
-            hasJob() {
-                return this.job !== undefined && this.job !== null && this.job !== "";
+            hasProject() {
+                return this.project !== undefined && this.project !== null && this.project !== "";
             },
-            jobHasImage() {
-                return this.hasJob && this.job.header_image_url !== null && this.job.header_image_url !== '';
+            projectHasImage() {
+                return this.hasProject && this.project.header_image_url !== null && this.project.header_image_url !== '';
             },
         },
         methods: {
             initialize() {
                 console.log(this.tag+" initializing");
-                console.log(this.tag+" job: ", this.job);
-                console.log(this.tag+" job statuses: ", this.jobStatuses);
-                console.log(this.tag+" job categories: ", this.jobCategories);
+                console.log(this.tag+" project: ", this.project);
+                console.log(this.tag+" project statuses: ", this.projectStatuses);
+                console.log(this.tag+" project categories: ", this.projectCategories);
                 console.log(this.tag+" work methods: ", this.workMethods);
                 console.log(this.tag+" skills: ", this.skills);
                 console.log(this.tag+" errors: ", this.errors);
@@ -274,30 +261,29 @@
                 this.initializeData();
             },
             initializeData() {
-                this.form.job_status_id = this.statusOptions[0].value;
-                if (this.job !== undefined && this.job !== null) {
-                    this.form.job_status_id = this.job.job_status_id;
-                    this.form.job_category_id = this.job.job_category_id;
-                    this.form.work_method_id = this.job.work_method_id;
-                    this.form.title = this.job.title;
-                    this.form.slogan = this.job.slogan;
-                    this.form.problem = this.job.problem;
-                    this.form.description = this.job.description;
-                    this.form.starts_at = this.job.starts_at;
-                    this.form.ends_at = this.job.ends_at;
-                    if (this.job.resources !== undefined && this.job.resources !== null && this.job.resources.length > 0) {
-                        this.form.resources = this.job.resources;
+                this.form.project_status_id = this.statusOptions[0].value;
+                if (this.project !== undefined && this.project !== null) {
+                    this.form.project_status_id = this.project.project_status_id;
+                    this.form.project_category_id = this.project.project_category_id;
+                    this.form.work_method_id = this.project.work_method_id;
+                    this.form.title = this.project.title;
+                    this.form.slogan = this.project.slogan;
+                    this.form.description = this.project.description;
+                    this.form.starts_at = this.project.starts_at;
+                    this.form.ends_at = this.project.ends_at;
+                    if (this.project.resources !== undefined && this.project.resources !== null && this.project.resources.length > 0) {
+                        this.form.resources = this.project.resources;
                     }
-                    if (this.job.team_roles !== undefined && this.job.team_roles !== null && this.job.team_roles.length > 0) {
+                    if (this.project.team_roles !== undefined && this.project.team_roles !== null && this.project.team_roles.length > 0) {
                         let teamRoles = [];
-                        for (let i = 0; i < this.job.team_roles.length; i++) {
+                        for (let i = 0; i < this.project.team_roles.length; i++) {
                             let skills = [];
-                            for (let j = 0; j < this.job.team_roles[i].skills.length; j++) {
-                                skills.push(this.job.team_roles[i].skills[j].name);
+                            for (let j = 0; j < this.project.team_roles[i].skills.length; j++) {
+                                skills.push(this.project.team_roles[i].skills[j].name);
                             }
                             teamRoles.push({
-                                name: this.job.team_roles[i].name,
-                                description: this.job.team_roles[i].description,
+                                name: this.project.team_roles[i].name,
+                                description: this.project.team_roles[i].description,
                                 skills: skills,
                             });
                         }
@@ -305,12 +291,11 @@
                     }
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
-                    if (this.oldInput.job_status_id !== null) this.form.job_status_id = this.oldInput.job_status_id;
-                    if (this.oldInput.job_category_id !== null) this.form.job_category_id = this.oldInput.job_category_id;
+                    if (this.oldInput.project_status_id !== null) this.form.project_status_id = this.oldInput.project_status_id;
+                    if (this.oldInput.project_category_id !== null) this.form.project_category_id = this.oldInput.project_category_id;
                     if (this.oldInput.work_method_id !== null) this.form.work_method_id = this.oldInput.work_method_id;
                     if (this.oldInput.title !== null) this.form.title = this.oldInput.title;
                     if (this.oldInput.slogan !== null) this.form.slogan = this.oldInput.slogan;
-                    if (this.oldInput.problem !== null) this.form.problem = this.oldInput.problem;
                     if (this.oldInput.description !== null) this.form.description = this.oldInput.description;
                     if (this.oldInput.starts_at !== null) this.form.starts_at = this.oldInput.starts_at;
                     if (this.oldInput.ends_at !== null) this.form.ends_at = this.oldInput.ends_at;
@@ -319,11 +304,11 @@
                 }
             },
             generateStatusOptions() {
-                if (this.jobStatuses !== undefined && this.jobStatuses !== null && this.jobStatuses.length > 0) {
-                    for (let i = 0; i < this.jobStatuses.length; i++) {
+                if (this.projectStatuses !== undefined && this.projectStatuses !== null && this.projectStatuses.length > 0) {
+                    for (let i = 0; i < this.projectStatuses.length; i++) {
                         this.statusOptions.push({
-                            text: this.jobStatuses[i].label,
-                            value: this.jobStatuses[i].id,
+                            text: this.projectStatuses[i].label,
+                            value: this.projectStatuses[i].id,
                         });
                     }
                 } else {
@@ -331,12 +316,12 @@
                 }
             },
             generateCategoryOptions() {
-                if (this.jobCategories !== undefined && this.jobCategories !== null && this.jobCategories.length > 0) {
+                if (this.projectCategories !== undefined && this.projectCategories !== null && this.projectCategories.length > 0) {
                     this.categoryOptions.push({ text: "Selecteer categorie", value: 0 });
-                    for (let i = 0; i < this.jobCategories.length; i++) {
+                    for (let i = 0; i < this.projectCategories.length; i++) {
                         this.categoryOptions.push({
-                            text: this.jobCategories[i].label,
-                            value: this.jobCategories[i].id,
+                            text: this.projectCategories[i].label,
+                            value: this.projectCategories[i].id,
                         });
                     }
                 } else {
@@ -378,13 +363,13 @@
 </script>
 
 <style lang="scss">
-    #job-form {
+    #project-form {
         display: flex;
         flex-direction: row;
-        #job-form__left {
+        #project-form__left {
             flex: 2;
         }
-        #job-form__right {
+        #project-form__right {
             flex: 1;
             margin: 0 0 0 30px;
             .page-controls {
@@ -395,17 +380,17 @@
         }
     }
     @media (max-width: 760px) {
-        #job-form {
+        #project-form {
             flex-wrap: wrap;
-            #job-form__left, #job-form__right {
+            #project-form__left, #project-form__right {
                 flex: 0 0 100%;
             }
-            #job-form__left {
+            #project-form__left {
                 .page-controls {
                     display: none;
                 }
             }
-            #job-form__right {
+            #project-form__right {
                 margin: 30px 0 0 0;
                 .page-controls {
                     .page-controls__left {

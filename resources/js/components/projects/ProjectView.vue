@@ -1,12 +1,6 @@
 <template>
     <div id="project-view">
 
-        <!-- Project title -->
-        <h1 id="project-title">{{ project.title }}</h1>
-
-        <!-- Project slogan -->
-        <h2 id="project-slogan">{{ project.slogan }}</h2>
-
         <!-- Project status -->
         <div id="project-stats">
             <!-- Status -->
@@ -21,8 +15,6 @@
             <!-- Tabs -->
             <v-tab>Algemene informatie</v-tab>
             <v-tab>Het Team</v-tab>
-            <v-tab>Taken</v-tab>
-            <v-tab>Geschiedenis</v-tab>
             <!-- General info tab -->
             <v-tab-item>
                 <div class="tab-content">
@@ -30,16 +22,29 @@
                     <div id="project-info">
                         <div id="project-info__left">
                             
-                            <!-- Probleemstelling -->
-                            <div class="project-paragraph">
-                                <h3 class="project-paragraph__title">Probleem dat wordt opgelost</h3>
-                                <div class="project-paragraph__text">{{ project.problem }}</div>
-                            </div>
-        
                             <!-- Projectomschrijving -->
                             <div class="project-paragraph">
                                 <h3 class="project-paragraph__title">Projectomschrijving</h3>
                                 <div class="project-paragraph__text">{{ project.description }}</div>
+                            </div>
+
+                            <!-- Resources -->
+                            <div class="project-paragraph">
+                                <h3 class="project-paragraph__title">Resources</h3>
+                                <div id="project-resources">
+                                    <div id="project-resources__list" v-if="project.resources.length > 0">
+                                        <div class="resource" v-for="(resource, ri) in project.resources" :key="ri">
+                                            <div class="resource-icon">
+                                                <i class="far fa-file"></i>
+                                            </div>
+                                            <div class="resource-title">{{ resource.title }}</div>
+                                            <div class="resource-size">{{ resource.file_size }} kb</div>
+                                        </div>
+                                    </div>
+                                    <div id="project-resources__empty" v-if="project.resources.length === 0">
+                                        Er zijn nog geen resources toegevoegd.
+                                    </div>
+                                </div>
                             </div>
 
                             <!-- Comments -->
@@ -56,6 +61,14 @@
 
                         </div>
                         <div id="project-info__right">
+
+                            <!-- Author of the project -->
+                            <div class="project-paragraph">
+                                <h3 class="project-paragraph__title">Project gestart door</h3>
+                                <div id="project-author">
+                                    <user-pill :user="project.author" dark></user-pill>
+                                </div>
+                            </div>
 
                             <!-- Details -->
                             <div class="project-paragraph">
@@ -108,64 +121,6 @@
                                     <div class="detail">
                                         <div class="key">Laatste gewijzigd op</div>
                                         <div class="val">{{ project.formatted_updated_at }}</div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Author of the job -->
-                            <div class="project-paragraph">
-                                <h3 class="project-paragraph__title">Project gestart door</h3>
-                                <div id="project-author">
-                                    <user-pill :user="project.author" dark></user-pill>
-                                </div>
-                            </div>
-
-                            <!-- Team roles -->
-                            <div class="project-paragraph">
-                                <h3 class="project-paragraph__title">Teamleden & rollen</h3>
-                                <div id="project-team-roles">
-                                    <div id="project-team-roles__list" v-if="project.team_roles.length > 0">
-                                        <div class="team-role" v-for="(role, ri) in project.team_roles" :key="ri">
-                                            <div class="team-role__avatar-wrapper">
-                                                <div class="team-role__avatar"></div>
-                                            </div>
-                                            <div class="team-role__text-wrapper">
-                                                <div class="role-name">{{ project.name }}</div>
-                                                <div class="member-name" v-if="project.team_member">
-                                                    {{ role.team_member.formattedName }}
-                                                </div>
-                                                <div class="not-fulfilled" v-if="!project.team_member">
-                                                    Nog niemand aangesteld
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="project-team-roles__empty" v-if="project.team_roles.length === 0">
-                                        Er zijn nog geen rollen gedefinieert
-                                    </div>
-                                    <div id="project-team-roles__actions">
-                                        <v-btn small depressed color="primary" @click="onClickViewTeam">
-                                            Bekijk details
-                                        </v-btn>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Resources -->
-                            <div class="project-paragraph">
-                                <h3 class="project-paragraph__title">Resources</h3>
-                                <div id="project-resources">
-                                    <div id="project-resources__list" v-if="project.resources.length > 0">
-                                        <div class="resource" v-for="(resource, ri) in project.resources" :key="ri">
-                                            <div class="resource-icon">
-                                                <i class="far fa-file"></i>
-                                            </div>
-                                            <div class="resource-title">{{ resource.title }}</div>
-                                            <div class="resource-size">{{ resource.file_size }} kb</div>
-                                        </div>
-                                    </div>
-                                    <div id="project-resources__empty" v-if="project.resources.length === 0">
-                                        Er zijn nog geen resources toegevoegd.
                                     </div>
                                 </div>
                             </div>
@@ -265,22 +220,6 @@
                             Er zijn nog geen aanmeldingen binnengekomen.
                         </div>
                     </div>
-
-                </div>
-            </v-tab-item>
-            <!-- Tasks tab -->
-            <v-tab-item>
-                <div class="tab-content">
-
-                    <!-- -->
-                
-                </div>
-            </v-tab-item>
-            <!-- History tab -->
-            <v-tab-item>
-                <div class="tab-content">
-                
-                    <!-- -->
 
                 </div>
             </v-tab-item>
@@ -956,6 +895,7 @@
 
 <style lang="scss">
     #project-view {
+        margin-top: -75px;
         #team {
             #team-roles {
                 margin: 0 0 30px 0;

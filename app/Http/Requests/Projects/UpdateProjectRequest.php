@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Jobs;
+namespace App\Http\Requests\Projects;
 
 use Auth;
 use Illuminate\Foundation\Http\FormRequest;
@@ -30,7 +30,6 @@ class UpdateProjectRequest extends FormRequest
             "work_method_id" => "required|exists:work_methods,id",
             "title" => "required",
             "slogan" => "nullable",
-            "problem" => "required",
             "description" => "required",
             "starts_at" => "nullable",
             "ends_at" => "nullable",

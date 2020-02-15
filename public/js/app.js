@@ -6748,33 +6748,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["job", "jobStatuses", "jobCategories", "workMethods", "skills", "errors", "oldInput", "backHref", "createResourceApiEndpoint", "updateResourceApiEndpoint", "deleteResourceApiEndpoint"],
+  props: ["project", "projectStatuses", "projectCategories", "workMethods", "skills", "errors", "oldInput", "backHref", "createResourceApiEndpoint", "updateResourceApiEndpoint", "deleteResourceApiEndpoint"],
   data: function data() {
     return {
-      tag: "[job-form]",
+      tag: "[project-form]",
       workMethodOptions: [],
       categoryOptions: [],
       statusOptions: [],
       form: {
-        job_status_id: 0,
-        job_category_id: 0,
+        project_status_id: 0,
+        project_category_id: 0,
         work_method_id: 0,
         title: "",
         slogan: "",
-        problem: "",
         description: "",
         starts_at: "",
         ends_at: "",
@@ -6784,19 +6771,19 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   computed: {
-    hasJob: function hasJob() {
-      return this.job !== undefined && this.job !== null && this.job !== "";
+    hasProject: function hasProject() {
+      return this.project !== undefined && this.project !== null && this.project !== "";
     },
-    jobHasImage: function jobHasImage() {
-      return this.hasJob && this.job.header_image_url !== null && this.job.header_image_url !== '';
+    projectHasImage: function projectHasImage() {
+      return this.hasProject && this.project.header_image_url !== null && this.project.header_image_url !== '';
     }
   },
   methods: {
     initialize: function initialize() {
       console.log(this.tag + " initializing");
-      console.log(this.tag + " job: ", this.job);
-      console.log(this.tag + " job statuses: ", this.jobStatuses);
-      console.log(this.tag + " job categories: ", this.jobCategories);
+      console.log(this.tag + " project: ", this.project);
+      console.log(this.tag + " project statuses: ", this.projectStatuses);
+      console.log(this.tag + " project categories: ", this.projectCategories);
       console.log(this.tag + " work methods: ", this.workMethods);
       console.log(this.tag + " skills: ", this.skills);
       console.log(this.tag + " errors: ", this.errors);
@@ -6810,36 +6797,35 @@ __webpack_require__.r(__webpack_exports__);
       this.initializeData();
     },
     initializeData: function initializeData() {
-      this.form.job_status_id = this.statusOptions[0].value;
+      this.form.project_status_id = this.statusOptions[0].value;
 
-      if (this.job !== undefined && this.job !== null) {
-        this.form.job_status_id = this.job.job_status_id;
-        this.form.job_category_id = this.job.job_category_id;
-        this.form.work_method_id = this.job.work_method_id;
-        this.form.title = this.job.title;
-        this.form.slogan = this.job.slogan;
-        this.form.problem = this.job.problem;
-        this.form.description = this.job.description;
-        this.form.starts_at = this.job.starts_at;
-        this.form.ends_at = this.job.ends_at;
+      if (this.project !== undefined && this.project !== null) {
+        this.form.project_status_id = this.project.project_status_id;
+        this.form.project_category_id = this.project.project_category_id;
+        this.form.work_method_id = this.project.work_method_id;
+        this.form.title = this.project.title;
+        this.form.slogan = this.project.slogan;
+        this.form.description = this.project.description;
+        this.form.starts_at = this.project.starts_at;
+        this.form.ends_at = this.project.ends_at;
 
-        if (this.job.resources !== undefined && this.job.resources !== null && this.job.resources.length > 0) {
-          this.form.resources = this.job.resources;
+        if (this.project.resources !== undefined && this.project.resources !== null && this.project.resources.length > 0) {
+          this.form.resources = this.project.resources;
         }
 
-        if (this.job.team_roles !== undefined && this.job.team_roles !== null && this.job.team_roles.length > 0) {
+        if (this.project.team_roles !== undefined && this.project.team_roles !== null && this.project.team_roles.length > 0) {
           var teamRoles = [];
 
-          for (var i = 0; i < this.job.team_roles.length; i++) {
+          for (var i = 0; i < this.project.team_roles.length; i++) {
             var skills = [];
 
-            for (var j = 0; j < this.job.team_roles[i].skills.length; j++) {
-              skills.push(this.job.team_roles[i].skills[j].name);
+            for (var j = 0; j < this.project.team_roles[i].skills.length; j++) {
+              skills.push(this.project.team_roles[i].skills[j].name);
             }
 
             teamRoles.push({
-              name: this.job.team_roles[i].name,
-              description: this.job.team_roles[i].description,
+              name: this.project.team_roles[i].name,
+              description: this.project.team_roles[i].description,
               skills: skills
             });
           }
@@ -6849,12 +6835,11 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (this.oldInput !== undefined && this.oldInput !== null) {
-        if (this.oldInput.job_status_id !== null) this.form.job_status_id = this.oldInput.job_status_id;
-        if (this.oldInput.job_category_id !== null) this.form.job_category_id = this.oldInput.job_category_id;
+        if (this.oldInput.project_status_id !== null) this.form.project_status_id = this.oldInput.project_status_id;
+        if (this.oldInput.project_category_id !== null) this.form.project_category_id = this.oldInput.project_category_id;
         if (this.oldInput.work_method_id !== null) this.form.work_method_id = this.oldInput.work_method_id;
         if (this.oldInput.title !== null) this.form.title = this.oldInput.title;
         if (this.oldInput.slogan !== null) this.form.slogan = this.oldInput.slogan;
-        if (this.oldInput.problem !== null) this.form.problem = this.oldInput.problem;
         if (this.oldInput.description !== null) this.form.description = this.oldInput.description;
         if (this.oldInput.starts_at !== null) this.form.starts_at = this.oldInput.starts_at;
         if (this.oldInput.ends_at !== null) this.form.ends_at = this.oldInput.ends_at;
@@ -6863,11 +6848,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     generateStatusOptions: function generateStatusOptions() {
-      if (this.jobStatuses !== undefined && this.jobStatuses !== null && this.jobStatuses.length > 0) {
-        for (var i = 0; i < this.jobStatuses.length; i++) {
+      if (this.projectStatuses !== undefined && this.projectStatuses !== null && this.projectStatuses.length > 0) {
+        for (var i = 0; i < this.projectStatuses.length; i++) {
           this.statusOptions.push({
-            text: this.jobStatuses[i].label,
-            value: this.jobStatuses[i].id
+            text: this.projectStatuses[i].label,
+            value: this.projectStatuses[i].id
           });
         }
       } else {
@@ -6878,16 +6863,16 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     generateCategoryOptions: function generateCategoryOptions() {
-      if (this.jobCategories !== undefined && this.jobCategories !== null && this.jobCategories.length > 0) {
+      if (this.projectCategories !== undefined && this.projectCategories !== null && this.projectCategories.length > 0) {
         this.categoryOptions.push({
           text: "Selecteer categorie",
           value: 0
         });
 
-        for (var i = 0; i < this.jobCategories.length; i++) {
+        for (var i = 0; i < this.projectCategories.length; i++) {
           this.categoryOptions.push({
-            text: this.jobCategories[i].label,
-            value: this.jobCategories[i].id
+            text: this.projectCategories[i].label,
+            value: this.projectCategories[i].id
           });
         }
       } else {
@@ -6950,67 +6935,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -8171,7 +8095,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#job-form {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#job-form #job-form__left {\n  -webkit-box-flex: 2;\n          flex: 2;\n}\n#job-form #job-form__right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 0 0 30px;\n}\n#job-form #job-form__right .page-controls .page-controls__left {\n  display: none;\n}\n@media (max-width: 760px) {\n#job-form {\n    flex-wrap: wrap;\n}\n#job-form #job-form__left, #job-form #job-form__right {\n    -webkit-box-flex: 0;\n            flex: 0 0 100%;\n}\n#job-form #job-form__left .page-controls {\n    display: none;\n}\n#job-form #job-form__right {\n    margin: 30px 0 0 0;\n}\n#job-form #job-form__right .page-controls .page-controls__left {\n    display: block;\n}\n}", ""]);
+exports.push([module.i, "#project-form {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#project-form #project-form__left {\n  -webkit-box-flex: 2;\n          flex: 2;\n}\n#project-form #project-form__right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 0 0 30px;\n}\n#project-form #project-form__right .page-controls .page-controls__left {\n  display: none;\n}\n@media (max-width: 760px) {\n#project-form {\n    flex-wrap: wrap;\n}\n#project-form #project-form__left, #project-form #project-form__right {\n    -webkit-box-flex: 0;\n            flex: 0 0 100%;\n}\n#project-form #project-form__left .page-controls {\n    display: none;\n}\n#project-form #project-form__right {\n    margin: 30px 0 0 0;\n}\n#project-form #project-form__right .page-controls .page-controls__left {\n    display: block;\n}\n}", ""]);
 
 // exports
 
@@ -8190,7 +8114,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#project-view #team #team-roles {\n  margin: 0 0 30px 0;\n}\n#project-view #team #team-roles .team-role__wrapper {\n  overflow: hidden;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  background-color: #f2f2f2;\n}\n#project-view #team #team-roles .team-role__wrapper:last-child {\n  margin: 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role {\n  display: -webkit-box;\n  display: flex;\n  padding: 30px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__avatar-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 120px;\n  margin: 0 30px 0 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__avatar-wrapper .team-role__avatar {\n  width: 120px;\n  display: -webkit-box;\n  display: flex;\n  height: 120px;\n  font-size: 0.8em;\n  text-align: center;\n  border-radius: 60px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  color: gray;\n  background-color: white;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 300px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-name {\n  font-size: 2em;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills__label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n  color: black;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills .role-skill {\n  font-size: 0.8em;\n  margin: 0 5px 0 0;\n  border-radius: 2px;\n  box-sizing: border-box;\n  padding: 3px 3px 3px 5px;\n  background-color: white;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__description {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 250px;\n  font-size: 0.8em;\n  margin: 0 50px 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__member {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__member .team-role__member-label {\n  font-size: 0.8em;\n  margin: -16px 0 5px 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__actions {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer {\n  padding: 15px 30px;\n  box-sizing: border-box;\n  background-color: #e6e6e6;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer .team-role__footer-left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer .team-role__footer-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #member-applications #member-applications__list {\n  border-radius: 3px;\n  background-color: #f2f2f2;\n}\n#project-view #member-applications #member-applications__list .member-application {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#project-view #member-applications #member-applications__list .member-application:last-child {\n  border-bottom: 0;\n}\n#project-view #member-applications #member-applications__list .member-application:hover {\n  cursor: pointer;\n  background-color: #e6e6e6;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 15px 0 0;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status {\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  text-align: center;\n  box-sizing: border-box;\n  padding: 3px 10px 5px 10px;\n  background-color: #262626;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status.denied {\n  background-color: maroon;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status.accepted {\n  background-color: #007a18;\n}\n#project-view #member-applications #member-applications__list .member-application .role-name {\n  -webkit-box-flex: 3;\n          flex: 3;\n}\n#project-view #member-applications #member-applications__list .member-application .user-name {\n  -webkit-box-flex: 2;\n          flex: 2;\n  margin: 0 0 0 15px;\n}\n#project-view #member-applications #member-applications__list .member-application .created-at {\n  margin: 0 0 0 15px;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #member-applications #member-applications__list .member-application .role-name, #project-view #member-applications #member-applications__list .member-application .user-name, #project-view #member-applications #member-applications__list .member-application .created-at {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#application-dialog-text #role-name {\n  text-align: center;\n}\n#application-dialog-text #role-name #role-name__label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 5px 0;\n}\n#application-dialog-text #role-name #role-name__text {\n  font-size: 1.5em;\n  font-weight: 500;\n}\n#application-dialog-text #user-wrapper {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#application-dialog-text #motivation {\n  text-align: center;\n}\n#application-dialog-text #motivation #motivation-label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n}\n#application-dialog-text #motivation #motivation-text {\n  padding: 10px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}", ""]);
+exports.push([module.i, "#project-view {\n  margin-top: -75px;\n}\n#project-view #team #team-roles {\n  margin: 0 0 30px 0;\n}\n#project-view #team #team-roles .team-role__wrapper {\n  overflow: hidden;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  background-color: #f2f2f2;\n}\n#project-view #team #team-roles .team-role__wrapper:last-child {\n  margin: 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role {\n  display: -webkit-box;\n  display: flex;\n  padding: 30px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__avatar-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 120px;\n  margin: 0 30px 0 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__avatar-wrapper .team-role__avatar {\n  width: 120px;\n  display: -webkit-box;\n  display: flex;\n  height: 120px;\n  font-size: 0.8em;\n  text-align: center;\n  border-radius: 60px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  color: gray;\n  background-color: white;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 300px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-name {\n  font-size: 2em;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills__label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n  color: black;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills .role-skill {\n  font-size: 0.8em;\n  margin: 0 5px 0 0;\n  border-radius: 2px;\n  box-sizing: border-box;\n  padding: 3px 3px 3px 5px;\n  background-color: white;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__description {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 250px;\n  font-size: 0.8em;\n  margin: 0 50px 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__member {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__member .team-role__member-label {\n  font-size: 0.8em;\n  margin: -16px 0 5px 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__actions {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer {\n  padding: 15px 30px;\n  box-sizing: border-box;\n  background-color: #e6e6e6;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer .team-role__footer-left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer .team-role__footer-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #member-applications #member-applications__list {\n  border-radius: 3px;\n  background-color: #f2f2f2;\n}\n#project-view #member-applications #member-applications__list .member-application {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#project-view #member-applications #member-applications__list .member-application:last-child {\n  border-bottom: 0;\n}\n#project-view #member-applications #member-applications__list .member-application:hover {\n  cursor: pointer;\n  background-color: #e6e6e6;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 15px 0 0;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status {\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  text-align: center;\n  box-sizing: border-box;\n  padding: 3px 10px 5px 10px;\n  background-color: #262626;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status.denied {\n  background-color: maroon;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status.accepted {\n  background-color: #007a18;\n}\n#project-view #member-applications #member-applications__list .member-application .role-name {\n  -webkit-box-flex: 3;\n          flex: 3;\n}\n#project-view #member-applications #member-applications__list .member-application .user-name {\n  -webkit-box-flex: 2;\n          flex: 2;\n  margin: 0 0 0 15px;\n}\n#project-view #member-applications #member-applications__list .member-application .created-at {\n  margin: 0 0 0 15px;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #member-applications #member-applications__list .member-application .role-name, #project-view #member-applications #member-applications__list .member-application .user-name, #project-view #member-applications #member-applications__list .member-application .created-at {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#application-dialog-text #role-name {\n  text-align: center;\n}\n#application-dialog-text #role-name #role-name__label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 5px 0;\n}\n#application-dialog-text #role-name #role-name__text {\n  font-size: 1.5em;\n  font-weight: 500;\n}\n#application-dialog-text #user-wrapper {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#application-dialog-text #motivation {\n  text-align: center;\n}\n#application-dialog-text #motivation #motivation-label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n}\n#application-dialog-text #motivation #motivation-text {\n  padding: 10px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}", ""]);
 
 // exports
 
@@ -38761,7 +38685,7 @@ var render = function() {
           _c(
             "v-btn",
             {
-              attrs: { small: "", color: "primary" },
+              attrs: { depressed: "", small: "", color: "primary" },
               on: { click: _vm.onClickAdd }
             },
             [
@@ -39344,7 +39268,7 @@ var render = function() {
           _c(
             "v-btn",
             {
-              attrs: { color: "primary", small: "" },
+              attrs: { depressed: "", color: "primary", small: "" },
               on: { click: _vm.onClickAdd }
             },
             [
@@ -40300,8 +40224,8 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "job-form" } }, [
-    _c("div", { attrs: { id: "job-form__left" } }, [
+  return _c("div", { attrs: { id: "project-form" } }, [
+    _c("div", { attrs: { id: "project-form__left" } }, [
       _c("div", { staticClass: "content-card elevation-1 mb" }, [
         _c("div", { staticClass: "content-card__content" }, [
           _c(
@@ -40358,31 +40282,6 @@ var render = function() {
             [
               _c("v-textarea", {
                 attrs: {
-                  name: "problem",
-                  label: "Probleemstelling",
-                  placeholder:
-                    "Omschrijf zo gevat mogelijk welk probleem er met dit project wordt opgelost.",
-                  errors: _vm.hasErrors("problem"),
-                  "error-messages": _vm.getErrors("problem")
-                },
-                model: {
-                  value: _vm.form.problem,
-                  callback: function($$v) {
-                    _vm.$set(_vm.form, "problem", $$v)
-                  },
-                  expression: "form.problem"
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "form-field" },
-            [
-              _c("v-textarea", {
-                attrs: {
                   name: "description",
                   label: "Beschrijving",
                   placeholder:
@@ -40413,11 +40312,11 @@ var render = function() {
                 _vm._v("Header achtergrond plaatje")
               ]),
               _vm._v(" "),
-              _vm.hasJob && _vm.jobHasImage
+              _vm.hasProject && _vm.projectHasImage
                 ? _c("div", { staticClass: "image-field__image-wrapper" }, [
                     _c("img", {
                       staticClass: "image-field__image",
-                      attrs: { src: _vm.job.header_image_url }
+                      attrs: { src: _vm.project.header_image_url }
                     })
                   ])
                 : _vm._e(),
@@ -40445,6 +40344,32 @@ var render = function() {
                   )
                 : _vm._e()
             ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "content-card elevation-1" }, [
+        _c("div", { staticClass: "content-card__content" }, [
+          _c(
+            "div",
+            { staticClass: "form-field" },
+            [
+              _c("team-roles-field", {
+                attrs: {
+                  name: "team_roles",
+                  label: "Team rollen",
+                  skills: _vm.skills
+                },
+                model: {
+                  value: _vm.form.team_roles,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "team_roles", $$v)
+                  },
+                  expression: "form.team_roles"
+                }
+              })
+            ],
+            1
           )
         ])
       ]),
@@ -40477,32 +40402,6 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "content-card elevation-1" }, [
-        _c("div", { staticClass: "content-card__content" }, [
-          _c(
-            "div",
-            { staticClass: "form-field" },
-            [
-              _c("team-roles-field", {
-                attrs: {
-                  name: "team_roles",
-                  label: "Team rollen",
-                  skills: _vm.skills
-                },
-                model: {
-                  value: _vm.form.team_roles,
-                  callback: function($$v) {
-                    _vm.$set(_vm.form, "team_roles", $$v)
-                  },
-                  expression: "form.team_roles"
-                }
-              })
-            ],
-            1
-          )
-        ])
-      ]),
-      _vm._v(" "),
       _c("div", { staticClass: "page-controls mt" }, [
         _c(
           "div",
@@ -40520,7 +40419,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { attrs: { id: "job-form__right" } }, [
+    _c("div", { attrs: { id: "project-form__right" } }, [
       _c("div", { staticClass: "content-card elevation-1 mb" }, [
         _c("div", { staticClass: "content-card__content" }, [
           _c(
@@ -40531,21 +40430,21 @@ var render = function() {
                 attrs: {
                   label: "Project categorie",
                   items: _vm.categoryOptions,
-                  errors: _vm.hasErrors("job_category_id"),
-                  "error-messages": _vm.getErrors("job_category_id")
+                  errors: _vm.hasErrors("project_category_id"),
+                  "error-messages": _vm.getErrors("project_category_id")
                 },
                 model: {
-                  value: _vm.form.job_category_id,
+                  value: _vm.form.project_category_id,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "job_category_id", $$v)
+                    _vm.$set(_vm.form, "project_category_id", $$v)
                   },
-                  expression: "form.job_category_id"
+                  expression: "form.project_category_id"
                 }
               }),
               _vm._v(" "),
               _c("input", {
-                attrs: { type: "hidden", name: "job_category_id" },
-                domProps: { value: _vm.form.job_category_id }
+                attrs: { type: "hidden", name: "project_category_id" },
+                domProps: { value: _vm.form.project_category_id }
               })
             ],
             1
@@ -40581,27 +40480,27 @@ var render = function() {
           _vm._v(" "),
           _c(
             "div",
-            { staticClass: "form-field" },
+            { staticClass: "form-field mb-0" },
             [
               _c("v-select", {
                 attrs: {
                   label: "Project status",
                   items: _vm.statusOptions,
-                  errors: _vm.hasErrors("job_status_id"),
-                  "error-messages": _vm.getErrors("job_status_id")
+                  errors: _vm.hasErrors("project_status_id"),
+                  "error-messages": _vm.getErrors("project_status_id")
                 },
                 model: {
-                  value: _vm.form.job_status_id,
+                  value: _vm.form.project_status_id,
                   callback: function($$v) {
-                    _vm.$set(_vm.form, "job_status_id", $$v)
+                    _vm.$set(_vm.form, "project_status_id", $$v)
                   },
-                  expression: "form.job_status_id"
+                  expression: "form.project_status_id"
                 }
               }),
               _vm._v(" "),
               _c("input", {
-                attrs: { type: "hidden", name: "job_status_id" },
-                domProps: { value: _vm.form.job_status_id }
+                attrs: { type: "hidden", name: "project_status_id" },
+                domProps: { value: _vm.form.project_status_id }
               })
             ],
             1
@@ -40724,14 +40623,6 @@ var render = function() {
     "div",
     { attrs: { id: "project-view" } },
     [
-      _c("h1", { attrs: { id: "project-title" } }, [
-        _vm._v(_vm._s(_vm.project.title))
-      ]),
-      _vm._v(" "),
-      _c("h2", { attrs: { id: "project-slogan" } }, [
-        _vm._v(_vm._s(_vm.project.slogan))
-      ]),
-      _vm._v(" "),
       _c("div", { attrs: { id: "project-stats" } }, [
         _c(
           "div",
@@ -40770,10 +40661,6 @@ var render = function() {
           _vm._v(" "),
           _c("v-tab", [_vm._v("Het Team")]),
           _vm._v(" "),
-          _c("v-tab", [_vm._v("Taken")]),
-          _vm._v(" "),
-          _c("v-tab", [_vm._v("Geschiedenis")]),
-          _vm._v(" "),
           _c("v-tab-item", [
             _c("div", { staticClass: "tab-content" }, [
               _c("div", { attrs: { id: "project-info" } }, [
@@ -40783,21 +40670,71 @@ var render = function() {
                   [
                     _c("div", { staticClass: "project-paragraph" }, [
                       _c("h3", { staticClass: "project-paragraph__title" }, [
-                        _vm._v("Probleem dat wordt opgelost")
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "project-paragraph__text" }, [
-                        _vm._v(_vm._s(_vm.project.problem))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "project-paragraph" }, [
-                      _c("h3", { staticClass: "project-paragraph__title" }, [
                         _vm._v("Projectomschrijving")
                       ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "project-paragraph__text" }, [
                         _vm._v(_vm._s(_vm.project.description))
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "project-paragraph" }, [
+                      _c("h3", { staticClass: "project-paragraph__title" }, [
+                        _vm._v("Resources")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { attrs: { id: "project-resources" } }, [
+                        _vm.project.resources.length > 0
+                          ? _c(
+                              "div",
+                              { attrs: { id: "project-resources__list" } },
+                              _vm._l(_vm.project.resources, function(
+                                resource,
+                                ri
+                              ) {
+                                return _c(
+                                  "div",
+                                  { key: ri, staticClass: "resource" },
+                                  [
+                                    _c(
+                                      "div",
+                                      { staticClass: "resource-icon" },
+                                      [_c("i", { staticClass: "far fa-file" })]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "resource-title" },
+                                      [_vm._v(_vm._s(resource.title))]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      { staticClass: "resource-size" },
+                                      [
+                                        _vm._v(
+                                          _vm._s(resource.file_size) + " kb"
+                                        )
+                                      ]
+                                    )
+                                  ]
+                                )
+                              }),
+                              0
+                            )
+                          : _vm._e(),
+                        _vm._v(" "),
+                        _vm.project.resources.length === 0
+                          ? _c(
+                              "div",
+                              { attrs: { id: "project-resources__empty" } },
+                              [
+                                _vm._v(
+                                  "\n                                    Er zijn nog geen resources toegevoegd.\n                                "
+                                )
+                              ]
+                            )
+                          : _vm._e()
                       ])
                     ]),
                     _vm._v(" "),
@@ -40821,6 +40758,23 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("div", { attrs: { id: "project-info__right" } }, [
+                  _c("div", { staticClass: "project-paragraph" }, [
+                    _c("h3", { staticClass: "project-paragraph__title" }, [
+                      _vm._v("Project gestart door")
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { attrs: { id: "project-author" } },
+                      [
+                        _c("user-pill", {
+                          attrs: { user: _vm.project.author, dark: "" }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "project-paragraph" }, [
                     _c("h3", { staticClass: "project-paragraph__title" }, [
                       _vm._v("Details")
@@ -40926,183 +40880,6 @@ var render = function() {
                           _vm._v(_vm._s(_vm.project.formatted_updated_at))
                         ])
                       ])
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "project-paragraph" }, [
-                    _c("h3", { staticClass: "project-paragraph__title" }, [
-                      _vm._v("Project gestart door")
-                    ]),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { attrs: { id: "project-author" } },
-                      [
-                        _c("user-pill", {
-                          attrs: { user: _vm.project.author, dark: "" }
-                        })
-                      ],
-                      1
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "project-paragraph" }, [
-                    _c("h3", { staticClass: "project-paragraph__title" }, [
-                      _vm._v("Teamleden & rollen")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { attrs: { id: "project-team-roles" } }, [
-                      _vm.project.team_roles.length > 0
-                        ? _c(
-                            "div",
-                            { attrs: { id: "project-team-roles__list" } },
-                            _vm._l(_vm.project.team_roles, function(role, ri) {
-                              return _c(
-                                "div",
-                                { key: ri, staticClass: "team-role" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "team-role__avatar-wrapper"
-                                    },
-                                    [
-                                      _c("div", {
-                                        staticClass: "team-role__avatar"
-                                      })
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "team-role__text-wrapper" },
-                                    [
-                                      _c("div", { staticClass: "role-name" }, [
-                                        _vm._v(_vm._s(_vm.project.name))
-                                      ]),
-                                      _vm._v(" "),
-                                      _vm.project.team_member
-                                        ? _c(
-                                            "div",
-                                            { staticClass: "member-name" },
-                                            [
-                                              _vm._v(
-                                                "\n                                                " +
-                                                  _vm._s(
-                                                    role.team_member
-                                                      .formattedName
-                                                  ) +
-                                                  "\n                                            "
-                                              )
-                                            ]
-                                          )
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      !_vm.project.team_member
-                                        ? _c(
-                                            "div",
-                                            { staticClass: "not-fulfilled" },
-                                            [
-                                              _vm._v(
-                                                "\n                                                Nog niemand aangesteld\n                                            "
-                                              )
-                                            ]
-                                          )
-                                        : _vm._e()
-                                    ]
-                                  )
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.project.team_roles.length === 0
-                        ? _c(
-                            "div",
-                            { attrs: { id: "project-team-roles__empty" } },
-                            [
-                              _vm._v(
-                                "\n                                    Er zijn nog geen rollen gedefinieert\n                                "
-                              )
-                            ]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { attrs: { id: "project-team-roles__actions" } },
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: {
-                                small: "",
-                                depressed: "",
-                                color: "primary"
-                              },
-                              on: { click: _vm.onClickViewTeam }
-                            },
-                            [
-                              _vm._v(
-                                "\n                                        Bekijk details\n                                    "
-                              )
-                            ]
-                          )
-                        ],
-                        1
-                      )
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "project-paragraph" }, [
-                    _c("h3", { staticClass: "project-paragraph__title" }, [
-                      _vm._v("Resources")
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { attrs: { id: "project-resources" } }, [
-                      _vm.project.resources.length > 0
-                        ? _c(
-                            "div",
-                            { attrs: { id: "project-resources__list" } },
-                            _vm._l(_vm.project.resources, function(
-                              resource,
-                              ri
-                            ) {
-                              return _c(
-                                "div",
-                                { key: ri, staticClass: "resource" },
-                                [
-                                  _c("div", { staticClass: "resource-icon" }, [
-                                    _c("i", { staticClass: "far fa-file" })
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "resource-title" }, [
-                                    _vm._v(_vm._s(resource.title))
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("div", { staticClass: "resource-size" }, [
-                                    _vm._v(_vm._s(resource.file_size) + " kb")
-                                  ])
-                                ]
-                              )
-                            }),
-                            0
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.project.resources.length === 0
-                        ? _c(
-                            "div",
-                            { attrs: { id: "project-resources__empty" } },
-                            [
-                              _vm._v(
-                                "\n                                    Er zijn nog geen resources toegevoegd.\n                                "
-                              )
-                            ]
-                          )
-                        : _vm._e()
                     ])
                   ])
                 ])
@@ -41409,11 +41186,7 @@ var render = function() {
                   : _vm._e()
               ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("v-tab-item", [_c("div", { staticClass: "tab-content" })]),
-          _vm._v(" "),
-          _c("v-tab-item", [_c("div", { staticClass: "tab-content" })])
+          ])
         ],
         1
       ),

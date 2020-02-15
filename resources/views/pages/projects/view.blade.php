@@ -8,25 +8,18 @@
     <div id="project">
 
         <!-- Header -->
-        <div id="project-header" class="controls-only" style="background-image: url({{ asset($project->header_image_url) }});">
+        <div id="project-header" style="background-image: url({{ asset($project->header_image_url) }});">
             <div id="project-header__overlay"></div>
             <div id="project-header__content" class="content-section">
-                <!-- Back button -->
-                <div id="project-header__back-button">
-                    <v-btn href="{{ route('projects') }}">
-                        <i class="fas fa-arrow-left"></i>
-                        Terug naar overzicht
-                    </v-btn>
+
+                <!-- Feedback -->
+                @include("partials.feedback")
+
+                <div id="project-header__text">
+                    <h1 id="project-header__title">{{ $project->title }}</h1>
+                    <h2 id="project-header__slogan">{{ $project->slogan }}</h2>
                 </div>
-                <!-- Edit & delete buttons -->
-                <div id="project-header__actions">
-                    <v-btn class="icon-only" color="warning" href="{{ route('projects.edit', $project->slug) }}">
-                        <i class="fas fa-edit"></i>
-                    </v-btn>
-                    <v-btn class="icon-only" color="red" dark href="{{ route('projects.delete', $project->slug) }}">
-                        <i class="fas fa-trash-alt"></i>
-                    </v-btn>
-                </div>
+
             </div>
         </div>
 
@@ -34,8 +27,6 @@
         <div id="project-content" class="content-section__wrapper">
             <div class="content-section">
                 
-                <!-- Feedback -->
-                @include("partials.feedback")
 
                 <!-- Interactive view project -->
                 <project-view

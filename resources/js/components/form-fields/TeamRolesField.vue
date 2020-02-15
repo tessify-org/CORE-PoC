@@ -32,7 +32,7 @@
 
         <!-- Actions -->
         <div class="team-roles-field__actions">
-            <v-btn color="primary" small @click="onClickAdd">
+            <v-btn depressed color="primary" small @click="onClickAdd">
                 <i class="fas fa-plus"></i>
                 Team rol toevoegen
             </v-btn>

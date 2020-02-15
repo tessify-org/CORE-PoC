@@ -34,7 +34,7 @@
 
         <!-- Actions -->
         <div class="resources-field__actions">
-            <v-btn small color="primary" @click="onClickAdd">
+            <v-btn depressed small color="primary" @click="onClickAdd">
                 <i class="fas fa-plus"></i>
                 Resource toevoegen
             </v-btn>

@@ -23,7 +23,7 @@
                     :skills="{{ $skills->toJson() }}"
                     :errors="{{ $errors->toJson() }}"
                     :old-input="{{ $oldInput->toJson() }}"
-                    back-href="{{ route('jobs') }}"
+                    back-href="{{ route('projects') }}"
                     create-resource-api-endpoint="{{ route('api.projects.resources.create.post') }}"
                     update-resource-api-endpoint="{{ route('api.projects.resources.update.post') }}"
                     delete-resource-api-endpoint="{{ route('api.projects.resources.delete.post') }}">

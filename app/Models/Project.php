@@ -18,7 +18,6 @@ class Project extends Model
         "work_method_id",
         "title",
         "slogan",
-        "problem",
         "description",
         "header_image_url",
         "starts_at",
@@ -53,12 +52,12 @@ class Project extends Model
 
     public function category()
     {
-        return $this->belongsTo(JobCategory::class, "project_category_id", "id");
+        return $this->belongsTo(ProjectCategory::class, "project_category_id", "id");
     }
 
     public function status()
     {
-        return $this->belongsTo(JobStatus::class, "project_status_id", "id");
+        return $this->belongsTo(ProjectStatus::class, "project_status_id", "id");
     }
 
     public function workMethod()
@@ -68,7 +67,7 @@ class Project extends Model
 
     public function resources()
     {
-        return $this->hasMany(JobResource::class);
+        return $this->hasMany(ProjectResource::class);
     }
 
     public function teamRoles()

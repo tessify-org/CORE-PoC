@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Jobs;
+namespace App\Http\Requests\Projects;
 
 use Auth;
 use Illuminate\Foundation\Http\FormRequest;

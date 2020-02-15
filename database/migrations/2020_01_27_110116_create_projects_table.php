@@ -22,7 +22,6 @@ class CreateProjectsTable extends Migration
             $table->string('slug');
             $table->string('title');
             $table->string('slogan')->nullable();
-            $table->text('problem');
             $table->text('description')->nullable();
             $table->string('header_image_url')->default('storage/images/projects/header/default.png');
             $table->date('starts_at')->nullable();
