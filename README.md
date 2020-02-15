@@ -11,7 +11,7 @@ For detailed instructions see our [Wiki](https://github.com/tessify-org/CORE/wik
 
 ## Quick setup
 
-1. ```git clone https://github.com/tessify-org/CORE.git```
+1. ```git clone https://github.com/tessify-org/CORE-PoC.git```
 2. ```cp .env.example .env```
 3. ```nano .env```
 4. Set database & credentials
