@@ -17,7 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravolt/avatar": "^3.0",
         "webpatser/laravel-uuid": "^3.0",
-        "tessify/core": "~1.0-dev"
+        "tessify/core": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
