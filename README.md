@@ -2,14 +2,6 @@
 
 This application is the development & poc version of the Tessify core codebase.
 
-## Dependencies
-
-- [laracasts/flash](https://github.com/laracasts/flash)
-- [laravolt/avatar](https://github.com/laravolt/avatar)
-- [webpatser/laravel-uuid](https://github.com/webpatser/laravel-uuid)
-- [cviebrock/eloquent-sluggable](https://github.com/cviebrock/eloquent-sluggable)
-- [davejamesmiller/laravel-breadcrumbs](https://github.com/davejamesmiller/laravel-breadcrumbs)
-
 ## Installation instructions
 
 For detailed instructions see our [Wiki](https://github.com/tessify-org/CORE/wiki).
