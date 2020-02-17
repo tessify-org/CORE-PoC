@@ -19,19 +19,25 @@ For detailed instructions see our [Wiki](https://github.com/tessify-org/CORE/wik
 
 ## Quick setup
 
-1. ```git clone https://github.com/tessify-org/CORE-PoC.git```
-2. ```cp .env.example .env```
-3. ```nano .env```
-4. Set database & credentials
+1. ```git clone --recurse-submodules https://github.com/tessify-org/CORE-PoC.git```
+2. Setup your environment (host file, database, virtualhosts if applicable etc..)
+3. ```cp .env.example .env```
+4. ```nano .env```
+5. Set database & credentials
 ```
 DB_DATABASE=core
 DB_USERNAME=youruser
 DB_PASSWORD=yourpassword
 ```
-5. ```php artisan key:generate```
-6. ```php artisan migrate --seed```
-7. ```php artisan storage:link```
-8. ```nano webpack.mix.js``` adjust to your .env settings
-9. ```npm install```
-10. ```npm run watch```
-11. Update your hosts file (```/etc/hosts``` or ```C:/Windows/System32/drivers/etc/hosts```)
+6. ```php artisan key:generate```
+7. ```php artisan migrate --seed```
+8. ```php artisan storage:link```
+
+At this point the application should be available.
+Run the following commands for a live-reload version, which is recommended during development.
+
+9. ```nano webpack.mix.js``` adjust to your environment
+10. ```npm install```
+11. ```npm run watch```
+
+That's it!
