@@ -6452,7 +6452,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["user", "errors", "oldInput", "backHref"],
+  props: ["user", "errors", "oldInput", "annotationText", "firstNameText", "lastNameText", "emailText", "phoneText", "avatarText", "backHref", "backText", "saveText"],
   data: function data() {
     return {
       tag: "[update-profile-form]",
@@ -6478,7 +6478,15 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.tag + " user: ", this.user);
       console.log(this.tag + " errors: ", this.errors);
       console.log(this.tag + " old input: ", this.oldInput);
+      console.log(this.tag + " annotation text: ", this.annotationText);
+      console.log(this.tag + " first name text: ", this.firstNameText);
+      console.log(this.tag + " last name text: ", this.lastNameText);
+      console.log(this.tag + " email text: ", this.emailText);
+      console.log(this.tag + " phone text: ", this.phoneText);
+      console.log(this.tag + " avatar text: ", this.avatarText);
       console.log(this.tag + " back href: ", this.backHref);
+      console.log(this.tag + " back text: ", this.backText);
+      console.log(this.tag + " save text: ", this.saveText);
       this.generateAnnotationOptions();
       this.initializeData();
     },
@@ -40038,7 +40046,7 @@ var render = function() {
             [
               _c("v-select", {
                 attrs: {
-                  label: "Annotation",
+                  label: _vm.annotationText,
                   items: _vm.annotationOptions,
                   error: _vm.hasErrors("annotation"),
                   "error-messages": _vm.getErrors("annotation")
@@ -40066,7 +40074,7 @@ var render = function() {
             [
               _c("v-text-field", {
                 attrs: {
-                  label: "First name",
+                  label: _vm.firstNameText,
                   name: "first_name",
                   error: _vm.hasErrors("first_name"),
                   "error-messages": _vm.getErrors("first_name")
@@ -40089,7 +40097,7 @@ var render = function() {
             [
               _c("v-text-field", {
                 attrs: {
-                  label: "Last name",
+                  label: _vm.lastNameText,
                   name: "last_name",
                   error: _vm.hasErrors("last_name"),
                   "error-messages": _vm.getErrors("last_name")
@@ -40113,7 +40121,7 @@ var render = function() {
           [
             _c("v-text-field", {
               attrs: {
-                label: "Email address",
+                label: _vm.emailText,
                 name: "email",
                 error: _vm.hasErrors("email"),
                 "error-messages": _vm.getErrors("email")
@@ -40136,7 +40144,7 @@ var render = function() {
           [
             _c("v-text-field", {
               attrs: {
-                label: "Phone number",
+                label: _vm.phoneText,
                 name: "phone",
                 error: _vm.hasErrors("phone"),
                 "error-messages": _vm.getErrors("phone")
@@ -40154,7 +40162,9 @@ var render = function() {
         ),
         _vm._v(" "),
         _c("div", { staticClass: "image-field" }, [
-          _c("div", { staticClass: "image-field__label" }, [_vm._v("Avatar")]),
+          _c("div", { staticClass: "image-field__label" }, [
+            _vm._v(_vm._s(_vm.avatarText))
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "image-field__input" }, [
             _c("input", {
@@ -40178,7 +40188,9 @@ var render = function() {
         [
           _c("v-btn", { attrs: { href: _vm.backHref, outlined: "" } }, [
             _c("i", { staticClass: "fas fa-arrow-left" }),
-            _vm._v("\n                Terug\n            ")
+            _vm._v(
+              "\n                " + _vm._s(_vm.backText) + "\n            "
+            )
           ])
         ],
         1
@@ -40193,7 +40205,9 @@ var render = function() {
             { attrs: { color: "success", type: "submit", depressed: "" } },
             [
               _c("i", { staticClass: "far fa-save" }),
-              _vm._v("\n                Opslaan\n            ")
+              _vm._v(
+                "\n                " + _vm._s(_vm.saveText) + "\n            "
+              )
             ]
           )
         ],

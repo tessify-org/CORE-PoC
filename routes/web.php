@@ -17,23 +17,10 @@ Route::get("/", "HomeController@getHome")->name("home");
 // Auth endpoints, when user is logged in
 Route::group(["middleware" => "auth"], function() {
 
-    // Logout
-    Route::get("uitloggen", "Auth\LogoutController@getLogout")->name("auth.logout");
-    
     // Search
     Route::get("zoeken", "SearchController@getSearch")->name("search");
     Route::post("zoeken", "SearchController@postSearch")->name("search.post");
-
-    // Memberlist
-    Route::get("ledenlijst", "Profiles\MemberlistController@getMemberList")->name("memberlist");
-
-    // Update profiel
-    Route::get("profiel/updaten", "Profiles\ProfileController@getUpdateProfile")->name("profile.update");
-    Route::post("profiel/updaten", "Profiles\ProfileController@postUpdateProfile")->name("profile.update.post");
-
-    // Profiel
-    Route::get("profiel/{slug?}", "Profiles\ProfileController@getProfile")->name("profile");
-
+    
     // Jobs
     Route::group(["prefix" => "projecten"], function() {
 

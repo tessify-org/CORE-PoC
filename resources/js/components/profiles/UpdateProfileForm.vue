@@ -8,7 +8,7 @@
             <div class="form-fields">
                 <div class="form-field">
                     <v-select
-                        label="Annotation"
+                        :label="annotationText"
                         v-model="form.annotation"
                         :items="annotationOptions"
                         :error="hasErrors('annotation')"
@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-field double">
                     <v-text-field 
-                        label="First name" 
+                        :label="firstNameText"
                         v-model="form.first_name" 
                         name="first_name"
                         :error="hasErrors('first_name')"
@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-field double">
                     <v-text-field 
-                        label="Last name" 
+                        :label="lastNameText"
                         v-model="form.last_name" 
                         name="last_name"
                         :error="hasErrors('last_name')"
@@ -39,7 +39,7 @@
             <!-- Email address -->
             <div class="form-field">
                 <v-text-field 
-                    label="Email address" 
+                    :label="emailText"
                     v-model="form.email" 
                     name="email"
                     :error="hasErrors('email')"
@@ -50,7 +50,7 @@
             <!-- Phone number -->
             <div class="form-field">
                 <v-text-field 
-                    label="Phone number" 
+                    :label="phoneText"
                     v-model="form.phone" 
                     name="phone"
                     :error="hasErrors('phone')"
@@ -60,7 +60,7 @@
 
             <!-- Avatar -->
             <div class="image-field">
-                <div class="image-field__label">Avatar</div>
+                <div class="image-field__label">{{ avatarText }}</div>
                 <div class="image-field__input">
                     <input type="file" ref="add_file" v-on:change="onAvatarUpload('add')">
                 </div>
@@ -73,13 +73,13 @@
             <div class="form-controls__left">
                 <v-btn :href="backHref" outlined>
                     <i class="fas fa-arrow-left"></i>
-                    Terug
+                    {{ backText }}
                 </v-btn>
             </div>
             <div class="form-controls__right">
                 <v-btn color="success" type="submit" depressed>
                     <i class="far fa-save"></i>
-                    Opslaan
+                    {{ saveText }}
                 </v-btn>
             </div>
         </div>
@@ -93,7 +93,15 @@
             "user",
             "errors",
             "oldInput",
+            "annotationText",
+            "firstNameText",
+            "lastNameText",
+            "emailText",
+            "phoneText",
+            "avatarText",
             "backHref",
+            "backText",
+            "saveText",
         ],
         data: () => ({
             tag: "[update-profile-form]",
@@ -118,7 +126,15 @@
                 console.log(this.tag+" user: ", this.user);
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
+                console.log(this.tag+" annotation text: ", this.annotationText);
+                console.log(this.tag+" first name text: ", this.firstNameText);
+                console.log(this.tag+" last name text: ", this.lastNameText);
+                console.log(this.tag+" email text: ", this.emailText);
+                console.log(this.tag+" phone text: ", this.phoneText);
+                console.log(this.tag+" avatar text: ", this.avatarText);
                 console.log(this.tag+" back href: ", this.backHref);
+                console.log(this.tag+" back text: ", this.backText);
+                console.log(this.tag+" save text: ", this.saveText);
                 this.generateAnnotationOptions();
                 this.initializeData();
             },
