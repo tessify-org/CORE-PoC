@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "05760a02392e2745dc8418459f66929d",
+    "content-hash": "825cd60530a91f0164ccd1269d15bdbc",
     "packages": [
         {
             "name": "cocur/slugify",
@@ -3482,7 +3482,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/Tessify/Core",
-                "reference": "22984c1cec093654e2fdb550a9042612d933dc75"
+                "reference": "9210fb67d15a98b8ccbf7246f5ed691ab510bfcd"
             },
             "require": {
                 "illuminate/support": "~6.2"
