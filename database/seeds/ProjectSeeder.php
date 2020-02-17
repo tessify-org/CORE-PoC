@@ -1,15 +1,15 @@
 <?php
 
 use App\Models\User;
-use App\Models\Skill;
-use App\Models\Project;
-use App\Models\TeamRole;
-use App\Models\WorkMethod;
-use App\Models\TeamMember;
-use App\Models\ProjectStatus;
-use App\Models\ProjectCategory;
-use App\Models\ProjectResource;
-use App\Models\TeamMemberApplication;
+use Tessify\Core\Models\Skill;
+use Tessify\Core\Models\Project;
+use Tessify\Core\Models\TeamRole;
+use Tessify\Core\Models\WorkMethod;
+use Tessify\Core\Models\TeamMember;
+use Tessify\Core\Models\ProjectStatus;
+use Tessify\Core\Models\ProjectCategory;
+use Tessify\Core\Models\ProjectResource;
+use Tessify\Core\Models\TeamMemberApplication;
 
 use Illuminate\Database\Seeder;
 

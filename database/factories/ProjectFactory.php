@@ -1,7 +1,7 @@
 <?php
 
 use Carbon\Carbon;
-use App\Models\Project;
+use Tessify\Core\Models\Project;
 use Faker\Generator as Faker;
 
 $factory->define(Project::class, function (Faker $faker) {
