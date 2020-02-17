@@ -1,4 +1,4 @@
-@extends("layouts.app")
+@extends("tessify-core::layouts.app")
 
 @section("breadcrumbs")
     {!! Breadcrumbs::render("home") !!}
@@ -9,7 +9,7 @@
     <!-- Header -->
     <header id="homepage-header">
         <div id="homepage-header__content">
-            @include("partials.feedback")
+            @include("tessify-core::partials.feedback")
             <h1 class="page-title">
                 @lang("homepage.header_title")
             </h1>

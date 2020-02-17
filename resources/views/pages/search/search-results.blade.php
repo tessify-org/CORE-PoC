@@ -10,7 +10,7 @@
 
             <h1 class="page-title centered">Zoeken</h1>
         
-            @include("partials.feedback")
+            @include("tessify-core::partials.feedback")
 
             <form action="{{ route('search.post') }}" method="post">
                 {{ csrf_field() }}
