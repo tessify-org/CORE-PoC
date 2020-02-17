@@ -14,6 +14,8 @@
 // Home
 Route::get("/", "HomeController@getHome")->name("home");
 
+Route::get("test", "StaticPageController@getStaticPage")->name("static");
+
 // Auth endpoints, when user is logged in
 Route::group(["middleware" => "auth"], function() {
 
