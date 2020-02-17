@@ -59,27 +59,32 @@ class User extends Authenticatable
     
     public function createdProjects()
     {
-        return $this->hasMany(Project::class, "id", "author_id");
+        return $this->hasMany(Tessify\Core\Models\Project::class, "id", "author_id");
     }
 
     public function teamMembers()
     {
-        return $this->hasMany(TeamMember::class);
+        return $this->hasMany(Tessify\Core\Models\TeamMember::class);
     }
     
     public function teamMemberApplications()
     {
-        return $this->hasMany(TeamMemberApplication::class);
+        return $this->hasMany(Tessify\Core\Models\TeamMemberApplication::class);
     }
 
     public function placedComments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Tessify\Core\Models\Comment::class);
     }
     
     public function receivedComments()
     {
-        return $this->morphMany(Comment::class, "commentable");
+        return $this->morphMany(Tessify\Core\Models\Comment::class, "commentable");
+    }
+    
+    public function skills()
+    {
+        return $this->belongsToMany(Tessify\Core\Models\Skill::class);
     }
 
     //

@@ -51,8 +51,8 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'guest' => \App\Http\Middleware\IsGuest::class,
-        'auth' => \App\Http\Middleware\IsAuthenticated::class,
+        'guest' => \Tessify\Core\Http\Middleware\IsGuest::class,
+        'auth' => \Tessify\Core\Http\Middleware\IsAuthenticated::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,

@@ -2710,7 +2710,7 @@ p:last-child {
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:active:hover,
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:visited:hover,
 #breadcrumbs-wrapper #breadcrumbs .breadcrumb-item a:link:hover {
-  color: black;
+  color: white;
 }
 
 @media (max-width: 1250px) {

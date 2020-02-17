@@ -225,21 +225,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-
-        'Users' => \App\Facades\UsersFacade::class,
-        'Projects' => \App\Facades\ProjectsFacade::class,
-        'ProjectStatuses' => \App\Facades\ProjectStatusesFacade::class,
-        'ProjectCategories' => \App\Facades\ProjectCategoriesFacade::class,
-        'ProjectResources' => \App\Facades\ProjectResourcesFacade::class,
-        'WorkMethods' => \App\Facades\WorkMethodsFacade::class,
-        'Tasks' => \App\Facades\TasksFacade::class,
-        'TaskStatuses' => \App\Facades\TaskStatusesFacade::class,
-        'TeamMembers' => \App\Facades\TeamMembersFacade::class,
-        'TeamMemberApplications' => \App\Facades\TeamMemberApplicationsFacade::class,
-        'TeamRoles' => \App\Facades\TeamRolesFacade::class,
-        'Skills' => \App\Facades\SkillsFacade::class,
-        'Comments' => \App\Facades\CommentsFacade::class,
-
+        
         'Dates' => \App\Facades\DatesFacade::class,
         'Uploader' => \App\Facades\UploaderFacade::class,
 

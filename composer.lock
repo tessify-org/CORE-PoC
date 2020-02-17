@@ -3482,7 +3482,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/Tessify/Core",
-                "reference": "9210fb67d15a98b8ccbf7246f5ed691ab510bfcd"
+                "reference": "e10cf985daa15d51262ef46dee39a5accde8f3e1"
             },
             "require": {
                 "illuminate/support": "~6.2"
@@ -3494,7 +3494,22 @@
                         "Tessify\\Core\\Providers\\CoreServiceProvider"
                     ],
                     "aliases": {
-                        "Core": "Tessify\\Core\\Facades\\CoreFacade"
+                        "Core": "Tessify\\Core\\Facades\\CoreFacade",
+                        "Users": "Tessify\\Core\\Facades\\UsersFacade",
+                        "Skills": "Tessify\\Core\\Facades\\SkillsFacade",
+                        "Projects": "Tessify\\Core\\Facades\\ProjectsFacade",
+                        "ProjectStatuses": "Tessify\\Core\\Facades\\ProjectStatusesFacade",
+                        "ProjectCategories": "Tessify\\Core\\Facades\\ProjectCategoriesFacade",
+                        "ProjectResources": "Tessify\\Core\\Facades\\ProjectResourcesFacade",
+                        "WorkMethods": "Tessify\\Core\\Facades\\WorkMethodsFacade",
+                        "Tasks": "Tessify\\Core\\Facades\\TasksFacade",
+                        "TaskStatuses": "Tessify\\Core\\Facades\\TaskStatusesFacade",
+                        "TeamMembers": "Tessify\\Core\\Facades\\TeamMembersFacade",
+                        "TeamMemberApplications": "Tessify\\Core\\Facades\\TeamMemberApplicationsFacade",
+                        "TeamRoles": "Tessify\\Core\\Facades\\TeamRolesFacade",
+                        "Comments": "Tessify\\Core\\Facades\\CommentsFacade",
+                        "Dates": "Tessify\\Core\\Facades\\DatesFacade",
+                        "Uploader": "Tessify\\Core\\Facades\\UploaderFacade"
                     }
                 },
                 "branch-alias": {
