@@ -854,7 +854,9 @@
     }
 }
 
-// Projects overview is responsive by default
+//
+// View project
+//
 
 #project {
     #project-header {
@@ -983,6 +985,180 @@
         }
     }
     #project-content {
+        #project-navigation__wrapper {
+            display: flex;
+            margin: 0 0 50px 0;
+            flex-direction: row;
+            justify-content: center;
+            #project-navigation {
+                ul {
+                    margin: 0;
+                    padding: 0;
+                    display: flex;
+                    list-style: none;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    li {
+                        margin: 0;
+                        padding: 0;
+                        &.active, &:hover {
+                            border-bottom: 2px solid #0a64eb;
+                        }
+                        a, a:active, a:link, a:hover {
+                            display: flex;
+                            color: #000000;
+                            font-size: 1.2em;
+                            padding: 15px 20px;
+                            transition: all .3s;
+                            text-decoration: none;
+                            box-sizing: border-box;
+                            background-color: #fff;
+                        }
+                    }
+                }
+            }
+        }
+        #project-info {
+            display: flex;
+            flex-direction: row;
+            #project-info__main {
+                flex: 1;
+                margin: 0 30px 0 0;
+                #project-info__main-content {
+                    padding: 25px;
+                    box-sizing: border-box;
+                    background-color: #ffffff;
+                    #project-description {
+                        font-weight: 400;
+                        font-size: 1.2em;
+                    }
+
+                }
+            }
+            #project-info__sidebar {
+                flex: 0 0 400px;
+            }
+        }
+        #project-team {
+            #team-roles {
+                .team-role__wrapper {
+                    overflow: hidden;
+                    border-radius: 3px;
+                    margin: 0 0 30px 0;
+                    background-color: hsl(0, 0%, 95%);
+                    &:last-child {
+                        margin: 0;
+                    }
+                    .team-role {
+                        display: flex;
+                        padding: 30px;
+                        flex-direction: row;
+                        box-sizing: border-box;
+                        .team-role__avatar-wrapper {
+                            flex: 0 0 120px;
+                            margin: 0 30px 0 0;
+                            .team-role__avatar {
+                                width: 120px;
+                                display: flex;
+                                height: 120px;
+                                font-size: .8em;
+                                text-align: center;
+                                border-radius: 60px;
+                                flex-direction: row;
+                                align-items: center;
+                                justify-content: center;
+                                color: hsl(0, 0%, 50%);
+                                background-color: hsl(0, 0%, 100%);
+                            }
+                        }
+                        .team-role__text-wrapper {
+                            display: flex;
+                            flex: 0 0 300px;
+                            flex-direction: column;
+                            justify-content: center;
+                            .role-name {
+                                font-size: 2em;
+                                font-weight: 500;
+                                margin: 0 0 5px 0;
+                            }
+                            .role-skills__wrapper {
+                                .role-skills__label {
+                                    font-size: .8em;
+                                    margin: 0 0 5px 0;
+                                    color: hsl(0, 0%, 0%);
+                                }
+                                .role-skills {
+                                    display: flex;
+                                    flex-direction: row;
+                                    .role-skill {
+                                        font-size: .8em;
+                                        margin: 0 5px 0 0;
+                                        border-radius: 2px;
+                                        box-sizing: border-box;
+                                        padding: 3px 3px 3px 5px;
+                                        background-color: hsl(0, 0%, 100%);
+                                    }
+                                }
+                                .role-member {
+                                    
+                                }
+                            }
+                        }
+                        .team-role__description {
+                            display: flex;
+                            flex: 0 0 250px;
+                            font-size: .8em;
+                            margin: 0 50px 0 0;
+                            flex-direction: row;
+                            align-items: center;
+                        }
+                        .team-role__member {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            .team-role__member-label {
+                                font-size: .8em;
+                                margin: -16px 0 5px 0;
+                            }
+                        }
+                        .team-role__actions {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: flex-end;
+                        }
+                    }
+                    .team-role__footer {
+                        padding: 15px 30px;
+                        box-sizing: border-box;
+                        background-color: hsl(0, 0%, 90%);
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                        .team-role__footer-left {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                        }
+                        .team-role__footer-right {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: flex-end
+                        }
+                    }
+                }
+            }
+        }
+
+
+
+        /*
         #project-tabs {
             border-radius: 3px;
             .tab-content {
@@ -1059,10 +1235,6 @@
                     box-sizing: border-box;
                 }
             }
-        }
-        #project-description {
-            font-weight: 400;
-            font-size: 1.5em;
         }
         #project-details {
             margin: -10px 0 0 0;
@@ -1180,6 +1352,7 @@
                 background-color: hsl(0, 0%, 95%);
             }
         }
+        */
     }
 }
 
@@ -1220,6 +1393,12 @@
         }
     }
 }
+
+
+
+
+
+
 
 .sidebar-title {
     font-size: 1.5em;
@@ -1376,26 +1555,6 @@
         box-sizing: border-box;
     }
 }
-
-.content-subtitle {
-    font-size: 1.4em;
-    font-weight: 500;
-    line-height: 1em;
-    margin: 0 0 15px 0;
-    padding: 0 0 8px 0;
-    box-sizing: border-box;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-}
-
-.content-desc {
-    font-size: .9em;
-    padding: 10px 15px;
-    margin: 0 0 30px 0;
-    box-sizing: border-box;
-    background-color: hsl(0, 0%, 95%);
-}
-
-
 
 
 

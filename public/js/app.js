@@ -6934,10 +6934,64 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectView.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectView.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectResourceList.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectResourceList.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["resources", "emptyText"],
+  data: function data() {
+    return {
+      tag: "[project-resource-list]",
+      mutableResources: []
+    };
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " resources: ", this.resources);
+      console.log(this.tag + " empty text: ", this.emptyText);
+      console.log(this.tag + " ");
+      this.initializeData();
+    },
+    initializeData: function initializeData() {
+      if (this.resources !== undefined && this.resources !== null && this.resources.length > 0) {
+        for (var i = 0; i < this.resources.length; i++) {
+          this.mutableResources.push(this.resources[i]);
+        }
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -6994,6 +7048,556 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["project", "applications"],
+  data: function data() {
+    return {
+      tag: "[project-team-applications]",
+      mutableApplications: [],
+      dialogs: {
+        apply: {
+          show: false,
+          index: null,
+          errors: [],
+          loading: false,
+          form: {
+            motivation: ""
+          }
+        },
+        application: {
+          show: false,
+          index: null,
+          errors: [],
+          loading: false,
+          operation: null
+        },
+        edit_application: {
+          closed_view: false,
+          show: false,
+          index: null,
+          loading: false,
+          errors: [],
+          form: {
+            motivation: ""
+          }
+        },
+        delete_application: {
+          closed_view: false,
+          show: false,
+          index: null,
+          loading: false,
+          errors: []
+        },
+        unassign: {
+          show: false,
+          index: null,
+          loading: false,
+          errors: []
+        }
+      }
+    };
+  },
+  computed: {
+    submitApplicationDisabled: function submitApplicationDisabled() {
+      return this.dialogs.apply.form.motivation === "";
+    },
+    acceptApplicationDisabled: function acceptApplicationDisabled() {
+      return this.dialogs.application.operation === "deny" && this.dialogs.application.loading;
+    },
+    acceptApplicationLoading: function acceptApplicationLoading() {
+      return this.dialogs.application.operation === 'accept' && this.dialogs.application.loading;
+    },
+    denyApplicationDisabled: function denyApplicationDisabled() {
+      return this.dialogs.application.operation === "accept" && this.dialogs.application.loading;
+    },
+    denyApplicationLoading: function denyApplicationLoading() {
+      return this.dialogs.application.operation === 'deny' && this.dialogs.application.loading;
+    },
+    showApplicationDialogControls: function showApplicationDialogControls() {
+      return this.mutableApplications[this.dialogs.application.index] !== undefined && !this.mutableApplications[this.dialogs.application.index].processed;
+    },
+    editApplicationDisabled: function editApplicationDisabled() {
+      return this.dialogs.edit_application.form.motivation === "";
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " project: ", this.project);
+      console.log(this.tag + " applications: ", this.applications);
+      console.log(this.tag + " create team member application api endpoint: ", this.createTeamMemberApplicationApiEndpoint);
+      console.log(this.tag + " update team member application api endpoint: ", this.updateTeamMemberApplicationApiEndpoint);
+      console.log(this.tag + " delete team member application api endpoint: ", this.updateTeamMemberApplicationApiEndpoint);
+      console.log(this.tag + " accept team member application api endpoint: ", this.acceptTeamMemberApplicationApiEndpoint);
+      console.log(this.tag + " deny team member application api endpoint: ", this.denyTeamMemberApplicationApiEndpoint);
+      this.initializeData();
+    },
+    initializeData: function initializeData() {
+      if (this.applications !== undefined && this.applications !== null && this.applications.length > 0) {
+        for (var i = 0; i < this.applications.length; i++) {
+          this.mutableApplications.push(this.applications[i]);
+        }
+      }
+    },
+    onClickApplyForRole: function onClickApplyForRole(index) {
+      console.log(this.tag + " clicked apply for role button", index);
+      this.dialogs.apply.index = index;
+      this.dialogs.apply.show = true;
+    },
+    onClickConfirmApply: function onClickConfirmApply() {
+      console.log(this.tag + " clicked confirm apply button");
+      this.dialogs.apply.loading = true;
+      this.dialogs.apply.errors = [];
+      var payload = new FormData();
+      payload.append("project_id", this.project.id);
+      payload.append("team_role_id", this.project.team_roles[this.dialogs.apply.index].id);
+      payload.append("motivation", this.dialogs.apply.form.motivation);
+      console.log(this.tag + " sending API request");
+      this.axios.post(this.createTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        console.log(this.tag + " request succeeded");
+
+        if (response.data.status === "success") {
+          console.log(this.tag + " operation succeeded");
+          this.mutableApplications.push(response.data.application);
+          this.dialogs.apply.loading = false;
+          this.dialogs.apply.show = false;
+          this.dialogs.apply.form.description = "";
+        } else {
+          console.warn(this.tag + " operation failed", response.data.error);
+          this.dialogs.apply.loading = false;
+          this.dialogs.apply.errors = [response.data.error];
+        }
+      }.bind(this))["catch"](function (error) {
+        console.log(this.tag + " request failed", error);
+        this.dialogs.apply.loading = false;
+        this.dialogs.apply.errors = [error];
+      }.bind(this));
+    },
+    getApplicationJobTitle: function getApplicationJobTitle() {
+      if (this.dialogs.apply.index !== null && this.project.team_roles[this.dialogs.apply.index] !== undefined) {
+        return this.project.team_roles[this.dialogs.apply.index].name;
+      }
+
+      return "..";
+    },
+    onClickMemberApplication: function onClickMemberApplication(index) {
+      console.log(this.tag + " clicked member application", index);
+      console.log("-- aids", this.mutableApplications[index]);
+      this.dialogs.application.index = index;
+      this.dialogs.application.show = true;
+    },
+    onClickDenyApplication: function onClickDenyApplication() {
+      console.log(this.tag + " clicked deny application button");
+      this.dialogs.application.operation = "deny";
+      this.dialogs.application.loading = true;
+      var payload = new FormData();
+      payload.append("team_member_application_id", this.mutableApplications[this.dialogs.application.index].id);
+      console.log(this.tag + " sending API request");
+      this.axios.post(this.denyTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        console.log(this.tag + " request succeeded", response.data);
+
+        if (response.data.status === "success") {
+          console.log(this.tag + " operation succeeded");
+          this.mutableApplications[this.dialogs.application.index].accepted = false;
+          this.mutableApplications[this.dialogs.application.index].processed = true;
+          this.dialogs.application.loading = false;
+          this.dialogs.application.show = false;
+        } else {
+          console.warn(this.tag + " operation failed", response.data.error);
+          this.dialogs.application.errors = [response.data.error];
+          this.dialogs.application.loading = false;
+        }
+      }.bind(this))["catch"](function (error) {
+        console.warn(this.tag + " request failed", error);
+        this.dialogs.application.loading = false;
+        this.dialogs.application.errors = [error];
+      }.bind(this));
+    },
+    onClickAcceptApplication: function onClickAcceptApplication() {
+      console.log(this.tag + " clicked accept application button");
+      this.dialogs.application.operation = "accept";
+      this.dialogs.application.loading = true;
+      var payload = new FormData();
+      payload.append("team_member_application_id", this.mutableApplications[this.dialogs.application.index].id);
+      console.log(this.tag + " sending API request");
+      this.axios.post(this.acceptTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        console.log(this.tag + " request succeeded", response.data);
+
+        if (response.data.status === "success") {
+          console.log(this.tag + " operation succeeded");
+          this.mutableApplications[this.dialogs.application.index].accepted = true;
+          this.mutableApplications[this.dialogs.application.index].processed = true;
+          this.dialogs.application.loading = false;
+          this.dialogs.application.show = false;
+        } else {
+          console.warn(this.tag + " operation failed", response.data.error);
+          this.dialogs.application.errors = [response.data.error];
+          this.dialogs.application.loading = false;
+        }
+      }.bind(this))["catch"](function (error) {
+        console.warn(this.tag + " request failed", error);
+        this.dialogs.application.loading = false;
+        this.dialogs.application.errors = [error];
+      }.bind(this));
+    },
+    getApplicationStatusClass: function getApplicationStatusClass(application) {
+      if (application.processed) {
+        if (application.accepted) {
+          return "accepted";
+        } else {
+          return "denied";
+        }
+      }
+
+      return "open";
+    },
+    getApplicationStatusLabel: function getApplicationStatusLabel(application) {
+      if (application.processed) {
+        if (application.accepted) {
+          return "Geaccepteerd";
+        } else {
+          return "Afgewezen";
+        }
+      }
+
+      return "Open";
+    },
+    onClickEditApplication: function onClickEditApplication(index) {
+      console.log(this.tag + " clicked edit button");
+
+      if (this.dialogs.application.show) {
+        this.dialogs.application.show = false;
+        this.dialogs.edit_application.closed_view = true;
+      }
+
+      this.dialogs.edit_application.index = index;
+      this.dialogs.edit_application.form.motivation = this.mutableApplications[index].motivation;
+      this.dialogs.edit_application.show = true;
+    },
+    onClickConfirmEditApplication: function onClickConfirmEditApplication() {
+      console.log(this.tag + " clicked confirm edit button");
+      this.dialogs.edit_application.loading = true;
+      this.dialogs.edit_application.errors = [];
+      var payload = new FormData();
+      payload.append("team_member_application_id", this.mutableApplications[this.dialogs.edit_application.index].id);
+      payload.append("motivation", this.dialogs.edit_application.form.motivation);
+      this.axios.post(this.updateTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        if (response.data.status === "success") {
+          this.mutableApplications[this.dialogs.edit_application.index].motivation = this.dialogs.edit_application.form.motivation;
+          this.dialogs.edit_application.show = false;
+          this.dialogs.edit_application.loading = false;
+
+          if (this.dialogs.edit_application.closed_view) {
+            this.dialogs.application.show = true;
+          }
+        } else {
+          this.dialogs.edit_application.loading = false;
+          this.dialogs.edit_application.errors[response.data.error];
+        }
+      }.bind(this))["catch"](function (error) {
+        this.dialogs.edit_application.loading = false;
+        this.dialogs.edit_application.errors = [error];
+      }.bind(this));
+    },
+    onClickDeleteApplication: function onClickDeleteApplication(index) {
+      console.log(this.tag + " clicked delete button", index);
+      if (this.dialogs.application.show) this.dialogs.application.show = false;
+      this.dialogs.delete_application.index = index;
+      this.dialogs.delete_application.show = true;
+    },
+    onClickConfirmDeleteApplication: function onClickConfirmDeleteApplication() {
+      console.log(this.tag + " clicked confirm delete button");
+      this.dialogs.delete_application.loading = true;
+      this.dialogs.delete_application.errors = [];
+      var payload = new FormData();
+      payload.append("team_member_application_id", this.mutableApplications[this.dialogs.delete_application.index].id);
+      this.axios.post(this.deleteTeamMemberApplicationApiEndpoint, payload).then(function (response) {
+        if (response.data.status === "success") {
+          this.mutableApplications.splice(this.dialogs.delete_application.index, 1);
+          this.dialogs.delete_application.loading = false;
+          this.dialogs.delete_application.show = false;
+        } else {
+          this.dialogs.delete_application.loading = false;
+          this.dialogs.delete_application.errors = [response.data.error];
+        }
+      }.bind(this))["catch"](function (error) {
+        this.dialogs.delete_application.errors = [error];
+        this.dialogs.delete_application.loading = true;
+      }.bind(this));
+    },
+    onClickUnassignMember: function onClickUnassignMember(index) {
+      console.log(this.tag + " clicked unassign member button", index);
+      this.dialogs.unassign.index = index;
+      this.dialogs.unassign.show = true;
+    },
+    onClickConfirmUnassignMember: function onClickConfirmUnassignMember() {
+      console.log(this.tag + " clicked confirm unassign member button");
+      this.dialogs.unassign.loading = true;
+      this.dialogs.unassign.errors = [];
+      var payload = new FormData();
+      payload.append("team_role_id", this.mutableRoles[this.dialogs.unassign.index].id);
+      this.axios.post();
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectView.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectView.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -8110,6 +8714,44 @@ exports.push([module.i, "#project-form {\n  display: -webkit-box;\n  display: fl
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectResourceList.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectResourceList.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectView.vue?vue&type=style&index=0&lang=scss&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectView.vue?vue&type=style&index=0&lang=scss& ***!
@@ -8122,7 +8764,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#project-view {\n  margin-top: -75px;\n}\n#project-view #team #team-roles {\n  margin: 0 0 30px 0;\n}\n#project-view #team #team-roles .team-role__wrapper {\n  overflow: hidden;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  background-color: #f2f2f2;\n}\n#project-view #team #team-roles .team-role__wrapper:last-child {\n  margin: 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role {\n  display: -webkit-box;\n  display: flex;\n  padding: 30px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__avatar-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 120px;\n  margin: 0 30px 0 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__avatar-wrapper .team-role__avatar {\n  width: 120px;\n  display: -webkit-box;\n  display: flex;\n  height: 120px;\n  font-size: 0.8em;\n  text-align: center;\n  border-radius: 60px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  color: gray;\n  background-color: white;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 300px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-name {\n  font-size: 2em;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills__label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n  color: black;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills .role-skill {\n  font-size: 0.8em;\n  margin: 0 5px 0 0;\n  border-radius: 2px;\n  box-sizing: border-box;\n  padding: 3px 3px 3px 5px;\n  background-color: white;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__description {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 250px;\n  font-size: 0.8em;\n  margin: 0 50px 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__member {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__member .team-role__member-label {\n  font-size: 0.8em;\n  margin: -16px 0 5px 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__actions {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer {\n  padding: 15px 30px;\n  box-sizing: border-box;\n  background-color: #e6e6e6;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer .team-role__footer-left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer .team-role__footer-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #member-applications #member-applications__list {\n  border-radius: 3px;\n  background-color: #f2f2f2;\n}\n#project-view #member-applications #member-applications__list .member-application {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#project-view #member-applications #member-applications__list .member-application:last-child {\n  border-bottom: 0;\n}\n#project-view #member-applications #member-applications__list .member-application:hover {\n  cursor: pointer;\n  background-color: #e6e6e6;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 15px 0 0;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status {\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  text-align: center;\n  box-sizing: border-box;\n  padding: 3px 10px 5px 10px;\n  background-color: #262626;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status.denied {\n  background-color: maroon;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status.accepted {\n  background-color: #007a18;\n}\n#project-view #member-applications #member-applications__list .member-application .role-name {\n  -webkit-box-flex: 3;\n          flex: 3;\n}\n#project-view #member-applications #member-applications__list .member-application .user-name {\n  -webkit-box-flex: 2;\n          flex: 2;\n  margin: 0 0 0 15px;\n}\n#project-view #member-applications #member-applications__list .member-application .created-at {\n  margin: 0 0 0 15px;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #member-applications #member-applications__list .member-application .role-name, #project-view #member-applications #member-applications__list .member-application .user-name, #project-view #member-applications #member-applications__list .member-application .created-at {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#application-dialog-text #role-name {\n  text-align: center;\n}\n#application-dialog-text #role-name #role-name__label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 5px 0;\n}\n#application-dialog-text #role-name #role-name__text {\n  font-size: 1.5em;\n  font-weight: 500;\n}\n#application-dialog-text #user-wrapper {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#application-dialog-text #motivation {\n  text-align: center;\n}\n#application-dialog-text #motivation #motivation-label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n}\n#application-dialog-text #motivation #motivation-text {\n  padding: 10px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}", ""]);
+exports.push([module.i, "#project-view {\n  margin-top: 75px;\n}\n#project-view #team #team-roles .team-role__wrapper {\n  overflow: hidden;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  background-color: #f2f2f2;\n}\n#project-view #team #team-roles .team-role__wrapper:last-child {\n  margin: 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role {\n  display: -webkit-box;\n  display: flex;\n  padding: 30px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__avatar-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 120px;\n  margin: 0 30px 0 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__avatar-wrapper .team-role__avatar {\n  width: 120px;\n  display: -webkit-box;\n  display: flex;\n  height: 120px;\n  font-size: 0.8em;\n  text-align: center;\n  border-radius: 60px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  color: gray;\n  background-color: white;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 300px;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-name {\n  font-size: 2em;\n  font-weight: 500;\n  margin: 0 0 5px 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills__label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n  color: black;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__text-wrapper .role-skills__wrapper .role-skills .role-skill {\n  font-size: 0.8em;\n  margin: 0 5px 0 0;\n  border-radius: 2px;\n  box-sizing: border-box;\n  padding: 3px 3px 3px 5px;\n  background-color: white;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__description {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-flex: 0;\n          flex: 0 0 250px;\n  font-size: 0.8em;\n  margin: 0 50px 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__member {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__member .team-role__member-label {\n  font-size: 0.8em;\n  margin: -16px 0 5px 0;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role .team-role__actions {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer {\n  padding: 15px 30px;\n  box-sizing: border-box;\n  background-color: #e6e6e6;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer .team-role__footer-left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#project-view #team #team-roles .team-role__wrapper .team-role__footer .team-role__footer-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #member-applications #member-applications__list {\n  border-radius: 3px;\n  background-color: #f2f2f2;\n}\n#project-view #member-applications #member-applications__list .member-application {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#project-view #member-applications #member-applications__list .member-application:last-child {\n  border-bottom: 0;\n}\n#project-view #member-applications #member-applications__list .member-application:hover {\n  cursor: pointer;\n  background-color: #e6e6e6;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 15px 0 0;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status {\n  font-size: 0.8em;\n  color: #ffffff;\n  border-radius: 3px;\n  text-align: center;\n  box-sizing: border-box;\n  padding: 3px 10px 5px 10px;\n  background-color: #262626;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status.denied {\n  background-color: maroon;\n}\n#project-view #member-applications #member-applications__list .member-application .status-wrapper .status.accepted {\n  background-color: #007a18;\n}\n#project-view #member-applications #member-applications__list .member-application .role-name {\n  -webkit-box-flex: 3;\n          flex: 3;\n}\n#project-view #member-applications #member-applications__list .member-application .user-name {\n  -webkit-box-flex: 2;\n          flex: 2;\n  margin: 0 0 0 15px;\n}\n#project-view #member-applications #member-applications__list .member-application .created-at {\n  margin: 0 0 0 15px;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#project-view #member-applications #member-applications__list .member-application .role-name, #project-view #member-applications #member-applications__list .member-application .user-name, #project-view #member-applications #member-applications__list .member-application .created-at {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#application-dialog-text #role-name {\n  text-align: center;\n}\n#application-dialog-text #role-name #role-name__label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 5px 0;\n}\n#application-dialog-text #role-name #role-name__text {\n  font-size: 1.5em;\n  font-weight: 500;\n}\n#application-dialog-text #user-wrapper {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-pack: center;\n          justify-content: center;\n}\n#application-dialog-text #motivation {\n  text-align: center;\n}\n#application-dialog-text #motivation #motivation-label {\n  color: #737373;\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n}\n#application-dialog-text #motivation #motivation-text {\n  padding: 10px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}", ""]);
 
 // exports
 
@@ -36714,6 +37356,66 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectResourceList.vue?vue&type=style&index=0&lang=scss&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectResourceList.vue?vue&type=style&index=0&lang=scss& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectResourceList.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectResourceList.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectView.vue?vue&type=style&index=0&lang=scss&":
 /*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectView.vue?vue&type=style&index=0&lang=scss& ***!
@@ -40618,6 +41320,816 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectResourceList.vue?vue&type=template&id=437af01b&":
+/*!*******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectResourceList.vue?vue&type=template&id=437af01b& ***!
+  \*******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "project-resource-list" } }, [
+    _vm.mutableResources.length > 0
+      ? _c("div", { attrs: { id: "resources" } })
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.mutableResources.length === 0
+      ? _c("div", { attrs: { id: "no-resources" } }, [
+          _vm._v("\n        " + _vm._s(_vm.emptyText) + "\n    ")
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=template&id=ab694e22&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=template&id=ab694e22& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "project-team-applications" } },
+    [
+      _c("div", { attrs: { id: "member-applications" } }, [
+        _vm.mutableApplications.length > 0
+          ? _c(
+              "div",
+              { attrs: { id: "member-applications__list" } },
+              _vm._l(_vm.mutableApplications, function(application, ai) {
+                return _c(
+                  "div",
+                  {
+                    key: ai,
+                    staticClass: "member-application",
+                    on: {
+                      click: function($event) {
+                        return _vm.onClickMemberApplication(ai)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "status-wrapper" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "status",
+                          class: _vm.getApplicationStatusClass(application)
+                        },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(
+                                _vm.getApplicationStatusLabel(application)
+                              ) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "user-name" }, [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(application.user.formatted_name) +
+                          "\n                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "role-name" }, [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(application.team_role.name) +
+                          "\n                "
+                      )
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "created-at" }, [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(application.formatted_created_at) +
+                          "\n                "
+                      )
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.mutableApplications.length === 0
+          ? _c("div", { attrs: { id: "member-applications__empty" } }, [
+              _vm._v(
+                "\n            Er zijn nog geen aanmeldingen binnengekomen.\n        "
+              )
+            ])
+          : _vm._e()
+      ]),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.apply.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.apply, "show", $$v)
+            },
+            expression: "dialogs.apply.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.apply.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Aanmelden als " + _vm._s(_vm.getApplicationJobTitle()))
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.apply.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.apply.errors, function(error, ei) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-textarea", {
+                    attrs: {
+                      label: "Motivatie",
+                      placeholder: "Waarom zou je deze rol willen vervullen?",
+                      loading: _vm.dialogs.apply.loading
+                    },
+                    model: {
+                      value: _vm.dialogs.apply.form.motivation,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.apply.form, "motivation", $$v)
+                      },
+                      expression: "dialogs.apply.form.motivation"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.apply.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        depressed: "",
+                        color: "success",
+                        loading: _vm.dialogs.apply.loading,
+                        dark: !_vm.submitApplicationDisabled,
+                        disabled: _vm.submitApplicationDisabled
+                      },
+                      on: { click: _vm.onClickConfirmApply }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-save" }),
+                      _vm._v(
+                        "\n                        Opslaan\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.edit_application.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.edit_application, "show", $$v)
+            },
+            expression: "dialogs.edit_application.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.edit_application.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Aanmelding wijzigingen")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.edit_application.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.edit_application.errors, function(
+                      error,
+                      ei
+                    ) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-textarea", {
+                    attrs: {
+                      label: "Motivatie",
+                      placeholder: "Waarom zou je deze rol willen vervullen?",
+                      loading: _vm.dialogs.edit_application.loading
+                    },
+                    model: {
+                      value: _vm.dialogs.edit_application.form.motivation,
+                      callback: function($$v) {
+                        _vm.$set(
+                          _vm.dialogs.edit_application.form,
+                          "motivation",
+                          $$v
+                        )
+                      },
+                      expression: "dialogs.edit_application.form.motivation"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.edit_application.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        depressed: "",
+                        color: "success",
+                        loading: _vm.dialogs.edit_application.loading,
+                        dark: !_vm.editApplicationDisabled,
+                        disabled: _vm.editApplicationDisabled
+                      },
+                      on: { click: _vm.onClickConfirmEditApplication }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-save" }),
+                      _vm._v(
+                        "\n                        Opslaan\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.delete_application.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.delete_application, "show", $$v)
+            },
+            expression: "dialogs.delete_application.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.delete_application.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Aanmelding wijzigingen")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.delete_application.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.delete_application.errors, function(
+                      error,
+                      ei
+                    ) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("div", { staticClass: "dialog-text" }, [
+                _vm._v(
+                  "\n                    Weet je zeker dat je deze aanmelding wilt verwijderen?\n                "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.delete_application.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Nee, annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        dark: "",
+                        depressed: "",
+                        color: "red",
+                        loading: _vm.dialogs.delete_application.loading
+                      },
+                      on: { click: _vm.onClickConfirmDeleteApplication }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-trash" }),
+                      _vm._v(
+                        "\n                        Ja, verwijderen\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "700" },
+          model: {
+            value: _vm.dialogs.application.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.application, "show", $$v)
+            },
+            expression: "dialogs.application.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.application.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Bekijk aanmelding")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.application.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.application.errors, function(error, ei) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.mutableApplications[_vm.dialogs.application.index] !==
+              undefined
+                ? _c("div", { attrs: { id: "application-dialog-text" } }, [
+                    _c("div", { attrs: { id: "role-name" } }, [
+                      _c("div", { attrs: { id: "role-name__label" } }, [
+                        _vm._v("Aangemeld voor de rol")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { attrs: { id: "role-name__text" } }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(
+                              _vm.mutableApplications[
+                                _vm.dialogs.application.index
+                              ].team_role.name
+                            ) +
+                            "\n                        "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { attrs: { id: "user-wrapper" } },
+                      [
+                        _c("user-pill", {
+                          attrs: {
+                            dark: "",
+                            user:
+                              _vm.mutableApplications[
+                                _vm.dialogs.application.index
+                              ].user
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { attrs: { id: "motivation" } }, [
+                      _c("div", { attrs: { id: "motivation-label" } }, [
+                        _vm._v("Motivatie")
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { attrs: { id: "motivation-text" } }, [
+                        _vm._v(
+                          "\n                            " +
+                            _vm._s(
+                              _vm.mutableApplications[
+                                _vm.dialogs.application.index
+                              ].motivation
+                            ) +
+                            "\n                        "
+                        )
+                      ])
+                    ])
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _vm.showApplicationDialogControls
+              ? _c("div", { staticClass: "dialog-controls" }, [
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__left" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            depressed: "",
+                            color: "red",
+                            dark: !_vm.denyApplicationDisabled,
+                            loading: _vm.denyApplicationLoading,
+                            disabled: _vm.denyApplicationDisabled
+                          },
+                          on: { click: _vm.onClickDenyApplication }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-thumbs-down" }),
+                          _vm._v(
+                            "\n                        Afwijzen\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            depressed: "",
+                            color: "success",
+                            loading: _vm.acceptApplicationLoading,
+                            disabled: _vm.acceptApplicationDisabled
+                          },
+                          on: { click: _vm.onClickAcceptApplication }
+                        },
+                        [
+                          _c("i", { staticClass: "far fa-thumbs-up" }),
+                          _vm._v(
+                            "\n                        Accepteren\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { depressed: "", color: "warning" },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickEditApplication(
+                                _vm.dialogs.application.index
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Edit\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { dark: "", depressed: "", color: "red" },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickDeleteApplication(
+                                _vm.dialogs.application.index
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Delete\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e(),
+            _vm._v(" "),
+            !_vm.showApplicationDialogControls &&
+            _vm.mutableApplications[_vm.dialogs.application.index] !== undefined
+              ? _c("div", { staticClass: "dialog-controls" }, [
+                  _c("div", { staticClass: "dialog-controls__left" }, [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(
+                          _vm.getApplicationStatusLabel(
+                            _vm.mutableApplications[
+                              _vm.dialogs.application.index
+                            ]
+                          )
+                        ) +
+                        "\n                "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { small: "", depressed: "", color: "warning" },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickEditApplication(
+                                _vm.dialogs.application.index
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Edit\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: {
+                            small: "",
+                            dark: "",
+                            depressed: "",
+                            color: "red"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickDeleteApplication(
+                                _vm.dialogs.application.index
+                              )
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        Delete\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              : _vm._e()
+          ])
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectView.vue?vue&type=template&id=67598b74&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectView.vue?vue&type=template&id=67598b74& ***!
@@ -40637,26 +42149,6 @@ var render = function() {
     "div",
     { attrs: { id: "project-view" } },
     [
-      _c("div", { attrs: { id: "project-stats" } }, [
-        _c(
-          "div",
-          {
-            staticClass: "elevation-1",
-            class: _vm.project.status.name,
-            attrs: { id: "project-status" }
-          },
-          [
-            _c("div", { attrs: { id: "project-status__label" } }, [
-              _vm._v("Status")
-            ]),
-            _vm._v(" "),
-            _c("div", { attrs: { id: "project-status__value" } }, [
-              _vm._v(_vm._s(_vm.project.status.label))
-            ])
-          ]
-        )
-      ]),
-      _vm._v(" "),
       _c(
         "v-tabs",
         {
@@ -40674,6 +42166,8 @@ var render = function() {
           _c("v-tab", [_vm._v("Algemene informatie")]),
           _vm._v(" "),
           _c("v-tab", [_vm._v("Het Team")]),
+          _vm._v(" "),
+          _c("v-tab", [_vm._v("Aanmeldingen")]),
           _vm._v(" "),
           _c("v-tab-item", [
             _c("div", { staticClass: "tab-content" }, [
@@ -40911,208 +42405,12 @@ var render = function() {
                 _vm._v(
                   "Alle rollen die vervult dienen te worden om dit project tot een succes te maken."
                 )
-              ]),
-              _vm._v(" "),
-              _c("div", { attrs: { id: "team" } }, [
-                _vm.mutableRoles.length > 0
-                  ? _c(
-                      "div",
-                      { attrs: { id: "team-roles" } },
-                      _vm._l(_vm.mutableRoles, function(role, ri) {
-                        return _c(
-                          "div",
-                          { key: ri, staticClass: "team-role__wrapper" },
-                          [
-                            _c("div", { staticClass: "team-role" }, [
-                              _c(
-                                "div",
-                                { staticClass: "team-role__avatar-wrapper" },
-                                [
-                                  role.team_member
-                                    ? _c("div", {
-                                        staticClass: "team-role__avatar",
-                                        style: {
-                                          backgroundImage:
-                                            "url(" +
-                                            role.team_member.user.avatar_url +
-                                            ")"
-                                        }
-                                      })
-                                    : _vm._e(),
-                                  _vm._v(" "),
-                                  !role.team_member
-                                    ? _c(
-                                        "div",
-                                        { staticClass: "team-role__avatar" },
-                                        [
-                                          _vm._v(
-                                            "\n                                        Open!"
-                                          ),
-                                          _c("br"),
-                                          _vm._v(
-                                            "\n                                        Meld je aan\n                                    "
-                                          )
-                                        ]
-                                      )
-                                    : _vm._e()
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: "team-role__text-wrapper" },
-                                [
-                                  _c("div", { staticClass: "role-name" }, [
-                                    _vm._v(_vm._s(role.name))
-                                  ]),
-                                  _vm._v(" "),
-                                  role.skills.length > 0
-                                    ? _c(
-                                        "div",
-                                        { staticClass: "role-skills__wrapper" },
-                                        [
-                                          _c(
-                                            "div",
-                                            { staticClass: "role-skills" },
-                                            _vm._l(role.skills, function(
-                                              skill,
-                                              si
-                                            ) {
-                                              return _c(
-                                                "div",
-                                                {
-                                                  key: si,
-                                                  staticClass: "role-skill"
-                                                },
-                                                [
-                                                  _vm._v(
-                                                    "\n                                                " +
-                                                      _vm._s(skill.name) +
-                                                      "\n                                            "
-                                                  )
-                                                ]
-                                              )
-                                            }),
-                                            0
-                                          )
-                                        ]
-                                      )
-                                    : _vm._e()
-                                ]
-                              ),
-                              _vm._v(" "),
-                              role.team_member
-                                ? _c(
-                                    "div",
-                                    { staticClass: "team-role__member" },
-                                    [
-                                      _c(
-                                        "div",
-                                        {
-                                          staticClass: "team-role__member-label"
-                                        },
-                                        [_vm._v("Vervuld door:")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("user-pill", {
-                                        attrs: { user: role.team_member.user }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                : _vm._e(),
-                              _vm._v(" "),
-                              !role.team_member
-                                ? _c(
-                                    "div",
-                                    { staticClass: "team-role__actions" },
-                                    [
-                                      _c(
-                                        "v-btn",
-                                        {
-                                          attrs: {
-                                            color: "primary",
-                                            large: "",
-                                            depressed: ""
-                                          },
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.onClickApplyForRole(ri)
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _vm._v(
-                                            "\n                                        Meld je aan!\n                                    "
-                                          )
-                                        ]
-                                      )
-                                    ],
-                                    1
-                                  )
-                                : _vm._e()
-                            ]),
-                            _vm._v(" "),
-                            role.team_member
-                              ? _c(
-                                  "div",
-                                  { staticClass: "team-role__footer" },
-                                  [
-                                    _c("div", {
-                                      staticClass: "team-role__footer-left"
-                                    }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: "team-role__footer-right"
-                                      },
-                                      [
-                                        _c(
-                                          "v-btn",
-                                          {
-                                            attrs: {
-                                              small: "",
-                                              color: "red",
-                                              dark: "",
-                                              depressed: ""
-                                            },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.onClickUnassignMember(
-                                                  ri
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                        Team lid afzetten\n                                    "
-                                            )
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ]
-                                )
-                              : _vm._e()
-                          ]
-                        )
-                      }),
-                      0
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.project.team_roles.length === 0
-                  ? _c("div", { attrs: { id: "no-team-roles" } }, [
-                      _vm._v(
-                        "\n                        Er zijn nog geen rollen gedefineert.\n                    "
-                      )
-                    ])
-                  : _vm._e()
-              ]),
-              _vm._v(" "),
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("v-tab-item", [
+            _c("div", { staticClass: "tab-content" }, [
               _c("h3", { staticClass: "content-subtitle" }, [
                 _vm._v("Aanmeldingen")
               ]),
@@ -95329,6 +96627,8 @@ var map = {
 	"./components/navigation/MobileNavigation.vue": "./resources/js/components/navigation/MobileNavigation.vue",
 	"./components/profiles/UpdateProfileForm.vue": "./resources/js/components/profiles/UpdateProfileForm.vue",
 	"./components/projects/ProjectForm.vue": "./resources/js/components/projects/ProjectForm.vue",
+	"./components/projects/ProjectResourceList.vue": "./resources/js/components/projects/ProjectResourceList.vue",
+	"./components/projects/ProjectTeamApplications.vue": "./resources/js/components/projects/ProjectTeamApplications.vue",
 	"./components/projects/ProjectView.vue": "./resources/js/components/projects/ProjectView.vue",
 	"./components/users/UserPill.vue": "./resources/js/components/users/UserPill.vue"
 };
@@ -96587,6 +97887,180 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/projects/ProjectResourceList.vue":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectResourceList.vue ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProjectResourceList_vue_vue_type_template_id_437af01b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProjectResourceList.vue?vue&type=template&id=437af01b& */ "./resources/js/components/projects/ProjectResourceList.vue?vue&type=template&id=437af01b&");
+/* harmony import */ var _ProjectResourceList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProjectResourceList.vue?vue&type=script&lang=js& */ "./resources/js/components/projects/ProjectResourceList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ProjectResourceList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProjectResourceList.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/projects/ProjectResourceList.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ProjectResourceList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProjectResourceList_vue_vue_type_template_id_437af01b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProjectResourceList_vue_vue_type_template_id_437af01b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/projects/ProjectResourceList.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectResourceList.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectResourceList.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectResourceList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectResourceList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectResourceList.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectResourceList.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectResourceList.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectResourceList.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectResourceList.vue?vue&type=template&id=437af01b&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectResourceList.vue?vue&type=template&id=437af01b& ***!
+  \*************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_template_id_437af01b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectResourceList.vue?vue&type=template&id=437af01b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectResourceList.vue?vue&type=template&id=437af01b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_template_id_437af01b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectResourceList_vue_vue_type_template_id_437af01b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectTeamApplications.vue":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectTeamApplications.vue ***!
+  \**********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProjectTeamApplications_vue_vue_type_template_id_ab694e22___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProjectTeamApplications.vue?vue&type=template&id=ab694e22& */ "./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=template&id=ab694e22&");
+/* harmony import */ var _ProjectTeamApplications_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProjectTeamApplications.vue?vue&type=script&lang=js& */ "./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ProjectTeamApplications_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ProjectTeamApplications_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProjectTeamApplications_vue_vue_type_template_id_ab694e22___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProjectTeamApplications_vue_vue_type_template_id_ab694e22___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/projects/ProjectTeamApplications.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectTeamApplications.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss& ***!
+  \********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=template&id=ab694e22&":
+/*!*****************************************************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=template&id=ab694e22& ***!
+  \*****************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_template_id_ab694e22___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectTeamApplications.vue?vue&type=template&id=ab694e22& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamApplications.vue?vue&type=template&id=ab694e22&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_template_id_ab694e22___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_template_id_ab694e22___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/projects/ProjectView.vue":
 /*!**********************************************************!*\
   !*** ./resources/js/components/projects/ProjectView.vue ***!
@@ -96807,9 +98281,9 @@ var EventBus = new vue__WEBPACK_IMPORTED_MODULE_0___default.a();
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! D:\Code\Websites\NNW\resources\js\app.js */"./resources/js/app.js");
-__webpack_require__(/*! D:\Code\Websites\NNW\resources\sass\app.scss */"./resources/sass/app.scss");
-module.exports = __webpack_require__(/*! D:\Code\Websites\NNW\resources\sass\admin.scss */"./resources/sass/admin.scss");
+__webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/js/app.js */"./resources/js/app.js");
+__webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/sass/app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! /home/konan/Code/Websites/NNW/resources/sass/admin.scss */"./resources/sass/admin.scss");
 
 
 /***/ })

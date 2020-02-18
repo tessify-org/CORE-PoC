@@ -2849,6 +2849,36 @@ i {
   text-align: center;
 }
 
+.content-box {
+  padding: 25px;
+  margin: 0 0 30px 0;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+.content-box:last-child {
+  margin: 0;
+}
+
+.content-subtitle {
+  font-size: 1.4em;
+  font-weight: 500;
+  line-height: 1em;
+  margin: 0 0 15px 0;
+  padding: 0 0 8px 0;
+  box-sizing: border-box;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.content-desc {
+  font-size: 0.9em;
+  padding: 10px 15px;
+  margin: 0 0 30px 0;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+}
+
 .alert-wrapper {
   margin-bottom: -20px;
   padding: 50px 50px 0 50px;
