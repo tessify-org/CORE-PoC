@@ -12,8 +12,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Models\Job' => 'App\Policies\JobPolicy',
+        // 'Tessify\Core\Models\Job' => 'Tessify\Core\Policies\JobPolicy',
     ];
+
 
     /**
      * Register any authentication / authorization services.
