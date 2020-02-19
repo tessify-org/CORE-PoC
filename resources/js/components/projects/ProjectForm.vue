@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="content-card elevation-1">
+            <div class="content-card elevation-1" v-if="project === undefined">
                 <div class="content-card__content">
 
                     <!-- Team roles -->

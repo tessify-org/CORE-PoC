@@ -18,6 +18,7 @@ class CreateTeamMemberApplicationsTable extends Migration
             $table->unsignedInteger('project_id');
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('team_role_id');
+            $table->string('uuid');
             $table->text('motivation');
             $table->boolean('processed')->default(false);
             $table->boolean('accepted')->default(false);

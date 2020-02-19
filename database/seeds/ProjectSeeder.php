@@ -105,6 +105,7 @@ class ProjectSeeder extends Seeder
                 "work_method_id" => $scrum->id,
                 "project_status_id" => $open->id,
                 "project_category_id" => $software->id,
+                "header_image_url" => "storage/images/projects/header/default.jpeg"
             ]);
                 
             // Role 1
