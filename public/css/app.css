@@ -5048,6 +5048,25 @@ i {
           justify-content: center;
 }
 
+#project #project-content #team-members__actions {
+  margin: 30px 0 0 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#project #project-content #team-members__actions .v-btn {
+  margin: 0 15px 0 0;
+}
+
+#project #project-content #team-members__actions .v-btn:last-child {
+  margin: 0;
+}
+
 #project #project-content #team-roles {
   display: -webkit-box;
   display: flex;

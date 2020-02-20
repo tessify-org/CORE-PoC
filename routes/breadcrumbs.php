@@ -82,6 +82,10 @@ Breadcrumbs::for("projects.team.view", function($t, $project) {
     $t->parent("projects.view", $project);
     $t->push(__("tessify-core::breadcrumbs.projects_team_view"), route("projects.team.view", $project->slug));
 });
+Breadcrumbs::for("projects.team.leave", function($t, $project) {
+    $t->parent("projects.team.view", $project);
+    $t->push(__("tessify-core::breadcrumbs.projects_team_leave"), route("projects.team.leave", $project->slug));
+});
 
 // Project team applications
 Breadcrumbs::for("projects.team.applications", function($t, $project) {
