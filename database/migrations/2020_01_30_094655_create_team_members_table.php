@@ -17,7 +17,6 @@ class CreateTeamMembersTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('project_id');
             $table->unsignedInteger('user_id')->nullable();
-            $table->string('title');
             $table->timestamps();
         });
     }

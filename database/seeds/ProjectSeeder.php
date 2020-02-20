@@ -120,7 +120,6 @@ class ProjectSeeder extends Seeder
             $role_one_member = TeamMember::create([
                 "project_id" => $project->id,
                 "user_id" => $user->id,
-                "title" => $role_one->name,
             ]);
             $role_one_member->teamRoles()->attach($role_one->id);
 
