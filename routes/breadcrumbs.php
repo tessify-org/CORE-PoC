@@ -86,6 +86,10 @@ Breadcrumbs::for("projects.team.leave", function($t, $project) {
     $t->parent("projects.team.view", $project);
     $t->push(__("tessify-core::breadcrumbs.projects_team_leave"), route("projects.team.leave", $project->slug));
 });
+Breadcrumbs::for("projects.team.change-roles", function($t, $project, $user) {
+    $t->parent("projects.team.view", $project);
+    $t->push(__("tessify-core::breadcrumbs.projects_team_change_roles"), route("projects.team.change-roles", ["slug" => $project->slug, 'userSlug' => $user->slug]));
+});
 
 // Project team applications
 Breadcrumbs::for("projects.team.applications", function($t, $project) {

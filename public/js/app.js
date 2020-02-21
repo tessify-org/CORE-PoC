@@ -7805,6 +7805,150 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["member", "roles", "project", "errors", "oldInput", "userText", "projectText", "roleText", "selectRoleText", "noRolesText", "backHref", "backText", "submitText"],
+  data: function data() {
+    return {
+      tag: "[project-team-member-change-roles-form]",
+      roleOptions: [],
+      form: {
+        team_role_id: 0
+      }
+    };
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " member: ", this.member);
+      console.log(this.tag + " roles: ", this.roles);
+      console.log(this.tag + " project: ", this.project);
+      console.log(this.tag + " errors: ", this.errors);
+      console.log(this.tag + " old input: ", this.oldInput);
+      console.log(this.tag + " project text: ", this.projectText);
+      console.log(this.tag + " user text: ", this.userText);
+      console.log(this.tag + " role text: ", this.roleText);
+      console.log(this.tag + " select role text: ", this.selectRoleText);
+      console.log(this.tag + " no roles text: ", this.noRolesText);
+      console.log(this.tag + " back href: ", this.backHref);
+      console.log(this.tag + " back text: ", this.backText);
+      console.log(this.tag + " submit text: ", this.submitText);
+      this.generateRoleOptions();
+      this.initializeData();
+    },
+    generateRoleOptions: function generateRoleOptions() {
+      if (this.roles !== undefined && this.roles !== null && this.roles.length > 0) {
+        this.roleOptions.push({
+          text: this.selectRoleText,
+          value: 0
+        });
+
+        for (var i = 0; i < this.roles.length; i++) {
+          this.roleOptions.push({
+            text: this.roles[i].name,
+            value: this.roles[i].id
+          });
+        }
+      } else {
+        this.roleOptions.push({
+          text: this.noRolesText,
+          value: 0
+        });
+      }
+    },
+    initializeData: function initializeData() {
+      if (this.oldInput !== undefined && this.oldInput !== null) {
+        if (this.oldInput.team_role_id !== null) this.form.team_role_id = parseInt(this.oldInput.team_role_id);
+      }
+    },
+    hasErrors: function hasErrors(field) {
+      if (this.errors !== undefined && this.errors !== null && this.errors.length > 0) {
+        if (this.errors[field] !== undefined && this.errors[field] !== "") {
+          return true;
+        }
+      }
+
+      return false;
+    },
+    getErrors: function getErrors(field) {
+      if (this.errors !== undefined && this.errors !== null && this.errors[field] !== undefined && this.errors[field] !== null) {
+        return this.errors[field];
+      }
+
+      return [];
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamRoleForm.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectTeamRoleForm.vue?vue&type=script&lang=js& ***!
@@ -9261,6 +9405,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#change-roles-form__wrapper {\n  width: 800px;\n  margin: 0 auto;\n}\n#change-roles-form__wrapper #change-roles-form {\n  padding: 25px;\n  margin: 0 0 30px 0;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #ffffff;\n}", ""]);
 
 // exports
 
@@ -38029,6 +38192,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamRoleForm.vue?vue&type=style&index=0&lang=scss&":
 /*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectTeamRoleForm.vue?vue&type=style&index=0&lang=scss& ***!
@@ -43006,6 +43199,133 @@ var render = function() {
     ],
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=template&id=17029f8a&":
+/*!********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=template&id=17029f8a& ***!
+  \********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "change-roles-form__wrapper" } }, [
+    _c(
+      "div",
+      { staticClass: "elevation-1", attrs: { id: "change-roles-form" } },
+      [
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-text-field", {
+              attrs: { disabled: "", label: _vm.projectText },
+              model: {
+                value: _vm.project.title,
+                callback: function($$v) {
+                  _vm.$set(_vm.project, "title", $$v)
+                },
+                expression: "project.title"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-text-field", {
+              attrs: { disabled: "", label: _vm.userText },
+              model: {
+                value: _vm.member.user.formatted_name,
+                callback: function($$v) {
+                  _vm.$set(_vm.member.user, "formatted_name", $$v)
+                },
+                expression: "member.user.formatted_name"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-select", {
+              attrs: {
+                label: _vm.roleText,
+                items: _vm.roleOptions,
+                errors: _vm.hasErrors("team_role_id"),
+                "error-messages": _vm.getErrors("team_role_id")
+              },
+              model: {
+                value: _vm.form.team_role_id,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "team_role_id", $$v)
+                },
+                expression: "form.team_role_id"
+              }
+            }),
+            _vm._v(" "),
+            _c("input", {
+              attrs: { type: "hidden", name: "team_role_id" },
+              domProps: { value: _vm.form.team_role_id }
+            })
+          ],
+          1
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "form-controls" }, [
+      _c(
+        "div",
+        { staticClass: "form-controls__left" },
+        [
+          _c("v-btn", { attrs: { outlined: "", href: _vm.backHref } }, [
+            _vm._v(
+              "\n                " + _vm._s(_vm.backText) + "\n            "
+            )
+          ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-controls__right" },
+        [
+          _c(
+            "v-btn",
+            { attrs: { depressed: "", color: "success", type: "submit" } },
+            [
+              _c("i", { staticClass: "fas fa-save" }),
+              _vm._v(
+                "\n                " + _vm._s(_vm.submitText) + "\n            "
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -97766,6 +98086,7 @@ var map = {
 	"./components/projects/ProjectResourceList.vue": "./resources/js/components/projects/ProjectResourceList.vue",
 	"./components/projects/ProjectTeamApplicationList.vue": "./resources/js/components/projects/ProjectTeamApplicationList.vue",
 	"./components/projects/ProjectTeamApplications.vue": "./resources/js/components/projects/ProjectTeamApplications.vue",
+	"./components/projects/ProjectTeamMemberChangeRolesForm.vue": "./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue",
 	"./components/projects/ProjectTeamRoleForm.vue": "./resources/js/components/projects/ProjectTeamRoleForm.vue",
 	"./components/projects/ProjectView.vue": "./resources/js/components/projects/ProjectView.vue",
 	"./components/projects/TeamMemberApplicationForm.vue": "./resources/js/components/projects/TeamMemberApplicationForm.vue",
@@ -99369,6 +99690,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_template_id_ab694e22___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamApplications_vue_vue_type_template_id_ab694e22___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProjectTeamMemberChangeRolesForm_vue_vue_type_template_id_17029f8a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProjectTeamMemberChangeRolesForm.vue?vue&type=template&id=17029f8a& */ "./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=template&id=17029f8a&");
+/* harmony import */ var _ProjectTeamMemberChangeRolesForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProjectTeamMemberChangeRolesForm.vue?vue&type=script&lang=js& */ "./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ProjectTeamMemberChangeRolesForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ProjectTeamMemberChangeRolesForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProjectTeamMemberChangeRolesForm_vue_vue_type_template_id_17029f8a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProjectTeamMemberChangeRolesForm_vue_vue_type_template_id_17029f8a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectTeamMemberChangeRolesForm.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss& ***!
+  \*****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=template&id=17029f8a&":
+/*!**************************************************************************************************************!*\
+  !*** ./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=template&id=17029f8a& ***!
+  \**************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_template_id_17029f8a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProjectTeamMemberChangeRolesForm.vue?vue&type=template&id=17029f8a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/ProjectTeamMemberChangeRolesForm.vue?vue&type=template&id=17029f8a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_template_id_17029f8a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProjectTeamMemberChangeRolesForm_vue_vue_type_template_id_17029f8a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

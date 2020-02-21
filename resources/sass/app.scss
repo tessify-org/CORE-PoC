@@ -1076,6 +1076,7 @@
                     padding: 25px;
                     overflow: hidden;
                     border-radius: 3px;
+                    position: relative;
                     flex-direction: row;
                     box-sizing: border-box;
                     background-color: hsl(0, 0%, 95%);
@@ -1113,10 +1114,34 @@
                             }
                         }
                     }
-                    .team-member__actions {
+                    .team-manager__actions {
+                        top: 25px;
+                        right: 25px;
                         display: flex;
-                        flex-direction: column;
-                        justify-content: center;
+                        position: absolute;
+                        flex-direction: row;
+                        align-items: center;
+                        .team-manager__action {
+                            width: 30px;
+                            height: 30px;
+                            display: flex;
+                            color: #000000;
+                            border-radius: 3px;
+                            align-items: center;
+                            text-decoration: none;
+                            justify-content: center;
+                            transition: all .3s;
+                            &:hover {
+                                background-color: hsl(0, 0%, 90%);
+                            }
+                        }
+                    }
+                    .team-member__actions {
+                        right: 25px;
+                        bottom: 25px;
+                        display: flex;
+                        position: absolute;
+                        flex-direction: row;
                     }
                 }
             }

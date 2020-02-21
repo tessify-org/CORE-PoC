@@ -4983,6 +4983,7 @@ i {
   padding: 25px;
   overflow: hidden;
   border-radius: 3px;
+  position: relative;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
@@ -5038,14 +5039,48 @@ i {
   text-transform: uppercase;
 }
 
-#project #project-content #team-members .team-member__wrapper .team-member .team-member__actions {
+#project #project-content #team-members .team-member__wrapper .team-member .team-manager__actions {
+  top: 25px;
+  right: 25px;
   display: -webkit-box;
   display: flex;
-  -webkit-box-orient: vertical;
+  position: absolute;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-          flex-direction: column;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#project #project-content #team-members .team-member__wrapper .team-member .team-manager__actions .team-manager__action {
+  width: 30px;
+  height: 30px;
+  display: -webkit-box;
+  display: flex;
+  color: #000000;
+  border-radius: 3px;
+  -webkit-box-align: center;
+          align-items: center;
+  text-decoration: none;
   -webkit-box-pack: center;
           justify-content: center;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#project #project-content #team-members .team-member__wrapper .team-member .team-manager__actions .team-manager__action:hover {
+  background-color: #e6e6e6;
+}
+
+#project #project-content #team-members .team-member__wrapper .team-member .team-member__actions {
+  right: 25px;
+  bottom: 25px;
+  display: -webkit-box;
+  display: flex;
+  position: absolute;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
 }
 
 #project #project-content #team-members__actions {
