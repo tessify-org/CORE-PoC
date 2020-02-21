@@ -86,10 +86,6 @@ Breadcrumbs::for("projects.team.leave", function($t, $project) {
     $t->parent("projects.team.view", $project);
     $t->push(__("tessify-core::breadcrumbs.projects_team_leave"), route("projects.team.leave", $project->slug));
 });
-Breadcrumbs::for("projects.team.change-roles", function($t, $project, $user) {
-    $t->parent("projects.team.view", $project);
-    $t->push(__("tessify-core::breadcrumbs.projects_team_change_roles"), route("projects.team.change-roles", ["slug" => $project->slug, 'userSlug' => $user->slug]));
-});
 
 // Project team applications
 Breadcrumbs::for("projects.team.applications", function($t, $project) {
@@ -115,9 +111,13 @@ Breadcrumbs::for("projects.team.apply", function($t, $project) {
 });
 
 // Project team members
-Breadcrumbs::for("projects.team.remove-member", function($t, $project) {
+Breadcrumbs::for("projects.team.change-roles", function($t, $project, $user) {
+    $t->parent("projects.team.view", $project);
+    $t->push(__("tessify-core::breadcrumbs.projects_team_change_roles"), route("projects.team.change-roles", ["slug" => $project->slug, 'userSlug' => $user->slug]));
+});
+Breadcrumbs::for("projects.team.remove-member", function($t, $project, $user) {
     $t->parent("projects.view", $project);
-    $t->push(__("tessify-core::breadcrumbs.projects_team_member_remove"), route("projects.team.remove-member", $project->slug));
+    $t->push(__("tessify-core::breadcrumbs.projects_team_member_remove"), route("projects.team.remove-member", ['slug' => $project->slug, 'userSlug' => $user->slug]));
 });
 Breadcrumbs::for("projects.team.invite-member", function($t, $project) {
     $t->parent("projects.view", $project);
