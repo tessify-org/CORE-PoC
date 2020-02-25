@@ -1,8 +1,6 @@
 <template>
     <div id="task-dashboard-sidebar-categories" class="task-overview__sidebar-panel elevation-1">
-        <div class="sidebar-panel__header">
-            Categories
-        </div>
+        <div class="sidebar-panel__header">{{ title }}</div>
         <div class="sidebar-panel__content">
             <div id="categories" v-if="mutableCategories.length > 0">
                 <div class="category-wrapper" v-for="(category, ci) in mutableCategories" :key="ci">
@@ -18,7 +16,7 @@
                 </div>
             </div>
             <div id="no-categories" v-if="mutableCategories.length === 0">
-                No categories found
+                {{ noRecordsText }}
             </div>
         </div>
     </div>
@@ -29,6 +27,8 @@
     export default {
         props: [
             "categories",
+            "title",
+            "noRecordsText",
         ],
         data: () => ({
             tag: "[task-dashboard-sidebar-categories]",
@@ -38,6 +38,8 @@
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" categories: ", this.categories);
+                console.log(this.tag+" title: ", this.title);
+                console.log(this.tag+" no records text: ", this.noRecordsText);
                 this.initializeData();
             },
             initializeData() {

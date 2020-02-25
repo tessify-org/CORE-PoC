@@ -62,6 +62,11 @@ class User extends Authenticatable
         return $this->hasMany(Tessify\Core\Models\Project::class, "id", "author_id");
     }
 
+    public function createdTasks()
+    {
+        return $this->hasMany(Tessify\Core\Models\Task::class, "id", "author_id");
+    }
+
     public function teamMembers()
     {
         return $this->hasMany(Tessify\Core\Models\TeamMember::class);

@@ -1,8 +1,6 @@
 <template>
     <div id="task-dashboard-sidebar-seniorities" class="task-overview__sidebar-panel elevation-1">
-        <div class="sidebar-panel__header">
-            Seniorities
-        </div>
+        <div class="sidebar-panel__header">{{ title }}</div>
         <div class="sidebar-panel__content">
             <div id="seniorities" v-if="mutableSeniorities.length > 0">
                 <div class="seniority-wrapper" v-for="(seniority, ci) in mutableSeniorities" :key="ci">
@@ -18,7 +16,7 @@
                 </div>
             </div>
             <div id="no-categories" v-if="mutableSeniorities.length === 0">
-                No seniorities found
+                {{ noRecordsText }}
             </div>
         </div>
     </div>
@@ -29,6 +27,8 @@
     export default {
         props: [
             "seniorities",
+            "title",
+            "noRecordsText",
         ],
         data: () => ({
             tag: "[task-dashboard-sidebar-seniorities]",
@@ -38,6 +38,8 @@
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" seniorities: ", this.seniorities);
+                console.log(this.tag+" title: ", this.title);
+                console.log(this.tag+" no records text: ", this.noRecordsText);
                 this.initializeData();
             },
             initializeData() {

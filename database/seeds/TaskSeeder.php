@@ -100,6 +100,7 @@ class TaskSeeder extends Seeder
                 $seniority = $seniorities[rand(0, (count($seniorities) - 1))];
 
                 $task = factory(Task::class)->create([
+                    "author_id" => 1,
                     "project_id" => $project->id,
                     "task_status_id" => $status->id,
                     "task_category_id" => $category->id,

@@ -15,6 +15,7 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedInteger('author_id');
             $table->unsignedInteger('project_id');
             $table->unsignedInteger('task_status_id');
             $table->unsignedInteger('task_category_id');
@@ -25,6 +26,7 @@ class CreateTasksTable extends Migration
             $table->unsignedInteger('complexity')->default(1);
             $table->unsignedInteger('estimated_hours');
             $table->unsignedInteger('realized_hours')->default(0);
+            $table->unsignedInteger('num_positions')->default(1);
             $table->timestamps();
         });
     }

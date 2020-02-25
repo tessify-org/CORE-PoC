@@ -97,9 +97,9 @@
                 
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" tasks: ", this.tasks);
-                console.log(this.tag+" statuses: ", this.statuses);
-                console.log(this.tag+" categories: ", this.categories);
-                console.log(this.tag+" seniorities: ", this.seniorities);
+                console.log(this.tag+" complexity text: ", this.complexityText);
+                console.log(this.tag+" view text: ", this.viewText);
+                console.log(this.tag+" no tasks text: ", this.noTasksText);
                 
                 this.initializeData();
                 this.startListening();

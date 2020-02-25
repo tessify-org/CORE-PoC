@@ -3,7 +3,7 @@
 
         <v-text-field
             solo
-            label="Search"
+            :label="title"
             v-model="form.query">
         </v-text-field>
 
@@ -13,7 +13,9 @@
 <script>
     import { EventBus } from './../../event-bus.js';
     export default {
-        props: [],
+        props: [
+            "title",
+        ],
         data: () => ({
             tag: "[task-dashboard-sidebar-search-bar]",
             form: {
@@ -28,6 +30,7 @@
         methods: {
             initialize() {
                 console.log(this.tag+" initializing");
+                console.log(this.tag+" title: ", this.title);
             },
         },
         mounted() {
