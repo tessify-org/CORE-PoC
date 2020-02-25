@@ -9540,6 +9540,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["tasks", "complexityText", "viewText", "noTasksText"],
@@ -9551,6 +9572,7 @@ __webpack_require__.r(__webpack_exports__);
       paginatedTasks: [],
       filters: {
         search_query: "",
+        selected_statuses: [],
         selected_categories: [],
         selected_seniorities: [],
         time_range: {
@@ -9603,6 +9625,10 @@ __webpack_require__.r(__webpack_exports__);
       _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("task-dashboard__search-query", function (searchQuery) {
         this.filters.search_query = searchQuery;
       }.bind(this));
+      _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("task-dashboard__selected-statuses", function (selectedStatuses) {
+        console.log("waaaat", selectedStatuses);
+        this.filters.selected_statuses = selectedStatuses;
+      }.bind(this));
       _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("task-dashboard__selected-categories", function (selectedCategories) {
         this.filters.selected_categories = selectedCategories;
       }.bind(this));
@@ -9619,39 +9645,56 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.mutableTasks.length > 0) {
         for (var i = 0; i < this.mutableTasks.length; i++) {
-          var task = this.mutableTasks[i];
+          var task = this.mutableTasks[i]; // Filter on search query
 
           if (this.filters.search_query !== "") {
             var in_title = task.title.toLowerCase().includes(this.filters.search_query);
             var in_desc = task.description.toLowerCase().includes(this.filters.search_query);
             if (!in_title && !in_desc) continue;
-          }
+          } // Filter on selected status
 
-          if (this.filters.selected_categories.length > 0) {
+
+          if (this.filters.selected_statuses.length > 0) {
             var matches = false;
 
-            for (var _i = 0; _i < this.filters.selected_categories.length; _i++) {
-              if (task.task_category_id === this.filters.selected_categories[_i]) {
+            for (var _i = 0; _i < this.filters.selected_statuses.length; _i++) {
+              if (task.task_status_id === this.filters.selected_statuses[_i]) {
                 matches = true;
                 break;
               }
             }
 
             if (!matches) continue;
-          }
+          } // Filter on selected category
 
-          if (this.filters.selected_seniorities.length > 0) {
+
+          if (this.filters.selected_categories.length > 0) {
             var _matches = false;
 
-            for (var _i2 = 0; _i2 < this.filters.selected_seniorities.length; _i2++) {
-              if (task.task_seniority_id === this.filters.selected_seniorities[_i2]) {
+            for (var _i2 = 0; _i2 < this.filters.selected_categories.length; _i2++) {
+              if (task.task_category_id === this.filters.selected_categories[_i2]) {
                 _matches = true;
                 break;
               }
             }
 
             if (!_matches) continue;
-          }
+          } // Filter on selected seniorities
+
+
+          if (this.filters.selected_seniorities.length > 0) {
+            var _matches2 = false;
+
+            for (var _i3 = 0; _i3 < this.filters.selected_seniorities.length; _i3++) {
+              if (task.task_seniority_id === this.filters.selected_seniorities[_i3]) {
+                _matches2 = true;
+                break;
+              }
+            }
+
+            if (!_matches2) continue;
+          } // Filter on selected time range
+
 
           if (this.filters.time_range.min !== null && task.estimated_hours < this.filters.time_range.min) continue;
           if (this.filters.time_range.max !== null && task.estimated_hours > this.filters.time_range.max) continue;
@@ -9970,6 +10013,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../event-bus.js */ "./resources/js/event-bus.js");
 //
 //
 //
@@ -9994,8 +10038,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["title", "noRecordsText", "statuses"],
+  props: ["statuses", "title", "noRecordsText"],
   data: function data() {
     return {
       tag: "[task-dashboard-sidebar-statuses]",
@@ -10014,10 +10059,22 @@ __webpack_require__.r(__webpack_exports__);
       if (this.statuses !== undefined && this.statuses !== null && this.statuses.length > 0) {
         for (var i = 0; i < this.statuses.length; i++) {
           var status = this.statuses[i];
-          status.selected = true;
+          status.selected = false;
           this.mutableStatuses.push(status);
         }
       }
+    },
+    onCheckboxValueChanged: function onCheckboxValueChanged(index) {
+      console.log(this.tag + " checkbox value changed for: ", index);
+      var selected = [];
+
+      for (var i = 0; i < this.mutableStatuses.length; i++) {
+        if (this.mutableStatuses[i].selected) {
+          selected.push(this.mutableStatuses[i].id);
+        }
+      }
+
+      _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("task-dashboard__selected-statuses", selected);
     }
   },
   mounted: function mounted() {
@@ -10540,7 +10597,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#task-dashboard-overview #tasks {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#task-dashboard-overview #tasks .task-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 100%;\n  box-sizing: border-box;\n  padding: 0 15px 30px 15px;\n}\n#task-dashboard-overview #tasks .task-wrapper .task {\n  border-radius: 3px;\n  background-color: #fff;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content {\n  padding: 15px 20px;\n  box-sizing: border-box;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-title {\n  font-size: 1.8em;\n  margin: 0 0 5px 0;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-description {\n  margin: 0 0 15px 0;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-footer {\n  display: -webkit-box;\n  display: flex;\n  padding: 15px 20px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-footer .task-footer__left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-footer .task-footer__right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-tags .task-tag {\n  color: #fff;\n  font-size: 0.85em;\n  border-radius: 3px;\n  margin: 0 10px 0 0;\n  display: inline-block;\n  box-sizing: border-box;\n  padding: 4px 10px 4px 10px;\n  background-color: #333333;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-tags .task-tag:last-child {\n  margin: 0;\n}\n#task-dashboard-overview #no-records {\n  padding: 15px;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  text-align: center;\n  box-sizing: border-box;\n  background-color: #ffffff;\n}\n#task-dashboard-overview #pagination-wrapper {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}", ""]);
+exports.push([module.i, "#task-dashboard-overview #tasks {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#task-dashboard-overview #tasks .task-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 100%;\n  box-sizing: border-box;\n  padding: 0 15px 30px 15px;\n}\n#task-dashboard-overview #tasks .task-wrapper .task {\n  border-radius: 3px;\n  background-color: #fff;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content {\n  position: relative;\n  box-sizing: border-box;\n  padding: 60px 20px 15px 20px;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-category {\n  left: 0;\n  top: 15px;\n  color: #ffffff;\n  font-size: 0.9em;\n  padding: 5px 10px;\n  position: absolute;\n  box-sizing: border-box;\n  background-color: #333333;\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-title {\n  font-size: 1.8em;\n  margin: 0 0 5px 0;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-description {\n  margin: 0 0 15px 0;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-description .task-description__label {\n  font-size: 0.8em;\n  margin: 0 0 1px 0;\n  color: #737373;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-skills {\n  margin: 0 0 15px 0;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-skills .task-skills__label {\n  font-size: 0.8em;\n  margin: 0 0 5px 0;\n  color: #737373;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-skills .task-skills__list {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  margin: 0 0 -10px 0;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-skills .task-skills__list .task-skill {\n  color: #fff;\n  font-size: 0.7em;\n  border-radius: 3px;\n  margin: 0 5px 5px 0;\n  padding: 1px 7px 3px 7px;\n  background-color: #333;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-content .task-complexity .task-complexity__label {\n  font-size: 0.8em;\n  margin: 0 0 0 0;\n  color: #737373;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-footer {\n  display: -webkit-box;\n  display: flex;\n  padding: 15px 20px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-footer .task-footer__left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-footer .task-footer__left .task-status {\n  color: #000;\n  border-radius: 3px;\n  padding: 2px 10px 3px 10px;\n  background-color: #cccccc;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-footer .task-footer__left .task-status.open {\n  color: #fff;\n  background-color: #2db201;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-footer .task-footer__left .task-status.in_progress {\n  color: #fff;\n  background-color: #df5200;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-footer .task-footer__left .task-status.completed {\n  color: #fff;\n  background-color: #ea0000;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-footer .task-footer__right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-tags .task-tag {\n  color: #fff;\n  font-size: 0.85em;\n  border-radius: 3px;\n  margin: 0 10px 0 0;\n  display: inline-block;\n  box-sizing: border-box;\n  padding: 4px 10px 4px 10px;\n  background-color: #333333;\n}\n#task-dashboard-overview #tasks .task-wrapper .task .task-tags .task-tag:last-child {\n  margin: 0;\n}\n#task-dashboard-overview #no-records {\n  padding: 15px;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  text-align: center;\n  box-sizing: border-box;\n  background-color: #ffffff;\n}\n#task-dashboard-overview #pagination-wrapper {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}", ""]);
 
 // exports
 
@@ -46744,34 +46801,79 @@ var render = function() {
             return _c("div", { key: ti, staticClass: "task-wrapper" }, [
               _c("div", { staticClass: "task elevation-1" }, [
                 _c("div", { staticClass: "task-content" }, [
+                  _c("div", { staticClass: "task-category" }, [
+                    _vm._v(_vm._s(task.category.name))
+                  ]),
+                  _vm._v(" "),
                   _c("h3", { staticClass: "task-title" }, [
                     _vm._v(_vm._s(task.title))
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "task-description" }, [
-                    _vm._v(_vm._s(task.description.substring(0, 250) + ".."))
+                    _c("div", { staticClass: "task-description__label" }, [
+                      _vm._v("Description")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "task-description__text" }, [
+                      _vm._v(_vm._s(task.description.substring(0, 250) + ".."))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  task.skills.length > 0
+                    ? _c("div", { staticClass: "task-skills" }, [
+                        _c("div", { staticClass: "task-skills__label" }, [
+                          _vm._v("Vereiste skills")
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "task-skills__list" },
+                          _vm._l(task.skills, function(skill, si) {
+                            return _c(
+                              "div",
+                              { key: si, staticClass: "task-skill" },
+                              [
+                                _vm._v(
+                                  "\n                                " +
+                                    _vm._s(skill.name) +
+                                    "\n                            "
+                                )
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "task-complexity" }, [
+                    _c("div", { staticClass: "task-complexity__label" }, [
+                      _vm._v("Complexiteit")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "task-complexity__text" }, [
+                      _vm._v(
+                        "\n                            " +
+                          _vm._s(task.complexity) +
+                          "/10\n                        "
+                      )
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "task-footer" }, [
                   _c("div", { staticClass: "task-footer__left" }, [
-                    _c("div", { staticClass: "task-tags" }, [
-                      _c("div", { staticClass: "task-tag category" }, [
+                    _c(
+                      "div",
+                      { staticClass: "task-status", class: task.status.name },
+                      [
                         _vm._v(
-                          "\n                                " +
-                            _vm._s(task.category.name) +
-                            "\n                            "
+                          "\n                            " +
+                            _vm._s(task.status.label) +
+                            "\n                        "
                         )
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "task-tag complexity" }, [
-                        _vm._v(
-                          "\n                                Complexity " +
-                            _vm._s(task.complexity) +
-                            "/10\n                            "
-                        )
-                      ])
-                    ])
+                      ]
+                    )
                   ]),
                   _vm._v(" "),
                   _c(

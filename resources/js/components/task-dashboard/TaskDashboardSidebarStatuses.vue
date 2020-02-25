@@ -23,11 +23,12 @@
 </template>
 
 <script>
+    import { EventBus } from './../../event-bus.js';
     export default {
         props: [
+            "statuses",
             "title",
             "noRecordsText",
-            "statuses",
         ],
         data: () => ({
             tag: "[task-dashboard-sidebar-statuses]",
@@ -45,11 +46,21 @@
                 if (this.statuses !== undefined && this.statuses !== null && this.statuses.length > 0) {
                     for (let i = 0; i < this.statuses.length; i++) {
                         let status = this.statuses[i];
-                        status.selected = true;
+                        status.selected = false;
                         this.mutableStatuses.push(status);
                     }
                 }
             },
+            onCheckboxValueChanged(index) {
+                console.log(this.tag+" checkbox value changed for: ", index);
+                let selected = [];
+                for (let i = 0; i < this.mutableStatuses.length; i++) {
+                    if (this.mutableStatuses[i].selected) {
+                        selected.push(this.mutableStatuses[i].id);
+                    }
+                }
+                EventBus.$emit("task-dashboard__selected-statuses", selected);
+            }
         },
         mounted() {
             this.initialize();

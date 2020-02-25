@@ -6,21 +6,42 @@
             <div class="task-wrapper" v-for="(task, ti) in paginatedTasks" :key="ti">
                 <div class="task elevation-1">
                     <div class="task-content">
+                        <!-- Category -->
+                        <div class="task-category">{{ task.category.name }}</div>
+                        <!-- Title -->
                         <h3 class="task-title">{{ task.title }}</h3>
-                        <div class="task-description">{{ task.description.substring(0,250)+".." }}</div>
-                    </div>
-                    <div class="task-footer">
-                        <div class="task-footer__left">
-                            <div class="task-tags">
-                                <div class="task-tag category">
-                                    {{ task.category.name }}
-                                </div>
-                                <div class="task-tag complexity">
-                                    Complexity {{ task.complexity }}/10
+                        <!-- Description -->
+                        <div class="task-description">
+                            <div class="task-description__label">Description</div>
+                            <div class="task-description__text">{{ task.description.substring(0,250)+".." }}</div>
+                        </div>
+                        <!-- Skills -->
+                        <div class="task-skills" v-if="task.skills.length > 0">
+                            <div class="task-skills__label">Vereiste skills</div>
+                            <div class="task-skills__list">
+                                <div class="task-skill" v-for="(skill, si) in task.skills" :key="si">
+                                    {{ skill.name }}
                                 </div>
                             </div>
                         </div>
+                        <!-- Complexity -->
+                        <div class="task-complexity">
+                            <div class="task-complexity__label">Complexiteit</div>
+                            <div class="task-complexity__text">
+                                {{ task.complexity }}/10
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Footer -->
+                    <div class="task-footer">
+                        <div class="task-footer__left">
+                            <!-- Status -->
+                            <div class="task-status" :class="task.status.name">
+                                {{ task.status.label }}
+                            </div>
+                        </div>
                         <div class="task-footer__right">
+                            <!-- View task -->
                             <v-btn color="primary" depressed :href="task.view_href">
                                 Bekijk werkpakket
                             </v-btn>                                
@@ -64,6 +85,7 @@
             paginatedTasks: [],
             filters: {
                 search_query: "",
+                selected_statuses: [],
                 selected_categories: [],
                 selected_seniorities: [],
                 time_range: {
@@ -122,6 +144,11 @@
                     this.filters.search_query = searchQuery;
                 }.bind(this));
 
+                EventBus.$on("task-dashboard__selected-statuses", function(selectedStatuses) {
+                    console.log("waaaat", selectedStatuses);
+                    this.filters.selected_statuses = selectedStatuses;
+                }.bind(this));
+
                 EventBus.$on("task-dashboard__selected-categories", function(selectedCategories) {
                     this.filters.selected_categories = selectedCategories;
                 }.bind(this));
@@ -145,12 +172,26 @@
 
                         let task = this.mutableTasks[i];
 
+                        // Filter on search query
                         if (this.filters.search_query !== "") {
                             let in_title = task.title.toLowerCase().includes(this.filters.search_query);
                             let in_desc = task.description.toLowerCase().includes(this.filters.search_query);
                             if (!in_title && !in_desc) continue;
                         }
 
+                        // Filter on selected status
+                        if (this.filters.selected_statuses.length > 0) {
+                            let matches = false;
+                            for (let i = 0; i < this.filters.selected_statuses.length; i++) {
+                                if (task.task_status_id === this.filters.selected_statuses[i]) {
+                                    matches = true;
+                                    break;
+                                }
+                            }
+                            if (!matches) continue;
+                        }
+
+                        // Filter on selected category
                         if (this.filters.selected_categories.length > 0) {
                             let matches = false;
                             for (let i = 0; i < this.filters.selected_categories.length; i++) {
@@ -162,6 +203,7 @@
                             if (!matches) continue;
                         }
 
+                        // Filter on selected seniorities
                         if (this.filters.selected_seniorities.length > 0) {
                             let matches = false;
                             for (let i = 0; i < this.filters.selected_seniorities.length; i++) {
@@ -173,6 +215,7 @@
                             if (!matches) continue;
                         }
 
+                        // Filter on selected time range
                         if (this.filters.time_range.min !== null && task.estimated_hours < this.filters.time_range.min) continue;
                         if (this.filters.time_range.max !== null && task.estimated_hours > this.filters.time_range.max) continue;
 
@@ -215,14 +258,66 @@
                     border-radius: 3px;
                     background-color: #fff;
                     .task-content {
-                        padding: 15px 20px; 
+                        position: relative;
                         box-sizing: border-box;
+                        padding: 60px 20px 15px 20px;
+                        .task-category {
+                            left: 0;
+                            top: 15px;
+                            color: #ffffff;
+                            font-size: .9em;
+                            padding: 5px 10px;
+                            position: absolute;
+                            box-sizing: border-box;
+                            background-color: #333333;
+                            border-top-right-radius: 3px;
+                            border-bottom-right-radius: 3px;
+                        }
                         .task-title {
                             font-size: 1.8em;
                             margin: 0 0 5px 0;
                         }
                         .task-description {
                             margin: 0 0 15px 0;
+                            .task-description__label {
+                                font-size: .8em;
+                                margin: 0 0 1px 0;
+                                color: hsl(0, 0%, 45%);
+                            }
+                            .task-description__text {
+
+                            }
+                        }
+                        .task-skills {
+                            margin: 0 0 15px 0;
+                            .task-skills__label {
+                                font-size: .8em;
+                                margin: 0 0 5px 0;
+                                color: hsl(0, 0%, 45%);
+                            }
+                            .task-skills__list {
+                                display: flex;
+                                flex-wrap: wrap;
+                                flex-direction: row;
+                                margin: 0 0 -10px 0;
+                                .task-skill {
+                                    color: #fff;
+                                    font-size: .7em;
+                                    border-radius: 3px;
+                                    margin: 0 5px 5px 0;
+                                    padding: 1px 7px 3px 7px;
+                                    background-color: #333;
+                                }
+                            }
+                        }
+                        .task-complexity {
+                            // margin: 0 0 15px 0;
+                            .task-complexity__label {
+                                font-size: .8em;
+                                margin: 0 0 0 0;
+                                color: hsl(0, 0%, 45%);
+                            }
+                            .task-complexity__text {}
                         }
                     }
                     .task-footer {
@@ -236,6 +331,24 @@
                             display: flex;
                             flex-direction: row;
                             align-items: center;
+                            .task-status {
+                                color: #000;
+                                border-radius: 3px;
+                                padding: 2px 10px 3px 10px;
+                                background-color: hsl(0, 0%, 80%);
+                                &.open {
+                                    color: #fff;
+                                    background-color: #2db201;
+                                }
+                                &.in_progress {
+                                    color: #fff;
+                                    background-color: #df5200;
+                                }
+                                &.completed {
+                                    color: #fff;
+                                    background-color: #ea0000;
+                                }
+                            }
                         }
                         .task-footer__right {
                             flex: 1;

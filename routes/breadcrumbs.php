@@ -159,11 +159,15 @@ Breadcrumbs::for("projects.tasks.delete", function($t, $project, $task) {
     $t->parent("projects.tasks.view", $project, $task);
     $t->push(__("tessify-core::breadcrumbs.projects_tasks_delete"), route("projects.tasks.delete", ["slug" => $project->slug, "taskSlug" => $task->slug]));
 });
+Breadcrumbs::for("projects.tasks.abandon", function($t, $project, $task) {
+    $t->parent("projects.tasks.view", $project, $task);
+    $t->push(__("tessify-core::breadcrumbs.task_abandon"), route("projects.tasks.abandon", ["slug" => $project->slug, "taskSlug" => $task->slug]));
+});
 
 // Werk pakketten
 Breadcrumbs::for("tasks", function($t) {
     $t->parent("home");
-    $t->push("Werk pakketten", route("tasks"));
+    $t->push(__("tessify-core::breadcrumbs.tasks"), route("tasks"));
 });
 
 //
