@@ -3482,7 +3482,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/Tessify/Core",
-                "reference": "ddb2d67b068d9ac38ad58e3df6aeb110258dacee"
+                "reference": "b8e1121f15a5e687e2f5ae84fded346f19a0b527"
             },
             "require": {
                 "cviebrock/eloquent-sluggable": "^6.0",

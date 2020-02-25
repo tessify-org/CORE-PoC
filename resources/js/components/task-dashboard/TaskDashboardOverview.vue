@@ -1,18 +1,42 @@
 <template>
     <div id="task-dashboard-overview">
 
+        <!-- Tasks -->
         <div id="tasks" v-if="paginatedTasks.length > 0">
             <div class="task-wrapper" v-for="(task, ti) in paginatedTasks" :key="ti">
                 <div class="task elevation-1">
-                    {{ task.title }}
+                    <div class="task-content">
+                        <h3 class="task-title">{{ task.title }}</h3>
+                        <div class="task-description">{{ task.description.substring(0,250)+".." }}</div>
+                    </div>
+                    <div class="task-footer">
+                        <div class="task-footer__left">
+                            <div class="task-tags">
+                                <div class="task-tag category">
+                                    {{ task.category.name }}
+                                </div>
+                                <div class="task-tag complexity">
+                                    Complexity {{ task.complexity }}/10
+                                </div>
+                            </div>
+                        </div>
+                        <div class="task-footer__right">
+                            <v-btn color="primary" depressed :href="task.view_href">
+                                Bekijk werkpakket
+                            </v-btn>                                
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
 
+        <!-- No tasks -->
         <div id="no-records" class="elevation-1" v-if="paginatedTasks.length === 0">
             No tasks found
         </div>
 
+        <!-- Pagination -->
         <div id="pagination-wrapper" v-if="numPaginatedPages > 1">
             <v-pagination
                 v-model="pagination.currentPage"
@@ -29,6 +53,9 @@
     export default {
         props: [
             "tasks",
+            "complexityText",
+            "viewText",
+            "noTasksText",
         ],
         data: () => ({
             tag: "[task-dashboard-overview]",
@@ -45,7 +72,7 @@
                 }
             },
             pagination: {
-                perPage: 12,
+                perPage: 5,
                 currentPage: 1,
             }
         }),
@@ -101,6 +128,11 @@
 
                 EventBus.$on("task-dashboard__selected-seniorities", function(selectedSeniorities) {
                     this.filters.selected_seniorities = selectedSeniorities;
+                }.bind(this));
+
+                EventBus.$on("task-dashboard__duration-range", function(range) {
+                    this.filters.time_range.min = range[0];
+                    this.filters.time_range.max = range[1];
                 }.bind(this));
 
             },
@@ -176,13 +208,58 @@
             flex-wrap: wrap;
             flex-direction: row;
             .task-wrapper {
-                flex: 0 0 50%;
+                flex: 0 0 100%;
                 box-sizing: border-box;
                 padding: 0 15px 30px 15px;
                 .task {
-                    padding: 15px;
                     border-radius: 3px;
                     background-color: #fff;
+                    .task-content {
+                        padding: 15px 20px; 
+                        box-sizing: border-box;
+                        .task-title {
+                            font-size: 1.8em;
+                            margin: 0 0 5px 0;
+                        }
+                        .task-description {
+                            margin: 0 0 15px 0;
+                        }
+                    }
+                    .task-footer {
+                        display: flex;
+                        padding: 15px 20px;
+                        flex-direction: row;
+                        box-sizing: border-box;
+                        background-color: hsl(0, 0%, 95%);
+                        .task-footer__left {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                        }
+                        .task-footer__right {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                            justify-content: flex-end;
+                        }
+                    }
+                    .task-tags {
+                        .task-tag {
+                            color: #fff;
+                            font-size: .85em;
+                            border-radius: 3px;
+                            margin: 0 10px 0 0;
+                            display: inline-block;
+                            box-sizing: border-box;
+                            padding: 4px 10px 4px 10px;
+                            background-color: #333333;
+                            &:last-child {
+                                margin: 0;
+                            }
+                        }
+                    }
                 }
             }
         }
