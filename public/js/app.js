@@ -9480,6 +9480,383 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../event-bus.js */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["tasks"],
+  data: function data() {
+    return {
+      tag: "[task-dashboard-overview]",
+      mutableTasks: [],
+      filteredTasks: [],
+      paginatedTasks: [],
+      filters: {
+        search_query: "",
+        selected_categories: [],
+        selected_seniorities: [],
+        time_range: {
+          min: 0,
+          max: 40
+        }
+      },
+      pagination: {
+        perPage: 12,
+        currentPage: 1
+      }
+    };
+  },
+  computed: {
+    numPaginatedPages: function numPaginatedPages() {
+      return Math.ceil(this.filteredTasks.length / this.pagination.perPage);
+    }
+  },
+  watch: {
+    "pagination.currentPage": function paginationCurrentPage() {
+      this.paginateTasks();
+    },
+    "filters": {
+      deep: true,
+      handler: function handler() {
+        this.filterTasks();
+      }
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " tasks: ", this.tasks);
+      console.log(this.tag + " statuses: ", this.statuses);
+      console.log(this.tag + " categories: ", this.categories);
+      console.log(this.tag + " seniorities: ", this.seniorities);
+      this.initializeData();
+      this.startListening();
+    },
+    initializeData: function initializeData() {
+      if (this.tasks !== undefined && this.tasks !== null && this.tasks.length > 0) {
+        for (var i = 0; i < this.tasks.length; i++) {
+          this.mutableTasks.push(this.tasks[i]);
+        }
+      }
+
+      this.filterTasks();
+    },
+    startListening: function startListening() {
+      _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("task-dashboard__search-query", function (searchQuery) {
+        this.filters.search_query = searchQuery;
+      }.bind(this));
+      _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("task-dashboard__selected-categories", function (selectedCategories) {
+        this.filters.selected_categories = selectedCategories;
+      }.bind(this));
+      _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$on("task-dashboard__selected-seniorities", function (selectedSeniorities) {
+        this.filters.selected_seniorities = selectedSeniorities;
+      }.bind(this));
+    },
+    filterTasks: function filterTasks() {
+      this.filteredTasks = [];
+
+      if (this.mutableTasks.length > 0) {
+        for (var i = 0; i < this.mutableTasks.length; i++) {
+          var task = this.mutableTasks[i];
+
+          if (this.filters.search_query !== "") {
+            var in_title = task.title.toLowerCase().includes(this.filters.search_query);
+            var in_desc = task.description.toLowerCase().includes(this.filters.search_query);
+            if (!in_title && !in_desc) continue;
+          }
+
+          if (this.filters.selected_categories.length > 0) {
+            var matches = false;
+
+            for (var _i = 0; _i < this.filters.selected_categories.length; _i++) {
+              if (task.task_category_id === this.filters.selected_categories[_i]) {
+                matches = true;
+                break;
+              }
+            }
+
+            if (!matches) continue;
+          }
+
+          if (this.filters.selected_seniorities.length > 0) {
+            var _matches = false;
+
+            for (var _i2 = 0; _i2 < this.filters.selected_seniorities.length; _i2++) {
+              if (task.task_seniority_id === this.filters.selected_seniorities[_i2]) {
+                _matches = true;
+                break;
+              }
+            }
+
+            if (!_matches) continue;
+          }
+
+          if (this.filters.time_range.min !== null && task.estimated_hours < this.filters.time_range.min) continue;
+          if (this.filters.time_range.max !== null && task.estimated_hours > this.filters.time_range.max) continue;
+          this.filteredTasks.push(task);
+        }
+      }
+
+      this.paginateTasks();
+    },
+    paginateTasks: function paginateTasks() {
+      var start_slicing_at = (this.pagination.currentPage - 1) * this.pagination.perPage;
+      var stop_slicing_at = start_slicing_at + this.pagination.perPage;
+      this.paginatedTasks = this.filteredTasks.slice(start_slicing_at, stop_slicing_at);
+      if (this.pagination.currentPage > this.numPaginationPages) this.pagination.currentPage = 1;
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../event-bus.js */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["categories"],
+  data: function data() {
+    return {
+      tag: "[task-dashboard-sidebar-categories]",
+      mutableCategories: []
+    };
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " categories: ", this.categories);
+      this.initializeData();
+    },
+    initializeData: function initializeData() {
+      if (this.categories !== undefined && this.categories !== null && this.categories.length > 0) {
+        for (var i = 0; i < this.categories.length; i++) {
+          var category = this.categories[i];
+          category.selected = false;
+          this.mutableCategories.push(category);
+        }
+      }
+    },
+    onCheckboxValueChanged: function onCheckboxValueChanged(index) {
+      console.log(this.tag + " checkbox value changed for: ", index);
+      var selected = [];
+
+      for (var i = 0; i < this.mutableCategories.length; i++) {
+        if (this.mutableCategories[i].selected) {
+          selected.push(this.mutableCategories[i].id);
+        }
+      }
+
+      _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("task-dashboard__selected-categories", selected);
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../event-bus.js */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: [],
+  data: function data() {
+    return {
+      tag: "[task-dashboard-sidebar-search-bar]",
+      form: {
+        query: ""
+      }
+    };
+  },
+  watch: {
+    "form.query": function formQuery() {
+      _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("task-dashboard__search-query", this.form.query);
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _event_bus_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./../../event-bus.js */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["seniorities"],
+  data: function data() {
+    return {
+      tag: "[task-dashboard-sidebar-seniorities]",
+      mutableSeniorities: []
+    };
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " seniorities: ", this.seniorities);
+      this.initializeData();
+    },
+    initializeData: function initializeData() {
+      if (this.seniorities !== undefined && this.seniorities !== null && this.seniorities.length > 0) {
+        for (var i = 0; i < this.seniorities.length; i++) {
+          var seniority = this.seniorities[i];
+          seniority.selected = false;
+          this.mutableSeniorities.push(seniority);
+        }
+      }
+    },
+    onCheckboxValueChanged: function onCheckboxValueChanged(index) {
+      console.log(this.tag + " checkbox value changed: ", index);
+      var selected = [];
+
+      for (var i = 0; i < this.mutableSeniorities.length; i++) {
+        if (this.mutableSeniorities[i].selected) {
+          selected.push(this.mutableSeniorities[i].id);
+        }
+      }
+
+      _event_bus_js__WEBPACK_IMPORTED_MODULE_0__["EventBus"].$emit("task-dashboard__selected-seniorities", selected);
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/users/UserPill.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/users/UserPill.vue?vue&type=script&lang=js& ***!
@@ -9975,6 +10352,82 @@ exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/c
 
 // module
 exports.push([module.i, "#task-overview .tasks-box {\n  margin: 0 0 50px 0;\n}\n#task-overview .tasks-box:last-child {\n  margin: 0;\n}\n#task-overview .tasks-box .content-title {\n  margin: 0 0 25px 0;\n}\n#task-overview .tasks-box .tasks {\n  border-radius: 3px;\n  background-color: #fff;\n}\n#task-overview .tasks-box .tasks .task {\n  display: -webkit-box;\n  display: flex;\n  color: #000000;\n  padding: 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  text-decoration: none;\n  box-sizing: border-box;\n}\n#task-overview .tasks-box .tasks .task:hover {\n  background-color: #f2f2f2;\n}\n#task-overview .tasks-box .tasks .task.header {\n  font-weight: 600;\n  border-bottom: 2px solid rgba(0, 0, 0, 0.1);\n}\n#task-overview .tasks-box .tasks .task.header:hover {\n  background-color: transparent;\n}\n#task-overview .tasks-box .tasks .task .task-title, #task-overview .tasks-box .tasks .task .task-category, #task-overview .tasks-box .tasks .task .task-complexity {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#task-overview .tasks-box .tasks .task .task-title {\n  -webkit-box-flex: 3;\n          flex: 3;\n}\n#task-overview .tasks-box .tasks .task .task-category {\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n#task-overview .tasks-box .tasks .task .task-complexity {\n  -webkit-box-flex: 1;\n          flex: 1;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#task-overview .tasks-box .no-tasks {\n  padding: 15px;\n  text-align: center;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #ffffff;\n}\n#task-overview #task-overview__actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#task-overview #task-overview__actions #task-overview__actions-left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#task-overview #task-overview__actions #task-overview__actions-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#task-dashboard-overview #tasks {\n  display: -webkit-box;\n  display: flex;\n  flex-wrap: wrap;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#task-dashboard-overview #tasks .task-wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 50%;\n  box-sizing: border-box;\n  padding: 0 15px 30px 15px;\n}\n#task-dashboard-overview #tasks .task-wrapper .task {\n  padding: 15px;\n  border-radius: 3px;\n  background-color: #fff;\n}\n#task-dashboard-overview #no-records {\n  padding: 15px;\n  border-radius: 3px;\n  margin: 0 0 30px 0;\n  text-align: center;\n  box-sizing: border-box;\n  background-color: #ffffff;\n}\n#task-dashboard-overview #pagination-wrapper {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss&":
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss& ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
 
 // exports
 
@@ -38866,6 +39319,126 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss&":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss& ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/users/UserPill.vue?vue&type=style&index=0&lang=scss& ***!
@@ -45871,6 +46444,285 @@ var render = function() {
       )
     ])
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=template&id=61470860&":
+/*!***************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=template&id=61470860& ***!
+  \***************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "task-dashboard-overview" } }, [
+    _vm.paginatedTasks.length > 0
+      ? _c(
+          "div",
+          { attrs: { id: "tasks" } },
+          _vm._l(_vm.paginatedTasks, function(task, ti) {
+            return _c("div", { key: ti, staticClass: "task-wrapper" }, [
+              _c("div", { staticClass: "task elevation-1" }, [
+                _vm._v(
+                  "\n                " + _vm._s(task.title) + "\n            "
+                )
+              ])
+            ])
+          }),
+          0
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.paginatedTasks.length === 0
+      ? _c("div", { staticClass: "elevation-1", attrs: { id: "no-records" } }, [
+          _vm._v("\n        No tasks found\n    ")
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.numPaginatedPages > 1
+      ? _c(
+          "div",
+          { attrs: { id: "pagination-wrapper" } },
+          [
+            _c("v-pagination", {
+              attrs: { length: _vm.numPaginatedPages, "total-visible": "10" },
+              model: {
+                value: _vm.pagination.currentPage,
+                callback: function($$v) {
+                  _vm.$set(_vm.pagination, "currentPage", $$v)
+                },
+                expression: "pagination.currentPage"
+              }
+            })
+          ],
+          1
+        )
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=template&id=78a9e7d1&":
+/*!************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=template&id=78a9e7d1& ***!
+  \************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "task-overview__sidebar-panel elevation-1",
+      attrs: { id: "task-dashboard-sidebar-categories" }
+    },
+    [
+      _c("div", { staticClass: "sidebar-panel__header" }, [
+        _vm._v("\n        Categories\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sidebar-panel__content" }, [
+        _vm.mutableCategories.length > 0
+          ? _c(
+              "div",
+              { attrs: { id: "categories" } },
+              _vm._l(_vm.mutableCategories, function(category, ci) {
+                return _c("div", { key: ci, staticClass: "category-wrapper" }, [
+                  _c(
+                    "div",
+                    { staticClass: "category" },
+                    [
+                      _c("v-checkbox", {
+                        staticClass: "mt-0",
+                        attrs: {
+                          value: category.id,
+                          label: category.name,
+                          "hide-details": ""
+                        },
+                        on: {
+                          change: function($event) {
+                            return _vm.onCheckboxValueChanged(ci)
+                          }
+                        },
+                        model: {
+                          value: _vm.mutableCategories[ci].selected,
+                          callback: function($$v) {
+                            _vm.$set(_vm.mutableCategories[ci], "selected", $$v)
+                          },
+                          expression: "mutableCategories[ci].selected"
+                        }
+                      })
+                    ],
+                    1
+                  )
+                ])
+              }),
+              0
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.mutableCategories.length === 0
+          ? _c("div", { attrs: { id: "no-categories" } }, [
+              _vm._v("\n            No categories found\n        ")
+            ])
+          : _vm._e()
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=template&id=6d6a04b4&":
+/*!***********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=template&id=6d6a04b4& ***!
+  \***********************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "task-dashboard-sidebar-search-bar" } },
+    [
+      _c("v-text-field", {
+        attrs: { solo: "", label: "Search" },
+        model: {
+          value: _vm.form.query,
+          callback: function($$v) {
+            _vm.$set(_vm.form, "query", $$v)
+          },
+          expression: "form.query"
+        }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=template&id=65c61e92&":
+/*!*************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=template&id=65c61e92& ***!
+  \*************************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "task-overview__sidebar-panel elevation-1",
+      attrs: { id: "task-dashboard-sidebar-seniorities" }
+    },
+    [
+      _c("div", { staticClass: "sidebar-panel__header" }, [
+        _vm._v("\n        Seniorities\n    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "sidebar-panel__content" }, [
+        _vm.mutableSeniorities.length > 0
+          ? _c(
+              "div",
+              { attrs: { id: "seniorities" } },
+              _vm._l(_vm.mutableSeniorities, function(seniority, ci) {
+                return _c(
+                  "div",
+                  { key: ci, staticClass: "seniority-wrapper" },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "seniority" },
+                      [
+                        _c("v-checkbox", {
+                          staticClass: "mt-0",
+                          attrs: {
+                            value: seniority.id,
+                            label: seniority.label,
+                            "hide-details": ""
+                          },
+                          on: {
+                            change: function($event) {
+                              return _vm.onCheckboxValueChanged(ci)
+                            }
+                          },
+                          model: {
+                            value: _vm.mutableSeniorities[ci].selected,
+                            callback: function($$v) {
+                              _vm.$set(
+                                _vm.mutableSeniorities[ci],
+                                "selected",
+                                $$v
+                              )
+                            },
+                            expression: "mutableSeniorities[ci].selected"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]
+                )
+              }),
+              0
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.mutableSeniorities.length === 0
+          ? _c("div", { attrs: { id: "no-categories" } }, [
+              _vm._v("\n            No seniorities found\n        ")
+            ])
+          : _vm._e()
+      ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -99208,6 +100060,10 @@ var map = {
 	"./components/projects/TeamMemberApplicationForm.vue": "./resources/js/components/projects/TeamMemberApplicationForm.vue",
 	"./components/projects/tasks/TaskForm.vue": "./resources/js/components/projects/tasks/TaskForm.vue",
 	"./components/projects/tasks/TaskOverview.vue": "./resources/js/components/projects/tasks/TaskOverview.vue",
+	"./components/task-dashboard/TaskDashboardOverview.vue": "./resources/js/components/task-dashboard/TaskDashboardOverview.vue",
+	"./components/task-dashboard/TaskDashboardSidebarCategories.vue": "./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue",
+	"./components/task-dashboard/TaskDashboardSidebarSearchBar.vue": "./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue",
+	"./components/task-dashboard/TaskDashboardSidebarSeniorities.vue": "./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue",
 	"./components/users/UserPill.vue": "./resources/js/components/users/UserPill.vue"
 };
 
@@ -101330,6 +102186,355 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskOverview_vue_vue_type_template_id_c725944e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskOverview_vue_vue_type_template_id_c725944e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardOverview.vue":
+/*!**************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardOverview.vue ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskDashboardOverview_vue_vue_type_template_id_61470860___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskDashboardOverview.vue?vue&type=template&id=61470860& */ "./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=template&id=61470860&");
+/* harmony import */ var _TaskDashboardOverview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskDashboardOverview.vue?vue&type=script&lang=js& */ "./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _TaskDashboardOverview_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _TaskDashboardOverview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskDashboardOverview_vue_vue_type_template_id_61470860___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskDashboardOverview_vue_vue_type_template_id_61470860___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/task-dashboard/TaskDashboardOverview.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardOverview.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=template&id=61470860&":
+/*!*********************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=template&id=61470860& ***!
+  \*********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_template_id_61470860___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardOverview.vue?vue&type=template&id=61470860& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardOverview.vue?vue&type=template&id=61470860&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_template_id_61470860___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardOverview_vue_vue_type_template_id_61470860___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskDashboardSidebarCategories_vue_vue_type_template_id_78a9e7d1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskDashboardSidebarCategories.vue?vue&type=template&id=78a9e7d1& */ "./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=template&id=78a9e7d1&");
+/* harmony import */ var _TaskDashboardSidebarCategories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskDashboardSidebarCategories.vue?vue&type=script&lang=js& */ "./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _TaskDashboardSidebarCategories_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _TaskDashboardSidebarCategories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskDashboardSidebarCategories_vue_vue_type_template_id_78a9e7d1___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskDashboardSidebarCategories_vue_vue_type_template_id_78a9e7d1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarCategories.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss&":
+/*!*********************************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss& ***!
+  \*********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=template&id=78a9e7d1&":
+/*!******************************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=template&id=78a9e7d1& ***!
+  \******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_template_id_78a9e7d1___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarCategories.vue?vue&type=template&id=78a9e7d1& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarCategories.vue?vue&type=template&id=78a9e7d1&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_template_id_78a9e7d1___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarCategories_vue_vue_type_template_id_78a9e7d1___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskDashboardSidebarSearchBar_vue_vue_type_template_id_6d6a04b4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskDashboardSidebarSearchBar.vue?vue&type=template&id=6d6a04b4& */ "./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=template&id=6d6a04b4&");
+/* harmony import */ var _TaskDashboardSidebarSearchBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskDashboardSidebarSearchBar.vue?vue&type=script&lang=js& */ "./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _TaskDashboardSidebarSearchBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _TaskDashboardSidebarSearchBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _TaskDashboardSidebarSearchBar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _TaskDashboardSidebarSearchBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskDashboardSidebarSearchBar_vue_vue_type_template_id_6d6a04b4___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskDashboardSidebarSearchBar_vue_vue_type_template_id_6d6a04b4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarSearchBar.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss&":
+/*!********************************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss& ***!
+  \********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=template&id=6d6a04b4&":
+/*!*****************************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=template&id=6d6a04b4& ***!
+  \*****************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_template_id_6d6a04b4___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarSearchBar.vue?vue&type=template&id=6d6a04b4& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSearchBar.vue?vue&type=template&id=6d6a04b4&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_template_id_6d6a04b4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSearchBar_vue_vue_type_template_id_6d6a04b4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _TaskDashboardSidebarSeniorities_vue_vue_type_template_id_65c61e92___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TaskDashboardSidebarSeniorities.vue?vue&type=template&id=65c61e92& */ "./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=template&id=65c61e92&");
+/* harmony import */ var _TaskDashboardSidebarSeniorities_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TaskDashboardSidebarSeniorities.vue?vue&type=script&lang=js& */ "./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _TaskDashboardSidebarSeniorities_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _TaskDashboardSidebarSeniorities_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _TaskDashboardSidebarSeniorities_vue_vue_type_template_id_65c61e92___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _TaskDashboardSidebarSeniorities_vue_vue_type_template_id_65c61e92___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarSeniorities.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss&":
+/*!**********************************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss& ***!
+  \**********************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=template&id=65c61e92&":
+/*!*******************************************************************************************************************!*\
+  !*** ./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=template&id=65c61e92& ***!
+  \*******************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_template_id_65c61e92___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./TaskDashboardSidebarSeniorities.vue?vue&type=template&id=65c61e92& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/task-dashboard/TaskDashboardSidebarSeniorities.vue?vue&type=template&id=65c61e92&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_template_id_65c61e92___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TaskDashboardSidebarSeniorities_vue_vue_type_template_id_65c61e92___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

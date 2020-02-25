@@ -1570,11 +1570,39 @@
     }
 }
 
+//
+// Task dashboard
+//
 
+#task-dashboard {
+    display: flex;
+    flex-direction: row;
+    #task-dashboard__sidebar {
+        flex: 0 0 300px;
+        margin: 0 30px 0 0;
+    }
+    #task-dashboard__content {
+        flex: 1;
+    }
+}
 
-
-
-
+.task-overview__sidebar-panel {
+    border-radius: 3px;
+    margin: 0 0 30px 0;
+    background-color: #fff;
+    &:last-child {
+        margin: 0;
+    }
+    .sidebar-panel__header {
+        padding: 10px 15px;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    .sidebar-panel__content {
+        padding: 15px;
+        box-sizing: border-box;
+    }
+}
 
 
 

@@ -160,6 +160,12 @@ Breadcrumbs::for("projects.tasks.delete", function($t, $project, $task) {
     $t->push(__("tessify-core::breadcrumbs.projects_tasks_delete"), route("projects.tasks.delete", ["slug" => $project->slug, "taskSlug" => $task->slug]));
 });
 
+// Werk pakketten
+Breadcrumbs::for("tasks", function($t) {
+    $t->parent("home");
+    $t->push("Werk pakketten", route("tasks"));
+});
+
 //
 // Admin Panel Breadcrumbs
 //

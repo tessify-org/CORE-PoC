@@ -5396,6 +5396,46 @@ i {
   margin: 0 auto;
 }
 
+#task-dashboard {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#task-dashboard #task-dashboard__sidebar {
+  -webkit-box-flex: 0;
+          flex: 0 0 300px;
+  margin: 0 30px 0 0;
+}
+
+#task-dashboard #task-dashboard__content {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+.task-overview__sidebar-panel {
+  border-radius: 3px;
+  margin: 0 0 30px 0;
+  background-color: #fff;
+}
+
+.task-overview__sidebar-panel:last-child {
+  margin: 0;
+}
+
+.task-overview__sidebar-panel .sidebar-panel__header {
+  padding: 10px 15px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.task-overview__sidebar-panel .sidebar-panel__content {
+  padding: 15px;
+  box-sizing: border-box;
+}
+
 .sidebar-title {
   font-size: 1.5em;
   font-weight: 400;
