@@ -925,11 +925,13 @@
                 }
             }
             #project-header__text {
-                left: 0;
                 width: 100%;
-                bottom: 50px;
-                color: #fff;
-                position: absolute;
+                height: 100%;
+                display: flex;
+                color: #ffffff;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
                 #project-header__title {
                     font-size: 3em;
                     font-weight: 500;
@@ -1004,13 +1006,13 @@
         }
     }
     #project-content {
-        
         #project-navigation__wrapper {
             display: flex;
-            margin: 0 0 50px 0;
             flex-direction: row;
+            margin: 0 0 50px 0;
             justify-content: center;
             #project-navigation {
+                border-radius: 3px;
                 ul {
                     margin: 0;
                     padding: 0;
@@ -1039,7 +1041,6 @@
                 }
             }
         }
-        
         #project-info {
             display: flex;
             flex-direction: row;
@@ -1559,9 +1560,15 @@
 }
 
 // 
-// 
+// View task
 // 
 
+#task__wrapper {
+    #task {
+        width: 600px;
+        margin: 0 auto;
+    }
+}
 
 
 

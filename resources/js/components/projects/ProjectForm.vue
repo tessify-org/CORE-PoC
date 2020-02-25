@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div class="content-card elevation-1" v-if="project === undefined">
+            <div class="content-card elevation-1 mb" v-if="project === undefined">
                 <div class="content-card__content">
 
                     <!-- Team roles -->
@@ -76,7 +76,7 @@
                 </div>
             </div>
 
-            <div class="content-card elevation-1 mb">
+            <div class="content-card elevation-1">
                 <div class="content-card__content">
 
                     <!-- Resources -->
@@ -152,7 +152,7 @@
             </div>
 
             <!-- Dates card -->
-            <div class="content-card elevation-1">
+            <div class="content-card elevation-1 mb">
                 <div class="content-card__content">
 
                     <!-- Starts at -->
@@ -175,6 +175,22 @@
                             :error="hasErrors('ends_at')"
                             :error-messages="getErrors('ends_at')">
                         </datepicker>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Flags card -->
+            <div class="content-card elevation-1">
+                <div class="content-card__content">
+
+                    <div class="form-field checkbox">
+                        <v-checkbox
+                            hide-details
+                            label="Heeft taken"
+                            v-model="form.has_tasks">
+                        </v-checkbox>
+                        <input type="hidden" name="has_tasks" :value="form.has_tasks">
                     </div>
 
                 </div>
@@ -232,6 +248,7 @@
                 ends_at: "",
                 resources: [],
                 team_roles: [],
+                has_tasks: true,
             }
         }),
         computed: {
@@ -271,6 +288,7 @@
                     this.form.description = this.project.description;
                     this.form.starts_at = this.project.starts_at;
                     this.form.ends_at = this.project.ends_at;
+                    this.form.has_tasks = this.project.has_tasks;
                     if (this.project.resources !== undefined && this.project.resources !== null && this.project.resources.length > 0) {
                         this.form.resources = this.project.resources;
                     }
@@ -301,6 +319,7 @@
                     if (this.oldInput.ends_at !== null) this.form.ends_at = this.oldInput.ends_at;
                     if (this.oldInput.resources !== null) this.form.resources = JSON.parse(this.oldInput.resources);
                     if (this.oldInput.team_roles !== null) this.form.team_roles = JSON.parse(this.oldInput.team_roles);
+                    if (this.oldInput.has_tasks !== null) this.form.has_tasks = this.oldInput.has_tasks === "true" ? true : false;
                 }
             },
             generateStatusOptions() {

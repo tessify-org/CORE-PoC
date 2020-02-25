@@ -345,6 +345,9 @@ p:last-child {
         &.alt {
             background-color: #ffffff;
         }
+        &.pt50 {
+            padding: 50px 0 100px 0;
+        }
         .content-section__title {
             font-size: 3em;
             margin: 0 0 50px 0;
@@ -463,6 +466,16 @@ i {
     }
 }
 
+.content-title {
+    font-size: 2em;
+    font-weight: 500;
+    line-height: 1em;
+    margin: 0 0 15px 0;
+    box-sizing: border-box;
+    &.centered {
+        text-align: center;
+    }
+}
 .content-subtitle {
     font-size: 1.4em;
     font-weight: 500;
@@ -471,6 +484,9 @@ i {
     padding: 0 0 8px 0;
     box-sizing: border-box;
     border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    &.centered {
+        text-align: center;
+    }
 }
 
 .content-desc {

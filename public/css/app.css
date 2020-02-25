@@ -2735,6 +2735,10 @@ p:last-child {
   background-color: #ffffff;
 }
 
+.content-section__wrapper .content-section.pt50 {
+  padding: 50px 0 100px 0;
+}
+
 .content-section__wrapper .content-section .content-section__title {
   font-size: 3em;
   margin: 0 0 50px 0;
@@ -2861,6 +2865,18 @@ i {
   margin: 0;
 }
 
+.content-title {
+  font-size: 2em;
+  font-weight: 500;
+  line-height: 1em;
+  margin: 0 0 15px 0;
+  box-sizing: border-box;
+}
+
+.content-title.centered {
+  text-align: center;
+}
+
 .content-subtitle {
   font-size: 1.4em;
   font-weight: 500;
@@ -2869,6 +2885,10 @@ i {
   padding: 0 0 8px 0;
   box-sizing: border-box;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.content-subtitle.centered {
+  text-align: center;
 }
 
 .content-desc {
@@ -4581,11 +4601,18 @@ i {
 }
 
 #project #project-header #project-header__content #project-header__text {
-  left: 0;
   width: 100%;
-  bottom: 50px;
-  color: #fff;
-  position: absolute;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  color: #ffffff;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
 }
 
 #project #project-header #project-header__content #project-header__text #project-header__title {
@@ -4881,12 +4908,16 @@ i {
 #project #project-content #project-navigation__wrapper {
   display: -webkit-box;
   display: flex;
-  margin: 0 0 50px 0;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
+  margin: 0 0 50px 0;
   -webkit-box-pack: center;
           justify-content: center;
+}
+
+#project #project-content #project-navigation__wrapper #project-navigation {
+  border-radius: 3px;
 }
 
 #project #project-content #project-navigation__wrapper #project-navigation ul {
@@ -5358,6 +5389,11 @@ i {
 
 #team-member-application__wrapper #team-member-application__footer #team-member-application__footer-right .v-btn:first-child {
   margin: 0;
+}
+
+#task__wrapper #task {
+  width: 600px;
+  margin: 0 auto;
 }
 
 .sidebar-title {

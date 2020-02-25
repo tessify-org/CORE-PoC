@@ -77,7 +77,7 @@ Breadcrumbs::for("projects.delete", function($t, $project) {
     $t->push(__("tessify-core::breadcrumbs.projects_delete"), route("projects.delete", $project->slug));
 });
 
-// Project teams
+// Project > Teams
 Breadcrumbs::for("projects.team.view", function($t, $project) {
     $t->parent("projects.view", $project);
     $t->push(__("tessify-core::breadcrumbs.projects_team_view"), route("projects.team.view", $project->slug));
@@ -87,7 +87,7 @@ Breadcrumbs::for("projects.team.leave", function($t, $project) {
     $t->push(__("tessify-core::breadcrumbs.projects_team_leave"), route("projects.team.leave", $project->slug));
 });
 
-// Project team applications
+// Project > Team > Applications
 Breadcrumbs::for("projects.team.applications", function($t, $project) {
     $t->parent("projects.view", $project);
     $t->push(__("tessify-core::breadcrumbs.projects_team_applications"), route("projects.team.applications", $project->slug));
@@ -110,7 +110,7 @@ Breadcrumbs::for("projects.team.apply", function($t, $project) {
     $t->push(__("tessify-core::breadcrumbs.projects_team_apply"), route("projects.team.apply", $project->slug));
 });
 
-// Project team members
+// Project > Team  > Members
 Breadcrumbs::for("projects.team.change-roles", function($t, $project, $user) {
     $t->parent("projects.team.view", $project);
     $t->push(__("tessify-core::breadcrumbs.projects_team_change_roles"), route("projects.team.change-roles", ["slug" => $project->slug, 'userSlug' => $user->slug]));
@@ -124,7 +124,7 @@ Breadcrumbs::for("projects.team.invite-member", function($t, $project) {
     $t->push(__("tessify-core::breadcrumbs.projects_team_member_invite"), route("projects.team.invite-member", $project->slug));
 });
 
-// Project team roles
+// Project > Team > Roles
 Breadcrumbs::for("projects.team.roles.create", function($t, $project) {
     $t->parent("projects.team.view", $project);
     $t->push(__("tessify-core::breadcrumbs.projects_team_role_create"), route("projects.team.roles.create", $project->slug));
@@ -136,6 +136,28 @@ Breadcrumbs::for("projects.team.roles.edit", function($t, $project, $role) {
 Breadcrumbs::for("projects.team.roles.delete", function($t, $project, $role) {
     $t->parent("projects.team.view", $project);
     $t->push(__("tessify-core::breadcrumbs.projects_team_role_delete"), route("projects.team.roles.delete", ["slug" => $project->slug, "roleSlug" => $role->slug]));
+});
+
+// Projects > Tasks
+Breadcrumbs::for("projects.tasks", function($t, $project) {
+    $t->parent("projects.view", $project);
+    $t->push(__('tessify-core::breadcrumbs.projects_tasks'), route("projects.tasks", $project->slug));
+});
+Breadcrumbs::for("projects.tasks.view", function($t, $project, $task) {
+    $t->parent("projects.tasks", $project);
+    $t->push(__("tessify-core::breadcrumbs.projects_tasks_view"), route("projects.tasks.view", ["slug" => $project->slug, "taskSlug" => $task->slug]));
+});
+Breadcrumbs::for("projects.tasks.create", function($t, $project) {
+    $t->parent("projects.tasks", $project);
+    $t->push(__("tessify-core::breadcrumbs.projects_tasks_create"), route("projects.tasks.create", $project->slug));
+});
+Breadcrumbs::for("projects.tasks.edit", function($t, $project, $task) {
+    $t->parent("projects.tasks.view", $project, $task);
+    $t->push(__("tessify-core::breadcrumbs.projects_tasks_edit"), route("projects.tasks.edit", ["slug" => $project->slug, "taskSlug" => $task->slug]));
+});
+Breadcrumbs::for("projects.tasks.delete", function($t, $project, $task) {
+    $t->parent("projects.tasks.view", $project, $task);
+    $t->push(__("tessify-core::breadcrumbs.projects_tasks_delete"), route("projects.tasks.delete", ["slug" => $project->slug, "taskSlug" => $task->slug]));
 });
 
 //
