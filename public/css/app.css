@@ -2402,6 +2402,10 @@ input[type=number] {
   background-color: #404040;
 }
 
+#app #topnav__wrapper #topnav #topnav-locale__wrapper {
+  margin: 0 0 0 25px;
+}
+
 #app #topnav__wrapper #topnav #topnav-search__wrapper {
   display: -webkit-box;
   display: flex;
