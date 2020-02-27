@@ -12,12 +12,12 @@
                         <h3 class="task-title">{{ task.title }}</h3>
                         <!-- Description -->
                         <div class="task-description">
-                            <div class="task-description__label">Description</div>
+                            <div class="task-description__label">{{ descriptionText }}</div>
                             <div class="task-description__text">{{ task.description.substring(0,250)+".." }}</div>
                         </div>
                         <!-- Skills -->
                         <div class="task-skills" v-if="task.skills.length > 0">
-                            <div class="task-skills__label">Vereiste skills</div>
+                            <div class="task-skills__label">{{ skillsText }}</div>
                             <div class="task-skills__list">
                                 <div class="task-skill" v-for="(skill, si) in task.skills" :key="si">
                                     {{ skill.name }}
@@ -26,7 +26,7 @@
                         </div>
                         <!-- Complexity -->
                         <div class="task-complexity">
-                            <div class="task-complexity__label">Complexiteit</div>
+                            <div class="task-complexity__label">{{ complexityText }}</div>
                             <div class="task-complexity__text">
                                 {{ task.complexity }}/10
                             </div>
@@ -43,7 +43,7 @@
                         <div class="task-footer__right">
                             <!-- View task -->
                             <v-btn color="primary" depressed :href="task.view_href">
-                                Bekijk werkpakket
+                                {{ viewText }}
                             </v-btn>                                
                         </div>
                     </div>
@@ -54,7 +54,7 @@
 
         <!-- No tasks -->
         <div id="no-records" class="elevation-1" v-if="paginatedTasks.length === 0">
-            No tasks found
+            {{ noTasksText }}
         </div>
 
         <!-- Pagination -->
@@ -74,6 +74,8 @@
     export default {
         props: [
             "tasks",
+            "descriptionText",
+            "skillsText",
             "complexityText",
             "viewText",
             "noTasksText",
@@ -85,6 +87,7 @@
             paginatedTasks: [],
             filters: {
                 search_query: "",
+                selected_skills: [],
                 selected_statuses: [],
                 selected_categories: [],
                 selected_seniorities: [],
@@ -119,6 +122,8 @@
                 
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" tasks: ", this.tasks);
+                console.log(this.tag+" description text: ", this.descriptionText);
+                console.log(this.tag+" skills text: ", this.skillsText);
                 console.log(this.tag+" complexity text: ", this.complexityText);
                 console.log(this.tag+" view text: ", this.viewText);
                 console.log(this.tag+" no tasks text: ", this.noTasksText);
@@ -151,6 +156,10 @@
 
                 EventBus.$on("task-dashboard__selected-categories", function(selectedCategories) {
                     this.filters.selected_categories = selectedCategories;
+                }.bind(this));
+
+                EventBus.$on("task-dashboard__selected-skills", function(selectedSkills) {
+                    this.filters.selected_skills = selectedSkills;
                 }.bind(this));
 
                 EventBus.$on("task-dashboard__selected-seniorities", function(selectedSeniorities) {
@@ -199,6 +208,23 @@
                                     matches = true;
                                     break;
                                 }
+                            }
+                            if (!matches) continue;
+                        }
+
+                        // Filter on selected skills
+                        if (this.filters.selected_skills.length > 0) {
+                            let matches = false;
+                            for (let i = 0; i < this.filters.selected_skills.length; i++) {
+                                if (task.skills.length > 0) {
+                                    for (let j = 0; j < task.skills.length; j++) {
+                                        if (task.skills[j].id === this.filters.selected_skills[i]) {
+                                            matches = true;
+                                            break;
+                                        }
+                                    }    
+                                }
+                                if (matches) break;
                             }
                             if (!matches) continue;
                         }
