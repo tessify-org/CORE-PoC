@@ -26,6 +26,7 @@ class User extends Authenticatable
         'password',
         'avatar_url',
         'phone',
+        'headline',
         'is_admin',
         'recovery_code',
     ];
@@ -56,6 +57,11 @@ class User extends Authenticatable
     //
     // Relationships
     //
+
+    public function assignments()
+    {
+        return $this->hasMany(Assignment::class);
+    }
     
     public function createdProjects()
     {
