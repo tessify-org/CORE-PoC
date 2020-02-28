@@ -80,6 +80,7 @@
 <style lang="scss">
     .date-picker {
         width: 100%;
+        z-index: 999;
         .date-picker__label {
             font-size: 12px;
             color: hsl(0, 0%, 35%);

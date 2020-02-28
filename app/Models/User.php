@@ -60,42 +60,42 @@ class User extends Authenticatable
 
     public function assignments()
     {
-        return $this->hasMany(Assignment::class);
+        return $this->hasMany(\Tessify\Core\Models\Assignment::class);
     }
     
     public function createdProjects()
     {
-        return $this->hasMany(Tessify\Core\Models\Project::class, "id", "author_id");
+        return $this->hasMany(\Tessify\Core\Models\Project::class, "id", "author_id");
     }
 
     public function createdTasks()
     {
-        return $this->hasMany(Tessify\Core\Models\Task::class, "id", "author_id");
+        return $this->hasMany(\Tessify\Core\Models\Task::class, "id", "author_id");
     }
 
     public function teamMembers()
     {
-        return $this->hasMany(Tessify\Core\Models\TeamMember::class);
+        return $this->hasMany(\Tessify\Core\Models\TeamMember::class);
     }
     
     public function teamMemberApplications()
     {
-        return $this->hasMany(Tessify\Core\Models\TeamMemberApplication::class);
+        return $this->hasMany(\Tessify\Core\Models\TeamMemberApplication::class);
     }
 
     public function placedComments()
     {
-        return $this->hasMany(Tessify\Core\Models\Comment::class);
+        return $this->hasMany(\Tessify\Core\Models\Comment::class);
     }
     
     public function receivedComments()
     {
-        return $this->morphMany(Tessify\Core\Models\Comment::class, "commentable");
+        return $this->morphMany(\Tessify\Core\Models\Comment::class, "commentable");
     }
     
     public function skills()
     {
-        return $this->belongsToMany(Tessify\Core\Models\Skill::class);
+        return $this->belongsToMany(\Tessify\Core\Models\Skill::class);
     }
 
     //
@@ -103,11 +103,6 @@ class User extends Authenticatable
     //
 
     public function getFormattedNameAttribute()
-    {
-        return $this->annotation." ".$this->first_name." ".$this->last_name;
-    }
-
-    public function getCombinedNameAttribute()
     {
         return $this->first_name." ".$this->last_name;
     }

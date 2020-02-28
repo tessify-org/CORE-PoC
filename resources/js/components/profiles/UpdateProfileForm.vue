@@ -6,16 +6,6 @@
 
             <!-- Annotation, first- & last name -->
             <div class="form-fields">
-                <div class="form-field">
-                    <v-select
-                        :label="annotationText"
-                        v-model="form.annotation"
-                        :items="annotationOptions"
-                        :error="hasErrors('annotation')"
-                        :error-messages="getErrors('annotation')">
-                    </v-select>
-                    <input type="hidden" name="annotation" :value="form.annotation">
-                </div>
                 <div class="form-field double">
                     <v-text-field 
                         :label="firstNameText"
@@ -34,6 +24,17 @@
                         :error-messages="getErrors('last_name')">
                     </v-text-field>
                 </div>
+            </div>
+
+            <!-- Headline -->
+            <div class="form-field">
+                <v-text-field
+                    :label="headlineText"
+                    v-model="form.headline"
+                    name="headline"
+                    :errors="hasErrors('headline')"
+                    :error-messages="getErrors('headline')">
+                </v-text-field>
             </div>
 
             <!-- Email address -->
@@ -66,6 +67,20 @@
                 </div>
             </div>
 
+            <!-- Current assignment -->
+            <div class="form-field">
+                <profile-current-assignment-field
+                    name="current_assignment_id"
+                    v-model="form.current_assignment_id"
+                    :user="user"
+                    :assignment-types="assignmentTypes"
+                    :organizations="organizations"
+                    :organization-locations="organizationLocations"
+                    :departments="departments"
+                    :create-api-endpoint="createAssignmentApiEndpoint">
+                </profile-current-assignment-field>
+            </div>
+
         </div>
 
         <!-- Controls -->
@@ -91,28 +106,34 @@
     export default {
         props: [
             "user",
+            "assignmentTypes",
+            "organizations",
+            "organizationLocations",
+            "departments",
             "errors",
             "oldInput",
-            "annotationText",
             "firstNameText",
             "lastNameText",
+            "headlineText",
             "emailText",
             "phoneText",
             "avatarText",
+            "assignmentsText",
             "backHref",
             "backText",
             "saveText",
+            "createAssignmentApiEndpoint",
         ],
         data: () => ({
             tag: "[update-profile-form]",
-            annotationOptions: [],
             form: {
-                annotation: "",
                 first_name: "",
                 last_name: "",
                 email: "",
                 phone: "",
                 avatar: null,
+                headline: "",
+                current_assignment_id: 0,
             }
         }),
         computed: {
@@ -124,39 +145,48 @@
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" user: ", this.user);
+                console.log(this.tag+" assignment types: ", this.assignmentTypes);
+                console.log(this.tag+" organizations: ", this.organizations);
+                console.log(this.tag+" organization locations: ", this.organizationLocations);
+                console.log(this.tag+" departments: ", this.departments);
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
-                console.log(this.tag+" annotation text: ", this.annotationText);
                 console.log(this.tag+" first name text: ", this.firstNameText);
                 console.log(this.tag+" last name text: ", this.lastNameText);
+                console.log(this.tag+" headline text: ", this.headlineText);
                 console.log(this.tag+" email text: ", this.emailText);
                 console.log(this.tag+" phone text: ", this.phoneText);
                 console.log(this.tag+" avatar text: ", this.avatarText);
+                console.log(this.tag+" assignments text: ", this.assignmentsText);
                 console.log(this.tag+" back href: ", this.backHref);
                 console.log(this.tag+" back text: ", this.backText);
                 console.log(this.tag+" save text: ", this.saveText);
-                this.generateAnnotationOptions();
+                console.log(this.tag+" create assignment api endpoint: ", this.createAssignmentApiEndpoint);
                 this.initializeData();
             },
             initializeData() {
                 if (this.user !== undefined && this.user !== null) {
-                    this.form.annotation = this.user.annotation;
                     this.form.first_name = this.user.first_name;
                     this.form.last_name = this.user.last_name;
                     this.form.email = this.user.email;
                     this.form.phone = this.user.phone;
+                    this.form.headline = this.user.headline;
+                    if (this.user.assignments !== undefined && this.user.assignments !== null && this.user.assignments.length > 0) {
+                        for (let i = 0; i < this.user.assignments.length; i++) {
+                            if (this.user.assignments[i].current) {
+                                this.form.current_assignment_id = this.user.assignments[i].id;
+                            }
+                        }
+                    }
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
-                    if (this.oldInput.annotation !== null) this.form.annotation = this.oldInput.annotation;
                     if (this.oldInput.first_name !== null) this.form.first_name = this.oldInput.first_name;
                     if (this.oldInput.last_name !== null) this.form.last_name = this.oldInput.last_name;
                     if (this.oldInput.email !== null) this.form.email = this.oldInput.email;
                     if (this.oldInput.phone !== null) this.form.phone = this.oldInput.phone;
+                    if (this.oldInput.headline !== null) this.form.headline = this.oldInput.headline;
+                    if (this.oldInput.current_assignment_id !== null) this.form.current_assignment_id = parseInt(this.oldInput.current_assignment_id);
                 }
-            },
-            generateAnnotationOptions() {
-                this.annotationOptions.push({ text: "Dhr.", value: "Dhr." });
-                this.annotationOptions.push({ text: "Mevr.", value: "Mevr." });
             },
             hasErrors(field) {
                 if (this.errors !== undefined && this.errors !== null && this.errors.length > 0) {
