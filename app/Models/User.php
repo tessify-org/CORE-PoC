@@ -122,4 +122,17 @@ class User extends Authenticatable
 
         return asset($value);
     }
+
+    public function getCurrentAssignmentAttribute()
+    {
+        foreach ($this->assignments as $assignment)
+        {
+            if ($assignment->current)
+            {
+                return $assignment;
+            }
+        }
+
+        return false;
+    }
 }
