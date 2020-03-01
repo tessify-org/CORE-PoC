@@ -7539,8 +7539,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["user", "skills", "assignmentTypes", "organizations", "organizationLocations", "departments", "errors", "oldInput", "firstNameText", "lastNameText", "headlineText", "emailText", "phoneText", "avatarText", "assignmentsText", "backHref", "backText", "saveText", "createAssignmentApiEndpoint"],
+  props: ["user", "skills", "assignmentTypes", "organizations", "organizationLocations", "departments", "errors", "oldInput", "firstNameText", "lastNameText", "headlineText", "emailText", "phoneText", "avatarText", "interestsText", "assignmentsText", "backHref", "backText", "saveText", "createAssignmentApiEndpoint"],
   data: function data() {
     return {
       tag: "[update-profile-form]",
@@ -7551,6 +7562,7 @@ __webpack_require__.r(__webpack_exports__);
         phone: "",
         avatar: null,
         headline: "",
+        interests: "",
         current_assignment_id: 0
       }
     };
@@ -7574,9 +7586,11 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.tag + " first name text: ", this.firstNameText);
       console.log(this.tag + " last name text: ", this.lastNameText);
       console.log(this.tag + " headline text: ", this.headlineText);
+      console.log(this.tag + " interests text: ", this.interestsText);
       console.log(this.tag + " email text: ", this.emailText);
       console.log(this.tag + " phone text: ", this.phoneText);
       console.log(this.tag + " avatar text: ", this.avatarText);
+      console.log(this.tag + " interests text: ", this.interestsText);
       console.log(this.tag + " assignments text: ", this.assignmentsText);
       console.log(this.tag + " back href: ", this.backHref);
       console.log(this.tag + " back text: ", this.backText);
@@ -7591,6 +7605,7 @@ __webpack_require__.r(__webpack_exports__);
         this.form.email = this.user.email;
         this.form.phone = this.user.phone;
         this.form.headline = this.user.headline;
+        this.form.interests = this.user.interests;
 
         if (this.user.assignments !== undefined && this.user.assignments !== null && this.user.assignments.length > 0) {
           for (var i = 0; i < this.user.assignments.length; i++) {
@@ -7607,6 +7622,7 @@ __webpack_require__.r(__webpack_exports__);
         if (this.oldInput.email !== null) this.form.email = this.oldInput.email;
         if (this.oldInput.phone !== null) this.form.phone = this.oldInput.phone;
         if (this.oldInput.headline !== null) this.form.headline = this.oldInput.headline;
+        if (this.oldInput.interests !== null) this.form.interests = this.oldInput.interests;
         if (this.oldInput.current_assignment_id !== null) this.form.current_assignment_id = parseInt(this.oldInput.current_assignment_id);
       }
     },
@@ -46029,29 +46045,6 @@ var render = function() {
           [
             _c("v-text-field", {
               attrs: {
-                label: _vm.headlineText,
-                name: "headline",
-                errors: _vm.hasErrors("headline"),
-                "error-messages": _vm.getErrors("headline")
-              },
-              model: {
-                value: _vm.form.headline,
-                callback: function($$v) {
-                  _vm.$set(_vm.form, "headline", $$v)
-                },
-                expression: "form.headline"
-              }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "form-field" },
-          [
-            _c("v-text-field", {
-              attrs: {
                 label: _vm.emailText,
                 name: "email",
                 error: _vm.hasErrors("email"),
@@ -46103,6 +46096,52 @@ var render = function() {
           _vm._v(" "),
           _vm._m(1)
         ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-text-field", {
+              attrs: {
+                label: _vm.headlineText,
+                name: "headline",
+                errors: _vm.hasErrors("headline"),
+                "error-messages": _vm.getErrors("headline")
+              },
+              model: {
+                value: _vm.form.headline,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "headline", $$v)
+                },
+                expression: "form.headline"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("v-textarea", {
+              attrs: {
+                label: _vm.interestsText,
+                name: "interests",
+                errors: _vm.hasErrors("interests"),
+                "error-messages": _vm.getErrors("interests")
+              },
+              model: {
+                value: _vm.form.interests,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "interests", $$v)
+                },
+                expression: "form.interests"
+              }
+            })
+          ],
+          1
+        ),
         _vm._v(" "),
         _c(
           "div",

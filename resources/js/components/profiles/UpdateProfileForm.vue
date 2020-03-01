@@ -26,17 +26,6 @@
                 </div>
             </div>
 
-            <!-- Headline -->
-            <div class="form-field">
-                <v-text-field
-                    :label="headlineText"
-                    v-model="form.headline"
-                    name="headline"
-                    :errors="hasErrors('headline')"
-                    :error-messages="getErrors('headline')">
-                </v-text-field>
-            </div>
-
             <!-- Email address -->
             <div class="form-field">
                 <v-text-field 
@@ -73,6 +62,28 @@
                         <input type="file" name="header_bg">
                     </div>
                 </div>
+            </div>
+
+            <!-- Headline -->
+            <div class="form-field">
+                <v-text-field
+                    :label="headlineText"
+                    v-model="form.headline"
+                    name="headline"
+                    :errors="hasErrors('headline')"
+                    :error-messages="getErrors('headline')">
+                </v-text-field>
+            </div>
+
+            <!-- Interests -->
+            <div class="form-field">
+                <v-textarea
+                    :label="interestsText"
+                    v-model="form.interests"
+                    name="interests"
+                    :errors="hasErrors('interests')"
+                    :error-messages="getErrors('interests')">
+                </v-textarea>
             </div>
 
             <!-- Current assignment -->
@@ -138,6 +149,7 @@
             "emailText",
             "phoneText",
             "avatarText",
+            "interestsText",
             "assignmentsText",
             "backHref",
             "backText",
@@ -153,6 +165,7 @@
                 phone: "",
                 avatar: null,
                 headline: "",
+                interests: "",
                 current_assignment_id: 0,
             }
         }),
@@ -175,9 +188,11 @@
                 console.log(this.tag+" first name text: ", this.firstNameText);
                 console.log(this.tag+" last name text: ", this.lastNameText);
                 console.log(this.tag+" headline text: ", this.headlineText);
+                console.log(this.tag+" interests text: ", this.interestsText);
                 console.log(this.tag+" email text: ", this.emailText);
                 console.log(this.tag+" phone text: ", this.phoneText);
                 console.log(this.tag+" avatar text: ", this.avatarText);
+                console.log(this.tag+" interests text: ", this.interestsText);
                 console.log(this.tag+" assignments text: ", this.assignmentsText);
                 console.log(this.tag+" back href: ", this.backHref);
                 console.log(this.tag+" back text: ", this.backText);
@@ -192,6 +207,7 @@
                     this.form.email = this.user.email;
                     this.form.phone = this.user.phone;
                     this.form.headline = this.user.headline;
+                    this.form.interests = this.user.interests;
                     if (this.user.assignments !== undefined && this.user.assignments !== null && this.user.assignments.length > 0) {
                         for (let i = 0; i < this.user.assignments.length; i++) {
                             if (this.user.assignments[i].current) {
@@ -206,6 +222,7 @@
                     if (this.oldInput.email !== null) this.form.email = this.oldInput.email;
                     if (this.oldInput.phone !== null) this.form.phone = this.oldInput.phone;
                     if (this.oldInput.headline !== null) this.form.headline = this.oldInput.headline;
+                    if (this.oldInput.interests !== null) this.form.interests = this.oldInput.interests;
                     if (this.oldInput.current_assignment_id !== null) this.form.current_assignment_id = parseInt(this.oldInput.current_assignment_id);
                 }
             },

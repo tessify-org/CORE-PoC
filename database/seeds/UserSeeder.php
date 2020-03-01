@@ -32,6 +32,7 @@ class UserSeeder extends Seeder
             "password" => bcrypt("engeland"),
             "avatar_url" => "storage/images/users/avatars/nick.jpeg",
             "headline" => "This is the way. I have spoken.",
+            "interests" => "I like turtles.",
             "is_admin" => true,
         ]);
         

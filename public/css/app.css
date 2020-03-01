@@ -2494,6 +2494,14 @@ input[type=number] {
   transition: all 0.3s;
 }
 
+#app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper.with-dropdown {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
 #app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper.with-dropdown:hover {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -2501,6 +2509,8 @@ input[type=number] {
 
 #app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper.with-dropdown:hover .dropdown {
   opacity: 1;
+  display: block;
+  visibility: visible;
 }
 
 #app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper .topnav-link {
@@ -2533,12 +2543,12 @@ input[type=number] {
   margin: 0;
   padding: 0;
   opacity: 0;
-  z-index: 10;
+  visibility: hidden;
   list-style: none;
   position: absolute;
+  border-radius: 3px;
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
-  border-radius: 3px;
   background-color: #fff;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }

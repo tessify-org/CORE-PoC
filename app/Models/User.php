@@ -28,6 +28,7 @@ class User extends Authenticatable
         'header_bg_url',
         'phone',
         'headline',
+        'interests',
         'reputation_points',
         'is_admin',
         'recovery_code',

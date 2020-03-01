@@ -141,6 +141,8 @@ input[type=number] {
                         // background-color: #000;
                         transition: all .3s;
                         &.with-dropdown {
+                            display: flex;
+                            flex-direction: column;
                             &:hover {
                                 // background-color: #fff;
                                 border-bottom-left-radius: 0;
@@ -151,6 +153,8 @@ input[type=number] {
                                 }
                                 .dropdown {
                                     opacity: 1;
+                                    display: block;
+                                    visibility: visible;
                                 }
                             }
                         }
@@ -177,11 +181,11 @@ input[type=number] {
                             margin: 0;
                             padding: 0;
                             opacity: 0;
-                            z-index: 10;
+                            visibility: hidden;
                             list-style: none;
                             position: absolute;
-                            transition: all .3s;
                             border-radius: 3px;
+                            transition: all .3s;
                             background-color: #fff;
                             box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
                             .dropdown-link__wrapper {
