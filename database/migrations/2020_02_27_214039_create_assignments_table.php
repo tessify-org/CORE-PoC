@@ -21,6 +21,7 @@ class CreateAssignmentsTable extends Migration
             $table->unsignedInteger('organization_department_id');
             $table->unsignedInteger('organization_location_id')->nullable();
             $table->string('title');
+            $table->text('description')->nullable();
             $table->unsignedInteger('order')->default(0);
             $table->boolean('current')->default(false);
             $table->date('start_date');

@@ -25,8 +25,10 @@ class User extends Authenticatable
         'email_verified_at',
         'password',
         'avatar_url',
+        'header_bg_url',
         'phone',
         'headline',
+        'reputation_points',
         'is_admin',
         'recovery_code',
     ];
@@ -95,7 +97,9 @@ class User extends Authenticatable
     
     public function skills()
     {
-        return $this->belongsToMany(\Tessify\Core\Models\Skill::class);
+        return $this->belongsToMany(\Tessify\Core\Models\Skill::class)
+                    ->withPivot('mastery', 'description')
+                    ->withTimestamps();
     }
 
     //
@@ -134,5 +138,21 @@ class User extends Authenticatable
         }
 
         return false;
+    }
+
+    public function getCurrentAssignmentJobTitleAttribute()
+    {
+        $out = "";
+
+        if ($this->currentAssignment)
+        {
+            $out .= $this->currentAssignment->title." bij ".$this->currentAssignment->organization->name;
+            if ($this->currentAssignment->organization->ministry)
+            {
+                $out .= ", ".$this->currentAssignment->organization->ministry->abbreviation;   
+            }
+        }
+
+        return $out;
     }
 }

@@ -6436,6 +6436,144 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["assignments"],
+  data: function data() {
+    return {
+      tag: "[profile-assignment-list]",
+      currentAssignment: null,
+      previousAssignments: [],
+      dialogs: {
+        view_prev: {
+          show: false,
+          index: null
+        }
+      }
+    };
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " assignments: ", this.assignments);
+      this.initializeData();
+    },
+    initializeData: function initializeData() {
+      if (this.assignments !== undefined && this.assignments !== null && this.assignments.length > 0) {
+        for (var i = 0; i < this.assignments.length; i++) {
+          if (this.assignments[i].current === true) {
+            this.currentAssignment = this.assignments[i];
+          } else {
+            this.previousAssignments.push(this.assignments[i]);
+          }
+        }
+      }
+    },
+    onClickPreviousAssignment: function onClickPreviousAssignment(index) {
+      this.dialogs.view_prev.index = index;
+      this.dialogs.view_prev.show = true;
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileCurrentAssignmentField.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileCurrentAssignmentField.vue?vue&type=script&lang=js& ***!
@@ -6447,6 +6585,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -6818,6 +6957,456 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["skills"],
+  data: function data() {
+    return {
+      tag: "[profile-skill-list]",
+      mutableSkills: []
+    };
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " skills: ", this.skills);
+      this.initializeData();
+    },
+    initializeData: function initializeData() {
+      if (this.skills !== undefined && this.skills !== null && this.skills.length > 0) {
+        for (var i = 0; i < this.skills.length; i++) {
+          this.mutableSkills.push(this.skills[i]);
+        }
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["name", "value", "user", "skills", "oldInput", "labelText", "noRecordsText", "createText"],
+  data: function data() {
+    return {
+      tag: "[profile-skills-field]",
+      masteryOptions: [],
+      skillOptions: [],
+      mutableSkills: [],
+      dialogs: {
+        view: {
+          show: false,
+          index: null
+        },
+        add: {
+          show: false,
+          loading: false,
+          errors: [],
+          form: {
+            skill: "",
+            mastery: 1,
+            description: ""
+          }
+        },
+        edit: {
+          show: false,
+          loading: false,
+          errors: [],
+          form: {
+            skill: "",
+            mastery: 1,
+            description: ""
+          }
+        },
+        "delete": {
+          show: false,
+          index: null
+        }
+      }
+    };
+  },
+  computed: {
+    confirmAddDisabled: function confirmAddDisabled() {
+      return this.dialogs.add.form.skill === "";
+    },
+    confirmEditDisabled: function confirmEditDisabled() {
+      return this.dialogs.edit.form.skill === "";
+    },
+    encodedSkills: function encodedSkills() {
+      return JSON.stringify(this.mutableSkills);
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " name: ", this.name);
+      console.log(this.tag + " value: ", this.value);
+      console.log(this.tag + " user: ", this.user);
+      console.log(this.tag + " skills: ", this.skills);
+      console.log(this.tag + " old input: ", this.oldInput);
+      console.log(this.tag + " label text: ", this.labelText);
+      console.log(this.tag + " no records text: ", this.noRecordsText);
+      console.log(this.tag + " create text: ", this.createText);
+      this.initializeData();
+      this.generateSkillOptions();
+      this.generateMasteryOptions();
+    },
+    initializeData: function initializeData() {
+      if (this.user !== undefined && this.user !== null && this.user.skills !== undefined && this.user.skills !== null && this.user.skills.length > 0) {
+        for (var i = 0; i < this.user.skills.length; i++) {
+          this.mutableSkills.push({
+            skill: this.user.skills[i].name,
+            mastery: this.user.skills[i].pivot.mastery,
+            description: this.user.skills[i].pivot.description
+          });
+        }
+      }
+
+      if (this.oldInput !== undefined && this.oldInput !== null) {}
+    },
+    generateMasteryOptions: function generateMasteryOptions() {
+      for (var i = 1; i <= 10; i++) {
+        this.masteryOptions.push({
+          text: i + "/10",
+          value: i
+        });
+      }
+    },
+    generateSkillOptions: function generateSkillOptions() {
+      if (this.skills !== undefined && this.skills !== null && this.skills.length > 0) {
+        for (var i = 0; i < this.skills.length; i++) {
+          this.skillOptions.push(this.skills[i].name);
+        }
+      }
+    },
+    onClickAdd: function onClickAdd() {
+      this.dialogs.add.show = true;
+    },
+    onClickConfirmAdd: function onClickConfirmAdd() {
+      this.mutableSkills.push({
+        skill: this.dialogs.add.form.skill,
+        mastery: this.dialogs.add.form.mastery,
+        description: this.dialogs.add.form.description
+      });
+      this.dialogs.add.show = false;
+    },
+    onClickView: function onClickView(index) {
+      this.dialogs.view.index = index;
+      this.dialogs.view.show = true;
+    },
+    onClickEdit: function onClickEdit(index) {
+      if (this.dialogs.view.show) this.dialogs.view.show = false;
+      this.dialogs.edit.index = index;
+      this.dialogs.edit.form.skill = this.mutableSkills[index].skill;
+      this.dialogs.edit.form.mastery = this.mutableSkills[index].mastery;
+      this.dialogs.edit.form.description = this.mutableSkills[index].description;
+      this.dialogs.edit.show = true;
+    },
+    onClickConfirmEdit: function onClickConfirmEdit() {
+      this.mutableSkills[this.dialogs.edit.index].skill = this.dialogs.edit.form.skill;
+      this.mutableSkills[this.dialogs.edit.index].mastery = this.dialogs.edit.form.mastery;
+      this.mutableSkills[this.dialogs.edit.index].description = this.dialogs.edit.form.description;
+      this.dialogs.edit.show = false;
+    },
+    onClickDelete: function onClickDelete(index) {
+      if (this.dialogs.view.show) this.dialogs.view.show = false;
+      this.dialogs["delete"].index = index;
+      this.dialogs["delete"].show = true;
+    },
+    onClickConfirmDelete: function onClickConfirmDelete() {
+      this.mutableSkills.splice(this.dialogs["delete"].index, 1);
+      this.dialogs["delete"].show = false;
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=script&lang=js& ***!
@@ -6931,8 +7520,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["user", "assignmentTypes", "organizations", "organizationLocations", "departments", "errors", "oldInput", "firstNameText", "lastNameText", "headlineText", "emailText", "phoneText", "avatarText", "assignmentsText", "backHref", "backText", "saveText", "createAssignmentApiEndpoint"],
+  props: ["user", "skills", "assignmentTypes", "organizations", "organizationLocations", "departments", "errors", "oldInput", "firstNameText", "lastNameText", "headlineText", "emailText", "phoneText", "avatarText", "assignmentsText", "backHref", "backText", "saveText", "createAssignmentApiEndpoint"],
   data: function data() {
     return {
       tag: "[update-profile-form]",
@@ -6956,6 +7564,7 @@ __webpack_require__.r(__webpack_exports__);
     initialize: function initialize() {
       console.log(this.tag + " initializing");
       console.log(this.tag + " user: ", this.user);
+      console.log(this.tag + " skills: ", this.skills);
       console.log(this.tag + " assignment types: ", this.assignmentTypes);
       console.log(this.tag + " organizations: ", this.organizations);
       console.log(this.tag + " organization locations: ", this.organizationLocations);
@@ -7016,9 +7625,6 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return [];
-    },
-    onAvatarUpload: function onAvatarUpload() {
-      this.form.avatar = this.$refs.edit_file.files[0];
     }
   },
   mounted: function mounted() {
@@ -10973,6 +11579,25 @@ exports.push([module.i, "#mobile-navigation__wrapper.active #sidemenu {\n  left:
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#profile-assignment-list #current-assignment {\n  padding: 15px;\n  box-sizing: border-box;\n}\n#profile-assignment-list #current-assignment #current-assignment__label {\n  margin: 0 0 10px 0;\n}\n#profile-assignment-list #current-assignment #current-assignment__card {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px;\n  border-radius: 3px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#profile-assignment-list #current-assignment #current-assignment__card #card-image__wrapper {\n  -webkit-box-flex: 0;\n          flex: 0 0 70px;\n}\n#profile-assignment-list #current-assignment #current-assignment__card #card-image__wrapper #card-image {\n  display: block;\n  width: 70px;\n  height: 70px;\n  color: #fff;\n  display: -webkit-box;\n  display: flex;\n  border-radius: 3px;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: #666;\n  text-transform: uppercase;\n}\n#profile-assignment-list #current-assignment #current-assignment__card #card-text__wrapper {\n  -webkit-box-flex: 1;\n          flex: 1;\n  margin: 0 0 0 15px;\n}\n#profile-assignment-list #current-assignment #current-assignment__card #card-text__wrapper #job-title {\n  font-weight: 500;\n  font-size: 1.2em;\n  line-height: 1em;\n  margin: 3px 0 2px 0;\n}\n#profile-assignment-list #current-assignment #current-assignment__card #card-text__wrapper #job-company {\n  font-size: 0.9em;\n  margin: 0 0 5px 0;\n}\n#profile-assignment-list #current-assignment #current-assignment__card #card-text__wrapper #job-description {\n  font-size: 0.9em;\n}\n#profile-assignment-list #previous-assignments {\n  padding: 15px;\n  box-sizing: border-box;\n}\n#profile-assignment-list #previous-assignments #previous-assignments__label {\n  margin: 0 0 10px 0;\n}\n#profile-assignment-list #previous-assignments #previous-assignments__card {\n  overflow: hidden;\n  border-radius: 3px;\n  background-color: #f2f2f2;\n}\n#profile-assignment-list #previous-assignments #previous-assignments__card .assignment {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#profile-assignment-list #previous-assignments #previous-assignments__card .assignment:last-child {\n  border-bottom: 0;\n}\n#profile-assignment-list #previous-assignments #previous-assignments__card .assignment:hover {\n  cursor: pointer;\n  background-color: #e6e6e6;\n}\n#profile-assignment-list #previous-assignments #previous-assignments__card .assignment .assignment-title {\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n#profile-assignment-list #no-assignments {\n  padding: 10px 15px;\n  box-sizing: border-box;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileCurrentAssignmentField.vue?vue&type=style&index=0&lang=scss&":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileCurrentAssignmentField.vue?vue&type=style&index=0&lang=scss& ***!
@@ -10985,7 +11610,45 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#profile-current-assignment-field #current-assignment__actions {\n  display: -webkit-box;\n  display: flex;\n  margin: 15px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#profile-current-assignment-field #current-assignment__actions .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
+exports.push([module.i, "#profile-current-assignment-field #current-assignment__actions {\n  display: -webkit-box;\n  display: flex;\n  margin: 0 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}\n#profile-current-assignment-field #current-assignment__actions .v-btn {\n  margin: 0 0 0 15px;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=style&index=0&lang=scss&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=style&index=0&lang=scss& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#profile-skill-list #skills .skill {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px 15px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#profile-skill-list #skills .skill:last-child {\n  border-bottom: 0;\n}\n#profile-skill-list #skills .skill .skill-name {\n  -webkit-box-flex: 1;\n          flex: 1;\n}\n#profile-skill-list #no-skills {\n  padding: 10px 15px;\n  box-sizing: border-box;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=style&index=0&lang=scss&":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=style&index=0&lang=scss& ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#profile-skills-field #profile-skills-field__label {\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n  color: #737373;\n}\n#profile-skills-field #profile-skills-field__skills {\n  margin: 0 0 10px 0;\n  background-color: #f2f2f2;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill:last-child {\n  border-bottom: 0;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-name {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  padding: 0 0 0 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action {\n  width: 26px;\n  height: 26px;\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.8em;\n  cursor: pointer;\n  color: #ffffff;\n  border-radius: 3px;\n  margin: 0 0 0 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: #333333;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action:first-child {\n  margin: 0;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.view {\n  background-color: #0088ff;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.view:hover {\n  background-color: #0072d6;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.edit {\n  background-color: #f35900;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.edit:hover {\n  background-color: #e25300;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.delete {\n  background-color: #b70000;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.delete:hover {\n  background-color: #990000;\n}\n#profile-skills-field #profile-skills-field__no-records {\n  padding: 10px 15px;\n  margin: 0 0 15px 0;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#profile-skills-field #profile-skills-field__actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
 
 // exports
 
@@ -39908,6 +40571,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileCurrentAssignmentField.vue?vue&type=style&index=0&lang=scss&":
 /*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileCurrentAssignmentField.vue?vue&type=style&index=0&lang=scss& ***!
@@ -39917,6 +40610,66 @@ if(false) {}
 
 
 var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileCurrentAssignmentField.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileCurrentAssignmentField.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileSkillList.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=style&index=0&lang=scss&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=style&index=0&lang=scss& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileSkillsField.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=style&index=0&lang=scss&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -43828,6 +44581,282 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=template&id=2d5ad41a&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=template&id=2d5ad41a& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "profile-assignment-list" } },
+    [
+      _vm.currentAssignment !== null
+        ? _c("div", { attrs: { id: "current-assignment" } }, [
+            _c("div", { attrs: { id: "current-assignment__label" } }, [
+              _vm._v("Huidige aanstelling")
+            ]),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "current-assignment__card" } }, [
+              _c("div", { attrs: { id: "card-image__wrapper" } }, [
+                _c("div", { attrs: { id: "card-image" } }, [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(
+                        _vm.currentAssignment.organization.ministry.abbreviation
+                      ) +
+                      "\n                "
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { attrs: { id: "card-text__wrapper" } }, [
+                _c("div", { attrs: { id: "job-title" } }, [
+                  _vm._v(_vm._s(_vm.currentAssignment.title))
+                ]),
+                _vm._v(" "),
+                _c("div", { attrs: { id: "job-company" } }, [
+                  _vm._v(_vm._s(_vm.currentAssignment.organization.name))
+                ]),
+                _vm._v(" "),
+                _vm.currentAssignment.description !== ""
+                  ? _c("div", { attrs: { id: "job-description" } }, [
+                      _vm._v(
+                        '\n                    "' +
+                          _vm._s(_vm.currentAssignment.description) +
+                          '"\n                '
+                      )
+                    ])
+                  : _vm._e()
+              ])
+            ])
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.previousAssignments.length > 0
+        ? _c("div", { attrs: { id: "previous-assignments" } }, [
+            _c("div", { attrs: { id: "previous-assignments__label" } }, [
+              _vm._v("Vorige aanstellingen")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { attrs: { id: "previous-assignments__card" } },
+              _vm._l(_vm.previousAssignments, function(assignment, ai) {
+                return _c(
+                  "div",
+                  {
+                    key: ai,
+                    staticClass: "assignment",
+                    on: {
+                      click: function($event) {
+                        return _vm.onClickPreviousAssignment(ai)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "assignment-title" }, [
+                      _vm._v(_vm._s(assignment.title))
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "assignment-company" }, [
+                      _vm._v(_vm._s(assignment.organization.name))
+                    ])
+                  ]
+                )
+              }),
+              0
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.currentAssignment === null && _vm.previousAssignments.length === 0
+        ? _c("div", { attrs: { id: "no-assignments" } }, [
+            _vm._v("\n        Nog geen aanstellingen toegevoegd\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "700" },
+          model: {
+            value: _vm.dialogs.view_prev.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.view_prev, "show", $$v)
+            },
+            expression: "dialogs.view_prev.show"
+          }
+        },
+        [
+          this.dialogs.view_prev.index !== null
+            ? _c("div", { staticClass: "dialog" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dialog__close-button",
+                    on: {
+                      click: function($event) {
+                        _vm.dialogs.view_prev.show = false
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-times" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-content" }, [
+                  _c("h3", { staticClass: "dialog-title" }, [
+                    _vm._v("Aanstelling")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dialog-text" }, [
+                    _c(
+                      "div",
+                      { staticClass: "details compact bordered mb-0" },
+                      [
+                        _c("div", { staticClass: "detail" }, [
+                          _c("div", { staticClass: "key" }, [
+                            _vm._v("Ministerie")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "val" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.previousAssignments[
+                                  this.dialogs.view_prev.index
+                                ].organization.ministry.name
+                              )
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "detail" }, [
+                          _c("div", { staticClass: "key" }, [
+                            _vm._v("Organisatie")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "val" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.previousAssignments[
+                                  this.dialogs.view_prev.index
+                                ].organization.name
+                              )
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "detail" }, [
+                          _c("div", { staticClass: "key" }, [
+                            _vm._v("Departement")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "val" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.previousAssignments[
+                                  this.dialogs.view_prev.index
+                                ].department.name
+                              )
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "detail" }, [
+                          _c("div", { staticClass: "key" }, [
+                            _vm._v("Type dienstverband")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "val" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.previousAssignments[
+                                  this.dialogs.view_prev.index
+                                ].type.label
+                              )
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "detail" }, [
+                          _c("div", { staticClass: "key" }, [
+                            _vm._v("Functie")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "val" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.previousAssignments[
+                                  this.dialogs.view_prev.index
+                                ].title
+                              )
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "detail" }, [
+                          _c("div", { staticClass: "key" }, [
+                            _vm._v("Looptijd")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "val" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.previousAssignments[
+                                  this.dialogs.view_prev.index
+                                ].start_date +
+                                  " t/m " +
+                                  _vm.previousAssignments[
+                                    this.dialogs.view_prev.index
+                                  ].end_date
+                              )
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "detail" }, [
+                          _c("div", { staticClass: "key" }, [
+                            _vm._v("Omschrijving")
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "val" }, [
+                            _vm._v(
+                              _vm._s(
+                                _vm.previousAssignments[
+                                  this.dialogs.view_prev.index
+                                ].description
+                              )
+                            )
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ])
+              ])
+            : _vm._e()
+        ]
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileCurrentAssignmentField.vue?vue&type=template&id=91dea1fa&":
 /*!*****************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileCurrentAssignmentField.vue?vue&type=template&id=91dea1fa& ***!
@@ -43878,7 +44907,10 @@ var render = function() {
               attrs: { color: "primary", small: "", depressed: "" },
               on: { click: _vm.onClickAdd }
             },
-            [_vm._v("\n            Functie toevoegen\n        ")]
+            [
+              _c("i", { staticClass: "fas fa-plus" }),
+              _vm._v("\n            Functie toevoegen\n        ")
+            ]
           )
         ],
         1
@@ -44196,6 +45228,733 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=template&id=d3ab1d60&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=template&id=d3ab1d60& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "profile-skill-list" } }, [
+    _vm.mutableSkills.length > 0
+      ? _c(
+          "div",
+          { attrs: { id: "skills" } },
+          _vm._l(_vm.mutableSkills, function(skill, si) {
+            return _c("div", { key: si, staticClass: "skill" }, [
+              _c("div", { staticClass: "skill-name" }, [
+                _vm._v(_vm._s(skill.name))
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "skill-mastery" }, [
+                _vm._v(_vm._s(skill.pivot.mastery))
+              ])
+            ])
+          }),
+          0
+        )
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.mutableSkills.length === 0
+      ? _c("div", { attrs: { id: "no-skills" } }, [
+          _vm._v("\n        Nog geen skills toegevoegd\n    ")
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=template&id=30e3ec4e&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=template&id=30e3ec4e& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "profile-skills-field" } },
+    [
+      _c("div", { attrs: { id: "profile-skills-field__label" } }, [
+        _vm._v(_vm._s(_vm.labelText))
+      ]),
+      _vm._v(" "),
+      _vm.mutableSkills.length > 0
+        ? _c(
+            "div",
+            { attrs: { id: "profile-skills-field__skills" } },
+            _vm._l(_vm.mutableSkills, function(skill, si) {
+              return _c(
+                "div",
+                { key: si, staticClass: "profile-skills-field__skill" },
+                [
+                  _c("div", { staticClass: "skill-name" }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(skill.skill) +
+                        "\n            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "skill-actions" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "skill-action view",
+                        on: {
+                          click: function($event) {
+                            return _vm.onClickView(si)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-eye" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "skill-action edit",
+                        on: {
+                          click: function($event) {
+                            return _vm.onClickEdit(si)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-edit" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "skill-action delete",
+                        on: {
+                          click: function($event) {
+                            return _vm.onClickDelete(si)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-trash-alt" })]
+                    )
+                  ])
+                ]
+              )
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.mutableSkills.length === 0
+        ? _c("div", { attrs: { id: "profile-skills-field__no-records" } }, [
+            _vm._v("\n        Je hebt nog geen skills toegevoegd\n    ")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        { attrs: { id: "profile-skills-field__actions" } },
+        [
+          _c(
+            "v-btn",
+            {
+              attrs: { color: "primary", depressed: "", small: "" },
+              on: { click: _vm.onClickAdd }
+            },
+            [
+              _c("i", { staticClass: "fas fa-plus" }),
+              _vm._v("\n            Skill toevoegen\n        ")
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.view.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.view, "show", $$v)
+            },
+            expression: "dialogs.view.show"
+          }
+        },
+        [
+          this.dialogs.view.index !== null
+            ? _c("div", { staticClass: "dialog" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dialog__close-button",
+                    on: {
+                      click: function($event) {
+                        _vm.dialogs.view.show = false
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-times" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-content" }, [
+                  _c("h3", { staticClass: "dialog-title" }, [
+                    _vm._v("Skill bekijken")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dialog-text" }, [
+                    _c("div", { staticClass: "details bordered mb-0" }, [
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [_vm._v("Skill")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm._v(
+                            _vm._s(
+                              _vm.mutableSkills[this.dialogs.view.index].skill
+                            )
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [_vm._v("Mastery")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm._v(
+                            _vm._s(
+                              _vm.mutableSkills[this.dialogs.view.index].mastery
+                            ) + " / 10"
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [
+                          _vm._v("Beschrijving")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm._v(
+                            _vm._s(
+                              _vm.mutableSkills[this.dialogs.view.index]
+                                .description
+                            )
+                          )
+                        ])
+                      ])
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-controls" }, [
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { depressed: "", color: "warning" },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickEdit(_vm.dialogs.view.index)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-edit" }),
+                          _vm._v(
+                            "\n                        Aanpassen\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { depressed: "", dark: "", color: "red" },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickDelete(_vm.dialogs.view.index)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-trash-alt" }),
+                          _vm._v(
+                            "\n                        Verwijderen\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.add.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.add, "show", $$v)
+            },
+            expression: "dialogs.add.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.add.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Skill toevoegen")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.add.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.add.errors, function(error, ei) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-combobox", {
+                    attrs: { label: "Skill", items: _vm.skillOptions },
+                    model: {
+                      value: _vm.dialogs.add.form.skill,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "skill", $$v)
+                      },
+                      expression: "dialogs.add.form.skill"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-select", {
+                    attrs: { label: "Mastery", items: _vm.masteryOptions },
+                    model: {
+                      value: _vm.dialogs.add.form.mastery,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "mastery", $$v)
+                      },
+                      expression: "dialogs.add.form.mastery"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-textarea", {
+                    attrs: {
+                      label: "Description",
+                      placeholder: "Beschrijf je ervaring met deze vaardigheid."
+                    },
+                    model: {
+                      value: _vm.dialogs.add.form.description,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "description", $$v)
+                      },
+                      expression: "dialogs.add.form.description"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.add.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        depressed: "",
+                        color: "success",
+                        loading: _vm.dialogs.add.loading,
+                        dark: !_vm.confirmAddDisabled,
+                        disabled: _vm.confirmAddDisabled
+                      },
+                      on: { click: _vm.onClickConfirmAdd }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-save" }),
+                      _vm._v(
+                        "\n                        Opslaan\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.edit.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.edit, "show", $$v)
+            },
+            expression: "dialogs.edit.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.edit.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Skill aanpassen")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.edit.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.edit.errors, function(error, ei) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-combobox", {
+                    attrs: { label: "Skill", items: _vm.skillOptions },
+                    model: {
+                      value: _vm.dialogs.edit.form.skill,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.edit.form, "skill", $$v)
+                      },
+                      expression: "dialogs.edit.form.skill"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-select", {
+                    attrs: { label: "Mastery", items: _vm.masteryOptions },
+                    model: {
+                      value: _vm.dialogs.edit.form.mastery,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.edit.form, "mastery", $$v)
+                      },
+                      expression: "dialogs.edit.form.mastery"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-textarea", {
+                    attrs: {
+                      label: "Description",
+                      placeholder: "Beschrijf je ervaring met deze vaardigheid."
+                    },
+                    model: {
+                      value: _vm.dialogs.edit.form.description,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.edit.form, "description", $$v)
+                      },
+                      expression: "dialogs.edit.form.description"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.edit.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        depressed: "",
+                        color: "success",
+                        dark: !_vm.confirmEditDisabled,
+                        disabled: _vm.confirmEditDisabled
+                      },
+                      on: { click: _vm.onClickConfirmEdit }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-save" }),
+                      _vm._v(
+                        "\n                        Opslaan\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.delete.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.delete, "show", $$v)
+            },
+            expression: "dialogs.delete.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.delete.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Skill verwijderen")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "dialog-text" }, [
+                _vm._v(
+                  "\n                    Weet je zeker dat je deze skill wilt verwijderen van je profiel?\n                "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.delete.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Nee, annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { depressed: "", dark: "", color: "danger" },
+                      on: { click: _vm.onClickConfirmDelete }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-trash-alt" }),
+                      _vm._v(
+                        "\n                        Ja, verwijderen\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: _vm.name },
+        domProps: { value: _vm.encodedSkills }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=template&id=df40bcec&":
 /*!*****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/profiles/UpdateProfileForm.vue?vue&type=template&id=df40bcec& ***!
@@ -44333,22 +46092,16 @@ var render = function() {
           1
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "image-field" }, [
-          _c("div", { staticClass: "image-field__label" }, [
-            _vm._v(_vm._s(_vm.avatarText))
+        _c("div", { staticClass: "form-fields" }, [
+          _c("div", { staticClass: "image-field" }, [
+            _c("div", { staticClass: "image-field__label" }, [
+              _vm._v(_vm._s(_vm.avatarText))
+            ]),
+            _vm._v(" "),
+            _vm._m(0)
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "image-field__input" }, [
-            _c("input", {
-              ref: "add_file",
-              attrs: { type: "file" },
-              on: {
-                change: function($event) {
-                  return _vm.onAvatarUpload("add")
-                }
-              }
-            })
-          ])
+          _vm._m(1)
         ]),
         _vm._v(" "),
         _c(
@@ -44371,6 +46124,29 @@ var render = function() {
                   _vm.$set(_vm.form, "current_assignment_id", $$v)
                 },
                 expression: "form.current_assignment_id"
+              }
+            })
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "form-field" },
+          [
+            _c("profile-skills-field", {
+              attrs: {
+                name: "skills",
+                user: _vm.user,
+                skills: _vm.skills,
+                "label-text": "Skills"
+              },
+              model: {
+                value: _vm.form.skills,
+                callback: function($$v) {
+                  _vm.$set(_vm.form, "skills", $$v)
+                },
+                expression: "form.skills"
               }
             })
           ],
@@ -44414,7 +46190,30 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "image-field__input" }, [
+      _c("input", { attrs: { type: "file", name: "avatar" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "image-field" }, [
+      _c("div", { staticClass: "image-field__label" }, [
+        _vm._v("Header background")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "image-field__input" }, [
+        _c("input", { attrs: { type: "file", name: "header_bg" } })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -101926,7 +103725,10 @@ var map = {
 	"./components/locale/LocaleSwitcher.vue": "./resources/js/components/locale/LocaleSwitcher.vue",
 	"./components/navigation/HamburgerButton.vue": "./resources/js/components/navigation/HamburgerButton.vue",
 	"./components/navigation/MobileNavigation.vue": "./resources/js/components/navigation/MobileNavigation.vue",
+	"./components/profiles/ProfileAssignmentList.vue": "./resources/js/components/profiles/ProfileAssignmentList.vue",
 	"./components/profiles/ProfileCurrentAssignmentField.vue": "./resources/js/components/profiles/ProfileCurrentAssignmentField.vue",
+	"./components/profiles/ProfileSkillList.vue": "./resources/js/components/profiles/ProfileSkillList.vue",
+	"./components/profiles/ProfileSkillsField.vue": "./resources/js/components/profiles/ProfileSkillsField.vue",
 	"./components/profiles/UpdateProfileForm.vue": "./resources/js/components/profiles/UpdateProfileForm.vue",
 	"./components/projects/ApplyForTeamForm.vue": "./resources/js/components/projects/ApplyForTeamForm.vue",
 	"./components/projects/ProjectForm.vue": "./resources/js/components/projects/ProjectForm.vue",
@@ -103116,6 +104918,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/profiles/ProfileAssignmentList.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileAssignmentList.vue ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProfileAssignmentList_vue_vue_type_template_id_2d5ad41a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfileAssignmentList.vue?vue&type=template&id=2d5ad41a& */ "./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=template&id=2d5ad41a&");
+/* harmony import */ var _ProfileAssignmentList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileAssignmentList.vue?vue&type=script&lang=js& */ "./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ProfileAssignmentList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ProfileAssignmentList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProfileAssignmentList_vue_vue_type_template_id_2d5ad41a___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProfileAssignmentList_vue_vue_type_template_id_2d5ad41a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/profiles/ProfileAssignmentList.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileAssignmentList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss&":
+/*!******************************************************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss& ***!
+  \******************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=template&id=2d5ad41a&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=template&id=2d5ad41a& ***!
+  \***************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_template_id_2d5ad41a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileAssignmentList.vue?vue&type=template&id=2d5ad41a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileAssignmentList.vue?vue&type=template&id=2d5ad41a&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_template_id_2d5ad41a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileAssignmentList_vue_vue_type_template_id_2d5ad41a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/profiles/ProfileCurrentAssignmentField.vue":
 /*!****************************************************************************!*\
   !*** ./resources/js/components/profiles/ProfileCurrentAssignmentField.vue ***!
@@ -103198,6 +105087,180 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCurrentAssignmentField_vue_vue_type_template_id_91dea1fa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileCurrentAssignmentField_vue_vue_type_template_id_91dea1fa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileSkillList.vue":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileSkillList.vue ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProfileSkillList_vue_vue_type_template_id_d3ab1d60___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfileSkillList.vue?vue&type=template&id=d3ab1d60& */ "./resources/js/components/profiles/ProfileSkillList.vue?vue&type=template&id=d3ab1d60&");
+/* harmony import */ var _ProfileSkillList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileSkillList.vue?vue&type=script&lang=js& */ "./resources/js/components/profiles/ProfileSkillList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ProfileSkillList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileSkillList.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/profiles/ProfileSkillList.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ProfileSkillList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProfileSkillList_vue_vue_type_template_id_d3ab1d60___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProfileSkillList_vue_vue_type_template_id_d3ab1d60___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/profiles/ProfileSkillList.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileSkillList.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileSkillList.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileSkillList.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileSkillList.vue?vue&type=style&index=0&lang=scss&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileSkillList.vue?vue&type=style&index=0&lang=scss& ***!
+  \*************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileSkillList.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileSkillList.vue?vue&type=template&id=d3ab1d60&":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileSkillList.vue?vue&type=template&id=d3ab1d60& ***!
+  \**********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_template_id_d3ab1d60___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileSkillList.vue?vue&type=template&id=d3ab1d60& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillList.vue?vue&type=template&id=d3ab1d60&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_template_id_d3ab1d60___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillList_vue_vue_type_template_id_d3ab1d60___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileSkillsField.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileSkillsField.vue ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ProfileSkillsField_vue_vue_type_template_id_30e3ec4e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProfileSkillsField.vue?vue&type=template&id=30e3ec4e& */ "./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=template&id=30e3ec4e&");
+/* harmony import */ var _ProfileSkillsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProfileSkillsField.vue?vue&type=script&lang=js& */ "./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _ProfileSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ProfileSkillsField.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _ProfileSkillsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ProfileSkillsField_vue_vue_type_template_id_30e3ec4e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ProfileSkillsField_vue_vue_type_template_id_30e3ec4e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/profiles/ProfileSkillsField.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileSkillsField.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=style&index=0&lang=scss&":
+/*!***************************************************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=style&index=0&lang=scss& ***!
+  \***************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--8-2!../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileSkillsField.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=template&id=30e3ec4e&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=template&id=30e3ec4e& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_template_id_30e3ec4e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./ProfileSkillsField.vue?vue&type=template&id=30e3ec4e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/profiles/ProfileSkillsField.vue?vue&type=template&id=30e3ec4e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_template_id_30e3ec4e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ProfileSkillsField_vue_vue_type_template_id_30e3ec4e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

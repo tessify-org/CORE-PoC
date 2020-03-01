@@ -2985,6 +2985,13 @@ i {
           flex: 2;
 }
 
+.form-fields .image-field {
+  -webkit-box-flex: 1;
+          flex: 1;
+  padding: 0 15px;
+  box-sizing: border-box;
+}
+
 .form-field {
   margin: 0 0 15px 0;
 }

@@ -776,6 +776,11 @@ class GovernmentSeeder extends Seeder
             "name" => "Innovatie"
         ]);
 
+        OrganizationDepartment::create([
+            "organization_id" => $ssc->id,
+            "name" => "Mobile Development"
+        ]);
+
         //
         // Assignment types
         //

@@ -17,6 +17,8 @@ class CreateSkillUserTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('skill_id');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('mastery')->default(1);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

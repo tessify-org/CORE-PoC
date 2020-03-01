@@ -17,6 +17,8 @@ class CreateTaskUserTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('task_id');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('required_mastery')->default(1);
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

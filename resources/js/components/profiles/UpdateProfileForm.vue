@@ -59,11 +59,19 @@
                 </v-text-field>
             </div>
 
-            <!-- Avatar -->
-            <div class="image-field">
-                <div class="image-field__label">{{ avatarText }}</div>
-                <div class="image-field__input">
-                    <input type="file" ref="add_file" v-on:change="onAvatarUpload('add')">
+            <!-- Avatar & Header bg-->
+            <div class="form-fields">
+                <div class="image-field">
+                    <div class="image-field__label">{{ avatarText }}</div>
+                    <div class="image-field__input">
+                        <input type="file" name="avatar">
+                    </div>
+                </div>
+                <div class="image-field">
+                    <div class="image-field__label">Header background</div>
+                    <div class="image-field__input">
+                        <input type="file" name="header_bg">
+                    </div>
                 </div>
             </div>
 
@@ -79,6 +87,17 @@
                     :departments="departments"
                     :create-api-endpoint="createAssignmentApiEndpoint">
                 </profile-current-assignment-field>
+            </div>
+
+            <!-- Skills -->
+            <div class="form-field">
+                <profile-skills-field
+                    name="skills"
+                    v-model="form.skills"
+                    :user="user"
+                    :skills="skills"
+                    label-text="Skills">
+                </profile-skills-field>
             </div>
 
         </div>
@@ -106,6 +125,7 @@
     export default {
         props: [
             "user",
+            "skills",
             "assignmentTypes",
             "organizations",
             "organizationLocations",
@@ -145,6 +165,7 @@
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" user: ", this.user);
+                console.log(this.tag+" skills: ", this.skills);
                 console.log(this.tag+" assignment types: ", this.assignmentTypes);
                 console.log(this.tag+" organizations: ", this.organizations);
                 console.log(this.tag+" organization locations: ", this.organizationLocations);
@@ -201,9 +222,6 @@
                     return this.errors[field];
                 }
                 return [];
-            },
-            onAvatarUpload() {
-                this.form.avatar = this.$refs.edit_file.files[0];
             },
         },
         mounted() {
