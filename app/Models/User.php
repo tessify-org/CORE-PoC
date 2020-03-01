@@ -7,6 +7,8 @@ use Avatar;
 use Uploader;
 
 use Cviebrock\EloquentSluggable\Sluggable;
+use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -14,7 +16,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, Sluggable;
+    use Sluggable;
+    use Notifiable;
+    use CanFollow, CanBeFollowed;
 
     protected $fillable = [
         'annotation',

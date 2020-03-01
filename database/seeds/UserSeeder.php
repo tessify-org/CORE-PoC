@@ -88,6 +88,14 @@ class UserSeeder extends Seeder
         // Dummy users
         //
 
-        factory(User::class, 10)->create();
+        for ($i = 0; $i < 10; $i++)
+        {
+            $user = factory(User::class)->create();
+            $user->follow($nick);
+
+            if ($i < 2) {
+                $nick->follow($user);
+            }
+        }
     }
 }
