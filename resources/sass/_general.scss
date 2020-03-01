@@ -133,29 +133,101 @@ input[type=number] {
                     align-items: center;
                     justify-content: flex-end;
                     .topnav-link__wrapper {
-                        margin: 0 0 0 25px;
+                        padding: 5px 10px;
+                        margin: 0 0 0 15px;
+                        position: relative;
+                        border-radius: 3px;
+                        box-sizing: border-box;
+                        // background-color: #000;
+                        transition: all .3s;
+                        &.with-dropdown {
+                            &:hover {
+                                // background-color: #fff;
+                                border-bottom-left-radius: 0;
+                                border-bottom-right-radius: 0;
+                                // box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+                                .topnav-link {
+                                    // color: #000000;
+                                }
+                                .dropdown {
+                                    opacity: 1;
+                                }
+                            }
+                        }
                         .topnav-link {
-                            display: block;
+                            display: flex;
+                            color: #000;
+                            flex-direction: row;
+                            align-items: center;
                             text-decoration: none;
-                            color: hsl(0, 0%, 0%);
+                            box-sizing: border-box;
+                            #avatar {
+                                width: 24px;
+                                height: 24px;
+                                margin: 0 0 0 10px;
+                                border-radius: 12px;
+                            }
                         }
                         &:first-child {
                             margin: 0;
                         }
+                        .dropdown {
+                            left: 0;
+                            top: 40px;
+                            margin: 0;
+                            padding: 0;
+                            opacity: 0;
+                            z-index: 10;
+                            list-style: none;
+                            position: absolute;
+                            transition: all .3s;
+                            border-radius: 3px;
+                            background-color: #fff;
+                            box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+                            .dropdown-link__wrapper {
+                                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                                &:last-child {
+                                    border-bottom: 0;
+                                }
+                                &:first-child {
+                                    border-top: 1px solid rgba(0, 0, 0, 0.1);
+                                }
+                                .dropdown-link {
+                                    color: #000;
+                                    display: flex;
+                                    min-width: 175px;
+                                    padding: 5px 10px;
+                                    flex-direction: row;
+                                    align-items: center;
+                                    transition: all .3s;
+                                    text-decoration: none;
+                                    box-sizing: border-box;
+                                    &:hover {
+                                        background-color: hsl(0, 0%, 95%);
+                                    }
+                                    .dropdown-link__icon {
+                                        flex: 0 0 25px;
+                                        font-size: .9em;
+                                    }
+                                    .dropdown-link__text {
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
-                #topnav-avatar {
-                    display: flex;
-                    margin: 0 0 0 15px;
-                    flex-direction: row;
-                    align-items: center;
-                    justify-content: center;
-                    #avatar {
-                        width: 24px;
-                        height: 24px;
-                        border-radius: 12px;
-                    }
-                }
+                // #topnav-avatar {
+                //     display: flex;
+                //     margin: 0 0 0 15px;
+                //     flex-direction: row;
+                //     align-items: center;
+                //     justify-content: center;
+                //     #avatar {
+                //         width: 24px;
+                //         height: 24px;
+                //         border-radius: 12px;
+                //     }
+                // }
                 #mobile-nav-button {
                     margin: 0 0 0 15px;
                     display: none;
