@@ -11,10 +11,21 @@
 |
 */
 
-// Home
+// Homepage
 Route::get("/", "HomeController@getHome")->name("home");
 
-Route::get("test", "StaticPageController@getStaticPage")->name("static");
+// Static pages
+Route::get("pers", "StaticPageController@getPress")->name("press");
+Route::get("partners", "StaticPageController@getPartners")->name("partners");
+Route::get("over-hnnw", "StaticPageController@getAbout")->name("about");
+Route::get("doe-meer", "StaticPageController@getDoMore")->name("do-more");
+
+// Faq pages
+Route::get("veelgestelde-vragen", "FaqController@getOverview")->name("faq");
+
+// Contact pages
+Route::get("contact", "ContactController@getContact")->name("contact");
+Route::post("contact", "ContactController@postContact")->name("contact.post");
 
 // Auth endpoints, when user is logged in
 Route::group(["middleware" => "auth"], function() {

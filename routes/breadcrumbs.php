@@ -9,6 +9,32 @@ Breadcrumbs::for("home", function($t) {
     $t->push(__('tessify-core::breadcrumbs.home'), route("home"));
 });
 
+// Static pages
+Breadcrumbs::for("press", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.press"), route("press"));
+});
+Breadcrumbs::for("partners", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.partners"), route("partners"));
+});
+Breadcrumbs::for("about", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.about"), route("about"));
+});
+Breadcrumbs::for("do-more", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.do_more"), route("do-more"));
+});
+Breadcrumbs::for("faq", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.faq"), route("faq"));
+});
+Breadcrumbs::for("contact", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.contact"), route("contact"));
+});
+
 // Register
 Breadcrumbs::for("auth.register", function($t) {
     $t->parent("home");
@@ -162,6 +188,18 @@ Breadcrumbs::for("projects.tasks.delete", function($t, $project, $task) {
 Breadcrumbs::for("projects.tasks.abandon", function($t, $project, $task) {
     $t->parent("projects.tasks.view", $project, $task);
     $t->push(__("tessify-core::breadcrumbs.task_abandon"), route("projects.tasks.abandon", ["slug" => $project->slug, "taskSlug" => $task->slug]));
+});
+
+// Settings
+Breadcrumbs::for("settings", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.settings"), route("settings"));
+});
+
+// Dashboard
+Breadcrumbs::for("dashboard", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.dashboard"), route("dashboard"));
 });
 
 // Werk pakketten
