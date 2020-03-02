@@ -1628,12 +1628,163 @@
 // View task
 // 
 
-#task__wrapper {
-    #task {
-        width: 800px;
-        margin: 0 auto;
+#task {
+    #task-header {
+        width: 100%;
+        height: 300px;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        &.controls-only {
+            height: 90px;
+        }
+        #task-header__overlay {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.65);
+        }
+        #task-header__content {
+            height: 100%;
+            width: 1200px;
+            margin: 0 auto;
+            padding: 25px 0;
+            position: relative;
+            box-sizing: border-box;
+            #task-header__actions {
+                right: 0;
+                top: 25px;
+                z-index: 3;
+                position: absolute;
+                .v-btn {
+                    margin: 0 0 0 15px;
+                    &:first-child {
+                        margin: 0;
+                    }
+                }
+            }
+            #task-header__back-button {
+                left: 0;
+                top: 25px;
+                z-index: 3;
+                position: absolute;
+                .v-btn {
+                    margin: 0;
+                }
+            }
+            #task-header__text {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                color: #ffffff;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                #task-header__title {
+                    font-size: 3em;
+                    font-weight: 500;
+                    text-align: center;
+                }
+                #task-header__slogan {
+                    font-size: 2em;
+                    font-weight: 300;
+                    text-align: center;
+                }
+            }
+        }
+        #task-header__text-wrapper {
+            left: 0;
+            bottom: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            padding: 25px 0;
+            position: absolute;
+            align-items: center;
+            box-sizing: border-box;
+            flex-direction: column;
+            justify-content: center;
+            #task-header__text {
+                width: 1200px;
+                margin: 0 auto;
+                padding: 50px 100px 0 100px;
+                #task-header__title {
+                    font-weight: 300;
+                    font-size: 3.5em;
+                    line-height: 1em;
+                    margin: 0 0 20px 0;
+                    text-align: center;
+                }
+                #task-header__subtitle {
+                    font-weight: 500;
+                    font-size: 2em;
+                    line-height: 1em;
+                    margin: 0 0 20px 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    #task-content {
+        #task-columns {
+            display: flex;
+            flex-direction: row;
+            #task-columns__left {
+                flex: 1;
+                #task-description {
+                    #task-description__label {
+                        font-size: .85em;
+                        margin: 0 0 5px 0;
+                        color: hsl(0, 0%, 45%);
+                    }
+                    #task-description__text {}
+                }
+                #task-skills {
+                    margin: 15px 0 0 0;
+                    #task-skills__label {
+                        font-size: .85em;
+                        margin: 0 0 5px 0;
+                        color: hsl(0, 0%, 45%);
+                    }
+                    #task-skills__list {
+                        border-radius: 3px;
+                        background-color: hsl(0, 0%, 98%);
+                        border: 1px solid rgba(0, 0, 0, 0.1);
+                        .task-skill {
+                            display: flex;
+                            padding: 6px 10px;
+                            flex-direction: row;
+                            box-sizing: border-box;
+                            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                            &:last-child {
+                                border-bottom: 0;
+                            }
+                            .task-skill__name {
+                                flex: 1;
+                            }
+                            .task-skill__mastery {}
+                        }
+                    }
+                }
+            }
+            #task-columns__right {
+                flex: 0 0 500px;
+                margin: 0 0 0 30px;
+            }
+        }
     }
 }
+
+// #task__wrapper {
+//     #task {
+//         width: 800px;
+//         margin: 0 auto;
+//     }
+// }
 
 //
 // Task dashboard
