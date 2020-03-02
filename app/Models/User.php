@@ -107,6 +107,11 @@ class User extends Authenticatable
                     ->withTimestamps();
     }
 
+    public function notifications()
+    {
+        return $this->hasMany(\Tessify\Core\Models\Notification::class);
+    }
+
     //
     // Accessors
     //
