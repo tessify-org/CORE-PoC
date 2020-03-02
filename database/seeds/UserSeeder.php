@@ -31,6 +31,7 @@ class UserSeeder extends Seeder
             "email" => "nick.verheijen@minbzk.nl",
             "password" => bcrypt("engeland"),
             "avatar_url" => "storage/images/users/avatars/nick.jpeg",
+            "header_bg_url" => "storage/images/users/headers/nick2.jpg",
             "headline" => "This is the way. I have spoken.",
             "interests" => "I like turtles.",
             "is_admin" => true,

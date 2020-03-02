@@ -8,6 +8,7 @@ use Uploader;
 
 use Cviebrock\EloquentSluggable\Sluggable;
 use Overtrue\LaravelFollow\Traits\CanFollow;
+use Overtrue\LaravelFollow\Traits\CanSubscribe;
 use Overtrue\LaravelFollow\Traits\CanBeFollowed;
 
 use Illuminate\Notifications\Notifiable;
@@ -18,7 +19,7 @@ class User extends Authenticatable
 {
     use Sluggable;
     use Notifiable;
-    use CanFollow, CanBeFollowed;
+    use CanFollow, CanBeFollowed, CanSubscribe;
 
     protected $fillable = [
         'annotation',
