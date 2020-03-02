@@ -237,6 +237,14 @@ input[type=number] {
                     display: none;
                 }
             }
+            #topnav-buttons {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                .topnav-button {
+                    margin: 0 0 0 15px;
+                }
+            }
         }
     }
     #content__wrapper {

@@ -130,7 +130,6 @@ Breadcrumbs::for("projects.team.applications.delete", function($t, $project, $ap
     $t->parent("projects.team.applications.view", $project, $application);
     $t->push(__("tessify-core::breadcrumbs.projects_team_applications_delete"), route("projects.team.applications.delete", ["slug" => $project->slug, "uuid" => $application->uuid]));
 });
-
 Breadcrumbs::for("projects.team.apply", function($t, $project) {
     $t->parent("projects.view", $project);
     $t->push(__("tessify-core::breadcrumbs.projects_team_apply"), route("projects.team.apply", $project->slug));
@@ -188,6 +187,34 @@ Breadcrumbs::for("projects.tasks.delete", function($t, $project, $task) {
 Breadcrumbs::for("projects.tasks.abandon", function($t, $project, $task) {
     $t->parent("projects.tasks.view", $project, $task);
     $t->push(__("tessify-core::breadcrumbs.task_abandon"), route("projects.tasks.abandon", ["slug" => $project->slug, "taskSlug" => $task->slug]));
+});
+
+// Notifications
+Breadcrumbs::for("notifications", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.notifications"), route("notifications"));
+});
+
+// Messages
+Breadcrumbs::for("messages", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.messages"), route("messages"));
+});
+Breadcrumbs::for("messages.outbox", function($t) {
+    $t->parent("messages");
+    $t->push(__("tessify-core::breadcrumbs.messages_outbox"), route("messages.outbox"));
+});
+Breadcrumbs::for("messages.send", function($t) {
+    $t->parent("messages");
+    $t->push(__("tessify-core::breadcrumbs.messages_send"), route("messages.send"));
+});
+Breadcrumbs::for("messages.read", function($t, $message) {
+    if (Auth::user()->id == $message->sender_id) {
+        $t->parent("messages.outbox");
+    } else {
+        $t->parent("messages");
+    }
+    $t->push(__("tessify-core::breadcrumbs.messages_read"), route("messages.read", $message->uuid));
 });
 
 // Settings

@@ -3530,7 +3530,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/Tessify/Core",
-                "reference": "afaed7834d620c47fe425e746c39f818b8d93532"
+                "reference": "6df147e37b7d1c6c4c5f29c7775f73d2b50ea600"
             },
             "require": {
                 "cviebrock/eloquent-sluggable": "^6.0",
@@ -3571,6 +3571,8 @@
                         "OrganizationTypes": "Tessify\\Core\\Facades\\OrganizationTypesFacade",
                         "OrganizationDepartments": "Tessify\\Core\\Facades\\OrganizationDepartmentsFacade",
                         "OrganizationLocations": "Tessify\\Core\\Facades\\OrganizationLocationsFacade",
+                        "Notifications": "Tessify\\Core\\Facades\\NotificationsFacade",
+                        "Messages": "Tessify\\Core\\Facades\\MessagesFacade",
                         "Dates": "Tessify\\Core\\Facades\\DatesFacade",
                         "Uploader": "Tessify\\Core\\Facades\\UploaderFacade"
                     }

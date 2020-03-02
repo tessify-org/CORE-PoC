@@ -1831,9 +1831,98 @@
     }
 }
 
+//
+// Messages
+//
 
+#messages {
+    display: flex;
+    flex-direction: row;
+    #messages-sidebar__wrapper {
+        flex: 0 0 300px;
+        margin: 0 30px 0 0;
+        #messages-sidebar {
+            overflow: hidden;
+            border-radius: 3px;
+            background-color: #fff;
+            #messages-nav {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                .messages-nav__link-wrapper {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+                    .messages-nav__link {
+                        color: #000;
+                        display: block;
+                        padding: 10px 15px;
+                        transition: all .3s;
+                        text-decoration: none;
+                        box-sizing: border-box;
+                        &:hover {
+                            background-color: hsl(0, 0%, 98%);
+                        }
+                        &.active {
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    #messages-content__wrapper {
+        flex: 1;
+        #messages-content {
+            padding: 25px;
+            border-radius: 3px;
+            box-sizing: border-box;
+            background-color: #fff;
+        }
+    }
+}
 
+#message-wrapper {
+    width: 600px;
+    margin: 0 auto;
+    #message {
+        padding: 25px;
+        border-radius: 3px;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        #message-details {
+            .message-detail {
+                margin: 0 0 15px 0;
+                &:last-child {
+                    margin: 0;
+                }
+                .message-detail__label {
+                    font-size: .85em;
+                    margin: 0 0 2px;
+                    color: hsl(0, 0%, 45%);
+                }
+                .message-detail__value {
 
+                }
+            }
+        }
+        #message-received-on {
+            margin-top: 15px;
+            font-size: .85em;
+            color: hsl(0, 0%, 45%);
+        }
+    }
+}
+
+//
+// Notifications
+//
+
+#notifications {
+    width: 800px;
+    margin: 0 auto;
+}
 
 
 

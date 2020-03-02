@@ -2597,6 +2597,20 @@ input[type=number] {
   display: none;
 }
 
+#app #topnav__wrapper #topnav #topnav-buttons {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#app #topnav__wrapper #topnav #topnav-buttons .topnav-button {
+  margin: 0 0 0 15px;
+}
+
 #app #content__wrapper {
   -webkit-box-flex: 1;
           flex: 1;
