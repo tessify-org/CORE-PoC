@@ -44426,7 +44426,7 @@ var render = function() {
                     staticClass: "dialog__close-button",
                     on: {
                       click: function($event) {
-                        _vm.dialogs.view_prev.show = false
+                        _vm.dialogs.view.show = false
                       }
                     }
                   },

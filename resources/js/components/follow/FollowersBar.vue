@@ -14,7 +14,7 @@
         <!-- Dialog -->
         <v-dialog v-model="dialogs.view.show" width="400">
             <div class="dialog" v-if="this.dialogs.view.index !== null">
-                <div class="dialog__close-button" @click="dialogs.view_prev.show = false">
+                <div class="dialog__close-button" @click="dialogs.view.show = false">
                     <i class="fas fa-times"></i>
                 </div>
                 <div class="dialog-content">
