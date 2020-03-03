@@ -113,6 +113,11 @@ class User extends Authenticatable
         return $this->hasMany(\Tessify\Core\Models\Notification::class);
     }
 
+    public function tasks()
+    {
+        return $this->belongsToMany(\Tessify\Core\Models\Task::class);
+    }
+
     //
     // Accessors
     //
