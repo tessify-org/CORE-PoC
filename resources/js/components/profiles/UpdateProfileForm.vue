@@ -52,12 +52,18 @@
             <div class="form-fields">
                 <div class="image-field">
                     <div class="image-field__label">{{ avatarText }}</div>
+                    <div class="image-field__image-wrapper">
+                        <img class="image-field__image" :src="user.avatar_url">
+                    </div>
                     <div class="image-field__input">
                         <input type="file" name="avatar">
                     </div>
                 </div>
                 <div class="image-field">
                     <div class="image-field__label">Header background</div>
+                    <div class="image-field__image-wrapper">
+                        <img class="image-field__image" :src="user.header_bg_url">
+                    </div>
                     <div class="image-field__input">
                         <input type="file" name="header_bg">
                     </div>

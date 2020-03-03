@@ -8345,6 +8345,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["user", "skills", "assignmentTypes", "organizations", "organizationLocations", "departments", "errors", "oldInput", "firstNameText", "lastNameText", "headlineText", "emailText", "phoneText", "avatarText", "interestsText", "assignmentsText", "backHref", "backText", "saveText", "createAssignmentApiEndpoint"],
   data: function data() {
@@ -48222,10 +48228,30 @@ var render = function() {
               _vm._v(_vm._s(_vm.avatarText))
             ]),
             _vm._v(" "),
+            _c("div", { staticClass: "image-field__image-wrapper" }, [
+              _c("img", {
+                staticClass: "image-field__image",
+                attrs: { src: _vm.user.avatar_url }
+              })
+            ]),
+            _vm._v(" "),
             _vm._m(0)
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _c("div", { staticClass: "image-field" }, [
+            _c("div", { staticClass: "image-field__label" }, [
+              _vm._v("Header background")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "image-field__image-wrapper" }, [
+              _c("img", {
+                staticClass: "image-field__image",
+                attrs: { src: _vm.user.header_bg_url }
+              })
+            ]),
+            _vm._v(" "),
+            _vm._m(1)
+          ])
         ]),
         _vm._v(" "),
         _c(
@@ -48373,14 +48399,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "image-field" }, [
-      _c("div", { staticClass: "image-field__label" }, [
-        _vm._v("Header background")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "image-field__input" }, [
-        _c("input", { attrs: { type: "file", name: "header_bg" } })
-      ])
+    return _c("div", { staticClass: "image-field__input" }, [
+      _c("input", { attrs: { type: "file", name: "header_bg" } })
     ])
   }
 ]

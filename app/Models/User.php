@@ -143,6 +143,11 @@ class User extends Authenticatable
         return asset($value);
     }
 
+    public function getHeaderBgUrlAttribute($value)
+    {
+        return asset($value);
+    }
+
     public function getCurrentAssignmentAttribute()
     {
         foreach ($this->assignments as $assignment)
