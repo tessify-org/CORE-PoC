@@ -101,7 +101,7 @@
                 <required-skills-field
                     :task="task"
                     :skills="skills"
-                    label-text="Required skills"
+                    :label-text="requiredSkillsText"
                     name="required_skills"
                     v-model="form.required_skills">
                 </required-skills-field>
@@ -110,7 +110,7 @@
             <!-- Urgency -->
             <div class="form-field">
                 <v-select
-                    label="Urgentie"
+                    :label="urgencyText"
                     v-model="form.urgency"
                     :items="urgencyOptions"
                     :errors="hasErrors('urgency')"
@@ -164,6 +164,8 @@
             "noSenioritiesText",
             "selectStatusText",
             "noStatusesText",
+            "requiredSkillsText",
+            "urgencyText",
             "backHref",
             "backText",
             "submitText",
@@ -219,6 +221,8 @@
                 console.log(this.tag+" no seniorities text: ", this.noSenioritiesText);
                 console.log(this.tag+" select status text: ", this.selectStatusText);
                 console.log(this.tag+" no statuses text: ", this.noStatusesText);
+                console.log(this.tag+" required skills text: ", this.requiredSkillsText);
+                console.log(this.tag+" urgency text: ", this.urgencyText);
                 console.log(this.tag+" back href: ", this.backHref);
                 console.log(this.tag+" back text: ", this.backText);
                 console.log(this.tag+" submit text: ", this.submitText);

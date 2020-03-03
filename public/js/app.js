@@ -11505,7 +11505,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["task", "skills", "errors", "oldInput", "statuses", "categories", "seniorities", "statusText", "categoryText", "seniorityText", "titleText", "descriptionText", "complexityText", "estimatedHoursText", "realizedHoursText", "selectCategoryText", "noCategoriesText", "selectSeniorityText", "noSenioritiesText", "selectStatusText", "noStatusesText", "backHref", "backText", "submitText"],
+  props: ["task", "skills", "errors", "oldInput", "statuses", "categories", "seniorities", "statusText", "categoryText", "seniorityText", "titleText", "descriptionText", "complexityText", "estimatedHoursText", "realizedHoursText", "selectCategoryText", "noCategoriesText", "selectSeniorityText", "noSenioritiesText", "selectStatusText", "noStatusesText", "requiredSkillsText", "urgencyText", "backHref", "backText", "submitText"],
   data: function data() {
     return {
       tag: "[task-form]",
@@ -11559,6 +11559,8 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.tag + " no seniorities text: ", this.noSenioritiesText);
       console.log(this.tag + " select status text: ", this.selectStatusText);
       console.log(this.tag + " no statuses text: ", this.noStatusesText);
+      console.log(this.tag + " required skills text: ", this.requiredSkillsText);
+      console.log(this.tag + " urgency text: ", this.urgencyText);
       console.log(this.tag + " back href: ", this.backHref);
       console.log(this.tag + " back text: ", this.backText);
       console.log(this.tag + " submit text: ", this.submitText);
@@ -48125,7 +48127,9 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _vm.mutableSkills[this.dialogs.view.index].description !==
-                      ""
+                        "" &&
+                      _vm.mutableSkills[this.dialogs.view.index].description !==
+                        null
                         ? _c("div", { staticClass: "detail" }, [
                             _c("div", { staticClass: "key" }, [
                               _vm._v("Beschrijving")
@@ -52120,7 +52124,9 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _vm.mutableSkills[this.dialogs.view.index].description !==
-                      ""
+                        "" &&
+                      _vm.mutableSkills[this.dialogs.view.index].description !==
+                        null
                         ? _c("div", { staticClass: "detail" }, [
                             _c("div", { staticClass: "key" }, [
                               _vm._v("Beschrijving")
@@ -52868,7 +52874,7 @@ var render = function() {
             attrs: {
               task: _vm.task,
               skills: _vm.skills,
-              "label-text": "Required skills",
+              "label-text": _vm.requiredSkillsText,
               name: "required_skills"
             },
             model: {
@@ -52889,7 +52895,7 @@ var render = function() {
         [
           _c("v-select", {
             attrs: {
-              label: "Urgentie",
+              label: _vm.urgencyText,
               items: _vm.urgencyOptions,
               errors: _vm.hasErrors("urgency"),
               "error-messages": _vm.getErrors("urgency")

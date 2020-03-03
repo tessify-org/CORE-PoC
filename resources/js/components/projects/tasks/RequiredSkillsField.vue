@@ -58,7 +58,7 @@
                                 <div class="key">Vereiste mastery</div>
                                 <div class="val">{{ mutableSkills[this.dialogs.view.index].required_mastery }} / 10</div>
                             </div>
-                            <div class="detail" v-if="mutableSkills[this.dialogs.view.index].description !== ''">
+                            <div class="detail" v-if="mutableSkills[this.dialogs.view.index].description !== '' && mutableSkills[this.dialogs.view.index].description !== null">
                                 <div class="key">Beschrijving</div>
                                 <div class="val">{{ mutableSkills[this.dialogs.view.index].description }}</div>
                             </div>
