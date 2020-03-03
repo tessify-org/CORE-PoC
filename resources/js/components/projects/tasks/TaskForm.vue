@@ -86,7 +86,7 @@
             </div>
 
             <!-- Realized hours -->
-            <div class="form-field" v-if="editing">
+            <div class="form-field" v-if="editing && isCompleted">
                 <v-text-field
                     name="realized_hours"
                     :label="realizedHoursText"
@@ -94,6 +94,29 @@
                     :errors="hasErrors('realized_hours')"
                     :error-messages="getErrors('realized_hours')">
                 </v-text-field>
+            </div>
+
+            <!-- Required skills -->
+            <div class="form-field">
+                <required-skills-field
+                    :task="task"
+                    :skills="skills"
+                    label-text="Required skills"
+                    name="required_skills"
+                    v-model="form.required_skills">
+                </required-skills-field>
+            </div>
+
+            <!-- Urgency -->
+            <div class="form-field">
+                <v-select
+                    label="Urgentie"
+                    v-model="form.urgency"
+                    :items="urgencyOptions"
+                    :errors="hasErrors('urgency')"
+                    :error-messages="getErrors('urgency')">
+                </v-select>
+                <input type="hidden" name="urgency" :value="form.urgency">
             </div>
 
         </div>
@@ -121,6 +144,7 @@
     export default {
         props: [
             "task",
+            "skills",
             "errors",
             "oldInput",
             "statuses",
@@ -149,6 +173,7 @@
             complexityOptions: [],
             seniorityOptions: [],
             categoryOptions: [],
+            urgencyOptions: [],
             statusOptions: [],
             form: {
                 task_status_id: 0,
@@ -159,17 +184,24 @@
                 complexity: 1,
                 estimated_hours: 0,
                 realized_hours: 0,
+                required_skills: [],
+                urgency: 2,
             }
         }),
         computed: {
             editing() {
                 return this.task !== undefined && this.task !== null && this.task !== "";
-            }
+            },
+            isCompleted() {
+                let status = this.getStatusById(this.form.task_status_id);
+                return status && status.name === "completed";
+            },
         },
         methods: {
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" task: ", this.task);
+                console.log(this.tag+" skills: ", this.skills);
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
                 console.log(this.tag+" categories: ", this.categories);
@@ -193,6 +225,7 @@
                 this.generateComplexityOptions();
                 this.generateSeniorityOptions();
                 this.generateCategoryOptions();
+                this.generateUrgencyOptions();
                 this.generateStatusOptions();
                 this.initializeData();
             },
@@ -225,10 +258,7 @@
             },
             generateCategoryOptions() {
                 if (this.categories !== undefined && this.categories !== null && this.categories.length > 0) {
-                    this.categoryOptions.push({
-                        text: this.selectCategoryText,
-                        value: 0,
-                    });
+                    this.categoryOptions.push({ text: this.selectCategoryText, value: 0 });
                     for (let i = 0; i < this.categories.length; i++) {
                         this.categoryOptions.push({
                             text: this.categories[i].name,
@@ -236,11 +266,13 @@
                         });
                     }
                 } else {
-                    this.categoryOptions.push({
-                        text: this.noCategoriesText,
-                        value: 0,
-                    });
+                    this.categoryOptions.push({ text: this.noCategoriesText, value: 0 });
                 }
+            },
+            generateUrgencyOptions() {
+                this.urgencyOptions.push({ text: "Laag", value: 1 });
+                this.urgencyOptions.push({ text: "Normaal", value: 2 });
+                this.urgencyOptions.push({ text: "Hoog", value: 3 });
             },
             generateStatusOptions() {
                 if (this.statuses !== undefined && this.statuses !== null && this.statuses.length > 0) {
@@ -267,6 +299,12 @@
                     this.form.description = this.task.description;
                     this.form.estimated_hours = this.task.estimated_hours;
                     this.form.realized_hours = this.task.realized_hours;
+                    this.form.urgency = this.task.urgency;
+                    if (this.task.skills !== undefined && this.task.skills !== null && this.task.skills.length > 0) {
+                        for (let i = 0; i < this.task.skills.length; i++) {
+
+                        }
+                    }
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.task_status_id !== null) this.form.task_status_id = parseInt(this.oldInput.task_status_id);
@@ -277,6 +315,7 @@
                     if (this.oldInput.complexity !== null) this.form.complexity = parseInt(this.oldInput.complexity);
                     if (this.oldInput.estimated_hours !== null) this.form.estimated_hours = this.oldInput.estimated_hours;
                     if (this.oldInput.realized_hours !== null) this.form.realized_hours = this.oldInput.realized_hours;
+                    if (this.oldInput.urgency !== null) this.form.urgency = this.oldInput.urgency;
                 }
             },
             hasErrors(field) {
@@ -292,6 +331,16 @@
                     return this.errors[field];
                 }
                 return [];
+            },
+            getStatusById(id) {
+                if (this.statuses !== undefined && this.statuses !== null && this.statuses.length > 0) {
+                    for (let i = 0; i < this.statuses.length; i++) {
+                        if (this.statuses[i].id === id) {
+                            return this.statuses[i];
+                        }
+                    }
+                }
+                return false;
             },
         },
         mounted() {

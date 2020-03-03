@@ -1,17 +1,17 @@
 <template>
-    <div id="profile-skills-field">
+    <div id="required-skills-field">
 
         <!-- Label -->
-        <div id="profile-skills-field__label">{{ labelText }}</div>
+        <div id="required-skills-field__label">{{ labelText }}</div>
 
         <!-- Skills -->
-        <div id="profile-skills-field__skills" v-if="mutableSkills.length > 0">
-            <div class="profile-skills-field__skill" v-for="(skill, si) in mutableSkills" :key="si">
+        <div id="required-skills-field__skills" v-if="mutableSkills.length > 0">
+            <div class="required-skills-field__skill" v-for="(skill, si) in mutableSkills" :key="si">
                 <div class="skill-name">
                     {{ skill.skill }}
                 </div>
-                <div class="skill-mastery">
-                    {{ skill.mastery }}/10
+                <div class="skill-required-mastery">
+                    {{ skill.required_mastery }}/10
                 </div>
                 <div class="skill-actions">
                     <div class="skill-action view" @click="onClickView(si)">
@@ -28,26 +28,26 @@
         </div>
 
         <!-- No skills -->
-        <div id="profile-skills-field__no-records" v-if="mutableSkills.length === 0">
-            Je hebt nog geen skills toegevoegd
+        <div id="required-skills-field__no-records" v-if="mutableSkills.length === 0">
+            Je hebt nog geen vereiste skills toegevoegd
         </div>
 
         <!-- Actions -->
-        <div id="profile-skills-field__actions">
+        <div id="required-skills-field__actions">
             <v-btn color="primary" depressed small @click="onClickAdd">
                 <i class="fas fa-plus"></i>
-                Skill toevoegen
+                Vereiste skill toevoegen
             </v-btn>
         </div>
 
-        <!-- View skill dialog -->
+        <!-- View required skill dialog -->
         <v-dialog v-model="dialogs.view.show" width="500">
             <div class="dialog" v-if="this.dialogs.view.index !== null">
                 <div class="dialog__close-button" @click="dialogs.view.show = false">
                     <i class="fas fa-times"></i>
                 </div>
                 <div class="dialog-content">
-                    <h3 class="dialog-title">Skill bekijken</h3>
+                    <h3 class="dialog-title">Vereiste skill</h3>
                     <div class="dialog-text">
                         <div class="details bordered mb-0">
                             <div class="detail">
@@ -55,8 +55,8 @@
                                 <div class="val">{{ mutableSkills[this.dialogs.view.index].skill }}</div>
                             </div>
                             <div class="detail">
-                                <div class="key">Mastery</div>
-                                <div class="val">{{ mutableSkills[this.dialogs.view.index].mastery }} / 10</div>
+                                <div class="key">Vereiste mastery</div>
+                                <div class="val">{{ mutableSkills[this.dialogs.view.index].required_mastery }} / 10</div>
                             </div>
                             <div class="detail" v-if="mutableSkills[this.dialogs.view.index].description !== ''">
                                 <div class="key">Beschrijving</div>
@@ -80,7 +80,7 @@
             </div>
         </v-dialog>
 
-        <!-- Add skill dialog -->
+        <!-- Add required skill dialog -->
         <v-dialog v-model="dialogs.add.show" width="500">
             <div class="dialog">
                 <!-- Close button -->
@@ -90,7 +90,7 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Skill toevoegen</h3>
+                    <h3 class="dialog-title">Vereiste skill toevoegen</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.add.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.add.errors" :key="ei">
@@ -108,9 +108,9 @@
                     <!-- Mastery -->
                     <div class="form-field">
                         <v-select
-                            label="Mastery"
+                            label="Required mastery"
                             :items="masteryOptions"
-                            v-model="dialogs.add.form.mastery">
+                            v-model="dialogs.add.form.required_mastery">
                         </v-select>
                     </div>
                     <!-- Description -->
@@ -149,7 +149,7 @@
             </div>
         </v-dialog>
 
-        <!-- Edit skill dialog -->
+        <!-- Edit required skill dialog -->
         <v-dialog v-model="dialogs.edit.show" width="500">
             <div class="dialog">
                 <div class="dialog__close-button" @click="dialogs.edit.show = false">
@@ -157,7 +157,7 @@
                 </div>
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Skill aanpassen</h3>
+                    <h3 class="dialog-title">Vereiste skill aanpassen</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.edit.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.edit.errors" :key="ei">
@@ -175,9 +175,9 @@
                     <!-- Mastery -->
                     <div class="form-field">
                         <v-select
-                            label="Mastery"
+                            label="Required mastery"
                             :items="masteryOptions"
-                            v-model="dialogs.edit.form.mastery">
+                            v-model="dialogs.edit.form.required_mastery">
                         </v-select>
                     </div>
                     <!-- Description -->
@@ -211,7 +211,7 @@
             </div>
         </v-dialog>
 
-        <!-- Delete skill dialog -->
+        <!-- Delete required skill dialog -->
         <v-dialog v-model="dialogs.delete.show" width="500">
             <div class="dialog">
                 <div class="dialog__close-button" @click="dialogs.delete.show = false">
@@ -219,10 +219,10 @@
                 </div>
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Skill verwijderen</h3>
+                    <h3 class="dialog-title">Vereiste skill verwijderen</h3>
                     <!-- Text -->
                     <div class="dialog-text">
-                        Weet je zeker dat je deze skill wilt verwijderen van je profiel?
+                        Weet je zeker dat je deze vereiste skill wilt verwijderen?
                     </div>
                 </div>
                 <div class="dialog-controls">
@@ -255,7 +255,7 @@
         props: [
             "name",
             "value",
-            "user",
+            "task",
             "skills",
             "oldInput",
             "labelText",
@@ -263,7 +263,7 @@
             "createText",
         ],
         data: () => ({
-            tag: "[profile-skills-field]",
+            tag: "[required-skills-field]",
             masteryOptions: [],
             skillOptions: [],
             mutableSkills: [],
@@ -278,7 +278,7 @@
                     errors: [],
                     form: {
                         skill: "",
-                        mastery: 1,
+                        required_mastery: 1,
                         description: "",
                     }
                 },
@@ -288,7 +288,7 @@
                     errors: [],
                     form: {
                         skill: "",
-                        mastery: 1,
+                        required_mastery: 1,
                         description: "",
                     }
                 },
@@ -314,7 +314,7 @@
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" name: ", this.name);
                 console.log(this.tag+" value: ", this.value);
-                console.log(this.tag+" user: ", this.user);
+                console.log(this.tag+" user: ", this.task);
                 console.log(this.tag+" skills: ", this.skills);
                 console.log(this.tag+" old input: ", this.oldInput);
                 console.log(this.tag+" label text: ", this.labelText);
@@ -325,12 +325,12 @@
                 this.generateMasteryOptions();
             },
             initializeData() {
-                if (this.user !== undefined && this.user !== null && this.user.skills !== undefined && this.user.skills !== null && this.user.skills.length > 0) {
-                    for (let i = 0; i < this.user.skills.length; i++) {
+                if (this.task !== undefined && this.task !== null && this.task.skills !== undefined && this.task.skills !== null && this.task.skills.length > 0) {
+                    for (let i = 0; i < this.task.skills.length; i++) {
                         this.mutableSkills.push({
-                            skill: this.user.skills[i].name,
-                            mastery: this.user.skills[i].pivot.mastery,
-                            description: this.user.skills[i].pivot.description,
+                            skill: this.task.skills[i].name,
+                            description: this.task.skills[i].pivot.description,
+                            required_mastery: this.task.skills[i].pivot.required_mastery,
                         });
                     }
                 }
@@ -359,8 +359,8 @@
             onClickConfirmAdd() {
                 this.mutableSkills.push({
                     skill: this.dialogs.add.form.skill,
-                    mastery: this.dialogs.add.form.mastery,
                     description: this.dialogs.add.form.description,
+                    required_mastery: this.dialogs.add.form.required_mastery,
                 });
                 this.dialogs.add.show = false;
             },
@@ -372,14 +372,14 @@
                 if (this.dialogs.view.show) this.dialogs.view.show = false;
                 this.dialogs.edit.index = index;
                 this.dialogs.edit.form.skill = this.mutableSkills[index].skill;
-                this.dialogs.edit.form.mastery = this.mutableSkills[index].mastery; 
                 this.dialogs.edit.form.description = this.mutableSkills[index].description;
+                this.dialogs.edit.form.required_mastery = this.mutableSkills[index].required_mastery; 
                 this.dialogs.edit.show = true;
             },
             onClickConfirmEdit() {
                 this.mutableSkills[this.dialogs.edit.index].skill = this.dialogs.edit.form.skill;
-                this.mutableSkills[this.dialogs.edit.index].mastery = this.dialogs.edit.form.mastery;
                 this.mutableSkills[this.dialogs.edit.index].description = this.dialogs.edit.form.description;
+                this.mutableSkills[this.dialogs.edit.index].required_mastery = this.dialogs.edit.form.required_mastery;
                 this.dialogs.edit.show = false;
             },
             onClickDelete(index) {
@@ -399,16 +399,16 @@
 </script>
 
 <style lang="scss">
-    #profile-skills-field {
-        #profile-skills-field__label {
+    #required-skills-field {
+        #required-skills-field__label {
             font-size: .85em;
             margin: 0 0 10px 0;
             color: hsl(0, 0%, 45%);
         }
-        #profile-skills-field__skills {
+        #required-skills-field__skills {
             margin: 0 0 15px 0;
             background-color: hsl(0, 0%, 95%);
-            .profile-skills-field__skill {
+            .required-skills-field__skill {
                 display: flex;
                 padding: 10px;
                 flex-direction: row;
@@ -424,7 +424,7 @@
                     flex-direction: row;
                     align-items: center;
                 }
-                .skill-mastery {
+                .skill-required-mastery {
                     flex: 1;
                     display: flex;
                     padding: 0 0 0 10px;
@@ -473,14 +473,14 @@
                 }
             }
         }
-        #profile-skills-field__no-records {
+        #required-skills-field__no-records {
             padding: 10px 15px;
             margin: 0 0 15px 0;
             border-radius: 3px;
             box-sizing: border-box;
             background-color: hsl(0, 0%, 95%);
         }
-        #profile-skills-field__actions {
+        #required-skills-field__actions {
             display: flex;
             flex-direction: row;
             align-items: center;

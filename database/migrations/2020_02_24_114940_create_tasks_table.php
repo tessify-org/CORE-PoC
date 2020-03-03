@@ -27,6 +27,7 @@ class CreateTasksTable extends Migration
             $table->unsignedInteger('estimated_hours');
             $table->unsignedInteger('realized_hours')->default(0);
             $table->unsignedInteger('num_positions')->default(1);
+            $table->unsignedInteger('urgency')->default(1);
             $table->timestamps();
         });
     }

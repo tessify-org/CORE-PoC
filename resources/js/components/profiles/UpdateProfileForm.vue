@@ -169,11 +169,10 @@
                 last_name: "",
                 email: "",
                 phone: "",
-                avatar: null,
                 headline: "",
                 interests: "",
                 current_assignment_id: 0,
-            }
+            },
         }),
         computed: {
             currentAssignmentId() {

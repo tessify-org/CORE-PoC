@@ -8062,6 +8062,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ["name", "value", "user", "skills", "oldInput", "labelText", "noRecordsText", "createText"],
   data: function data() {
@@ -8361,7 +8364,6 @@ __webpack_require__.r(__webpack_exports__);
         last_name: "",
         email: "",
         phone: "",
-        avatar: null,
         headline: "",
         interests: "",
         current_assignment_id: 0
@@ -10950,6 +10952,407 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ["name", "value", "task", "skills", "oldInput", "labelText", "noRecordsText", "createText"],
+  data: function data() {
+    return {
+      tag: "[required-skills-field]",
+      masteryOptions: [],
+      skillOptions: [],
+      mutableSkills: [],
+      dialogs: {
+        view: {
+          show: false,
+          index: null
+        },
+        add: {
+          show: false,
+          loading: false,
+          errors: [],
+          form: {
+            skill: "",
+            required_mastery: 1,
+            description: ""
+          }
+        },
+        edit: {
+          show: false,
+          loading: false,
+          errors: [],
+          form: {
+            skill: "",
+            required_mastery: 1,
+            description: ""
+          }
+        },
+        "delete": {
+          show: false,
+          index: null
+        }
+      }
+    };
+  },
+  computed: {
+    confirmAddDisabled: function confirmAddDisabled() {
+      return this.dialogs.add.form.skill === "";
+    },
+    confirmEditDisabled: function confirmEditDisabled() {
+      return this.dialogs.edit.form.skill === "";
+    },
+    encodedSkills: function encodedSkills() {
+      return JSON.stringify(this.mutableSkills);
+    }
+  },
+  methods: {
+    initialize: function initialize() {
+      console.log(this.tag + " initializing");
+      console.log(this.tag + " name: ", this.name);
+      console.log(this.tag + " value: ", this.value);
+      console.log(this.tag + " user: ", this.task);
+      console.log(this.tag + " skills: ", this.skills);
+      console.log(this.tag + " old input: ", this.oldInput);
+      console.log(this.tag + " label text: ", this.labelText);
+      console.log(this.tag + " no records text: ", this.noRecordsText);
+      console.log(this.tag + " create text: ", this.createText);
+      this.initializeData();
+      this.generateSkillOptions();
+      this.generateMasteryOptions();
+    },
+    initializeData: function initializeData() {
+      if (this.task !== undefined && this.task !== null && this.task.skills !== undefined && this.task.skills !== null && this.task.skills.length > 0) {
+        for (var i = 0; i < this.task.skills.length; i++) {
+          this.mutableSkills.push({
+            skill: this.task.skills[i].name,
+            description: this.task.skills[i].pivot.description,
+            required_mastery: this.task.skills[i].pivot.required_mastery
+          });
+        }
+      }
+
+      if (this.oldInput !== undefined && this.oldInput !== null) {}
+    },
+    generateMasteryOptions: function generateMasteryOptions() {
+      for (var i = 1; i <= 10; i++) {
+        this.masteryOptions.push({
+          text: i + "/10",
+          value: i
+        });
+      }
+    },
+    generateSkillOptions: function generateSkillOptions() {
+      if (this.skills !== undefined && this.skills !== null && this.skills.length > 0) {
+        for (var i = 0; i < this.skills.length; i++) {
+          this.skillOptions.push(this.skills[i].name);
+        }
+      }
+    },
+    onClickAdd: function onClickAdd() {
+      this.dialogs.add.show = true;
+    },
+    onClickConfirmAdd: function onClickConfirmAdd() {
+      this.mutableSkills.push({
+        skill: this.dialogs.add.form.skill,
+        description: this.dialogs.add.form.description,
+        required_mastery: this.dialogs.add.form.required_mastery
+      });
+      this.dialogs.add.show = false;
+    },
+    onClickView: function onClickView(index) {
+      this.dialogs.view.index = index;
+      this.dialogs.view.show = true;
+    },
+    onClickEdit: function onClickEdit(index) {
+      if (this.dialogs.view.show) this.dialogs.view.show = false;
+      this.dialogs.edit.index = index;
+      this.dialogs.edit.form.skill = this.mutableSkills[index].skill;
+      this.dialogs.edit.form.description = this.mutableSkills[index].description;
+      this.dialogs.edit.form.required_mastery = this.mutableSkills[index].required_mastery;
+      this.dialogs.edit.show = true;
+    },
+    onClickConfirmEdit: function onClickConfirmEdit() {
+      this.mutableSkills[this.dialogs.edit.index].skill = this.dialogs.edit.form.skill;
+      this.mutableSkills[this.dialogs.edit.index].description = this.dialogs.edit.form.description;
+      this.mutableSkills[this.dialogs.edit.index].required_mastery = this.dialogs.edit.form.required_mastery;
+      this.dialogs.edit.show = false;
+    },
+    onClickDelete: function onClickDelete(index) {
+      if (this.dialogs.view.show) this.dialogs.view.show = false;
+      this.dialogs["delete"].index = index;
+      this.dialogs["delete"].show = true;
+    },
+    onClickConfirmDelete: function onClickConfirmDelete() {
+      this.mutableSkills.splice(this.dialogs["delete"].index, 1);
+      this.dialogs["delete"].show = false;
+    }
+  },
+  mounted: function mounted() {
+    this.initialize();
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/TaskForm.vue?vue&type=script&lang=js&":
 /*!**********************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/tasks/TaskForm.vue?vue&type=script&lang=js& ***!
@@ -11078,14 +11481,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["task", "errors", "oldInput", "statuses", "categories", "seniorities", "statusText", "categoryText", "seniorityText", "titleText", "descriptionText", "complexityText", "estimatedHoursText", "realizedHoursText", "selectCategoryText", "noCategoriesText", "selectSeniorityText", "noSenioritiesText", "selectStatusText", "noStatusesText", "backHref", "backText", "submitText"],
+  props: ["task", "skills", "errors", "oldInput", "statuses", "categories", "seniorities", "statusText", "categoryText", "seniorityText", "titleText", "descriptionText", "complexityText", "estimatedHoursText", "realizedHoursText", "selectCategoryText", "noCategoriesText", "selectSeniorityText", "noSenioritiesText", "selectStatusText", "noStatusesText", "backHref", "backText", "submitText"],
   data: function data() {
     return {
       tag: "[task-form]",
       complexityOptions: [],
       seniorityOptions: [],
       categoryOptions: [],
+      urgencyOptions: [],
       statusOptions: [],
       form: {
         task_status_id: 0,
@@ -11095,19 +11522,26 @@ __webpack_require__.r(__webpack_exports__);
         description: "",
         complexity: 1,
         estimated_hours: 0,
-        realized_hours: 0
+        realized_hours: 0,
+        required_skills: [],
+        urgency: 2
       }
     };
   },
   computed: {
     editing: function editing() {
       return this.task !== undefined && this.task !== null && this.task !== "";
+    },
+    isCompleted: function isCompleted() {
+      var status = this.getStatusById(this.form.task_status_id);
+      return status && status.name === "completed";
     }
   },
   methods: {
     initialize: function initialize() {
       console.log(this.tag + " initializing");
       console.log(this.tag + " task: ", this.task);
+      console.log(this.tag + " skills: ", this.skills);
       console.log(this.tag + " errors: ", this.errors);
       console.log(this.tag + " old input: ", this.oldInput);
       console.log(this.tag + " categories: ", this.categories);
@@ -11131,6 +11565,7 @@ __webpack_require__.r(__webpack_exports__);
       this.generateComplexityOptions();
       this.generateSeniorityOptions();
       this.generateCategoryOptions();
+      this.generateUrgencyOptions();
       this.generateStatusOptions();
       this.initializeData();
     },
@@ -11182,6 +11617,20 @@ __webpack_require__.r(__webpack_exports__);
         });
       }
     },
+    generateUrgencyOptions: function generateUrgencyOptions() {
+      this.urgencyOptions.push({
+        text: "Laag",
+        value: 1
+      });
+      this.urgencyOptions.push({
+        text: "Normaal",
+        value: 2
+      });
+      this.urgencyOptions.push({
+        text: "Hoog",
+        value: 3
+      });
+    },
     generateStatusOptions: function generateStatusOptions() {
       if (this.statuses !== undefined && this.statuses !== null && this.statuses.length > 0) {
         for (var i = 0; i < this.statuses.length; i++) {
@@ -11207,6 +11656,11 @@ __webpack_require__.r(__webpack_exports__);
         this.form.description = this.task.description;
         this.form.estimated_hours = this.task.estimated_hours;
         this.form.realized_hours = this.task.realized_hours;
+        this.form.urgency = this.task.urgency;
+
+        if (this.task.skills !== undefined && this.task.skills !== null && this.task.skills.length > 0) {
+          for (var i = 0; i < this.task.skills.length; i++) {}
+        }
       }
 
       if (this.oldInput !== undefined && this.oldInput !== null) {
@@ -11218,6 +11672,7 @@ __webpack_require__.r(__webpack_exports__);
         if (this.oldInput.complexity !== null) this.form.complexity = parseInt(this.oldInput.complexity);
         if (this.oldInput.estimated_hours !== null) this.form.estimated_hours = this.oldInput.estimated_hours;
         if (this.oldInput.realized_hours !== null) this.form.realized_hours = this.oldInput.realized_hours;
+        if (this.oldInput.urgency !== null) this.form.urgency = this.oldInput.urgency;
       }
     },
     hasErrors: function hasErrors(field) {
@@ -11235,6 +11690,17 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       return [];
+    },
+    getStatusById: function getStatusById(id) {
+      if (this.statuses !== undefined && this.statuses !== null && this.statuses.length > 0) {
+        for (var i = 0; i < this.statuses.length; i++) {
+          if (this.statuses[i].id === id) {
+            return this.statuses[i];
+          }
+        }
+      }
+
+      return false;
     }
   },
   mounted: function mounted() {
@@ -12636,7 +13102,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "#profile-skills-field #profile-skills-field__label {\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n  color: #737373;\n}\n#profile-skills-field #profile-skills-field__skills {\n  margin: 0 0 10px 0;\n  background-color: #f2f2f2;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill:last-child {\n  border-bottom: 0;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-name {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  padding: 0 0 0 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action {\n  width: 26px;\n  height: 26px;\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.8em;\n  cursor: pointer;\n  color: #ffffff;\n  border-radius: 3px;\n  margin: 0 0 0 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: #333333;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action:first-child {\n  margin: 0;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.view {\n  background-color: #0088ff;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.view:hover {\n  background-color: #0072d6;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.edit {\n  background-color: #f35900;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.edit:hover {\n  background-color: #e25300;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.delete {\n  background-color: #b70000;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.delete:hover {\n  background-color: #990000;\n}\n#profile-skills-field #profile-skills-field__no-records {\n  padding: 10px 15px;\n  margin: 0 0 15px 0;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#profile-skills-field #profile-skills-field__actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
+exports.push([module.i, "#profile-skills-field #profile-skills-field__label {\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n  color: #737373;\n}\n#profile-skills-field #profile-skills-field__skills {\n  margin: 0 0 15px 0;\n  background-color: #f2f2f2;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill:last-child {\n  border-bottom: 0;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-name {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  padding: 0 0 0 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-mastery {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  padding: 0 0 0 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action {\n  width: 26px;\n  height: 26px;\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.8em;\n  cursor: pointer;\n  color: #ffffff;\n  border-radius: 3px;\n  margin: 0 0 0 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: #333333;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action:first-child {\n  margin: 0;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.view {\n  background-color: #0088ff;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.view:hover {\n  background-color: #0072d6;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.edit {\n  background-color: #f35900;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.edit:hover {\n  background-color: #e25300;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.delete {\n  background-color: #b70000;\n}\n#profile-skills-field #profile-skills-field__skills .profile-skills-field__skill .skill-actions .skill-action.delete:hover {\n  background-color: #990000;\n}\n#profile-skills-field #profile-skills-field__no-records {\n  padding: 10px 15px;\n  margin: 0 0 15px 0;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#profile-skills-field #profile-skills-field__actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
 
 // exports
 
@@ -12827,6 +13293,25 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 // module
 exports.push([module.i, "#team-member-application-form__wrapper {\n  width: 800px;\n  margin: 0 auto;\n}\n#team-member-application-form__wrapper #team-member-application-form {\n  padding: 25px;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #ffffff;\n}\n#team-member-application-form__wrapper #team-member-application-form__controls {\n  display: -webkit-box;\n  display: flex;\n  margin: 30px 0 0 0;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n}\n#team-member-application-form__wrapper #team-member-application-form__controls #team-member-application-form__controls-left {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#team-member-application-form__wrapper #team-member-application-form__controls #team-member-application-form__controls-right {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=style&index=0&lang=scss&":
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=style&index=0&lang=scss& ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "#required-skills-field #required-skills-field__label {\n  font-size: 0.85em;\n  margin: 0 0 10px 0;\n  color: #737373;\n}\n#required-skills-field #required-skills-field__skills {\n  margin: 0 0 15px 0;\n  background-color: #f2f2f2;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill {\n  display: -webkit-box;\n  display: flex;\n  padding: 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  box-sizing: border-box;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill:last-child {\n  border-bottom: 0;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-name {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  padding: 0 0 0 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-required-mastery {\n  -webkit-box-flex: 1;\n          flex: 1;\n  display: -webkit-box;\n  display: flex;\n  padding: 0 0 0 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-actions .skill-action {\n  width: 26px;\n  height: 26px;\n  display: -webkit-box;\n  display: flex;\n  font-size: 0.8em;\n  cursor: pointer;\n  color: #ffffff;\n  border-radius: 3px;\n  margin: 0 0 0 10px;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: center;\n          justify-content: center;\n  background-color: #333333;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-actions .skill-action:first-child {\n  margin: 0;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-actions .skill-action.view {\n  background-color: #0088ff;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-actions .skill-action.view:hover {\n  background-color: #0072d6;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-actions .skill-action.edit {\n  background-color: #f35900;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-actions .skill-action.edit:hover {\n  background-color: #e25300;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-actions .skill-action.delete {\n  background-color: #b70000;\n}\n#required-skills-field #required-skills-field__skills .required-skills-field__skill .skill-actions .skill-action.delete:hover {\n  background-color: #990000;\n}\n#required-skills-field #required-skills-field__no-records {\n  padding: 10px 15px;\n  margin: 0 0 15px 0;\n  border-radius: 3px;\n  box-sizing: border-box;\n  background-color: #f2f2f2;\n}\n#required-skills-field #required-skills-field__actions {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n          flex-direction: row;\n  -webkit-box-align: center;\n          align-items: center;\n  -webkit-box-pack: end;\n          justify-content: flex-end;\n}", ""]);
 
 // exports
 
@@ -42249,6 +42734,36 @@ if(false) {}
 
 /***/ }),
 
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=style&index=0&lang=scss&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=style&index=0&lang=scss& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--8-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./RequiredSkillsField.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=style&index=0&lang=scss&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
 /***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/TaskForm.vue?vue&type=style&index=0&lang=scss&":
 /*!*************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/style-loader!./node_modules/css-loader!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--8-2!./node_modules/sass-loader/dist/cjs.js??ref--8-3!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/tasks/TaskForm.vue?vue&type=style&index=0&lang=scss& ***!
@@ -47470,6 +47985,14 @@ var render = function() {
                     )
                   ]),
                   _vm._v(" "),
+                  _c("div", { staticClass: "skill-mastery" }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(skill.mastery) +
+                        "/10\n            "
+                    )
+                  ]),
+                  _vm._v(" "),
                   _c("div", { staticClass: "skill-actions" }, [
                     _c(
                       "div",
@@ -47601,20 +48124,23 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "detail" }, [
-                        _c("div", { staticClass: "key" }, [
-                          _vm._v("Beschrijving")
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "val" }, [
-                          _vm._v(
-                            _vm._s(
-                              _vm.mutableSkills[this.dialogs.view.index]
-                                .description
-                            )
-                          )
-                        ])
-                      ])
+                      _vm.mutableSkills[this.dialogs.view.index].description !==
+                      ""
+                        ? _c("div", { staticClass: "detail" }, [
+                            _c("div", { staticClass: "key" }, [
+                              _vm._v("Beschrijving")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "val" }, [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.mutableSkills[this.dialogs.view.index]
+                                    .description
+                                )
+                              )
+                            ])
+                          ])
+                        : _vm._e()
                     ])
                   ])
                 ]),
@@ -51409,6 +51935,706 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=template&id=9552c564&":
+/*!*************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=template&id=9552c564& ***!
+  \*************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "required-skills-field" } },
+    [
+      _c("div", { attrs: { id: "required-skills-field__label" } }, [
+        _vm._v(_vm._s(_vm.labelText))
+      ]),
+      _vm._v(" "),
+      _vm.mutableSkills.length > 0
+        ? _c(
+            "div",
+            { attrs: { id: "required-skills-field__skills" } },
+            _vm._l(_vm.mutableSkills, function(skill, si) {
+              return _c(
+                "div",
+                { key: si, staticClass: "required-skills-field__skill" },
+                [
+                  _c("div", { staticClass: "skill-name" }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(skill.skill) +
+                        "\n            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "skill-required-mastery" }, [
+                    _vm._v(
+                      "\n                " +
+                        _vm._s(skill.required_mastery) +
+                        "/10\n            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "skill-actions" }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "skill-action view",
+                        on: {
+                          click: function($event) {
+                            return _vm.onClickView(si)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-eye" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "skill-action edit",
+                        on: {
+                          click: function($event) {
+                            return _vm.onClickEdit(si)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-edit" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "skill-action delete",
+                        on: {
+                          click: function($event) {
+                            return _vm.onClickDelete(si)
+                          }
+                        }
+                      },
+                      [_c("i", { staticClass: "fas fa-trash-alt" })]
+                    )
+                  ])
+                ]
+              )
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.mutableSkills.length === 0
+        ? _c("div", { attrs: { id: "required-skills-field__no-records" } }, [
+            _vm._v(
+              "\n        Je hebt nog geen vereiste skills toegevoegd\n    "
+            )
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        { attrs: { id: "required-skills-field__actions" } },
+        [
+          _c(
+            "v-btn",
+            {
+              attrs: { color: "primary", depressed: "", small: "" },
+              on: { click: _vm.onClickAdd }
+            },
+            [
+              _c("i", { staticClass: "fas fa-plus" }),
+              _vm._v("\n            Vereiste skill toevoegen\n        ")
+            ]
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.view.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.view, "show", $$v)
+            },
+            expression: "dialogs.view.show"
+          }
+        },
+        [
+          this.dialogs.view.index !== null
+            ? _c("div", { staticClass: "dialog" }, [
+                _c(
+                  "div",
+                  {
+                    staticClass: "dialog__close-button",
+                    on: {
+                      click: function($event) {
+                        _vm.dialogs.view.show = false
+                      }
+                    }
+                  },
+                  [_c("i", { staticClass: "fas fa-times" })]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-content" }, [
+                  _c("h3", { staticClass: "dialog-title" }, [
+                    _vm._v("Vereiste skill")
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "dialog-text" }, [
+                    _c("div", { staticClass: "details bordered mb-0" }, [
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [_vm._v("Skill")]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm._v(
+                            _vm._s(
+                              _vm.mutableSkills[this.dialogs.view.index].skill
+                            )
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "detail" }, [
+                        _c("div", { staticClass: "key" }, [
+                          _vm._v("Vereiste mastery")
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "val" }, [
+                          _vm._v(
+                            _vm._s(
+                              _vm.mutableSkills[this.dialogs.view.index]
+                                .required_mastery
+                            ) + " / 10"
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _vm.mutableSkills[this.dialogs.view.index].description !==
+                      ""
+                        ? _c("div", { staticClass: "detail" }, [
+                            _c("div", { staticClass: "key" }, [
+                              _vm._v("Beschrijving")
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "val" }, [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.mutableSkills[this.dialogs.view.index]
+                                    .description
+                                )
+                              )
+                            ])
+                          ])
+                        : _vm._e()
+                    ])
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "dialog-controls" }, [
+                  _c(
+                    "div",
+                    { staticClass: "dialog-controls__right" },
+                    [
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { depressed: "", color: "warning" },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickEdit(_vm.dialogs.view.index)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-edit" }),
+                          _vm._v(
+                            "\n                        Aanpassen\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "v-btn",
+                        {
+                          attrs: { depressed: "", dark: "", color: "red" },
+                          on: {
+                            click: function($event) {
+                              return _vm.onClickDelete(_vm.dialogs.view.index)
+                            }
+                          }
+                        },
+                        [
+                          _c("i", { staticClass: "fas fa-trash-alt" }),
+                          _vm._v(
+                            "\n                        Verwijderen\n                    "
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ])
+            : _vm._e()
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.add.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.add, "show", $$v)
+            },
+            expression: "dialogs.add.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.add.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Vereiste skill toevoegen")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.add.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.add.errors, function(error, ei) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-combobox", {
+                    attrs: { label: "Skill", items: _vm.skillOptions },
+                    model: {
+                      value: _vm.dialogs.add.form.skill,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "skill", $$v)
+                      },
+                      expression: "dialogs.add.form.skill"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-select", {
+                    attrs: {
+                      label: "Required mastery",
+                      items: _vm.masteryOptions
+                    },
+                    model: {
+                      value: _vm.dialogs.add.form.required_mastery,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "required_mastery", $$v)
+                      },
+                      expression: "dialogs.add.form.required_mastery"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-textarea", {
+                    attrs: {
+                      label: "Description",
+                      placeholder: "Beschrijf je ervaring met deze vaardigheid."
+                    },
+                    model: {
+                      value: _vm.dialogs.add.form.description,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.add.form, "description", $$v)
+                      },
+                      expression: "dialogs.add.form.description"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.add.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        depressed: "",
+                        color: "success",
+                        loading: _vm.dialogs.add.loading,
+                        dark: !_vm.confirmAddDisabled,
+                        disabled: _vm.confirmAddDisabled
+                      },
+                      on: { click: _vm.onClickConfirmAdd }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-save" }),
+                      _vm._v(
+                        "\n                        Opslaan\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.edit.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.edit, "show", $$v)
+            },
+            expression: "dialogs.edit.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.edit.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Vereiste skill aanpassen")
+              ]),
+              _vm._v(" "),
+              _vm.dialogs.edit.errors.length > 0
+                ? _c(
+                    "div",
+                    { staticClass: "dialog-errors" },
+                    _vm._l(_vm.dialogs.edit.errors, function(error, ei) {
+                      return _c(
+                        "div",
+                        { key: ei, staticClass: "dialog-error" },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(error) +
+                              "\n                    "
+                          )
+                        ]
+                      )
+                    }),
+                    0
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-combobox", {
+                    attrs: { label: "Skill", items: _vm.skillOptions },
+                    model: {
+                      value: _vm.dialogs.edit.form.skill,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.edit.form, "skill", $$v)
+                      },
+                      expression: "dialogs.edit.form.skill"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-select", {
+                    attrs: {
+                      label: "Required mastery",
+                      items: _vm.masteryOptions
+                    },
+                    model: {
+                      value: _vm.dialogs.edit.form.required_mastery,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.edit.form, "required_mastery", $$v)
+                      },
+                      expression: "dialogs.edit.form.required_mastery"
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "form-field" },
+                [
+                  _c("v-textarea", {
+                    attrs: {
+                      label: "Description",
+                      placeholder: "Beschrijf je ervaring met deze vaardigheid."
+                    },
+                    model: {
+                      value: _vm.dialogs.edit.form.description,
+                      callback: function($$v) {
+                        _vm.$set(_vm.dialogs.edit.form, "description", $$v)
+                      },
+                      expression: "dialogs.edit.form.description"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.edit.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: {
+                        depressed: "",
+                        color: "success",
+                        dark: !_vm.confirmEditDisabled,
+                        disabled: _vm.confirmEditDisabled
+                      },
+                      on: { click: _vm.onClickConfirmEdit }
+                    },
+                    [
+                      _c("i", { staticClass: "far fa-save" }),
+                      _vm._v(
+                        "\n                        Opslaan\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "v-dialog",
+        {
+          attrs: { width: "500" },
+          model: {
+            value: _vm.dialogs.delete.show,
+            callback: function($$v) {
+              _vm.$set(_vm.dialogs.delete, "show", $$v)
+            },
+            expression: "dialogs.delete.show"
+          }
+        },
+        [
+          _c("div", { staticClass: "dialog" }, [
+            _c(
+              "div",
+              {
+                staticClass: "dialog__close-button",
+                on: {
+                  click: function($event) {
+                    _vm.dialogs.delete.show = false
+                  }
+                }
+              },
+              [_c("i", { staticClass: "fas fa-times" })]
+            ),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-content" }, [
+              _c("h3", { staticClass: "dialog-title" }, [
+                _vm._v("Vereiste skill verwijderen")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "dialog-text" }, [
+                _vm._v(
+                  "\n                    Weet je zeker dat je deze vereiste skill wilt verwijderen?\n                "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "dialog-controls" }, [
+              _c(
+                "div",
+                { staticClass: "dialog-controls__left" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { text: "" },
+                      on: {
+                        click: function($event) {
+                          _vm.dialogs.delete.show = false
+                        }
+                      }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-arrow-left" }),
+                      _vm._v(
+                        "\n                        Nee, annuleren\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "dialog-controls__right" },
+                [
+                  _c(
+                    "v-btn",
+                    {
+                      attrs: { depressed: "", dark: "", color: "danger" },
+                      on: { click: _vm.onClickConfirmDelete }
+                    },
+                    [
+                      _c("i", { staticClass: "fas fa-trash-alt" }),
+                      _vm._v(
+                        "\n                        Ja, verwijderen\n                    "
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c("input", {
+        attrs: { type: "hidden", name: _vm.name },
+        domProps: { value: _vm.encodedSkills }
+      })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/TaskForm.vue?vue&type=template&id=1133c8b8&":
 /*!**************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/projects/tasks/TaskForm.vue?vue&type=template&id=1133c8b8& ***!
@@ -51609,7 +52835,7 @@ var render = function() {
         1
       ),
       _vm._v(" "),
-      _vm.editing
+      _vm.editing && _vm.isCompleted
         ? _c(
             "div",
             { staticClass: "form-field" },
@@ -51632,7 +52858,58 @@ var render = function() {
             ],
             1
           )
-        : _vm._e()
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-field" },
+        [
+          _c("required-skills-field", {
+            attrs: {
+              task: _vm.task,
+              skills: _vm.skills,
+              "label-text": "Required skills",
+              name: "required_skills"
+            },
+            model: {
+              value: _vm.form.required_skills,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "required_skills", $$v)
+              },
+              expression: "form.required_skills"
+            }
+          })
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "form-field" },
+        [
+          _c("v-select", {
+            attrs: {
+              label: "Urgentie",
+              items: _vm.urgencyOptions,
+              errors: _vm.hasErrors("urgency"),
+              "error-messages": _vm.getErrors("urgency")
+            },
+            model: {
+              value: _vm.form.urgency,
+              callback: function($$v) {
+                _vm.$set(_vm.form, "urgency", $$v)
+              },
+              expression: "form.urgency"
+            }
+          }),
+          _vm._v(" "),
+          _c("input", {
+            attrs: { type: "hidden", name: "urgency" },
+            domProps: { value: _vm.form.urgency }
+          })
+        ],
+        1
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "form-controls" }, [
@@ -105938,6 +107215,7 @@ var map = {
 	"./components/projects/ProjectTeamRoleForm.vue": "./resources/js/components/projects/ProjectTeamRoleForm.vue",
 	"./components/projects/ProjectView.vue": "./resources/js/components/projects/ProjectView.vue",
 	"./components/projects/TeamMemberApplicationForm.vue": "./resources/js/components/projects/TeamMemberApplicationForm.vue",
+	"./components/projects/tasks/RequiredSkillsField.vue": "./resources/js/components/projects/tasks/RequiredSkillsField.vue",
 	"./components/projects/tasks/TaskForm.vue": "./resources/js/components/projects/tasks/TaskForm.vue",
 	"./components/projects/tasks/TaskOverview.vue": "./resources/js/components/projects/tasks/TaskOverview.vue",
 	"./components/task-dashboard/TaskDashboardOverview.vue": "./resources/js/components/task-dashboard/TaskDashboardOverview.vue",
@@ -109113,6 +110391,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamMemberApplicationForm_vue_vue_type_template_id_d8afd01a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TeamMemberApplicationForm_vue_vue_type_template_id_d8afd01a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/tasks/RequiredSkillsField.vue":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/projects/tasks/RequiredSkillsField.vue ***!
+  \************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _RequiredSkillsField_vue_vue_type_template_id_9552c564___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./RequiredSkillsField.vue?vue&type=template&id=9552c564& */ "./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=template&id=9552c564&");
+/* harmony import */ var _RequiredSkillsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RequiredSkillsField.vue?vue&type=script&lang=js& */ "./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _RequiredSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./RequiredSkillsField.vue?vue&type=style&index=0&lang=scss& */ "./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _RequiredSkillsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _RequiredSkillsField_vue_vue_type_template_id_9552c564___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _RequiredSkillsField_vue_vue_type_template_id_9552c564___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/projects/tasks/RequiredSkillsField.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************!*\
+  !*** ./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./RequiredSkillsField.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=style&index=0&lang=scss&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=style&index=0&lang=scss& ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/style-loader!../../../../../node_modules/css-loader!../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../node_modules/postcss-loader/src??ref--8-2!../../../../../node_modules/sass-loader/dist/cjs.js??ref--8-3!../../../../../node_modules/vue-loader/lib??vue-loader-options!./RequiredSkillsField.vue?vue&type=style&index=0&lang=scss& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=style&index=0&lang=scss&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_8_2_node_modules_sass_loader_dist_cjs_js_ref_8_3_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_style_index_0_lang_scss___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=template&id=9552c564&":
+/*!*******************************************************************************************************!*\
+  !*** ./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=template&id=9552c564& ***!
+  \*******************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_template_id_9552c564___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./RequiredSkillsField.vue?vue&type=template&id=9552c564& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/projects/tasks/RequiredSkillsField.vue?vue&type=template&id=9552c564&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_template_id_9552c564___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_RequiredSkillsField_vue_vue_type_template_id_9552c564___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
