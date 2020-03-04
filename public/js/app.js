@@ -4888,30 +4888,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["errors", "oldInput", "annotationText", "firstNameText", "lastNameText", "emailText", "passwordText", "confirmPasswordText", "submitText", "loginText", "loginHref"],
+  props: ["errors", "oldInput", "firstNameText", "lastNameText", "emailText", "passwordText", "confirmPasswordText", "submitText", "loginText", "loginHref"],
   data: function data() {
     return {
       tag: "[register-form]",
       annotationOptions: [],
       form: {
-        annotation: "Mr.",
         firstName: "",
         lastName: "",
         email: "",
@@ -4934,25 +4917,13 @@ __webpack_require__.r(__webpack_exports__);
       console.log(this.tag + " login text: ", this.loginText);
       console.log(this.tag + " login href: ", this.loginHref);
       this.initializeData();
-      this.generateAnnotationOptions();
     },
     initializeData: function initializeData() {
       if (this.oldInput !== undefined && this.oldInput !== null) {
-        if (this.oldInput.annotation !== null) this.form.annotation = this.oldInput.annotation;
         if (this.oldInput.first_name !== null) this.form.first_name = this.oldInput.first_name;
         if (this.oldInput.last_name !== null) this.form.last_name = this.oldInput.last_name;
         if (this.oldInput.email !== null) this.form.email = this.oldInput.email;
       }
-    },
-    generateAnnotationOptions: function generateAnnotationOptions() {
-      this.annotationOptions.push({
-        text: "Mr.",
-        value: "Mr."
-      });
-      this.annotationOptions.push({
-        text: "Mrs.",
-        value: "Mrs."
-      });
     },
     hasErrors: function hasErrors(field) {
       if (this.errors !== undefined && this.errors !== null && this.errors.length > 0) {
@@ -44675,50 +44646,6 @@ var render = function() {
       _c("div", { staticClass: "form-fields" }, [
         _c(
           "div",
-          { staticClass: "form-field" },
-          [
-            _c("v-select", {
-              attrs: {
-                label: _vm.annotationText,
-                items: _vm.annotationOptions,
-                error: _vm.hasErrors("annotation"),
-                "error-messages": _vm.getErrors("annotation")
-              },
-              model: {
-                value: _vm.form.annotation,
-                callback: function($$v) {
-                  _vm.$set(_vm.form, "annotation", $$v)
-                },
-                expression: "form.annotation"
-              }
-            }),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.annotation,
-                  expression: "form.annotation"
-                }
-              ],
-              attrs: { type: "hidden", name: "annotation" },
-              domProps: { value: _vm.form.annotation },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "annotation", $event.target.value)
-                }
-              }
-            })
-          ],
-          1
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
           { staticClass: "form-field double" },
           [
             _c("v-text-field", {
@@ -44840,9 +44767,7 @@ var render = function() {
       _c("div", { attrs: { id: "register-form__controls" } }, [
         _c("div", { attrs: { id: "register-form__controls-left" } }, [
           _c("a", { attrs: { href: _vm.loginHref } }, [
-            _vm._v(
-              "\n                " + _vm._s(_vm.loginText) + "\n            "
-            )
+            _vm._v(_vm._s(_vm.loginText))
           ])
         ]),
         _vm._v(" "),

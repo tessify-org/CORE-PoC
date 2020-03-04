@@ -3,16 +3,6 @@
 
         <!-- First & last name -->
         <div class="form-fields">
-            <div class="form-field">
-                <v-select
-                    :label="annotationText"
-                    v-model="form.annotation"
-                    :items="annotationOptions"
-                    :error="hasErrors('annotation')"
-                    :error-messages="getErrors('annotation')">
-                </v-select>
-                <input type="hidden" name="annotation" v-model="form.annotation">
-            </div>
             <div class="form-field double">
                 <v-text-field 
                     name="first_name" 
@@ -71,20 +61,14 @@
         <!-- Controls -->
         <div id="register-form__controls">
             <div id="register-form__controls-left">
-
                 <!-- Link to login -->
-                <a :href="loginHref">
-                    {{ loginText }}
-                </a>
-
+                <a :href="loginHref">{{ loginText }}</a>
             </div>
             <div id="register-form__controls-right">
-
                 <!-- Submit button -->
                 <v-btn type="submit" color="primary" depressed>
                     {{ submitText }}
                 </v-btn>
-
             </div>
         </div>
         
@@ -96,7 +80,6 @@
         props: [
             "errors",
             "oldInput",
-            "annotationText",
             "firstNameText",
             "lastNameText",
             "emailText",
@@ -110,7 +93,6 @@
             tag: "[register-form]",
             annotationOptions: [],
             form: {
-                annotation: "Mr.",
                 firstName: "",
                 lastName: "",
                 email: "",
@@ -120,11 +102,9 @@
         }),
         methods: {
             initialize() {
-                
                 console.log(this.tag+" initialize");
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
-
                 console.log(this.tag+" annotation text: ", this.annotationText);
                 console.log(this.tag+" first name text: ", this.firstNameText);
                 console.log(this.tag+" last name text: ", this.lastNameText);
@@ -133,22 +113,14 @@
                 console.log(this.tag+" confirm password text: ", this.confirmPasswordText);
                 console.log(this.tag+" login text: ", this.loginText);
                 console.log(this.tag+" login href: ", this.loginHref);
-
                 this.initializeData();
-                this.generateAnnotationOptions();
-
             },
             initializeData() {
                 if (this.oldInput !== undefined && this.oldInput !== null) {
-                    if (this.oldInput.annotation !== null) this.form.annotation = this.oldInput.annotation;
                     if (this.oldInput.first_name !== null) this.form.first_name = this.oldInput.first_name;
                     if (this.oldInput.last_name !== null) this.form.last_name = this.oldInput.last_name;
                     if (this.oldInput.email !== null) this.form.email = this.oldInput.email;
                 }
-            },
-            generateAnnotationOptions() {
-                this.annotationOptions.push({ text: "Mr.", value: "Mr." });
-                this.annotationOptions.push({ text: "Mrs.", value: "Mrs." });
             },
             hasErrors(field) {
                 if (this.errors !== undefined && this.errors !== null && this.errors.length > 0) {
