@@ -5772,6 +5772,46 @@ i {
   text-align: center;
 }
 
+#task #task-cta__wrapper #task-cta {
+  z-index: 99;
+  width: 500px;
+  height: 150px;
+  display: -webkit-box;
+  display: flex;
+  padding: 25px;
+  position: relative;
+  border-radius: 3px;
+  box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+  background-color: #fff;
+  margin: -50px auto 0 auto;
+}
+
+#task #task-cta__wrapper #task-cta #task-cta__title {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 0 0 5px 0;
+  text-align: center;
+}
+
+#task #task-cta__wrapper #task-cta #task-cta__button {
+  text-align: center;
+  margin: 10px 0 10px 0;
+}
+
+#task #task-cta__wrapper #task-cta #task-cta__text {
+  text-align: center;
+}
+
+#task #task-cta__wrapper #task-cta #task-cta__link {
+  text-align: center;
+  font-size: 0.8em;
+}
+
 #task #task-content #task-columns {
   display: -webkit-box;
   display: flex;
@@ -5831,6 +5871,115 @@ i {
   -webkit-box-flex: 0;
           flex: 0 0 500px;
   margin: 0 0 0 30px;
+}
+
+#report-progress {
+  width: 800px;
+  margin: 0 auto;
+}
+
+#progress-report {
+  width: 800px;
+  margin: 0 auto;
+}
+
+#progress-report #progress-report__info .progress-report__field {
+  margin: 0 0 15px 0;
+}
+
+#progress-report #progress-report__info .progress-report__field:last-child {
+  margin: 0;
+}
+
+#progress-report #progress-report__info .progress-report__field .progress-report__field-label {
+  font-size: 0.85em;
+  margin: 0 0 5px 0;
+  color: #737373;
+}
+
+#progress-report #progress-report__info .progress-report__field .progress-report__field-no-attachments {
+  padding: 10px;
+  font-size: 0.9em;
+  box-sizing: border-box;
+  background-color: #fafafa;
+}
+
+#progress-report #progress-report__info #progress-report__date {
+  font-size: 0.85em;
+  text-align: right;
+  color: #737373;
+}
+
+#progress-report .progress-report__review {
+  padding: 25px;
+  border-radius: 3px;
+  margin: 0 0 30px 0;
+  box-sizing: border-box;
+  background-color: #ffffff;
+}
+
+#progress-report .progress-report__review .review-title {
+  font-size: 0.85em;
+  margin: 0 0 5px 0;
+  color: #737373;
+}
+
+#progress-report .progress-report__review .review-footer {
+  display: -webkit-box;
+  display: flex;
+  font-size: 0.9em;
+  margin: 15px 0 0 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  color: #737373;
+}
+
+#progress-report .progress-report__review .review-footer .review-footer__left {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#progress-report .progress-report__review .review-footer .review-footer__right {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+#progress-report #progress-report__actions {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+#progress-report #progress-report__actions .v-btn {
+  margin: 0 15px;
+}
+
+#review-progress-report {
+  width: 800px;
+  margin: 0 auto;
 }
 
 #task-dashboard {

@@ -1,6 +1,6 @@
 <template>
     <div id="profile-skills-field">
-
+        
         <!-- Label -->
         <div id="profile-skills-field__label">{{ labelText }}</div>
 
@@ -246,7 +246,7 @@
 
         <!-- Hidden input -->
         <input type="hidden" :name="name" :value="encodedSkills">
-
+        
     </div>
 </template>
 

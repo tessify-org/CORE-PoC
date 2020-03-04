@@ -25,6 +25,13 @@ class UserSeeder extends Seeder
         // Admin account
         //
 
+        $henk = User::create([
+            "first_name" => "Gekke",
+            "last_name" => "Henk",
+            "email" => "gekke.henk@minbzk.nl",
+            "password" => bcrypt("engeland")
+        ]);
+
         $nick = User::create([
             "first_name" => "Nick",
             "last_name" => "Verheijen",
@@ -93,8 +100,8 @@ class UserSeeder extends Seeder
         {
             $user = factory(User::class)->create();
             $user->follow($nick);
-
-            if ($i < 2) {
+            if ($i < 2)
+            {
                 $nick->follow($user);
             }
         }

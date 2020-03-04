@@ -1779,6 +1779,39 @@
             }
         }
     }
+    #task-cta__wrapper {
+        #task-cta {
+            z-index: 99;    
+            width: 500px;
+            height: 150px;
+            display: flex;
+            padding: 25px;
+            position: relative;
+            border-radius: 3px;
+            box-sizing: border-box;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #fff;
+            margin: -50px auto 0 auto;
+            #task-cta__title {
+                font-size: 1.2em;
+                font-weight: 600;
+                margin: 0 0 5px 0;
+                text-align: center;
+            }
+            #task-cta__button {
+                text-align: center;
+                margin: 10px 0 10px 0;
+            }
+            #task-cta__text {
+                text-align: center;
+            }
+            #task-cta__link {
+                text-align: center;
+                font-size: .8em;
+            }
+        }
+    }
     #task-content {
         #task-columns {
             display: flex;
@@ -1829,12 +1862,94 @@
     }
 }
 
-// #task__wrapper {
-//     #task {
-//         width: 800px;
-//         margin: 0 auto;
-//     }
-// }
+#report-progress {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#progress-report {
+    width: 800px;
+    margin: 0 auto;
+    #progress-report__info {
+        .progress-report__field {
+            margin: 0 0 15px 0;
+            &:last-child {
+                margin: 0;
+            }
+            .progress-report__field-label {
+                font-size: .85em;
+                margin: 0 0 5px 0;
+                color: hsl(0, 0%, 45%);
+            }
+            .progress-report__field-text {
+
+            }
+            .progress-report__field-attachments {
+
+            }
+            .progress-report__field-no-attachments {
+                padding: 10px;
+                font-size: .9em;
+                box-sizing: border-box;
+                background-color: hsl(0, 0%, 98%);
+            }
+        }
+        #progress-report__date {
+            font-size: .85em;
+            text-align: right;
+            color: hsl(0, 0%, 45%);
+        }
+    }
+    .progress-report__review {
+        padding: 25px;
+        border-radius: 3px;
+        margin: 0 0 30px 0;
+        box-sizing: border-box;
+        background-color: #ffffff;
+        .review-title {
+            font-size: .85em;
+            margin: 0 0 5px 0;
+            color: hsl(0, 0%, 45%);
+        }
+        .review-text {
+
+        }
+        .review-footer {
+            display: flex;
+            font-size: .9em;
+            margin: 15px 0 0 0;
+            flex-direction: row;
+            color: hsl(0, 0%, 45%);
+            .review-footer__left {
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            .review-footer__right {
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-end;
+            }
+        }
+    }
+    #progress-report__actions {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        justify-content: center;
+        .v-btn {
+            margin: 0 15px;
+        }
+    }
+}
+
+#review-progress-report {
+    width: 800px;
+    margin: 0 auto;
+}
 
 //
 // Task dashboard
