@@ -25,12 +25,13 @@
         </div>
     </header>
 
+    <!-- Homepage -->
     <div id="homepage">
-    
         <div class="content-section__wrapper">
             <div class="content-section">
 
-                <div id="homepage-cta">
+                <!-- CTA Search -->
+                <div id="homepage-cta" class="elevation-1">
                     <div id="homepage-cta__title">
                         @lang("homepage.cta_title", ["num_jobs" => 8145])
                     </div>
@@ -55,44 +56,49 @@
                     </div>
                 </div>
 
+                <!-- Quick links -->
                 <div id="homepage-quick-links">
                     <div class="quick-link__wrapper">
-                        <div class="quick-link">
-                            <div class="quick-link__bg"></div>
-                            <div class="quick-link__text">
+                        <a class="quick-link elevation-1" href="#">
+                            <span class="quick-link__bg" style="background-image: url({{ asset('storage/images/homepage/do-more.png') }})"></span>
+                            <span class="quick-link__bg-overlay"></span>
+                            <span class="quick-link__text">
                                 @lang("homepage.quick_link_one")
-                            </div>
-                            <div class="quick-link__arrow">
+                            </span>
+                            <span class="quick-link__arrow">
                                 <i class="fas fa-arrow-right"></i>
-                            </div>
-                        </div>
+                            </span>
+                        </a>
                     </div>
                     <div class="quick-link__wrapper">
-                        <div class="quick-link">
-                            <div class="quick-link__bg"></div>
-                            <div class="quick-link__text">
+                        <a class="quick-link elevation-1" href="#">
+                            <span class="quick-link__bg" style="background-image: url({{ asset('storage/images/homepage/inspiration.png') }})"></span>
+                            <span class="quick-link__bg-overlay"></span>
+                            <span class="quick-link__text">
                                 @lang("homepage.quick_link_two")
-                            </div>
-                            <div class="quick-link__arrow">
+                            </span>
+                            <span class="quick-link__arrow">
                                 <i class="fas fa-arrow-right"></i>
-                            </div>
-                        </div>
+                            </span>
+                        </a>
                     </div>
                     <div class="quick-link__wrapper">
-                        <div class="quick-link">
-                            <div class="quick-link__bg"></div>
-                            <div class="quick-link__text">
+                        <a class="quick-link elevation-1" href="#">
+                            <span class="quick-link__bg" style="background-image: url({{ asset('storage/images/homepage/volunteers.png') }})"></span>
+                            <span class="quick-link__bg-overlay"></span>
+                            <span class="quick-link__text">
                                 @lang("homepage.quick_link_three")
-                            </div>
-                            <div class="quick-link__arrow">
+                            </span>
+                            <span class="quick-link__arrow">
                                 <i class="fas fa-arrow-right"></i>
-                            </div>
-                        </div>
+                            </span>
+                        </a>
                     </div>
                 </div>
 
+                <!-- Second CTA -->
                 <div id="homepage-second-cta">
-                    <div id="second-cta">
+                    <div id="second-cta" class="elevation-1">
                         <div id="second-cta__left">
                             <div id="second-cta__title">
                                 @lang("homepage.second_cta_title", ["num_jobs" => 8145])
@@ -106,11 +112,12 @@
                             </a>
                         </div>
                         <div id="second-cta__right">
-                            <div id="second-cta__image"></div>
+                            <div id="second-cta__image" style="background-image: url({{ asset('storage/images/homepage/remote.png') }})"></div>
                         </div>
                     </div>
                 </div>
                 
+                <!-- FAQ -->
                 <div id="homepage-faq">
                     <h3 id="homepage-faq__title">
                         @lang("homepage.faq_title")
@@ -246,7 +253,7 @@
                 </div> -->
 
             </div>
-
         </div>
     </div>
+
 @stop

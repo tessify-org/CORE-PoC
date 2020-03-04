@@ -2399,7 +2399,7 @@ input[type=number] {
   transition: all 0.3s;
   text-decoration: none;
   box-sizing: border-box;
-  background-color: black;
+  background-color: #123552;
 }
 
 #app #topnav__wrapper #topnav #topnav-logo__wrapper #topnav-logo:hover {
@@ -2511,6 +2511,10 @@ input[type=number] {
   opacity: 1;
   display: block;
   visibility: visible;
+}
+
+#app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper.with-dropdown .dropdown-caret {
+  margin: 0 0 0 7px;
 }
 
 #app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper .topnav-link {

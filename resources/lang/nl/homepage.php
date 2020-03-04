@@ -13,7 +13,7 @@ return [
     */
 
     // Header
-    "header_title" => "Het Nieuwe <sup>2</sup> Werken",
+    "header_title" => "Het Nieuwe <sup style='margin-left: -10px; margin-right: 5px;'>2</sup> Werken",
     "header_subtitle" => "Hoe werk jij?",
     
     // CTA

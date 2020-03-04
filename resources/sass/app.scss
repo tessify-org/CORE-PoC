@@ -168,9 +168,11 @@
         width: 600px;
         height: 350px;
         padding: 50px 30px;
+        border-radius: 3px;
         box-sizing: border-box;
         margin: -280px auto 0 auto;
-        background-color: #e55f44;
+        // background-color: #e55f44;
+        background-color: $rijkshuisstijl-blue;
         #homepage-cta__title {
             font-size: 2em;
             color: #ffffff;
@@ -233,9 +235,17 @@
             padding: 0 15px;
             box-sizing: border-box;
             .quick-link {
+                display: block;
                 width: 100%;
                 height: 500px;
+                overflow: hidden;
+                border-radius: 3px;
                 position: relative;
+                &:hover {
+                    .quick-link__bg-overlay {
+                        background-color: rgba(0, 0, 0, 0.45);
+                    }
+                }
                 .quick-link__bg {
                     top: 0;
                     left: 0;
@@ -247,6 +257,16 @@
                     background-repeat: no-repeat;
                     background-position: center center;
                     background-color: #333;
+                }
+                .quick-link__bg-overlay {
+                    top: 0;
+                    left: 0;
+                    z-index: 2;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    transition: all .3s;
+                    background-color: rgba(0, 0, 0, 0.6);
                 }
                 .quick-link__text {
                     left: 0;
@@ -280,6 +300,8 @@
         #second-cta {
             height: 400px;
             display: flex;
+            overflow: hidden;
+            border-radius: 3px;
             flex-direction: row;
             background-color: #fff;
             #second-cta__left {
