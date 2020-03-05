@@ -2482,6 +2482,8 @@ input[type=number] {
           align-items: center;
   -webkit-box-pack: end;
           justify-content: flex-end;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
 }
 
 #app #topnav__wrapper #topnav #topnav-links__wrapper #topnav-links .topnav-link__wrapper {
@@ -3683,7 +3685,7 @@ i {
   overflow: hidden;
   margin-top: -80px;
   position: relative;
-  background-color: #404040;
+  background-color: white;
 }
 
 #homepage-header #homepage-header__content {
@@ -3708,11 +3710,13 @@ i {
 
 #homepage-header #homepage-header__content .page-title {
   margin: 0 0 5px 0;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
 }
 
 #homepage-header #homepage-header__content .page-subtitle {
   margin: 0;
   font-size: 2.2em;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
 }
 
 #homepage-header #homepage-header__overlay {

@@ -19,9 +19,9 @@
         </div>
         <div id="homepage-header__overlay"></div>
         <div id="homepage-header__bg">
-            <video autoplay muted loop id="myVideo">
-                <source src="{{ asset('storage/videos/1.mp4') }}" type="video/mp4">
-            </video>
+            <animated-header-bg
+                :images="{{ $headerImages->toJson() }}">
+            </animated-header-bg>
         </div>
     </header>
 
