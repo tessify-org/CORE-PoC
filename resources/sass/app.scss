@@ -11,7 +11,7 @@
     overflow: hidden;
     margin-top: -80px;
     position: relative;
-    background-color: hsl(0, 0%, 100%);
+    background-color: hsl(0, 0%, 0%);
     #homepage-header__content {
         top: 0;
         left: 0;
@@ -938,68 +938,97 @@
 }
 
 //
-// Projects
+// Project overview
 //
 
-#projects {
-    overflow: hidden;
-    border-radius: 3px;
-    background-color: #fff;
-    #projects-header {
-        display: flex;
-        padding: 10px 15px;
-        flex-direction: row;
+#project-overview {
+    #project-overview__header {
+        padding: 100px 0;
+        min-height: 400px;
+        margin: 0 0 50px 0;
         box-sizing: border-box;
-        background-color: hsl(0, 0%, 95%);
-        .projects-header__column {
-            flex: 1;
-            font-weight: 500;
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            &:first-child {
-                flex: 0 0 100px;
+        background-color: #d5d5d5;
+        position: relative;
+        #project-overview__header-overlay {
+            top: 0;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        #project-overview__header-illustration__wrapper {
+            top: 0;
+            right: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            #project-overview__header-illustration__inner {
+                height: 100%;
+                width: 1200px;
+                margin: 0 auto;
+                position: relative;
+                #project-overview__header-illustration {
+                    top: 70px;
+                    right: 0px;
+                    width: 400px;
+                    height: 400px;
+                    position: absolute;
+                    background-size: contain;
+                }
             }
-            &:last-child {
-                justify-content: flex-end;
+        }
+        #project-overview__header-content {
+            top: 0;
+            left: 0;
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            #project-overview__header-text {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                .page-subtitle {
+                    margin-bottom: 20px;
+                }
             }
         }
     }
-    .project {
-        display: flex;
-        color: #000000;
-        padding: 10px 15px;
-        flex-direction: row;
-        align-items: center;
-        transition: all .3s;
-        text-decoration: none;
-        box-sizing: border-box;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        &:last-child {
-            border-bottom: 0;
-        }
-        &:hover {
-            background-color: hsl(0, 0%, 98%);
-            cursor: pointer;
-        }
-        .project-title {
-            flex: 2;
-        }
-        .project-status {
-            flex: 0 0 100px;
+    #project-overview__content {
+        #project-dashboard {
             display: flex;
             flex-direction: row;
-            align-items: center;
-            justify-content: flex-end;
+            #project-dashboard__sidebar {
+                flex: 0 0 300px;
+                margin: 0 30px 0 0;
+                .project-overview__sidebar-panel {
+                    border-radius: 3px;
+                    margin: 0 0 30px 0;
+                    background-color: #fff;
+                    &:last-child {
+                        margin: 0;
+                    }
+                    .sidebar-panel__header {
+                        padding: 10px 15px;
+                        box-sizing: border-box;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                    }
+                    .sidebar-panel__content {
+                        padding: 15px;
+                        box-sizing: border-box;
+                    }
+                }
+            }
+            #project-dashboard__content {
+                flex: 1;
+            }
         }
     }
-}
-#no-projects {
-    padding: 25px;
-    border-radius: 3px;
-    text-align: center;
-    box-sizing: border-box;
-    background-color: #fff;
 }
 
 @media (max-width: 540px) {
@@ -1019,7 +1048,7 @@
 #project {
     #project-header {
         width: 100%;
-        height: 500px;
+        height: 700px;
         position: relative;
         background-size: cover;
         background-repeat: no-repeat;
@@ -1695,6 +1724,73 @@
                 }
             }
         }
+    }
+}
+
+//
+// Task overview
+//
+
+#task-overview {
+    #task-overview__header {
+        padding: 100px 0;
+        min-height: 400px;
+        margin: 0 0 50px 0;
+        box-sizing: border-box;
+        background-color: #d5d5d5;
+        position: relative;
+        #task-overview__header-overlay {
+            top: 0;
+            left: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+        #task-overview__header-illustration__wrapper {
+            top: 0;
+            right: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            #task-overview__header-illustration__inner {
+                height: 100%;
+                width: 1200px;
+                margin: 0 auto;
+                position: relative;
+                #task-overview__header-illustration {
+                    top: 50px;
+                    right: -50px;
+                    width: 400px;
+                    height: 400px;
+                    position: absolute;
+                    background-size: contain;
+                }
+            }
+        }
+        #task-overview__header-content {
+            top: 0;
+            left: 0;
+            z-index: 3;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            #task-overview__header-text {
+                height: 100%;
+                display: flex;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                .page-subtitle {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+    }
+    #task-overview__content {
+
     }
 }
 

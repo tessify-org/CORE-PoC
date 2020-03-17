@@ -151,8 +151,33 @@
                 </div>
             </div>
 
-            <!-- Dates card -->
+            <!-- Flags card -->
             <div class="content-card elevation-1 mb">
+                <div class="content-card__content">
+
+                    <div class="form-field checkbox">
+                        <v-checkbox
+                            hide-details
+                            label="Heeft taken"
+                            v-model="form.has_tasks">
+                        </v-checkbox>
+                        <input type="hidden" name="has_tasks" :value="form.has_tasks">
+                    </div>
+
+                    <div class="form-field checkbox">
+                        <v-checkbox
+                            hide-details
+                            label="Heeft een deadline"
+                            v-model="form.has_deadline">
+                        </v-checkbox>
+                        <input type="hidden" name="has_deadline" :value="form.has_deadline">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Dates card -->
+            <div class="content-card elevation-1">
                 <div class="content-card__content">
 
                     <!-- Starts at -->
@@ -167,30 +192,14 @@
                     </div>
 
                     <!-- Ends at -->
-                    <div class="form-field">
+                    <div class="form-field" v-if="form.has_deadline">
                         <datepicker
                             name="ends_at"
-                            label="Eindigt op"
+                            label="Deadline"
                             v-model="form.ends_at"
                             :error="hasErrors('ends_at')"
                             :error-messages="getErrors('ends_at')">
                         </datepicker>
-                    </div>
-
-                </div>
-            </div>
-
-            <!-- Flags card -->
-            <div class="content-card elevation-1">
-                <div class="content-card__content">
-
-                    <div class="form-field checkbox">
-                        <v-checkbox
-                            hide-details
-                            label="Heeft taken"
-                            v-model="form.has_tasks">
-                        </v-checkbox>
-                        <input type="hidden" name="has_tasks" :value="form.has_tasks">
                     </div>
 
                 </div>
@@ -249,6 +258,7 @@
                 resources: [],
                 team_roles: [],
                 has_tasks: true,
+                has_deadline: false,
             }
         }),
         computed: {
