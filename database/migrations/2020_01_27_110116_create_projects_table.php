@@ -26,6 +26,8 @@ class CreateProjectsTable extends Migration
             $table->string('header_image_url')->default('storage/images/projects/header/default.png');
             $table->date('starts_at')->nullable();
             $table->date('ends_at')->nullable();
+            $table->boolean('has_tasks')->default(false);
+            $table->boolean('has_deadline')->default(false);
             $table->timestamps();
         });
     }
