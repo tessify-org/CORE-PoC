@@ -173,33 +173,48 @@ Breadcrumbs::for("projects.tasks.view", function($t, $project, $task) {
     $t->parent("projects.tasks", $project);
     $t->push(__("tessify-core::breadcrumbs.projects_tasks_view"), route("projects.tasks.view", ["slug" => $project->slug, "taskSlug" => $task->slug]));
 });
-Breadcrumbs::for("projects.tasks.create", function($t, $project) {
-    $t->parent("projects.tasks", $project);
-    $t->push(__("tessify-core::breadcrumbs.projects_tasks_create"), route("projects.tasks.create", $project->slug));
+
+// Tasks
+Breadcrumbs::for("tasks", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.tasks"), route("tasks"));
 });
-Breadcrumbs::for("projects.tasks.edit", function($t, $project, $task) {
-    $t->parent("projects.tasks.view", $project, $task);
-    $t->push(__("tessify-core::breadcrumbs.projects_tasks_edit"), route("projects.tasks.edit", ["slug" => $project->slug, "taskSlug" => $task->slug]));
+Breadcrumbs::for("tasks.view", function($t, $task) {
+    $t->parent("tasks");
+    // $t->push(__("tessify-core::breadcrumbs.tasks_view"), route("tasks.view", ["slug" => $task->slug]));
+    $t->push(ucfirst($task->title), route("tasks.view", ["slug" => $task->slug]));
 });
-Breadcrumbs::for("projects.tasks.delete", function($t, $project, $task) {
-    $t->parent("projects.tasks.view", $project, $task);
-    $t->push(__("tessify-core::breadcrumbs.projects_tasks_delete"), route("projects.tasks.delete", ["slug" => $project->slug, "taskSlug" => $task->slug]));
+Breadcrumbs::for("tasks.create", function($t, $project = null) {
+    $t->parent("tasks");
+    if (!is_null($project)) {
+        $t->push(__("tessify-core::breadcrumbs.tasks_create"), route("tasks.create", $project->slug));
+    } else {
+        $t->push(__("tessify-core::breadcrumbs.tasks_create"), route("tasks.create"));
+    }
 });
-Breadcrumbs::for("projects.tasks.abandon", function($t, $project, $task) {
-    $t->parent("projects.tasks.view", $project, $task);
-    $t->push(__("tessify-core::breadcrumbs.task_abandon"), route("projects.tasks.abandon", ["slug" => $project->slug, "taskSlug" => $task->slug]));
+Breadcrumbs::for("tasks.edit", function($t, $task) {
+    $t->parent("tasks.view", $task);
+    $t->push(__("tessify-core::breadcrumbs.tasks_edit"), route("tasks.edit", ["slug" => $task->slug]));
 });
-Breadcrumbs::for("projects.tasks.report-progress", function($t, $project, $task) {
-    $t->parent("projects.tasks.view", $project, $task);
-    $t->push(__("tessify-core::breadcrumbs.task_report_progress"), route("projects.tasks.report-progress", ["slug" => $project->slug, "taskSlug" => $task->slug]));
+Breadcrumbs::for("tasks.delete", function($t, $task) {
+    $t->parent("tasks.view", $task);
+    $t->push(__("tessify-core::breadcrumbs.tasks_delete"), route("tasks.delete", ["slug" => $task->slug]));
 });
-Breadcrumbs::for("projects.tasks.progress-report", function($t, $project, $task, $report) {
-    $t->parent("projects.tasks.view", $project, $task);
-    $t->push(__("tessify-core::breadcrumbs.task_progress_report"), route("projects.tasks.progress-report", ["slug" => $project->slug, "taskSlug" => $task->slug, "uuid" => $report->uuid]));
+Breadcrumbs::for("tasks.abandon", function($t, $task) {
+    $t->parent("tasks.view", $task);
+    $t->push(__("tessify-core::breadcrumbs.task_abandon"), route("tasks.abandon", ["slug" => $task->slug]));
 });
-Breadcrumbs::for("projects.tasks.progress-report.review", function($t, $project, $task, $report) {
-    $t->parent("projects.tasks.progress-report", $project, $task, $report);
-    $t->push(__("tessify-core::breadcrumbs.task_review_progress_report"), route("projects.tasks.progress-report.review", ["slug" => $project->slug, "taskSlug" => $task->slug, "uuid" => $report->uuid]));
+Breadcrumbs::for("tasks.report-progress", function($t, $task) {
+    $t->parent("tasks.view", $task);
+    $t->push(__("tessify-core::breadcrumbs.task_report_progress"), route("tasks.report-progress", ["slug" => $task->slug]));
+});
+Breadcrumbs::for("tasks.progress-report", function($t, $task, $report) {
+    $t->parent("tasks.view", $task);
+    $t->push(__("tessify-core::breadcrumbs.task_progress_report"), route("tasks.progress-report", ["slug" => $task->slug, "uuid" => $report->uuid]));
+});
+Breadcrumbs::for("tasks.progress-report.review", function($t, $task, $report) {
+    $t->parent("tasks.progress-report", $task, $report);
+    $t->push(__("tessify-core::breadcrumbs.task_review_progress_report"), route("tasks.progress-report.review", ["slug" => $task->slug, "uuid" => $report->uuid]));
 });
 
 // Notifications
@@ -240,12 +255,6 @@ Breadcrumbs::for("settings", function($t) {
 Breadcrumbs::for("dashboard", function($t) {
     $t->parent("home");
     $t->push(__("tessify-core::breadcrumbs.dashboard"), route("dashboard"));
-});
-
-// Werk pakketten
-Breadcrumbs::for("tasks", function($t) {
-    $t->parent("home");
-    $t->push(__("tessify-core::breadcrumbs.tasks"), route("tasks"));
 });
 
 //

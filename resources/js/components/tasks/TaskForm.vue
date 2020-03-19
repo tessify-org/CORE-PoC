@@ -4,6 +4,18 @@
         <!-- Form -->
         <div id="task-form" class="elevation-1">
 
+            <!-- Project -->
+            <div class="form-field">
+                <v-select
+                    :label="projectText"
+                    :items="projectOptions"
+                    v-model="form.project_id"
+                    :errors="hasErrors('project_id')"
+                    :error-messages="getErrors('project_id')">
+                </v-select>
+                <input type="hidden" name="project_id" :value="form.project_id">
+            </div>
+
             <!-- Status -->
             <div class="form-field" v-if="editing">
                 <v-select
@@ -144,12 +156,15 @@
     export default {
         props: [
             "task",
+            "project",
+            "projects",
             "skills",
             "errors",
             "oldInput",
             "statuses",
             "categories",
             "seniorities",
+            "projectText",
             "statusText",
             "categoryText",
             "seniorityText",
@@ -172,12 +187,14 @@
         ],
         data: () => ({
             tag: "[task-form]",
+            projectOptions: [],
             complexityOptions: [],
             seniorityOptions: [],
             categoryOptions: [],
             urgencyOptions: [],
             statusOptions: [],
             form: {
+                project_id: 0,
                 task_status_id: 0,
                 task_category_id: 0,
                 task_seniority_id: 0,
@@ -203,11 +220,14 @@
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" task: ", this.task);
+                console.log(this.tag+" project: ", this.project);
+                console.log(this.tag+" projects: ", this.projects);
                 console.log(this.tag+" skills: ", this.skills);
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
                 console.log(this.tag+" categories: ", this.categories);
                 console.log(this.tag+" seniorities: ", this.seniorities);
+                console.log(this.tag+" project text: ", this.projectText);
                 console.log(this.tag+" category text: ", this.categoryText);
                 console.log(this.tag+" seniority text: ", this.seniorityText);
                 console.log(this.tag+" title text: ", this.titleText);
@@ -226,12 +246,26 @@
                 console.log(this.tag+" back href: ", this.backHref);
                 console.log(this.tag+" back text: ", this.backText);
                 console.log(this.tag+" submit text: ", this.submitText);
+                this.generateProjectOptions();
                 this.generateComplexityOptions();
                 this.generateSeniorityOptions();
                 this.generateCategoryOptions();
                 this.generateUrgencyOptions();
                 this.generateStatusOptions();
                 this.initializeData();
+            },
+            generateProjectOptions() {
+                if (this.projects !== undefined && this.projects !== null && this.projects.length > 0) {
+                    this.projectOptions.push({ text: "Niet associeren met een project", value: 0 });
+                    for (let i = 0; i < this.projects.length; i++) {
+                        this.projectOptions.push({
+                            text: this.projects[i].title,
+                            value: this.projects[i].id,
+                        });
+                    }
+                } else {
+                    this.projectOptions.push({ text: "Geen projecten gevonden", value: 0 });
+                }
             },
             generateComplexityOptions() {
                 for (let i = 1; i <= 10; i++) {
@@ -294,7 +328,11 @@
                 }
             },
             initializeData() {
+                if (this.project !== undefined && this.project !== null) {
+                    this.form.project_id = this.project.id;
+                }
                 if (this.task !== undefined && this.task !== null) {
+                    this.form.project_id = this.task.project_id;
                     this.form.task_status_id = this.task.task_status_id;
                     this.form.task_category_id = this.task.task_category_id;
                     this.form.task_seniority_id = this.task.task_seniority_id;
@@ -311,6 +349,7 @@
                     }
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
+                    if (this.oldInput.project_id !== null) this.form.project_id = parseInt(this.oldInput.project_id);
                     if (this.oldInput.task_status_id !== null) this.form.task_status_id = parseInt(this.oldInput.task_status_id);
                     if (this.oldInput.task_category_id !== null) this.form.task_category_id = parseInt(this.oldInput.task_category_id);
                     if (this.oldInput.task_seniority_id !== null) this.form.task_seniority_id = parseInt(this.oldInput.task_seniority_id);
