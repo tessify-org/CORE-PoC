@@ -2360,6 +2360,34 @@
     margin: 0 auto;
 }
 
+//
+// Bug reports
+//
+
+#bug-report-button__wrapper {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1000;
+    position: fixed;
+    pointer-events: none;
+}
+#bug-report-submitted {
+    #bug-report-submitted__image-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        #bug-report-submitted__image {
+            width: 300px;
+        }
+    }
+    #bug-report-submitted__text {
+        text-align: center;
+        margin: 50px 0 0 0;
+    }
+}
 
 
 

@@ -123,6 +123,11 @@ class User extends Authenticatable
         return $this->hasMany(\Tessify\Core\Models\ReputationTransaction::class);
     }
 
+    public function bugReports()
+    {
+        return $this->hasMany(\Tessify\Core\Models\BugReport::class);
+    }
+
     //
     // Accessors
     //

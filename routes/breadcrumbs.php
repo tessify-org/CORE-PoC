@@ -257,6 +257,11 @@ Breadcrumbs::for("dashboard", function($t) {
     $t->push(__("tessify-core::breadcrumbs.dashboard"), route("dashboard"));
 });
 
+Breadcrumbs::for("bug-report-submitted", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.bug_report_submitted"), route("home"));
+});
+
 //
 // Admin Panel Breadcrumbs
 //

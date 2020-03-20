@@ -3,7 +3,7 @@
 
         <!-- Current assignment -->
         <div id="current-assignment" v-if="currentAssignment !== null">
-            <div id="current-assignment__label">Huidige aanstelling</div>
+            <div id="current-assignment__label">{{ currentAssignmentText }}</div>
             <div id="current-assignment__card">
                 <div id="card-image__wrapper">
                     <div id="card-image">
@@ -22,7 +22,7 @@
 
         <!-- Previous assignments -->
         <div id="previous-assignments" v-if="previousAssignments.length > 0">
-            <div id="previous-assignments__label">Vorige aanstellingen</div>
+            <div id="previous-assignments__label">{{ previousAssignmentsText }}</div>
             <div id="previous-assignments__card">
                 <div class="assignment" v-for="(assignment, ai) in previousAssignments" :key="ai" @click="onClickPreviousAssignment(ai)">
                     <div class="assignment-title">{{ assignment.title }}</div>
@@ -33,9 +33,9 @@
 
         <!-- No assignments -->
         <div id="no-assignments" v-if="currentAssignment === null && previousAssignments.length === 0">
-            Nog geen aanstellingen toegevoegd
+            {{ noAssignmentsText }}
         </div>
-
+        
         <!-- View previous assignment dialog -->
         <v-dialog v-model="dialogs.view_prev.show" width="700">
             <div class="dialog" v-if="this.dialogs.view_prev.index !== null">
@@ -43,35 +43,35 @@
                     <i class="fas fa-times"></i>
                 </div>
                 <div class="dialog-content">
-                    <h3 class="dialog-title">Aanstelling</h3>
+                    <h3 class="dialog-title">{{ assignmentText }}</h3>
                     <div class="dialog-text">
                         <div class="details compact bordered mb-0">
                             <div class="detail">
-                                <div class="key">Ministerie</div>
+                                <div class="key">{{ ministryText }}</div>
                                 <div class="val">{{ previousAssignments[this.dialogs.view_prev.index].organization.ministry.name }}</div>
                             </div>
                             <div class="detail">
-                                <div class="key">Organisatie</div>
+                                <div class="key">{{ organizationText }}</div>
                                 <div class="val">{{ previousAssignments[this.dialogs.view_prev.index].organization.name }}</div>
                             </div>
                             <div class="detail">
-                                <div class="key">Departement</div>
+                                <div class="key">{{ departmentText }}</div>
                                 <div class="val">{{ previousAssignments[this.dialogs.view_prev.index].department.name }}</div>
                             </div>
                             <div class="detail">
-                                <div class="key">Type dienstverband</div>
+                                <div class="key">{{ employmentTypeText }}</div>
                                 <div class="val">{{ previousAssignments[this.dialogs.view_prev.index].type.label }}</div>
                             </div>
                             <div class="detail">
-                                <div class="key">Functie</div>
+                                <div class="key">{{ functionText }}</div>
                                 <div class="val">{{ previousAssignments[this.dialogs.view_prev.index].title }}</div>
                             </div>
                             <div class="detail">
-                                <div class="key">Looptijd</div>
+                                <div class="key">{{ durationText }}</div>
                                 <div class="val">{{ previousAssignments[this.dialogs.view_prev.index].start_date+" t/m "+previousAssignments[this.dialogs.view_prev.index].end_date }}</div>
                             </div>
                             <div class="detail">
-                                <div class="key">Omschrijving</div>
+                                <div class="key">{{ descriptionText }}</div>
                                 <div class="val">{{ previousAssignments[this.dialogs.view_prev.index].description }}</div>
                             </div>
                         </div>
@@ -87,6 +87,17 @@
     export default {
         props: [
             "assignments",
+            "currentAssignmentText",
+            "previousAssignmentsText",
+            "noAssignmentsText",
+            "assignmentText",
+            "ministryText",
+            "organizationText",
+            "departmentText",
+            "employmentTypeText",
+            "functionText",
+            "durationText",
+            "descriptionText",
         ],
         data: () => ({
             tag: "[profile-assignment-list]",
@@ -103,6 +114,16 @@
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" assignments: ", this.assignments);
+                console.log(this.tag+" current assignment text: ", this.currentAssignmentText);
+                console.log(this.tag+" previous assignments text: ", this.previousAssignmentsText);
+                console.log(this.tag+" no assignments text: ", this.noAssignmentsText);
+                console.log(this.tag+" ministry text: ", this.ministryText);
+                console.log(this.tag+" organization text: ", this.organizationText);
+                console.log(this.tag+" department text: ", this.departmentText);
+                console.log(this.tag+" employment type text: ", this.employmentTypeText);
+                console.log(this.tag+" function text: ", this.functionText);
+                console.log(this.tag+" duration text: ", this.durationText);
+                console.log(this.tag+" description text: ", this.descriptionText);
                 this.initializeData();
             },
             initializeData() {

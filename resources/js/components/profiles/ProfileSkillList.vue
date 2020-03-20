@@ -7,7 +7,7 @@
             </div>
         </div>
         <div id="no-skills" v-if="mutableSkills.length === 0">
-            Nog geen skills toegevoegd
+            {{ noSkillsText }}
         </div>
     </div>
 </template>
@@ -16,6 +16,7 @@
     export default {
         props: [
             "skills",
+            "noSkillsText",
         ],
         data: () => ({
             tag: "[profile-skill-list]",
@@ -25,6 +26,7 @@
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" skills: ", this.skills);
+                console.log(this.tag+" no skills text: ", this.noSkillsText);
                 this.initializeData();
             },
             initializeData() {

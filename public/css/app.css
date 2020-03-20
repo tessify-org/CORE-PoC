@@ -6416,3 +6416,34 @@ i {
   margin: 0 auto;
 }
 
+#bug-report-button__wrapper {
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  position: fixed;
+  pointer-events: none;
+}
+
+#bug-report-submitted #bug-report-submitted__image-wrapper {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+#bug-report-submitted #bug-report-submitted__image-wrapper #bug-report-submitted__image {
+  width: 300px;
+}
+
+#bug-report-submitted #bug-report-submitted__text {
+  text-align: center;
+  margin: 50px 0 0 0;
+}
+

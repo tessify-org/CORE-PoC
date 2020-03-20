@@ -43,23 +43,25 @@
         #topnav-unread-notifications {
             display: flex;
             color: #000000;
-            padding: 6px 10px;
+            // padding: 6px 10px;
             border-radius: 3px;
             flex-direction: row;
             align-items: center;
             transition: all .3s;
             text-decoration: none;
             box-sizing: border-box;
-            background-color: hsl(0, 0%, 95%);
+            // background-color: hsl(0, 0%, 95%);
             &.active {
-                color: #fff;
-                background-color: #f84343;
+                color: #f84343;
+                // background-color: #f84343;
                 &:hover {
-                    background-color: #df1212;
+                    color: #df1212;
+                    // background-color: #df1212;
                 }
             }
             &:hover {
-                background-color: hsl(0, 0%, 90%);
+                color: hsl(0, 0%, 10%);
+                // background-color: hsl(0, 0%, 90%);
             }
             #topnav-unread-notifications__icon {
                 font-size: 13px;

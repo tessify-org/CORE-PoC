@@ -3529,7 +3529,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/Tessify/Core",
-                "reference": "9b3437824ae66bf5a36e97fbaeaa5b1346cb8b23"
+                "reference": "032fb9d31c6b26e29e8584ed55c795eca3483a4a"
             },
             "require": {
                 "cviebrock/eloquent-sluggable": "^6.0",
@@ -3577,7 +3577,8 @@
                         "ReputationTransactions": "Tessify\\Core\\Facades\\ReputationTransactionsFacade",
                         "TaskProgressReports": "Tessify\\Core\\Facades\\TaskProgressReportsFacade",
                         "TaskProgressReportReviews": "Tessify\\Core\\Facades\\TaskProgressReportReviewsFacade",
-                        "TaskProgressReportAttachments": "Tessify\\Core\\Facades\\TaskProgressReportAttachmentsFacade"
+                        "TaskProgressReportAttachments": "Tessify\\Core\\Facades\\TaskProgressReportAttachmentsFacade",
+                        "BugReports": "Tessify\\Core\\Facades\\BugReportsFacade"
                     }
                 },
                 "branch-alias": {
