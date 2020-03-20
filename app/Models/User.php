@@ -118,6 +118,11 @@ class User extends Authenticatable
         return $this->belongsToMany(\Tessify\Core\Models\Task::class);
     }
 
+    public function reputationTransactions()
+    {
+        return $this->hasMany(\Tessify\Core\Models\ReputationTransaction::class);
+    }
+
     //
     // Accessors
     //
