@@ -3708,6 +3708,11 @@ i {
           justify-content: center;
 }
 
+#homepage-header #homepage-header__content .alert {
+  margin-top: -100px;
+  margin-bottom: 50px;
+}
+
 #homepage-header #homepage-header__content .page-title {
   margin: 0 0 5px 0;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.45);
@@ -6206,54 +6211,29 @@ i {
 }
 
 #login {
-  width: 800px;
-  margin: 0 auto;
+  width: 500px;
+  padding: 25px;
   display: -webkit-box;
   display: flex;
+  margin: 0 auto;
+  border-radius: 3px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
+  box-sizing: border-box;
   background-color: #fff;
 }
 
-#login #login-left {
-  -webkit-box-flex: 1;
-          flex: 1;
-  padding: 25px;
-  box-sizing: border-box;
+#login form {
+  width: 100%;
 }
 
-#login #login-left #login-title {
-  margin: 0 0 25px 0;
-}
-
-#login #login-left .form-controls {
+#login .form-controls {
   margin: 15px 0 15px 0;
 }
 
-#login #login-left #no-account {
+#login #no-account {
   margin: 30px 0 0 0;
-}
-
-#login #login-right {
-  -webkit-box-flex: 1;
-          flex: 1;
-  padding: 25px;
-  box-sizing: border-box;
-  border-left: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-#login #login-right .login-subtitle {
-  font-weight: 500;
-  margin: 0 0 5px 0;
-}
-
-#login #login-right .login-subtext {
-  margin: 0 0 25px 0;
-}
-
-#login #login-right .login-subtext:last-child {
-  margin: 0;
 }
 
 @media (max-width: 850px) {

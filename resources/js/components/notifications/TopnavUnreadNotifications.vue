@@ -1,6 +1,6 @@
 <template>
     <div id="topnav-unread-notifications__wrapper">
-        <a :href="href" id="topnav-unread-notifications" :class="{ active: mutableCount > 0 }">
+        <a :href="href" id="topnav-unread-notifications" :class="{ active: mutableCount > 0, light: isLight }">
             <span id="topnav-unread-notifications__icon">
                 <i class="fas fa-flag"></i>
             </span>
@@ -16,16 +16,23 @@
         props: [
             "count",
             "href",
+            "light",
         ],
         data: () => ({
             tag: "[topnav-unread-notifications]",
             mutableCount: 0,
         }),
+        computed: {
+            isLight() {
+                return this.light === true;
+            },
+        },
         methods: {
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" count: ", this.count);
                 console.log(this.tag+" href: ", this.href);
+                console.log(this.tag+" light: ", this.light);
                 this.initializeData();
             },
             initializeData() {
@@ -51,6 +58,12 @@
             text-decoration: none;
             box-sizing: border-box;
             // background-color: hsl(0, 0%, 95%);
+            &.light {
+                color: hsl(0, 0%, 90%);
+                &:hover {
+                    color: #ffffff;
+                }   
+            }
             &.active {
                 color: #f84343;
                 // background-color: #f84343;

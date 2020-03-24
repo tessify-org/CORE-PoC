@@ -1,10 +1,12 @@
 <template>
-    <div id="locale-switcher">
+    <div id="locale-switcher" :class="{ light: isLight }">
         <v-select
             hide-details
             :items="localeOptions"
             :loading="form.loading"
             v-model="form.activeLocale"
+            :color="selectColor"
+            :dark="isLight"
             @change="onSelectionChange">
         </v-select>
     </div>
@@ -16,6 +18,7 @@
             "locales",
             "activeLocale",
             "endpoint",
+            "light",
         ],
         data: () => ({
             tag: "[locale-switcher]",
@@ -25,6 +28,14 @@
                 activeLocale: "",
             }
         }),
+        computed: {
+            isLight() {
+                return this.light === true;
+            },
+            selectColor() {
+                return this.isLight ? '#fff' : '#000';
+            }
+        },
         methods: {
             initialize() {
                 // console.log(this.tag+" initializing");
@@ -82,6 +93,9 @@
 <style lang="scss">
     #locale-switcher {
         width: 60px;
+        &.light {
+
+        }
         .v-input {
             margin-top: 0;
             padding-top: 0;
