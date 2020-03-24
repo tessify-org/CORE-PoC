@@ -20,7 +20,7 @@ return [
     "cta_title" => "Er zijn al :num_jobs klussen aangemeld",
     "cta_subtext" => "Zoek op interesse, organisatie of stad.",
     "cta_search" => "Zoeken",
-    "cta_signup" => "Meld nu je project aan",
+    "cta_signup" => "Registreer jouw project of klus",
 
     // Quicklinks
     "quick_link_one" => "Zo haal je meer uit je werk",

@@ -113,9 +113,28 @@
                 <required-skills-field
                     :task="task"
                     :skills="skills"
-                    :label-text="requiredSkillsText"
                     name="required_skills"
-                    v-model="form.required_skills">
+                    v-model="form.required_skills"
+                    :label-text="requiredSkillsText"
+                    :no-records-text="requiredSkillsNoRecordsText"
+                    :add-button-text="requiredSkillsAddButtonText"
+                    :view-title-text="requiredSkillsViewTitleText"
+                    :view-skill-text="requiredSkillsViewSkillText"
+                    :view-required-mastery-text="requiredSkillsViewRequiredMasteryText"
+                    :view-description-text="requiredSkillsViewDescriptionText"
+                    :add-title-text="requiredSkillsAddTitleText"
+                    :form-skill-text="requiredSkillsFormSkillText"
+                    :form-required-mastery-text="requiredSkillsFormRequiredMasteryText"
+                    :form-description-text="requiredSkillsFormDescriptionText"
+                    :add-cancel-text="requiredSkillsAddCancelText"
+                    :add-submit-text="requiredSkillsAddSubmitText"
+                    :edit-title-text="requiredSkillsEditTitleText"
+                    :edit-cancel-text="requiredSkillsEditCancelText"
+                    :edit-submit-text="requiredSkillsEditSubmitText"
+                    :delete-title-text="requiredSkillsDeleteTitleText"
+                    :delete-text="requiredSkillsDeleteText"
+                    :delete-cancel-text="requiredSkillsDeleteCancelText"
+                    :delete-submit-text="requiredSkillsDeleteSubmitText">
                 </required-skills-field>
             </div>
 
@@ -180,6 +199,27 @@
             "selectStatusText",
             "noStatusesText",
             "requiredSkillsText",
+            "requiredSkillsNoRecordsText",
+            "requiredSkillsAddButtonText",
+            "requiredSkillsViewTitleText",
+            "requiredSkillsViewSkillText",
+            "requiredSkillsViewRequiredMasteryText",
+            "requiredSkillsViewDescriptionText",
+            "requiredSkillsViewEditText",
+            "requiredSkillsViewDeleteText",
+            "requiredSkillsAddTitleText",
+            "requiredSkillsFormSkillText",
+            "requiredSkillsFormRequiredMasteryText",
+            "requiredSkillsFormDescriptionText",
+            "requiredSkillsAddCancelText",
+            "requiredSkillsAddSubmitText",
+            "requiredSkillsEditTitleText",
+            "requiredSkillsEditCancelText",
+            "requiredSkillsEditSubmitText",
+            "requiredSkillsDeleteTitleText",
+            "requiredSkillsDeleteText",
+            "requiredSkillsDeleteCancelText",
+            "requiredSkillsDeleteSubmitText",
             "urgencyText",
             "backHref",
             "backText",
@@ -242,6 +282,28 @@
                 console.log(this.tag+" select status text: ", this.selectStatusText);
                 console.log(this.tag+" no statuses text: ", this.noStatusesText);
                 console.log(this.tag+" required skills text: ", this.requiredSkillsText);
+                console.log(this.tag+" required skills no records text: ", this.requiredSkillsNoRecordsText);
+                console.log(this.tag+" required skills add button text: ", this.requiredSkillsAddButtonText);
+                console.log(this.tag+" required skills view title text: ", this.requiredSkillsViewTitleText);
+                console.log(this.tag+" required skills view skill text: ", this.requiredSkillsViewSkillText);
+                console.log(this.tag+" required skills view required mastery text: ", this.requiredSkillsViewRequiredMasteryText);
+                console.log(this.tag+" required skills view description text: ", this.requiredSkillsViewDescriptionText);
+                console.log(this.tag+" required skills view edit text: ", this.requiredSkillsViewEditText);
+                console.log(this.tag+" required skills view delete text: ", this.requiredSkillsViewDeleteText);
+                console.log(this.tag+" required skills add title text: ", this.requiredSkillsAddTitleText);
+                console.log(this.tag+" required skills form skill text: ", this.requiredSkillsFormSkillText);
+                console.log(this.tag+" required skills form required mastery text: ", this.requiredSkillsFormRequiredMasteryText);
+                console.log(this.tag+" required skills form description text: ", this.requiredSkillsFormDescriptionText);
+                console.log(this.tag+" required skills add cancel text: ", this.requiredSkillsAddCancelText);
+                console.log(this.tag+" required skills add submit text: ", this.requiredSkillsAddSubmitText);
+                console.log(this.tag+" required skills edit title text: ", this.requiredSkillsEditTitleText);
+                console.log(this.tag+" required skills edit cancel text: ", this.requiredSkillsEditCancelText);
+                console.log(this.tag+" required skills edit submit text: ", this.requiredSkillsEditSubmitText);
+                console.log(this.tag+" required skills delete title text: ", this.requiredSkillsDeleteTitleText);
+                console.log(this.tag+" required skills delete text: ", this.requiredSkillsDeleteText);
+                console.log(this.tag+" required skills delete cancel text: ", this.requiredSkillsDeleteCancelText);
+                console.log(this.tag+" required skills delete submit text: ", this.requiredSkillsDeleteSubmitText);
+                // console.log(this.tag+" required skills : ", this.requiredSkills);
                 console.log(this.tag+" urgency text: ", this.urgencyText);
                 console.log(this.tag+" back href: ", this.backHref);
                 console.log(this.tag+" back text: ", this.backText);

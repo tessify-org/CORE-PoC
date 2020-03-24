@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div id="homepage-cta__link-wrapper">
-                        <a href="#">
+                        <a href="{{ route('projects.create') }}">
                             @lang("homepage.cta_signup")
                         </a>
                     </div>
