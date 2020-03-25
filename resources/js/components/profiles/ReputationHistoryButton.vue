@@ -18,8 +18,8 @@
                     <!-- Title -->
                     <h3 class="dialog-title">{{ dialogTitleText }}</h3>
                     <!-- Transactions -->
-                    <div class="transaction-list" v-if="mutableTransactions.length > 0">
-                        <div class="transaction" v-for="(transaction, ti) in mutableTransactions" :key="ti">
+                    <div class="transaction-list" v-if="paginatedTransactions.length > 0">
+                        <div class="transaction" v-for="(transaction, ti) in paginatedTransactions" :key="ti">
                             <span class="transaction-operation" v-if="transaction.type === 'give'">+</span>
                             <span class="transaction-operation" v-if="transaction.type === 'take'">-</span>
                             <span class="transaction-label">{{ transaction.points }}</span>
@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     <!-- No transactions -->
-                    <div class="dialog-text no-transactions" v-if="mutableTransactions.length === 0">{{ noTransactionsText }}</div>
+                    <div class="dialog-text no-transactions" v-if="paginatedTransactions.length === 0">{{ noTransactionsText }}</div>
                     <!-- Pagination -->
                     <div class="dialog-pagination" v-if="numPaginatedPages > 1"> 
                         <v-pagination v-model="pagination.currentPage" :length="numPaginatedPages" total-visible="10"></v-pagination>
@@ -69,7 +69,7 @@
         watch: {
             "pagination.currentPage": function() {
                 this.paginate();
-            }
+            },
         },
         methods: {
             initialize() {
@@ -131,5 +131,8 @@
                 margin-left: 5px;
             }
         }
+    }
+    .dialog-pagination {
+        margin-top: 25px;
     }
 </style>

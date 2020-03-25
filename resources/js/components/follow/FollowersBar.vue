@@ -110,7 +110,7 @@
             .followers-bar__text {
                 height: 30px;
                 display: flex;
-                padding: 0 15px;
+                padding: 0 10px;
                 flex-direction: row;
                 align-items: center;
             }

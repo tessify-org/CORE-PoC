@@ -128,6 +128,11 @@ class User extends Authenticatable
         return $this->hasMany(\Tessify\Core\Models\BugReport::class);
     }
 
+    public function completedTasks()
+    {
+        return $this->hasMany(\Tessify\Core\Models\CompletedTask::class);
+    }
+
     //
     // Accessors
     //
