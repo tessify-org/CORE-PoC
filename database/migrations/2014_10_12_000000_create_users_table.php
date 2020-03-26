@@ -29,6 +29,8 @@ class CreateUsersTable extends Migration
             $table->unsignedInteger('reputation_points')->default(0);
             $table->boolean('is_admin')->default(false);
             $table->string('recovery_code')->nullable();
+            $table->boolean('has_been_checked')->default(false);
+            $table->timestamp('banned_until')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

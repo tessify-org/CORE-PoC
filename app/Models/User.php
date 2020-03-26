@@ -37,6 +37,8 @@ class User extends Authenticatable
         'reputation_points',
         'is_admin',
         'recovery_code',
+        'has_been_checked',
+        'banned_until',
     ];
     protected $hidden = [
         'password', 
@@ -44,9 +46,11 @@ class User extends Authenticatable
     ];
     protected $dates = [
         'email_verified_at',
+        'banned_until',
     ];
     protected $casts = [
         'is_admin' => 'boolean',
+        'has_been_checked' => 'boolean',
     ];
 
     //

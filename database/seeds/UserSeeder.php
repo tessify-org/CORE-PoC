@@ -22,15 +22,8 @@ class UserSeeder extends Seeder
         DB::table("users")->delete();
 
         //
-        // Admin account
+        // My account
         //
-
-        $henk = User::create([
-            "first_name" => "Gekke",
-            "last_name" => "Henk",
-            "email" => "gekke.henk@minbzk.nl",
-            "password" => bcrypt("engeland")
-        ]);
 
         $nick = User::create([
             "first_name" => "Nick",
@@ -90,6 +83,42 @@ class UserSeeder extends Seeder
             "current" => false,
             "start_date" => now()->format("Y-m-d"),
             "end_date" => now()->format("Y-m-d"),
+        ]);
+
+        // 
+        // More admin accounts
+        // 
+
+        $nick2 = User::create([
+            "first_name" => "Nick",
+            "last_name" => "Verheijen de Tweede",
+            "email" => "verheijen.webdevelopment@gmail.com",
+            "password" => bcrypt("engeland"),
+            "is_admin" => true,
+        ]);
+        
+        $victor = User::create([
+            "first_name" => "Victor",
+            "last_name" => "Gevers",
+            "email" => "victor.gevers@minbzk.nl",
+            "password" => bcrypt("Corona2020!"),
+            "is_admin" => true,
+        ]);
+
+        $winko = User::create([
+            "first_name" => "Winko",
+            "last_name" => "van den Berg",
+            "email" => "winko.erades@minbzk.nl",
+            "password" => bcrypt("8_ukQNdm#g3j-mN^(}G{r$\x5%Gq?!JV"),
+            "is_admin" => true,
+        ]);
+        
+        $ramon = User::create([
+            "first_name" => "Ramon",
+            "last_name" => "Fiedler",
+            "email" => "ramon.fiedler@minbzk.nl",
+            "password" => bcrypt("Erkers2020"),
+            "is_admin" => true,
         ]);
 
         //

@@ -36,6 +36,7 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Tessify\Core\Http\Middleware\SetActiveLocale::class,
+            \Tessify\Core\Http\Middleware\IsBanned::class,
         ],
 
         'api' => [
