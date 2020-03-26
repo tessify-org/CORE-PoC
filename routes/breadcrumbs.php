@@ -278,7 +278,7 @@ Breadcrumbs::for("admin.users", function($t) {
 });
 Breadcrumbs::for("admin.users.view", function($t, $user) {
     $t->parent("admin.users");
-    $t->push(__("tessify-core::breadcrumbs.admin_users_view"), route("admin.users.view", $user->id));
+    $t->push($user->formattedName, route("admin.users.view", $user->id));
 });
 Breadcrumbs::for("admin.users.create", function($t) {
     $t->parent("admin.users");
@@ -286,9 +286,13 @@ Breadcrumbs::for("admin.users.create", function($t) {
 });
 Breadcrumbs::for("admin.users.edit", function($t, $user) {
     $t->parent("admin.users.view", $user);
-    $t->push(__("tessify-core::breadcrumbs.admin_users_edit", route("admin.users.edit", $user->id)));
+    $t->push(__("tessify-core::breadcrumbs.admin_users_edit"), route("admin.users.edit", $user->id));
 });
 Breadcrumbs::for("admin.users.delete", function($t, $user) {
     $t->parent("admin.users.view", $user);
     $t->push(__("tessify-core::breadcrumbs.admin_users_delete"), route("admin.users.delete", $user->id));
+});
+Breadcrumbs::for("admin.users.ban", function($t, $user) {
+    $t->parent("admin.users.view", $user);
+    $t->push(__("tessify-core::breadcrumbs.admin_users_ban"), route("admin.users.ban", $user->id));
 });

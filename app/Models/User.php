@@ -39,6 +39,7 @@ class User extends Authenticatable
         'recovery_code',
         'has_been_checked',
         'banned_until',
+        'permabanned',
     ];
     protected $hidden = [
         'password', 
@@ -51,6 +52,7 @@ class User extends Authenticatable
     protected $casts = [
         'is_admin' => 'boolean',
         'has_been_checked' => 'boolean',
+        'permabanned' => 'boolean',
     ];
 
     //

@@ -1068,6 +1068,9 @@ i {
     .content-card__content {
         padding: 25px;
         box-sizing: border-box;
+        &.centered {
+            text-align: center;
+        }
         &.no-padding {
             padding: 0;
         }
@@ -1077,7 +1080,9 @@ i {
         }
     }
     .content-card__footer {
+        display: flex;
         padding: 15px 25px;
+        flex-direction: row;
         box-sizing: border-box;
         background-color: hsl(0, 0%, 95%);
         .content-card__footer-links {
@@ -1094,6 +1099,19 @@ i {
                     color: hsl(0, 0%, 0%);
                 }
             }
+        }
+        .content-card__footer-left {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .content-card__footer-right {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-end;
         }
     }
 }
@@ -1131,7 +1149,10 @@ i {
     }
 }
 
-
+.delete-dialog {
+    width: 600px;
+    margin: 0 auto;
+}
 
 
 

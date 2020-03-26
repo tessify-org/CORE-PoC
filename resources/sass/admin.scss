@@ -1,2 +1,31 @@
 @import "imports";
 @import "general";
+
+//
+// Manage users
+//
+
+#admin-users-view {
+    display: flex;
+    flex-direction: row;
+    #admin-users-view__left {
+        flex: 1;
+    }
+    #admin-users-view__right {
+        flex: 0 0 300px;
+        margin: 0 0 0 30px;
+        #admin-users-view__actions {
+            .v-btn {
+                margin: 0 0 15px 0;
+                &:last-child {
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+#ban-dialog {
+    width: 600px;
+    margin: 0 auto;
+}

@@ -3602,6 +3602,10 @@ i {
   box-sizing: border-box;
 }
 
+.content-card .content-card__content.centered {
+  text-align: center;
+}
+
 .content-card .content-card__content.no-padding {
   padding: 0;
 }
@@ -3612,7 +3616,12 @@ i {
 }
 
 .content-card .content-card__footer {
+  display: -webkit-box;
+  display: flex;
   padding: 15px 25px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
   box-sizing: border-box;
   background-color: #f2f2f2;
 }
@@ -3634,6 +3643,32 @@ i {
 .content-card .content-card__footer .content-card__footer-links .footer-link__wrapper .footer-link {
   text-decoration: none;
   color: black;
+}
+
+.content-card .content-card__footer .content-card__footer-left {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.content-card .content-card__footer .content-card__footer-right {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
 }
 
 .page-controls {
@@ -3677,5 +3712,42 @@ i {
 
 .page-controls .page-controls__right .v-btn {
   margin: 0 0 0 15px;
+}
+
+.delete-dialog {
+  width: 600px;
+  margin: 0 auto;
+}
+
+#admin-users-view {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#admin-users-view #admin-users-view__left {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+#admin-users-view #admin-users-view__right {
+  -webkit-box-flex: 0;
+          flex: 0 0 300px;
+  margin: 0 0 0 30px;
+}
+
+#admin-users-view #admin-users-view__right #admin-users-view__actions .v-btn {
+  margin: 0 0 15px 0;
+}
+
+#admin-users-view #admin-users-view__right #admin-users-view__actions .v-btn:last-child {
+  margin: 0;
+}
+
+#ban-dialog {
+  width: 600px;
+  margin: 0 auto;
 }
 
