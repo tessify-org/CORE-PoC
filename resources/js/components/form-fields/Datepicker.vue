@@ -2,7 +2,18 @@
     <div class="date-picker">
         
         <!-- Input -->
-        <v-text-field :id="name" type="text" class="form-control" :label="label" :value="mutableValue" :hint="hint" autocomplete="off" :hide-details="!hasHint" persistent-hint placeholder="00/00/0000"></v-text-field>
+        <v-text-field 
+            :id="name" 
+            type="text" 
+            class="form-control" 
+            :label="label" 
+            :value="mutableValue" 
+            :hint="hint" 
+            autocomplete="off" 
+            :hide-details="!hasHint" 
+            persistent-hint 
+            placeholder="00-00-0000">
+        </v-text-field>
         
         <!-- Hidden -->
         <input type="hidden" :name="name" v-model="mutableValue">
@@ -51,14 +62,14 @@
                     monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
                     today: 'Vandaag',
                     clear: 'Reset',
-                    dateFormat: 'dd/mm/yyyy',
+                    dateFormat: 'dd-mm-yyyy',
                     timeFormat: 'hh:ii aa',
                     firstDay: 0
                 };
                 $(document).ready(function(){
                     this.dp = $("#"+this.name).datepicker({
                         language: "nl",
-                        dateFormat: "dd/mm/yyyy",
+                        dateFormat: "dd-mm-yyyy",
                         autoClose: true,
                         onSelect: function(formattedDate, date, inst) {
                             this.mutableValue = formattedDate;

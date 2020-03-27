@@ -114,14 +114,14 @@
 
                     <!-- Category -->
                     <div class="form-field">
-                        <v-select
+                        <v-combobox
                             label="Project categorie"
                             :items="categoryOptions"
-                            v-model="form.project_category_id"
-                            :errors="hasErrors('project_category_id')"
-                            :error-messages="getErrors('project_category_id')">
-                        </v-select>
-                        <input type="hidden" name="project_category_id" :value="form.project_category_id">
+                            v-model="form.project_category"
+                            :errors="hasErrors('project_category')"
+                            :error-messages="getErrors('project_category')">
+                        </v-combobox>
+                        <input type="hidden" name="project_category" :value="form.project_category">
                     </div>
 
                     <!-- Work method -->
@@ -248,7 +248,7 @@
             statusOptions: [],
             form: {
                 project_status_id: 0,
-                project_category_id: 0,
+                project_category: "",
                 work_method_id: 0,
                 title: "",
                 slogan: "",
@@ -291,7 +291,7 @@
                 this.form.project_status_id = this.statusOptions[0].value;
                 if (this.project !== undefined && this.project !== null) {
                     this.form.project_status_id = this.project.project_status_id;
-                    this.form.project_category_id = this.project.project_category_id;
+                    this.form.project_category = this.project.category.label;
                     this.form.work_method_id = this.project.work_method_id;
                     this.form.title = this.project.title;
                     this.form.slogan = this.project.slogan;
@@ -346,15 +346,9 @@
             },
             generateCategoryOptions() {
                 if (this.projectCategories !== undefined && this.projectCategories !== null && this.projectCategories.length > 0) {
-                    this.categoryOptions.push({ text: "Selecteer categorie", value: 0 });
                     for (let i = 0; i < this.projectCategories.length; i++) {
-                        this.categoryOptions.push({
-                            text: this.projectCategories[i].label,
-                            value: this.projectCategories[i].id,
-                        });
+                        this.categoryOptions.push({ text: this.projectCategories[i].label });
                     }
-                } else {
-                    this.categoryOptions.push({ text: "Geen categorieen gevonden", value: 0 });
                 }
             },
             generateWorkMethodOptions() {

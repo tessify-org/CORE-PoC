@@ -1,8 +1,19 @@
 <template>
     <div class="form-group">
-        <label :for="name">{{ title }}</label>
-        <div class="form-desc" v-if="hasDescription()">{{ description }}</div>
-        <input :id="name" type="text" class="form-control" :value="mutableValue">
+        <!-- Field -->
+        <v-text-field 
+            :id="name" 
+            type="text" 
+            :hint="description" 
+            :label="title" 
+            persistent-hint 
+            autocomplete="off" 
+            class="form-control" 
+            :value="mutableValue" 
+            :hide-details="!hasDescription" 
+            placeholder="00-00-0000">
+        </v-text-field>
+        <!-- Hidden input for value -->
         <input type="hidden" :name="name" v-model="mutableValue">
     </div>
 </template>
@@ -32,14 +43,14 @@
                     monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dec'],
                     today: 'Vandaag',
                     clear: 'Reset',
-                    dateFormat: 'mm/dd/yyyy',
+                    dateFormat: 'mm-dd-yyyy',
                     timeFormat: 'hh:ii',
                     firstDay: 0
                 };
                 $(document).ready(function(){
                     var dp = $("#"+this.name).datepicker({
                         language: "nl",
-                        dateFormat: "dd/mm/yyyy",
+                        dateFormat: "dd-mm-yyyy",
                         timepicker: true,
                         autoClose: true,
                         onSelect: function(formattedDate, date, inst) {
