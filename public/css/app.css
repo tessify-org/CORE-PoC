@@ -5810,7 +5810,7 @@ i {
 
 #task #task-header {
   width: 100%;
-  height: 300px;
+  height: 450px;
   position: relative;
   background-size: cover;
   background-repeat: no-repeat;
@@ -5937,10 +5937,11 @@ i {
 #task #task-cta__wrapper #task-cta {
   z-index: 99;
   width: 500px;
-  height: 150px;
   display: -webkit-box;
   display: flex;
   padding: 25px;
+  overflow: hidden;
+  min-height: 250px;
   position: relative;
   border-radius: 3px;
   box-sizing: border-box;
@@ -5950,28 +5951,46 @@ i {
   -webkit-box-pack: center;
           justify-content: center;
   background-color: #fff;
-  margin: -50px auto 0 auto;
+  margin: -125px auto 0 auto;
 }
 
 #task #task-cta__wrapper #task-cta #task-cta__title {
-  font-size: 1.2em;
+  z-index: 2;
+  font-size: 1.4em;
   font-weight: 600;
   margin: 0 0 5px 0;
   text-align: center;
 }
 
-#task #task-cta__wrapper #task-cta #task-cta__button {
+#task #task-cta__wrapper #task-cta #task-cta__text {
+  z-index: 2;
   text-align: center;
-  margin: 10px 0 10px 0;
 }
 
-#task #task-cta__wrapper #task-cta #task-cta__text {
+#task #task-cta__wrapper #task-cta #task-cta__button {
+  z-index: 2;
   text-align: center;
+  margin: 20px 0 10px 0;
 }
 
 #task #task-cta__wrapper #task-cta #task-cta__link {
-  text-align: center;
+  z-index: 2;
   font-size: 0.8em;
+  text-align: center;
+}
+
+#task #task-cta__wrapper #task-cta #task-cta__image {
+  z-index: 1;
+  opacity: 0.2;
+  width: 350px;
+  right: -75px;
+  bottom: -50px;
+  height: 350px;
+  position: absolute;
+  margin: 15px auto 0 auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 #task #task-content #task-columns {
