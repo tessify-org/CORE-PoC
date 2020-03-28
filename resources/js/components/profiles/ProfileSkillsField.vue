@@ -407,11 +407,12 @@
         }
         #profile-skills-field__skills {
             margin: 0 0 15px 0;
+            border-radius: 3px;
             background-color: hsl(0, 0%, 95%);
             .profile-skills-field__skill {
                 display: flex;
-                padding: 10px;
                 flex-direction: row;
+                padding: 10px;
                 box-sizing: border-box;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);
                 &:last-child {

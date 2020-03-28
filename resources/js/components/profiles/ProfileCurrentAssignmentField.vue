@@ -180,9 +180,6 @@
             }
         }),
         computed: {
-            confirmAddDisabled() {
-                return false;
-            },
             selectedOrganization() {
                 if (this.dialogs.add.form.organization !== "") {
                     let organization = this.getOrganizationByName(this.dialogs.add.form.organization);

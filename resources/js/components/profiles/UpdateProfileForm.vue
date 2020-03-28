@@ -4,7 +4,7 @@
         <!-- Form -->
         <div id="update-profile-form" class="elevation-1">
 
-            <!-- Annotation, first- & last name -->
+            <!-- Name fields -->
             <div class="form-fields">
                 <div class="form-field double">
                     <v-text-field 
@@ -94,16 +94,55 @@
 
             <!-- Current assignment -->
             <div class="form-field">
-                <profile-current-assignment-field
-                    name="current_assignment_id"
-                    v-model="form.current_assignment_id"
+
+                <profile-assignments-field
+                    name="assignments"
+                    v-model="form.assignments"
                     :user="user"
                     :assignment-types="assignmentTypes"
                     :organizations="organizations"
                     :organization-locations="organizationLocations"
                     :departments="departments"
-                    :create-api-endpoint="createAssignmentApiEndpoint">
-                </profile-current-assignment-field>
+                    :create-api-endpoint="createAssignmentApiEndpoint"
+                    :update-api-endpoint="updateAssignmentApiEndpoint"
+                    :delete-api-endpoint="deleteAssignmentApiEndpoint"
+                    :label-text="assignmentsLabelText"
+                    :no-records-text="assignmentsNoRecordsText"
+                    :add-button-text="assignmentsAddButtonText"
+                    :form-title-text="assignmentsFormTitleText"
+                    :form-description-text="assignmentsFormDescriptionText"
+                    :form-type-text="assignmentsFormTypeText"
+                    :form-organization-text="assignmentsFormOrganizationText"
+                    :form-department-text="assignmentsFormDepartmentText"
+                    :form-location-text="assignmentsFormLocationText"
+                    :form-current-function-text="assignmentsFormCurrentFunctionText"
+                    :form-start-date-text="assignmentsFormStartDateText"
+                    :form-end-date-text="assignmentsFormEndDateText"
+                    :form-present-text="assignmentsFormPresentText"
+                    :form-until-present-text="assignmentsFormUntilPresentText"
+                    :create-dialog-title-text="assignmentsCreateDialogTitleText"
+                    :create-dialog-cancel-text="assignmentsCreateDialogCancelText"
+                    :create-dialog-submit-text="assignmentsCreateDialogSubmitText"
+                    :view-dialog-title-text="assignmentsViewDialogTitleText"
+                    :view-dialog-ministry-text="assignmentsViewDialogMinistryText"
+                    :view-dialog-organization-text="assignmentsViewDialogOrganizationText"
+                    :view-dialog-department-text="assignmentsViewDialogDepartmentText"
+                    :view-dialog-location-text="assignmentsViewDialogLocationText"
+                    :view-dialog-assignment-type-text="assignmentsViewDialogAssignmentTypeText"
+                    :view-dialog-function-text="assignmentsViewDialogFunctionText"
+                    :view-dialog-duration-text="assignmentsViewDialogDurationText"
+                    :view-dialog-description-text="assignmentsViewDialogDescriptionText"
+                    :view-dialog-edit-text="assignmentsViewDialogEditText"
+                    :view-dialog-delete-text="assignmentsViewDialogDeleteText"
+                    :update-dialog-title-text="assignmentsUpdateDialogTitleText"
+                    :update-dialog-cancel-text="assignmentsUpdateDialogCancelText"
+                    :update-dialog-submit-text="assignmentsUpdateDialogSubmitText"
+                    :delete-dialog-title-text="assignmentsDeleteDialogTitleText"
+                    :delete-dialog-text="assignmentsDeleteDialogText"
+                    :delete-dialog-cancel-text="assignmentsDeleteDialogCancelText"
+                    :delete-dialog-submit-text="assignmentsDeleteDialogSubmitText">
+                </profile-assignments-field>
+
             </div>
 
             <!-- Skills -->
@@ -161,6 +200,43 @@
             "backText",
             "saveText",
             "createAssignmentApiEndpoint",
+            "updateAssignmentApiEndpoint",
+            "deleteAssignmentApiEndpoint",
+            "assignmentsLabelText",
+            "assignmentsNoRecordsText",
+            "assignmentsAddButtonText",
+            "assignmentsFormTitleText",
+            "assignmentsFormDescriptionText",
+            "assignmentsFormTypeText",
+            "assignmentsFormOrganizationText",
+            "assignmentsFormDepartmentText",
+            "assignmentsFormLocationText",
+            "assignmentsFormCurrentFunctionText",
+            "assignmentsFormStartDateText",
+            "assignmentsFormPresentText",
+            "assignmentsFormEndDateText",
+            "assignmentsFormUntilPresentText",
+            "assignmentsCreateDialogTitleText",
+            "assignmentsCreateDialogCancelText",
+            "assignmentsCreateDialogSubmitText",
+            "assignmentsViewDialogTitleText",
+            "assignmentsViewDialogMinistryText",
+            "assignmentsViewDialogOrganizationText",
+            "assignmentsViewDialogDepartmentText",
+            "assignmentsViewDialogLocationText",
+            "assignmentsViewDialogAssignmentTypeText",
+            "assignmentsViewDialogFunctionText",
+            "assignmentsViewDialogDurationText",
+            "assignmentsViewDialogDescriptionText",
+            "assignmentsViewDialogEditText",
+            "assignmentsViewDialogDeleteText",
+            "assignmentsUpdateDialogTitleText",
+            "assignmentsUpdateDialogCancelText",
+            "assignmentsUpdateDialogSubmitText",
+            "assignmentsDeleteDialogTitleText",
+            "assignmentsDeleteDialogText",
+            "assignmentsDeleteDialogCancelText",
+            "assignmentsDeleteDialogSubmitText",
         ],
         data: () => ({
             tag: "[update-profile-form]",
@@ -203,6 +279,46 @@
                 console.log(this.tag+" back text: ", this.backText);
                 console.log(this.tag+" save text: ", this.saveText);
                 console.log(this.tag+" create assignment api endpoint: ", this.createAssignmentApiEndpoint);
+                console.log(this.tag+" update assignment api endpoint: ", this.updateAssignmentApiEndpoint);
+                console.log(this.tag+" delete assignment api endpoint: ", this.deleteAssignmentApiEndpoint);
+                console.log(this.tag+" assignments label text: ", this.assignmentsLabelText);
+                console.log(this.tag+" assignments no records text: ", this.assignmentsNoRecordsText);
+                console.log(this.tag+" assignments add button text: ", this.assignmentsAddButtonText);
+                console.log(this.tag+" assignments label text: ", this.assignmentsLabelText);
+                console.log(this.tag+" assignments no records text: ", this.assignmentsNoRecordsText);
+                console.log(this.tag+" assignments add button text: ", this.assignmentsAddButtonText);
+                console.log(this.tag+" assignments form title text: ", this.assignmentsFormTitleText);
+                console.log(this.tag+" assignments form description text: ", this.assignmentsFormDescriptionText);
+                console.log(this.tag+" assignments form type text: ", this.assignmentsFormTypeText);
+                console.log(this.tag+" assignments form organization text: ", this.assignmentsFormOrganizationText);
+                console.log(this.tag+" assignments form department text: ", this.assignmentsFormDepartmentText);
+                console.log(this.tag+" assignments form location text: ", this.assignmentsFormLocationText);
+                console.log(this.tag+" assignments form current function text: ", this.assignmentsFormCurrentFunctionText);
+                console.log(this.tag+" assignments form start date text: ", this.assignmentsFormStartDateText);
+                console.log(this.tag+" assignments form present text: ", this.assignmentsFormPresentText);
+                console.log(this.tag+" assignments form end date text: ", this.assignmentsFormEndDateText);
+                console.log(this.tag+" assignments form until present text: ", this.assignmentsFormUntilPresentText);
+                console.log(this.tag+" assignments create dialog title text: ", this.assignmentsCreateDialogTitleText);
+                console.log(this.tag+" assignments create dialog cancel text: ", this.assignmentsCreateDialogCancelText);
+                console.log(this.tag+" assignments create dialog submit text: ", this.assignmentsCreateDialogSubmitText);
+                console.log(this.tag+" assignments view dialog title text: ", this.assignmentsViewDialogTitleText);
+                console.log(this.tag+" assignments view dialog ministry text: ", this.assignmentsViewDialogMinistryText);
+                console.log(this.tag+" assignments view dialog organization text: ", this.assignmentsViewDialogOrganizationText);
+                console.log(this.tag+" assignments view dialog department text: ", this.assignmentsViewDialogDepartmentText);
+                console.log(this.tag+" assignments view dialog location text: ", this.assignmentsViewDialogLocationText);
+                console.log(this.tag+" assignments view dialog assignment type text: ", this.assignmentsViewDialogAssignmentTypeText);
+                console.log(this.tag+" assignments view dialog function text: ", this.assignmentsViewDialogFunctionText);
+                console.log(this.tag+" assignments view dialog duration text: ", this.assignmentsViewDialogDurationText);
+                console.log(this.tag+" assignments view dialog descripion text: ", this.assignmentsViewDialogDescriptionText);
+                console.log(this.tag+" assignments view dialog edit text: ", this.assignmentsViewDialogEditText);
+                console.log(this.tag+" assignments view dialog delete text: ", this.assignmentsViewDialogDeleteText);
+                console.log(this.tag+" assignments update dialog title text: ", this.assignmentsUpdateDialogTitleText);
+                console.log(this.tag+" assignments update dialog cancel text: ", this.assignmentsUpdateDialogCancelText);
+                console.log(this.tag+" assignments update dialog submit text: ", this.assignmentsUpdateDialogSubmitText);
+                console.log(this.tag+" assignments delete dialog title text: ", this.assignmentsDeleteDialogTitleText);
+                console.log(this.tag+" assignments delete dialog text: ", this.assignmentsDeleteDialogText);
+                console.log(this.tag+" assignments delete dialog cancel text: ", this.assignmentsDeleteDialogCancelText);
+                console.log(this.tag+" assignments delete dialog submit text: ", this.assignmentsDeleteDialogSubmitText);
                 this.initializeData();
             },
             initializeData() {
