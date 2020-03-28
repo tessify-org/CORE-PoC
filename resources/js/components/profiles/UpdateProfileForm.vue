@@ -152,7 +152,28 @@
                     v-model="form.skills"
                     :user="user"
                     :skills="skills"
-                    label-text="Skills">
+                    :label-text="skillsLabelText"
+                    :no-records-text="skillsNoRecordsText"
+                    :add-button-text="skillsAddButtonText"
+                    :form-skill-text="skillsFormSkillText"
+                    :form-mastery-text="skillsFormMasteryText"
+                    :form-description-text="skillsFormDescriptionText"
+                    :view-dialog-title-text="skillsViewDialogTitleText"
+                    :view-dialog-skill-text="skillsViewDialogSkillText"
+                    :view-dialog-mastery-text="skillsViewDialogMasteryText"
+                    :view-dialog-description-text="skillsViewDialogDescriptionText"
+                    :view-dialog-edit-text="skillsViewDialogEditText"
+                    :view-dialog-delete-text="skillsViewDialogDeleteText"
+                    :create-dialog-title-text="skillsCreateDialogTitleText"
+                    :create-dialog-cancel-text="skillsCreateDialogCancelText"
+                    :create-dialog-submit-text="skillsCreateDialogSubmitText"
+                    :update-dialog-title-text="skillsUpdateDialogTitleText"
+                    :update-dialog-cancel-text="skillsUpdateDialogCancelText"
+                    :update-dialog-submit-text="skillsUpdateDialogSubmitText"
+                    :delete-dialog-title-text="skillsDeleteDialogTitleText"
+                    :delete-dialog-text="skillsDeleteDialogText"
+                    :delete-dialog-cancel-text="skillsDeleteDialogCancelText"
+                    :delete-dialog-submit-text="skillsDeleteDialogSubmitText">
                 </profile-skills-field>
             </div>
 
@@ -237,6 +258,28 @@
             "assignmentsDeleteDialogText",
             "assignmentsDeleteDialogCancelText",
             "assignmentsDeleteDialogSubmitText",
+            "skillsLabelText",
+            "skillsNoRecordsText",
+            "skillsAddButtonText",
+            "skillsFormSkillText",
+            "skillsFormMasteryText",
+            "skillsFormDescriptionText",
+            "skillsViewDialogTitleText",
+            "skillsViewDialogSkillText",
+            "skillsViewDialogMasteryText",
+            "skillsViewDialogDescriptionText",
+            "skillsViewDialogEditText",
+            "skillsViewDialogDeleteText",
+            "skillsCreateDialogTitleText",
+            "skillsCreateDialogCancelText",
+            "skillsCreateDialogSubmitText",
+            "skillsUpdateDialogTitleText",
+            "skillsUpdateDialogCancelText",
+            "skillsUpdateDialogSubmitText",
+            "skillsDeleteDialogTitleText",
+            "skillsDeleteDialogText",
+            "skillsDeleteDialogCancelText",
+            "skillsDeleteDialogSubmitText",
         ],
         data: () => ({
             tag: "[update-profile-form]",

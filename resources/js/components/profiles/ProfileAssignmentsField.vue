@@ -788,10 +788,8 @@
                 payload.append("end_date", this.dialogs.add.form.end_date);
                 this.axios.post(this.createApiEndpoint, payload)
                     .then(function(response) {
-                        console.log(this.tag+" request succeeded", response.data);
                         this.dialogs.add.loading = false;
                         if (response.data.status === "success") {
-                            console.log(this.tag+" operation succeeded");
                             // If the assignment was the current assignment; make other assignment not the current anymore
                             if (response.data.assignment.current) {
                                 for (let i = 0; i < this.mutableAssignments.length; i++) {
@@ -814,12 +812,10 @@
                             this.dialogs.add.form.start_date = null;
                             this.dialogs.add.form.end_date = null;
                         } else {
-                            console.warn(this.tag+" operation failed");
                             this.dialogs.add.errors = [response.data.error];
                         }
                     }.bind(this))
                     .catch(function(error) {
-                        console.warn(this.tag+" request failed: ", error);
                         this.dialogs.add.loading = false;
                         this.dialogs.add.errors = [error];
                     }.bind(this));
@@ -861,7 +857,6 @@
                 payload.append("end_date", this.dialogs.edit.form.end_date);
                 this.axios.post(this.updateApiEndpoint, payload)
                     .then(function(response) {
-                        console.log(this.tag+" request succeeded", response.data);
                         this.dialogs.add.loading = false;
                         if (response.data.status === "success") {
                             console.log(this.tag+" operation succeeded");
@@ -879,13 +874,11 @@
                             this.dialogs.edit.show = false;
                             this.dialogs.edit.loading = false;
                         } else {
-                            console.warn(this.tag+" operation failed");
                             this.dialogs.edit.errors = [response.data.error];
                             this.dialogs.edit.loading = false;
                         }
                     }.bind(this))
                     .catch(function(error) {
-                        console.warn(this.tag+" request failed: ", error);
                         this.dialogs.edit.loading = false;
                         this.dialogs.edit.errors = [error];
                     }.bind(this));
@@ -901,13 +894,11 @@
                 payload.append("assignment_id", this.mutableAssignments[this.dialogs.delete.index].id);
                 this.axios.post(this.deleteApiEndpoint, payload)
                     .then(function(response) {
-                        console.log(this.tag+" request succeeded", response.data);
                         this.dialogs.delete.loading = false;
                         this.mutableAssignments.splice(this.dialogs.delete.index, 1);
                         this.dialogs.delete.show = false;
                     }.bind(this))
                     .catch(function(response) {
-                        console.warn(this.tag+" request failed: ", error);
                         this.dialogs.delete.loading = false;
                         this.dialogs.delete.errors = [error];
                     }.bind(this));

@@ -29,37 +29,37 @@
 
         <!-- No skills -->
         <div id="profile-skills-field__no-records" v-if="mutableSkills.length === 0">
-            Je hebt nog geen skills toegevoegd
+            {{ noRecordsText }}
         </div>
 
         <!-- Actions -->
         <div id="profile-skills-field__actions">
             <v-btn color="primary" depressed small @click="onClickAdd">
                 <i class="fas fa-plus"></i>
-                Skill toevoegen
+                {{ addButtonText }}
             </v-btn>
         </div>
 
         <!-- View skill dialog -->
-        <v-dialog v-model="dialogs.view.show" width="500">
+        <v-dialog v-model="dialogs.view.show" width="600">
             <div class="dialog" v-if="this.dialogs.view.index !== null">
                 <div class="dialog__close-button" @click="dialogs.view.show = false">
                     <i class="fas fa-times"></i>
                 </div>
                 <div class="dialog-content">
-                    <h3 class="dialog-title">Skill bekijken</h3>
+                    <h3 class="dialog-title">{{ viewDialogTitleText }}</h3>
                     <div class="dialog-text">
                         <div class="details bordered mb-0">
                             <div class="detail">
-                                <div class="key">Skill</div>
+                                <div class="key">{{ viewDialogSkillText }}</div>
                                 <div class="val">{{ mutableSkills[this.dialogs.view.index].skill }}</div>
                             </div>
                             <div class="detail">
-                                <div class="key">Mastery</div>
+                                <div class="key">{{ viewDialogMasteryText }}</div>
                                 <div class="val">{{ mutableSkills[this.dialogs.view.index].mastery }} / 10</div>
                             </div>
                             <div class="detail" v-if="mutableSkills[this.dialogs.view.index].description !== '' && mutableSkills[this.dialogs.view.index].description !== null">
-                                <div class="key">Beschrijving</div>
+                                <div class="key">{{ viewDialogDescriptionText }}</div>
                                 <div class="val">{{ mutableSkills[this.dialogs.view.index].description }}</div>
                             </div>
                         </div>
@@ -69,11 +69,11 @@
                     <div class="dialog-controls__right">
                         <v-btn depressed color="warning" @click="onClickEdit(dialogs.view.index)">
                             <i class="fas fa-edit"></i>
-                            Aanpassen
+                            {{ viewDialogEditText }}
                         </v-btn>
                         <v-btn depressed dark color="red" @click="onClickDelete(dialogs.view.index)">
                             <i class="fas fa-trash-alt"></i>
-                            Verwijderen
+                            {{ viewDialogDeleteText }}
                         </v-btn>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Skill toevoegen</h3>
+                    <h3 class="dialog-title">{{ createDialogTitle }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.add.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.add.errors" :key="ei">
@@ -100,7 +100,7 @@
                     <!-- Skill -->
                     <div class="form-field">
                         <v-combobox
-                            label="Skill"
+                            :label="formSkillText"
                             :items="skillOptions"
                             v-model="dialogs.add.form.skill">
                         </v-combobox>
@@ -108,7 +108,7 @@
                     <!-- Mastery -->
                     <div class="form-field">
                         <v-select
-                            label="Mastery"
+                            :label="formMasteryText"
                             :items="masteryOptions"
                             v-model="dialogs.add.form.mastery">
                         </v-select>
@@ -116,7 +116,7 @@
                     <!-- Description -->
                     <div class="form-field">
                         <v-textarea
-                            label="Description"
+                            :label="formDescriptionText"
                             placeholder="Beschrijf je ervaring met deze vaardigheid."
                             v-model="dialogs.add.form.description">
                         </v-textarea>
@@ -128,7 +128,7 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.add.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            Annuleren
+                            {{ createDialogCancelText }}
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
@@ -141,7 +141,7 @@
                             :dark="!confirmAddDisabled"
                             :disabled="confirmAddDisabled">
                             <i class="far fa-save"></i>
-                            Opslaan
+                            {{ createDialogSubmitText }}
                         </v-btn>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                 </div>
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Skill aanpassen</h3>
+                    <h3 class="dialog-title">{{ updateDialogTitle }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.edit.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.edit.errors" :key="ei">
@@ -167,7 +167,7 @@
                     <!-- Skill -->
                     <div class="form-field">
                         <v-combobox
-                            label="Skill"
+                            :label="formSkillText"
                             :items="skillOptions"
                             v-model="dialogs.edit.form.skill">
                         </v-combobox>
@@ -175,7 +175,7 @@
                     <!-- Mastery -->
                     <div class="form-field">
                         <v-select
-                            label="Mastery"
+                            :label="formMasteryText"
                             :items="masteryOptions"
                             v-model="dialogs.edit.form.mastery">
                         </v-select>
@@ -183,7 +183,7 @@
                     <!-- Description -->
                     <div class="form-field">
                         <v-textarea
-                            label="Description"
+                            :label="formDescriptionText"
                             placeholder="Beschrijf je ervaring met deze vaardigheid."
                             v-model="dialogs.edit.form.description">
                         </v-textarea>
@@ -193,7 +193,7 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.edit.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            Annuleren
+                            {{ updateDialogCancelText }}
                         </v-btn>
                     </div>
                     <div class="dialog-controls__right">
@@ -204,7 +204,7 @@
                             :dark="!confirmEditDisabled"
                             :disabled="confirmEditDisabled">
                             <i class="far fa-save"></i>
-                            Opslaan
+                            {{ updateDialogSubmitText }}
                         </v-btn>
                     </div>
                 </div>
@@ -219,17 +219,15 @@
                 </div>
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Skill verwijderen</h3>
+                    <h3 class="dialog-title">{{ deleteDialogTitle }}</h3>
                     <!-- Text -->
-                    <div class="dialog-text">
-                        Weet je zeker dat je deze skill wilt verwijderen van je profiel?
-                    </div>
+                    <div class="dialog-text">{{ deleteDialogText }}</div>
                 </div>
                 <div class="dialog-controls">
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.delete.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            Nee, annuleren
+                            {{ deleteDialogCancelText }}
                         </v-btn>
                     </div>
                     <div class="dialog-controls__right">
@@ -237,7 +235,7 @@
                             depressed dark color="danger"
                             @click="onClickConfirmDelete">
                             <i class="fas fa-trash-alt"></i>
-                            Ja, verwijderen
+                            {{ deleteDialogSubmitText }}
                         </v-btn>
                     </div>
                 </div>
@@ -260,7 +258,26 @@
             "oldInput",
             "labelText",
             "noRecordsText",
-            "createText",
+            "addButtonText",
+            "formSkillText",
+            "formMasteryText",
+            "formDescriptionText",
+            "viewDialogTitleText",
+            "viewDialogEditText",
+            "viewDialogDeleteText",
+            "viewDialogSkillText",
+            "viewDialogMasteryText",
+            "viewDialogDescriptionText",
+            "createDialogTitleText",
+            "createDialogCancelText",
+            "createDialogSubmitText",
+            "updateDialogTitleText",
+            "updateDialogCancelText",
+            "updateDialogSubmitText",
+            "deleteDialogTitleText",
+            "deleteDialogText",
+            "deleteDialogCancelText",
+            "deleteDialogSubmitText",
         ],
         data: () => ({
             tag: "[profile-skills-field]",
@@ -295,7 +312,7 @@
                 delete: {
                     show: false,
                     index: null,
-                }
+                },
             }
         }),
         computed: {
@@ -319,7 +336,26 @@
                 console.log(this.tag+" old input: ", this.oldInput);
                 console.log(this.tag+" label text: ", this.labelText);
                 console.log(this.tag+" no records text: ", this.noRecordsText);
-                console.log(this.tag+" create text: ", this.createText);
+                console.log(this.tag+" add button text: ", this.addButtonText);
+                console.log(this.tag+" form skill text: ", this.formSkillText);
+                console.log(this.tag+" form mastery text: ", this.formMasteryText);
+                console.log(this.tag+" form description text: ", this.formDescriptionText);
+                console.log(this.tag+" view dialog title text: ", this.viewDialogTitleText);
+                console.log(this.tag+" view dialog skill text: ", this.viewDialogSkillText);
+                console.log(this.tag+" view dialog mastery text: ", this.viewDialogMasteryText);
+                console.log(this.tag+" view dialog description text: ", this.viewDialogDescriptionText);
+                console.log(this.tag+" view dialog edit text: ", this.viewDialogEditText);
+                console.log(this.tag+" view dialog delete text: ", this.viewDialogDeleteText);
+                console.log(this.tag+" create dialog title text: ", this.createDialogTitleText);
+                console.log(this.tag+" create dialog cancel text: ", this.createDialogCancelText);
+                console.log(this.tag+" create dialog submit text: ", this.createDialogSubmitText);
+                console.log(this.tag+" update dialog title text: ", this.updateDialogTitleText);
+                console.log(this.tag+" update dialog cancel text: ", this.updateDialogCancelText);
+                console.log(this.tag+" update dialog submit text: ", this.updateDialogSubmitText);
+                console.log(this.tag+" delete dialog title text: ", this.deleteDialogTitleText);
+                console.log(this.tag+" delete dialog text: ", this.deleteDialogText);
+                console.log(this.tag+" delete dialog cancel text: ", this.deleteDialogCancelText);
+                console.log(this.tag+" delete dialog submit text: ", this.deleteDialogSubmitText);
                 this.initializeData();
                 this.generateSkillOptions();
                 this.generateMasteryOptions();
