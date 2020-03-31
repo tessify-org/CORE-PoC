@@ -4545,6 +4545,37 @@ i {
   box-sizing: border-box;
 }
 
+#profile #profile-content__wrapper #profile-content #profile-content__left #email-field {
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#profile #profile-content__wrapper #profile-content #profile-content__left #email-field #email-field__left {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#profile #profile-content__wrapper #profile-content #profile-content__left #email-field #email-field__right {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
 #profile #profile-content__wrapper #profile-content #profile-content__right {
   -webkit-box-flex: 2;
           flex: 2;
@@ -4869,9 +4900,36 @@ i {
 }
 
 #project-overview #project-overview__content #project-dashboard #project-dashboard__sidebar .project-overview__sidebar-panel .sidebar-panel__header {
+  display: -webkit-box;
+  display: flex;
   padding: 10px 15px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#project-overview #project-overview__content #project-dashboard #project-dashboard__sidebar .project-overview__sidebar-panel .sidebar-panel__header .sidebar-panel__header-title {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#project-overview #project-overview__content #project-dashboard #project-dashboard__sidebar .project-overview__sidebar-panel .sidebar-panel__header .sidebar-panel__header-info {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 #project-overview #project-overview__content #project-dashboard #project-dashboard__sidebar .project-overview__sidebar-panel .sidebar-panel__content {
@@ -6193,9 +6251,36 @@ i {
 }
 
 .task-overview__sidebar-panel .sidebar-panel__header {
+  display: -webkit-box;
+  display: flex;
   padding: 10px 15px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.task-overview__sidebar-panel .sidebar-panel__header .sidebar-panel__header-title {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.task-overview__sidebar-panel .sidebar-panel__header .sidebar-panel__header-info {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
 }
 
 .task-overview__sidebar-panel .sidebar-panel__content {
@@ -6445,9 +6530,47 @@ i {
 }
 
 #message-wrapper #message #message-received-on {
-  margin-top: 15px;
   font-size: 0.85em;
+  margin: 15px 0 0 0;
   color: #737373;
+}
+
+#message-wrapper #message #request-result {
+  border-radius: 3px;
+  background-color: #f2f2f2;
+}
+
+#message-wrapper #message #request-result.accepted {
+  background-color: #a5e9b2;
+}
+
+#message-wrapper #message #request-result.rejected {
+  background-color: #ffcccc;
+}
+
+#message-wrapper #message #request-result #request-result__text {
+  padding: 10px 15px;
+  box-sizing: border-box;
+}
+
+#message-wrapper #message #request-actions {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#message-wrapper #message #request-actions #request-actions__left {
+  -webkit-box-flex: 1;
+          flex: 1;
+  margin: 0 10px 0 0;
+}
+
+#message-wrapper #message #request-actions #request-actions__right {
+  -webkit-box-flex: 1;
+          flex: 1;
+  margin: 0 0 0 10px;
 }
 
 #notifications {

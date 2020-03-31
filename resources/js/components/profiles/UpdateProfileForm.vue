@@ -26,15 +26,26 @@
                 </div>
             </div>
 
-            <!-- Email address -->
-            <div class="form-field">
-                <v-text-field 
-                    :label="emailText"
-                    v-model="form.email" 
-                    name="email"
-                    :error="hasErrors('email')"
-                    :error-messages="getErrors('email')">
-                </v-text-field>
+            <!-- Email address & publicly display opt-in -->
+            <div class="form-fields">
+                <div class="form-field">
+                    <v-text-field 
+                        :label="emailText"
+                        v-model="form.email" 
+                        name="email"
+                        :error="hasErrors('email')"
+                        :error-messages="getErrors('email')">
+                    </v-text-field>
+                </div>
+                <div class="form-field">
+                    <v-checkbox
+                        :label="publiclyDisplayEmailText"
+                        v-model="form.publicly_display_email" 
+                        :error="hasErrors('publicly_display_email')"
+                        :error-messages="getErrors('publicly_display_email')">
+                    </v-checkbox>
+                    <input type="hidden" name="publicly_display_email" :value="form.publicly_display_email">
+                </div>
             </div>
 
             <!-- Phone number -->
@@ -213,6 +224,7 @@
             "lastNameText",
             "headlineText",
             "emailText",
+            "publiclyDisplayEmailText",
             "phoneText",
             "avatarText",
             "interestsText",
@@ -287,6 +299,7 @@
                 first_name: "",
                 last_name: "",
                 email: "",
+                publicly_display_email: false,
                 phone: "",
                 headline: "",
                 interests: "",
@@ -314,6 +327,7 @@
                 console.log(this.tag+" headline text: ", this.headlineText);
                 console.log(this.tag+" interests text: ", this.interestsText);
                 console.log(this.tag+" email text: ", this.emailText);
+                console.log(this.tag+" publicly display email text: ", this.publiclyDisplayEmailText);
                 console.log(this.tag+" phone text: ", this.phoneText);
                 console.log(this.tag+" avatar text: ", this.avatarText);
                 console.log(this.tag+" interests text: ", this.interestsText);
@@ -369,6 +383,7 @@
                     this.form.first_name = this.user.first_name;
                     this.form.last_name = this.user.last_name;
                     this.form.email = this.user.email;
+                    this.form.publicly_display_email = this.user.publicly_display_email;
                     this.form.phone = this.user.phone;
                     this.form.headline = this.user.headline;
                     this.form.interests = this.user.interests;
@@ -384,6 +399,7 @@
                     if (this.oldInput.first_name !== null) this.form.first_name = this.oldInput.first_name;
                     if (this.oldInput.last_name !== null) this.form.last_name = this.oldInput.last_name;
                     if (this.oldInput.email !== null) this.form.email = this.oldInput.email;
+                    if (this.oldInput.publicly_display_email !== null) this.form.publicly_display_email = this.oldInput.publicly_display_email;
                     if (this.oldInput.phone !== null) this.form.phone = this.oldInput.phone;
                     if (this.oldInput.headline !== null) this.form.headline = this.oldInput.headline;
                     if (this.oldInput.interests !== null) this.form.interests = this.oldInput.interests;

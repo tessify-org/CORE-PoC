@@ -40,6 +40,7 @@ class User extends Authenticatable
         'has_been_checked',
         'banned_until',
         'permabanned',
+        'publicly_display_email',
     ];
     protected $hidden = [
         'password', 
@@ -53,6 +54,7 @@ class User extends Authenticatable
         'is_admin' => 'boolean',
         'has_been_checked' => 'boolean',
         'permabanned' => 'boolean',
+        'publicly_display_email' => 'boolean',
     ];
 
     //
@@ -139,6 +141,16 @@ class User extends Authenticatable
         return $this->hasMany(\Tessify\Core\Models\CompletedTask::class);
     }
 
+    public function sentViewEmailRequests()
+    {
+        return $this->hasMany(\Tessify\Core\Models\ViewEmailRequest::class);
+    }
+
+    public function receivedViewEmailRequests()
+    {
+        return $this->hasMany(\Tessify\Core\Models\ViewEmailRequest::class, "id", "target_user_id");
+    }
+    
     //
     // Accessors
     //

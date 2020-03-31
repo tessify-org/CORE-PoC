@@ -724,7 +724,23 @@
             #profile-content__left {
                 flex: 3;
                 padding: 0 15px 0 0;
-                box-sizing: border-box;
+                box-sizing: border-box;        
+                #email-field {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: row;
+                    #email-field__left {
+                        flex: 1;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+                    #email-field__right {
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+                }
             }
             #profile-content__right {
                 flex: 2;
@@ -1018,9 +1034,22 @@
                         margin: 0;
                     }
                     .sidebar-panel__header {
+                        display: flex;
                         padding: 10px 15px;
+                        flex-direction: row;
                         box-sizing: border-box;
                         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                        .sidebar-panel__header-title {
+                            flex: 1;
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                        }
+                        .sidebar-panel__header-info {
+                            display: flex;
+                            flex-direction: row;
+                            align-items: center;
+                        }
                     }
                     .sidebar-panel__content {
                         padding: 15px;
@@ -2117,9 +2146,22 @@
         margin: 0;
     }
     .sidebar-panel__header {
+        display: flex;
         padding: 10px 15px;
+        flex-direction: row;
         box-sizing: border-box;
         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        .sidebar-panel__header-title {
+            flex: 1;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .sidebar-panel__header-info {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
     }
     .sidebar-panel__content {
         padding: 15px;
@@ -2348,9 +2390,36 @@
             }
         }
         #message-received-on {
-            margin-top: 15px;
             font-size: .85em;
+            margin: 15px 0 0 0;
             color: hsl(0, 0%, 45%);
+
+        }
+        #request-result {
+            border-radius: 3px;
+            background-color: hsl(0, 0%, 95%);
+            &.accepted {
+                background-color: hsl(132, 61%, 78%);
+            }
+            &.rejected {
+                background-color: hsl(0, 100%, 90%);
+            }
+            #request-result__text {
+                padding: 10px 15px;
+                box-sizing: border-box;
+            }
+        }
+        #request-actions {
+            display: flex;
+            flex-direction: row;
+            #request-actions__left {
+                flex: 1;
+                margin: 0 10px 0 0;
+            }
+            #request-actions__right {
+                flex: 1;
+                margin: 0 0 0 10px;
+            }
         }
     }
 }

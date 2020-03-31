@@ -1,6 +1,18 @@
 <template>
     <div id="task-dashboard-sidebar-categories" class="task-overview__sidebar-panel elevation-1">
-        <div class="sidebar-panel__header">{{ title }}</div>
+        <div class="sidebar-panel__header">
+            <div class="sidebar-panel__header-title">{{ title }}</div>
+            <div class="sidebar-panel__header-info" v-if="hasHint">
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <span v-on="on">
+                            <i class="far fa-question-circle"></i>
+                        </span>
+                    </template>
+                    <span>{{ hint }}</span>
+                </v-tooltip>
+            </div>
+        </div>
         <div class="sidebar-panel__content">
             <div id="categories" v-if="mutableCategories.length > 0">
                 <div class="category-wrapper" v-for="(category, ci) in mutableCategories" :key="ci">
@@ -28,17 +40,24 @@
         props: [
             "categories",
             "title",
+            "hint",
             "noRecordsText",
         ],
         data: () => ({
             tag: "[task-dashboard-sidebar-categories]",
             mutableCategories: [],
         }),
+        computed: {
+            hasHint() {
+                return this.hint !== undefined && this.hint !== null && this.hint !== "";
+            },
+        },
         methods: {
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" categories: ", this.categories);
                 console.log(this.tag+" title: ", this.title);
+                console.log(this.tag+" hint: ", this.hint);
                 console.log(this.tag+" no records text: ", this.noRecordsText);
                 this.initializeData();
             },
@@ -70,6 +89,6 @@
 
 <style lang="scss">
     #task-dashboard-sidebar-categories {
-
+        
     }
 </style>

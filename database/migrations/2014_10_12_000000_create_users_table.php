@@ -32,6 +32,7 @@ class CreateUsersTable extends Migration
             $table->boolean('has_been_checked')->default(false);
             $table->timestamp('banned_until')->nullable();
             $table->boolean('permabanned')->default(false);
+            $table->boolean('publicly_display_email')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

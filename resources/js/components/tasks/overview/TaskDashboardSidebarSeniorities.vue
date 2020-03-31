@@ -1,6 +1,18 @@
 <template>
     <div id="task-dashboard-sidebar-seniorities" class="task-overview__sidebar-panel elevation-1">
-        <div class="sidebar-panel__header">{{ title }}</div>
+        <div class="sidebar-panel__header">
+            <div class="sidebar-panel__header-title">{{ title }}</div>
+            <div class="sidebar-panel__header-info" v-if="hasHint">
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <span v-on="on">
+                            <i class="far fa-question-circle"></i>
+                        </span>
+                    </template>
+                    <span>{{ hint }}</span>
+                </v-tooltip>
+            </div>
+        </div>
         <div class="sidebar-panel__content">
             <div id="seniorities" v-if="mutableSeniorities.length > 0">
                 <div class="seniority-wrapper" v-for="(seniority, ci) in mutableSeniorities" :key="ci">
@@ -28,12 +40,18 @@
         props: [
             "seniorities",
             "title",
+            "hint",
             "noRecordsText",
         ],
         data: () => ({
             tag: "[task-dashboard-sidebar-seniorities]",
             mutableSeniorities: [],
         }),
+        computed: {
+            hasHint() {
+                return this.hint !== undefined && this.hint !== null && this.hint !== "";
+            },
+        },
         methods: {
             initialize() {
                 console.log(this.tag+" initializing");

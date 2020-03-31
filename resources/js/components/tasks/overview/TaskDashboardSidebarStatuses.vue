@@ -1,6 +1,18 @@
 <template>
     <div id="task-dashboard-sidebar-statuses" class="task-overview__sidebar-panel elevation-1">
-        <div class="sidebar-panel__header">{{ title }}</div>
+        <div class="sidebar-panel__header">
+            <div class="sidebar-panel__header-title">{{ title }}</div>
+            <div class="sidebar-panel__header-info" v-if="hasHint">
+                <v-tooltip bottom>
+                    <template v-slot:activator="{ on }">
+                        <span v-on="on">
+                            <i class="far fa-question-circle"></i>
+                        </span>
+                    </template>
+                    <span>{{ hint }}</span>
+                </v-tooltip>
+            </div>
+        </div>
         <div class="sidebar-panel__content">
             <div id="statuses" v-if="mutableStatuses.length > 0">
                 <div class="status-wrapper" v-for="(status, si) in mutableStatuses" :key="si">
@@ -28,17 +40,24 @@
         props: [
             "statuses",
             "title",
+            "hint",
             "noRecordsText",
         ],
         data: () => ({
             tag: "[task-dashboard-sidebar-statuses]",
             mutableStatuses: [],
         }),
+        computed: {
+            hasHint() {
+                return this.hint !== undefined && this.hint !== null && this.hint !== "";
+            },
+        },
         methods: {
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" statuses: ", this.statuses);
                 console.log(this.tag+" title: ", this.title);
+                console.log(this.tag+" hint: ", this.hint);
                 console.log(this.tag+" no records text: ", this.noRecordsText);
                 this.initializeData();
             },
@@ -60,7 +79,7 @@
                     }
                 }
                 EventBus.$emit("task-dashboard__selected-statuses", selected);
-            }
+            },
         },
         mounted() {
             this.initialize();

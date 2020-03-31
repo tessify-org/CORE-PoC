@@ -9,8 +9,8 @@
                     <div class="form-field">
                         <v-text-field 
                             name="title" 
-                            label="Titel"
-                            placeholder="Geef dit project een naam"
+                            :label="titleText+'*'"
+                            :placeholder="titleHintText"
                             v-model="form.title" 
                             :error="hasErrors('title')" 
                             :error-messages="getErrors('title')">
@@ -21,8 +21,8 @@
                     <div class="form-field">
                         <v-text-field
                             name="slogan"
-                            label="Slogan"
-                            placeholder="Een pakkende slagzin die de missie samenvat!"
+                            :label="sloganText+'*'"
+                            :placeholder="sloganHintText"
                             v-model="form.slogan"
                             :error="hasErrors('slogan')"
                             :error-messages="getErrors('slogan')">
@@ -33,8 +33,8 @@
                     <div class="form-field">
                         <v-textarea
                             name="description" 
-                            label="Beschrijving" 
-                            placeholder="Wat ga je precies maken en waarom? Hou het kort en bonding en leg uit welk probleem je oplost."
+                            :label="descriptionText+'*'"
+                            :placeholder="descriptionHintText"
                             v-model="form.description" 
                             :error="hasErrors('description')" 
                             :error-messages="getErrors('description')">
@@ -43,7 +43,7 @@
 
                     <!-- Header image -->
                     <div class="image-field" :class="{ 'has-errors': hasErrors('header_image') }">
-                        <div class="image-field__label">Header achtergrond plaatje</div>
+                        <div class="image-field__label">{{ headerImageText }}</div>
                         <div class="image-field__image-wrapper" v-if="hasProject && projectHasImage">
                             <img class="image-field__image" :src="project.header_image_url">
                         </div>
@@ -60,6 +60,7 @@
                 </div>
             </div>
 
+            <!-- Roles -->
             <div class="content-card elevation-1 mb" v-if="project === undefined">
                 <div class="content-card__content">
 
@@ -67,7 +68,7 @@
                     <div class="form-field">
                         <team-roles-field
                             name="team_roles"
-                            label="Team rollen"
+                            :label="rolesText"
                             v-model="form.team_roles"
                             :skills="skills">
                         </team-roles-field>
@@ -76,6 +77,7 @@
                 </div>
             </div>
 
+            <!-- Resources -->
             <div class="content-card elevation-1">
                 <div class="content-card__content">
 
@@ -83,7 +85,7 @@
                     <div class="form-field">
                         <resources-field
                             name="resources"
-                            label="Resources"
+                            :label="resourcesText"
                             v-model="form.resources"
                             :create-api-endpoint="createResourceApiEndpoint"
                             :update-api-endpoint="updateResourceApiEndpoint"
@@ -99,7 +101,7 @@
                 <div class="page-controls__left">
                     <v-btn :href="backHref" outlined>
                         <i class="fas fa-arrow-left"></i>
-                        Terug naar overzicht
+                        {{ backText }}
                     </v-btn>
                 </div>
             </div>
@@ -115,7 +117,7 @@
                     <!-- Category -->
                     <div class="form-field">
                         <v-combobox
-                            label="Project categorie"
+                            :label="categoryText+'*'"
                             :items="categoryOptions"
                             v-model="form.project_category"
                             :errors="hasErrors('project_category')"
@@ -127,7 +129,7 @@
                     <!-- Work method -->
                     <div class="form-field">
                         <v-select
-                            label="Werkmethode"
+                            :label="workMethodText"
                             :items="workMethodOptions"
                             v-model="form.work_method_id"
                             :errors="hasErrors('work_method_id')"
@@ -139,7 +141,7 @@
                     <!-- Status -->
                     <div class="form-field mb-0">
                         <v-select
-                            label="Project status"
+                            :label="statusText"
                             :items="statusOptions"
                             v-model="form.project_status_id"
                             :errors="hasErrors('project_status_id')"
@@ -158,7 +160,7 @@
                     <div class="form-field checkbox">
                         <v-checkbox
                             hide-details
-                            label="Heeft taken"
+                            :label="hasTasksText"
                             v-model="form.has_tasks">
                         </v-checkbox>
                         <input type="hidden" name="has_tasks" :value="form.has_tasks">
@@ -167,7 +169,7 @@
                     <div class="form-field checkbox">
                         <v-checkbox
                             hide-details
-                            label="Heeft een deadline"
+                            :label="hasDeadlineText"
                             v-model="form.has_deadline">
                         </v-checkbox>
                         <input type="hidden" name="has_deadline" :value="form.has_deadline">
@@ -181,10 +183,10 @@
                 <div class="content-card__content">
 
                     <!-- Starts at -->
-                    <div class="form-field mb-10">
+                    <div class="form-field" :class="{ 'mb-10': form.has_deadline }">
                         <datepicker
                             name="starts_at"
-                            label="Start op"
+                            :label="startDateText+'*'"
                             v-model="form.starts_at"
                             :error="hasErrors('starts_at')"
                             :error-messages="getErrors('starts_at')">
@@ -195,7 +197,7 @@
                     <div class="form-field" v-if="form.has_deadline">
                         <datepicker
                             name="ends_at"
-                            label="Deadline"
+                            :label="deadlineText+'*'"
                             v-model="form.ends_at"
                             :error="hasErrors('ends_at')"
                             :error-messages="getErrors('ends_at')">
@@ -207,16 +209,10 @@
 
             <!-- Submit button -->
             <div class="page-controls mt">
-                <div class="page-controls__left">
-                    <v-btn :href="backHref" outlined>
-                        <i class="fas fa-arrow-left"></i>
-                        Terug naar overzicht
-                    </v-btn>
-                </div>
                 <div class="page-controls__right">
                     <v-btn type="submit" color="success">
                         <i class="fas fa-save"></i>
-                        Opslaan
+                        {{ submitText }}
                     </v-btn>
                 </div>
             </div>
@@ -236,10 +232,28 @@
             "skills",
             "errors",
             "oldInput",
-            "backHref",
             "createResourceApiEndpoint",
             "updateResourceApiEndpoint",
             "deleteResourceApiEndpoint",
+            "titleText",
+            "titleHintText",
+            "sloganText",
+            "sloganHintText",
+            "descriptionText",
+            "descriptionHintText",
+            "headerImageText",
+            "rolesText",
+            "resourcesText",
+            "categoryText",
+            "workMethodText",
+            "statusText",
+            "hasTasksText",
+            "hasDeadlineText",
+            "startDateText",
+            "deadlineText",
+            "backText",
+            "backHref",
+            "submitText",
         ],
         data: () => ({
             tag: "[project-form]",

@@ -16,6 +16,7 @@ class CreateMessagesTable extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('uuid');
+            $table->string('type')->default('normal');
             $table->unsignedInteger('sender_id');
             $table->unsignedInteger('receiver_id');
             $table->unsignedInteger('reply_to_id')->nullable();
@@ -23,6 +24,7 @@ class CreateMessagesTable extends Migration
             $table->text('message');
             $table->boolean('read')->default(false);
             $table->datetime('read_on')->nullable();
+            $table->text('data')->nullable();
             $table->timestamps();
         });
     }
