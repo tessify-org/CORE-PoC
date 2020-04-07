@@ -162,17 +162,6 @@ class User extends Authenticatable
 
     public function getAvatarUrlAttribute($value)
     {
-        if (is_null($value))
-        {
-            $filename = Uploader::generateFileName("jpg");
-            $filepath = "storage/images/avatars/".$filename;
-            $avatar = Avatar::create($this->combinedName)->save($filepath, 100);
-
-            Users::saveAvatar($this->id, $filepath);
-
-            return asset($filepath);
-        }
-
         return asset($value);
     }
 

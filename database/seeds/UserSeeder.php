@@ -96,6 +96,7 @@ class UserSeeder extends Seeder
             "password" => bcrypt("engeland"),
             "is_admin" => true,
         ]);
+        // Users::generateAvatar($nick2);
         
         $victor = User::create([
             "first_name" => "Victor",
@@ -104,6 +105,7 @@ class UserSeeder extends Seeder
             "password" => bcrypt("Corona2020!"),
             "is_admin" => true,
         ]);
+        // Users::generateAvatar($victor);
 
         $winko = User::create([
             "first_name" => "Winko",
@@ -112,6 +114,7 @@ class UserSeeder extends Seeder
             "password" => bcrypt("8_ukQNdm#g3j-mN^(}G{r$\x5%Gq?!JV"),
             "is_admin" => true,
         ]);
+        // Users::generateAvatar($winko);
         
         $ramon = User::create([
             "first_name" => "Ramon",
@@ -120,6 +123,7 @@ class UserSeeder extends Seeder
             "password" => bcrypt("Erkers2020"),
             "is_admin" => true,
         ]);
+        // Users::generateAvatar($ramon);
 
         //
         // Dummy users
@@ -128,11 +132,17 @@ class UserSeeder extends Seeder
         for ($i = 0; $i < 10; $i++)
         {
             $user = factory(User::class)->create();
+
+            // Follow the almighty nick
             $user->follow($nick);
-            if ($i < 2)
-            {
-                $nick->follow($user);
-            }
+            if ($i < 2) $nick->follow($user);
+        }
+
+
+
+        foreach (User::all() as $user)
+        {
+            app()->make("users")->generateAvatar($user);
         }
     }
 }
