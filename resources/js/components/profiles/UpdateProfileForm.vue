@@ -64,19 +64,19 @@
                 <div class="image-field">
                     <div class="image-field__label">{{ avatarText }}</div>
                     <div class="image-field__image-wrapper">
-                        <img class="image-field__image" :src="user.avatar_url">
+                        <img class="image-field__image" :src="upload_avatar.avatar_url">
                     </div>
                     <div class="image-field__input">
-                        <input type="file" name="avatar">
+                        <input type="file" ref="avatar" @change="onAvatarUpload">
                     </div>
                 </div>
                 <div class="image-field">
                     <div class="image-field__label">Header background</div>
                     <div class="image-field__image-wrapper">
-                        <img class="image-field__image" :src="user.header_bg_url">
+                        <img class="image-field__image" :src="upload_header_image.header_image_url">
                     </div>
                     <div class="image-field__input">
-                        <input type="file" name="header_bg">
+                        <input type="file" ref="header" @change="onHeaderImageUpload">
                     </div>
                 </div>
             </div>
@@ -105,7 +105,6 @@
 
             <!-- Current assignment -->
             <div class="form-field">
-
                 <profile-assignments-field
                     name="assignments"
                     v-model="form.assignments"
@@ -153,7 +152,6 @@
                     :delete-dialog-cancel-text="assignmentsDeleteDialogCancelText"
                     :delete-dialog-submit-text="assignmentsDeleteDialogSubmitText">
                 </profile-assignments-field>
-
             </div>
 
             <!-- Skills -->
@@ -235,6 +233,8 @@
             "createAssignmentApiEndpoint",
             "updateAssignmentApiEndpoint",
             "deleteAssignmentApiEndpoint",
+            "uploadAvatarApiEndpoint",
+            "uploadHeaderImageApiEndpoint",
             "assignmentsLabelText",
             "assignmentsNoRecordsText",
             "assignmentsAddButtonText",
@@ -305,6 +305,14 @@
                 interests: "",
                 current_assignment_id: 0,
             },
+            upload_avatar: {
+                loading: false,
+                avatar_url: "",
+            },
+            upload_header_image: {
+                loading: false,
+                header_image_url: "",
+            }
         }),
         computed: {
             currentAssignmentId() {
@@ -394,6 +402,8 @@
                             }
                         }
                     }
+                    this.upload_avatar.avatar_url = this.user.avatar_url;
+                    this.upload_avatar.header_image_url = this.user.header_bg_url;
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.first_name !== null) this.form.first_name = this.oldInput.first_name;
@@ -419,6 +429,49 @@
                     return this.errors[field];
                 }
                 return [];
+            },
+            onAvatarUpload(e) {
+                console.log(this.tag+" avatar selected", e);
+
+                this.upload_avatar.loading = true;
+
+                let payload = new FormData();
+                payload.append("avatar", this.$refs.avatar.files[0]);
+                
+                let headers = { headers: { 'Content-Type': 'multipart/form-data' } };
+
+                this.axios.post(this.uploadAvatarApiEndpoint, payload, headers)
+                    .then(function(response) {
+                        console.log(this.tag+" request succeeded, response: ", response);
+                        this.upload_avatar.avatar_url = response.data.image_url;
+                        this.upload_avatar.loading = false;
+                    }.bind(this))
+                    .catch(function(error) {
+                        console.warn(this.tag+" request failed, error: ", error);
+                        this.upload_avatar.loading = false;
+                    }.bind(this));
+
+            },
+            onHeaderImageUpload(e) {
+                console.log(this.tag+" header image selected", e);
+
+                this.upload_header_image.loading = true;
+
+                let payload = new FormData();
+                payload.append("header_image", this.$refs.header.files[0]);
+                
+                let headers = { headers: { 'Content-Type': 'multipart/form-data' } };
+
+                this.axios.post(this.uploadHeaderImageApiEndpoint, payload, headers)
+                    .then(function(response) {
+                        console.log(this.tag+" request succeeded, response: ", response);
+                        this.upload_header_image.header_image_url = response.data.image_url;
+                        this.upload_header_image.loading = false;
+                    }.bind(this))
+                    .catch(function(error) {
+                        console.warn(this.tag+" request failed, error: ", error);
+                        this.upload_header_image.loading = false;
+                    }.bind(this));
             },
         },
         mounted() {

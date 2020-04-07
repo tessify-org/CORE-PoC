@@ -90,7 +90,7 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">{{ createDialogTitle }}</h3>
+                    <h3 class="dialog-title">{{ createDialogTitleText }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.add.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.add.errors" :key="ei">
@@ -157,7 +157,7 @@
                 </div>
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">{{ updateDialogTitle }}</h3>
+                    <h3 class="dialog-title">{{ updateDialogTitleText }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.edit.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.edit.errors" :key="ei">
@@ -219,7 +219,7 @@
                 </div>
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">{{ deleteDialogTitle }}</h3>
+                    <h3 class="dialog-title">{{ deleteDialogTitleText }}</h3>
                     <!-- Text -->
                     <div class="dialog-text">{{ deleteDialogText }}</div>
                 </div>
