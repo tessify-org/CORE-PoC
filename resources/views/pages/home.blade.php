@@ -33,7 +33,7 @@
                 <!-- CTA Search -->
                 <div id="homepage-cta" class="elevation-1">
                     <div id="homepage-cta__title">
-                        @lang("homepage.cta_title", ["num_jobs" => 8145])
+                        @lang("homepage.cta_title", ["num_jobs" => $num_tasks])
                     </div>
                     <div id="homepage-cta__subtext">
                         @lang("homepage.cta_subtext")
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <div id="homepage-cta__link-wrapper">
-                        <a href="{{ route('projects.create') }}">
+                        <a href="{{ route('get-started') }}">
                             @lang("homepage.cta_signup")
                         </a>
                     </div>
@@ -101,7 +101,7 @@
                     <div id="second-cta" class="elevation-1">
                         <div id="second-cta__left">
                             <div id="second-cta__title">
-                                @lang("homepage.second_cta_title", ["num_jobs" => 8145])
+                                @lang("homepage.second_cta_title", ["num_jobs" => $num_projects])
                             </div>
                             <div id="second-cta__subtext">
                                 @lang("homepage.second_cta_subtitle")

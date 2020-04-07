@@ -2620,6 +2620,7 @@ input[type=number] {
 #app #content__wrapper {
   -webkit-box-flex: 1;
           flex: 1;
+  position: relative;
 }
 
 #app #footer__wrapper {

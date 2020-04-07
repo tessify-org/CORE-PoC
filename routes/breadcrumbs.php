@@ -81,6 +81,12 @@ Breadcrumbs::for("profile.update", function($t, $user) {
     $t->push(__('tessify-core::breadcrumbs.profile_update'), route("profile.update"));
 });
 
+// Get started
+Breadcrumbs::for("get-started", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.get-started"), route("get-started"));
+});
+
 // Projects
 Breadcrumbs::for("projects", function($t) {
     $t->parent("home");

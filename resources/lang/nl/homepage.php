@@ -28,8 +28,8 @@ return [
     "quick_link_three" => "Méér doen als vrijwilliger",
 
     // Second CTA
-    "second_cta_title" => "Er zijn al :num_jobs klussen aangemeld",
-    "second_cta_subtitle" => "Staat jouw klus er al tussen?",
+    "second_cta_title" => "Er zijn al :num_jobs projecten aangemeld",
+    "second_cta_subtitle" => "Staat jouw project er al tussen?",
     "second_cta_signup" => "Meld nu je project aan",
 
     // FAQ
