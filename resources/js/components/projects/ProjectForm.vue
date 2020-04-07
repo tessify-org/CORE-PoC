@@ -89,7 +89,21 @@
                             v-model="form.resources"
                             :create-api-endpoint="createResourceApiEndpoint"
                             :update-api-endpoint="updateResourceApiEndpoint"
-                            :delete-api-endpoint="deleteResourceApiEndpoint">
+                            :delete-api-endpoint="deleteResourceApiEndpoint"
+                            :no-records-text="resourcesNoRecordsText"
+                            :add-button-text="resourcesAddButtonText"
+                            :form-title-text="resourcesFormTitleText"
+                            :form-description-text="resourcesFormDescriptionText"
+                            :form-file-text="resourcesFormFileText"
+                            :create-dialog-title-text="resourcesCreateDialogTitleText"
+                            :create-dialog-cancel-text="resourcesCreateDialogCancelText"
+                            :create-dialog-submit-text="resourcesCreateDialogSubmitText"
+                            :update-dialog-title-text="resourcesUpdateDialogTitleText"
+                            :update-dialog-cancel-text="resourcesUpdateDialogCancelText"
+                            :update-dialog-submit-text="resourcesUpdateDialogSubmitText"
+                            :delete-dialog-title-text="resourcesDeleteDialogTitleText"
+                            :delete-dialog-cancel-text="resourcesDeleteDialogCancelText"
+                            :delete-dialog-submit-text="resourcesDeleteDialogSubmitText">
                         </resources-field>
                     </div>
 
@@ -210,7 +224,7 @@
             <!-- Submit button -->
             <div class="page-controls mt">
                 <div class="page-controls__right">
-                    <v-btn type="submit" color="success">
+                    <v-btn type="submit" color="success" block large>
                         <i class="fas fa-save"></i>
                         {{ submitText }}
                     </v-btn>
@@ -254,6 +268,20 @@
             "backText",
             "backHref",
             "submitText",
+            "resourcesNoRecordsText",
+            "resourcesAddButtonText",
+            "resourcesFormTitleText",
+            "resourcesFormDescriptionText",
+            "resourcesFormFileText",
+            "resourcesCreateDialogTitleText",
+            "resourcesCreateDialogCancelText",
+            "resourcesCreateDialogSubmitText",
+            "resourcesUpdateDialogTitleText",
+            "resourcesUpdateDialogCancelText",
+            "resourcesUpdateDialogSubmitText",
+            "resourcesDeleteDialogTitleText",
+            "resourcesDeleteDialogCancelText",
+            "resourcesDeleteDialogSubmitText",
         ],
         data: () => ({
             tag: "[project-form]",
@@ -263,7 +291,7 @@
             form: {
                 project_status_id: 0,
                 project_category: "",
-                work_method_id: 0,
+                work_method_id: null,
                 title: "",
                 slogan: "",
                 description: "",
@@ -367,7 +395,7 @@
             },
             generateWorkMethodOptions() {
                 if (this.workMethods !== undefined && this.workMethods !== null && this.workMethods.length > 0) {
-                    this.workMethodOptions.push({ text: "Selecteer gewenste werkmethode", value: 0 });
+                    this.workMethodOptions.push({ text: "Selecteer gewenste werkmethode", value: null });
                     for (let i = 0; i < this.workMethods.length; i++) {
                         this.workMethodOptions.push({
                             text: this.workMethods[i].label,
@@ -375,7 +403,7 @@
                         });
                     }
                 } else {
-                    this.workMethodOptions.push({ text: "Geen werkmethodes gevonden", value: 0 });
+                    this.workMethodOptions.push({ text: "Geen werkmethodes gevonden", value: null });
                 }
             },
             hasErrors(field) {

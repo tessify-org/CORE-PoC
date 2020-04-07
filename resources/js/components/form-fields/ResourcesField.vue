@@ -29,14 +29,14 @@
 
         <!-- No files -->
         <div class="resources-field__no-files" v-if="mutableResources.length === 0">
-            Er zijn nog geen resources toegevoegd.
+            {{ noRecordsText }}
         </div>
 
         <!-- Actions -->
         <div class="resources-field__actions">
             <v-btn depressed small color="primary" @click="onClickAdd">
                 <i class="fas fa-plus"></i>
-                Resource toevoegen
+                {{ addButtonText }}
             </v-btn>
         </div>
 
@@ -50,7 +50,7 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Aanstelling toevoegen</h3>
+                    <h3 class="dialog-title">{{ createDialogTitleText }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.add.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.add.errors" :key="ei">
@@ -60,20 +60,20 @@
                     <!-- Title -->
                     <div class="form-field">
                         <v-text-field
-                            label="Titel"
+                            :label="formTitleText"
                             v-model="dialogs.add.form.title">
                         </v-text-field>
                     </div>
                     <!-- Description -->
                     <div class="form-field">
                         <v-textarea
-                            label="Beschrijving"
+                            :label="formDescriptionText"
                             v-model="dialogs.add.form.description">
                         </v-textarea>
                     </div>
                     <!-- File -->
                     <div class="file-field">
-                        <div class="file-field__label">Bestand:</div>
+                        <div class="file-field__label">{{ formFileText }}</div>
                         <div class="file-field__input">
                             <input type="file" @change="addFileChanged($event)">
                         </div>
@@ -85,7 +85,7 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.add.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            Annuleren
+                            {{ createDialogCancelText }}
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
@@ -96,7 +96,7 @@
                             :loading="dialogs.add.loading" 
                             :disabled="confirmAddDisabled">
                             <i class="far fa-save"></i>
-                            Opslaan
+                            {{ createDialogSubmitText }}
                         </v-btn>
                     </div>
                 </div>
@@ -113,7 +113,9 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Aanstelling aanpassen</h3>
+                    <h3 class="dialog-title">
+                        {{ updateDialogTitleText }}
+                    </h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.edit.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.edit.errors" :key="ei">
@@ -123,20 +125,20 @@
                     <!-- Title -->
                     <div class="form-field">
                         <v-text-field
-                            label="Titel"
+                            :label="formTitleText"
                             v-model="dialogs.edit.form.title">
                         </v-text-field>
                     </div>
                     <!-- Description -->
                     <div class="form-field">
                         <v-textarea
-                            label="Beschrijving"
+                            :label="formDescriptionText"
                             v-model="dialogs.edit.form.description">
                         </v-textarea>
                     </div>
                     <!-- File -->
                     <div class="file-field">
-                        <div class="file-field__label">Bestand:</div>
+                        <div class="file-field__label">{{ formFileText }}</div>
                         <div class="file-field__input">
                             <input type="file" @change="editFileChanged($event)">
                         </div>
@@ -148,7 +150,7 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.edit.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            Annuleren
+                            {{ updateDialogCancelText }}
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
@@ -159,7 +161,7 @@
                             :loading="dialogs.edit.loading" 
                             :disabled="confirmEditDisabled">
                             <i class="far fa-save"></i>
-                            Opslaan
+                            {{ updateDialogSubmitText }}
                         </v-btn>
                     </div>
                 </div>
@@ -176,7 +178,9 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Aanstelling verwijderen</h3>
+                    <h3 class="dialog-title">
+                        {{ deleteDialogTitle }}
+                    </h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.delete.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.delete.errors" :key="ei">
@@ -185,7 +189,7 @@
                     </div>
                     <!-- Text -->
                     <div class="dialog-text">
-                        Weet je zeker dat je deze aanstelling wilt verwijderen?
+                        {{ deleteDialogText }}
                     </div>
                 </div>
                 <!-- Controls -->
@@ -194,18 +198,14 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.delete.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            Nee, annuleren
+                            {{ deleteDialogCancelText }}
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
                     <div class="dialog-controls__right">
-                        <v-btn 
-                            dark
-                            color="red"
-                            @click="onClickConfirmDelete" 
-                            :loading="dialogs.delete.loading">
+                        <v-btn dark color="red" @click="onClickConfirmDelete" :loading="dialogs.delete.loading">
                             <i class="fas fa-trash-alt"></i>
-                            Ja, verwijder
+                            {{ deleteDialogSubmitText }}
                         </v-btn>
                     </div>
                 </div>
@@ -228,6 +228,21 @@
             "createApiEndpoint",
             "updateApiEndpoint",
             "deleteApiEndpoint",
+            "noRecordsText",
+            "addButtonText",
+            "formTitleText",
+            "formDescriptionText",
+            "formFileText",
+            "createDialogTitleText",
+            "createDialogCancelText",
+            "createDialogSubmitText",
+            "updateDialogTitleText",
+            "updateDialogCancelText",
+            "updateDialogSubmitText",
+            "deleteDialogTitleText",
+            "deleteDialogText",
+            "deleteDialogCancelText",
+            "deleteDialogSubmitText",
         ],
         data: () => ({
             tag: "[resources-field]",

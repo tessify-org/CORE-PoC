@@ -18,7 +18,7 @@ class CreateProjectsTable extends Migration
             $table->unsignedInteger('author_id');
             $table->unsignedInteger('project_status_id');
             $table->unsignedInteger('project_category_id');
-            $table->unsignedInteger('work_method_id');
+            $table->unsignedInteger('work_method_id')->nullable();
             $table->string('slug');
             $table->string('title');
             $table->string('slogan')->nullable();
