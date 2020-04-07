@@ -1839,6 +1839,7 @@
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center center;
+        background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
         &.controls-only {
             height: 90px;
         }
@@ -1915,6 +1916,14 @@
                 width: 1200px;
                 margin: 0 auto;
                 padding: 50px 100px 0 100px;
+                #task-header__title-pretext {
+                    font-size: .9em;
+                    font-weight: 300;
+                    margin: 0 0 10px 0;
+                    text-align: center;
+                    text-transform: uppercase;
+                    color: rgba(0, 0, 0, 0.45);
+                }
                 #task-header__title {
                     font-weight: 300;
                     font-size: 3.5em;
@@ -1981,53 +1990,54 @@
                 background-repeat: no-repeat;
                 background-position: center center;
             }
+            #task-cta__assignees-label {
+                font-size: .8em;
+                margin-top: 15px;
+                text-align: center;
+                text-transform: uppercase;
+                color: rgba(0, 0, 0, .45);
+            }
+            #task-cta__assignees {
+
+            }
         }
     }
     #task-content {
-        #task-columns {
-            display: flex;
-            flex-direction: row;
-            #task-columns__left {
-                flex: 1;
-                #task-description {
-                    #task-description__label {
-                        font-size: .85em;
-                        margin: 0 0 5px 0;
-                        color: hsl(0, 0%, 45%);
-                    }
-                    #task-description__text {}
-                }
-                #task-skills {
-                    margin: 15px 0 0 0;
-                    #task-skills__label {
-                        font-size: .85em;
-                        margin: 0 0 5px 0;
-                        color: hsl(0, 0%, 45%);
-                    }
-                    #task-skills__list {
-                        border-radius: 3px;
-                        background-color: hsl(0, 0%, 98%);
-                        border: 1px solid rgba(0, 0, 0, 0.1);
-                        .task-skill {
-                            display: flex;
-                            padding: 6px 10px;
-                            flex-direction: row;
-                            box-sizing: border-box;
-                            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-                            &:last-child {
-                                border-bottom: 0;
-                            }
-                            .task-skill__name {
-                                flex: 1;
-                            }
-                            .task-skill__mastery {}
-                        }
-                    }
-                }
+        width: 800px;
+        margin: 0 auto;
+        #task-description {
+            #task-description__label {
+                font-size: .85em;
+                margin: 0 0 5px 0;
+                color: hsl(0, 0%, 45%);
             }
-            #task-columns__right {
-                flex: 0 0 500px;
-                margin: 0 0 0 30px;
+            #task-description__text {}
+        }
+        #task-skills {
+            margin: 15px 0 0 0;
+            #task-skills__label {
+                font-size: .85em;
+                margin: 0 0 5px 0;
+                color: hsl(0, 0%, 45%);
+            }
+            #task-skills__list {
+                border-radius: 3px;
+                background-color: hsl(0, 0%, 98%);
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                .task-skill {
+                    display: flex;
+                    padding: 6px 10px;
+                    flex-direction: row;
+                    box-sizing: border-box;
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                    &:last-child {
+                        border-bottom: 0;
+                    }
+                    .task-skill__name {
+                        flex: 1;
+                    }
+                    .task-skill__mastery {}
+                }
             }
         }
     }

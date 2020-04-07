@@ -5874,6 +5874,8 @@ i {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2af598), to(#009efd));
+  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
 }
 
 #task #task-header.controls-only {
@@ -5977,6 +5979,15 @@ i {
   padding: 50px 100px 0 100px;
 }
 
+#task #task-header #task-header__text-wrapper #task-header__text #task-header__title-pretext {
+  font-size: 0.9em;
+  font-weight: 300;
+  margin: 0 0 10px 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+}
+
 #task #task-header #task-header__text-wrapper #task-header__text #task-header__title {
   font-weight: 300;
   font-size: 3.5em;
@@ -6052,42 +6063,42 @@ i {
   background-position: center center;
 }
 
-#task #task-content #task-columns {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-          flex-direction: row;
+#task #task-cta__wrapper #task-cta #task-cta__assignees-label {
+  font-size: 0.8em;
+  margin-top: 15px;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
 }
 
-#task #task-content #task-columns #task-columns__left {
-  -webkit-box-flex: 1;
-          flex: 1;
+#task #task-content {
+  width: 800px;
+  margin: 0 auto;
 }
 
-#task #task-content #task-columns #task-columns__left #task-description #task-description__label {
+#task #task-content #task-description #task-description__label {
   font-size: 0.85em;
   margin: 0 0 5px 0;
   color: #737373;
 }
 
-#task #task-content #task-columns #task-columns__left #task-skills {
+#task #task-content #task-skills {
   margin: 15px 0 0 0;
 }
 
-#task #task-content #task-columns #task-columns__left #task-skills #task-skills__label {
+#task #task-content #task-skills #task-skills__label {
   font-size: 0.85em;
   margin: 0 0 5px 0;
   color: #737373;
 }
 
-#task #task-content #task-columns #task-columns__left #task-skills #task-skills__list {
+#task #task-content #task-skills #task-skills__list {
   border-radius: 3px;
   background-color: #fafafa;
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#task #task-content #task-columns #task-columns__left #task-skills #task-skills__list .task-skill {
+#task #task-content #task-skills #task-skills__list .task-skill {
   display: -webkit-box;
   display: flex;
   padding: 6px 10px;
@@ -6098,19 +6109,13 @@ i {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-#task #task-content #task-columns #task-columns__left #task-skills #task-skills__list .task-skill:last-child {
+#task #task-content #task-skills #task-skills__list .task-skill:last-child {
   border-bottom: 0;
 }
 
-#task #task-content #task-columns #task-columns__left #task-skills #task-skills__list .task-skill .task-skill__name {
+#task #task-content #task-skills #task-skills__list .task-skill .task-skill__name {
   -webkit-box-flex: 1;
           flex: 1;
-}
-
-#task #task-content #task-columns #task-columns__right {
-  -webkit-box-flex: 0;
-          flex: 0 0 500px;
-  margin: 0 0 0 30px;
 }
 
 #report-progress {

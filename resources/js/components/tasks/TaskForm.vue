@@ -13,50 +13,14 @@
                     :errors="hasErrors('project_id')"
                     :error-messages="getErrors('project_id')">
                 </v-select>
-                <input type="hidden" name="project_id" :value="form.project_id">
-            </div>
-
-            <!-- Status -->
-            <div class="form-field" v-if="editing">
-                <v-select
-                    :label="statusText"
-                    :items="statusOptions"
-                    v-model="form.task_status_id"
-                    :errors="hasErrors('task_status_id')"
-                    :error-messages="getErrors('task_status_id')">
-                </v-select>
-                <input type="hidden" name="task_status_id" :value="form.task_status_id">
-            </div>
-
-            <!-- Category -->
-            <div class="form-field">
-                <v-select
-                    :label="categoryText"
-                    :items="categoryOptions"
-                    v-model="form.task_category_id"
-                    :errors="hasErrors('task_category_id')"
-                    :error-messages="getErrors('task_category_id')">
-                </v-select> 
-                <input type="hidden" name="task_category_id" :value="form.task_category_id">
-            </div>
-
-            <!-- Seniority -->
-            <div class="form-field">
-                <v-select
-                    :label="seniorityText"
-                    :items="seniorityOptions"
-                    v-model="form.task_seniority_id"
-                    :errors="hasErrors('task_seniority_id')"
-                    :error-messages="getErrors('task_seniority_id')">
-                </v-select>
-                <input type="hidden" name="task_seniority_id" :value="form.task_seniority_id">
+                <input type="hidden" name="project_id" :value="form.project_id > 0 ? form.project_id : null">
             </div>
 
             <!-- Title -->
             <div class="form-field">
                 <v-text-field
                     name="title"
-                    :label="titleText"
+                    :label="titleText+'*'"
                     v-model="form.title"
                     :errors="hasErrors('title')"
                     :error-messages="getErrors('title')">
@@ -67,34 +31,91 @@
             <div class="form-field">
                 <v-textarea
                     name="description"
-                    :label="descriptionText"
+                    :label="descriptionText+'*'"
                     v-model="form.description"
                     :errors="hasErrors('description')"
                     :error-messages="getErrors('description')">
                 </v-textarea>
             </div>
 
-            <!-- Complexity -->
-            <div class="form-field">
-                <v-select
-                    :label="complexityText"
-                    :items="complexityOptions"
-                    v-model="form.complexity"
-                    :errors="hasErrors('complexity')"
-                    :error-messages="getErrors('complexity')">
-                </v-select>
-                <input type="hidden" name="complexity" :value="form.complexity">
+            <div class="form-fields">
+
+                <!-- Status -->
+                <div class="form-field" v-if="editing">
+                    <v-select
+                        :label="statusText+'*'"
+                        :items="statusOptions"
+                        v-model="form.task_status_id"
+                        :errors="hasErrors('task_status_id')"
+                        :error-messages="getErrors('task_status_id')">
+                    </v-select>
+                    <input type="hidden" name="task_status_id" :value="form.task_status_id">
+                </div>
+
+                <!-- Category -->
+                <div class="form-field">
+                    <v-combobox
+                        :label="categoryText+'*'"
+                        :items="categoryOptions"
+                        v-model="form.task_category"
+                        :errors="hasErrors('task_category')"
+                        :error-messages="getErrors('task_category')">
+                    </v-combobox> 
+                    <input type="hidden" name="task_category" :value="form.task_category">
+                </div>
+
+                
+                <!-- Urgency -->
+                <div class="form-field">
+                    <v-select
+                        :label="urgencyText+'*'"
+                        v-model="form.urgency"
+                        :items="urgencyOptions"
+                        :errors="hasErrors('urgency')"
+                        :error-messages="getErrors('urgency')">
+                    </v-select>
+                    <input type="hidden" name="urgency" :value="form.urgency">
+                </div>
+
             </div>
 
-            <!-- Estimated hours -->
-            <div class="form-field">
-                <v-text-field
-                    :label="estimatedHoursText"
-                    name="estimated_hours"
-                    v-model="form.estimated_hours"
-                    :errors="hasErrors('estimated_hours')"
-                    :error-messages="getErrors('estimated_hours')">
-                </v-text-field>
+            <div class="form-fields">
+
+                <!-- Complexity -->
+                <div class="form-field">
+                    <v-select
+                        :label="complexityText+'*'"
+                        :items="complexityOptions"
+                        v-model="form.complexity"
+                        :errors="hasErrors('complexity')"
+                        :error-messages="getErrors('complexity')">
+                    </v-select>
+                    <input type="hidden" name="complexity" :value="form.complexity">
+                </div>
+
+                <!-- Seniority -->
+                <div class="form-field">
+                    <v-select
+                        :label="seniorityText+'*'"
+                        :items="seniorityOptions"
+                        v-model="form.task_seniority_id"
+                        :errors="hasErrors('task_seniority_id')"
+                        :error-messages="getErrors('task_seniority_id')">
+                    </v-select>
+                    <input type="hidden" name="task_seniority_id" :value="form.task_seniority_id">
+                </div>
+                    
+                <!-- Estimated hours -->
+                <div class="form-field">
+                    <v-text-field
+                        name="estimated_hours"
+                        :label="estimatedHoursText+'*'"
+                        v-model="form.estimated_hours"
+                        :errors="hasErrors('estimated_hours')"
+                        :error-messages="getErrors('estimated_hours')">
+                    </v-text-field>
+                </div>
+
             </div>
 
             <!-- Realized hours -->
@@ -138,17 +159,6 @@
                 </required-skills-field>
             </div>
 
-            <!-- Urgency -->
-            <div class="form-field">
-                <v-select
-                    :label="urgencyText"
-                    v-model="form.urgency"
-                    :items="urgencyOptions"
-                    :errors="hasErrors('urgency')"
-                    :error-messages="getErrors('urgency')">
-                </v-select>
-                <input type="hidden" name="urgency" :value="form.urgency">
-            </div>
 
         </div>
 
@@ -161,7 +171,7 @@
                 </v-btn>
             </div>
             <div class="form-controls__right">
-                <v-btn type="submit" color="success">
+                <v-btn type="submit" color="success" depressed>
                     <i class="fas fa-save"></i>
                     {{ submitText }}
                 </v-btn>
@@ -236,7 +246,7 @@
             form: {
                 project_id: 0,
                 task_status_id: 0,
-                task_category_id: 0,
+                task_category: "",
                 task_seniority_id: 0,
                 title: "",
                 description: "",
@@ -358,15 +368,9 @@
             },
             generateCategoryOptions() {
                 if (this.categories !== undefined && this.categories !== null && this.categories.length > 0) {
-                    this.categoryOptions.push({ text: this.selectCategoryText, value: 0 });
                     for (let i = 0; i < this.categories.length; i++) {
-                        this.categoryOptions.push({
-                            text: this.categories[i].name,
-                            value: this.categories[i].id,
-                        });
+                        this.categoryOptions.push(this.categories[i].name);
                     }
-                } else {
-                    this.categoryOptions.push({ text: this.noCategoriesText, value: 0 });
                 }
             },
             generateUrgencyOptions() {
@@ -396,7 +400,7 @@
                 if (this.task !== undefined && this.task !== null) {
                     this.form.project_id = this.task.project_id;
                     this.form.task_status_id = this.task.task_status_id;
-                    this.form.task_category_id = this.task.task_category_id;
+                    this.form.task_category = this.task.category.name;
                     this.form.task_seniority_id = this.task.task_seniority_id;
                     this.form.title = this.task.title;
                     this.form.complexity = this.task.complexity;
@@ -413,14 +417,14 @@
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.project_id !== null) this.form.project_id = parseInt(this.oldInput.project_id);
                     if (this.oldInput.task_status_id !== null) this.form.task_status_id = parseInt(this.oldInput.task_status_id);
-                    if (this.oldInput.task_category_id !== null) this.form.task_category_id = parseInt(this.oldInput.task_category_id);
+                    if (this.oldInput.task_category !== null) this.form.task_category = this.oldInput.task_category;
                     if (this.oldInput.task_seniority_id !== null) this.form.task_seniority_id = parseInt(this.oldInput.task_seniority_id);
                     if (this.oldInput.title !== null) this.form.title = this.oldInput.title;
                     if (this.oldInput.description !== null) this.form.description = this.oldInput.description;
                     if (this.oldInput.complexity !== null) this.form.complexity = parseInt(this.oldInput.complexity);
                     if (this.oldInput.estimated_hours !== null) this.form.estimated_hours = this.oldInput.estimated_hours;
                     if (this.oldInput.realized_hours !== null) this.form.realized_hours = this.oldInput.realized_hours;
-                    if (this.oldInput.urgency !== null) this.form.urgency = this.oldInput.urgency;
+                    if (this.oldInput.urgency !== null) this.form.urgency = parseInt(this.oldInput.urgency);
                 }
             },
             hasErrors(field) {
