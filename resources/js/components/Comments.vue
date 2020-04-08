@@ -38,7 +38,7 @@
 
         <!-- No comments -->
         <div class="comments__empty" v-if="paginatedComments.length === 0">
-            Er is nog geen commentaar geplaatst.
+            {{ noCommentsText }}
         </div>
 
         <!-- Pagination -->
@@ -50,7 +50,7 @@
         <div class="comments__form">
 
             <!-- Label -->
-            <div class="comments__form-label">Plaats commentaar</div>
+            <div class="comments__form-label">{{ createTitleText }}</div>
             
             <!-- Errors -->
             <div class="comments__form-errors" v-if="form.errors.length > 0">
@@ -78,7 +78,7 @@
                     @click="onClickPost" 
                     :loading="form.loading" 
                     :disabled="submitCommentDisabled">
-                    Plaats commentaar
+                    {{ createSubmitText }}
                 </v-btn>
             </div>
 
@@ -94,7 +94,7 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Comment aanpassen</h3>
+                    <h3 class="dialog-title">{{ updateTitleText }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.edit.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.edit.errors" :key="ei">
@@ -117,7 +117,7 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.edit.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            Annuleren
+                            {{ updateCancelText }}
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
@@ -128,7 +128,7 @@
                             :loading="dialogs.edit.loading"
                             :disabled="confirmEditDisabled">
                             <i class="far fa-save"></i>
-                            Opslaan
+                            {{ updateSubmitText }}
                         </v-btn>
                     </div>
                 </div>
@@ -145,7 +145,7 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">Commentaar verwijderen</h3>
+                    <h3 class="dialog-title">{{ deleteTitleText }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.delete.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.delete.errors" :key="ei">
@@ -153,9 +153,7 @@
                         </div>
                     </div>
                     <!-- Text -->
-                    <div class="dialog-text">
-                        Weet je zeker dat je dit commentaar wilt verwijderen?
-                    </div>
+                    <div class="dialog-text">{{ deleteText }}</div>
                 </div>
                 <!-- Controls -->
                 <div class="dialog-controls">
@@ -163,7 +161,7 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.delete.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            Nee, annuleren
+                            {{ deleteCancelText }}
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
@@ -174,7 +172,7 @@
                             :loading="dialogs.delete.loading"
                             @click="onClickConfirmDelete">
                             <i class="fas fa-trash-alt"></i>
-                            Ja, verwijder
+                            {{ deleteSubmitText }}
                         </v-btn>
                     </div>
                 </div>
@@ -194,7 +192,18 @@
             "createCommentApiEndpoint",
             "updateCommentApiEndpoint",
             "deleteCommentApiEndpoint",
-            "perPage"
+            "perPage",
+            "titleText",
+            "noCommentsText",
+            "createTitleText",
+            "createSubmitText",
+            "updateTitleText",
+            "updateCancelText",
+            "updateSubmitText",
+            "deleteTitleText",
+            "deleteText",
+            "deleteCancelText",
+            "deleteSubmitText",
         ],
         data: () => ({
             tag: "[comments]",
@@ -232,9 +241,6 @@
         computed: {
             hasUser() {
                 return this.user !== undefined && this.user !== null && this.user !== "";
-            },
-            titleText() {
-                return this.title !== undefined && this.title !== null && this.title !== "" ? this.title : "Commentaar";
             },
             submitCommentDisabled() {
                 return this.form.comment === "";
