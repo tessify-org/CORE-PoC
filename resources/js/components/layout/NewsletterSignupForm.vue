@@ -48,10 +48,10 @@
         },
         methods: {
             initialize() {
-                console.log(this.tag+" initializing");
-                console.log(this.tag+" submit text: ", this.submitText);
-                console.log(this.tag+" signed up text: ", this.signedUpText);
-                console.log(this.tag+" api endpoint: ", this.apiEndpoint);
+                // console.log(this.tag+" initializing");
+                // console.log(this.tag+" submit text: ", this.submitText);
+                // console.log(this.tag+" signed up text: ", this.signedUpText);
+                // console.log(this.tag+" api endpoint: ", this.apiEndpoint);
             },
             onClickSubmit() {
                 console.log(this.tag+" clicked submit button");

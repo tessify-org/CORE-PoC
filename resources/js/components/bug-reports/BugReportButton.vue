@@ -106,20 +106,20 @@
         }),
         methods: {
             initialize() {
-                console.log(this.tag+" initializing");
-                console.log(this.tag+" url: ", this.url);
-                console.log(this.tag+" dialog title text: ", this.dialogTitleText);
-                console.log(this.tag+" form action: ", this.formAction);
-                console.log(this.tag+" csrf token: ", this.csrfToken);
-                console.log(this.tag+" url label text: ", this.urlLabelText);
-                console.log(this.tag+" report label text: ", this.reportLabelText);
-                console.log(this.tag+" severity label text: ", this.severityLabelText);
-                console.log(this.tag+" low severity text: ", this.lowSeverityText);
-                console.log(this.tag+" medium severity text: ", this.mediumSeverityText);
-                console.log(this.tag+" high severity text: ", this.highSeverityText);
-                console.log(this.tag+" cancel text: ", this.cancelText);
-                console.log(this.tag+" submit text: ", this.submitText);
-                console.log(this.tag+" errors: ", this.errors);
+                // console.log(this.tag+" initializing");
+                // console.log(this.tag+" url: ", this.url);
+                // console.log(this.tag+" dialog title text: ", this.dialogTitleText);
+                // console.log(this.tag+" form action: ", this.formAction);
+                // console.log(this.tag+" csrf token: ", this.csrfToken);
+                // console.log(this.tag+" url label text: ", this.urlLabelText);
+                // console.log(this.tag+" report label text: ", this.reportLabelText);
+                // console.log(this.tag+" severity label text: ", this.severityLabelText);
+                // console.log(this.tag+" low severity text: ", this.lowSeverityText);
+                // console.log(this.tag+" medium severity text: ", this.mediumSeverityText);
+                // console.log(this.tag+" high severity text: ", this.highSeverityText);
+                // console.log(this.tag+" cancel text: ", this.cancelText);
+                // console.log(this.tag+" submit text: ", this.submitText);
+                // console.log(this.tag+" errors: ", this.errors);
                 this.generateSeverityOptions();
                 this.initializeData();
             },

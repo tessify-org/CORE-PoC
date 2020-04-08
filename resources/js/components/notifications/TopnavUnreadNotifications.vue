@@ -29,10 +29,10 @@
         },
         methods: {
             initialize() {
-                console.log(this.tag+" initializing");
-                console.log(this.tag+" count: ", this.count);
-                console.log(this.tag+" href: ", this.href);
-                console.log(this.tag+" light: ", this.light);
+                // console.log(this.tag+" initializing");
+                // console.log(this.tag+" count: ", this.count);
+                // console.log(this.tag+" href: ", this.href);
+                // console.log(this.tag+" light: ", this.light);
                 this.initializeData();
             },
             initializeData() {
