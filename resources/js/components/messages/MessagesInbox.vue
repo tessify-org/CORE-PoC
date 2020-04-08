@@ -23,7 +23,7 @@
         </div>
 
         <!-- No messages -->
-        <div id="messages-inbox__empty" v-if="paginatedMessages.length === 0">
+        <div id="messages-inbox__empty" class="elevation-1" v-if="paginatedMessages.length === 0">
             {{ noRecordsText }}
         </div>
 

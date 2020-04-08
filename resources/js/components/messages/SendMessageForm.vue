@@ -6,14 +6,14 @@
 
             <!-- Receiving user -->
             <div class="form-field">
-                <v-select
-                    :label="userText"
+                <v-combobox
+                    :label="userText+'*'"
                     :items="userOptions"
-                    v-model="form.user_id"
-                    :errors="hasErrors('user_id')"
-                    :error-messages="getErrors('user_id')">
-                </v-select>
-                <input type="hidden" name="user_id" :value="form.user_id">
+                    v-model="form.user"
+                    :errors="hasErrors('user')"
+                    :error-messages="getErrors('user')">
+                </v-combobox>
+                <input type="hidden" name="user" :value="form.user">
             </div>
 
             <!-- Subject -->
@@ -31,7 +31,7 @@
             <div class="form-field">
                 <v-textarea
                     name="message"
-                    :label="messageText"
+                    :label="messageText+'*'"
                     v-model="form.message"
                     :errors="hasErrors('message')"
                     :error-messages="getErrors('message')">
@@ -76,7 +76,7 @@
             tag: "[send-message-form]",
             userOptions: [],
             form: {
-                user_id: 0,
+                user: "",
                 subject: "",
                 message: "",
             }
@@ -97,7 +97,7 @@
             },
             initializeData() {
                 if (this.oldInput !== undefined && this.oldInput !== null) {
-                    if (this.oldInput.user_id !== null) this.form.user_id = this.oldInput.user_id;
+                    if (this.oldInput.user !== null) this.form.user = this.oldInput.user;
                     if (this.oldInput.subject !== null) this.form.subject = this.oldInput.subject;
                     if (this.oldInput.message !== null) this.form.message = this.oldInput.message;
                 }
@@ -105,10 +105,7 @@
             generateUserOptions() {
                 if (this.users !== undefined && this.users !== null && this.users.length > 0) {
                     for (let i = 0; i < this.users.length; i++) {
-                        this.userOptions.push({
-                            text: this.users[i].formatted_name,
-                            value: this.users[i].id,
-                        });
+                        this.userOptions.push(this.users[i].formatted_name);
                     }
                 }
             },
