@@ -47,7 +47,6 @@
                             </v-btn>                                
                         </div>
                     </div>
-                    
                 </div>
             </div>
         </div>

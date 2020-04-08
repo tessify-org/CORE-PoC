@@ -4764,10 +4764,6 @@ i {
           justify-content: flex-end;
 }
 
-#no-members {
-  text-align: center;
-}
-
 @media (max-width: 1050px) {
   #memberlist #memberlist__header .memberlist__header-column:nth-child(2),
   #memberlist #memberlist__header .memberlist__header-column:nth-child(5) {
