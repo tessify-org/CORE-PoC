@@ -128,30 +128,6 @@
             <div class="content-card elevation-1 mb">
                 <div class="content-card__content">
 
-                    <!-- Category -->
-                    <div class="form-field">
-                        <v-combobox
-                            :label="categoryText+'*'"
-                            :items="categoryOptions"
-                            v-model="form.project_category"
-                            :errors="hasErrors('project_category')"
-                            :error-messages="getErrors('project_category')">
-                        </v-combobox>
-                        <input type="hidden" name="project_category" :value="form.project_category">
-                    </div>
-
-                    <!-- Work method -->
-                    <div class="form-field">
-                        <v-select
-                            :label="workMethodText"
-                            :items="workMethodOptions"
-                            v-model="form.work_method_id"
-                            :errors="hasErrors('work_method_id')"
-                            :error-messages="getErrors('work_method_id')">
-                        </v-select>
-                        <input type="hidden" name="work_method_id" :value="form.work_method_id">
-                    </div>  
-
                     <!-- Status -->
                     <div class="form-field mb-0">
                         <v-select
@@ -164,6 +140,83 @@
                         <input type="hidden" name="project_status_id" :value="form.project_status_id">
                     </div>
 
+                    <!-- Phase -->
+                    <div class="form-field mb-0">
+                        <v-combobox
+                            :label="projectPhaseText"
+                            :items="phaseOptions"
+                            v-model="form.project_phase"
+                            :errors="hasErrors('project_phase')"
+                            :error-messages="getErrors('project_phase')">
+                        </v-combobox>
+                        <input type="hidden" name="project_phase" :value="form.project_phase">
+                    </div>
+
+                    <!-- Category -->
+                    <div class="form-field">
+                        <v-combobox
+                            :label="categoryText+'*'"
+                            :items="categoryOptions"
+                            v-model="form.project_category"
+                            :errors="hasErrors('project_category')"
+                            :error-messages="getErrors('project_category')">
+                        </v-combobox>
+                        <input type="hidden" name="project_category" :value="form.project_category">
+                    </div> 
+
+                    <!-- Work method -->
+                    <div class="form-field">
+                        <v-select
+                            :label="workMethodText"
+                            :items="workMethodOptions"
+                            v-model="form.work_method_id"
+                            :errors="hasErrors('work_method_id')"
+                            :error-messages="getErrors('work_method_id')">
+                        </v-select>
+                        <input type="hidden" name="work_method_id" :value="form.work_method_id">
+                    </div> 
+
+                </div>
+            </div>
+
+            <!-- Administrative -->
+            <div class="content-card elevation-1 mb">
+                <div class="content-card__content">
+
+                    <!-- Ministry -->
+                    <div class="form-field">
+                        <v-select
+                            :label="ministryText"
+                            v-model="form.ministry_id"
+                            :items="ministryOptions"
+                            :errors="hasErrors('ministry_id')"
+                            :error-messages="getErrors('ministry_id')">
+                        </v-select>
+                        <input type="hidden" name="ministry_id" :value="form.ministry_id">
+                    </div>
+
+                    <!-- Project code -->
+                    <div class="form-field">
+                        <v-text-field
+                            name="project_code"
+                            :label="projectCodeText"
+                            v-model="form.project_code"
+                            :errors="hasErrors('project_code')"
+                            :error-messages="getErrors('project_code')">
+                        </v-text-field>
+                    </div>
+
+                    <!-- Budget -->
+                    <div class="form-field">
+                        <v-text-field
+                            name="budget"
+                            :label="budgetText"
+                            v-model="form.budget"
+                            :errors="hasErrors('budget')"
+                            :error-messages="getErrors('budget')">
+                        </v-text-field>
+                    </div>
+                    
                 </div>
             </div>
 
@@ -171,6 +224,8 @@
             <div class="content-card elevation-1 mb">
                 <div class="content-card__content">
 
+                    <!-- Has tasks -->
+                    <!-- 
                     <div class="form-field checkbox">
                         <v-checkbox
                             hide-details
@@ -178,8 +233,10 @@
                             v-model="form.has_tasks">
                         </v-checkbox>
                         <input type="hidden" name="has_tasks" :value="form.has_tasks">
-                    </div>
+                    </div> 
+                    -->
 
+                    <!-- Has deadline -->
                     <div class="form-field checkbox">
                         <v-checkbox
                             hide-details
@@ -240,9 +297,11 @@
     export default {
         props: [
             "project",
+            "projectPhases",
             "projectStatuses",
             "projectCategories",
             "workMethods",
+            "ministries",
             "skills",
             "errors",
             "oldInput",
@@ -265,6 +324,10 @@
             "hasDeadlineText",
             "startDateText",
             "deadlineText",
+            "budgetText",
+            "ministryText",
+            "projectCodeText",
+            "projectPhaseText",
             "backText",
             "backHref",
             "submitText",
@@ -287,10 +350,13 @@
             tag: "[project-form]",
             workMethodOptions: [],
             categoryOptions: [],
+            ministryOptions: [],
             statusOptions: [],
+            phaseOptions: [],
             form: {
                 project_status_id: 0,
                 project_category: "",
+                project_phase: "",
                 work_method_id: null,
                 title: "",
                 slogan: "",
@@ -301,6 +367,7 @@
                 team_roles: [],
                 has_tasks: true,
                 has_deadline: false,
+                budget: 0,
             }
         }),
         computed: {
@@ -315,9 +382,11 @@
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" project: ", this.project);
+                console.log(this.tag+" project phases: ", this.projectPhases);
                 console.log(this.tag+" project statuses: ", this.projectStatuses);
                 console.log(this.tag+" project categories: ", this.projectCategories);
                 console.log(this.tag+" work methods: ", this.workMethods);
+                console.log(this.tag+" ministries: ", this.ministries);
                 console.log(this.tag+" skills: ", this.skills);
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
@@ -326,7 +395,9 @@
                 console.log(this.tag+" delete resource api endpoint: ", this.deleteResourceApiEndpoint);
                 this.generateWorkMethodOptions();
                 this.generateCategoryOptions();
+                this.generateMinistryOptions();
                 this.generateStatusOptions();
+                this.generatePhaseOptions();
                 this.initializeData();
             },
             initializeData() {
@@ -334,13 +405,17 @@
                 if (this.project !== undefined && this.project !== null) {
                     this.form.project_status_id = this.project.project_status_id;
                     this.form.project_category = this.project.category.label;
+                    if (this.project.phase) this.form.project_phase = this.project.phase.name;
                     this.form.work_method_id = this.project.work_method_id;
+                    this.form.ministry_id = this.project.ministry_id;
                     this.form.title = this.project.title;
                     this.form.slogan = this.project.slogan;
                     this.form.description = this.project.description;
                     this.form.starts_at = this.project.starts_at;
                     this.form.ends_at = this.project.ends_at;
                     this.form.has_tasks = this.project.has_tasks;
+                    this.form.budget = this.project.budget;
+                    this.form.project_code = this.project.project_code;
                     if (this.project.resources !== undefined && this.project.resources !== null && this.project.resources.length > 0) {
                         this.form.resources = this.project.resources;
                     }
@@ -361,9 +436,11 @@
                     }
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
+                    if (this.oldInput.project_phase_id !== null) this.form.project_phase_id = this.oldInput.project_phase_id;
                     if (this.oldInput.project_status_id !== null) this.form.project_status_id = this.oldInput.project_status_id;
                     if (this.oldInput.project_category_id !== null) this.form.project_category_id = this.oldInput.project_category_id;
                     if (this.oldInput.work_method_id !== null) this.form.work_method_id = this.oldInput.work_method_id;
+                    if (this.oldInput.ministry_id !== null) this.form.ministry_id = parseInt(this.oldInput.ministry_id);
                     if (this.oldInput.title !== null) this.form.title = this.oldInput.title;
                     if (this.oldInput.slogan !== null) this.form.slogan = this.oldInput.slogan;
                     if (this.oldInput.description !== null) this.form.description = this.oldInput.description;
@@ -372,6 +449,8 @@
                     if (this.oldInput.resources !== null) this.form.resources = JSON.parse(this.oldInput.resources);
                     if (this.oldInput.team_roles !== null) this.form.team_roles = JSON.parse(this.oldInput.team_roles);
                     if (this.oldInput.has_tasks !== null) this.form.has_tasks = this.oldInput.has_tasks === "true" ? true : false;
+                    if (this.oldInput.budget !== null) this.form.budget = parseInt(this.oldInput.budget);
+                    if (this.oldInput.project_code !== null) this.form.project_code = this.oldInput.project_code;
                 }
             },
             generateStatusOptions() {
@@ -389,7 +468,7 @@
             generateCategoryOptions() {
                 if (this.projectCategories !== undefined && this.projectCategories !== null && this.projectCategories.length > 0) {
                     for (let i = 0; i < this.projectCategories.length; i++) {
-                        this.categoryOptions.push({ text: this.projectCategories[i].label });
+                        this.categoryOptions.push(this.projectCategories[i].label);
                     }
                 }
             },
@@ -404,6 +483,25 @@
                     }
                 } else {
                     this.workMethodOptions.push({ text: "Geen werkmethodes gevonden", value: null });
+                }
+            },
+            generateMinistryOptions() {
+                if (this.ministries !== undefined && this.ministries !== null && this.ministries.length > 0) {
+                    for (let i = 0; i < this.ministries.length; i++) {
+                        this.ministryOptions.push({
+                            text: this.ministries[i].name,
+                            value: this.ministries[i].id,
+                        });
+                    }
+                } else {
+                    this.ministryOptions.push({ text: "Geen ministeries gevonden", value: 0 });
+                }
+            },
+            generatePhaseOptions() {
+                if (this.projectPhases !== undefined && this.projectPhases !== null && this.projectPhases.length > 0) {
+                    for (let i = 0; i < this.projectPhases.length; i++) {
+                        this.phaseOptions.push(this.projectPhases[i].name);
+                    }
                 }
             },
             hasErrors(field) {

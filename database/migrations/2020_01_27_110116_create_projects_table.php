@@ -18,6 +18,8 @@ class CreateProjectsTable extends Migration
             $table->unsignedInteger('author_id');
             $table->unsignedInteger('project_status_id');
             $table->unsignedInteger('project_category_id');
+            $table->unsignedInteger('project_phase_id')->nullable();
+            $table->unsignedInteger('ministry_id')->nullable();
             $table->unsignedInteger('work_method_id')->nullable();
             $table->string('slug');
             $table->string('title');
@@ -28,6 +30,8 @@ class CreateProjectsTable extends Migration
             $table->date('ends_at')->nullable();
             $table->boolean('has_tasks')->default(false);
             $table->boolean('has_deadline')->default(false);
+            $table->unsignedInteger('budget')->nullable();
+            $table->string('project_code')->nullable();
             $table->timestamps();
         });
     }

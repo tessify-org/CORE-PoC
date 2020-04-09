@@ -1,11 +1,14 @@
 <?php
 
 use App\Models\User;
+
 use Tessify\Core\Models\Skill;
 use Tessify\Core\Models\Project;
 use Tessify\Core\Models\TeamRole;
+use Tessify\Core\Models\Ministry;
 use Tessify\Core\Models\WorkMethod;
 use Tessify\Core\Models\TeamMember;
+use Tessify\Core\Models\ProjectPhase;
 use Tessify\Core\Models\ProjectStatus;
 use Tessify\Core\Models\ProjectCategory;
 use Tessify\Core\Models\ProjectResource;
@@ -70,6 +73,16 @@ class ProjectSeeder extends Seeder
         ]);
 
         //
+        // Project phases
+        //
+
+        $brainstorm = ProjectPhase::create(["name" => "brainstorm"]);
+        $ontwerp = ProjectPhase::create(["name" => "ontwerp"]);
+        $testen = ProjectPhase::create(["name" => "testen"]);
+        $aansluiting = ProjectPhase::create(["name" => "aansluiting dienst op werk"]);
+        $feedback = ProjectPhase::create(["name" => "feedbackronde"]);
+
+        //
         // Project categories
         //
 
@@ -97,7 +110,9 @@ class ProjectSeeder extends Seeder
         //
 
         $skills = Skill::all();
-        for ($i = 0; $i < 5; $i++)
+        $phases = ProjectPhase::all();
+        $ministries = Ministry::all();
+        for ($i = 0; $i < 20; $i++)
         {
             // Create the project
             $project = factory(Project::class)->create([
@@ -105,6 +120,8 @@ class ProjectSeeder extends Seeder
                 "work_method_id" => $scrum->id,
                 "project_status_id" => $open->id,
                 "project_category_id" => $software->id,
+                "ministry_id" => rand(0, 1) == 1 ? $ministries->random()->id : null,
+                "project_phase_id" => $phases->random()->id,
                 "header_image_url" => "storage/images/projects/header/default.jpeg"
             ]);
                 

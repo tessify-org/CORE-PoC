@@ -3479,6 +3479,10 @@ i {
   border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.details.no-padding .detail {
+  padding: 7px 0;
+}
+
 .details .details-header {
   padding: 10px 15px;
   box-sizing: border-box;
