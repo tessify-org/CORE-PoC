@@ -75,7 +75,6 @@
         }
         #my-projects__empty {
             padding: 15px;
-            text-align: center;
             box-sizing: border-box;
         }
     }

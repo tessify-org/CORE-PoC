@@ -7,10 +7,9 @@ use Avatar;
 use Uploader;
 
 use Tessify\Core\Traits\Searchable;
+use Overtrue\LaravelFollow\Followable;
 use Cviebrock\EloquentSluggable\Sluggable;
-use Overtrue\LaravelFollow\Traits\CanFollow;
-use Overtrue\LaravelFollow\Traits\CanSubscribe;
-use Overtrue\LaravelFollow\Traits\CanBeFollowed;
+use Overtrue\LaravelSubscribe\Traits\Subscriber;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -21,7 +20,8 @@ class User extends Authenticatable
     use Sluggable;
     use Notifiable;
     use Searchable;
-    use CanFollow, CanBeFollowed, CanSubscribe;
+    use Subscriber;
+    use Followable;
 
     protected $fillable = [
         'annotation',

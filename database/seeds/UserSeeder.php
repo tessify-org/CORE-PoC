@@ -5,6 +5,7 @@ use App\Models\User;
 use Tessify\Core\Models\Skill;
 use Tessify\Core\Models\Assignment;
 use Tessify\Core\Models\AssignmentType;
+use Tessify\Core\Models\Ministry;
 use Tessify\Core\Models\Organization;
 use Tessify\Core\Models\OrganizationDepartment;
 
@@ -20,6 +21,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table("users")->delete();
+        DB::table("user_follower")->delete();
+        DB::table("subscriptions")->delete();
 
         //
         // My account
@@ -37,6 +40,7 @@ class UserSeeder extends Seeder
             "is_admin" => true,
         ]);
         
+        // Skills
         $php = Skill::where("name", "PHP")->first();
         $mysql = Skill::where("name", "MySQL")->first();
         $html = Skill::where("name", "HTML")->first();
@@ -46,7 +50,6 @@ class UserSeeder extends Seeder
         $cs = Skill::where("name", "C#")->first();
         $net = Skill::where("name", ".NET")->first();
         $python = Skill::where("name", "Python")->first();
-
         $nick->skills()->attach($php->id, ["mastery" => 8, "description" => "Always room for improvement"]);
         $nick->skills()->attach($mysql->id, ["mastery" => 7, "description" => "Don't ask me to write a join statement please"]);
         $nick->skills()->attach($html->id, ["mastery" => 10, "description" => "Good at creating skeletons"]);
@@ -56,7 +59,8 @@ class UserSeeder extends Seeder
         $nick->skills()->attach($cs->id, ["mastery" => 6, "description" => "Intermediate"]);
         $nick->skills()->attach($net->id, ["mastery" => 5, "description" => "8 months of experience"]);
         $nick->skills()->attach($python->id, ["mastery" => 8, "description" => "I can charm the cobra"]);
-
+        
+        // Assignments
         $traineeship = AssignmentType::where("name", "traineeship")->first();
         $ssc = Organization::where("name", "Shared Service Center ICT")->first();
         $assignment = Assignment::create([
@@ -138,11 +142,20 @@ class UserSeeder extends Seeder
             if ($i < 2) $nick->follow($user);
         }
 
-
-
+        // Generate avatars for all users
         foreach (User::all() as $user)
         {
             app()->make("users")->generateAvatar($user);
+        }
+
+        // Make the users follow eachother
+        $users = User::all();
+        foreach ($users as $user)
+        {
+            foreach ($users->shuffle()->take(3) as $u)
+            {
+                if ($user->id != $u->id) $user->follow($u);
+            }
         }
     }
 }

@@ -923,6 +923,22 @@ i {
         .dialog-description {
             
         }
+        .dialog-list {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            .dialog-list-item {
+                padding: 10px;
+                display: flex;
+                color: #000000;
+                flex-direction: row;
+                align-items: center;
+                text-decoration: none;
+                box-sizing: border-box;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                &:last-child {
+                    border-bottom: 0;
+                }
+            }
+        }
     }
     .dialog-controls {
         display: flex;
@@ -1074,6 +1090,12 @@ i {
     &.mt {
         margin-top: 30px;
     }
+}
+.content-card__description {
+    font-size: 1em;
+    font-weight: 300;
+    margin: -10px 0 10px 0;
+    color: rgba(0, 0, 0, 0.55);
 }
 .content-card {
     border-radius: 3px;

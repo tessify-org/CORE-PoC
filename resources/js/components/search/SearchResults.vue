@@ -25,7 +25,7 @@
                         <div class="search-result__type">{{ userTypeText }}</div>
                     </div>
                     <div class="search-result__content">
-                        <div class="result-title">{{ result.entry.formatted_name }}</div>
+                        <div class="result-title">{{ result.entry.first_name+" "+result.entry.last_name }}</div>
                         <div class="result-text">{{ result.entry.headline }}</div>
                     </div>
                 </a>
@@ -58,7 +58,7 @@
                         <div class="search-result__type">{{ ministryTypeText }}</div>
                     </div>
                     <div class="search-result__content">
-                        <div class="result-title">{{ result.entry.title }}</div>
+                        <div class="result-title">{{ result.entry.name }}</div>
                         <div class="result-text">{{ result.entry.description }}</div>
                     </div>
                 </a>
@@ -66,7 +66,7 @@
                 <a :href="result.entry.view_href" class="search-result" v-if="result.type === 'organization'">
                     <div class="search-result__score">{{ result.score }}</div>
                     <div class="search-result__type-wrapper">
-                        <div class="search-result__type">{{ organizationText }}</div>
+                        <div class="search-result__type">{{ organizationTypeText }}</div>
                     </div>
                     <div class="search-result__content">
                         <div class="result-title">{{ result.entry.name }}</div>
@@ -284,6 +284,9 @@
                     }
                     .search-result__content {
                         flex: 1;
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
                         .result-title {
                             font-size: 1.1em;
                             font-weight: 400;

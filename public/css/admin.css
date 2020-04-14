@@ -3418,6 +3418,29 @@ i {
   background-position: center center;
 }
 
+.dialog .dialog-content .dialog-list {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dialog .dialog-content .dialog-list .dialog-list-item {
+  padding: 10px;
+  display: -webkit-box;
+  display: flex;
+  color: #000000;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  text-decoration: none;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dialog .dialog-content .dialog-list .dialog-list-item:last-child {
+  border-bottom: 0;
+}
+
 .dialog .dialog-controls {
   display: -webkit-box;
   display: flex;
@@ -3599,6 +3622,13 @@ i {
 
 .content-card__title.mt {
   margin-top: 30px;
+}
+
+.content-card__description {
+  font-size: 1em;
+  font-weight: 300;
+  margin: -10px 0 10px 0;
+  color: rgba(0, 0, 0, 0.55);
 }
 
 .content-card {

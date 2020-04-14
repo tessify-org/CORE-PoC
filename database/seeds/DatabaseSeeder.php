@@ -18,5 +18,6 @@ class DatabaseSeeder extends Seeder
         $this->call(TaskSeeder::class);
         $this->call(MessageSeeder::class);
         $this->call(NotificationSeeder::class);
+        $this->call(SubscriptionSeeder::class);
     }
 }
