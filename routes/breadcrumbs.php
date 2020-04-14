@@ -263,9 +263,36 @@ Breadcrumbs::for("dashboard", function($t) {
     $t->push(__("tessify-core::breadcrumbs.dashboard"), route("dashboard"));
 });
 
+// Bug reports
 Breadcrumbs::for("bug-report-submitted", function($t) {
     $t->parent("home");
     $t->push(__("tessify-core::breadcrumbs.bug_report_submitted"), route("home"));
+});
+
+// Community
+Breadcrumbs::for("community", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.community"), route("community"));
+});
+
+// Community > Ministries
+Breadcrumbs::for("ministries", function($t) {
+    $t->parent("community");
+    $t->push(__("tessify-core::breadcrumbs.ministries"), route("ministries"));
+});
+Breadcrumbs::for("ministries.view", function($t, $ministry) {
+    $t->parent("ministries");
+    $t->push($ministry->name, route("ministries.view", $ministry->slug));
+});
+
+// Community > Organizations
+Breadcrumbs::for("organizations", function($t) {
+    $t->parent("community");
+    $t->push(__("tessify-core::breadcrumbs.organizations"), route("organizations"));
+});
+Breadcrumbs::for("organizations.view", function($t, $organization) {
+    $t->parent("organizations");
+    $t->push($organization->name, route("organizations.view", $organization->slug));
 });
 
 //

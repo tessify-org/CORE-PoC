@@ -1192,10 +1192,55 @@ i {
     margin: 0 auto;
 }
 
+//
+// Overviews
+//
 
+.no-records {
+    padding: 25px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: hsl(0, 0%, 95%);
+}
 
-
-
+.card-grid {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 -15px -30px -15px;
+    .card-wrapper {
+        flex: 0 0 50%;
+        box-sizing: border-box;
+        padding: 0 15px 30px 15px;
+        .card {
+            display: flex;
+            color: #000000;
+            border-radius: 3px;
+            padding: 35px 25px;
+            align-items: center;
+            text-decoration: none;
+            box-sizing: border-box;
+            flex-direction: column;
+            justify-content: center;
+            background-color: #ffffff;
+            transition: all .3s;
+            &:hover {
+                background-color: hsl(0, 0%, 95%);
+            }
+            .card-icon {
+                font-size: 2em;
+            }
+            .card-title {
+                font-size: 1em;
+                text-align: center;
+            }
+            .card-subtitle {
+                text-align: center;
+                color: rgba(0, 0, 0, 0.45);
+            }
+        }
+    }
+}
 
 
 
