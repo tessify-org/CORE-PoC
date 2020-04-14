@@ -52,6 +52,16 @@ $rijkshuisstijl-blue-dark: #0a2942;
                         }
                     }
                 }
+                #topnav-search__wrapper {
+                    #topnav-search-button {
+                        #topnav-search-button__icon {
+                            color: rgba(255, 255, 255, 0.75);
+                            &:hover {
+                                color: rgba(255, 255, 255, 1);
+                            }
+                        }
+                    }
+                }
             }
         }
     }
@@ -91,7 +101,7 @@ $rijkshuisstijl-blue-dark: #0a2942;
             }
             #topnav-search__wrapper {
                 display: flex;
-                margin: 0 0 0 50px;
+                margin: 0 0 0 25px;
                 flex-direction: row;
                 align-items: center;
                 #topnav-search {

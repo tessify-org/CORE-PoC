@@ -592,22 +592,30 @@
 #dashboard {
     #dashboard-stats {
         display: flex;
-        margin: 0 -15px;
+        margin: 0 -25px;
         flex-direction: row;
         .dashboard-stat__wrapper {
             flex: 1;
-            padding: 0 15px;
+            padding: 0 25px;
             box-sizing: border-box;
             .dashboard-stat {
                 padding: 25px;
-                height: 130px;
+                height: 150px;
                 display: flex;
                 border-radius: 3px;
+                position: relative;
                 align-items: center;
                 box-sizing: border-box;
                 flex-direction: column;
                 justify-content: center;
                 background-color: #fff;
+                .dashboard-stat__icon {
+                    top: 10px;
+                    left: 21px;
+                    font-size: 4em;
+                    position: absolute;
+                    color: rgba(0, 0, 0, 0.05);
+                }
                 .dashboard-stat__count {
                     font-size: 3em;
                     text-align: center;
@@ -626,11 +634,11 @@
         flex-direction: row;
         #dashboard-columns__left {
             flex: 1;
-            margin: 0 15px 0 0;
+            margin: 0 25px 0 0;
         }
         #dashboard-columns__right {
             flex: 1;
-            margin: 0 0 0 15px;
+            margin: 0 0 0 25px;
         }
     }
 }

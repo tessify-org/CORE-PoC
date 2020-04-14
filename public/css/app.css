@@ -2362,6 +2362,14 @@ input[type=number] {
   color: #fff;
 }
 
+#app.home #topnav__wrapper #topnav #topnav-search__wrapper #topnav-search-button #topnav-search-button__icon {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+#app.home #topnav__wrapper #topnav #topnav-search__wrapper #topnav-search-button #topnav-search-button__icon:hover {
+  color: white;
+}
+
 #app #topnav__wrapper {
   height: 80px;
   z-index: 999;
@@ -2413,7 +2421,7 @@ input[type=number] {
 #app #topnav__wrapper #topnav #topnav-search__wrapper {
   display: -webkit-box;
   display: flex;
-  margin: 0 0 0 50px;
+  margin: 0 0 0 25px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
@@ -4376,7 +4384,7 @@ i {
 #dashboard #dashboard-stats {
   display: -webkit-box;
   display: flex;
-  margin: 0 -15px;
+  margin: 0 -25px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
@@ -4385,16 +4393,17 @@ i {
 #dashboard #dashboard-stats .dashboard-stat__wrapper {
   -webkit-box-flex: 1;
           flex: 1;
-  padding: 0 15px;
+  padding: 0 25px;
   box-sizing: border-box;
 }
 
 #dashboard #dashboard-stats .dashboard-stat__wrapper .dashboard-stat {
   padding: 25px;
-  height: 130px;
+  height: 150px;
   display: -webkit-box;
   display: flex;
   border-radius: 3px;
+  position: relative;
   -webkit-box-align: center;
           align-items: center;
   box-sizing: border-box;
@@ -4404,6 +4413,14 @@ i {
   -webkit-box-pack: center;
           justify-content: center;
   background-color: #fff;
+}
+
+#dashboard #dashboard-stats .dashboard-stat__wrapper .dashboard-stat .dashboard-stat__icon {
+  top: 10px;
+  left: 21px;
+  font-size: 4em;
+  position: absolute;
+  color: rgba(0, 0, 0, 0.05);
 }
 
 #dashboard #dashboard-stats .dashboard-stat__wrapper .dashboard-stat .dashboard-stat__count {
@@ -4429,13 +4446,13 @@ i {
 #dashboard #dashboard-columns #dashboard-columns__left {
   -webkit-box-flex: 1;
           flex: 1;
-  margin: 0 15px 0 0;
+  margin: 0 25px 0 0;
 }
 
 #dashboard #dashboard-columns #dashboard-columns__right {
   -webkit-box-flex: 1;
           flex: 1;
-  margin: 0 0 0 15px;
+  margin: 0 0 0 25px;
 }
 
 #profile #profile-header {

@@ -31,30 +31,33 @@
             <div class="content-section">
 
                 <!-- CTA Search -->
-                <div id="homepage-cta" class="elevation-1">
-                    <div id="homepage-cta__title">
-                        @lang("homepage.cta_title", ["num_jobs" => $num_tasks])
-                    </div>
-                    <div id="homepage-cta__subtext">
-                        @lang("homepage.cta_subtext")
-                    </div>
-                    <div id="homepage-cta__search-wrapper">
-                        <div id="search-input__wrapper">
-                            <input type="text" id="search-input">
+                <form action="{{ route('search.post') }}" method="post">
+                    @csrf
+                    <div id="homepage-cta" class="elevation-1">
+                        <div id="homepage-cta__title">
+                            @lang("homepage.cta_title", ["num_jobs" => $num_tasks])
                         </div>
-                        <div id="search-submit__wrapper">
-                            <button type="submit" id="search-submit">
-                                @lang("homepage.cta_search")
-                                <i class="fas fa-arrow-right"></i>
-                            </button>
+                        <div id="homepage-cta__subtext">
+                            @lang("homepage.cta_subtext")
+                        </div>
+                        <div id="homepage-cta__search-wrapper">
+                            <div id="search-input__wrapper">
+                                <input type="text" id="search-input" name="search_query">
+                            </div>
+                            <div id="search-submit__wrapper">
+                                <button type="submit" id="search-submit">
+                                    @lang("homepage.cta_search")
+                                    <i class="fas fa-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="homepage-cta__link-wrapper">
+                            <a href="{{ route('get-started') }}">
+                                @lang("homepage.cta_signup")
+                            </a>
                         </div>
                     </div>
-                    <div id="homepage-cta__link-wrapper">
-                        <a href="{{ route('get-started') }}">
-                            @lang("homepage.cta_signup")
-                        </a>
-                    </div>
-                </div>
+                </form>
 
                 <!-- Quick links -->
                 <div id="homepage-quick-links">

@@ -10,21 +10,85 @@
                     v-model="form.query">
                 </v-text-field>
             </div>
+            <div id="search-controls__num-results" v-if="mutableResults.length > 0">
+                {{ mutableResults.length+" "+resultsText }}
+            </div>
         </div>
 
         <!-- Results -->
         <div id="search-results" class="elevation-1">
-            <div class="search-result" v-for="(result, ri) in paginatedResults" :key="ri">
-                <div class="search-result__title">{{ result.title }}</div>
+            <div class="search-result__wrapper" v-for="(result, ri) in paginatedResults" :key="ri">
+                <!-- User result -->
+                <a :href="result.entry.view_href" class="search-result" v-if="result.type === 'user'">
+                    <div class="search-result__score">{{ result.score }}</div>
+                    <div class="search-result__type-wrapper">
+                        <div class="search-result__type">{{ userTypeText }}</div>
+                    </div>
+                    <div class="search-result__content">
+                        <div class="result-title">{{ result.entry.formatted_name }}</div>
+                        <div class="result-text">{{ result.entry.headline }}</div>
+                    </div>
+                </a>
+                <!-- Task result -->
+                <a :href="result.entry.view_href" class="search-result" v-if="result.type === 'task'">
+                    <div class="search-result__score">{{ result.score }}</div>
+                    <div class="search-result__type-wrapper">
+                        <div class="search-result__type">{{ taskTypeText }}</div>
+                    </div>
+                    <div class="search-result__content">
+                        <div class="result-title">{{ result.entry.title }}</div>
+                        <div class="result-text">{{ result.entry.description }}</div>
+                    </div>
+                </a>
+                <!-- Project result -->
+                <a :href="result.entry.view_href" class="search-result" v-if="result.type === 'project'">
+                    <div class="search-result__score">{{ result.score }}</div>
+                    <div class="search-result__type-wrapper">
+                        <div class="search-result__type">{{ projectTypeText }}</div>
+                    </div>
+                    <div class="search-result__content">
+                        <div class="result-title">{{ result.entry.title }}</div>
+                        <div class="result-text">{{ result.entry.description }}</div>
+                    </div>
+                </a>
+                <!-- Ministry result -->
+                <a :href="result.entry.view_href" class="search-result" v-if="result.type === 'ministry'">
+                    <div class="search-result__score">{{ result.score }}</div>
+                    <div class="search-result__type-wrapper">
+                        <div class="search-result__type">{{ ministryTypeText }}</div>
+                    </div>
+                    <div class="search-result__content">
+                        <div class="result-title">{{ result.entry.title }}</div>
+                        <div class="result-text">{{ result.entry.description }}</div>
+                    </div>
+                </a>
+                <!-- Organization result -->
+                <a :href="result.entry.view_href" class="search-result" v-if="result.type === 'organization'">
+                    <div class="search-result__score">{{ result.score }}</div>
+                    <div class="search-result__type-wrapper">
+                        <div class="search-result__type">{{ organizationText }}</div>
+                    </div>
+                    <div class="search-result__content">
+                        <div class="result-title">{{ result.entry.name }}</div>
+                        <div class="result-text">{{ result.entry.description }}</div>
+                    </div>
+                </a>
             </div>
         </div>
 
         <!-- No results -->
-        <div id="no-results" class="elevation-1" v-if="paginatedResults.length === 0 && searched">
+        <div id="no-results" class="elevation-1" v-if="paginatedResults.length === 0 && searched && !loading">
             {{ noResultsText }}
         </div>
-        <div id="no-results" class="elevation-1" v-if="paginatedResults.length === 0 && !searched">
+        <div id="no-results" class="elevation-1" v-if="paginatedResults.length === 0 && !searched && !loading">
             {{ enterQueryText }}
+        </div>
+        
+        <!-- Loading -->
+        <div id="loading" class="elevation-1" v-if="loading">
+            <div id="loading-icon">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
         </div>
         
         <!-- Pagination -->
@@ -43,10 +107,17 @@
     export default {
         props: [
             "results",
+            "searchQuery",
             "apiEndpoint",
             "searchPlaceholderText",
             "noResultsText",
             "enterQueryText",
+            "userTypeText",
+            "taskTypeText",
+            "projectTypeText",
+            "ministryTypeText",
+            "organizationTypeText",
+            "resultsText",
         ],
         data: () => ({
             tag: "[search-results]",
@@ -64,6 +135,7 @@
                 query: "",
             },
             searched: false,
+            loading: false,
         }),
         computed: {
             numPaginatedPages() {
@@ -88,11 +160,17 @@
         methods: {
             initialize() {
                 console.log(this.tag+" initializing");
+                console.log(this.tag+" query: ", this.query);
                 console.log(this.tag+" results: ", this.results);
-                // console.log(this.tag+" ");
+                console.log(this.tag+" api endpoint: ", this.apiEndpoint);
+                console.log(this.tag+" no results text: ", this.noResultsText);
+                console.log(this.tag+" enter query text: ", this.enterQueryText);
                 this.initializeData();
             },
             initializeData() {
+                if (this.searchQuery !== undefined && this.searchQuery !== null && this.searchQuery !== "") {
+                    this.form.query = this.searchQuery;
+                }
                 if (this.results !== undefined && this.results !== null && this.results.length > 0) {
                     for (let i = 0; i < this.results.length; i++){
                         this.mutableResults.push(this.results[i]);
@@ -103,7 +181,6 @@
             filter() {
                 this.filteredResults = [];
                 for (let i = 0; i < this.mutableResults.length; i++) {
-                    -
                     this.filteredResults.push(this.mutableResults[i]);
                 }
                 this.paginate();
@@ -116,22 +193,22 @@
             },
             search() {
                 if (this.form.query !== "") {
-                    
+                    this.loading = true;
                     let payload = new FormData();
                     payload.append("search_query", this.form.query);
-
                     this.axios.post(this.apiEndpoint, payload)
                         .then(function(response) {
                             console.log(this.tag+" response: ", response.data);
                             this.mutableResults = response.data.results;
                             this.filter();
+                            this.loading = false;
                         }.bind(this))
                         .catch(function(error) {
                             console.warn(this.tag+" search request failed: ", error);
+                            this.loading = false;
                         }.bind(this));
-
                 }
-            }
+            },
         },
         mounted() {
             this.initialize();
@@ -144,35 +221,102 @@
         #search-controls {
             margin: 0 0 30px 0;
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             #search-controls__input {
-                flex: 0 0 500px;
+                width: 500px;
+            }
+            #search-controls__num-results {
+                text-align: center;
+                margin: 10px 0 0 0;
+                font-size: .8em;
+                color: rgba(0, 0, 0, 0.5);
             }
         }
         #search-results {
+            overflow: hidden;
             border-radius: 3px;
             background-color: #fff;
-            .search-result {
-                display: flex;
-                padding: 15px 20px;
-                flex-direction: row;
-                box-sizing: border-box;
+            .search-result__wrapper {
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);
                 &:last-child {
                     border-bottom: 0;
+                }
+                .search-result {
+                    display: flex;
+                    padding: 15px 20px;
+                    position: relative;
+                    flex-direction: row;
+                    transition: all .3s;
+                    text-decoration: none;
+                    box-sizing: border-box;
+                    color: rgba(0, 0, 0, 0.75);
+                    background-color: hsl(0, 0%, 100%);
+                    &:hover {
+                        color: rgba(0, 0, 0, 1);
+                        background-color: hsl(0, 0%, 95%);
+                        .search-result__type-wrapper {
+                            .search-result__type {
+                                background-color: rgba(255, 255, 255, 1);
+                            }
+                        }
+                    }
+                    .search-result__score {
+                        top: 15px;
+                        right: 15px;
+                        font-size: .8em;
+                        position: absolute;
+                        color: rgba(0, 0, 0, 0.25);
+                    }
+                    .search-result__type-wrapper {
+                        flex: 0 0 150px;
+                        margin: 0 15px 0 0;
+                        .search-result__type {
+                            width: 150px;
+                            height: 50px;
+                            display: flex;
+                            border-radius: 3px;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: hsl(0, 0%, 95%);
+                        }
+                    }
+                    .search-result__content {
+                        flex: 1;
+                        .result-title {
+                            font-size: 1.1em;
+                            font-weight: 400;
+                            margin: 0 0 3px 0;
+                        }
+                        .result-text {
+                            font-size: .8em;
+                            color: rgba(0, 0, 0, 0.75);
+                        }
+                    }
                 }
             }
         }
         #no-results {
             padding: 25px;
+            border-radius: 3px;
             text-align: center;
             box-sizing: border-box;
             background-color: #fff;
         }
+        #loading {
+            padding: 25px;
+            border-radius: 3px;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: #fff;
+            #loading-icon {
+                font-size: 2em;
+            }
+        }
         #pagination {
             display: flex;
+            margin: 30px 0 0 0;
             flex-direction: row;
             align-items: center;
             justify-content: center;

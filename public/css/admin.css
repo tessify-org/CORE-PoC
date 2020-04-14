@@ -2362,6 +2362,14 @@ input[type=number] {
   color: #fff;
 }
 
+#app.home #topnav__wrapper #topnav #topnav-search__wrapper #topnav-search-button #topnav-search-button__icon {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+#app.home #topnav__wrapper #topnav #topnav-search__wrapper #topnav-search-button #topnav-search-button__icon:hover {
+  color: white;
+}
+
 #app #topnav__wrapper {
   height: 80px;
   z-index: 999;
@@ -2413,7 +2421,7 @@ input[type=number] {
 #app #topnav__wrapper #topnav #topnav-search__wrapper {
   display: -webkit-box;
   display: flex;
-  margin: 0 0 0 50px;
+  margin: 0 0 0 25px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;

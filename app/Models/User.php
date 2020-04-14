@@ -6,6 +6,7 @@ use Users;
 use Avatar;
 use Uploader;
 
+use Tessify\Core\Traits\Searchable;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Overtrue\LaravelFollow\Traits\CanFollow;
 use Overtrue\LaravelFollow\Traits\CanSubscribe;
@@ -19,6 +20,7 @@ class User extends Authenticatable
 {
     use Sluggable;
     use Notifiable;
+    use Searchable;
     use CanFollow, CanBeFollowed, CanSubscribe;
 
     protected $fillable = [
