@@ -1113,16 +1113,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v6.18.7",
+            "version": "v6.18.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "9914b1d50e4395428ee95618354ffa7fc56e7968"
+                "reference": "852c91c46adfbc2f5a0f6985cba3d7b7a769b773"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/9914b1d50e4395428ee95618354ffa7fc56e7968",
-                "reference": "9914b1d50e4395428ee95618354ffa7fc56e7968",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/852c91c46adfbc2f5a0f6985cba3d7b7a769b773",
+                "reference": "852c91c46adfbc2f5a0f6985cba3d7b7a769b773",
                 "shasum": ""
             },
             "require": {
@@ -1255,7 +1255,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-04-14T14:12:01+00:00"
+            "time": "2020-04-15T20:56:03+00:00"
         },
         {
             "name": "laravel/tinker",
@@ -4172,7 +4172,7 @@
             "dist": {
                 "type": "path",
                 "url": "packages/Tessify/Core",
-                "reference": "9a30f3f390d0ebfc0a0c64118e2cf28f2b7e1a48"
+                "reference": "b2276cc1af5697ebe631fad05e9b18b5f333a4dc"
             },
             "require": {
                 "cviebrock/eloquent-sluggable": "^6.0",
@@ -4227,7 +4227,8 @@
                         "CompletedTasks": "Tessify\\Core\\Facades\\CompletedTasksFacade",
                         "ViewEmailRequests": "Tessify\\Core\\Facades\\ViewEmailRequestsFacade",
                         "Newsletters": "Tessify\\Core\\Facades\\NewslettersFacade",
-                        "Search": "Tessify\\Core\\Facades\\SearchFacade"
+                        "Search": "Tessify\\Core\\Facades\\SearchFacade",
+                        "Tags": "Tessify\\Core\\Facades\\TagsFacade"
                     }
                 },
                 "branch-alias": {

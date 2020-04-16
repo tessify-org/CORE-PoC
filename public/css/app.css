@@ -5532,6 +5532,28 @@ i {
           flex: 0 0 400px;
 }
 
+#project #project-content #project-tags {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 0 -7px -10px -7px;
+}
+
+#project #project-content #project-tags .project-tag__wrapper {
+  padding: 0 7px 10px 7px;
+  box-sizing: border-box;
+}
+
+#project #project-content #project-tags .project-tag__wrapper .project-tag {
+  color: #ffffff;
+  padding: 3px 6px;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
 #project #project-content #team-members {
   display: -webkit-box;
   display: flex;
@@ -6253,6 +6275,28 @@ i {
           flex: 1;
 }
 
+#task #task-content #task-tags {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 0 -7px -10px -7px;
+}
+
+#task #task-content #task-tags .task-tag__wrapper {
+  padding: 0 7px 10px 7px;
+  box-sizing: border-box;
+}
+
+#task #task-content #task-tags .task-tag__wrapper .task-tag {
+  color: #ffffff;
+  padding: 3px 6px;
+  border-radius: 2px;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
 #report-progress {
   width: 800px;
   margin: 0 auto;
@@ -6842,5 +6886,135 @@ i {
 #community-links .card-wrapper {
   -webkit-box-flex: 0;
           flex: 0 0 33.33%;
+}
+
+#ministry #ministry-header {
+  width: 100%;
+  height: 450px;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2af598), to(#009efd));
+  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+}
+
+#ministry #ministry-header #ministry-header__overlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+#ministry #ministry-header #ministry-header__content {
+  height: 100%;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 25px 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+#ministry #ministry-header #ministry-header__content #ministry-header__text {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  color: #ffffff;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+#ministry #ministry-header #ministry-header__content #ministry-header__text #ministry-header__title {
+  font-size: 3em;
+  font-weight: 500;
+  text-align: center;
+}
+
+#ministry #ministry-header #ministry-header__content #ministry-header__actions {
+  right: 0;
+  top: 25px;
+  z-index: 3;
+  position: absolute;
+}
+
+#ministry #ministry-header #ministry-header__content #ministry-header__actions .v-btn {
+  margin: 0 0 0 15px;
+}
+
+#ministry #ministry-header #ministry-header__content #ministry-header__actions .v-btn:first-child {
+  margin: 0;
+}
+
+#organization #organization-header {
+  width: 100%;
+  height: 450px;
+  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#2af598), to(#009efd));
+  background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+}
+
+#organization #organization-header #organization-header__overlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+#organization #organization-header #organization-header__content {
+  height: 100%;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 25px 0;
+  position: relative;
+  box-sizing: border-box;
+}
+
+#organization #organization-header #organization-header__content #organization-header__text {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: flex;
+  color: #ffffff;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+#organization #organization-header #organization-header__content #organization-header__text #organization-header__title {
+  font-size: 3em;
+  font-weight: 500;
+  text-align: center;
+}
+
+#organization #organization-header #organization-header__content #organization-header__actions {
+  right: 0;
+  top: 25px;
+  z-index: 3;
+  position: absolute;
+}
+
+#organization #organization-header #organization-header__content #organization-header__actions .v-btn {
+  margin: 0 0 0 15px;
+}
+
+#organization #organization-header #organization-header__content #organization-header__actions .v-btn:first-child {
+  margin: 0;
 }
 

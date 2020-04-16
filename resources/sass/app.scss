@@ -1281,11 +1281,26 @@
                         font-weight: 400;
                         font-size: 1.2em;
                     }
-
                 }
             }
             #project-info__sidebar {
                 flex: 0 0 400px;
+            }
+        }
+        #project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            margin: 0 -7px -10px -7px;
+            .project-tag__wrapper {
+                padding: 0 7px 10px 7px;
+                box-sizing: border-box;
+                .project-tag {
+                    color: #ffffff;
+                    padding: 3px 6px;
+                    border-radius: 2px;
+                    background-color: rgba(0, 0, 0, 0.85);
+                }
             }
         }
 
@@ -2065,6 +2080,22 @@
                 }
             }
         }
+        #task-tags {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            margin: 0 -7px -10px -7px;
+            .task-tag__wrapper {
+                padding: 0 7px 10px 7px;
+                box-sizing: border-box;
+                .task-tag {
+                    color: #ffffff;
+                    padding: 3px 6px;
+                    border-radius: 2px;
+                    background-color: rgba(0, 0, 0, 0.85);
+                }
+            }
+        }
     }
 }
 
@@ -2572,9 +2603,127 @@
     }
 }
 
+//
+// Ministries
+//
 
+#ministry {
+    #ministry-header {  
+        width: 100%;
+        height: 450px;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+        #ministry-header__overlay {  
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.65);
+        }
+        #ministry-header__content {  
+            height: 100%;
+            width: 1200px;
+            margin: 0 auto;
+            padding: 25px 0;
+            position: relative;
+            box-sizing: border-box;
+            #ministry-header__text {  
+                width: 100%;
+                height: 100%;
+                display: flex;
+                color: #ffffff;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                #ministry-header__title {  
+                    font-size: 3em;
+                    font-weight: 500;
+                    text-align: center;
+                }
+            }
+            #ministry-header__actions {
+                right: 0;
+                top: 25px;
+                z-index: 3;
+                position: absolute;
+                .v-btn {
+                    margin: 0 0 0 15px;
+                    &:first-child {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+    #ministry-content {
 
+    }
+}
 
+//
+// Organizations
+//
+
+#organization {
+    #organization-header {
+        width: 100%;
+        height: 450px;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: linear-gradient(180deg, #2af598 0%, #009efd 100%);
+        #organization-header__overlay {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.65);
+        }
+        #organization-header__content {
+            height: 100%;
+            width: 1200px;
+            margin: 0 auto;
+            padding: 25px 0;
+            position: relative;
+            box-sizing: border-box;
+            #organization-header__text {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                color: #ffffff;
+                align-items: center;
+                flex-direction: column;
+                justify-content: center;
+                #organization-header__title {
+                    font-size: 3em;
+                    font-weight: 500;
+                    text-align: center;
+                }
+            }
+            #organization-header__actions {
+                right: 0;
+                top: 25px;
+                z-index: 3;
+                position: absolute;
+                .v-btn {
+                    margin: 0 0 0 15px;
+                    &:first-child {
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+    #organization-content {
+
+    }
+}
 
 
 

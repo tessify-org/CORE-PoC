@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MessageSeeder::class);
         $this->call(NotificationSeeder::class);
         $this->call(SubscriptionSeeder::class);
+        $this->call(TagSeeder::class);
     }
 }
