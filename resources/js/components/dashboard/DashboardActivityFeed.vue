@@ -4,11 +4,12 @@
         <!-- Entries -->
         <div id="dashboard-activity-feed" v-if="paginatedEntries.length > 0">
             <div class="feed-activity" v-for="(activity, ai) in paginatedEntries" :key="ai">
-                <div class="feed-activity__user">
+                <div class="feed-activity__avatar-wrapper">
                     <div class="avatar"></div>
                 </div>
-                <div class="feed-activity__text">
-                    {{ activity.text }}
+                <div class="feed-activity__text-wrapper">
+                    <div class="activity-text">{{ activity.text }}</div>
+                    <div class="activity-date">{{ activity.formatted_date }}</div>
                 </div>
             </div>
         </div>
@@ -90,11 +91,12 @@
             .feed-activity {
                 display: flex;
                 flex-direction: row;
+                position: relative;
                 border-bottom: 1px solid rgba(0, 0, 0, 0.1);
                 &:last-child {
                     border-bottom: 0;
                 }
-                .feed-activity__user {
+                .feed-activity__avatar-wrapper {
                     flex: 0 0 40px;
                     .avatar {
                         width: 40px;
@@ -106,12 +108,19 @@
                         background-color: #f5f5f5;
                     }
                 }
-                .feed-activity__text {
+                .feed-activity__text-wrapper {
                     flex: 1;
                     display: flex;
                     margin: 0 0 0 30px;
-                    flex-direction: row;
-                    align-items: center;
+                    flex-direction: column;
+                    justify-content: center;
+                    .activity-text {
+
+                    }
+                    .activity-date {
+                        font-size: .9em;
+                        color: rgba(0, 0, 0, 0.25);
+                    }
                 }
             }
         }
