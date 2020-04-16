@@ -12,7 +12,7 @@
                             :label="strings.title+'*'"
                             :placeholder="strings.title_hint"
                             v-model="form.title" 
-                            :error="hasErrors('title')" 
+                            :errors="hasErrors('title')" 
                             :error-messages="getErrors('title')">
                         </v-text-field>
                     </div>
@@ -24,7 +24,7 @@
                             :label="strings.slogan+'*'"
                             :placeholder="strings.slogan_hint"
                             v-model="form.slogan"
-                            :error="hasErrors('slogan')"
+                            :errors="hasErrors('slogan')"
                             :error-messages="getErrors('slogan')">
                         </v-text-field>
                     </div>
@@ -36,7 +36,7 @@
                             :label="strings.description+'*'"
                             :placeholder="strings.description_hint"
                             v-model="form.description" 
-                            :error="hasErrors('description')" 
+                            :errors="hasErrors('description')" 
                             :error-messages="getErrors('description')">
                         </v-textarea>
                     </div>
@@ -260,7 +260,7 @@
                             name="starts_at"
                             :label="strings.start_date+'*'"
                             v-model="form.starts_at"
-                            :error="hasErrors('starts_at')"
+                            :errors="hasErrors('starts_at')"
                             :error-messages="getErrors('starts_at')">
                         </datepicker>
                     </div>
@@ -271,7 +271,7 @@
                             name="ends_at"
                             :label="strings.deadline+'*'"
                             v-model="form.ends_at"
-                            :error="hasErrors('ends_at')"
+                            :errors="hasErrors('ends_at')"
                             :error-messages="getErrors('ends_at')">
                         </datepicker>
                     </div>

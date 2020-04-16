@@ -7,7 +7,7 @@
             <!-- Project -->
             <div class="form-field">
                 <v-select
-                    :label="projectText"
+                    :label="strings.project"
                     :items="projectOptions"
                     v-model="form.project_id"
                     :errors="hasErrors('project_id')"
@@ -20,7 +20,7 @@
             <div class="form-field">
                 <v-text-field
                     name="title"
-                    :label="titleText+'*'"
+                    :label="strings.title+'*'"
                     v-model="form.title"
                     :errors="hasErrors('title')"
                     :error-messages="getErrors('title')">
@@ -31,11 +31,24 @@
             <div class="form-field">
                 <v-textarea
                     name="description"
-                    :label="descriptionText+'*'"
+                    :label="strings.description+'*'"
                     v-model="form.description"
                     :errors="hasErrors('description')"
                     :error-messages="getErrors('description')">
                 </v-textarea>
+            </div>
+
+            <!-- Tags -->
+            <div class="form-field">
+                <v-combobox
+                    multiple
+                    :label="strings.tags"
+                    v-model="form.tags"
+                    :items="tagOptions"
+                    :errors="hasErrors('tags')"
+                    :error-messages="getErrors('tags')">
+                </v-combobox>
+                <input type="hidden" name="tags" :value="encodedTags">
             </div>
 
             <div class="form-fields">
@@ -43,7 +56,7 @@
                 <!-- Status -->
                 <div class="form-field" v-if="editing">
                     <v-select
-                        :label="statusText+'*'"
+                        :label="strings.status+'*'"
                         :items="statusOptions"
                         v-model="form.task_status_id"
                         :errors="hasErrors('task_status_id')"
@@ -55,7 +68,7 @@
                 <!-- Category -->
                 <div class="form-field">
                     <v-combobox
-                        :label="categoryText+'*'"
+                        :label="strings.category+'*'"
                         :items="categoryOptions"
                         v-model="form.task_category"
                         :errors="hasErrors('task_category')"
@@ -68,7 +81,7 @@
                 <!-- Urgency -->
                 <div class="form-field">
                     <v-select
-                        :label="urgencyText+'*'"
+                        :label="strings.urgency+'*'"
                         v-model="form.urgency"
                         :items="urgencyOptions"
                         :errors="hasErrors('urgency')"
@@ -84,7 +97,7 @@
                 <!-- Complexity -->
                 <div class="form-field">
                     <v-select
-                        :label="complexityText+'*'"
+                        :label="strings.complexity+'*'"
                         :items="complexityOptions"
                         v-model="form.complexity"
                         :errors="hasErrors('complexity')"
@@ -96,7 +109,7 @@
                 <!-- Seniority -->
                 <div class="form-field">
                     <v-select
-                        :label="seniorityText+'*'"
+                        :label="strings.seniority+'*'"
                         :items="seniorityOptions"
                         v-model="form.task_seniority_id"
                         :errors="hasErrors('task_seniority_id')"
@@ -109,7 +122,7 @@
                 <div class="form-field">
                     <v-text-field
                         name="estimated_hours"
-                        :label="estimatedHoursText+'*'"
+                        :label="strings.estimated_hours+'*'"
                         v-model="form.estimated_hours"
                         :errors="hasErrors('estimated_hours')"
                         :error-messages="getErrors('estimated_hours')">
@@ -122,7 +135,7 @@
             <div class="form-field" v-if="editing && isCompleted">
                 <v-text-field
                     name="realized_hours"
-                    :label="realizedHoursText"
+                    :label="strings.realized_hours"
                     v-model="form.realized_hours"
                     :errors="hasErrors('realized_hours')"
                     :error-messages="getErrors('realized_hours')">
@@ -136,26 +149,8 @@
                     :skills="skills"
                     name="required_skills"
                     v-model="form.required_skills"
-                    :label-text="requiredSkillsText"
-                    :no-records-text="requiredSkillsNoRecordsText"
-                    :add-button-text="requiredSkillsAddButtonText"
-                    :view-title-text="requiredSkillsViewTitleText"
-                    :view-skill-text="requiredSkillsViewSkillText"
-                    :view-required-mastery-text="requiredSkillsViewRequiredMasteryText"
-                    :view-description-text="requiredSkillsViewDescriptionText"
-                    :add-title-text="requiredSkillsAddTitleText"
-                    :form-skill-text="requiredSkillsFormSkillText"
-                    :form-required-mastery-text="requiredSkillsFormRequiredMasteryText"
-                    :form-description-text="requiredSkillsFormDescriptionText"
-                    :add-cancel-text="requiredSkillsAddCancelText"
-                    :add-submit-text="requiredSkillsAddSubmitText"
-                    :edit-title-text="requiredSkillsEditTitleText"
-                    :edit-cancel-text="requiredSkillsEditCancelText"
-                    :edit-submit-text="requiredSkillsEditSubmitText"
-                    :delete-title-text="requiredSkillsDeleteTitleText"
-                    :delete-text="requiredSkillsDeleteText"
-                    :delete-cancel-text="requiredSkillsDeleteCancelText"
-                    :delete-submit-text="requiredSkillsDeleteSubmitText">
+                    :label-text="strings.required_skills"
+                    :strings="strings.required_skills_strings">
                 </required-skills-field>
             </div>
 
@@ -167,13 +162,13 @@
             <div class="form-controls__left">
                 <v-btn :href="backHref" outlined>
                     <i class="fas fa-arrow-left"></i>
-                    {{ backText }}
+                    {{ strings.back }}
                 </v-btn>
             </div>
             <div class="form-controls__right">
                 <v-btn type="submit" color="success" depressed>
                     <i class="fas fa-save"></i>
-                    {{ submitText }}
+                    {{ strings.submit }}
                 </v-btn>
             </div>
         </div>
@@ -193,47 +188,9 @@
             "statuses",
             "categories",
             "seniorities",
-            "projectText",
-            "statusText",
-            "categoryText",
-            "seniorityText",
-            "titleText",
-            "descriptionText",
-            "complexityText",
-            "estimatedHoursText",
-            "realizedHoursText",
-            "selectCategoryText",
-            "noCategoriesText",
-            "selectSeniorityText",
-            "noSenioritiesText",
-            "selectStatusText",
-            "noStatusesText",
-            "requiredSkillsText",
-            "requiredSkillsNoRecordsText",
-            "requiredSkillsAddButtonText",
-            "requiredSkillsViewTitleText",
-            "requiredSkillsViewSkillText",
-            "requiredSkillsViewRequiredMasteryText",
-            "requiredSkillsViewDescriptionText",
-            "requiredSkillsViewEditText",
-            "requiredSkillsViewDeleteText",
-            "requiredSkillsAddTitleText",
-            "requiredSkillsFormSkillText",
-            "requiredSkillsFormRequiredMasteryText",
-            "requiredSkillsFormDescriptionText",
-            "requiredSkillsAddCancelText",
-            "requiredSkillsAddSubmitText",
-            "requiredSkillsEditTitleText",
-            "requiredSkillsEditCancelText",
-            "requiredSkillsEditSubmitText",
-            "requiredSkillsDeleteTitleText",
-            "requiredSkillsDeleteText",
-            "requiredSkillsDeleteCancelText",
-            "requiredSkillsDeleteSubmitText",
-            "urgencyText",
+            "tags",
             "backHref",
-            "backText",
-            "submitText",
+            "strings",
         ],
         data: () => ({
             tag: "[task-form]",
@@ -243,6 +200,7 @@
             categoryOptions: [],
             urgencyOptions: [],
             statusOptions: [],
+            tagOptions: [],
             form: {
                 project_id: 0,
                 task_status_id: 0,
@@ -255,6 +213,7 @@
                 realized_hours: 0,
                 required_skills: [],
                 urgency: 2,
+                tags: [],
             }
         }),
         computed: {
@@ -264,6 +223,9 @@
             isCompleted() {
                 let status = this.getStatusById(this.form.task_status_id);
                 return status && status.name === "completed";
+            },
+            encodedTags() {
+                return JSON.stringify(this.form.tags);
             },
         },
         methods: {
@@ -277,53 +239,16 @@
                 console.log(this.tag+" old input: ", this.oldInput);
                 console.log(this.tag+" categories: ", this.categories);
                 console.log(this.tag+" seniorities: ", this.seniorities);
-                console.log(this.tag+" project text: ", this.projectText);
-                console.log(this.tag+" category text: ", this.categoryText);
-                console.log(this.tag+" seniority text: ", this.seniorityText);
-                console.log(this.tag+" title text: ", this.titleText);
-                console.log(this.tag+" description text: ", this.descriptionText);
-                console.log(this.tag+" complexity text: ", this.complexityText);
-                console.log(this.tag+" estimated hours text: ", this.estimatedHoursText);
-                console.log(this.tag+" realized hours text: ", this.realizedHoursText);
-                console.log(this.tag+" select category text: ", this.selectCategoryText);
-                console.log(this.tag+" no categories text: ", this.noCategoriesText);
-                console.log(this.tag+" select seniority text: ", this.selectSeniorityText);
-                console.log(this.tag+" no seniorities text: ", this.noSenioritiesText);
-                console.log(this.tag+" select status text: ", this.selectStatusText);
-                console.log(this.tag+" no statuses text: ", this.noStatusesText);
-                console.log(this.tag+" required skills text: ", this.requiredSkillsText);
-                console.log(this.tag+" required skills no records text: ", this.requiredSkillsNoRecordsText);
-                console.log(this.tag+" required skills add button text: ", this.requiredSkillsAddButtonText);
-                console.log(this.tag+" required skills view title text: ", this.requiredSkillsViewTitleText);
-                console.log(this.tag+" required skills view skill text: ", this.requiredSkillsViewSkillText);
-                console.log(this.tag+" required skills view required mastery text: ", this.requiredSkillsViewRequiredMasteryText);
-                console.log(this.tag+" required skills view description text: ", this.requiredSkillsViewDescriptionText);
-                console.log(this.tag+" required skills view edit text: ", this.requiredSkillsViewEditText);
-                console.log(this.tag+" required skills view delete text: ", this.requiredSkillsViewDeleteText);
-                console.log(this.tag+" required skills add title text: ", this.requiredSkillsAddTitleText);
-                console.log(this.tag+" required skills form skill text: ", this.requiredSkillsFormSkillText);
-                console.log(this.tag+" required skills form required mastery text: ", this.requiredSkillsFormRequiredMasteryText);
-                console.log(this.tag+" required skills form description text: ", this.requiredSkillsFormDescriptionText);
-                console.log(this.tag+" required skills add cancel text: ", this.requiredSkillsAddCancelText);
-                console.log(this.tag+" required skills add submit text: ", this.requiredSkillsAddSubmitText);
-                console.log(this.tag+" required skills edit title text: ", this.requiredSkillsEditTitleText);
-                console.log(this.tag+" required skills edit cancel text: ", this.requiredSkillsEditCancelText);
-                console.log(this.tag+" required skills edit submit text: ", this.requiredSkillsEditSubmitText);
-                console.log(this.tag+" required skills delete title text: ", this.requiredSkillsDeleteTitleText);
-                console.log(this.tag+" required skills delete text: ", this.requiredSkillsDeleteText);
-                console.log(this.tag+" required skills delete cancel text: ", this.requiredSkillsDeleteCancelText);
-                console.log(this.tag+" required skills delete submit text: ", this.requiredSkillsDeleteSubmitText);
-                // console.log(this.tag+" required skills : ", this.requiredSkills);
-                console.log(this.tag+" urgency text: ", this.urgencyText);
+                console.log(this.tag+" tags: ", this.tags);
+                console.log(this.tag+" strings: ", this.strings);
                 console.log(this.tag+" back href: ", this.backHref);
-                console.log(this.tag+" back text: ", this.backText);
-                console.log(this.tag+" submit text: ", this.submitText);
                 this.generateProjectOptions();
                 this.generateComplexityOptions();
                 this.generateSeniorityOptions();
                 this.generateCategoryOptions();
                 this.generateUrgencyOptions();
                 this.generateStatusOptions();
+                this.generateTagOptions();
                 this.initializeData();
             },
             generateProjectOptions() {
@@ -393,6 +318,13 @@
                     });
                 }
             },
+            generateTagOptions() {
+                if (this.tags !== undefined && this.tags !== null && this.tags.length > 0) {
+                    for (let i = 0; i < this.tags.length; i++) {
+                        this.tagOptions.push(this.tags[i].name);
+                    }
+                }
+            },
             initializeData() {
                 if (this.project !== undefined && this.project !== null) {
                     this.form.project_id = this.project.id;
@@ -413,6 +345,11 @@
 
                         }
                     }
+                    if (this.task.tags !== undefined && this.task.tags !== null && this.tags.length > 0) {
+                        for (let i = 0; i < this.task.tags.length; i++) {
+                            this.form.tags.push(this.task.tags[i].name);
+                        }
+                    }
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.project_id !== null) this.form.project_id = parseInt(this.oldInput.project_id);
@@ -425,6 +362,7 @@
                     if (this.oldInput.estimated_hours !== null) this.form.estimated_hours = this.oldInput.estimated_hours;
                     if (this.oldInput.realized_hours !== null) this.form.realized_hours = this.oldInput.realized_hours;
                     if (this.oldInput.urgency !== null) this.form.urgency = parseInt(this.oldInput.urgency);
+                    if (this.oldInput.tags !== null) this.form.tags = JSON.parse(this.oldInput.tags);
                 }
             },
             hasErrors(field) {
