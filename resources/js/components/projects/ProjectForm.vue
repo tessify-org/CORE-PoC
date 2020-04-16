@@ -9,8 +9,8 @@
                     <div class="form-field">
                         <v-text-field 
                             name="title" 
-                            :label="titleText+'*'"
-                            :placeholder="titleHintText"
+                            :label="strings.title+'*'"
+                            :placeholder="strings.title_hint"
                             v-model="form.title" 
                             :error="hasErrors('title')" 
                             :error-messages="getErrors('title')">
@@ -21,8 +21,8 @@
                     <div class="form-field">
                         <v-text-field
                             name="slogan"
-                            :label="sloganText+'*'"
-                            :placeholder="sloganHintText"
+                            :label="strings.slogan+'*'"
+                            :placeholder="strings.slogan_hint"
                             v-model="form.slogan"
                             :error="hasErrors('slogan')"
                             :error-messages="getErrors('slogan')">
@@ -33,17 +33,31 @@
                     <div class="form-field">
                         <v-textarea
                             name="description" 
-                            :label="descriptionText+'*'"
-                            :placeholder="descriptionHintText"
+                            :label="strings.description+'*'"
+                            :placeholder="strings.description_hint"
                             v-model="form.description" 
                             :error="hasErrors('description')" 
                             :error-messages="getErrors('description')">
                         </v-textarea>
                     </div>
 
+                    <!-- Tags -->
+                    <div class="form-field">
+                        <v-combobox
+                            multiple
+                            :label="strings.tags"
+                            :placeholder="strings.tags_hint"
+                            v-model="form.tags"
+                            :items="tagOptions"
+                            :errors="hasErrors('tags')"
+                            :error-messages="getErrors('tags')">
+                        </v-combobox>
+                        <input type="hidden" name="tags" :value="encodedTags">
+                    </div>
+
                     <!-- Header image -->
                     <div class="image-field" :class="{ 'has-errors': hasErrors('header_image') }">
-                        <div class="image-field__label">{{ headerImageText }}</div>
+                        <div class="image-field__label">{{ strings.header_image }}</div>
                         <div class="image-field__image-wrapper" v-if="hasProject && projectHasImage">
                             <img class="image-field__image" :src="project.header_image_url">
                         </div>
@@ -68,7 +82,7 @@
                     <div class="form-field">
                         <team-roles-field
                             name="team_roles"
-                            :label="rolesText"
+                            :label="strings.roles"
                             v-model="form.team_roles"
                             :skills="skills">
                         </team-roles-field>
@@ -85,25 +99,12 @@
                     <div class="form-field">
                         <resources-field
                             name="resources"
-                            :label="resourcesText"
+                            :label="strings.resources"
                             v-model="form.resources"
+                            :strings="strings.resource_strings"
                             :create-api-endpoint="createResourceApiEndpoint"
                             :update-api-endpoint="updateResourceApiEndpoint"
-                            :delete-api-endpoint="deleteResourceApiEndpoint"
-                            :no-records-text="resourcesNoRecordsText"
-                            :add-button-text="resourcesAddButtonText"
-                            :form-title-text="resourcesFormTitleText"
-                            :form-description-text="resourcesFormDescriptionText"
-                            :form-file-text="resourcesFormFileText"
-                            :create-dialog-title-text="resourcesCreateDialogTitleText"
-                            :create-dialog-cancel-text="resourcesCreateDialogCancelText"
-                            :create-dialog-submit-text="resourcesCreateDialogSubmitText"
-                            :update-dialog-title-text="resourcesUpdateDialogTitleText"
-                            :update-dialog-cancel-text="resourcesUpdateDialogCancelText"
-                            :update-dialog-submit-text="resourcesUpdateDialogSubmitText"
-                            :delete-dialog-title-text="resourcesDeleteDialogTitleText"
-                            :delete-dialog-cancel-text="resourcesDeleteDialogCancelText"
-                            :delete-dialog-submit-text="resourcesDeleteDialogSubmitText">
+                            :delete-api-endpoint="deleteResourceApiEndpoint">
                         </resources-field>
                     </div>
 
@@ -115,7 +116,7 @@
                 <div class="page-controls__left">
                     <v-btn :href="backHref" outlined>
                         <i class="fas fa-arrow-left"></i>
-                        {{ backText }}
+                        {{ strings.back }}
                     </v-btn>
                 </div>
             </div>
@@ -131,7 +132,7 @@
                     <!-- Status -->
                     <div class="form-field mb-0">
                         <v-select
-                            :label="statusText"
+                            :label="strings.status"
                             :items="statusOptions"
                             v-model="form.project_status_id"
                             :errors="hasErrors('project_status_id')"
@@ -143,7 +144,7 @@
                     <!-- Phase -->
                     <div class="form-field mb-0">
                         <v-combobox
-                            :label="projectPhaseText"
+                            :label="strings.project_phase"
                             :items="phaseOptions"
                             v-model="form.project_phase"
                             :errors="hasErrors('project_phase')"
@@ -155,7 +156,7 @@
                     <!-- Category -->
                     <div class="form-field">
                         <v-combobox
-                            :label="categoryText+'*'"
+                            :label="strings.category+'*'"
                             :items="categoryOptions"
                             v-model="form.project_category"
                             :errors="hasErrors('project_category')"
@@ -167,7 +168,7 @@
                     <!-- Work method -->
                     <div class="form-field">
                         <v-select
-                            :label="workMethodText"
+                            :label="strings.work_method"
                             :items="workMethodOptions"
                             v-model="form.work_method_id"
                             :errors="hasErrors('work_method_id')"
@@ -186,7 +187,7 @@
                     <!-- Ministry -->
                     <div class="form-field">
                         <v-select
-                            :label="ministryText"
+                            :label="strings.ministry"
                             v-model="form.ministry_id"
                             :items="ministryOptions"
                             :errors="hasErrors('ministry_id')"
@@ -199,7 +200,7 @@
                     <div class="form-field">
                         <v-text-field
                             name="project_code"
-                            :label="projectCodeText"
+                            :label="strings.project_code"
                             v-model="form.project_code"
                             :errors="hasErrors('project_code')"
                             :error-messages="getErrors('project_code')">
@@ -210,7 +211,7 @@
                     <div class="form-field">
                         <v-text-field
                             name="budget"
-                            :label="budgetText"
+                            :label="strings.budget"
                             v-model="form.budget"
                             :errors="hasErrors('budget')"
                             :error-messages="getErrors('budget')">
@@ -240,7 +241,7 @@
                     <div class="form-field checkbox">
                         <v-checkbox
                             hide-details
-                            :label="hasDeadlineText"
+                            :label="strings.has_deadline"
                             v-model="form.has_deadline">
                         </v-checkbox>
                         <input type="hidden" name="has_deadline" :value="form.has_deadline">
@@ -257,7 +258,7 @@
                     <div class="form-field" :class="{ 'mb-10': form.has_deadline }">
                         <datepicker
                             name="starts_at"
-                            :label="startDateText+'*'"
+                            :label="strings.start_date+'*'"
                             v-model="form.starts_at"
                             :error="hasErrors('starts_at')"
                             :error-messages="getErrors('starts_at')">
@@ -268,7 +269,7 @@
                     <div class="form-field" v-if="form.has_deadline">
                         <datepicker
                             name="ends_at"
-                            :label="deadlineText+'*'"
+                            :label="strings.deadline+'*'"
                             v-model="form.ends_at"
                             :error="hasErrors('ends_at')"
                             :error-messages="getErrors('ends_at')">
@@ -283,7 +284,7 @@
                 <div class="page-controls__right">
                     <v-btn type="submit" color="success" block large>
                         <i class="fas fa-save"></i>
-                        {{ submitText }}
+                        {{ strings.submit }}
                     </v-btn>
                 </div>
             </div>
@@ -303,48 +304,14 @@
             "workMethods",
             "ministries",
             "skills",
+            "tags",
             "errors",
             "oldInput",
+            "strings",
+            "backHref",
             "createResourceApiEndpoint",
             "updateResourceApiEndpoint",
             "deleteResourceApiEndpoint",
-            "titleText",
-            "titleHintText",
-            "sloganText",
-            "sloganHintText",
-            "descriptionText",
-            "descriptionHintText",
-            "headerImageText",
-            "rolesText",
-            "resourcesText",
-            "categoryText",
-            "workMethodText",
-            "statusText",
-            "hasTasksText",
-            "hasDeadlineText",
-            "startDateText",
-            "deadlineText",
-            "budgetText",
-            "ministryText",
-            "projectCodeText",
-            "projectPhaseText",
-            "backText",
-            "backHref",
-            "submitText",
-            "resourcesNoRecordsText",
-            "resourcesAddButtonText",
-            "resourcesFormTitleText",
-            "resourcesFormDescriptionText",
-            "resourcesFormFileText",
-            "resourcesCreateDialogTitleText",
-            "resourcesCreateDialogCancelText",
-            "resourcesCreateDialogSubmitText",
-            "resourcesUpdateDialogTitleText",
-            "resourcesUpdateDialogCancelText",
-            "resourcesUpdateDialogSubmitText",
-            "resourcesDeleteDialogTitleText",
-            "resourcesDeleteDialogCancelText",
-            "resourcesDeleteDialogSubmitText",
         ],
         data: () => ({
             tag: "[project-form]",
@@ -353,6 +320,7 @@
             ministryOptions: [],
             statusOptions: [],
             phaseOptions: [],
+            tagOptions: [],
             form: {
                 project_status_id: 0,
                 project_category: "",
@@ -361,6 +329,7 @@
                 title: "",
                 slogan: "",
                 description: "",
+                tags: [],
                 starts_at: "",
                 ends_at: "",
                 resources: [],
@@ -377,6 +346,9 @@
             projectHasImage() {
                 return this.hasProject && this.project.header_image_url !== null && this.project.header_image_url !== '';
             },
+            encodedTags() {
+                return JSON.stringify(this.form.tags);
+            },
         },
         methods: {
             initialize() {
@@ -388,20 +360,28 @@
                 console.log(this.tag+" work methods: ", this.workMethods);
                 console.log(this.tag+" ministries: ", this.ministries);
                 console.log(this.tag+" skills: ", this.skills);
+                console.log(this.tag+" tags: ", this.tags);
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
+                console.log(this.tag+" strings: ", this.strings);
                 console.log(this.tag+" create resource api endpoint: ", this.createResourceApiEndpoint);
                 console.log(this.tag+" update resource api endpoint: ", this.updateResourceApiEndpoint);
                 console.log(this.tag+" delete resource api endpoint: ", this.deleteResourceApiEndpoint);
+                console.log(this.tag+" back href: ", this.backHref);
                 this.generateWorkMethodOptions();
                 this.generateCategoryOptions();
                 this.generateMinistryOptions();
                 this.generateStatusOptions();
                 this.generatePhaseOptions();
+                this.generateTagOptions();
                 this.initializeData();
             },
             initializeData() {
+                
+                // Set default status (to the first available option)
                 this.form.project_status_id = this.statusOptions[0].value;
+
+                // If we received a project, load it's data
                 if (this.project !== undefined && this.project !== null) {
                     this.form.project_status_id = this.project.project_status_id;
                     this.form.project_category = this.project.category.label;
@@ -434,7 +414,14 @@
                         }
                         this.form.team_roles = teamRoles;
                     }
+                    if (this.project.tags !== undefined && this.project.tags !== null && this.project.tags.length > 0) {
+                        for (let i = 0; i < this.project.tags.length; i++) {
+                            this.form.tags.push(this.project.tags[i].name);
+                        }
+                    }
                 }
+
+                // If we received old input, load that data (overwriting whatever is in there)
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.project_phase_id !== null) this.form.project_phase_id = this.oldInput.project_phase_id;
                     if (this.oldInput.project_status_id !== null) this.form.project_status_id = this.oldInput.project_status_id;
@@ -451,7 +438,9 @@
                     if (this.oldInput.has_tasks !== null) this.form.has_tasks = this.oldInput.has_tasks === "true" ? true : false;
                     if (this.oldInput.budget !== null) this.form.budget = parseInt(this.oldInput.budget);
                     if (this.oldInput.project_code !== null) this.form.project_code = this.oldInput.project_code;
+                    if (this.oldInput.tags !== null) this.form.tags = JSON.parse(this.oldInput.tags);
                 }
+
             },
             generateStatusOptions() {
                 if (this.projectStatuses !== undefined && this.projectStatuses !== null && this.projectStatuses.length > 0) {
@@ -501,6 +490,13 @@
                 if (this.projectPhases !== undefined && this.projectPhases !== null && this.projectPhases.length > 0) {
                     for (let i = 0; i < this.projectPhases.length; i++) {
                         this.phaseOptions.push(this.projectPhases[i].name);
+                    }
+                }
+            },
+            generateTagOptions() {
+                if (this.tags !== undefined && this.tags !== null && this.tags.length > 0) {
+                    for (let i = 0; i < this.tags.length; i++) {
+                        this.tagOptions.push(this.tags[i].name);
                     }
                 }
             },

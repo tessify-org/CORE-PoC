@@ -29,14 +29,14 @@
 
         <!-- No files -->
         <div class="resources-field__no-files" v-if="mutableResources.length === 0">
-            {{ noRecordsText }}
+            {{ strings.no_records }}
         </div>
 
         <!-- Actions -->
         <div class="resources-field__actions">
             <v-btn depressed small color="primary" @click="onClickAdd">
                 <i class="fas fa-plus"></i>
-                {{ addButtonText }}
+                {{ strings.add_button }}
             </v-btn>
         </div>
 
@@ -50,7 +50,7 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">{{ createDialogTitleText }}</h3>
+                    <h3 class="dialog-title">{{ strings.create_dialog_title }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.add.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.add.errors" :key="ei">
@@ -60,20 +60,20 @@
                     <!-- Title -->
                     <div class="form-field">
                         <v-text-field
-                            :label="formTitleText"
+                            :label="strings.form_title"
                             v-model="dialogs.add.form.title">
                         </v-text-field>
                     </div>
                     <!-- Description -->
                     <div class="form-field">
                         <v-textarea
-                            :label="formDescriptionText"
+                            :label="strings.form_description"
                             v-model="dialogs.add.form.description">
                         </v-textarea>
                     </div>
                     <!-- File -->
                     <div class="file-field">
-                        <div class="file-field__label">{{ formFileText }}</div>
+                        <div class="file-field__label">{{ strings.form_file }}</div>
                         <div class="file-field__input">
                             <input type="file" @change="addFileChanged($event)">
                         </div>
@@ -85,7 +85,7 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.add.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            {{ createDialogCancelText }}
+                            {{ strings.create_dialog_cancel }}
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
@@ -96,7 +96,7 @@
                             :loading="dialogs.add.loading" 
                             :disabled="confirmAddDisabled">
                             <i class="far fa-save"></i>
-                            {{ createDialogSubmitText }}
+                            {{ strings.create_dialog_submit }}
                         </v-btn>
                     </div>
                 </div>
@@ -113,9 +113,7 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">
-                        {{ updateDialogTitleText }}
-                    </h3>
+                    <h3 class="dialog-title">{{ strings.update_dialog_title }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.edit.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.edit.errors" :key="ei">
@@ -125,20 +123,20 @@
                     <!-- Title -->
                     <div class="form-field">
                         <v-text-field
-                            :label="formTitleText"
+                            :label="strings.form_title"
                             v-model="dialogs.edit.form.title">
                         </v-text-field>
                     </div>
                     <!-- Description -->
                     <div class="form-field">
                         <v-textarea
-                            :label="formDescriptionText"
+                            :label="strings.form_description"
                             v-model="dialogs.edit.form.description">
                         </v-textarea>
                     </div>
                     <!-- File -->
                     <div class="file-field">
-                        <div class="file-field__label">{{ formFileText }}</div>
+                        <div class="file-field__label">{{ strings.form_file }}</div>
                         <div class="file-field__input">
                             <input type="file" @change="editFileChanged($event)">
                         </div>
@@ -150,7 +148,7 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.edit.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            {{ updateDialogCancelText }}
+                            {{ strings.update_dialog_cancel }}
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
@@ -161,7 +159,7 @@
                             :loading="dialogs.edit.loading" 
                             :disabled="confirmEditDisabled">
                             <i class="far fa-save"></i>
-                            {{ updateDialogSubmitText }}
+                            {{ strings.update_dialog_submit }}
                         </v-btn>
                     </div>
                 </div>
@@ -179,7 +177,7 @@
                 <div class="dialog-content">
                     <!-- Title -->
                     <h3 class="dialog-title">
-                        {{ deleteDialogTitle }}
+                        {{ strings.delete_dialog_title }}
                     </h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.delete.errors.length > 0">
@@ -189,7 +187,7 @@
                     </div>
                     <!-- Text -->
                     <div class="dialog-text">
-                        {{ deleteDialogText }}
+                        {{ strings.delete_dialog_text }}
                     </div>
                 </div>
                 <!-- Controls -->
@@ -198,20 +196,20 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.delete.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            {{ deleteDialogCancelText }}
+                            {{ strings.delete_dialog_cancel }}
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
                     <div class="dialog-controls__right">
                         <v-btn dark color="red" @click="onClickConfirmDelete" :loading="dialogs.delete.loading">
                             <i class="fas fa-trash-alt"></i>
-                            {{ deleteDialogSubmitText }}
+                            {{ strings.delete_dialog_submit }}
                         </v-btn>
                     </div>
                 </div>
             </div>
         </v-dialog>        
-
+    
         <!-- Hidden input -->
         <input type="hidden" :name="name" :value="encodedMutableResourceIds">
 
@@ -225,24 +223,10 @@
             "label",
             "value",
             "errors",
+            "strings",
             "createApiEndpoint",
             "updateApiEndpoint",
             "deleteApiEndpoint",
-            "noRecordsText",
-            "addButtonText",
-            "formTitleText",
-            "formDescriptionText",
-            "formFileText",
-            "createDialogTitleText",
-            "createDialogCancelText",
-            "createDialogSubmitText",
-            "updateDialogTitleText",
-            "updateDialogCancelText",
-            "updateDialogSubmitText",
-            "deleteDialogTitleText",
-            "deleteDialogText",
-            "deleteDialogCancelText",
-            "deleteDialogSubmitText",
         ],
         data: () => ({
             tag: "[resources-field]",
@@ -316,6 +300,7 @@
                 console.log(this.tag+" name: ", this.name);
                 console.log(this.tag+" label: ", this.label);
                 console.log(this.tag+" value: ", this.value);
+                console.log(this.tag+" strings: ", this.strings);
                 console.log(this.tag+" create api endpoint: ", this.createApiEndpoint);
                 console.log(this.tag+" update api endpoint: ", this.updateApiEndpoint);
                 console.log(this.tag+" delete api endpoint: ", this.deleteApiEndpoint);
