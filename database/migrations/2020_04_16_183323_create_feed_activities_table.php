@@ -16,7 +16,7 @@ class CreateFeedActivitiesTable extends Migration
         Schema::create('feed_activities', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('actor_id');
+            $table->unsignedInteger('actor_id')->nullable();
             $table->string('target_type');
             $table->string('target_id');
             $table->string('name');
