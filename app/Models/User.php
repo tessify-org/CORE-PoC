@@ -152,6 +152,16 @@ class User extends Authenticatable
     {
         return $this->hasMany(\Tessify\Core\Models\ViewEmailRequest::class, "id", "target_user_id");
     }
+
+    public function feedActivities()
+    {
+        return $this->hasMany(\Tessify\Core\Models\FeedActivity::class);
+    }
+
+    public function actingFeedActivities()
+    {
+        return $this->hasMany(\Tessify\Core\Models\FeedActivity::class, "actor_id", "id");
+    }
     
     //
     // Accessors
