@@ -3637,7 +3637,7 @@ i {
 }
 
 .content-card.mb {
-  margin: 0 0 30px 0;
+  margin: 0 0 50px 0;
 }
 
 .content-card .content-card__content {
@@ -3655,7 +3655,7 @@ i {
 
 .content-card .content-card__content h3 {
   font-size: 1.4em;
-  margin: 5px 0 10px 0;
+  margin: 5px 0 25px 0;
 }
 
 .content-card .content-card__footer {
@@ -6557,12 +6557,15 @@ i {
   }
 }
 
-#login {
+#login-wrapper {
   width: 500px;
+  margin: 0 auto;
+}
+
+#login-wrapper #login {
   padding: 25px;
   display: -webkit-box;
   display: flex;
-  margin: 0 auto;
   border-radius: 3px;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
@@ -6571,15 +6574,15 @@ i {
   background-color: #fff;
 }
 
-#login form {
+#login-wrapper #login form {
   width: 100%;
 }
 
-#login .form-controls {
+#login-wrapper #login .form-controls {
   margin: 15px 0 15px 0;
 }
 
-#login #no-account {
+#login-wrapper #login #no-account {
   margin: 30px 0 0 0;
 }
 
@@ -6971,6 +6974,129 @@ i {
   margin: 0;
 }
 
+#ministry #ministry-content #ministry-organizations #organizations {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 0 -15px -30px -15px;
+}
+
+#ministry #ministry-content #ministry-organizations #organizations .organization-wrapper {
+  -webkit-box-flex: 0;
+          flex: 0 0 33.33%;
+  box-sizing: border-box;
+  padding: 0 15px 30px 15px;
+}
+
+#ministry #ministry-content #ministry-organizations #organizations .organization-wrapper .organization {
+  padding: 30px;
+  color: #000;
+  display: -webkit-box;
+  display: flex;
+  border-radius: 3px;
+  -webkit-box-align: center;
+          align-items: center;
+  box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  background-color: #f2f2f2;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#ministry #ministry-content #ministry-organizations #organizations .organization-wrapper .organization:hover {
+  background-color: #e6e6e6;
+}
+
+#ministry #ministry-content #ministry-projects #projects {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 0 -15px -30px -15px;
+}
+
+#ministry #ministry-content #ministry-projects #projects .project-wrapper {
+  -webkit-box-flex: 0;
+          flex: 0 0 50%;
+  box-sizing: border-box;
+  padding: 0 15px 30px 15px;
+}
+
+#ministry #ministry-content #ministry-projects #projects .project-wrapper .project {
+  padding: 30px;
+  color: #000;
+  display: -webkit-box;
+  display: flex;
+  border-radius: 3px;
+  -webkit-box-align: center;
+          align-items: center;
+  box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  background-color: #f2f2f2;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#ministry #ministry-content #ministry-projects #projects .project-wrapper .project:hover {
+  background-color: #e6e6e6;
+}
+
+#ministry #ministry-content #ministry-tasks #tasks {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 0 -15px -30px -15px;
+}
+
+#ministry #ministry-content #ministry-tasks #tasks .task-wrapper {
+  -webkit-box-flex: 0;
+          flex: 0 0 33.33%;
+  box-sizing: border-box;
+  padding: 0 15px 30px 15px;
+}
+
+#ministry #ministry-content #ministry-tasks #tasks .task-wrapper .task {
+  padding: 30px;
+  color: #000;
+  display: -webkit-box;
+  display: flex;
+  border-radius: 3px;
+  -webkit-box-align: center;
+          align-items: center;
+  box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  background-color: #f2f2f2;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#ministry #ministry-content #ministry-tasks #tasks .task-wrapper .task:hover {
+  background-color: #e6e6e6;
+}
+
 #organization #organization-header {
   width: 100%;
   height: 450px;
@@ -7034,5 +7160,138 @@ i {
 
 #organization #organization-header #organization-header__content #organization-header__actions .v-btn:first-child {
   margin: 0;
+}
+
+#organization #organization-content #organization-departments #departments {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 0 -15px -30px -15px;
+}
+
+#organization #organization-content #organization-departments #departments .department-wrapper {
+  -webkit-box-flex: 0;
+          flex: 0 0 33.33%;
+  box-sizing: border-box;
+  padding: 0 15px 30px 15px;
+}
+
+#organization #organization-content #organization-departments #departments .department-wrapper .department {
+  padding: 15px;
+  color: #000;
+  display: -webkit-box;
+  display: flex;
+  border-radius: 3px;
+  -webkit-box-align: center;
+          align-items: center;
+  box-sizing: border-box;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+  text-decoration: none;
+  background-color: #f2f2f2;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#organization #organization-content #organization-departments #departments .department-wrapper .department:hover {
+  background-color: #e6e6e6;
+}
+
+#search-footer {
+  display: -webkit-box;
+  display: flex;
+  margin: 30px 0 0 0;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+#tags #tag-list {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 0 -15px -30px -15px;
+}
+
+#tags #tag-list .tag-wrapper {
+  -webkit-box-flex: 0;
+          flex: 0 0 20%;
+  box-sizing: border-box;
+  padding: 0 15px 30px 15px;
+}
+
+#tags #tag-list .tag-wrapper .tag {
+  display: -webkit-box;
+  display: flex;
+  color: #000000;
+  padding: 10px 15px;
+  border-radius: 3px;
+  text-decoration: none;
+  box-sizing: border-box;
+  background-color: #f2f2f2;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#tags #tag-list .tag-wrapper .tag:hover {
+  background-color: #e6e6e6;
+}
+
+.tag-overview .tag-overview__entry {
+  display: -webkit-box;
+  display: flex;
+  padding: 10px 0;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.tag-overview .tag-overview__entry:last-child {
+  border-bottom: 0;
+}
+
+.tag-overview .tag-overview__entry:hover {
+  color: black;
+}
+
+.tag-overview .tag-overview__entry .entry-col {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.tag-overview .tag-overview__entry .entry-col:first-child {
+  -webkit-box-flex: 3;
+          flex: 3;
+}
+
+.tag-overview .tag-overview__entry .entry-col:last-child {
+  -webkit-box-pack: end;
+          justify-content: flex-end;
 }
 

@@ -65,6 +65,16 @@ Breadcrumbs::for("search", function($t) {
     $t->push(__('tessify-core::breadcrumbs.search'), route("search"));
 });
 
+// Tags
+Breadcrumbs::for("tags", function($t) {
+    $t->parent("search");
+    $t->push(__("tessify-core::breadcrumbs.tags"), route("tags"));
+});
+Breadcrumbs::for("tags.view", function($t, $tag) {
+    $t->parent("tags");
+    $t->push($tag->name, route("tags.view", $tag->slug));
+});
+
 // Memberlist
 Breadcrumbs::for("memberlist", function($t) {
     $t->parent("home");

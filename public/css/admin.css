@@ -3637,7 +3637,7 @@ i {
 }
 
 .content-card.mb {
-  margin: 0 0 30px 0;
+  margin: 0 0 50px 0;
 }
 
 .content-card .content-card__content {
@@ -3655,7 +3655,7 @@ i {
 
 .content-card .content-card__content h3 {
   font-size: 1.4em;
-  margin: 5px 0 10px 0;
+  margin: 5px 0 25px 0;
 }
 
 .content-card .content-card__footer {
