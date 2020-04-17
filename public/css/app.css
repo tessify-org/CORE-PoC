@@ -6837,14 +6837,13 @@ i {
 #get-started #get-started__bg #get-started__bg-left {
   -webkit-box-flex: 1;
           flex: 1;
-  color: #ffffff;
-  background-color: #333333;
+  background-color: #f2f2f2;
 }
 
 #get-started #get-started__bg #get-started__bg-right {
   -webkit-box-flex: 1;
           flex: 1;
-  background-color: #555555;
+  background-color: #ededed;
 }
 
 #get-started #get-started__content {
@@ -6875,7 +6874,7 @@ i {
 
 #get-started #get-started__content #get-started__content-left,
 #get-started #get-started__content #get-started__content-right {
-  color: #ffffff;
+  color: #000000;
   box-sizing: border-box;
 }
 
@@ -6902,6 +6901,18 @@ i {
           flex-direction: row;
   -webkit-box-pack: center;
           justify-content: center;
+}
+
+#get-started #get-started__content #get-started__content-left h2,
+#get-started #get-started__content #get-started__content-right h2 {
+  font-weight: 400;
+  text-align: center;
+  margin: 20px 0 10px 0;
+}
+
+#get-started #get-started__content #get-started__content-left .features,
+#get-started #get-started__content #get-started__content-right .features {
+  text-align: center;
 }
 
 #community-links .card-wrapper {
