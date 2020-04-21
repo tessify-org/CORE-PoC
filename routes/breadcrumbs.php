@@ -279,6 +279,34 @@ Breadcrumbs::for("bug-report-submitted", function($t) {
     $t->push(__("tessify-core::breadcrumbs.bug_report_submitted"), route("home"));
 });
 
+// Review requests
+Breadcrumbs::for("reviews.requests", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.review_requests"), route("reviews.requests"));
+});
+
+// Reviews
+Breadcrumbs::for("reviews", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.reviews"), route("reviews"));
+});
+Breadcrumbs::for("reviews.view", function($t, $review) {
+    $t->parent("reviews");
+    $t->push(__("tessify-core::breadcrumbs.review"), route("reviews.view", $review->uuid));
+});
+Breadcrumbs::for("reviews.create", function($t, $type, $slug) {
+    $t->parent("reviews");
+    $t->push(__("tessify-core::breadcrumbs.create"), route("reviews.create", ["type" => $type, "slug" => $slug]));
+});
+Breadcrumbs::for("reviews.update", function($t, $review) {
+    $t->parent("reviews.view", $review);
+    $t->push(__("tessify-core::breadcrumbs.update"), route("reviews.update", $review->uuid));
+});
+Breadcrumbs::for("reviews.delete", function($t, $review) {
+    $t->parent("reviews.view", $review);
+    $t->push(__("tessify-core::breadcrumbs.delete"), route("reviews.delete", $review->uuid));
+});
+
 // Community
 Breadcrumbs::for("community", function($t) {
     $t->parent("home");
@@ -304,6 +332,7 @@ Breadcrumbs::for("organizations.view", function($t, $organization) {
     $t->parent("organizations");
     $t->push($organization->name, route("organizations.view", $organization->slug));
 });
+
 
 //
 // Admin Panel Breadcrumbs

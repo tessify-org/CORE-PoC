@@ -163,6 +163,16 @@ class User extends Authenticatable
         return $this->hasMany(\Tessify\Core\Models\FeedActivity::class, "actor_id", "id");
     }
     
+    public function reviewRequests()
+    {
+        return $this->hasMany(\Tessify\Core\Models\ReviewRequest::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(\Tessify\Core\Models\Review::class);
+    }
+    
     //
     // Accessors
     //
