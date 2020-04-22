@@ -2948,6 +2948,104 @@
     }
 }
 
+//
+// Reviews
+//
+
+#review-created {
+    #review-created__text {
+        font-size: 1.2em;
+        font-weight: 400;
+        line-height: 1em;
+        text-align: center;
+    }
+    #review-created__actions {
+        display: flex;
+        margin: 30px 0 0 0;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        .v-btn {
+            margin: 0 15px;
+        }
+    }
+}
+
+#review-wrapper {
+    width: 800px;
+    margin: 0 auto;
+    #review {
+        padding: 25px;
+        border-radius: 3px;
+        margin: 0 0 30px 0;
+        box-sizing: border-box;
+        background-color: #fff;
+        #review-target {
+            display: flex;
+            margin: 0 0 20px 0;
+            flex-direction: row;
+            #review-target__image {
+                height: 100px;
+                flex: 0 0 120px;
+                border-radius: 3px;
+                margin: 0 20px 0 0;
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-color: hsl(0, 0%, 95%);
+            }
+            #review-target__text {
+                #review-target__type {
+                    font-size: .8em;
+                    margin: 0 0 3px 0;
+                    color: hsl(0, 0%, 80%);
+                    text-transform: uppercase;
+                }
+                #review-target__name {
+    
+                }
+            }
+        }
+        #review-rating {
+            margin: 0 0 15px 0;
+            #review-rating__label {
+                font-size: .8em;
+                margin: 0 0 3px 0;
+                color: hsl(0, 0%, 80%);
+                text-transform: uppercase;
+            }
+            #review-rating__value {
+    
+            }
+        }
+        #review-message {
+            #review-message__label {
+                font-size: .8em;
+                margin: 0 0 3px 0;
+                color: hsl(0, 0%, 80%);
+                text-transform: uppercase;
+            }
+            #review-message__value {
+    
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

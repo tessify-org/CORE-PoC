@@ -296,15 +296,19 @@ Breadcrumbs::for("reviews.view", function($t, $review) {
 });
 Breadcrumbs::for("reviews.create", function($t, $type, $slug) {
     $t->parent("reviews");
-    $t->push(__("tessify-core::breadcrumbs.create"), route("reviews.create", ["type" => $type, "slug" => $slug]));
+    $t->push(__("tessify-core::breadcrumbs.review_create"), route("reviews.create", ["type" => $type, "slug" => $slug]));
+});
+Breadcrumbs::for("reviews.created", function($t, $type, $slug) {
+    $t->parent("reviews.create", $type, $slug);
+    $t->push(__("tessify-core::breadcrumbs.review_created"), route("reviews.create", ["type" => $type, "slug" => $slug]));
 });
 Breadcrumbs::for("reviews.update", function($t, $review) {
     $t->parent("reviews.view", $review);
-    $t->push(__("tessify-core::breadcrumbs.update"), route("reviews.update", $review->uuid));
+    $t->push(__("tessify-core::breadcrumbs.review_update"), route("reviews.update", $review->uuid));
 });
 Breadcrumbs::for("reviews.delete", function($t, $review) {
     $t->parent("reviews.view", $review);
-    $t->push(__("tessify-core::breadcrumbs.delete"), route("reviews.delete", $review->uuid));
+    $t->push(__("tessify-core::breadcrumbs.review_delete"), route("reviews.delete", $review->uuid));
 });
 
 // Community
