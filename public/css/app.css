@@ -7389,3 +7389,9 @@ i {
   text-transform: uppercase;
 }
 
+#dont-use-ie #dont-use-ie__text {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 400;
+}
+

@@ -337,6 +337,11 @@ Breadcrumbs::for("organizations.view", function($t, $organization) {
     $t->push($organization->name, route("organizations.view", $organization->slug));
 });
 
+// Static pages
+Breadcrumbs::for("dont-use-ie", function($t) {
+    $t->parent("home");
+    $t->push(__("tessify-core::breadcrumbs.dont_use_ie"), route("system.dont-use-ie"));
+});
 
 //
 // Admin Panel Breadcrumbs

@@ -37,6 +37,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
             \Tessify\Core\Http\Middleware\SetActiveLocale::class,
             \Tessify\Core\Http\Middleware\IsBanned::class,
+            \Tessify\Core\Http\Middleware\CheckForOldBrowsers::class,
         ],
 
         'api' => [
