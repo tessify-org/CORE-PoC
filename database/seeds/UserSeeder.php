@@ -115,7 +115,7 @@ class UserSeeder extends Seeder
             "first_name" => "Winko",
             "last_name" => "van den Berg",
             "email" => "winko.erades@minbzk.nl",
-            "password" => bcrypt("8_ukQNdm#g3j-mN^(}G{r$\x5%Gq?!JV"),
+            "password" => bcrypt("engeland"),
             "is_admin" => true,
         ]);
         // Users::generateAvatar($winko);
