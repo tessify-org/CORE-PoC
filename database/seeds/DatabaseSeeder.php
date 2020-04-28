@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SubscriptionSeeder::class);
         $this->call(TagSeeder::class);
         $this->call(ReviewSeeder::class);
+        $this->call(WhitelistedDomainSeeder::class);
     }
 }

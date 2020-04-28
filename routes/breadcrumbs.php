@@ -377,3 +377,13 @@ Breadcrumbs::for("admin.users.ban", function($t, $user) {
     $t->parent("admin.users.view", $user);
     $t->push(__("tessify-core::breadcrumbs.admin_users_ban"), route("admin.users.ban", $user->id));
 });
+
+// Settings
+Breadcrumbs::for("admin.settings", function($t) {
+    $t->parent("admin.dashboard");
+    $t->push(__("tessify-core::breadcrumbs.admin_settings"), route("admin.settings"));
+});
+Breadcrumbs::for("admin.settings.auth", function($t) {
+    $t->parent("admin.settings");
+    $t->push(__("tessify-core::breadcrumbs.admin_settings_auth"), route("admin.settings.auth"));
+});

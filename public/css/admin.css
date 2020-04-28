@@ -3856,3 +3856,51 @@ i {
   margin: 0 auto;
 }
 
+#settings-overview {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 0 -15px -30px -15px;
+}
+
+#settings-overview .settings-overview__link-wrapper {
+  -webkit-box-flex: 0;
+          flex: 0 0 33.33%;
+  box-sizing: border-box;
+  padding: 0 15px 30px 15px;
+}
+
+#settings-overview .settings-overview__link-wrapper .settings-overview__link {
+  display: -webkit-box;
+  display: flex;
+  height: 100px;
+  color: #000000;
+  border-radius: 3px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  text-decoration: none;
+  -webkit-box-pack: center;
+          justify-content: center;
+  background-color: #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#settings-overview .settings-overview__link-wrapper .settings-overview__link:hover {
+  background-color: #f2f2f2;
+}
+
+#settings-overview .settings-overview__link-wrapper .settings-overview__link .link-icon {
+  font-size: 2em;
+}
+
+#settings-overview .settings-overview__link-wrapper .settings-overview__link .link-text {
+  margin: 0 0 0 15px;
+}
+
