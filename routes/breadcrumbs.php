@@ -377,6 +377,14 @@ Breadcrumbs::for("admin.users.ban", function($t, $user) {
     $t->parent("admin.users.view", $user);
     $t->push(__("tessify-core::breadcrumbs.admin_users_ban"), route("admin.users.ban", $user->id));
 });
+Breadcrumbs::for("admin.users.change-password", function($t, $user) {
+    $t->parent("admin.users.view", $user);
+    $t->push(__("tessify-core::breadcrumbs.admin_users_change_password"), route("admin.users.change-password", $user->id));
+});
+Breadcrumbs::for("admin.users.send-message", function($t, $user) {
+    $t->parent("admin.users.view", $user);
+    $t->push(__("tessify-core::breadcrumbs.admin_users_send_message"), route("admin.users.send-message", $user->id));
+});
 
 // Settings
 Breadcrumbs::for("admin.settings", function($t) {
