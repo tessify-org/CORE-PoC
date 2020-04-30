@@ -2939,6 +2939,10 @@ i {
   color: #404040;
 }
 
+.mt-10 {
+  margin-top: 10px;
+}
+
 .page-title {
   font-size: 4em;
   line-height: 1em;

@@ -76,6 +76,7 @@ class ProjectSeeder extends Seeder
         // Project phases
         //
 
+        $concept = ProjectPhase::create(["name" => "concept"]);
         $brainstorm = ProjectPhase::create(["name" => "brainstorm"]);
         $ontwerp = ProjectPhase::create(["name" => "ontwerp"]);
         $testen = ProjectPhase::create(["name" => "testen"]);
