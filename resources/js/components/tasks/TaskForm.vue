@@ -2,159 +2,219 @@
     <div id="task-form__wrapper">
 
         <!-- Form -->
-        <div id="task-form" class="elevation-1">
+        <div id="task-form">
+            <div id="task-form__left">
 
-            <!-- Project -->
-            <div class="form-field">
-                <v-select
-                    :label="strings.project"
-                    :items="projectOptions"
-                    v-model="form.project_id"
-                    :errors="hasErrors('project_id')"
-                    :error-messages="getErrors('project_id')">
-                </v-select>
-                <input type="hidden" name="project_id" :value="form.project_id > 0 ? form.project_id : null">
-            </div>
+                <!-- General info -->
+                <h2 class="content-card__title">{{ strings.general_title }}</h2>
+                <h3 class="content-card__description">{{ strings.general_description }}</h3>
+                <div class="content-card elevation-1 mb">
+                    <div class="content-card__content">
 
-            <!-- Title -->
-            <div class="form-field">
-                <v-text-field
-                    name="title"
-                    :label="strings.title+'*'"
-                    v-model="form.title"
-                    :errors="hasErrors('title')"
-                    :error-messages="getErrors('title')">
-                </v-text-field>
-            </div>
+                        <!-- Project -->
+                        <div class="form-field">
+                            <v-select
+                                :label="strings.project"
+                                :items="projectOptions"
+                                v-model="form.project_id"
+                                :errors="hasErrors('project_id')"
+                                :error-messages="getErrors('project_id')">
+                            </v-select>
+                            <input type="hidden" name="project_id" :value="form.project_id > 0 ? form.project_id : null">
+                        </div>
 
-            <!-- Description -->
-            <div class="form-field">
-                <v-textarea
-                    name="description"
-                    :label="strings.description+'*'"
-                    v-model="form.description"
-                    :errors="hasErrors('description')"
-                    :error-messages="getErrors('description')">
-                </v-textarea>
-            </div>
+                        <!-- Title -->
+                        <div class="form-field">
+                            <v-text-field
+                                name="title"
+                                :label="strings.title+'*'"
+                                v-model="form.title"
+                                :errors="hasErrors('title')"
+                                :error-messages="getErrors('title')">
+                            </v-text-field>
+                        </div>
 
-            <!-- Tags -->
-            <div class="form-field">
-                <v-combobox
-                    multiple
-                    :label="strings.tags"
-                    v-model="form.tags"
-                    :items="tagOptions"
-                    :errors="hasErrors('tags')"
-                    :error-messages="getErrors('tags')">
-                </v-combobox>
-                <input type="hidden" name="tags" :value="encodedTags">
-            </div>
+                        <!-- Description -->
+                        <div class="form-field">
+                            <v-textarea
+                                name="description"
+                                :label="strings.description+'*'"
+                                v-model="form.description"
+                                :errors="hasErrors('description')"
+                                :error-messages="getErrors('description')">
+                            </v-textarea>
+                        </div>
 
-            <div class="form-fields">
+                        <!-- Tags -->
+                        <div class="form-field">
+                            <v-combobox
+                                multiple
+                                :label="strings.tags"
+                                v-model="form.tags"
+                                :items="tagOptions"
+                                :errors="hasErrors('tags')"
+                                :error-messages="getErrors('tags')">
+                            </v-combobox>
+                            <input type="hidden" name="tags" :value="encodedTags">
+                        </div>
 
-                <!-- Status -->
-                <div class="form-field" v-if="editing">
-                    <v-select
-                        :label="strings.status+'*'"
-                        :items="statusOptions"
-                        v-model="form.task_status_id"
-                        :errors="hasErrors('task_status_id')"
-                        :error-messages="getErrors('task_status_id')">
-                    </v-select>
-                    <input type="hidden" name="task_status_id" :value="form.task_status_id">
+                        <!-- Status, Category & Urgency -->
+                        <div class="form-fields">
+
+                            <!-- Status -->
+                            <div class="form-field" v-if="editing">
+                                <v-select
+                                    :label="strings.status+'*'"
+                                    :items="statusOptions"
+                                    v-model="form.task_status_id"
+                                    :errors="hasErrors('task_status_id')"
+                                    :error-messages="getErrors('task_status_id')">
+                                </v-select>
+                                <input type="hidden" name="task_status_id" :value="form.task_status_id">
+                            </div>
+
+                            <!-- Category -->
+                            <div class="form-field">
+                                <v-combobox
+                                    :label="strings.category+'*'"
+                                    :items="categoryOptions"
+                                    v-model="form.task_category"
+                                    :errors="hasErrors('task_category')"
+                                    :error-messages="getErrors('task_category')">
+                                </v-combobox> 
+                                <input type="hidden" name="task_category" :value="form.task_category">
+                            </div>
+
+                            
+                            <!-- Urgency -->
+                            <div class="form-field">
+                                <v-select
+                                    :label="strings.urgency+'*'"
+                                    v-model="form.urgency"
+                                    :items="urgencyOptions"
+                                    :errors="hasErrors('urgency')"
+                                    :error-messages="getErrors('urgency')">
+                                </v-select>
+                                <input type="hidden" name="urgency" :value="form.urgency">
+                            </div>
+
+                        </div>
+
+                        <!-- Complexity, Seniority & Estimated hours -->
+                        <div class="form-fields">
+
+                            <!-- Complexity -->
+                            <div class="form-field">
+                                <v-select
+                                    :label="strings.complexity+'*'"
+                                    :items="complexityOptions"
+                                    v-model="form.complexity"
+                                    :errors="hasErrors('complexity')"
+                                    :error-messages="getErrors('complexity')">
+                                </v-select>
+                                <input type="hidden" name="complexity" :value="form.complexity">
+                            </div>
+
+                            <!-- Seniority -->
+                            <div class="form-field">
+                                <v-select
+                                    :label="strings.seniority+'*'"
+                                    :items="seniorityOptions"
+                                    v-model="form.task_seniority_id"
+                                    :errors="hasErrors('task_seniority_id')"
+                                    :error-messages="getErrors('task_seniority_id')">
+                                </v-select>
+                                <input type="hidden" name="task_seniority_id" :value="form.task_seniority_id">
+                            </div>
+                                
+                            <!-- Estimated hours -->
+                            <div class="form-field">
+                                <v-text-field
+                                    name="estimated_hours"
+                                    :label="strings.estimated_hours+'*'"
+                                    v-model="form.estimated_hours"
+                                    :errors="hasErrors('estimated_hours')"
+                                    :error-messages="getErrors('estimated_hours')">
+                                </v-text-field>
+                            </div>
+
+                        </div>
+
+                        <!-- Realized hours -->
+                        <div class="form-field" v-if="editing && isCompleted">
+                            <v-text-field
+                                name="realized_hours"
+                                :label="strings.realized_hours"
+                                v-model="form.realized_hours"
+                                :errors="hasErrors('realized_hours')"
+                                :error-messages="getErrors('realized_hours')">
+                            </v-text-field>
+                        </div>
+
+                        <!-- Required skills -->
+                        <div class="form-field">
+                            <required-skills-field
+                                :task="task"
+                                :skills="skills"
+                                name="required_skills"
+                                v-model="form.required_skills"
+                                :label-text="strings.required_skills"
+                                :strings="strings.required_skills_strings">
+                            </required-skills-field>
+                        </div>
+
+                    </div>
                 </div>
 
-                <!-- Category -->
-                <div class="form-field">
-                    <v-combobox
-                        :label="strings.category+'*'"
-                        :items="categoryOptions"
-                        v-model="form.task_category"
-                        :errors="hasErrors('task_category')"
-                        :error-messages="getErrors('task_category')">
-                    </v-combobox> 
-                    <input type="hidden" name="task_category" :value="form.task_category">
-                </div>
+            </div>
+            <div id="task-form__right">
 
-                
-                <!-- Urgency -->
-                <div class="form-field">
-                    <v-select
-                        :label="strings.urgency+'*'"
-                        v-model="form.urgency"
-                        :items="urgencyOptions"
-                        :errors="hasErrors('urgency')"
-                        :error-messages="getErrors('urgency')">
-                    </v-select>
-                    <input type="hidden" name="urgency" :value="form.urgency">
+                <!-- Ownership -->
+                <h2 class="content-card__title">{{ strings.ownership_title }}</h2>
+                <h3 class="content-card__description">{{ strings.ownership_description }}</h3>
+                <div class="content-card elevation-1 mb">
+                    <div class="content-card__content">
+
+                        <!-- Ministry -->
+                        <div class="form-field">
+                            <v-select
+                                :label="strings.ministry"
+                                v-model="form.ministry_id"
+                                :items="ministryOptions"
+                                :errors="hasErrors('ministry_id')"
+                                :error-messages="getErrors('ministry_id')">
+                            </v-select>
+                            <input type="hidden" name="ministry_id" :value="form.ministry_id">
+                        </div>
+
+                        <!-- Organization -->
+                        <div class="form-field" v-if="form.ministry_id > 0">
+                            <v-select
+                                v-model="form.organization_id"
+                                :label="strings.organization"
+                                :items="organizationOptions"
+                                :errors="hasErrors('organization_id')"
+                                :error-messages="getErrors('organization_id')">
+                            </v-select>
+                        </div>
+                        <input type="hidden" name="organization_id" :value="form.organization_id">
+
+                        <!-- Department -->
+                        <div class="form-field mb-0" v-if="form.organization_id > 0">
+                            <v-combobox
+                                v-model="form.department"
+                                :label="strings.department"
+                                :items="departmentOptions"
+                                :errors="hasErrors('department')"
+                                :error-messages="getErrors('department')">
+                            </v-combobox>
+                        </div>
+                        <input type="hidden" name="department" :value="form.department">
+
+                    </div>
                 </div>
 
             </div>
-
-            <div class="form-fields">
-
-                <!-- Complexity -->
-                <div class="form-field">
-                    <v-select
-                        :label="strings.complexity+'*'"
-                        :items="complexityOptions"
-                        v-model="form.complexity"
-                        :errors="hasErrors('complexity')"
-                        :error-messages="getErrors('complexity')">
-                    </v-select>
-                    <input type="hidden" name="complexity" :value="form.complexity">
-                </div>
-
-                <!-- Seniority -->
-                <div class="form-field">
-                    <v-select
-                        :label="strings.seniority+'*'"
-                        :items="seniorityOptions"
-                        v-model="form.task_seniority_id"
-                        :errors="hasErrors('task_seniority_id')"
-                        :error-messages="getErrors('task_seniority_id')">
-                    </v-select>
-                    <input type="hidden" name="task_seniority_id" :value="form.task_seniority_id">
-                </div>
-                    
-                <!-- Estimated hours -->
-                <div class="form-field">
-                    <v-text-field
-                        name="estimated_hours"
-                        :label="strings.estimated_hours+'*'"
-                        v-model="form.estimated_hours"
-                        :errors="hasErrors('estimated_hours')"
-                        :error-messages="getErrors('estimated_hours')">
-                    </v-text-field>
-                </div>
-
-            </div>
-
-            <!-- Realized hours -->
-            <div class="form-field" v-if="editing && isCompleted">
-                <v-text-field
-                    name="realized_hours"
-                    :label="strings.realized_hours"
-                    v-model="form.realized_hours"
-                    :errors="hasErrors('realized_hours')"
-                    :error-messages="getErrors('realized_hours')">
-                </v-text-field>
-            </div>
-
-            <!-- Required skills -->
-            <div class="form-field">
-                <required-skills-field
-                    :task="task"
-                    :skills="skills"
-                    name="required_skills"
-                    v-model="form.required_skills"
-                    :label-text="strings.required_skills"
-                    :strings="strings.required_skills_strings">
-                </required-skills-field>
-            </div>
-
-
         </div>
 
         <!-- Controls -->
@@ -183,6 +243,9 @@
             "project",
             "projects",
             "skills",
+            "ministries",
+            "organizations",
+            "departments",
             "errors",
             "oldInput",
             "statuses",
@@ -201,11 +264,17 @@
             urgencyOptions: [],
             statusOptions: [],
             tagOptions: [],
+            ministryOptions: [],
+            organizationOptions: [],
+            departmentOptions: [],
             form: {
                 project_id: 0,
                 task_status_id: 0,
                 task_category: "",
-                task_seniority_id: 0,
+                task_seniority_id: 1,
+                ministry_id: null,
+                organization_id: null,
+                department: "",
                 title: "",
                 description: "",
                 complexity: 1,
@@ -228,6 +297,20 @@
                 return JSON.stringify(this.form.tags);
             },
         },
+        watch: {
+            "form.ministry_id": {
+                deep: true,
+                handler: function() {
+                    this.generateOrganizationOptions();
+                }
+            },
+            "form.organization_id": {
+                deep: true,
+                handler: function() {
+                    this.generateDepartmentOptions();
+                }
+            },
+        },
         methods: {
             initialize() {
                 console.log(this.tag+" initializing");
@@ -235,6 +318,9 @@
                 console.log(this.tag+" project: ", this.project);
                 console.log(this.tag+" projects: ", this.projects);
                 console.log(this.tag+" skills: ", this.skills);
+                console.log(this.tag+" ministries: ", this.ministries);
+                console.log(this.tag+" organizations: ", this.organizations);
+                console.log(this.tag+" departments: ", this.departments);
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
                 console.log(this.tag+" categories: ", this.categories);
@@ -242,6 +328,7 @@
                 console.log(this.tag+" tags: ", this.tags);
                 console.log(this.tag+" strings: ", this.strings);
                 console.log(this.tag+" back href: ", this.backHref);
+                this.generateMinistryOptions();
                 this.generateProjectOptions();
                 this.generateComplexityOptions();
                 this.generateSeniorityOptions();
@@ -250,6 +337,41 @@
                 this.generateStatusOptions();
                 this.generateTagOptions();
                 this.initializeData();
+            },
+            generateMinistryOptions() {
+                if (this.ministries !== undefined && this.ministries !== null && this.ministries.length > 0) {
+                    for (let i = 0; i < this.ministries.length; i++) {
+                        this.ministryOptions.push({
+                            text: this.ministries[i].name,
+                            value: this.ministries[i].id,
+                        });
+                    }
+                } else {
+                    this.ministryOptions.push({ text: "Geen ministeries gevonden", value: 0 });
+                }
+            },
+            generateOrganizationOptions() {
+                this.organizationOptions = [];
+                if (this.form.ministry_id > 0 && this.organizations !== undefined && this.organizations !== null && this.organizations.length > 0) {
+                    for (let i = 0; i < this.organizations.length; i++) {
+                        if (this.organizations[i].ministry_id === this.form.ministry_id) {
+                            this.organizationOptions.push({
+                                text: this.organizations[i].name,
+                                value: this.organizations[i].id,
+                            });
+                        }
+                    }
+                }
+            },
+            generateDepartmentOptions() {
+                this.departmentOptions = [];
+                if (this.form.organization_id > 0 && this.departments !== undefined && this.departments !== null && this.departments.length > 0) {
+                    for (let i = 0; i < this.departments.length; i++) {
+                        if (this.departments[i].organization_id === this.form.organization_id) {
+                            this.departmentOptions.push(this.departments[i].name);
+                        }
+                    }
+                }
             },
             generateProjectOptions() {
                 if (this.projects !== undefined && this.projects !== null && this.projects.length > 0) {
@@ -331,6 +453,9 @@
                 }
                 if (this.task !== undefined && this.task !== null) {
                     this.form.project_id = this.task.project_id;
+                    this.form.ministry_id = this.task.ministry_id;
+                    this.form.organization_id = this.task.organization_id;
+                    if (this.task.department) this.form.department = this.task.department.name;
                     this.form.task_status_id = this.task.task_status_id;
                     this.form.task_category = this.task.category.name;
                     this.form.task_seniority_id = this.task.task_seniority_id;
@@ -353,6 +478,9 @@
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.project_id !== null) this.form.project_id = parseInt(this.oldInput.project_id);
+                    if (this.oldInput.ministry_id !== null) this.form.ministry_id = parseInt(this.oldInput.ministry_id);
+                    if (this.oldInput.organization_id !== null) this.form.organization_id = parseInt(this.oldInput.organization_id);
+                    if (this.oldInput.department !== null) this.form.department = this.oldInput.department;
                     if (this.oldInput.task_status_id !== null) this.form.task_status_id = parseInt(this.oldInput.task_status_id);
                     if (this.oldInput.task_category !== null) this.form.task_category = this.oldInput.task_category;
                     if (this.oldInput.task_seniority_id !== null) this.form.task_seniority_id = parseInt(this.oldInput.task_seniority_id);
@@ -399,11 +527,23 @@
 <style lang="scss">
     #task-form__wrapper {
         #task-form {
-            padding: 25px;
-            margin: 0 0 30px 0;
-            border-radius: 3px;
-            box-sizing: border-box;
-            background-color: #ffffff;
+            display: flex;
+            flex-direction: row;
+            #task-form__left {
+                flex: 1;
+            }
+            #task-form__right {
+                flex: 0 0 400px;
+                margin: 0 0 0 30px;
+                .form-field {
+                    width: 400px;
+                }
+            }
+            // padding: 25px;
+            // margin: 0 0 30px 0;
+            // border-radius: 3px;
+            // box-sizing: border-box;
+            // background-color: #ffffff;
         }
     }
 </style>

@@ -2,7 +2,7 @@
     <div id="required-skills-field">
 
         <!-- Label -->
-        <div id="required-skills-field__label">{{ labelText }}</div>
+        <div id="required-skills-field__label">{{ strings.title }}</div>
 
         <!-- Skills -->
         <div id="required-skills-field__skills" v-if="mutableSkills.length > 0">
@@ -25,14 +25,14 @@
 
         <!-- No skills -->
         <div id="required-skills-field__no-records" v-if="mutableSkills.length === 0">
-            {{ noRecordsText }}
+            {{ strings.no_records }}
         </div>
 
         <!-- Actions -->
         <div id="required-skills-field__actions">
             <v-btn color="primary" depressed small @click="onClickAdd">
                 <i class="fas fa-plus"></i>
-                {{ addButtonText }}
+                {{ strings.add_button }}
             </v-btn>
         </div>
 
@@ -43,19 +43,19 @@
                     <i class="fas fa-times"></i>
                 </div>
                 <div class="dialog-content">
-                    <h3 class="dialog-title">{{ viewTitleText }}</h3>
+                    <h3 class="dialog-title">{{ strings.view_title }}</h3>
                     <div class="dialog-text">
                         <div class="details bordered mb-0">
                             <div class="detail">
-                                <div class="key">{{ viewSkillText }}</div>
+                                <div class="key">{{ strings.view_skill }}</div>
                                 <div class="val">{{ mutableSkills[this.dialogs.view.index].skill }}</div>
                             </div>
                             <div class="detail">
-                                <div class="key">{{ viewRequiredMasteryText }}</div>
+                                <div class="key">{{ strings.view_required_mastery }}</div>
                                 <div class="val">{{ mutableSkills[this.dialogs.view.index].required_mastery }} / 10</div>
                             </div>
                             <div class="detail" v-if="mutableSkills[this.dialogs.view.index].description !== '' && mutableSkills[this.dialogs.view.index].description !== null">
-                                <div class="key">{{ viewDescriptionText }}</div>
+                                <div class="key">{{ strings.view_description }}</div>
                                 <div class="val">{{ mutableSkills[this.dialogs.view.index].description }}</div>
                             </div>
                         </div>
@@ -65,11 +65,11 @@
                     <div class="dialog-controls__right">
                         <v-btn depressed color="warning" @click="onClickEdit(dialogs.view.index)">
                             <i class="fas fa-edit"></i>
-                            {{ viewEditText }}
+                            {{ strings.view_edit }}
                         </v-btn>
                         <v-btn depressed dark color="red" @click="onClickDelete(dialogs.view.index)">
                             <i class="fas fa-trash-alt"></i>
-                            {{ viewDeleteText }}
+                            {{ strings.view_delete }}
                         </v-btn>
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                 <!-- Content -->
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">{{ addTitleText }}</h3>
+                    <h3 class="dialog-title">{{ strings.add_title }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.add.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.add.errors" :key="ei">
@@ -96,7 +96,7 @@
                     <!-- Skill -->
                     <div class="form-field">
                         <v-combobox
-                            :label="formSkillText"
+                            :label="strings.form_skill"
                             :items="skillOptions"
                             v-model="dialogs.add.form.skill">
                         </v-combobox>
@@ -105,14 +105,14 @@
                     <div class="form-field">
                         <v-select
                             :items="masteryOptions"
-                            :label="formRequiredMasteryText"
+                            :label="strings.form_mastery"
                             v-model="dialogs.add.form.required_mastery">
                         </v-select>
                     </div>
                     <!-- Description -->
                     <div class="form-field">
                         <v-textarea
-                            :label="formDescriptionText"
+                            :label="strings.form_description"
                             v-model="dialogs.add.form.description">
                         </v-textarea>
                     </div>
@@ -123,7 +123,7 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.add.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            {{ addCancelText }}
+                            {{ strings.add_cancel }}
                         </v-btn>
                     </div>
                     <!-- Confirm delete -->
@@ -136,7 +136,7 @@
                             :loading="dialogs.add.loading"
                             :disabled="confirmAddDisabled">
                             <i class="far fa-save"></i>
-                            {{ addSubmitText }}
+                            {{ strings.add_submit }}
                         </v-btn>
                     </div>
                 </div>
@@ -152,7 +152,7 @@
                 </div>
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">{{ editTitleText }}</h3>
+                    <h3 class="dialog-title">{{ strings.edit_title }}</h3>
                     <!-- Errors -->
                     <div class="dialog-errors" v-if="dialogs.edit.errors.length > 0">
                         <div class="dialog-error" v-for="(error, ei) in dialogs.edit.errors" :key="ei">
@@ -162,7 +162,7 @@
                     <!-- Skill -->
                     <div class="form-field">
                         <v-combobox
-                            :label="formSkillText"
+                            :label="strings.form_skill"
                             :items="skillOptions"
                             v-model="dialogs.edit.form.skill">
                         </v-combobox>
@@ -170,7 +170,7 @@
                     <!-- Mastery -->
                     <div class="form-field">
                         <v-select
-                            :label="formRequiredMasteryText"
+                            :label="strings.form_mastery"
                             :items="masteryOptions"
                             v-model="dialogs.edit.form.required_mastery">
                         </v-select>
@@ -178,7 +178,7 @@
                     <!-- Description -->
                     <div class="form-field">
                         <v-textarea
-                            :label="formDescriptionText"
+                            :label="strings.form_description"
                             v-model="dialogs.edit.form.description">
                         </v-textarea>
                     </div>
@@ -187,7 +187,7 @@
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.edit.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            {{ editCancelText }}
+                            {{ strings.edit_cancel }}
                         </v-btn>
                     </div>
                     <div class="dialog-controls__right">
@@ -198,7 +198,7 @@
                             :dark="!confirmEditDisabled"
                             :disabled="confirmEditDisabled">
                             <i class="far fa-save"></i>
-                            {{ editSubmitText }}
+                            {{ strings.edit_submit }}
                         </v-btn>
                     </div>
                 </div>
@@ -213,15 +213,15 @@
                 </div>
                 <div class="dialog-content">
                     <!-- Title -->
-                    <h3 class="dialog-title">{{ deleteTitleText }}</h3>
+                    <h3 class="dialog-title">{{ strings.delete_title }}</h3>
                     <!-- Text -->
-                    <div class="dialog-text">{{ deleteText }}</div>
+                    <div class="dialog-text">{{ strings.delete_text }}</div>
                 </div>
                 <div class="dialog-controls">
                     <div class="dialog-controls__left">
                         <v-btn text @click="dialogs.delete.show = false">
                             <i class="fas fa-arrow-left"></i>
-                            {{ deleteCancelText }}
+                            {{ strings.delete_cancel }}
                         </v-btn>
                     </div>
                     <div class="dialog-controls__right">
@@ -229,7 +229,7 @@
                             depressed dark color="red"
                             @click="onClickConfirmDelete">
                             <i class="fas fa-trash-alt"></i>
-                            {{ deleteSubmitText }}
+                            {{ strings.delete_submit }}
                         </v-btn>
                     </div>
                 </div>
@@ -249,27 +249,8 @@
             "value",
             "task",
             "skills",
+            "strings",
             "oldInput",
-            "labelText",
-            "noRecordsText",
-            "addButtonText",
-            "viewTitleText",
-            "viewSkillText",
-            "viewRequiredMasteryText",
-            "viewDescriptionText",
-            "addTitleText",
-            "formSkillText",
-            "formRequiredMasteryText",
-            "formDescriptionText",
-            "addCancelText",
-            "addSubmitText",
-            "editTitleText",
-            "editCancelText",
-            "editSubmitText",
-            "deleteTitleText",
-            "deleteText",
-            "deleteCancelText",
-            "deleteSubmitText",
         ],
         data: () => ({
             tag: "[required-skills-field]",
@@ -325,10 +306,8 @@
                 console.log(this.tag+" value: ", this.value);
                 console.log(this.tag+" user: ", this.task);
                 console.log(this.tag+" skills: ", this.skills);
+                console.log(this.tag+" strings: ", this.strings);
                 console.log(this.tag+" old input: ", this.oldInput);
-                console.log(this.tag+" label text: ", this.labelText);
-                console.log(this.tag+" no records text: ", this.noRecordsText);
-                console.log(this.tag+" create text: ", this.createText);
                 this.initializeData();
                 this.generateSkillOptions();
                 this.generateMasteryOptions();

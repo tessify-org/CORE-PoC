@@ -17,6 +17,9 @@ class CreateTasksTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('author_id');
             $table->unsignedInteger('project_id')->nullable();
+            $table->unsignedInteger('ministry_id')->nullable();
+            $table->unsignedInteger('organization_id')->nullable();
+            $table->unsignedInteger('organization_department_id')->nullable();
             $table->unsignedInteger('task_status_id');
             $table->unsignedInteger('task_category_id');
             $table->unsignedInteger('task_seniority_id');
