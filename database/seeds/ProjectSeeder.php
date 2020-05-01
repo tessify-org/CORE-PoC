@@ -6,6 +6,8 @@ use Tessify\Core\Models\Skill;
 use Tessify\Core\Models\Project;
 use Tessify\Core\Models\TeamRole;
 use Tessify\Core\Models\Ministry;
+use Tessify\Core\Models\Organization;
+use Tessify\Core\Models\OrganizationDepartment;
 use Tessify\Core\Models\WorkMethod;
 use Tessify\Core\Models\TeamMember;
 use Tessify\Core\Models\ProjectPhase;

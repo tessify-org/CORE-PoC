@@ -7,6 +7,8 @@ use Tessify\Core\Models\Task;
 use Tessify\Core\Models\TaskStatus;
 use Tessify\Core\Models\TaskCategory;
 use Tessify\Core\Models\TaskSeniority;
+use Tessify\Core\Models\Ministry;
+use Tessify\Core\Models\Organization;
 
 use Illuminate\Database\Seeder;
 
@@ -90,6 +92,7 @@ class TaskSeeder extends Seeder
 
         $users = User::all();
         $skills = Skill::all();
+        $ministries = Ministry::all();
 
         foreach (Project::all() as $project)
         {
@@ -99,12 +102,17 @@ class TaskSeeder extends Seeder
                 $category = $categories[rand(0, (count($categories) - 1))];
                 $seniority = $seniorities[rand(0, (count($seniorities) - 1))];
 
+                $ministry = $ministries->random();
+                $organization = $ministry->organizations->get(0);
+
                 $task = factory(Task::class)->create([
                     "author_id" => $users->random()->id,
                     "project_id" => $project->id,
                     "task_status_id" => $status->id,
                     "task_category_id" => $category->id,
                     "task_seniority_id" => $seniority->id,
+                    "ministry_id" => $ministry->id,
+                    "organization_id" => is_null($organization) ? null : $organization->id,
                     "realized_hours" => $status->name == "completed" ? rand(1, 10) : 0,
                 ]);
 

@@ -151,6 +151,27 @@
                             </v-text-field>
                         </div>
 
+                        <!-- Deadline -->
+                        <div class="form-fields">
+                            <div class="form-field checkbox">
+                                <v-checkbox
+                                    hide-details
+                                    :label="strings.has_deadline"
+                                    v-model="form.has_deadline">
+                                </v-checkbox>
+                                <input type="hidden" name="has_deadline" :value="form.has_deadline">
+                            </div>
+                            <div class="form-field" v-if="form.has_deadline">
+                                <datepicker
+                                    name="ends_at"
+                                    :label="strings.ends_at+'*'"
+                                    v-model="form.ends_at"
+                                    :errors="hasErrors('ends_at')"
+                                    :error-messages="getErrors('ends_at')">
+                                </datepicker>
+                            </div>
+                        </div>
+
                         <!-- Required skills -->
                         <div class="form-field">
                             <required-skills-field
@@ -210,6 +231,31 @@
                             </v-combobox>
                         </div>
                         <input type="hidden" name="department" :value="form.department">
+
+                    </div>
+                </div>
+
+                <!-- Design -->
+                <h2 class="content-card__title">{{ strings.formatting_title }}</h2>
+                <h3 class="content-card__description">{{ strings.formatting_description }}</h3>
+                <div class="content-card elevation-1 mb">
+                    <div class="content-card__content">
+
+                        <!-- Header image -->
+                        <div class="image-field no-margin" :class="{ 'has-errors': hasErrors('header_image') }">
+                            <div class="image-field__label">{{ strings.header_image }}</div>
+                            <div class="image-field__image-wrapper" v-if="hasTask && taskHasImage">
+                                <img class="image-field__image" :src="task.header_image_url">
+                            </div>
+                            <div class="image-field__input">
+                                <input type="file" name="header_image">
+                            </div>
+                            <div class="image-field__errors" v-if="hasErrors('header_image')">
+                                <div class="image-field__error" v-for="(error, ei) in getErrors('header_image')" :key="ei">
+                                    {{ error }}
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -283,6 +329,8 @@
                 required_skills: [],
                 urgency: 2,
                 tags: [],
+                ends_at: "",
+                has_deadline: false,
             }
         }),
         computed: {
@@ -295,6 +343,12 @@
             },
             encodedTags() {
                 return JSON.stringify(this.form.tags);
+            },
+            hasTask() {
+                return this.task !== undefined && this.task !== null && this.task !== "";
+            },
+            taskHasImage() {
+                return this.hasProject && this.task.header_image_url !== null && this.task.header_image_url !== '';
             },
         },
         watch: {
@@ -465,15 +519,19 @@
                     this.form.estimated_hours = this.task.estimated_hours;
                     this.form.realized_hours = this.task.realized_hours;
                     this.form.urgency = this.task.urgency;
-                    if (this.task.skills !== undefined && this.task.skills !== null && this.task.skills.length > 0) {
-                        for (let i = 0; i < this.task.skills.length; i++) {
+                    // if (this.task.skills !== undefined && this.task.skills !== null && this.task.skills.length > 0) {
+                    //     for (let i = 0; i < this.task.skills.length; i++) {
 
-                        }
-                    }
+                    //     }
+                    // }
                     if (this.task.tags !== undefined && this.task.tags !== null && this.tags.length > 0) {
                         for (let i = 0; i < this.task.tags.length; i++) {
                             this.form.tags.push(this.task.tags[i].name);
                         }
+                    }
+                    this.form.has_deadline = this.task.has_deadline;
+                    if (this.task.ends_at !== null) {
+                        this.form.ends_at = this.task.ends_at;
                     }
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
@@ -491,6 +549,8 @@
                     if (this.oldInput.realized_hours !== null) this.form.realized_hours = this.oldInput.realized_hours;
                     if (this.oldInput.urgency !== null) this.form.urgency = parseInt(this.oldInput.urgency);
                     if (this.oldInput.tags !== null) this.form.tags = JSON.parse(this.oldInput.tags);
+                    if (this.oldInput.has_deadline !== null) this.form.has_deadline = this.oldInput.has_deadline === "true" ? true : false;
+                    if (this.oldInput.ends_at !== null) this.form.ends_at = this.oldInput.ends_at;
                 }
             },
             hasErrors(field) {

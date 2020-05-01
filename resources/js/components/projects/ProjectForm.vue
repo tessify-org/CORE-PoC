@@ -2,7 +2,7 @@
     <div id="project-form__wrapper">
         <div id="project-form">
             <div id="project-form__left">
-
+                
                 <!-- General properties -->
                 <h2 class="content-card__title">{{ strings.general_title }}</h2>
                 <h3 class="content-card__description">{{ strings.general_description }}</h3>
@@ -206,7 +206,7 @@
                 <h3 class="content-card__description">{{ strings.ownership_description }}</h3>
                 <div class="content-card elevation-1 mb">
                     <div class="content-card__content">
-
+                        
                         <!-- Ministry -->
                         <div class="form-field">
                             <v-select

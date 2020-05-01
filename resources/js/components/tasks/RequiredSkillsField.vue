@@ -235,7 +235,7 @@
                 </div>
             </div>
         </v-dialog>
-
+        
         <!-- Hidden input -->
         <input type="hidden" :name="name" :value="encodedSkills">
 

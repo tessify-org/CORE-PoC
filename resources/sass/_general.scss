@@ -1249,7 +1249,23 @@ i {
 
 
 
-
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin: 0 -5px -10px -5px;
+    .tag-wrapper {
+        padding: 0 5px 10px 5px;
+        box-sizing: border-box;
+        .tag {
+            color: #fff;
+            font-size: .8em;
+            padding: 2px 5px;
+            border-radius: 3px;
+            background-color: #123552;
+        }
+    }
+}
 
 
 

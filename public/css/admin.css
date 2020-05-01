@@ -3828,6 +3828,29 @@ i {
   color: rgba(0, 0, 0, 0.45);
 }
 
+.tags {
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  margin: 0 -5px -10px -5px;
+}
+
+.tags .tag-wrapper {
+  padding: 0 5px 10px 5px;
+  box-sizing: border-box;
+}
+
+.tags .tag-wrapper .tag {
+  color: #fff;
+  font-size: 0.8em;
+  padding: 2px 5px;
+  border-radius: 3px;
+  background-color: #123552;
+}
+
 #admin-users-view {
   display: -webkit-box;
   display: flex;
