@@ -475,9 +475,9 @@
                 }
             },
             generateUrgencyOptions() {
-                this.urgencyOptions.push({ text: "Laag", value: 1 });
-                this.urgencyOptions.push({ text: "Normaal", value: 2 });
-                this.urgencyOptions.push({ text: "Hoog", value: 3 });
+                this.urgencyOptions.push({ text: this.strings.urgency_low, value: 1 });
+                this.urgencyOptions.push({ text: this.strings.urgency_normal, value: 2 });
+                this.urgencyOptions.push({ text: this.strings.urgency_high, value: 3 });
             },
             generateStatusOptions() {
                 if (this.statuses !== undefined && this.statuses !== null && this.statuses.length > 0) {

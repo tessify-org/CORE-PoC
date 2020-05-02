@@ -3110,6 +3110,35 @@
                         }
                     }
                 }
+                #ownership-author {
+                    #author {
+                        display: flex;
+                        padding: 15px;
+                        color: #000;
+                        align-items: center;
+                        flex-direction: row;
+                        text-decoration: none;
+                        box-sizing: border-box;
+                        background-color: #fff;
+                        transition: all .3s;
+                        &:hover {
+                            text-decoration: underline;
+                            background-color: hsl(0, 0%, 98%);
+                        }
+                        #author-avatar {
+                            height: 40px;
+                            flex: 0 0 40px;
+                            border-radius: 20px;
+                            background-size: cover;
+                            background-color: #f5f5f5;
+                            background-repeat: no-repeat;
+                            background-position: center center;
+                        }
+                        #author-name {
+                            margin: 0 0 0 15px;
+                        }
+                    }
+                }
             }
         }
         #task-status__wrapper {
@@ -3130,7 +3159,7 @@
                 &.open {
                     background-color: #1976d2;
                 }
-                &.in-progress {
+                &.in_progress {
                     background-color: #df5200;
                 }
                 &.completed {
@@ -3150,22 +3179,38 @@
                 margin: 0 0 5px 0;
             }
             #task-users__list {
+                overflow: hidden;
+                border-radius: 3px;
+                background-color: #fff;
                 .task-user {
                     display: flex;
+                    padding: 15px;
+                    color: #000;
                     flex-direction: row;
+                    transition: all .3s;
+                    box-sizing: border-box;
+                    text-decoration: none;
                     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
                     &:last-child {
                         border-bottom: 0;
+                    }
+                    &:hover {
+                        text-decoration: underline;
+                        background-color: hsl(0, 0%, 98%);
                     }
                     .task-user__avatar {
                         height: 40px;
                         flex: 0 0 40px;
                         border-radius: 20px;
+                        background-size: cover;
                         background-color: #f5f5f5;
+                        background-repeat: no-repeat;
+                        background-position: center center;
                     }
                     .task-user__text {
                         flex: 1;
                         display: flex;
+                        margin: 0 0 0 15px;
                         flex-direction: column;
                         justify-content: center;
                         .task-user__name {
@@ -3247,6 +3292,7 @@
                         }
                         #task-details {
                             font-size: .9em;
+                            margin: 0 0 15px 0;
                             color: rgba(0, 0, 0, .75);
                             .task-detail {
                                 display: flex;
@@ -3306,7 +3352,7 @@
                                     padding: 0 5px;
                                     box-sizing: border-box;
                                     .social {
-                                        font-size: 1.5em;
+                                        font-size: 1.7em;
                                     }
                                 }
                             }

@@ -102,8 +102,17 @@ class TaskSeeder extends Seeder
                 $category = $categories[rand(0, (count($categories) - 1))];
                 $seniority = $seniorities[rand(0, (count($seniorities) - 1))];
 
+                
                 $ministry = $ministries->random();
                 $organization = $ministry->organizations->get(0);
+                
+                $ministry_id = $ministry->id;
+                $organization_id = is_null($organization) ? null : $organization->id;
+                if (rand(1,2) == 2)
+                {
+                    $ministry_id = null;
+                    $organization_id = null;
+                }
 
                 $task = factory(Task::class)->create([
                     "author_id" => $users->random()->id,
@@ -111,8 +120,8 @@ class TaskSeeder extends Seeder
                     "task_status_id" => $status->id,
                     "task_category_id" => $category->id,
                     "task_seniority_id" => $seniority->id,
-                    "ministry_id" => $ministry->id,
-                    "organization_id" => is_null($organization) ? null : $organization->id,
+                    "ministry_id" => $ministry_id,
+                    "organization_id" => $organization_id,
                     "realized_hours" => $status->name == "completed" ? rand(1, 10) : 0,
                 ]);
 

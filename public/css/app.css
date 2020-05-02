@@ -7236,6 +7236,43 @@ i {
   text-decoration: underline;
 }
 
+#view-task #view-task__sidebar #task-ownership #task-ownership__content #ownership-author #author {
+  display: -webkit-box;
+  display: flex;
+  padding: 15px;
+  color: #000;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  text-decoration: none;
+  box-sizing: border-box;
+  background-color: #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#view-task #view-task__sidebar #task-ownership #task-ownership__content #ownership-author #author:hover {
+  text-decoration: underline;
+  background-color: #fafafa;
+}
+
+#view-task #view-task__sidebar #task-ownership #task-ownership__content #ownership-author #author #author-avatar {
+  height: 40px;
+  -webkit-box-flex: 0;
+          flex: 0 0 40px;
+  border-radius: 20px;
+  background-size: cover;
+  background-color: #f5f5f5;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#view-task #view-task__sidebar #task-ownership #task-ownership__content #ownership-author #author #author-name {
+  margin: 0 0 0 15px;
+}
+
 #view-task #view-task__sidebar #task-status__wrapper {
   margin: 0 0 30px 0;
 }
@@ -7265,7 +7302,7 @@ i {
   background-color: #1976d2;
 }
 
-#view-task #view-task__sidebar #task-status__wrapper #task-status.in-progress {
+#view-task #view-task__sidebar #task-status__wrapper #task-status.in_progress {
   background-color: #df5200;
 }
 
@@ -7285,12 +7322,24 @@ i {
   margin: 0 0 5px 0;
 }
 
+#view-task #view-task__sidebar #task-users #task-users__list {
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
 #view-task #view-task__sidebar #task-users #task-users__list .task-user {
   display: -webkit-box;
   display: flex;
+  padding: 15px;
+  color: #000;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
           flex-direction: row;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  text-decoration: none;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
@@ -7298,12 +7347,20 @@ i {
   border-bottom: 0;
 }
 
+#view-task #view-task__sidebar #task-users #task-users__list .task-user:hover {
+  text-decoration: underline;
+  background-color: #fafafa;
+}
+
 #view-task #view-task__sidebar #task-users #task-users__list .task-user .task-user__avatar {
   height: 40px;
   -webkit-box-flex: 0;
           flex: 0 0 40px;
   border-radius: 20px;
+  background-size: cover;
   background-color: #f5f5f5;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 #view-task #view-task__sidebar #task-users #task-users__list .task-user .task-user__text {
@@ -7311,6 +7368,7 @@ i {
           flex: 1;
   display: -webkit-box;
   display: flex;
+  margin: 0 0 0 15px;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
           flex-direction: column;
@@ -7420,6 +7478,7 @@ i {
 
 #view-task #view-task__content #task #task-content #task-content__header #task-content__header-left #task-details {
   font-size: 0.9em;
+  margin: 0 0 15px 0;
   color: rgba(0, 0, 0, 0.75);
 }
 
@@ -7510,7 +7569,7 @@ i {
 }
 
 #view-task #view-task__content #task #task-content #task-content__header #task-content__header-right #share-task #share-task__socials .social-wrapper .social {
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
 
 #view-task #view-task__content #task #task-content #task-description {

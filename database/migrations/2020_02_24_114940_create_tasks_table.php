@@ -31,7 +31,7 @@ class CreateTasksTable extends Migration
             $table->unsignedInteger('realized_hours')->default(0);
             $table->unsignedInteger('num_positions')->default(1);
             $table->unsignedInteger('urgency')->default(1);
-            $table->string('header_image_url')->default('storage/images/tasks/header/default.png');
+            $table->string('header_image_url')->default('storage/images/tasks/header/default.jpg');
             $table->boolean('has_deadline')->default(false);
             $table->date('ends_at')->nullable();
             $table->timestamps();
