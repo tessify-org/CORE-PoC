@@ -3232,6 +3232,27 @@
     }
     #view-task__content {
         flex: 1;
+        #task__report-progress {
+            padding: 25px;
+            overflow: hidden;
+            margin: 0 0 30px 0;
+            border-radius: 3px;
+            box-sizing: border-box;
+            background-color: #fff;
+            #report-progress__title {
+                font-size: 1.4em;
+                font-weight: 600;
+                margin: 0 0 5px 0;
+                text-align: center;
+            }
+            #report-progress__text {
+                text-align: center;
+            }
+            #report-progress__actions {
+                text-align: center;
+                margin: 20px 0 10px 0;
+            }
+        }
         #task {
             display: flex;
             overflow: hidden;
