@@ -39,7 +39,7 @@
                     </div>
                     <!-- Confirm delete -->
                     <div class="dialog-controls__right">
-                        <v-btn depressed color="success" @click="onClickConfirm" :dark="!confirmDisabled" :disabled="confirmDisabled">
+                        <v-btn depressed color="success" @click="onClickConfirm" :dark="!confirmDisabled" :disabled="confirmDisabled" :loading="dialog.loading">
                             <i class="fas fa-paper-plane"></i>
                             {{ strings.dialog_submit }}
                         </v-btn>
@@ -65,6 +65,7 @@
             userOptions: [],
             dialog: {
                 show: false,
+                loading: false,
                 form: {
                     user_slug: "",
                 }
@@ -98,6 +99,7 @@
                 this.dialog.show = true;
             },
             onClickConfirm() {
+                this.dialog.loading = true;
                 let slug = this.dialog.form.user_slug.value;
                 let url = this.endpoint + "/" + slug;
                 window.location.href = url;
