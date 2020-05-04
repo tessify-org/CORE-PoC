@@ -224,6 +224,10 @@ Breadcrumbs::for("tasks.report-progress", function($t, $task) {
     $t->parent("tasks.view", $task);
     $t->push(__("tessify-core::breadcrumbs.task_report_progress"), route("tasks.report-progress", ["slug" => $task->slug]));
 });
+Breadcrumbs::for("tasks.progress-reports", function($t, $task) {
+    $t->parent("tasks.view", $task);
+    $t->push(__("tessify-core::breadcrumbs.task_progress_reports"), route("tasks.progress-reports", ["slug" => $task->slug]));
+});
 Breadcrumbs::for("tasks.progress-report", function($t, $task, $report) {
     $t->parent("tasks.view", $task);
     $t->push(__("tessify-core::breadcrumbs.task_progress_report"), route("tasks.progress-report", ["slug" => $task->slug, "uuid" => $report->uuid]));
@@ -231,6 +235,18 @@ Breadcrumbs::for("tasks.progress-report", function($t, $task, $report) {
 Breadcrumbs::for("tasks.progress-report.review", function($t, $task, $report) {
     $t->parent("tasks.progress-report", $task, $report);
     $t->push(__("tessify-core::breadcrumbs.task_review_progress_report"), route("tasks.progress-report.review", ["slug" => $task->slug, "uuid" => $report->uuid]));
+});
+Breadcrumbs::for("tasks.reviews", function($t, $task) {
+    $t->parent("tasks.view", $task);
+    $t->push(__("tessify-core::breadcrumbs.task_reviews"), route("tasks.reviews", ["slug" => $task->slug]));
+});
+Breadcrumbs::for("tasks.review", function($t, $task, $review) {
+    $t->parent("tasks.reviews", $task);
+    $t->push(__("tessify-core::breadcrumbs.task_review"), route("tasks.review", ["slug" => $task->slug, "uuid" => $review->uuid]));
+});
+Breadcrumbs::for("tasks.comments", function($t, $task) {
+    $t->parent("tasks.view", $task);
+    $t->push(__("tessify-core::breadcrumbs.task_comments"), route("tasks.comments", ["slug" => $task->slug]));
 });
 
 // Notifications
