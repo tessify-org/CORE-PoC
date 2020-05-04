@@ -44,7 +44,7 @@
             mutableMessages: [],
             paginatedMessages: [],
             pagination: {
-                perPage: 5,
+                perPage: 10,
                 currentPage: 1,
             }
         }),

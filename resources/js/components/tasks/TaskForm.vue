@@ -348,7 +348,7 @@
                 return this.task !== undefined && this.task !== null && this.task !== "";
             },
             taskHasImage() {
-                return this.hasProject && this.task.header_image_url !== null && this.task.header_image_url !== '';
+                return this.hasTask && this.task.header_image_url !== null && this.task.header_image_url !== '';
             },
         },
         watch: {

@@ -65,6 +65,7 @@
             "errors",
             "oldInput",
             "users",
+            "replyTo",
             "userText",
             "subjectText",
             "messageText",
@@ -85,6 +86,7 @@
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" errors: ", this.errors);
+                console.log(this.tag+" reply to: ", this.replyTo);
                 console.log(this.tag+" old input: ", this.oldInput);
                 console.log(this.tag+" user text: ", this.userText);
                 console.log(this.tag+" subject text: ", this.subjectText);
@@ -96,6 +98,12 @@
                 this.initializeData();
             },
             initializeData() {
+                if (this.replyTo !== undefined && this.replyTo !== null) {
+                    if (this.replyTo.sender !== undefined && this.replyTo.sender !== null) {
+                        this.form.user = this.replyTo.sender.formatted_name;
+                    }
+                    this.form.subject = "RE: "+this.replyTo.subject;
+                }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.user !== null) this.form.user = this.oldInput.user;
                     if (this.oldInput.subject !== null) this.form.subject = this.oldInput.subject;
