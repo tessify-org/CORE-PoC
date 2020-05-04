@@ -8,9 +8,9 @@
             <div class="form-field">
                 <v-textarea
                     name="message"
-                    :label="messageText"
+                    :label="strings.message"
                     v-model="form.message"
-                    :placeholder="messagePlaceholderText"
+                    :placeholder="strings.message_placeholder"
                     :errors="hasErrors('message')"
                     :error-messages="getErrors('message')">
                 </v-textarea>
@@ -18,7 +18,7 @@
 
             <!-- Attachments -->
             <div class="file-field" :class="{ 'has-errors': hasErrors('attachment') }">
-                <div class="file-field__label">{{ attachmentText }}</div>
+                <div class="file-field__label">{{ strings.attachment }}</div>
                 <div class="file-field__input">
                     <input type="file" name="attachment">
                 </div>
@@ -29,15 +29,29 @@
                 </div>
             </div>
 
-            <!-- Flag as completed -->
-            <div class="form-field">
-                <v-checkbox
-                    :label="completedText"
-                    v-model="form.completed"
-                    :errors="hasErrors('completed')"
-                    :error-messages="getErrors('completed')">
-                </v-checkbox>
-                <input type="hidden" name="completed" :value="form.completed">
+            <!-- Hours & Completed -->
+            <div class="form-fields mb-0">
+                <!-- Hours -->
+                <div class="form-field">
+                    <v-text-field
+                        name="hours"
+                        type="number"
+                        :label="strings.hours"
+                        v-model="form.hours"
+                        :errors="hasErrors('hours')"
+                        :error-messages="getErrors('hours')">
+                    </v-text-field>
+                </div>
+                <!-- Flag as completed -->
+                <div class="form-field">
+                    <v-checkbox
+                        :label="strings.completed"
+                        v-model="form.completed"
+                        :errors="hasErrors('completed')"
+                        :error-messages="getErrors('completed')">
+                    </v-checkbox>
+                    <input type="hidden" name="completed" :value="form.completed">
+                </div>
             </div>
 
         </div>
@@ -47,13 +61,13 @@
             <div class="form-controls__left">
                 <v-btn :href="backHref" outlined>
                     <i class="fas fa-arrow-left"></i>
-                    {{ backText }}
+                    {{ strings.back }}
                 </v-btn>
             </div>
             <div class="form-controls__right">
                 <v-btn type="submit" color="success">
                     <i class="fas fa-save"></i>
-                    {{ submitText }}
+                    {{ strings.submit }}
                 </v-btn>
             </div>
         </div>
@@ -68,17 +82,13 @@
             "errors",
             "oldInput",
             "backHref",
-            "backText",
-            "submitText",
-            "messageText", 
-            "messagePlaceholderText",
-            "attachmentText",
-            "completedText",
+            "strings",
         ],
         data: () => ({
             tag: "[report-task-progress-form]",
             form: {
                 message: "",
+                hours: 1,
                 completed: false,
             }
         }),
@@ -89,18 +99,15 @@
                 console.log(this.tag+" errors: ", this.errors);
                 console.log(this.tag+" old input: ", this.oldInput);
                 console.log(this.tag+" back href: ", this.backHref);
-                console.log(this.tag+" back text: ", this.backText);
-                console.log(this.tag+" submit text: ", this.submitText);
-                console.log(this.tag+" message text: ", this.messageText);
-                console.log(this.tag+" message placeholder text: ", this.messagePlaceholderText);
-                console.log(this.tag+" attachment text: ", this.attachmentText);
-                console.log(this.tag+" completed text: ", this.completedText);
+                console.log(this.tag+" strings: ", this.strings);
                 // console.log(this.tag+" ");
                 this.initializeData();
             },
             initializeData() {
                 if (this.oldInput !== undefined && this.oldInput !== null) {
-
+                    if (this.oldInput.message !== null) this.form.message = this.oldInput.message;
+                    if (this.oldInput.hours !== null) this.form.hours = parseInt(this.oldInput.hours);
+                    if (this.oldInput.completed !== null) this.form.completed = this.oldInput.completed;
                 }
             },
             hasErrors(field) {

@@ -17,8 +17,9 @@ class CreateTaskProgressReportsTable extends Migration
             $table->bigIncrements('id');
             $table->string('uuid');
             $table->unsignedInteger('user_id');
-            $table->unsignedIntegeR('task_id');
+            $table->unsignedInteger('task_id');
             $table->text('message');
+            $table->unsignedInteger('hours');
             $table->boolean('completed')->default(false);
             $table->timestamps();
         });
