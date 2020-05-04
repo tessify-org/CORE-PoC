@@ -28,6 +28,17 @@
                 </v-textarea>
             </div>
 
+            <!-- Publicly share -->
+            <div class="form-field checkbox">
+                <v-checkbox
+                    :label="strings.public"
+                    v-model="form.public"
+                    :errors="hasErrors('public')"
+                    :error-messages="getErrors('public')">
+                </v-checkbox>
+                <input type="hidden" name="public" :value="form.public">
+            </div>
+
         </div>
 
         <!-- Form controls -->
@@ -64,6 +75,7 @@
             form: {
                 rating: 10,
                 message: "",
+                public: true,
             }
         }),
         methods: {
@@ -80,10 +92,12 @@
                 if (this.review !== undefined && this.review !== null) {
                     this.form.rating = this.review.rating;
                     this.form.message = this.review.message;
+                    this.form.public = this.review.public;
                 }
                 if (this.oldInput !== undefined && this.oldInput !== null) {
                     if (this.oldInput.rating !== null) this.form.rating = this.oldInput.rating;
                     if (this.oldInput.message !== null) this.form.message = this.oldInput.message;
+                    if (this.oldInput.public !== null) this.form.public = this.oldInput.public === "true" ? true : false;
                 }
             },
             generateRatingOptions() {

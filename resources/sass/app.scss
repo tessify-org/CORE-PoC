@@ -3021,6 +3021,7 @@
             }
         }
         #review-message {
+            margin: 0 0 15px 0;
             #review-message__label {
                 font-size: .8em;
                 margin: 0 0 3px 0;
@@ -3029,6 +3030,14 @@
             }
             #review-message__value {
     
+            }
+        }
+        #review-public {
+            #review-public__label {
+                font-size: .8em;
+                margin: 0 0 3px 0;
+                color: hsl(0, 0%, 80%);
+                text-transform: uppercase;
             }
         }
     }

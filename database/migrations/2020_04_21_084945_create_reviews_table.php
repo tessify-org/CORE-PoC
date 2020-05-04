@@ -22,6 +22,7 @@ class CreateReviewsTable extends Migration
             $table->unsignedInteger('reviewable_id');
             $table->unsignedInteger('rating');
             $table->text('message');
+            $table->boolean('public')->default(true);
             $table->timestamps();
         });
     }
