@@ -345,6 +345,7 @@
 
                     .then(function(response) {
                         this.mutableResources.splice(this.dialogs.delete.index, 1);
+                        this.paginate();
                         this.dialogs.delete.loading = false;
                         this.dialogs.delete.show = false;
                     }.bind(this))
