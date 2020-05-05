@@ -17,8 +17,9 @@ class CreateProjectResourcesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedInteger('project_id')->nullable();
             $table->unsignedInteger('user_id');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->text('description')->nullable();
+            $table->string('file_type');
             $table->string('file_url');
             $table->string('file_size');
             $table->timestamps();

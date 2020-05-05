@@ -7777,3 +7777,533 @@ i {
   margin: 30px 0 0 0;
 }
 
+#view-project {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#view-project #view-project__sidebar {
+  -webkit-box-flex: 0;
+          flex: 0 0 300px;
+  margin: 0 50px 0 0;
+}
+
+#view-project #view-project__sidebar #project-ownership {
+  margin: 0 0 30px 0;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__title {
+  margin: 0 0 10px 0;
+  color: #404040;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content {
+  overflow: hidden;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-ministry {
+  font-size: 0.8em;
+  padding: 10px 15px;
+  box-sizing: border-box;
+  background-color: #e6e6e6;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-ministry #ministry-icon {
+  margin: 0 5px 0 0;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-ministry #ministry-link {
+  color: #000;
+  text-decoration: none;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-ministry #ministry-link:hover {
+  text-decoration: underline;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-organization {
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-organization #organization-icon {
+  margin: 0 5px 0 0;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-organization #organization-link {
+  color: #000;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-organization #organization-link:hover {
+  text-decoration: underline;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-department {
+  margin-top: -10px;
+  box-sizing: border-box;
+  padding: 0 15px 15px 15px;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-department #department-link {
+  color: #000;
+  text-decoration: none;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-department #department-link:hover {
+  text-decoration: underline;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-author #author {
+  display: -webkit-box;
+  display: flex;
+  padding: 15px;
+  color: #000;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  text-decoration: none;
+  box-sizing: border-box;
+  background-color: #fff;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-author #author:hover {
+  text-decoration: underline;
+  background-color: #fafafa;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-author #author #author-avatar {
+  height: 40px;
+  -webkit-box-flex: 0;
+          flex: 0 0 40px;
+  border-radius: 20px;
+  background-size: cover;
+  background-color: #f5f5f5;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#view-project #view-project__sidebar #project-ownership #project-ownership__content #ownership-author #author #author-name {
+  margin: 0 0 0 15px;
+}
+
+#view-project #view-project__sidebar #project-status__wrapper {
+  margin: 0 0 30px 0;
+}
+
+#view-project #view-project__sidebar #project-status__wrapper #project-status__title {
+  margin: 0 0 5px 0;
+}
+
+#view-project #view-project__sidebar #project-status__wrapper #project-status {
+  padding: 15px;
+  display: -webkit-box;
+  display: flex;
+  border-radius: 3px;
+  margin: 0 0 30px 0;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  box-sizing: border-box;
+  -webkit-box-pack: center;
+          justify-content: center;
+  color: #fff;
+}
+
+#view-project #view-project__sidebar #project-status__wrapper #project-status.open {
+  background-color: #1976d2;
+}
+
+#view-project #view-project__sidebar #project-status__wrapper #project-status.in_progress {
+  background-color: #df5200;
+}
+
+#view-project #view-project__sidebar #project-status__wrapper #project-status.completed {
+  background-color: #2db201;
+}
+
+#view-project #view-project__sidebar #project-status__wrapper #project-status #project-status__icon {
+  margin: 0 5px 0 0;
+}
+
+#view-project #view-project__sidebar #project-users {
+  margin: 0 0 30px 0;
+}
+
+#view-project #view-project__sidebar #project-users #project-users__title {
+  margin: 0 0 5px 0;
+}
+
+#view-project #view-project__sidebar #project-users #project-users__list {
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+#view-project #view-project__sidebar #project-users #project-users__list .project-user {
+  display: -webkit-box;
+  display: flex;
+  padding: 15px;
+  color: #000;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#view-project #view-project__sidebar #project-users #project-users__list .project-user:last-child {
+  border-bottom: 0;
+}
+
+#view-project #view-project__sidebar #project-users #project-users__list .project-user:hover {
+  text-decoration: underline;
+  background-color: #fafafa;
+}
+
+#view-project #view-project__sidebar #project-users #project-users__list .project-user .project-user__avatar {
+  height: 40px;
+  -webkit-box-flex: 0;
+          flex: 0 0 40px;
+  border-radius: 20px;
+  background-size: cover;
+  background-color: #f5f5f5;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#view-project #view-project__sidebar #project-users #project-users__list .project-user .project-user__text {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  margin: 0 0 0 15px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+#view-project #view-project__sidebar #project-users #project-users__list .project-user .project-user__text .project-user__name {
+  font-weight: 500;
+}
+
+#view-project #view-project__sidebar #project-users #project-users__no-records {
+  padding: 15px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+#view-project #view-project__sidebar #project-links #project-links__title {
+  margin: 0 0 5px 0;
+}
+
+#view-project #view-project__sidebar #project-links #project-links__links {
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+#view-project #view-project__sidebar #project-links #project-links__links .project-link {
+  display: -webkit-box;
+  display: flex;
+  color: #000;
+  padding: 10px 15px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  text-decoration: none;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#view-project #view-project__sidebar #project-links #project-links__links .project-link:last-child {
+  border-bottom: 0;
+}
+
+#view-project #view-project__sidebar #project-links #project-links__links .project-link:hover {
+  color: #0a64eb;
+}
+
+#view-project #view-project__sidebar #project-links #project-links__links .project-link.selected {
+  color: #fff;
+  background-color: #0a64eb;
+}
+
+#view-project #view-project__sidebar #project-links #project-links__links .project-link.selected:hover {
+  color: #fff;
+  background-color: #0a64eb;
+}
+
+#view-project #view-project__sidebar #project-links #project-links__links .project-link .project-link__icon {
+  -webkit-box-flex: 0;
+          flex: 0 0 30px;
+}
+
+#view-project #view-project__sidebar #project-links #project-links__links .project-link .project-link__text {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+#view-project #view-project__content {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+#view-project #view-project__content #project {
+  display: -webkit-box;
+  display: flex;
+  overflow: hidden;
+  border-radius: 3px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  background-color: #fff;
+}
+
+#view-project #view-project__content #project #project-header {
+  -webkit-box-flex: 0;
+          flex: 0 0 250px;
+  position: relative;
+  background-color: #333;
+}
+
+#view-project #view-project__content #project #project-header #project-header__bg {
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+#view-project #view-project__content #project #project-header #project-header__bg-overlay {
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+#view-project #view-project__content #project #project-header #project-header__text {
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  display: -webkit-box;
+  display: flex;
+  color: #fff;
+  position: absolute;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  box-sizing: border-box;
+}
+
+#view-project #view-project__content #project #project-header #project-header__text #project-subtitle {
+  font-size: 1.2em;
+  font-weight: 300;
+}
+
+#view-project #view-project__content #project #project-header #project-header__text #project-subtitle strong {
+  font-weight: 500;
+}
+
+#view-project #view-project__content #project #project-header #project-header__actions {
+  left: 0;
+  bottom: 0;
+  z-index: 3;
+  width: 100%;
+  padding: 30px;
+  position: absolute;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#view-project #view-project__content #project #project-header #project-header__actions .v-btn {
+  margin: 0;
+}
+
+#view-project #view-project__content #project #project-header #project-header__actions #project-header__actions-left {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+#view-project #view-project__content #project #project-header #project-header__actions #project-header__actions-right {
+  -webkit-box-flex: 1;
+          flex: 1;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+#view-project #view-project__content #project #project-content {
+  padding: 30px;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-left {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-left #project-title {
+  line-height: 1em;
+  margin: 0 0 10px 0;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-left #project-tags {
+  margin-bottom: 15px;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-left #project-details {
+  font-size: 0.9em;
+  margin: 0 0 15px 0;
+  color: rgba(0, 0, 0, 0.75);
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-left #project-details .project-detail {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-left #project-details .project-detail .project-detail__key {
+  -webkit-box-flex: 0;
+          flex: 0 0 200px;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-left #project-details .project-detail .project-detail__value {
+  -webkit-box-flex: 1;
+          flex: 1;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right {
+  -webkit-box-flex: 0;
+          flex: 0 0 200px;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right #primary-action {
+  margin: 0 0 10px 0;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right #secondary-actions {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right #secondary-actions .secondary-action:last-child {
+  -webkit-box-flex: 2;
+          flex: 2;
+  margin: 0 0 0 10px;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right #ask-question {
+  margin: 10px 0;
+  text-align: right;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right #ask-question #ask-question__link {
+  text-decoration: none;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right #share-project {
+  padding-top: 5px;
+  border-top: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right #share-project #share-project__text {
+  font-size: 0.9em;
+  font-weight: 500;
+  margin: 0 0 5px 0;
+  text-align: right;
+  padding: 5px 0 0 0;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right #share-project #share-project__socials {
+  display: -webkit-box;
+  display: flex;
+  margin: 0 -5px;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right #share-project #share-project__socials .social-wrapper {
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+#view-project #view-project__content #project #project-content #project-content__header #project-content__header-right #share-project #share-project__socials .social-wrapper .social {
+  font-size: 1.7em;
+}
+
+#view-project #view-project__content #project #project-content #project-description {
+  margin: 0 0 30px 0;
+}
+
+#view-project #view-project__content #project #project-content #project-description #project-description__title {
+  font-weight: 500;
+  font-size: 1.2em;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+}
+
+#view-project #view-project__content #project-page-controls {
+  margin: 30px 0 0 0;
+}
+
