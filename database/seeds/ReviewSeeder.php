@@ -36,6 +36,19 @@ class ReviewSeeder extends Seeder
             "reason" => "completed_project",
         ]);
 
+        // Create reviews for all projects from moi
+        foreach ($projects as $project)
+        {
+            Review::create([
+                "user_id" => $moi->id,
+                "reviewable_type" => get_class($project),
+                "reviewable_id" => $project->id,
+                "rating" => 10,
+                "message" => "It was very awesome to work on this project.",
+                "public" => true,
+            ]);
+        }
+
         // Create a review request for a random task
         $t_one = $tasks->random();
         ReviewRequest::create([
