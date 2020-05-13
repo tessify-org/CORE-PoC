@@ -78,7 +78,7 @@
             pagination: {
                 perPage: 5,
                 currentPage: 1,
-            }
+            },
         }),
         computed: {
             numPaginatedPages() {
