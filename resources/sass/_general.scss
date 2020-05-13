@@ -1,4 +1,57 @@
 //
+// Rijksoverheid webrijksoverheid_webfont
+//
+
+// Sans serif - regular
+@font-face {
+    font-family: 'RoSansRegular';
+    src: url('./rijksoverheid_webfont/ROsanswebtextregular.eot'); /* IE9 Compat Modes */
+    src: url('./rijksoverheid_webfont/ROsanswebtextregular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./rijksoverheid_webfont/ROsanswebtextregular.woff') format('woff'), /* Pretty Modern Browsers */
+         url('./rijksoverheid_webfont/ROsanswebtextregular.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+// Sans serif - bold
+@font-face {
+    font-family: 'RoSansBold';
+    src: url('./rijksoverheid_webfont/ROsanswebtextbold.eot'); /* IE9 Compat Modes */
+    src: url('./rijksoverheid_webfont/ROsanswebtextbold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./rijksoverheid_webfont/ROsanswebtextbold.woff') format('woff'), /* Super Modern Browsers */
+         url('./rijksoverheid_webfont/ROsanswebtextbold.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+// Sans serif - italic
+@font-face {
+    font-family: 'RoSansItalic';
+    src: url('./rijksoverheid_webfont/ROsanswebtextitalic.eot'); /* IE9 Compat Modes */
+    src: url('./rijksoverheid_webfont/ROsanswebtextitalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./rijksoverheid_webfont/ROsanswebtextitalic.woff') format('woff'), /* Pretty Modern Browsers */
+         url('./rijksoverheid_webfont/ROsanswebtextitalic.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+// Serif - regular
+@font-face {
+    font-family: 'RoSerifRegular';
+    src: url('./rijksoverheid_webfont/ROserifwebregular.eot'); /* IE9 Compat Modes */
+    src: url('./rijksoverheid_webfont/ROserifwebregular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./rijksoverheid_webfont/ROserifwebregular.woff') format('woff'), /* Pretty Modern Browsers */
+         url('./rijksoverheid_webfont/ROserifwebregular.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+// Serif - bold
+@font-face {
+    font-family: 'RoSerifBold';
+    src: url('./rijksoverheid_webfont/ROserifwebbold.eot'); /* IE9 Compat Modes */
+    src: url('./rijksoverheid_webfont/ROserifwebbold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./rijksoverheid_webfont/ROserifwebbold.woff') format('woff'), /* Pretty Modern Browsers */
+         url('./rijksoverheid_webfont/ROserifwebbold.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+// Serif - italic
+@font-face {
+    font-family: 'RoSerifItalic';
+    src: url('./rijksoverheid_webfont/ROserifwebitalic.eot'); /* IE9 Compat Modes */
+    src: url('./rijksoverheid_webfont/ROserifwebitalic.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('./rijksoverheid_webfont/ROserifwebitalic.woff') format('woff'), /* Pretty Modern Browsers */
+         url('./rijksoverheid_webfont/ROserifwebitalic.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+//
 // General styling
 //
 
@@ -8,6 +61,10 @@ body, html {
     width: 100%;
     font-size: 14px;
     min-height: 100%;
+    font-family: 'RoSansRegular', sans-serif !important;
+}
+.v-application {
+    font-family: 'RoSansRegular', sans-serif !important;
 }
 
 p:last-child {
@@ -545,6 +602,7 @@ i {
     font-size: 3em;
     font-weight: 300;
     margin: -50px 0 50px 0;
+    font-family: 'RoSerifRegular', serif;
     &.centered {
         text-align: center;
     }
