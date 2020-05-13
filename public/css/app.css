@@ -2440,6 +2440,30 @@ input[type=number] {
           flex-direction: row;
   -webkit-box-align: center;
           align-items: center;
+  position: relative;
+}
+
+#app #topnav__wrapper #topnav #topnav-ministry-logo__wrapper {
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: -webkit-box;
+  display: flex;
+  position: absolute;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-direction: row;
+  -webkit-box-pack: center;
+          justify-content: center;
+}
+
+#app #topnav__wrapper #topnav #topnav-ministry-logo__wrapper #topnav-ministry-logo {
+  width: 290px;
+  height: 110px;
+  margin-right: -230px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 #app #topnav__wrapper #topnav #topnav-logo__wrapper #topnav-logo {

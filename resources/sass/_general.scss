@@ -133,6 +133,24 @@ $rijkshuisstijl-blue-dark: #0a2942;
             margin: 0 auto;
             flex-direction: row;
             align-items: center;
+            position: relative;
+            #topnav-ministry-logo__wrapper {
+                top: 0;
+                left: 0;
+                width: 100%;
+                display: flex;
+                position: absolute;
+                flex-direction: row;
+                justify-content: center;
+                #topnav-ministry-logo {
+                    width: 290px;
+                    height: 110px;
+                    margin-right: -230px;
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                }
+            }
             #topnav-logo__wrapper {
                 #topnav-logo {
                     height: 40px;
