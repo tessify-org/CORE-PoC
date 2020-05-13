@@ -172,7 +172,16 @@
                             </div>
                         </div>
 
-                        <!-- Required skills -->
+                    </div>
+                </div>
+
+                <!-- Required skills -->
+                <h2 class="content-card__title">{{ strings.skills_title }}</h2>
+                <h3 class="content-card__description">{{ strings.skills_description }}</h3>
+                <div class="content-card elevation-1 mb">
+                    <div class="content-card__content">
+
+                        <!-- Required skills field -->
                         <div class="form-field">
                             <required-skills-field
                                 :task="task"

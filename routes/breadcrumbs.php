@@ -364,6 +364,10 @@ Breadcrumbs::for("organizations.view", function($t, $organization) {
     $t->parent("organizations");
     $t->push($organization->name, route("organizations.view", $organization->slug));
 });
+Breadcrumbs::for("organizations.department", function($t, $organization, $department) {
+    $t->parent("organizations.view", $organization);
+    $t->push($department->name, route("organizations.department", ["slug" => $organization->slug, "departmentSlug" => $department->slug]));
+});
 
 // Static pages
 Breadcrumbs::for("dont-use-ie", function($t) {

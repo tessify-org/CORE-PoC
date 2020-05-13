@@ -16,7 +16,11 @@ class CreateOrganizationDepartmentsTable extends Migration
         Schema::create('organization_departments', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('organization_id');
+            $table->string('slug');
             $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('website_url')->nullable();
+            $table->string('header_image_url')->nullable();
             $table->timestamps();
         });
     }
