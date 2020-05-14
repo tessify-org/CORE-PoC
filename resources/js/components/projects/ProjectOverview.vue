@@ -1,5 +1,39 @@
 <template>
     <div id="project-overview">
+
+        <!-- Filters -->
+        <div id="project-overview__filters">
+            <div id="project-overview__filters-left">
+                <!-- Search bar -->
+                <div class="project-overview__filter">
+                    <v-text-field
+                        solo dense 
+                        :label="strings.search_title" 
+                        v-model="filters.search_query">
+                    </v-text-field>
+                </div>
+            </div>
+            <div id="project-overview__filters-right">
+                <!-- Status -->
+                <div class="project-overview__filter">
+                    <v-combobox
+                        multiple solo dense
+                        :label="strings.status_title"
+                        :items="statusOptions"
+                        v-model="filters.selected_statuses">
+                    </v-combobox>
+                </div>
+                <!-- Category -->
+                <div class="project-overview__filter">
+                    <v-combobox
+                        multiple solo dense
+                        :label="strings.category_title"
+                        :items="categoryOptions"
+                        v-model="filters.selected_categories">
+                    </v-combobox>
+                </div>
+            </div>
+        </div>
         
         <!-- Projects -->
         <div id="project-overview__projects" v-if="paginatedProjects.length > 0">
@@ -67,13 +101,18 @@
 </template>
 
 <script>
+    import { EventBus } from './../../event-bus.js';
     export default {
         props: [
             "projects",
+            "statuses",
+            "categories",
             "strings",
         ],
         data: () => ({
             tag: "[project-overview]",
+            statusOptions: [],
+            categoryOptions: [],
             mutableProjects: [],
             filteredProjects: [],
             paginatedProjects: [],
@@ -107,14 +146,32 @@
                 handler: function() {
                     this.filter();
                 }
-            }
+            },
         },
         methods: {
             initialize() {
                 console.log(this.tag+" initializing");
                 console.log(this.tag+" strings: ", this.strings);
                 console.log(this.tag+" projects: ", this.projects);
+                console.log(this.tag+" statuses: ", this.statuses);
+                console.log(this.tag+" categories: ", this.categories);
+                this.generateCategoryOptions();
+                this.generateStatusOptions();
                 this.initializeData();
+            },
+            generateCategoryOptions() {
+                if (this.categories !== undefined && this.categories !== null && this.categories.length > 0) {
+                    for (let i = 0; i < this.categories.length; i++) {
+                        this.categoryOptions.push(this.categories[i].label);
+                    }
+                }
+            },
+            generateStatusOptions() {
+                if (this.statuses !== undefined && this.statuses !== null && this.statuses.length > 0) {
+                    for (let i = 0; i < this.statuses.length; i++) {
+                        this.statusOptions.push(this.statuses[i].label);
+                    }
+                }
             },
             initializeData() {
                 if (this.projects !== undefined && this.projects !== null && this.projects.length > 0) {
@@ -142,7 +199,7 @@
                         if (this.filters.selected_statuses.length > 0) {
                             let matches = false;
                             for (let i = 0; i < this.filters.selected_statuses.length; i++) {
-                                if (project.project_status_id === this.filters.selected_statuses[i]) {
+                                if (project.status.label === this.filters.selected_statuses[i]) {
                                     matches = true;
                                     break;
                                 }
@@ -153,7 +210,7 @@
                         if (this.filters.selected_categories.length > 0) {
                             let matches = false;
                             for (let i = 0; i < this.filters.selected_categories.length; i++) {
-                                if (project.project_category_id === this.filters.selected_categories[i]) {
+                                if (project.category.label === this.filters.selected_categories[i]) {
                                     matches = true;
                                     break;
                                 }
@@ -182,6 +239,29 @@
 
 <style lang="scss">
     #project-overview {
+        #project-overview__filters {
+            display: flex;
+            margin: 0 0 50px 0;
+            flex-direction: row;
+            #project-overview__filters-left {
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+            #project-overview__filters-right {
+                flex: 1;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-end;
+                margin: 0 -15px;
+                .project-overview__filter {
+                    padding: 0 15px;
+                    box-sizing: border-box;
+                }
+            }
+        }
         #project-overview__projects {
             display: flex;
             flex-wrap: wrap;

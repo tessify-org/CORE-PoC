@@ -83,6 +83,10 @@ input[type=number] {
     z-index: 99999999;
 }
 
+.v-application--is-ltr .v-list-item__action:first-child {
+    margin-right: 10px;
+}
+
 $rijkshuisstijl-blue: #123552;
 $rijkshuisstijl-blue-dark: #0a2942;
 

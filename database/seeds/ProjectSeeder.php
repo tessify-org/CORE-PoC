@@ -115,14 +115,18 @@ class ProjectSeeder extends Seeder
         $skills = Skill::all();
         $phases = ProjectPhase::all();
         $ministries = Ministry::all();
-        for ($i = 0; $i < 20; $i++)
+        $categories = ProjectCategory::all();
+        $statuses = ProjectStatus::all();
+        $workMethods = WorkMethod::all();
+
+        for ($i = 0; $i < 30; $i++)
         {
             // Create the project
             $project = factory(Project::class)->create([
                 "author_id" => $user->id,
-                "work_method_id" => $scrum->id,
-                "project_status_id" => $open->id,
-                "project_category_id" => $software->id,
+                "work_method_id" => $workMethods->random()->id,
+                "project_status_id" => $statuses->random()->id,
+                "project_category_id" => $categories->random()->id,
                 "ministry_id" => rand(0, 1) == 1 ? $ministries->random()->id : null,
                 "project_phase_id" => $phases->random()->id,
                 "header_image_url" => "storage/images/projects/header/default.jpeg"

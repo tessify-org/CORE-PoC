@@ -2396,6 +2396,10 @@ input[type=number] {
   z-index: 99999999;
 }
 
+.v-application--is-ltr .v-list-item__action:first-child {
+  margin-right: 10px;
+}
+
 #app {
   width: 100%;
   height: 100%;
