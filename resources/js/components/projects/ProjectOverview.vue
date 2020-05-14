@@ -38,7 +38,7 @@
         <!-- Projects -->
         <div id="project-overview__projects" v-if="paginatedProjects.length > 0">
             <div class="project-wrapper" v-for="(project, pi) in paginatedProjects" :key="pi">
-                <a class="project elevation-1">
+                <a class="project elevation-1" :href="project.view_href">
                     <span class="project-bg" :style="{ backgroundImage: 'url(' + project.header_image_url + ')' }"></span>
                     <span class="project-overlay"></span>
                     <span class="project-text">
