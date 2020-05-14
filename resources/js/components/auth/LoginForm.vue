@@ -6,7 +6,7 @@
             <v-text-field 
                 name="email" 
                 v-model="form.email" 
-                :label="emailText" 
+                :label="strings.email" 
                 :error="hasErrors('email')" 
                 :error-messages="getErrors('email')">
             </v-text-field>
@@ -17,7 +17,7 @@
             <v-text-field 
                 type="password" 
                 name="password" 
-                :label="passwordText"
+                :label="strings.password"
                 v-model="form.password" 
                 :error="hasErrors('password')" 
                 :error-messages="getErrors('password')">
@@ -29,23 +29,29 @@
             <remember-me 
                 name="remember_me" 
                 v-model="form.rememberMe" 
-                :remember-me-text="rememberMeText">
+                :remember-me-text="strings.remember_me">
             </remember-me>
         </div>
         
         <!-- Controls -->
         <div class="form-controls">
             <div class="form-controls__left">
-                <v-btn 
-                    type="submit" 
-                    color="primary">
-                    {{ submitText}}
-                </v-btn>
+                <div class="login-link">
+                    <a :href="forgotPasswordHref">
+                        {{ strings.forgot_password }}
+                    </a>
+                </div>
+                <div class="login-link">
+                    <a :href="registerHref">
+                        {{ strings.register }}
+                    </a>
+                </div>
             </div>
             <div class="form-controls__right">
-                <a :href="forgotPasswordHref">
-                    {{ forgotPasswordText }}
-                </a>
+                <v-btn type="submit" color="primary">
+                    <i class="fas fa-sign-in-alt"></i>
+                    {{ strings.submit }}
+                </v-btn>
             </div>
         </div>
 
@@ -58,11 +64,8 @@
             "oldInput",
             "errors",
             "prefillEmail",
-            "emailText",
-            "passwordText",
-            "rememberMeText",
-            "submitText",
-            "forgotPasswordText",
+            "strings",
+            "registerHref",
             "forgotPasswordHref",
         ],
         data: () => ({
@@ -113,6 +116,17 @@
 
 <style lang="scss">
     #login-form {
-        
+        .form-controls {
+            .form-controls__left {
+                display: flex;
+                flex-direction: column;
+                .login-link {
+                    width: 100%;
+                }
+            }
+            .form-controls__right {
+                flex: 0;
+            }
+        }
     }
 </style>
