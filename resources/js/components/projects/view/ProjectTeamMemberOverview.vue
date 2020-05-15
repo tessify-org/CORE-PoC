@@ -86,11 +86,120 @@
                         </div>
                     </div>
                 </div>
-                <!-- Controls
-                <div class="dialog-controls">
-
+                <!-- Controls -->
+                <div class="dialog-controls" v-if="project.is_owner">
+                    <div class="dialog-controls__right">
+                        <!-- Update -->
+                        <v-btn small depressed color="warning" @click="onClickUpdate">
+                            <i class="fas fa-edit"></i>
+                            {{ strings.view_dialog_update }}
+                        </v-btn>
+                        <!-- Kick -->
+                        <v-btn small depressed color="red" dark @click="onClickKick">
+                            <i class="fas fa-trash-alt"></i>
+                            {{ strings.view_dialog_kick }}
+                        </v-btn>
+                    </div>
                 </div>
-                -->
+            </div>
+        </v-dialog>
+
+        <!-- Update roles dialog -->
+        <v-dialog v-model="dialogs.update.show" width="600">
+            <div class="dialog" v-if="dialogs.update.index !== null && mutableMembers[dialogs.update.index] !== undefined">
+                <!-- Close button -->
+                <div class="dialog__close-button" @click="onClickCancelUpdate">
+                    <i class="fas fa-times"></i>
+                </div>
+                <!-- Content -->
+                <div class="dialog-content">
+                    <!-- Title -->
+                    <h3 class="dialog-title">{{ strings.update_dialog_title }}</h3>
+                    <!-- Errors -->
+                    <div class="dialog-errors" v-if="dialogs.update.errors.length > 0">
+                        <div class="dialog-error" v-for="(error, ei) in dialogs.update.errors" :key="ei">
+                            {{ error }}
+                        </div>
+                    </div>
+                    <!-- User field (disabled) -->
+                    <div class="form-field">
+                        <v-text-field
+                            disabled
+                            :label="strings.update_dialog_user"
+                            v-model="mutableMembers[dialogs.update.index].user.formatted_name">
+                        </v-text-field>
+                    </div>
+                    <!-- Roles field -->
+                    <div class="form-field">
+                        <v-select
+                            multiple
+                            :label="strings.update_dialog_roles"
+                            :items="dialogs.update.role_options"
+                            v-model="dialogs.update.form.roles">
+                        </v-select>
+                    </div>
+                </div>
+                <!-- Controls -->
+                <div class="dialog-controls">
+                    <div class="dialog-controls__left">
+                        <v-btn text @click="onClickCancelUpdate">
+                            <i class="fas fa-arrow-left"></i>
+                            {{ strings.update_dialog_cancel }}
+                        </v-btn>
+                    </div>
+                    <div class="dialog-controls__right">
+                        <v-btn color="success" depressed :loading="dialogs.update.loading" @click="onClickConfirmUpdate">
+                            <i class="fas fa-save"></i>
+                            {{ strings.update_dialog_submit }}
+                        </v-btn>
+                    </div>
+                </div>
+            </div>
+        </v-dialog>
+
+        <!-- Kick member dialog -->
+        <v-dialog v-model="dialogs.kick.show" width="600">
+            <div class="dialog" v-if="dialogs.kick.index !== null && mutableMembers[dialogs.kick.index] !== undefined">
+                <!-- Close button -->
+                <div class="dialog__close-button" @click="onClickCancelKick">
+                    <i class="fas fa-times"></i>
+                </div>
+                <!-- Content -->
+                <div class="dialog-content">
+                    <!-- Title -->
+                    <h3 class="dialog-title">{{ strings.kick_dialog_title }}</h3>
+                    <!-- Errors -->
+                    <div class="dialog-errors" v-if="dialogs.kick.errors.length > 0">
+                        <div class="dialog-error" v-for="(error, ei) in dialogs.kick.errors" :key="ei">
+                            {{ error }}
+                        </div>
+                    </div>
+                    <!-- Text -->
+                    <div class="dialog-text">{{ strings.kick_dialog_text }}</div>
+                    <!-- Reason field -->
+                    <div class="form-field">
+                        <v-textarea
+                            :label="strings.kick_dialog_reason"
+                            v-model="dialogs.kick.form.reason"
+                            :placeholder="strings.kick_dialog_reason_hint">
+                        </v-textarea>
+                    </div>
+                </div>
+                <!-- Controls -->
+                <div class="dialog-controls">
+                    <div class="dialog-controls__left">
+                        <v-btn text @click="onClickCancelKick">
+                            <i class="fas fa-arrow-left"></i>
+                            {{ strings.kick_dialog_cancel }}
+                        </v-btn>
+                    </div>
+                    <div class="dialog-controls__right">
+                        <v-btn color="red" dark depressed :loading="dialogs.kick.loading" @click="onClickConfirmKick">
+                            <i class="fas fa-save"></i>
+                            {{ strings.kick_dialog_submit }}
+                        </v-btn>
+                    </div>
+                </div>
             </div>
         </v-dialog>
 
@@ -103,6 +212,7 @@
             "project",
             "members",
             "strings",
+            "apiEndpoints",
         ],
         data: () => ({
             tag: "[project-team-member-overview]",
@@ -112,7 +222,26 @@
                     show: false,
                     index: null,
                 },
-            }
+                update: {
+                    show: false,
+                    index: null,
+                    loading: false,
+                    errors: [],
+                    role_options: [],
+                    form: {
+                        roles: [],
+                    },
+                },
+                kick: {
+                    show: false,
+                    index: null,
+                    loading: false,
+                    errors: [],
+                    form: {
+                        reason: "",
+                    },
+                },
+            },
         }),
         methods: {
             initialize() {
@@ -120,6 +249,7 @@
                 console.log(this.tag+" project: ", this.project);
                 console.log(this.tag+" members: ", this.members);
                 console.log(this.tag+" strings: ", this.strings);
+                console.log(this.tag+" api endpoints: ", this.apiEndpoints);
                 this.initializeData();
             },
             initializeData() {
@@ -128,11 +258,96 @@
                         this.mutableMembers.push(this.members[i]);
                     }
                 }
+                this.generateRoleOptions();
+            },
+            generateRoleOptions() {
+                if (this.project !== undefined && this.project !== null && this.project.team_roles !== undefined && this.project.team_roles !== null && this.project.team_roles.length > 0) {
+                    for (let i = 0; i < this.project.team_roles.length; i++) {
+                        this.dialogs.update.role_options.push({
+                            text: this.project.team_roles[i].name,
+                            value: this.project.team_roles[i].id,
+                        });
+                    }
+                }
             },
             onClickMember(index) {
                 this.dialogs.view.index = index;
                 this.dialogs.view.show = true;
             },
+            onClickUpdate() {
+                this.dialogs.view.show = false;
+                this.dialogs.update.index = this.dialogs.view.index;
+                this.dialogs.update.form.roles = [];
+                for (let i = 0; i < this.mutableMembers[this.dialogs.update.index].team_roles.length; i++) {
+                    this.dialogs.update.form.roles.push(this.mutableMembers[this.dialogs.update.index].team_roles[i].id);
+                }
+                this.dialogs.update.show = true;
+            },
+            onClickCancelUpdate() {
+                this.dialogs.update.show = false;
+                this.dialogs.view.show = true;
+            },
+            onClickConfirmUpdate() {
+                
+                this.dialogs.update.loading = true;
+
+                let payload = new FormData();
+                payload.append("team_member_id", this.mutableMembers[this.dialogs.update.index].id);
+                payload.append("role_ids", JSON.stringify(this.dialogs.update.form.roles));
+
+                this.axios.post(this.apiEndpoints.update, payload)
+
+                    .then(function(response) {
+                        console.log(this.tag+" request succeeded", response.data);
+                        if (response.data.status === "success") {
+                            this.mutableMembers[this.dialogs.update.index].team_roles = response.data.new_roles;
+                            this.dialogs.update.show = false;
+                        } else {
+                            this.dialogs.update.errors.push(response.data.error);
+                        }
+                        this.dialogs.update.loading = false;
+                    }.bind(this))
+
+                    .catch(function(response) {
+                        console.warn(this.tag+" request failed", response.data);
+                        this.dialogs.update.loading = false;
+                    }.bind(this));
+
+            },
+            onClickKick() {
+                this.dialogs.kick.index = this.dialogs.view.index;
+                this.dialogs.view.show = false;
+                this.dialogs.kick.show = true;
+            },
+            onClickCancelKick() {
+                this.dialogs.kick.show = false;
+                this.dialogs.view.show = false;
+            },
+            onClickConfirmKick() {
+
+                this.dialogs.kick.loading = true;
+
+                let payload = new FormData();
+                payload.append("team_member_id", this.mutableMembers[this.dialogs.kick.index].id);
+                payload.append("reason", this.dialogs.kick.form.reason);
+                
+                this.axios.post(this.apiEndpoints.kick, payload)
+
+                    .then(function(response) {
+                        console.log(this.tag+" request succeeded", response.data);
+                        if (response.data.status === "success") {
+                            location.reload();
+                        } else {
+                            this.dialogs.kick.errors.push(response.data.error);
+                        }
+                        this.dialogs.kick.loading = false;
+                    }.bind(this))
+
+                    .catch(function(response) {
+                        this.dialogs.kick.loading = false;
+                    }.bind(this));
+
+            }
         },
         mounted() {
             this.initialize();
@@ -197,10 +412,10 @@
                     .team-member__roles {
                         display: flex;
                         flex-direction: row;
-                        margin: 0 -10px -10px -10px;
+                        margin: 0 -5px -5px -5px;
                         .role-wrapper {
                             box-sizing: border-box;
-                            padding: 0 10px 10px 10px;
+                            padding: 0 5px 5px 5px;
                             .role {
                                 color: #fff;
                                 padding: 0 5px;
