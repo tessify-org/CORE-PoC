@@ -156,7 +156,7 @@
                 </div>
             </div>
         </v-dialog>
-
+        
         <!-- Kick member dialog -->
         <v-dialog v-model="dialogs.kick.show" width="600">
             <div class="dialog" v-if="dialogs.kick.index !== null && mutableMembers[dialogs.kick.index] !== undefined">
