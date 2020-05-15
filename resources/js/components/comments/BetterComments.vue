@@ -499,11 +499,6 @@
                 }
             }
         }
-        .comments__empty {
-            padding: 25px;
-            box-sizing: border-box;
-            background-color: hsl(0, 0%, 98%);
-        }
         .comments__pagination {
             display: flex;
             margin: 30px 0 0 0;
