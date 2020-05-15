@@ -3464,6 +3464,13 @@ i {
   margin: 0 0 15px 0;
 }
 
+.dialog .dialog-content .dialog-subtitle {
+  font-size: 1.4em;
+  font-weight: 500;
+  line-height: 1em;
+  margin: 30px 0 15px 0;
+}
+
 .dialog .dialog-content .dialog-errors {
   display: -webkit-box;
   display: flex;
